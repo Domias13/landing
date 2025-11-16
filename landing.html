@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Персональное меню на 2 дня • Бесплатно</title>
+
+<style>
+  :root{
+    --brand:#1dbf73;
+    --brand-dark:#17a463;
+    --muted:#888;
+    --bg:#ffffff;
+    --card-bg:#fff;
+    --shadow: 0 6px 20px rgba(17,17,17,0.06);
+    --gradient: linear-gradient(135deg, #1dbf73 0%, #17a463 100%);
+  }
+  body{
+    margin:0;
+    padding:0;
+    font-family: Inter, Arial, sans-serif;
+    background: var(--bg);
+    color:#111;
+    line-height:1.45;
+  }
+  .container{ max-width:800px; margin:0 auto; padding:24px; }
+  .card{ background:var(--card-bg); border-radius:14px; padding:24px; box-shadow:var(--shadow); margin-bottom:24px; }
+  h1,h2,h3{ margin:0 0 16px 0; font-weight:600; }
+  p{ margin:12px 0; }
+  .hero{ 
+    background: var(--gradient);
+    color: white;
+    text-align: center;
+    padding: 40px 24px;
+    border-radius: 14px;
+    margin-bottom: 24px;
+  }
+  .expert-card{ 
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    background: #f8fdfa;
+    border: 1px solid #e0f5eb;
+    border-radius: 14px;
+    padding: 20px;
+  }
+  .expert-avatar{ 
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .benefits-grid{ 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .benefit{ 
+    background: #f8fdfa;
+    padding: 16px;
+    border-radius: 10px;
+    border-left: 4px solid var(--brand);
+  }
+  .comparison{ 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .comparison-item{ 
+    padding: 16px;
+    border-radius: 10px;
+  }
+  .personal{ 
+    background: #f0f9f4;
+    border: 1px solid var(--brand);
+  }
+  .generic{ 
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+  }
+  .cta-button{ 
+    background: var(--gradient);
+    color: white;
+    text-decoration: none;
+    padding: 18px 32px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 18px;
+    display: inline-block;
+    text-align: center;
+    transition: transform 0.2s ease;
+    box-shadow: 0 8px 25px rgba(29,191,115,0.3);
+    margin: 10px 0;
+    width: 100%;
+  }
+  .cta-button:hover{ 
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(29,191,115,0.4);
+  }
+  .guarantee{ 
+    background: #fff9f5;
+    border: 1px solid #ffeede;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    margin: 20px 0;
+  }
+  .testimonial{ 
+    background: #f8fdfa;
+    border-left: 4px solid var(--brand);
+    padding: 16px;
+    border-radius: 8px;
+    margin: 16px 0;
+  }
+  .urgency{ 
+    background: #fff5f5;
+    border: 1px solid #ffdddd;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    margin: 20px 0;
+  }
+  .step{ 
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .step-number{ 
+    background: var(--brand);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+    text-align: center;
+  }
+  .result-item {
+    background: white;
+    padding: 16px;
+    border-radius: 10px;
+    border: 1px solid #e0f5eb;
+  }
+  .result-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--brand);
+    margin-bottom: 8px;
+  }
+  .counter {
+    font-size: 32px;
+    font-weight: bold;
+    color: #d63333;
+    margin: 10px 0;
+  }
+  .progress-bar {
+    height: 8px;
+    background: #eee;
+    border-radius: 4px;
+    margin: 16px 0;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--gradient);
+    width: 65%;
+  }
+  .faq-item {
+    margin: 16px 0;
+    padding: 16px;
+    background: #f8fdfa;
+    border-radius: 8px;
+  }
+  @media (max-width: 600px){
+    .comparison{ grid-template-columns: 1fr; }
+    .expert-card{ flex-direction: column; text-align: center; }
+    .benefits-grid{ grid-template-columns: 1fr; }
+    .results-grid{ grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HERO SECTION -->
+  <div class="hero">
+    <h1 style="color:white; margin-bottom:12px;">Бесплатное персональное меню на 2 дня</h1>
+    <p style="color:white; font-size:18px; margin-bottom:8px;">Узнай, как питаться именно тебе, чтобы чувствовать себя легко и уверенно</p>
+    <p style="color:white; opacity:0.9;">Без диет • Без запретов • С реальным результатом</p>
+    
+    <!-- СРОЧНЫЙ ТАЙМЕР -->
+    <div style="background: rgba(255,255,255,0.2); padding: 16px; border-radius: 10px; margin-top: 20px;">
+      <p style="margin: 0 0 8px 0; font-weight: bold;">Предложение закроется через:</p>
+      <div style="font-size: 24px; font-weight: bold; color: white;" id="countdown">23:59:59</div>
+    </div>
+  </div>
+
+  <!-- EXPERT CARD С ФОТОГРАФИЕЙ -->
+  <div class="card">
+    <div class="expert-card">
+      <!-- ЗАМЕНИТЕ src НА ССЫЛКУ НА ВАШЕ ФОТО -->
+      <img src="https://i.imgur.com/your-photo.jpg" alt="Роман Борисович" class="expert-avatar">
+      <div>
+        <h3 style="margin-bottom:8px;">Роман Борисович</h3>
+        <p style="margin:4px 0; color:var(--muted);">Эксперт по питанию и автор умных продуктов для быстрого результата</p>
+        <p style="margin:8px 0 0 0; font-size:14px;">Более 1000 созданных меню • Десятки кейсов трансформации • Работал с клиентами из Европы и СНГ</p>
+        
+        <!-- СТАТИСТИКА ДОВЕРИЯ -->
+        <div class="results-grid" style="margin-top: 16px;">
+          <div class="result-item">
+            <div class="result-number">1000+</div>
+            <div>созданных меню</div>
+          </div>
+          <div class="result-item">
+            <div class="result-number">94%</div>
+            <div>довольных клиентов</div>
+          </div>
+          <div class="result-item">
+            <div class="result-number">5+</div>
+            <div>лет опыта</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ПРОГРЕСС БАР ЗАПОЛНЕННОСТИ -->
+  <div class="card">
+    <div style="text-align: center;">
+      <h3 style="margin-bottom: 8px;">📍 Осталось всего 7 бесплатных мест</h3>
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+      <p style="color: var(--muted); font-size: 14px;">Уже забрали: 13 из 20 мест</p>
+    </div>
+  </div>
+
+  <!-- ПРОБЛЕМА + РЕШЕНИЕ -->
+  <div class="card">
+    <h2>Знакомо ли тебе это?</h2>
+    <p>Ты перепробовала десятки диет, но результат либо временный, либо даётся слишком тяжело?</p>
+    
+    <div style="background: #fff5f5; padding: 16px; border-radius: 10px; margin: 16px 0;">
+      <h4 style="color: #d63333; margin-bottom: 8px;">❌ Обычные диеты не работают, потому что:</h4>
+      <ul>
+        <li>Не учитывают ваш метаболизм</li>
+        <li>Игнорируют пищевые привычки</li>
+        <li>Создают стресс и приводят к срывам</li>
+        <li>Дают временный результат</li>
+      </ul>
+    </div>
+
+    <div style="background: #f0f9f4; padding: 16px; border-radius: 10px; margin: 16px 0;">
+      <h4 style="color: var(--brand); margin-bottom: 8px;">✅ Персональное меню работает, потому что:</h4>
+      <ul>
+        <li>Учитывает именно ваши особенности</li>
+        <li>Вписывается в ваш образ жизни</li>
+        <li>Не требует силы воли</li>
+        <li>Даёт устойчивый результат</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- КОНКРЕТНЫЕ РЕЗУЛЬТАТЫ -->
+  <div class="card">
+    <h2>Что изменится уже через 2 дня:</h2>
+    <div class="benefits-grid">
+      <div class="benefit">
+        <h4>⚡️ +80% энергии</h4>
+        <p>Исчезнет тяжесть после еды и появится бодрость</p>
+      </div>
+      <div class="benefit">
+        <h4>💧 -2 см в талии</h4>
+        <p>Уйдут отёки, живот станет более плоским</p>
+      </div>
+      <div class="benefit">
+        <h4>😴 Лучший сон</h4>
+        <p>Легкое засыпание и бодрое пробуждение</p>
+      </div>
+      <div class="benefit">
+        <h4>🎯 Ясность ума</h4>
+        <p>Улучшится концентрация и пропадет "туман в голове"</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ОТЗЫВЫ -->
+  <div class="card">
+    <h2>Реальные результаты моих клиентов:</h2>
+    
+    <div class="testimonial">
+      <p>"Всего за 2 дня ушло 1,5 кг и 3 см в талии! Но главное — я поняла, КАК нужно питаться именно мне. Это бесценно!"</p>
+      <p style="margin:8px 0 0 0; font-weight:bold;">— Марина, 34 года</p>
+    </div>
+
+    <div class="testimonial">
+      <p>"После родов не могла прийти в форму. Роман показал, что проблема не в еде, а в подходе. Теперь я ем всё, но в правильном сочетании!"</p>
+      <p style="margin:8px 0 0 0; font-weight:bold;">— Анна, 28 лет</p>
+    </div>
+
+    <div class="testimonial">
+      <p>"Впервые за 10 лет диет я не чувствую голода! И при этом теряю вес. Это магия какая-то!"</p>
+      <p style="margin:8px 0 0 0; font-weight:bold;">— Светлана, 41 год</p>
+    </div>
+  </div>
+
+  <!-- ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ -->
+  <div class="card">
+    <h2>📋 Часто задаваемые вопросы:</h2>
+    
+    <div class="faq-item">
+      <h4>Это действительно бесплатно?</h4>
+      <p>Да, абсолютно! Вы получаете полноценное персональное меню на 2 дня без каких-либо оплат.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Сколько времени займет заполнение формы?</h4>
+      <p>Всего 2-3 минуты. Мне нужно понять ваши предпочтения, чтобы создать эффективное меню.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Когда я получу меню?</h4>
+      <p>В течение 24 часов после заполнения формы. Обычно я отправляю меню вечером того же дня.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Нужно ли покупать специальные продукты?</h4>
+      <p>Нет! Все продукты доступны в обычных магазинах. Я учитываю бюджет и доступность.</p>
+    </div>
+  </div>
+
+  <!-- ФИНАЛЬНЫЙ CTA С УСИЛЕННОЙ МОТИВАЦИЕЙ -->
+  <div class="card" style="text-align:center; background: linear-gradient(135deg, #f8fdfa 0%, #f0f9f4 100%);">
+    <h2 style="margin-bottom:8px;">🚀 Готовы изменить подход к питанию?</h2>
+    <p style="margin-bottom:12px; font-size:18px;">Получите бесплатное персональное меню и ощутите разницу уже завтра</p>
+    
+    <!-- ОГРАНИЧЕНИЕ ПО ВРЕМЕНИ -->
+    <div class="urgency">
+      <h4 style="margin:0 0 8px 0;">⏰ Предложение действительно только 24 часа</h4>
+      <p style="margin:0;">После этого набор на бесплатные меню будет закрыт</p>
+    </div>
+    
+    <a href="https://forms.gle/your-google-form-link" class="cta-button">
+      🎁 Получить бесплатное меню сейчас
+    </a>
+    
+    <div class="guarantee">
+      <h4 style="margin:0 0 8px 0;">🔒 Гарантия результата</h4>
+      <p style="margin:0;">Если за 2 дня вы не почувствуете разницу — я лично помогу вам найти решение</p>
+    </div>
+  </div>
+
+  <footer style="text-align:center; color:var(--muted); font-size:13px; margin-top:40px; padding:20px;">
+    <p>© 2024 Роман Борисович. Все рекомендации носят информационный характер и не заменяют консультацию врача.</p>
+  </footer>
+
+</div>
+
+<script>
+  // Таймер обратного отсчета
+  function updateCountdown() {
+    const now = new Date();
+    const endOfDay = new Date();
+    endOfDay.setHours(23, 59, 59, 999);
+    
+    const diff = endOfDay - now;
+    
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    
+    document.getElementById('countdown').textContent = 
+      `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+  
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // Анимация при скролле к CTA
+  document.addEventListener('DOMContentLoaded', function() {
+    const ctaButton = document.querySelector('.cta-button');
+    
+    ctaButton.addEventListener('click', function(e) {
+      // Можно добавить аналитику здесь
+      console.log('CTA clicked');
+    });
+  });
+</script>
+</body>
+</html>
