@@ -177,7 +177,8 @@
   .progress-fill {
     height: 100%;
     background: var(--gradient);
-    width: 65%;
+    width: 0%;
+    transition: width 0.5s ease;
   }
   .faq-item {
     margin: 16px 0;
@@ -201,12 +202,6 @@
     <h1 style="color:white; margin-bottom:12px;">Бесплатный персональный план питания без диет на 2 дня</h1>
     <p style="color:white; font-size:18px; margin-bottom:8px;">Узнай, как питаться именно тебе — без голода, стресса и запретов</p>
     <p style="color:white; opacity:0.9;">Индивидуально • Без шаблонов • С реальным результатом</p>
-    
-    <!-- СРОЧНЫЙ ТАЙМЕР -->
-    <div style="background: rgba(255,255,255,0.2); padding: 16px; border-radius: 10px; margin-top: 20px;">
-      <p style="margin: 0 0 8px 0; font-weight: bold;">Предложение закроется через:</p>
-      <div style="font-size: 24px; font-weight: bold; color: white;" id="countdown">23:59:59</div>
-    </div>
   </div>
 
   <!-- EXPERT CARD -->
@@ -236,14 +231,14 @@
     </div>
   </div>
 
-  <!-- ПРОГРЕСС БАР -->
-  <div class="card">
+  <!-- ДИНАМИЧЕСКИЙ ПРОГРЕСС БАР -->
+  <div class="card" id="seats-card">
     <div style="text-align: center;">
-      <h3 style="margin-bottom: 8px;">📍 Осталось всего 7 бесплатных мест</h3>
+      <h3 id="seats-left-text">⏳ Загрузка...</h3>
       <div class="progress-bar">
-        <div class="progress-fill"></div>
+        <div class="progress-fill" id="progress-fill"></div>
       </div>
-      <p style="color: var(--muted); font-size: 14px;">Уже забрали: 13 из 20 мест</p>
+      <p id="seats-status" style="color: var(--muted); font-size: 14px;">Подождите...</p>
     </div>
   </div>
 
@@ -346,9 +341,9 @@
     <h2 style="margin-bottom:8px;">🚀 Готова питаться без диет и чувствовать лёгкость?</h2>
     <p style="margin-bottom:12px; font-size:18px;">Получи бесплатный персональный план и ощути разницу уже завтра</p>
     
-    <div class="urgency">
-      <h4 style="margin:0 0 8px 0;">⏰ Предложение — только на сегодня</h4>
-      <p style="margin:0;">После этого набор на бесплатные планы будет закрыт</p>
+    <div class="urgency" id="final-seats">
+      <h4 style="margin:0 0 8px 0;">⏳ Мест почти не осталось!</h4>
+      <p style="margin:0;" id="final-seats-text">Поторопись — бесплатные планы разбирают быстро</p>
     </div>
     
     <a href="https://forms.gle/aMxNQTSTHge6APMY8" class="cta-button">
@@ -368,21 +363,44 @@
 </div>
 
 <script>
-  function updateCountdown() {
-    const now = new Date();
-    const endOfDay = new Date();
-    endOfDay.setHours(23, 59, 59, 999);
-    const diff = endOfDay - now;
-    if (diff <= 0) return;
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-    document.getElementById('countdown').textContent = 
-      `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-  }
+  // Настройки
+  const TOTAL_SEATS = 20;
   
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
+  // Генерация случайного числа занятых мест (от 10 до 18)
+  const taken = Math.floor(Math.random() * 9) + 10; // 10–18
+  const left = TOTAL_SEATS - taken;
+  const percent = (taken / TOTAL_SEATS) * 100;
+
+  // Форматирование текста
+  function getSeatsText(places) {
+    if (places === 0) return 'Мест не осталось 😢';
+    if (places === 1) return 'Осталось всего 1 место!';
+    if (places < 5) return `Осталось всего ${places} места!`;
+    return `Осталось ${places} мест`;
+  }
+
+  // Обновление DOM
+  document.addEventListener('DOMContentLoaded', function() {
+    // Основной блок
+    document.getElementById('seats-left-text').textContent = getSeatsText(left);
+    document.getElementById('seats-status').textContent = `Уже забрали: ${taken} из ${TOTAL_SEATS} мест`;
+    
+    // Прогресс-бар
+    const progressBar = document.getElementById('progress-fill');
+    setTimeout(() => {
+      progressBar.style.width = percent + '%';
+    }, 300);
+
+    // Финальный CTA
+    document.getElementById('final-seats-text').textContent = getSeatsText(left);
+
+    // Если мест нет — можно скрыть CTA или показать уведомление (опционально)
+    if (left <= 0) {
+      document.querySelector('.cta-button').textContent = 'Места закончились 😢';
+      document.querySelector('.cta-button').style.pointerEvents = 'none';
+      document.querySelector('.cta-button').style.opacity = '0.7';
+    }
+  });
 </script>
 </body>
 </html>
