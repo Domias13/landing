@@ -23,10 +23,25 @@
     color:#111;
     line-height:1.45;
   }
-  .container{ max-width:800px; margin:0 auto; padding:24px; }
-  .card{ background:var(--card-bg); border-radius:14px; padding:24px; box-shadow:var(--shadow); margin-bottom:24px; }
-  h1,h2,h3{ margin:0 0 16px 0; font-weight:600; }
-  p{ margin:12px 0; }
+  .container{ 
+    max-width:800px; 
+    margin:0 auto; 
+    padding:24px; 
+  }
+  .card{ 
+    background:var(--card-bg); 
+    border-radius:14px; 
+    padding:24px; 
+    box-shadow:var(--shadow); 
+    margin-bottom:24px; 
+  }
+  h1,h2,h3{ 
+    margin:0 0 16px 0; 
+    font-weight:600; 
+  }
+  p{ 
+    margin:12px 0; 
+  }
   .hero{ 
     background: var(--gradient);
     color: white;
@@ -64,24 +79,6 @@
     border-radius: 10px;
     border-left: 4px solid var(--brand);
   }
-  .comparison{ 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-top: 16px;
-  }
-  .comparison-item{ 
-    padding: 16px;
-    border-radius: 10px;
-  }
-  .personal{ 
-    background: #f0f9f4;
-    border: 1px solid var(--brand);
-  }
-  .generic{ 
-    background: #f8f8f8;
-    border: 1px solid #ddd;
-  }
   .cta-button{ 
     background: var(--gradient);
     color: white;
@@ -90,12 +87,16 @@
     border-radius: 12px;
     font-weight: 700;
     font-size: 18px;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     transition: transform 0.2s ease;
     box-shadow: 0 8px 25px rgba(29,191,115,0.3);
-    margin: 10px 0;
+    margin: 20px 0;
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   .cta-button:hover{ 
     transform: translateY(-3px);
@@ -116,31 +117,27 @@
     border-radius: 8px;
     margin: 16px 0;
   }
-  .urgency{ 
-    background: #fff5f5;
-    border: 1px solid #ffdddd;
-    border-radius: 10px;
-    padding: 16px;
+  .card-places{ 
     text-align: center;
-    margin: 20px 0;
   }
-  .step{ 
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 16px 0;
-  }
-  .step-number{ 
-    background: var(--brand);
-    color: white;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .places-counter{
+    font-size: 28px;
     font-weight: bold;
-    flex-shrink: 0;
+    color: var(--brand);
+    margin: 10px 0;
+  }
+  .progress-bar {
+    height: 8px;
+    background: #eee;
+    border-radius: 4px;
+    margin: 16px 0;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--gradient);
+    width: 0%; /* будет обновляться скриптом */
+    transition: width 0.5s ease;
   }
   .results-grid {
     display: grid;
@@ -161,25 +158,6 @@
     color: var(--brand);
     margin-bottom: 8px;
   }
-  .counter {
-    font-size: 32px;
-    font-weight: bold;
-    color: #d63333;
-    margin: 10px 0;
-  }
-  .progress-bar {
-    height: 8px;
-    background: #eee;
-    border-radius: 4px;
-    margin: 16px 0;
-    overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%;
-    background: var(--gradient);
-    width: 0%;
-    transition: width 0.5s ease;
-  }
   .faq-item {
     margin: 16px 0;
     padding: 16px;
@@ -187,10 +165,22 @@
     border-radius: 8px;
   }
   @media (max-width: 600px){
-    .comparison{ grid-template-columns: 1fr; }
-    .expert-card{ flex-direction: column; text-align: center; }
-    .benefits-grid{ grid-template-columns: 1fr; }
-    .results-grid{ grid-template-columns: repeat(2, 1fr); }
+    .expert-card{ 
+      flex-direction: column; 
+      text-align: center; 
+    }
+    .benefits-grid{ 
+      grid-template-columns: 1fr; 
+    }
+    .results-grid{ 
+      grid-template-columns: repeat(2, 1fr); 
+    }
+    .hero h1 {
+      font-size: 22px;
+    }
+    .hero p {
+      font-size: 16px;
+    }
   }
 </style>
 </head>
@@ -199,9 +189,9 @@
 
   <!-- HERO SECTION -->
   <div class="hero">
-    <h1 style="color:white; margin-bottom:12px;">Бесплатный персональный план питания без диет на 2 дня</h1>
-    <p style="color:white; font-size:18px; margin-bottom:8px;">Узнай, как питаться именно тебе — без голода, стресса и запретов</p>
-    <p style="color:white; opacity:0.9;">Индивидуально • Без шаблонов • С реальным результатом</p>
+    <h1>Бесплатный персональный план питания без диет на 2 дня</h1>
+    <p>Узнай, как питаться именно тебе — без голода, стресса и запретов</p>
+    <p style="opacity:0.9;">Индивидуально • Без шаблонов • С реальным результатом</p>
   </div>
 
   <!-- EXPERT CARD -->
@@ -209,9 +199,9 @@
     <div class="expert-card">
       <img src="https://i.imgur.com/9FvsocY.jpeg" alt="Роман — эксперт по питанию без диет" class="expert-avatar">
       <div>
-        <h3 style="margin-bottom:8px;">Привет, я Роман</h3>
-        <p style="margin:4px 0; color:var(--muted);">Помогаю женщинам худеть без диет и запретов</p>
-        <p style="margin:8px 0 0 0; font-size:14px;">Сам похудел на 40 кг за 8 месяцев. Создал более 1000 индивидуальных планов. Не верю в диеты — верю в питание под тебя.</p>
+        <h3>Привет, я Роман</h3>
+        <p style="color:var(--muted);">Помогаю женщинам худеть без диет и запретов</p>
+        <p style="font-size:14px;">Сам похудел на 40 кг за 8 месяцев. Создал более 1000 индивидуальных планов. Не верю в диеты — верю в питание под тебя.</p>
         
         <div class="results-grid" style="margin-top: 16px;">
           <div class="result-item">
@@ -231,14 +221,14 @@
     </div>
   </div>
 
-  <!-- ДИНАМИЧЕСКИЙ ПРОГРЕСС БАР -->
-  <div class="card" id="seats-card">
-    <div style="text-align: center;">
-      <h3 id="seats-left-text">⏳ Загрузка...</h3>
-      <div class="progress-bar">
-        <div class="progress-fill" id="progress-fill"></div>
-      </div>
-      <p id="seats-status" style="color: var(--muted); font-size: 14px;">Подождите...</p>
+  <!-- ДИНАМИЧЕСКИЙ СЧЁТЧИК МЕСТ -->
+  <div class="card card-places">
+    <h3>📍 Бесплатные места на сегодня</h3>
+    <div class="places-counter" id="places-left">20</div>
+    <p style="color: var(--muted); margin-top: 8px;">Количество ограничено, чтобы я успевал прорабатывать каждый план вручную</p>
+    
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
     </div>
   </div>
 
@@ -338,13 +328,8 @@
 
   <!-- ФИНАЛЬНЫЙ CTA -->
   <div class="card" style="text-align:center; background: linear-gradient(135deg, #f8fdfa 0%, #f0f9f4 100%);">
-    <h2 style="margin-bottom:8px;">🚀 Готова питаться без диет и чувствовать лёгкость?</h2>
-    <p style="margin-bottom:12px; font-size:18px;">Получи бесплатный персональный план и ощути разницу уже завтра</p>
-    
-    <div class="urgency" id="final-seats">
-      <h4 style="margin:0 0 8px 0;">⏳ Мест почти не осталось!</h4>
-      <p style="margin:0;" id="final-seats-text">Поторопись — бесплатные планы разбирают быстро</p>
-    </div>
+    <h2>🚀 Готова питаться без диет и чувствовать лёгкость?</h2>
+    <p style="font-size:18px;">Получи бесплатный персональный план и ощути разницу уже завтра</p>
     
     <a href="https://forms.gle/aMxNQTSTHge6APMY8" class="cta-button">
       🎁 Получить план бесплатно
@@ -363,43 +348,21 @@
 </div>
 
 <script>
-  // Настройки
-  const TOTAL_SEATS = 20;
-  
-  // Генерация случайного числа занятых мест (от 10 до 18)
-  const taken = Math.floor(Math.random() * 9) + 10; // 10–18
-  const left = TOTAL_SEATS - taken;
-  const percent = (taken / TOTAL_SEATS) * 100;
-
-  // Форматирование текста
-  function getSeatsText(places) {
-    if (places === 0) return 'Мест не осталось 😢';
-    if (places === 1) return 'Осталось всего 1 место!';
-    if (places < 5) return `Осталось всего ${places} места!`;
-    return `Осталось ${places} мест`;
-  }
-
-  // Обновление DOM
+  // Динамический счётчик мест
   document.addEventListener('DOMContentLoaded', function() {
-    // Основной блок
-    document.getElementById('seats-left-text').textContent = getSeatsText(left);
-    document.getElementById('seats-status').textContent = `Уже забрали: ${taken} из ${TOTAL_SEATS} мест`;
-    
-    // Прогресс-бар
+    const totalPlaces = 20;
+    const placesLeftEl = document.getElementById('places-left');
     const progressBar = document.getElementById('progress-fill');
-    setTimeout(() => {
-      progressBar.style.width = percent + '%';
-    }, 300);
 
-    // Финальный CTA
-    document.getElementById('final-seats-text').textContent = getSeatsText(left);
-
-    // Если мест нет — можно скрыть CTA или показать уведомление (опционально)
-    if (left <= 0) {
-      document.querySelector('.cta-button').textContent = 'Места закончились 😢';
-      document.querySelector('.cta-button').style.pointerEvents = 'none';
-      document.querySelector('.cta-button').style.opacity = '0.7';
-    }
+    // Имитация "занятых мест": рандомное число от 8 до 15
+    const usedPlaces = Math.floor(Math.random() * 8) + 8; // 8–15
+    const placesLeft = totalPlaces - usedPlaces;
+    
+    placesLeftEl.textContent = placesLeft;
+    
+    // Обновляем прогресс-бар
+    const percentUsed = (usedPlaces / totalPlaces) * 100;
+    progressBar.style.width = percentUsed + '%';
   });
 </script>
 </body>
