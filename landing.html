@@ -79,29 +79,6 @@
     border-radius: 10px;
     border-left: 4px solid var(--brand);
   }
-  .cta-button{ 
-    background: var(--gradient);
-    color: white;
-    text-decoration: none;
-    padding: 18px 32px;
-    border-radius: 12px;
-    font-weight: 700;
-    font-size: 18px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transition: transform 0.2s ease;
-    box-shadow: 0 8px 25px rgba(29,191,115,0.3);
-    margin: 20px 0;
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-  .cta-button:hover{ 
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(29,191,115,0.4);
-  }
   .guarantee{ 
     background: #fff9f5;
     border: 1px solid #ffeede;
@@ -136,7 +113,7 @@
   .progress-fill {
     height: 100%;
     background: var(--gradient);
-    width: 0%; /* будет обновляться скриптом */
+    width: 0%;
     transition: width 0.5s ease;
   }
   .results-grid {
@@ -164,6 +141,30 @@
     background: #f8fdfa;
     border-radius: 8px;
   }
+
+  /* Стили для формы */
+  .form-card {
+    background: linear-gradient(135deg, #f8fdfa 0%, #f0f9f4 100%);
+    border-radius: 14px;
+    padding: 0;
+    box-shadow: var(--shadow);
+    margin: 24px 0;
+  }
+  .form-header {
+    text-align: center;
+    padding: 24px 24px 16px;
+  }
+  .google-form-container {
+    padding: 0 12px 24px;
+    overflow: hidden;
+  }
+  .google-form-container iframe {
+    width: 100%;
+    min-height: 1000px;
+    border: none;
+    display: block;
+  }
+
   @media (max-width: 600px){
     .expert-card{ 
       flex-direction: column; 
@@ -180,6 +181,9 @@
     }
     .hero p {
       font-size: 16px;
+    }
+    .google-form-container iframe {
+      min-height: 1200px;
     }
   }
 </style>
@@ -326,15 +330,26 @@
     </div>
   </div>
 
-  <!-- ФИНАЛЬНЫЙ CTA -->
-  <div class="card" style="text-align:center; background: linear-gradient(135deg, #f8fdfa 0%, #f0f9f4 100%);">
-    <h2>🚀 Готова питаться без диет и чувствовать лёгкость?</h2>
-    <p style="font-size:18px;">Получи бесплатный персональный план и ощути разницу уже завтра</p>
-    
-    <a href="https://forms.gle/aMxNQTSTHge6APMY8" class="cta-button">
-      🎁 Получить план бесплатно
-    </a>
-    
+  <!-- GOOGLE FORM ВСТРОЕННАЯ -->
+  <div class="form-card">
+    <div class="form-header">
+      <h2>🚀 Готова начать без диет и чувствовать лёгкость?</h2>
+      <p style="font-size:18px;">Заполни короткую форму — и получи персональный план уже сегодня</p>
+    </div>
+    <div class="google-form-container">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScXmCKnPuaCbafJZf9mN68Ejt3y6ipJfuLCXIwBfWZrzd6XVw/viewform?embedded=true" 
+              width="640" 
+              height="1093" 
+              frameborder="0" 
+              marginheight="0" 
+              marginwidth="0">
+        Загрузка…
+      </iframe>
+    </div>
+  </div>
+
+  <!-- ГАРАНТИЯ (ниже формы) -->
+  <div class="card" style="text-align:center; background: #fff9f5; border:1px solid #ffeede;">
     <div class="guarantee">
       <h4 style="margin:0 0 8px 0;">🔒 Гарантия лёгкости</h4>
       <p style="margin:0;">Если за 2 дня ты не почувствуешь лёгкость и энергию — я лично помогу найти решение</p>
