@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7 дней без боли — Восстановление после расставания</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <title>7 дней без боли — Сотри его из головы за 7 дней</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,12 +13,13 @@
         }
 
         :root {
-            --primary: #8B5CF6;
-            --secondary: #EC4899;
+            --primary: #DC2626;
+            --secondary: #7C3AED;
             --dark: #0F0F1A;
             --darker: #080810;
             --light: #FFFFFF;
-            --gray: #A1A1AA;
+            --gray: #9CA3AF;
+            --accent: #F59E0B;
         }
 
         body {
@@ -29,7 +30,6 @@
             overflow-x: hidden;
         }
 
-        /* Background Animation */
         .bg-gradient {
             position: fixed;
             top: 0;
@@ -37,82 +37,116 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 20% 50%, rgba(220, 38, 38, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 50%);
             pointer-events: none;
             z-index: -1;
         }
 
-        /* Container */
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* BLOCK 1: First Screen */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 80px 0;
-            position: relative;
+        /* URGENCY BAR */
+        .urgency-bar {
+            background: linear-gradient(90deg, var(--primary), #B91C1C);
+            padding: 12px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 14px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: pulse-red 2s infinite;
         }
 
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+        @keyframes pulse-red {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+        }
+
+        .urgency-bar span {
+            color: #FECACA;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 60px 0 40px;
         }
 
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(139, 92, 246, 0.2);
-            border: 1px solid rgba(139, 92, 246, 0.3);
+            background: rgba(220, 38, 38, 0.2);
+            border: 1px solid var(--primary);
             padding: 8px 16px;
             border-radius: 50px;
-            font-size: 14px;
+            font-size: 13px;
+            font-weight: 600;
             color: var(--primary);
-            margin-bottom: 24px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .hero h1 {
-            font-size: 56px;
+            font-size: 42px;
             font-weight: 900;
             line-height: 1.1;
-            margin-bottom: 24px;
-            background: linear-gradient(135deg, #fff 0%, #a78bfa 100%);
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #FCA5A5 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .hero-subtitle {
             font-size: 20px;
             color: var(--gray);
-            margin-bottom: 40px;
-            line-height: 1.6;
+            margin-bottom: 30px;
+            line-height: 1.5;
         }
 
-        .hero-price {
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--secondary);
+        .hero-highlight {
+            background: rgba(220, 38, 38, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .hero-highlight strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .price-block {
+            margin: 30px 0;
+        }
+
+        .price-old {
+            font-size: 24px;
+            color: var(--gray);
+            text-decoration: line-through;
             margin-bottom: 8px;
         }
 
-        .hero-price-note {
-            color: var(--gray);
-            margin-bottom: 32px;
+        .price-new {
+            font-size: 56px;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .price-note {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 16px;
         }
 
         .cta-button {
@@ -120,72 +154,68 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, #B91C1C 100%);
             color: white;
-            padding: 20px 48px;
+            padding: 24px 48px;
             border-radius: 16px;
-            font-size: 18px;
-            font-weight: 700;
+            font-size: 20px;
+            font-weight: 800;
             text-decoration: none;
             border: none;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
+            box-shadow: 0 10px 40px rgba(220, 38, 38, 0.4);
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
+            max-width: 400px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            animation: button-pulse 2s infinite;
         }
 
-        .cta-button:hover::before {
-            left: 100%;
+        @keyframes button-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
         }
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.5);
+            box-shadow: 0 20px 60px rgba(220, 38, 38, 0.5);
         }
 
-        .hero-visual {
-            position: relative;
+        .cta-subtext {
+            margin-top: 16px;
+            font-size: 13px;
+            color: var(--gray);
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* PRODUCT MOCKUP */
+        .product-showcase {
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .mockup-container {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(220, 38, 38, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
         }
 
         .phone-mockup {
-            width: 320px;
-            height: 640px;
+            width: 280px;
+            height: 560px;
             background: var(--dark);
-            border-radius: 40px;
+            border-radius: 36px;
             border: 8px solid #27273A;
+            margin: 0 auto;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.5);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .phone-screen {
-            background: linear-gradient(180deg, #1E1E2E 0%, #0F0F1A 100%);
-            height: 100%;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
         }
 
         .phone-notch {
@@ -198,505 +228,338 @@
             background: #27273A;
             border-bottom-left-radius: 12px;
             border-bottom-right-radius: 12px;
-        }
-
-        .notion-card {
-            background: rgba(255,255,255,0.05);
-            border-radius: 12px;
-            padding: 16px;
-            border-left: 4px solid var(--primary);
-        }
-
-        .notion-card-title {
-            font-weight: 600;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-
-        .notion-card-text {
-            font-size: 12px;
-            color: var(--gray);
-        }
-
-        /* Video Circle */
-        .video-circle-container {
-            position: absolute;
-            bottom: 40px;
-            right: 40px;
             z-index: 10;
         }
 
-        .video-circle {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            position: relative;
-            border: 4px solid var(--darker);
-            box-shadow: 0 10px 40px rgba(139, 92, 246, 0.4);
-            transition: transform 0.3s ease;
-        }
-
-        .video-circle:hover {
-            transform: scale(1.1);
-        }
-
-        .video-circle::before {
-            content: '';
-            position: absolute;
-            width: 100%;
+        .phone-screen {
+            background: linear-gradient(180deg, #1E1E2E 0%, #0F0F1A 100%);
             height: 100%;
-            border-radius: 50%;
-            border: 2px solid var(--primary);
-            animation: ripple 2s infinite;
+            padding: 50px 16px 20px;
+            overflow-y: auto;
         }
 
-        @keyframes ripple {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(1.5); opacity: 0; }
+        .notion-page {
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-left: 3px solid var(--primary);
         }
 
-        .video-circle svg {
-            width: 32px;
-            height: 32px;
-            fill: white;
+        .notion-page-title {
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 4px;
+            color: #fff;
         }
 
-        .video-label {
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            white-space: nowrap;
-            font-size: 12px;
-            background: rgba(0,0,0,0.8);
-            padding: 4px 8px;
-            border-radius: 4px;
+        .notion-page-desc {
+            font-size: 11px;
+            color: var(--gray);
         }
 
-        /* BLOCK 2: Pain Points */
+        .pages-count {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(124, 58, 237, 0.2);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        /* PAIN POINTS */
         .pain-section {
-            padding: 120px 0;
+            padding: 60px 0;
             background: var(--dark);
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-header h2 {
-            font-size: 42px;
+        .section-title {
+            font-size: 36px;
             font-weight: 800;
-            margin-bottom: 16px;
-        }
-
-        .section-header p {
-            font-size: 20px;
-            color: var(--gray);
+            text-align: center;
+            margin-bottom: 40px;
         }
 
         .pain-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
+            gap: 16px;
             margin-bottom: 40px;
         }
 
         .pain-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 32px;
-            border-radius: 16px;
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            padding: 20px;
+            border-radius: 12px;
             display: flex;
             align-items: flex-start;
-            gap: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .pain-card:hover {
-            border-color: var(--primary);
-            transform: translateX(8px);
-            background: rgba(139, 92, 246, 0.05);
+            gap: 12px;
         }
 
         .pain-icon {
-            width: 48px;
-            height: 48px;
-            background: rgba(236, 72, 153, 0.2);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: 28px;
             flex-shrink: 0;
-            font-size: 24px;
         }
 
         .pain-text {
-            font-size: 18px;
-            font-weight: 500;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 1.4;
         }
 
         .pain-reveal {
             text-align: center;
-            padding: 40px;
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.2));
-            border-radius: 20px;
-            border: 2px solid rgba(139, 92, 246, 0.3);
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.2), rgba(124, 58, 237, 0.2));
+            border-radius: 16px;
+            border: 2px solid var(--primary);
         }
 
         .pain-reveal h3 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        /* FOR WHOM */
+        .for-whom {
+            padding: 60px 0;
+        }
+
+        .for-whom-box {
+            background: rgba(245, 158, 11, 0.1);
+            border: 2px solid var(--accent);
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .for-whom h2 {
             font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            background: linear-gradient(135deg, #fff, #f472b6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .pain-reveal p {
-            font-size: 18px;
-            color: var(--gray);
-        }
-
-        /* BLOCK 3: How It Works */
-        .how-it-works {
-            padding: 120px 0;
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-            margin-top: 60px;
-        }
-
-        .step-card {
-            position: relative;
-            padding: 40px 32px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .step-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
-        }
-
-        .step-number {
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 20px;
-            border: 4px solid var(--darker);
-        }
-
-        .step-icon {
-            font-size: 48px;
             margin-bottom: 20px;
+            color: var(--accent);
         }
 
-        .step-card h3 {
-            font-size: 22px;
-            margin-bottom: 12px;
+        .for-whom-list {
+            list-style: none;
         }
 
-        .step-card p {
-            color: var(--gray);
-            font-size: 15px;
+        .for-whom-list li {
+            padding: 12px 0;
+            padding-left: 32px;
+            position: relative;
+            font-size: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* BLOCK 4: Course Content */
-        .course-section {
-            padding: 120px 0;
+        .for-whom-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        /* USP BLOCK */
+        .usp-section {
+            padding: 60px 0;
             background: var(--dark);
         }
 
-        .course-grid {
+        .usp-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            margin-bottom: 40px;
+            gap: 20px;
+        }
+
+        .usp-card {
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            padding: 24px;
+            border-radius: 12px;
+        }
+
+        .usp-card h3 {
+            color: var(--secondary);
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .usp-card.different {
+            background: rgba(220, 38, 38, 0.1);
+            border-color: rgba(220, 38, 38, 0.3);
+        }
+
+        .usp-card.different h3 {
+            color: var(--primary);
+        }
+
+        /* TECHNIQUE HIGHLIGHT */
+        .technique-highlight {
+            padding: 60px 0;
+        }
+
+        .technique-box {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(220, 38, 38, 0.2));
+            border: 2px solid var(--secondary);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .technique-box h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .technique-box .highlight {
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        /* CONTENT PREVIEW */
+        .content-section {
+            padding: 60px 0;
+            background: var(--dark);
         }
 
         .day-card {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.05));
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            padding: 32px;
-            border-radius: 16px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .day-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--primary), var(--secondary));
-        }
-
-        .day-number {
-            font-size: 14px;
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 16px;
         }
 
         .day-card h3 {
-            font-size: 22px;
-            margin-bottom: 12px;
+            color: var(--primary);
+            font-size: 18px;
+            margin-bottom: 8px;
         }
 
-        .day-card p {
-            color: var(--gray);
-            font-size: 15px;
-        }
-
-        .course-fact {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(139, 92, 246, 0.2);
-            padding: 16px 24px;
-            border-radius: 12px;
+        .day-card .result {
+            color: var(--accent);
+            font-size: 14px;
             font-weight: 600;
         }
 
-        .course-fact svg {
-            width: 24px;
-            height: 24px;
-            color: var(--primary);
-        }
-
-        /* BLOCK 5: Social Proof */
+        /* SOCIAL PROOF */
         .social-proof {
-            padding: 120px 0;
+            padding: 60px 0;
         }
 
-        .tiktok-stats {
+        .stats-box {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
 
         .stats-number {
-            font-size: 72px;
+            font-size: 64px;
             font-weight: 900;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 12px;
         }
 
-        .stats-text {
-            font-size: 20px;
-            color: var(--gray);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .testimonial-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 28px;
-            border-radius: 16px;
-            position: relative;
-        }
-
-        .testimonial-card::before {
-            content: '"';
-            font-size: 80px;
-            color: var(--primary);
-            opacity: 0.3;
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            font-family: serif;
-        }
-
-        .testimonial-text {
-            font-size: 16px;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
-            line-height: 1.6;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .author-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-        }
-
-        .author-name {
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .author-date {
-            font-size: 12px;
-            color: var(--gray);
-        }
-
-        /* BLOCK 6: Final CTA */
+        /* FINAL CTA */
         .final-cta {
-            padding: 120px 0;
+            padding: 80px 0;
             background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%);
             text-align: center;
         }
 
         .cta-box {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 60px 40px;
-            background: rgba(139, 92, 246, 0.1);
-            border: 2px solid rgba(139, 92, 246, 0.3);
-            border-radius: 32px;
+            background: rgba(220, 38, 38, 0.1);
+            border: 3px solid var(--primary);
+            border-radius: 24px;
+            padding: 50px 30px;
         }
 
-        .cta-box h2 {
-            font-size: 42px;
-            margin-bottom: 24px;
-        }
-
-        .price-comparison {
+        .comparison {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 24px;
-            margin: 40px 0;
+            gap: 20px;
+            margin: 30px 0;
             flex-wrap: wrap;
         }
 
-        .price-item {
-            padding: 20px 32px;
+        .compare-item {
+            padding: 16px 24px;
             background: rgba(255,255,255,0.05);
             border-radius: 12px;
-            font-size: 18px;
+            font-size: 16px;
         }
 
-        .price-item.crossed {
+        .compare-item.crossed {
             text-decoration: line-through;
             color: var(--gray);
             opacity: 0.6;
         }
 
-        .price-item.main {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            font-weight: 700;
+        .compare-item.main {
+            background: var(--primary);
+            font-weight: 800;
             font-size: 24px;
+            transform: scale(1.1);
         }
 
         .guarantee {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            margin-top: 32px;
-            color: var(--gray);
+            gap: 8px;
+            margin-top: 24px;
             font-size: 14px;
+            color: var(--gray);
         }
 
         /* Footer */
         footer {
-            padding: 40px 0;
+            padding: 30px 0;
             border-top: 1px solid rgba(255,255,255,0.1);
             text-align: center;
             color: var(--gray);
-            font-size: 14px;
-        }
-
-        footer a {
-            color: var(--primary);
-            text-decoration: none;
-            margin: 0 12px;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
+            font-size: 13px;
         }
 
         /* Responsive */
-        @media (max-width: 968px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
+        @media (max-width: 768px) {
             .hero h1 {
-                font-size: 36px;
-            }
-
-            .hero-visual {
-                order: -1;
-            }
-
-            .phone-mockup {
-                width: 260px;
-                height: 520px;
-            }
-
-            .pain-grid,
-            .course-grid,
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .steps-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-header h2 {
                 font-size: 32px;
             }
 
-            .video-circle-container {
-                bottom: 20px;
-                right: 20px;
+            .pain-grid,
+            .usp-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .price-new {
+                font-size: 48px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .technique-box {
+                padding: 30px 20px;
+            }
+
+            .technique-box h2 {
+                font-size: 24px;
             }
         }
 
-        /* Animations on scroll */
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
         }
 
         .fade-in.visible {
@@ -708,248 +571,265 @@
 <body>
     <div class="bg-gradient"></div>
 
-    <!-- BLOCK 1: First Screen -->
+    <!-- URGENCY BAR -->
+    <div class="urgency-bar">
+        🔥 Спеццена $7 только до конца недели! Потом $47
+    </div>
+
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <div class="hero-badge">
-                        <span>🔥</span>
-                        <span>Более 555 000 просмотров в TikTok</span>
-                    </div>
-                    <h1>Сотри образ бывшего из своей нейронной сети за 7 дней</h1>
-                    <p class="hero-subtitle">
-                        Пошаговый протокол восстановления биохимии мозга после расставания. 
-                        Без «просто подыши» и пустых советов.
-                    </p>
-                    <div class="hero-price">$7</div>
-                    <div class="hero-price-note">Вместо $97 — только сегодня</div>
-                    <a href="#buy" class="cta-button">
-                        <span>Получить доступ к системе</span>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                    </a>
-                </div>
-                <div class="hero-visual">
+            <div class="hero-badge">
+                ⚡ 555 000+ человек в TikTok уже видели эти техники
+            </div>
+            
+            <h1>Как перестать думать о бывшем за 7 дней с помощью нейропсихологии</h1>
+            
+            <p class="hero-subtitle">
+                Научный протокол восстановления биохимии мозга после расставания. 
+                Без «просто отпусти» и пустых советов.
+            </p>
+
+            <div class="hero-highlight">
+                <strong>⚠️ Если ты:</strong>
+                Проверяешь его онлайн каждые 15 минут • Не можешь есть и спать • 
+                Физически чувствуешь боль в груди • Винишь себя во всем
+            </div>
+
+            <!-- PRODUCT MOCKUP -->
+            <div class="product-showcase">
+                <div class="mockup-container">
                     <div class="phone-mockup">
                         <div class="phone-notch"></div>
                         <div class="phone-screen">
-                            <div class="notion-card">
-                                <div class="notion-card-title">📅 День 1</div>
-                                <div class="notion-card-text">Остановка кортизолового шторма</div>
+                            <div class="notion-page">
+                                <div class="notion-page-title">📖 День 1</div>
+                                <div class="notion-page-desc">Остановка кортизолового шторма</div>
                             </div>
-                            <div class="notion-card">
-                                <div class="notion-card-title">🎬 День 3</div>
-                                <div class="notion-card-text">Кинотеатр разума — НЛП техника</div>
+                            <div class="notion-page">
+                                <div class="notion-page-title">🎬 День 3</div>
+                                <div class="notion-page-desc">НЛП техника «Кинотеатр разума»</div>
                             </div>
-                            <div class="notion-card">
-                                <div class="notion-card-title">💪 День 5</div>
-                                <div class="notion-card-text">Якорение уверенности</div>
+                            <div class="notion-page">
+                                <div class="notion-page-title">💪 День 5</div>
+                                <div class="notion-page-desc">Якорение уверенности</div>
                             </div>
-                            <div class="notion-card">
-                                <div class="notion-card-title">🎯 День 7</div>
-                                <div class="notion-card-text">Точка невозврата</div>
+                            <div class="notion-page">
+                                <div class="notion-page-title">🎯 День 7</div>
+                                <div class="notion-page-desc">Точка невозврата</div>
                             </div>
                         </div>
                     </div>
-                    <div class="video-circle-container">
-                        <div class="video-circle" onclick="playVideo()">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                            <span class="video-label">Смотри видео</span>
-                        </div>
+                    <div class="pages-count">
+                        📄 24 страницы концентрата НЛП + КПТ
                     </div>
                 </div>
+            </div>
+
+            <!-- PRICE & CTA -->
+            <div class="price-block">
+                <div class="price-old">Обычная цена $47</div>
+                <div class="price-new">$7</div>
+                <div class="price-note">⏰ Только на этой неделе</div>
+            </div>
+
+            <a href="#buy" class="cta-button">
+                <span>Начать восстановление за $7</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+            
+            <div class="cta-subtext">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                Мгновенный доступ • Apple Pay / Google Pay • Гарантия 7 дней
             </div>
         </div>
     </section>
 
-    <!-- BLOCK 2: Pain Points -->
+    <!-- PAIN POINTS -->
     <section class="pain-section">
         <div class="container">
-            <div class="section-header fade-in">
-                <h2>Ты здесь, потому что тебе больно прямо сейчас</h2>
-                <p>Узнаёшь себя в этих ситуациях?</p>
-            </div>
+            <h2 class="section-title">Тебе знакомо это?</h2>
+            
             <div class="pain-grid">
-                <div class="pain-card fade-in">
+                <div class="pain-card">
                     <div class="pain-icon">📱</div>
-                    <div class="pain-text">Проверяешь его «онлайн» каждые 15 минут?</div>
+                    <div class="pain-text">Проверяешь его «онлайн» каждые 15 минут и не можешь остановиться</div>
                 </div>
-                <div class="pain-card fade-in">
+                <div class="pain-card">
                     <div class="pain-icon">💔</div>
-                    <div class="pain-text">Чувствуешь физическую дыру в груди?</div>
+                    <div class="pain-text">Физическая боль в груди, ком в горле, тяжесть в животе</div>
                 </div>
-                <div class="pain-card fade-in">
+                <div class="pain-card">
                     <div class="pain-icon">🌙</div>
-                    <div class="pain-text">Не можешь уснуть из-за навязчивых мыслей?</div>
+                    <div class="pain-text">Не можешь уснуть — навязчивые мысли крутятся снова и снова</div>
                 </div>
-                <div class="pain-card fade-in">
+                <div class="pain-card">
                     <div class="pain-icon">😰</div>
-                    <div class="pain-text">Боишься, что «лучшее уже позади»?</div>
+                    <div class="pain-text">Боешься, что «лучшее уже позади» и никого не найдешь</div>
                 </div>
             </div>
-            <div class="pain-reveal fade-in">
+
+            <div class="pain-reveal">
                 <h3>Это не любовь. Это дофаминовая ломка.</h3>
-                <p>Твой мозг сломан, и его нужно починить.</p>
+                <p>Твой мозг сломан, и его нужно починить. Не медитациями, а конкретными техниками перепрошивки нейронных связей.</p>
             </div>
         </div>
     </section>
 
-    <!-- BLOCK 3: How It Works -->
-    <section class="how-it-works">
+    <!-- FOR WHOM -->
+    <section class="for-whom">
         <div class="container">
-            <div class="section-header fade-in">
-                <h2>Как это работает</h2>
-                <p>Научный подход к эмоциональному восстановлению</p>
-            </div>
-            <div class="steps-grid">
-                <div class="step-card fade-in">
-                    <div class="step-number">1</div>
-                    <div class="step-icon">🧠</div>
-                    <h3>Диагностика боли</h3>
-                    <p>Выявляем нейронные связи, которые вызывают страдание. Понимаем биохимию твоей боли.</p>
-                </div>
-                <div class="step-card fade-in">
-                    <div class="step-number">2</div>
-                    <div class="step-icon">⚡</div>
-                    <h3>Перепрограммирование</h3>
-                    <p>Техники НЛП и КПТ меняют субмодальности воспоминаний. Боль теряет силу.</p>
-                </div>
-                <div class="step-card fade-in">
-                    <div class="step-number">3</div>
-                    <div class="step-icon">🚀</div>
-                    <h3>Новая идентичность</h3>
-                    <p>Создаём якоря ресурсных состояний. Ты становишься сильнее, чем до отношений.</p>
-                </div>
+            <div class="for-whom-box">
+                <h2>🎯 Этот курс для тебя, если:</h2>
+                <ul class="for-whom-list">
+                    <li>Ты мониторишь его соцсети и не можешь остановиться</li>
+                    <li>Не можешь есть, спать, работать — все валится из рук</li>
+                    <li>Винишь себя во всем и думаешь «что я сделал(а) не так»</li>
+                    <li>Пробовала «просто отпустить» — но не получается</li>
+                    <li>Хочешь не просто «пережить», а реально стереть боль из головы</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <!-- BLOCK 4: Course Content -->
-    <section class="course-section">
+    <!-- USP SECTION -->
+    <section class="usp-section">
         <div class="container">
-            <div class="section-header fade-in">
-                <h2>Что внутри курса «7 дней без боли»?</h2>
-                <p>24 страницы концентрата из НЛП и КПТ практик</p>
-            </div>
-            <div class="course-grid">
-                <div class="day-card fade-in">
-                    <div class="day-number">День 1</div>
-                    <h3>Остановка кортизолового шторма</h3>
-                    <p>Дыхательная техника освобождения эмоций. Снижение остроты боли на 60% уже после первого упражнения.</p>
+            <h2 class="section-title">Почему это не обычные советы?</h2>
+            
+            <div class="usp-grid">
+                <div class="usp-card different">
+                    <h3>❌ ОБЫЧНЫЕ СОВЕТЫ:</h3>
+                    <p>«Время лечит», «Займись собой», «Просто подыши», «Отпусти»</p>
                 </div>
-                <div class="day-card fade-in">
-                    <div class="day-number">День 2</div>
-                    <h3>Возвращение себе ценности</h3>
-                    <p>Техника «Я достоин». Восстановление самооценки через когнитивную перестройку.</p>
+                <div class="usp-card">
+                    <h3>✅ НАШ ПОДХОД:</h3>
+                    <p>Мы не будем медитировать. Мы будем перепрошивать нейронные связи с помощью НЛП и КПТ. Конкретные техники для конкретных результатов.</p>
                 </div>
-                <div class="day-card fade-in">
-                    <div class="day-number">День 3</div>
-                    <h3>Техника НЛП «Кинотеатр разума»</h3>
-                    <p>Стирание визуальных триггеров. Изменение субмодальностей болезненных воспоминаний.</p>
+                <div class="usp-card">
+                    <h3>🧠 НАУЧНАЯ БАЗА:</h3>
+                    <p>Нейролингвистическое программирование + Когнитивно-поведенческая терапия. Работает на уровне биохимии мозга.</p>
                 </div>
-                <div class="day-card fade-in">
-                    <div class="day-number">День 4</div>
-                    <h3>Работа с негативными мыслями</h3>
-                    <p>Дневник автоматических мыслей. Контроль над внутренним диалогом.</p>
-                </div>
-                <div class="day-card fade-in">
-                    <div class="day-number">День 5</div>
-                    <h3>Якорение уверенности</h3>
-                    <p>Создание эмоциональных якорей. Мгновенный доступ к состоянию силы и спокойствия.</p>
-                </div>
-                <div class="day-card fade-in">
-                    <div class="day-number">День 6</div>
-                    <h3>Визуализация новой версии себя</h3>
-                    <p>Сила ментальной репетиции. Формирование образа идеального себя.</p>
-                </div>
-                <div class="day-card fade-in" style="grid-column: 1 / -1;">
-                    <div class="day-number">День 7</div>
-                    <h3>Закрытие гештальта и точка невозврата</h3>
-                    <p>Ритуал завершения и начала. Интеграция изменений. Новый старт.</p>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 40px;">
-                <div class="course-fact fade-in">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                    <span>PDF-формат + Notion-шаблон для отслеживания прогресса</span>
+                <div class="usp-card">
+                    <h3>⚡ БЫСТРЫЙ РЕЗУЛЬТАТ:</h3>
+                    <p>Первое облегчение уже после Дня 1. Через 7 дней — новая версия тебя.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- BLOCK 5: Social Proof -->
+    <!-- TECHNIQUE HIGHLIGHT -->
+    <section class="technique-highlight">
+        <div class="container">
+            <div class="technique-box">
+                <h2>🎬 Техника <span class="highlight">«Кинотеатр разума»</span></h2>
+                <p style="font-size: 18px; margin-bottom: 20px;">
+                    Мощная НЛП-техника для стирания визуальных триггеров
+                </p>
+                <p>
+                    Ты научишься менять субмодальности воспоминаний: 
+                    делать их черно-белыми, маленькими, далекими. 
+                    <strong>Боль потеряет свою силу.</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENT PREVIEW -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Что внутри курса</h2>
+            
+            <div class="day-card">
+                <h3>День 1: Остановка кортизолового шторма</h3>
+                <p class="result">→ Убираем физическую боль в груди и тревогу</p>
+            </div>
+            
+            <div class="day-card">
+                <h3>День 2: Возвращение себе ценности</h3>
+                <p class="result">→ Восстанавливаем самооценку через технику «Я достоин»</p>
+            </div>
+            
+            <div class="day-card">
+                <h3>День 3: Перепросмотр воспоминаний (НЛП)</h3>
+                <p class="result">→ Техника «Кинотеатр разума» — стираем эмоциональный заряд</p>
+            </div>
+            
+            <div class="day-card">
+                <h3>День 4: Работа с негативными мыслями (КПТ)</h3>
+                <p class="result">→ Дневник автоматических мыслей — контроль над внутренним диалогом</p>
+            </div>
+            
+            <div class="day-card">
+                <h3>День 5: Якорение ресурсных состояний</h3>
+                <p class="result">→ Мгновенный доступ к уверенности и спокойствию</p>
+            </div>
+            
+            <div class="day-card">
+                <h3>День 6: Визуализация новой версии себя</h3>
+                <p class="result">→ Создание образа себя через год — сильной и свободной</p>
+            </div>
+            
+            <div class="day-card">
+                <h3>День 7: Интеграция и новый старт</h3>
+                <p class="result">→ Ритуал завершения и точка невозврата</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF -->
     <section class="social-proof">
         <div class="container">
-            <div class="tiktok-stats fade-in">
+            <div class="stats-box">
                 <div class="stats-number">555 000+</div>
-                <div class="stats-text">человек в TikTok уже видели мои методы</div>
+                <p style="font-size: 20px; color: var(--gray);">человек в TikTok уже видели мои методы</p>
             </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">Мне стало легче после первого видео. Наконец-то кто-то объяснил, что со мной происходит на самом деле!</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">А</div>
-                        <div>
-                            <div class="author-name">Анна К.</div>
-                            <div class="author-date">2 дня назад</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">Техника с кинотеатром реально работает. Перестала плакать каждый раз, когда вижу его фото.</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">М</div>
-                        <div>
-                            <div class="author-name">Мария С.</div>
-                            <div class="author-date">5 дней назад</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card fade-in">
-                    <p class="testimonial-text">$7 за то, чтобы перестать страдать? Это копейки. Курс изменил моё состояние за неделю.</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">Е</div>
-                        <div>
-                            <div class="author-name">Елена В.</div>
-                            <div class="author-date">1 неделю назад</div>
-                        </div>
-                    </div>
-                </div>
+            
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 30px;">
+                <p style="font-size: 18px; font-style: italic; margin-bottom: 20px;">
+                    «Мне стало легче после первого дня. Наконец-то кто-то объяснил, что со мной происходит на уровне биохимии, а не просто сказал "отпусти"»
+                </p>
+                <p style="color: var(--primary); font-weight: 700;">— Анна, 26 лет</p>
             </div>
         </div>
     </section>
 
-    <!-- BLOCK 6: Final CTA -->
+    <!-- FINAL CTA -->
     <section class="final-cta" id="buy">
         <div class="container">
-            <div class="cta-box fade-in">
-                <h2>Цена твоего спокойствия — $7</h2>
-                <p style="font-size: 20px; color: var(--gray); margin-bottom: 40px;">
-                    Это дешевле, чем одна пачка сигарет или чашка кофе, которые не помогают
+            <div class="cta-box">
+                <h2 style="font-size: 36px; margin-bottom: 20px;">Цена твоего спокойствия — $7</h2>
+                <p style="font-size: 18px; color: var(--gray); margin-bottom: 30px;">
+                    Это дешевле, чем одна пачка сигарет или кофе, которые не помогают
                 </p>
-                <div class="price-comparison">
-                    <div class="price-item crossed">Пачка сигарет: $8</div>
-                    <div class="price-item crossed">Кофе с собой: $5</div>
-                    <div class="price-item main">$7 — Курс «7 дней без боли»</div>
+                
+                <div class="comparison">
+                    <div class="compare-item crossed">Пачка сигарет: $8</div>
+                    <div class="compare-item crossed">Кофе с собой: $5</div>
+                    <div class="compare-item main">$7 — Курс «7 дней»</div>
                 </div>
-                <a href="#" class="cta-button" style="font-size: 20px; padding: 24px 64px;">
-                    <span>Начать восстановление сейчас</span>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+
+                <a href="#" class="cta-button" style="font-size: 22px; padding: 28px 48px;">
+                    <span>ХОЧУ ЗАБЫТЬ ЕГО СЕЙЧАС</span>
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                 </a>
+
                 <div class="guarantee">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                     </svg>
                     <span>Безопасная оплата • Мгновенный доступ • Гарантия возврата 7 дней</span>
                 </div>
+
+                <p style="margin-top: 30px; color: var(--accent); font-weight: 700; font-size: 16px;">
+                    ⏰ Спеццена действует только до конца недели!
+                </p>
             </div>
         </div>
     </section>
@@ -958,53 +838,37 @@
     <footer>
         <div class="container">
             <p>
-                <a href="#">Служба поддержки</a>
+                <a href="#" style="color: var(--primary);">Служба поддержки</a>
                 •
-                <a href="#">Публичная оферта</a>
+                <a href="#" style="color: var(--primary);">Публичная оферта</a>
                 •
-                <a href="#">Политика конфиденциальности</a>
+                <a href="#" style="color: var(--primary);">Политика конфиденциальности</a>
             </p>
-            <p style="margin-top: 16px; opacity: 0.6;">
+            <p style="margin-top: 12px; opacity: 0.6;">
                 © 2024 7 дней без боли. Все права защищены.
             </p>
         </div>
     </footer>
 
     <script>
-        // Fade in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
+        // Fade in animation
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        // Video function
-        function playVideo() {
-            alert('Здесь будет открываться видео-кружочек как в Telegram с объяснением метода');
-            // Here you would integrate your video player
-        }
-
-        // Smooth scroll for CTA buttons
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
