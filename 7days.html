@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7 дней без боли — Сотри его из головы за 7 дней</title>
+    <title>Как забыть бывшего за 7 дней — Научный протокол</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         * {
@@ -68,10 +68,6 @@
             50% { opacity: 0.85; }
         }
 
-        .urgency-bar span {
-            color: #FECACA;
-        }
-
         /* HERO SECTION */
         .hero {
             padding: 60px 0 40px;
@@ -94,7 +90,7 @@
         }
 
         .hero h1 {
-            font-size: 42px;
+            font-size: 44px;
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 20px;
@@ -148,6 +144,17 @@
             color: var(--accent);
             font-weight: 600;
             font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .scarcity-text {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 15px;
+            background: rgba(220, 38, 38, 0.15);
+            padding: 8px 12px;
+            border-radius: 8px;
+            display: inline-block;
         }
 
         .cta-button {
@@ -167,7 +174,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 10px 40px rgba(220, 38, 38, 0.4);
             width: 100%;
-            max-width: 400px;
+            max-width: 450px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             animation: button-pulse 2s infinite;
@@ -195,7 +202,7 @@
 
         /* AUTHOR BLOCK */
         .author-section {
-            padding: 40px 0;
+            padding: 50px 0;
             background: rgba(255,255,255,0.02);
             border-top: 1px solid rgba(255,255,255,0.05);
             border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -204,59 +211,82 @@
         .author-card {
             display: flex;
             align-items: center;
-            gap: 20px;
-            max-width: 600px;
+            gap: 30px;
+            max-width: 700px;
             margin: 0 auto;
+            background: rgba(255,255,255,0.03);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .author-avatar {
-            width: 80px;
-            height: 80px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
+            font-size: 48px;
             font-weight: 800;
-            border: 3px solid var(--darker);
+            border: 4px solid var(--darker);
             flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .author-info h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 4px;
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: #fff;
         }
 
         .author-info p {
-            font-size: 14px;
+            font-size: 15px;
             color: var(--gray);
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            line-height: 1.5;
         }
 
         .author-stats {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            background: rgba(0,0,0,0.3);
-            padding: 4px 12px;
+            gap: 8px;
+            background: rgba(0,0,0,0.4);
+            padding: 8px 16px;
             border-radius: 20px;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 600;
             color: #fff;
         }
 
         .author-stats svg {
             color: var(--primary);
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
         }
 
         /* PRODUCT MOCKUP */
         .product-showcase {
             margin: 50px 0;
             text-align: center;
+        }
+
+        .section-label {
+            font-size: 14px;
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            display: block;
         }
 
         .mockup-container {
@@ -269,20 +299,9 @@
             overflow: hidden;
         }
 
-        .mockup-container::before {
-            content: 'PREVIEW';
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 10px;
-            font-weight: 800;
-            color: rgba(255,255,255,0.2);
-            letter-spacing: 2px;
-        }
-
         .phone-mockup {
-            width: 280px;
-            height: 560px;
+            width: 300px;
+            height: 600px;
             background: var(--dark);
             border-radius: 36px;
             border: 8px solid #27273A;
@@ -315,30 +334,31 @@
         }
 
         .notion-header {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 800;
             margin-bottom: 16px;
             padding-bottom: 8px;
             border-bottom: 2px solid #E5E7EB;
+            color: #111827;
         }
 
         .notion-page {
             background: #F3F4F6;
             border-radius: 8px;
-            padding: 12px;
-            margin-bottom: 10px;
+            padding: 14px;
+            margin-bottom: 12px;
             border-left: 4px solid var(--primary);
         }
 
         .notion-page-title {
             font-weight: 700;
-            font-size: 13px;
+            font-size: 14px;
             margin-bottom: 4px;
             color: #111827;
         }
 
         .notion-page-desc {
-            font-size: 11px;
+            font-size: 12px;
             color: #4B5563;
         }
 
@@ -347,12 +367,25 @@
             align-items: center;
             gap: 8px;
             background: rgba(124, 58, 237, 0.2);
-            padding: 8px 16px;
+            padding: 10px 20px;
             border-radius: 8px;
             font-size: 14px;
             font-weight: 600;
             margin-top: 20px;
             color: #C4B5FD;
+        }
+
+        .bonus-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--success), #059669);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-top: 15px;
+            color: #fff;
         }
 
         /* PAIN POINTS */
@@ -411,80 +444,58 @@
             color: var(--primary);
         }
 
-        /* FOR WHOM */
-        .for-whom {
+        /* TESTIMONIALS */
+        .testimonials-section {
             padding: 60px 0;
         }
 
-        .for-whom-box {
-            background: rgba(245, 158, 11, 0.1);
-            border: 2px solid var(--accent);
-            border-radius: 16px;
-            padding: 30px;
-        }
-
-        .for-whom h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-
-        .for-whom-list {
-            list-style: none;
-        }
-
-        .for-whom-list li {
-            padding: 12px 0;
-            padding-left: 32px;
-            position: relative;
-            font-size: 16px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .for-whom-list li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: 800;
-            font-size: 20px;
-        }
-
-        /* USP BLOCK */
-        .usp-section {
-            padding: 60px 0;
-            background: var(--dark);
-        }
-
-        .usp-grid {
+        .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
+            margin-top: 40px;
         }
 
-        .usp-card {
-            background: rgba(124, 58, 237, 0.1);
-            border: 1px solid rgba(124, 58, 237, 0.3);
-            padding: 24px;
-            border-radius: 12px;
+        .testimonial-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 16px;
+            position: relative;
         }
 
-        .usp-card h3 {
-            color: var(--secondary);
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .usp-card.different {
-            background: rgba(220, 38, 38, 0.1);
-            border-color: rgba(220, 38, 38, 0.3);
-        }
-
-        .usp-card.different h3 {
+        .testimonial-card::before {
+            content: '"';
+            font-size: 60px;
             color: var(--primary);
+            opacity: 0.3;
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-family: serif;
         }
 
-        /* KILLER FEATURE: CINEMA */
+        .testimonial-text {
+            font-size: 15px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            color: #E5E7EB;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 14px;
+        }
+
+        .testimonial-source {
+            font-size: 12px;
+            color: var(--gray);
+        }
+
+        /* KILLER FEATURE */
         .killer-feature {
             padding: 60px 0;
             background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%);
@@ -527,28 +538,6 @@
             font-size: 20px;
         }
 
-        .feature-steps {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .feature-step {
-            background: rgba(0,0,0,0.3);
-            padding: 15px 20px;
-            border-radius: 12px;
-            font-size: 14px;
-            max-width: 250px;
-        }
-
-        .feature-step strong {
-            color: var(--secondary);
-            display: block;
-            margin-bottom: 5px;
-        }
-
         /* CONTENT PREVIEW */
         .content-section {
             padding: 60px 0;
@@ -573,72 +562,6 @@
             color: var(--accent);
             font-size: 14px;
             font-weight: 600;
-        }
-
-        /* TESTIMONIALS */
-        .testimonials-section {
-            padding: 60px 0;
-        }
-
-        .testimonial-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 30px;
-            border-radius: 16px;
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .testimonial-text {
-            font-size: 20px;
-            font-style: italic;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-
-        .testimonial-author {
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        /* WHY CHEAP */
-        .why-cheap {
-            padding: 40px 0;
-            text-align: center;
-        }
-
-        .why-cheap-box {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            padding: 24px;
-            border-radius: 12px;
-            display: inline-block;
-            max-width: 600px;
-        }
-
-        .why-cheap h3 {
-            color: var(--success);
-            margin-bottom: 12px;
-            font-size: 20px;
-        }
-
-        /* SOCIAL PROOF */
-        .social-proof {
-            padding: 60px 0;
-        }
-
-        .stats-box {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .stats-number {
-            font-size: 64px;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
         /* FINAL CTA */
@@ -728,7 +651,7 @@
             }
 
             .pain-grid,
-            .usp-grid {
+            .testimonials-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -771,65 +694,35 @@
 
     <!-- URGENCY BAR -->
     <div class="urgency-bar">
-        🔥 Спеццена $7 только до конца недели! Потом $47
+        🔥 Спеццена $7 только до конца недели! Потом $25
     </div>
 
     <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
             <div class="hero-badge">
-                ⚡ 555 000+ человек в TikTok уже видели эти техники
+                ⚡ 500 000+ человек в TikTok уже видели эти техники
             </div>
             
-            <h1>Как перестать думать о бывшем за 7 дней с помощью нейропсихологии</h1>
+            <h1>Как забыть бывшего за 7 дней</h1>
             
             <p class="hero-subtitle">
                 Научный протокол восстановления биохимии мозга после расставания. 
-                Без «просто отпусти» и пустых советов.
+                Без психологов, таблеток и пустых советов.
             </p>
 
             <div class="hero-highlight">
                 <strong>⚠️ Если ты:</strong>
                 Проверяешь его онлайн каждые 15 минут • Не можешь есть и спать • 
-                Физически чувствуешь боль в груди • Винишь себя во всем
+                Физически чувствуешь боль в груди • Срываешься и пишешь ему
             </div>
 
-            <!-- PRODUCT MOCKUP -->
-            <div class="product-showcase">
-                <div class="mockup-container">
-                    <div class="phone-mockup">
-                        <div class="phone-notch"></div>
-                        <div class="phone-screen">
-                            <div class="notion-header">📘 7 Дней Без Боли</div>
-                            <div class="notion-page">
-                                <div class="notion-page-title">📖 День 1</div>
-                                <div class="notion-page-desc">Остановка кортизолового шторма</div>
-                            </div>
-                            <div class="notion-page">
-                                <div class="notion-page-title">🎬 День 3</div>
-                                <div class="notion-page-desc">НЛП техника «Кинотеатр разума»</div>
-                            </div>
-                            <div class="notion-page">
-                                <div class="notion-page-title">💪 День 5</div>
-                                <div class="notion-page-desc">Якорение уверенности</div>
-                            </div>
-                            <div class="notion-page">
-                                <div class="notion-page-title">🎯 День 7</div>
-                                <div class="notion-page-desc">Точка невозврата</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pages-count">
-                        📄 24 страницы концентрата НЛП + КПТ
-                    </div>
-                </div>
-            </div>
-
-            <!-- PRICE & CTA -->
+            <!-- PRICE & CTA - FIRST POSITION -->
             <div class="price-block">
-                <div class="price-old">Обычная цена $47</div>
+                <div class="price-old">Обычная цена $25</div>
                 <div class="price-new">$7</div>
                 <div class="price-note">⏰ Только на этой неделе</div>
+                <div class="scarcity-text">Спеццена $7 действует только до конца недели. Дальше — возврат к $25</div>
             </div>
 
             <a href="#buy" class="cta-button">
@@ -845,20 +738,59 @@
                 </svg>
                 Мгновенный доступ • Apple Pay / Google Pay • Гарантия 7 дней
             </div>
+
+            <!-- PRODUCT MOCKUP -->
+            <div class="product-showcase">
+                <span class="section-label">📱 Вот что вы получите:</span>
+                <div class="mockup-container">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div class="notion-header">📘 День 3: Кинотеатр разума</div>
+                            <div style="background: #FEF3C7; padding: 12px; border-radius: 6px; margin-bottom: 12px; border-left: 3px solid var(--accent);">
+                                <div style="font-weight: 700; font-size: 13px; margin-bottom: 4px;">🎬 Техника НЛП</div>
+                                <div style="font-size: 11px; color: #4B5563;">Изменение субмодальностей воспоминаний</div>
+                            </div>
+                            <div class="notion-page">
+                                <div class="notion-page-title">Шаг 1: Диссоциация</div>
+                                <div class="notion-page-desc">Представьте, что смотрите на воспоминание со стороны, как на фильм</div>
+                            </div>
+                            <div class="notion-page">
+                                <div class="notion-page-title">Шаг 2: Изменение параметров</div>
+                                <div class="notion-page-desc">Сделайте картинку черно-белой, маленькой, добавьте комичную музыку</div>
+                            </div>
+                            <div class="notion-page">
+                                <div class="notion-page-title">Шаг 3: Результат</div>
+                                <div class="notion-page-desc">Боль теряет силу. Мозг перестает воспринимать это как угрозу</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pages-count">
+                        📄 24 страницы концентрата НЛП + КПТ
+                    </div>
+                    <div class="bonus-badge">
+                        🎁 БОНУС: Инструкция «Как не сорваться и не написать ему через месяц»
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- AUTHOR BLOCK (NEW) -->
+    <!-- AUTHOR BLOCK -->
     <section class="author-section">
         <div class="container">
             <div class="author-card fade-in">
-                <div class="author-avatar">Р</div>
+                <div class="author-avatar">
+                    <!-- Замените на реальное фото -->
+                    <span>Р</span>
+                    <!-- <img src="your-photo.jpg" alt="Роман"> -->
+                </div>
                 <div class="author-info">
-                    <h3>Роман, эксперт по восстановлению</h3>
-                    <p>Помогаю пережить расставание через работу с мозгом, а не через слезы.</p>
+                    <h3>Роман</h3>
+                    <p>Эксперт по биохимии мозга. Помогаю выходить из эмоциональной зависимости без психологов и таблеток.</p>
                     <div class="author-stats">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                        555 000+ охватов в TikTok
+                        500 000+ охватов в TikTok
                     </div>
                 </div>
             </div>
@@ -885,7 +817,7 @@
                 </div>
                 <div class="pain-card">
                     <div class="pain-icon">😰</div>
-                    <div class="pain-text">Боешься, что «лучшее уже позади» и никого не найдешь</div>
+                    <div class="pain-text">Срываешься и пишешь ему, хотя обещала себе не делать этого</div>
                 </div>
             </div>
 
@@ -896,49 +828,34 @@
         </div>
     </section>
 
-    <!-- FOR WHOM -->
-    <section class="for-whom">
+    <!-- TESTIMONIALS -->
+    <section class="testimonials-section">
         <div class="container">
-            <div class="for-whom-box">
-                <h2>🎯 Этот курс для тебя, если:</h2>
-                <ul class="for-whom-list">
-                    <li>Ты мониторишь его соцсети и не можешь остановиться</li>
-                    <li>Не можешь есть, спать, работать — все валится из рук</li>
-                    <li>Винишь себя во всем и думаешь «что я сделал(а) не так»</li>
-                    <li>Пробовала «просто отпустить» — но не получается</li>
-                    <li>Хочешь не просто «пережить», а реально стереть боль из головы</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- USP SECTION -->
-    <section class="usp-section">
-        <div class="container">
-            <h2 class="section-title">Почему это не обычные советы?</h2>
+            <h2 class="section-title">Что говорят те, кто уже прошел этот путь</h2>
             
-            <div class="usp-grid">
-                <div class="usp-card different">
-                    <h3>❌ ОБЫЧНЫЕ СОВЕТЫ:</h3>
-                    <p>«Время лечит», «Займись собой», «Просто подыши», «Отпусти»</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">Уже на 3-й день стало легче дышать. Техника с кинотеатром реально работает — перестала плакать, когда вижу его фото.</p>
+                    <div class="testimonial-author">Анна, 26 лет</div>
+                    <div class="testimonial-source">TikTok комментарий</div>
                 </div>
-                <div class="usp-card">
-                    <h3>✅ НАШ ПОДХОД:</h3>
-                    <p>Мы не будем медитировать. Мы будем перепрошивать нейронные связи с помощью НЛП и КПТ. Конкретные техники для конкретных результатов.</p>
+                
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">Спасибо! Наконец-то кто-то объяснил, что со мной происходит на уровне биохимии, а не просто сказал «отпусти». Стало намного легче.</p>
+                    <div class="testimonial-author">Мария, 24 года</div>
+                    <div class="testimonial-source">TikTok комментарий</div>
                 </div>
-                <div class="usp-card">
-                    <h3>🧠 НАУЧНАЯ БАЗА:</h3>
-                    <p>Нейролингвистическое программирование + Когнитивно-поведенческая терапия. Работает на уровне биохимии мозга.</p>
-                </div>
-                <div class="usp-card">
-                    <h3>⚡ БЫСТРЫЙ РЕЗУЛЬТАТ:</h3>
-                    <p>Первое облегчение уже после Дня 1. Через 7 дней — новая версия тебя.</p>
+                
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">$7 за то, чтобы перестать страдать? Это копейки. Курс изменил моё состояние за неделю. Не сорвалась ни разу!</p>
+                    <div class="testimonial-author">Елена, 28 лет</div>
+                    <div class="testimonial-source">TikTok комментарий</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- KILLER FEATURE: CINEMA (NEW) -->
+    <!-- KILLER FEATURE -->
     <section class="killer-feature">
         <div class="container">
             <div class="feature-box fade-in">
@@ -951,20 +868,6 @@
                     делать их черно-белыми, маленькими, далекими. 
                     <strong style="color: #fff;">Боль потеряет свою силу.</strong>
                 </p>
-                <div class="feature-steps">
-                    <div class="feature-step">
-                        <strong>1. Диссоциация</strong>
-                        Ты смотришь на воспоминание как на фильм со стороны, а не проживаешь его.
-                    </div>
-                    <div class="feature-step">
-                        <strong>2. Изменение</strong>
-                        Делаешь картинку черно-белой, маленькой и включаешь смешную музыку.
-                    </div>
-                    <div class="feature-step">
-                        <strong>3. Результат</strong>
-                        Мозг перестает воспринимать это как угрозу. Боль уходит.
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1011,39 +914,6 @@
         </div>
     </section>
 
-    <!-- TESTIMONIALS (NEW) -->
-    <section class="testimonials-section">
-        <div class="container">
-            <div class="testimonial-card fade-in">
-                <p class="testimonial-text">«Уже на 3-й день стало легче дышать. Техника с кинотеатром реально работает — перестала плакать, когда вижу его фото.»</p>
-                <div class="testimonial-author">— Анна, 26 лет</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SOCIAL PROOF -->
-    <section class="social-proof">
-        <div class="container">
-            <div class="stats-box">
-                <div class="stats-number">555 000+</div>
-                <p style="font-size: 20px; color: var(--gray);">человек в TikTok уже видели мои методы</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- WHY CHEAP (NEW) -->
-    <section class="why-cheap">
-        <div class="container">
-            <div class="why-cheap-box fade-in">
-                <h3>💚 Почему всего $7?</h3>
-                <p style="color: var(--gray); font-size: 15px;">
-                    Потому что я хочу, чтобы эта помощь была доступна каждому, кто сейчас не может дышать от боли. 
-                    Это не бизнес-проект, это миссия.
-                </p>
-            </div>
-        </div>
-    </section>
-
     <!-- FINAL CTA -->
     <section class="final-cta" id="buy">
         <div class="container">
@@ -1080,7 +950,7 @@
                 </div>
 
                 <p style="margin-top: 30px; color: var(--accent); font-weight: 700; font-size: 16px;">
-                    ⏰ Спеццена действует только до конца недели!
+                    ⏰ Спеццена $7 действует только до конца недели! Потом возврат к $25
                 </p>
             </div>
         </div>
