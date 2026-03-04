@@ -20,6 +20,7 @@
 
 
 
+    
     <title>Как забыть бывшего за 7 дней — Научный протокол</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
@@ -38,6 +39,7 @@
             --gray: #9CA3AF;
             --accent: #F59E0B;
             --success: #10B981;
+            --paypal: #003087;
         }
 
         body {
@@ -63,8 +65,7 @@
 
         .container {
             max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
+            margin: 0 auto;            padding: 0 20px;
         }
 
         /* URGENCY BAR */
@@ -113,8 +114,7 @@
             margin-bottom: 20px;
             background: linear-gradient(135deg, #fff 0%, #FCA5A5 100%);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+            -webkit-text-fill-color: transparent;        }
 
         .hero-subtitle {
             font-size: 20px;
@@ -163,7 +163,6 @@
             font-size: 16px;
             margin-bottom: 8px;
         }
-
         .scarcity-text {
             color: var(--primary);
             font-weight: 700;
@@ -172,6 +171,15 @@
             padding: 8px 12px;
             border-radius: 8px;
             display: inline-block;
+        }
+
+        .cta-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto;
         }
 
         .cta-button {
@@ -191,7 +199,6 @@
             transition: all 0.3s ease;
             box-shadow: 0 10px 40px rgba(220, 38, 38, 0.4);
             width: 100%;
-            max-width: 450px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             animation: button-pulse 2s infinite;
@@ -206,6 +213,42 @@
             transform: translateY(-2px);
             box-shadow: 0 20px 60px rgba(220, 38, 38, 0.5);
         }
+        .paypal-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: var(--paypal);
+            color: white;
+            padding: 20px 48px;
+            border-radius: 16px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 48, 135, 0.3);
+            width: 100%;
+        }
+
+        .paypal-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 60px rgba(0, 48, 135, 0.4);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .paypal-button svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .payment-note {
+            text-align: center;
+            font-size: 13px;
+            color: var(--gray);
+            margin-top: 8px;
+        }
 
         .cta-subtext {
             margin-top: 16px;
@@ -218,8 +261,7 @@
         }
 
         /* AUTHOR BLOCK */
-        .author-section {
-            padding: 50px 0;
+        .author-section {            padding: 50px 0;
             background: rgba(255,255,255,0.02);
             border-top: 1px solid rgba(255,255,255,0.05);
             border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -268,8 +310,7 @@
         .author-info p {
             font-size: 15px;
             color: var(--gray);
-            margin-bottom: 12px;
-            line-height: 1.5;
+            margin-bottom: 12px;            line-height: 1.5;
         }
 
         .author-stats {
@@ -318,8 +359,7 @@
 
         .product-image {
             max-width: 100%;
-            height: auto;
-            border-radius: 12px;
+            height: auto;            border-radius: 12px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.5);
         }
 
@@ -368,7 +408,6 @@
             gap: 16px;
             margin-bottom: 40px;
         }
-
         .pain-card {
             background: rgba(220, 38, 38, 0.1);
             border: 1px solid rgba(220, 38, 38, 0.3);
@@ -418,8 +457,7 @@
         }
 
         .testimonial-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);            border: 1px solid rgba(255,255,255,0.1);
             padding: 25px;
             border-radius: 16px;
             position: relative;
@@ -468,8 +506,7 @@
             border-radius: 20px;
             padding: 40px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            position: relative;            overflow: hidden;
         }
 
         .feature-box::before {
@@ -518,7 +555,6 @@
             font-size: 18px;
             margin-bottom: 8px;
         }
-
         .day-card .result {
             color: var(--accent);
             font-size: 14px;
@@ -568,8 +604,7 @@
 
         .compare-item {
             padding: 16px 24px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 12px;
+            background: rgba(255,255,255,0.05);            border-radius: 12px;
             font-size: 16px;
         }
 
@@ -618,8 +653,7 @@
 
             .author-card {
                 flex-direction: column;
-                text-align: center;
-            }
+                text-align: center;            }
 
             .price-new {
                 font-size: 48px;
@@ -635,6 +669,10 @@
 
             .feature-box h2 {
                 font-size: 24px;
+            }
+
+            .cta-group {
+                max-width: 100%;
             }
         }
 
@@ -664,8 +702,7 @@
             <div class="hero-badge">
                 ⚡ 500 000+ человек в TikTok уже видели эти техники
             </div>
-            
-            <h1>Как забыть бывшего за 7 дней</h1>
+                        <h1>Как забыть бывшего за 7 дней</h1>
             
             <p class="hero-subtitle">
                 Научный протокол восстановления биохимии мозга после расставания. 
@@ -686,25 +723,35 @@
                 <div class="scarcity-text">Спеццена $7 действует только до конца недели. Дальше — возврат к $25</div>
             </div>
 
-            <a href="https://cutt.ly/MtQ8xNlI" class="cta-button">
-                <span>Начать восстановление за $7</span>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-            </a>
+            <!-- PAYMENT BUTTONS -->
+            <div class="cta-group">
+                <a href="https://cutt.ly/MtQ8xNlI" class="cta-button">
+                    <span>Начать восстановление за $7</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="https://www.paypal.com/ncp/payment/JX2Q4NHBXX792" class="paypal-button" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.774.774 0 0 1 .763-.653h5.812c3.825 0 6.202 1.668 6.202 5.305 0 2.192-.928 3.873-2.535 4.94-1.456.967-3.36 1.343-5.52 1.343H7.732l-.656 6.682zm11.18-14.043l-.66 6.682h4.594a.641.641 0 0 0 .633-.74l.732-7.44a.774.774 0 0 0-.763-.653h-4.536z"/>
+                    </svg>
+                    <span>Оплатить через PayPal</span>
+                </a>
+            </div>
+            
+            <div class="payment-note">💳 Карта • Apple Pay • Google Pay • PayPal</div>
             
             <div class="cta-subtext">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                 </svg>
-                Мгновенный доступ • Apple Pay / Google Pay • Гарантия 7 дней
+                Мгновенный доступ • Гарантия 7 дней • Безопасная оплата
             </div>
 
             <!-- PRODUCT MOCKUP -->
             <div class="product-showcase">
                 <span class="section-label">📱 Вот что вы получите:</span>
-                <div class="mockup-container">
-                    <img src="https://i.ibb.co/v6hzKsgD/Chat-GPT-Image-25-2026-08-37-55.png" alt="Курс 7 дней без боли" class="product-image">
+                <div class="mockup-container">                    <img src="https://i.ibb.co/v6hzKsgD/Chat-GPT-Image-25-2026-08-37-55.png" alt="Курс 7 дней без боли" class="product-image">
                     <div class="pages-count">
                         📄 24 страницы концентрата НЛП + КПТ
                     </div>
@@ -753,8 +800,7 @@
                     <div class="pain-icon">🌙</div>
                     <div class="pain-text">Не можешь уснуть — навязчивые мысли крутятся снова и снова</div>
                 </div>
-                <div class="pain-card">
-                    <div class="pain-icon">😰</div>
+                <div class="pain-card">                    <div class="pain-icon">😰</div>
                     <div class="pain-text">Срываешься и пишешь ему, хотя обещала себе не делать этого</div>
                 </div>
             </div>
@@ -803,8 +849,7 @@
                 </p>
                 <p style="color: #9CA3AF;">
                     Ты научишься менять субмодальности воспоминаний: 
-                    делать их черно-белыми, маленькими, далекими. 
-                    <strong style="color: #fff;">Боль потеряет свою силу.</strong>
+                    делать их черно-белыми, маленькими, далекими.                     <strong style="color: #fff;">Боль потеряет свою силу.</strong>
                 </p>
             </div>
         </div>
@@ -853,8 +898,7 @@
     </section>
 
     <!-- FINAL CTA -->
-    <section class="final-cta" id="buy">
-        <div class="container">
+    <section class="final-cta" id="buy">        <div class="container">
             <div class="cta-box">
                 <div class="guarantee-badge">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
@@ -873,18 +917,29 @@
                     <div class="compare-item main">$7 — Курс «7 дней»</div>
                 </div>
 
-                <a href="https://cutt.ly/MtQ8xNlI" class="cta-button" style="font-size: 22px; padding: 28px 48px;">
-                    <span>ХОЧУ ЗАБЫТЬ ЕГО СЕЙЧАС</span>
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a>
+                <!-- PAYMENT BUTTONS -->
+                <div class="cta-group">
+                    <a href="https://cutt.ly/MtQ8xNlI" class="cta-button" style="font-size: 22px; padding: 28px 48px;">
+                        <span>ХОЧУ ЗАБЫТЬ ЕГО СЕЙЧАС</span>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.paypal.com/ncp/payment/JX2Q4NHBXX792" class="paypal-button" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.774.774 0 0 1 .763-.653h5.812c3.825 0 6.202 1.668 6.202 5.305 0 2.192-.928 3.873-2.535 4.94-1.456.967-3.36 1.343-5.52 1.343H7.732l-.656 6.682zm11.18-14.043l-.66 6.682h4.594a.641.641 0 0 0 .633-.74l.732-7.44a.774.774 0 0 0-.763-.653h-4.536z"/>
+                        </svg>
+                        <span>Оплатить через PayPal</span>
+                    </a>
+                </div>
+
+                <div class="payment-note">💳 Карта • Apple Pay • Google Pay • PayPal</div>
 
                 <div class="guarantee-text">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                     </svg>
-                    <span>Безопасная оплата • Мгновенный доступ • Если не станет легче — верну деньги</span>
+                    <span>Мгновенный доступ • Если не станет легче — верну деньги</span>
                 </div>
 
                 <p style="margin-top: 30px; color: var(--accent); font-weight: 700; font-size: 16px;">
@@ -893,7 +948,6 @@
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -935,4 +989,3 @@
     </script>
 </body>
 </html>
-
