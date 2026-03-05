@@ -94,12 +94,12 @@
             border: 1px solid var(--accent);
             padding: 12px 16px;
             border-radius: 10px;
-            font-size: 14px;
-            color: var(--accent);
+            font-size: 13px;
+            color: #FCD34D;
             text-align: center;
             margin: 12px 0;
             line-height: 1.4;
-            font-weight: 600;
+            font-weight: 500;
         }
 
         .cta-group { display: flex; flex-direction: column; gap: 16px; width: 100%; max-width: 450px; margin: 0 auto; }
@@ -235,34 +235,39 @@
 
         .content-section { padding: 60px 0; background: var(--dark); }
         .day-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px; }
-        .day-card h3 { color: var(--primary); font-size: 18px; margin-bottom: 8px; }
+        .day-card h3 { color: var(--primary); font-size: 18px; margin-bottom: 8px; font-weight: 800; }
         .day-card .result { color: var(--accent); font-size: 14px; font-weight: 600; }
 
         /* ===== PRICING SECTION ===== */
-        .pricing-section { padding: 80px 0; background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%); }
-        .pricing-header { text-align: center; margin-bottom: 50px; }
+        .pricing-section { padding: 80px 0 40px; background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%); }
+        .pricing-header { text-align: center; margin-bottom: 30px; }
         .pricing-header h2 { font-size: 36px; font-weight: 800; margin-bottom: 16px; }
         .pricing-header p { color: var(--gray); font-size: 18px; }
 
         /* Micro-guide */
         .micro-guide {
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px dashed var(--secondary);
+            border-radius: 12px;
+            padding: 16px 24px;
+            margin: 0 auto 40px;
+            max-width: 600px;
+            text-align: center;
+        }
+        .micro-guide .steps {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 12px;
-            background: rgba(124, 58, 237, 0.1);
-            border: 1px dashed var(--secondary);
-            padding: 12px 20px;
-            border-radius: 12px;
-            margin: 0 auto 30px;
-            max-width: 500px;
+            flex-wrap: wrap;
             font-size: 14px;
-            color: var(--gray);
+            font-weight: 600;
+            color: var(--light);
         }
         .micro-guide .step {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
         .micro-guide .step-num {
             background: var(--secondary);
@@ -274,11 +279,11 @@
             align-items: center;
             justify-content: center;
             font-size: 12px;
-            font-weight: 700;
+            font-weight: 800;
         }
-        .micro-guide .divider {
+        .micro-guide .separator {
             color: var(--gray);
-            opacity: 0.6;
+            font-size: 18px;
         }
 
         .pricing-grid {
@@ -375,6 +380,14 @@
             border-top: 1px solid var(--card-border);
         }
 
+        .pricing-price .original-price {
+            font-size: 18px;
+            color: var(--gray);
+            text-decoration: line-through;
+            margin-bottom: 4px;
+            display: block;
+        }
+
         .pricing-price .amount {
             font-size: 32px;
             font-weight: 900;
@@ -403,12 +416,12 @@
         }
 
         .wayforpay-note {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--gray);
             text-align: center;
             margin-top: 8px;
-            line-height: 1.4;
-            font-style: italic;
+            line-height: 1.3;
+            opacity: 0.8;
         }
 
         .no-subscription {
@@ -419,48 +432,14 @@
             font-weight: 600;
         }
 
-        /* Security badges */
-        .security-badges {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 16px;
-            margin: 16px 0 8px;
-            flex-wrap: wrap;
-        }
-
-        .security-badge {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 11px;
-            color: var(--gray);
-            opacity: 0.8;
-        }
-
-        .security-badge svg {
-            width: 16px;
-            height: 16px;
-            color: var(--gray);
-        }
-
-        .security-text {
-            font-size: 11px;
-            color: var(--gray);
-            text-align: center;
-            margin-top: 8px;
-            line-height: 1.4;
-            opacity: 0.9;
-        }
-
         /* Security block under pricing */
         .security-block {
-            background: rgba(40, 167, 69, 0.1);
+            background: rgba(40, 167, 69, 0.08);
             border: 1px solid rgba(40, 167, 69, 0.3);
             border-radius: 16px;
             padding: 24px;
             margin: 40px auto 0;
-            max-width: 700px;
+            max-width: 900px;
             text-align: center;
         }
 
@@ -474,14 +453,81 @@
             gap: 8px;
         }
 
-        .security-block p {
-            font-size: 14px;
-            color: var(--gray);
-            line-height: 1.5;
+        .security-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            margin: 20px 0;
+            flex-wrap: wrap;
         }
 
-        .security-block strong {
-            color: var(--light);
+        .security-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.7;
+        }
+
+        .security-icon svg {
+            width: 40px;
+            height: 40px;
+            color: var(--gray);
+        }
+
+        .security-icon span {
+            font-size: 11px;
+            color: var(--gray);
+            text-align: center;
+            max-width: 80px;
+        }
+
+        .security-text {
+            font-size: 13px;
+            color: var(--gray);
+            line-height: 1.5;
+            margin-top: 16px;
+        }
+
+        /* Inaction block */
+        .inaction-block {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.15), rgba(124, 58, 237, 0.15));
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 60px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .inaction-block h3 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            color: var(--primary);
+        }
+
+        .inaction-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .inaction-list li {
+            font-size: 18px;
+            padding: 12px 20px;
+            background: rgba(220, 38, 38, 0.2);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            text-align: left;
+        }
+
+        .inaction-list li::before {
+            content: '❌';
+            margin-right: 12px;
         }
 
         .final-cta { padding: 80px 0; background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%); text-align: center; }
@@ -507,7 +553,8 @@
 
         @media (max-width: 968px) {
             .pricing-grid { grid-template-columns: 1fr; max-width: 450px; margin: 0 auto; }
-            .micro-guide { flex-wrap: wrap; }
+            .security-icons { gap: 16px; }
+            .security-icon svg { width: 32px; height: 32px; }
             .hero h1 { font-size: 32px; }
             .pain-grid, .testimonials-grid { grid-template-columns: 1fr; }
             .author-card { flex-direction: column; text-align: center; }
@@ -517,7 +564,9 @@
             .feature-box h2 { font-size: 24px; }
             .cta-group { max-width: 100%; }
             .guarantee-box { flex-direction: column; text-align: center; }
-            .security-badges { gap: 12px; }
+            .inaction-block { padding: 30px 20px; }
+            .inaction-block h3 { font-size: 24px; }
+            .inaction-list li { font-size: 16px; }
         }
 
         .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
@@ -610,12 +659,12 @@
     </div>
 
     <!-- URGENCY BAR -->
-    <div class="urgency-bar">🔥 Спеццена действует только до конца недели!</div>
+    <div class="urgency-bar">🔥 Спеццена 299 грн (~$7) действует только до конца недели!</div>
 
     <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
-            <div class="hero-badge">Пошаговый алгоритм восстановления, который прошли уже 130+ человек, со средним результатом облегчения боли на 70% уже к 3-му дню</div>
+            <div class="hero-badge">Пошаговый алгоритм восстановления, который прошли уже 130+ человек, со средним результатом облегчения боли на 70% уже к 3-му дню. Ты снова начнешь искренне улыбаться на 4-й день</div>
             <h1>Как забыть бывшего за 7 дней</h1>
             <p class="hero-subtitle">Научный протокол восстановления биохимии мозга после расставания. Без психологов, таблеток и пустых советов.</p>
             <div class="hero-highlight"><strong>⚠️ Если ты:</strong> Проверяешь его онлайн каждые 15 минут - Не можешь есть и спать - Физически чувствуешь боль в груди - Срываешься и пишешь ему</div>
@@ -627,6 +676,28 @@
                     <div class="pages-count">📄 24 страницы концентрата НЛП + КПТ</div>
                     <div class="bonus-badge">🎁 БОНУС: Инструкция «Как не сорваться и не написать ему через месяц»</div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOPAMINE ADDICTION BLOCK (MOVED UP) -->
+    <section class="pain-section" style="padding: 40px 0;">
+        <div class="container">
+            <div class="pain-reveal fade-in">
+                <h3>Это не любовь. Это дофаминовая ломка.</h3>
+                <p>Твой мозг сломан, и его нужно починить. Не медитациями, а конкретными техниками перепрошивки нейронных связей.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO NEEDS THIS BLOCK -->
+    <section style="padding: 60px 0; background: var(--dark);">
+        <div class="container">
+            <h2 class="section-title fade-in">Кому этот курс жизненно необходим</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 18px; color: var(--gray); line-height: 1.8;">
+                <p style="margin-bottom: 20px;">Этот курс для тех, кто <strong style="color: var(--primary);">застрял в прошлом и не видит будущего</strong>.</p>
+                <p style="margin-bottom: 20px;">Для тех, кто каждое утро просыпается с мыслью о нём и засыпает со слезами.</p>
+                <p>Для тех, кто понимает, что так больше продолжаться не может, и готов взять ответственность за своё исцеление.</p>
             </div>
         </div>
     </section>
@@ -655,9 +726,19 @@
                 <div class="pain-card"><div class="pain-icon">🌙</div><div class="pain-text">Не можешь уснуть - навязчивые мысли крутятся снова и снова</div></div>
                 <div class="pain-card"><div class="pain-icon">😰</div><div class="pain-text">Срываешься и пишешь ему, хотя обещала себе не делать этого</div></div>
             </div>
-            <div class="pain-reveal"><h3>Это не любовь. Это дофаминовая ломка.</h3><p>Твой мозг сломан, и его нужно починить. Не медитациями, а конкретными техниками перепрошивки нейронных связей.</p></div>
         </div>
     </section>
+
+    <!-- INACTION BLOCK -->
+    <div class="inaction-block fade-in">
+        <h3>Что ты теряешь за месяц бездействия?</h3>
+        <ul class="inaction-list">
+            <li>30 бессонных ночей</li>
+            <li>3000 проверок его "онлайн"</li>
+            <li>Полная потеря самооценки и энергии</li>
+        </ul>
+        <p style="font-size: 16px; color: var(--gray); margin-top: 20px;">Начни действовать сегодня — не откладывай свою жизнь на потом</p>
+    </div>
 
     <!-- PRICING SECTION -->
     <section class="pricing-section" id="pricing">
@@ -667,13 +748,15 @@
                 <p>Все тарифы включают мгновенный доступ после оплаты</p>
             </div>
 
-            <!-- MICRO-GUIDE: HOW IT WORKS -->
+            <!-- Micro-guide -->
             <div class="micro-guide fade-in">
-                <div class="step"><span class="step-num">1</span> Выбираете тариф</div>
-                <span class="divider">→</span>
-                <div class="step"><span class="step-num">2</span> Вводите Email</div>
-                <span class="divider">→</span>
-                <div class="step"><span class="step-num">3</span> Получаете доступ</div>
+                <div class="steps">
+                    <div class="step"><span class="step-num">1</span> Выбираете тариф</div>
+                    <span class="separator">→</span>
+                    <div class="step"><span class="step-num">2</span> Вводите Email</div>
+                    <span class="separator">→</span>
+                    <div class="step"><span class="step-num">3</span> Получаете доступ</div>
+                </div>
             </div>
 
             <div class="pricing-grid">
@@ -688,8 +771,8 @@
                         <li>Бонус: Инструкция «Как не сорваться»</li>
                     </ul>
                     <div class="pricing-price">
+                        <span class="original-price">~~599 грн~~</span>
                         <div class="amount">299 грн <span>(~$7)</span></div>
-                        <div class="pricing-note">💳 Оплата в гривнах по курсу вашего банка</div>
                     </div>
                     <div class="pricing-buttons">
                         <a href="https://cutt.ly/MtQ8xNlI" class="cta-button">Выбрать Базовый</a>
@@ -698,28 +781,7 @@
                             Оплатить через PayPal
                         </a>
                     </div>
-                    <div class="wayforpay-note">Оплата проходит через защищенный европейский/украинский эквайринг-центр (как в любом интернет-магазине)</div>
-                    <div class="no-subscription">✓ Никаких скрытых подписок. Оплата разовая</div>
-                    <div class="email-warning">⚠️ Убедитесь, что ваш Email введен верно — именно на него система мгновенно отправит ваш доступ</div>
-                    
-                    <!-- Security badges under buttons -->
-                    <div class="security-badges">
-                        <div class="security-badge">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                            PCI DSS
-                        </div>
-                        <div class="security-badge">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
-                            SSL Secure
-                        </div>
-                        <div class="security-badge">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                            Verified
-                        </div>
-                    </div>
-                    <div class="security-text">Ваши данные защищены по международному стандарту безопасности банковских операций. Мы не храним данные ваших карт</div>
-                    
-                    <div class="pricing-note">📧 После оплаты доступ придёт на Email</div>
+                    <div class="pricing-note">📧 Мгновенный доступ на Email</div>
                 </div>
 
                 <!-- TARIF 2: POPULAR (HIGHLIGHTED) -->
@@ -734,8 +796,8 @@
                         <li>💬 Закрытый Telegram-канал с советами</li>
                     </ul>
                     <div class="pricing-price">
+                        <span class="original-price">~~999 грн~~</span>
                         <div class="amount">599 грн <span>(~$14)</span></div>
-                        <div class="pricing-note">💳 Оплата в гривнах по курсу вашего банка</div>
                     </div>
                     <div class="pricing-buttons">
                         <a href="https://secure.wayforpay.com/button/b141a0f0b3fcf" class="cta-button">Хочу с поддержкой</a>
@@ -744,27 +806,8 @@
                             Оплатить через PayPal
                         </a>
                     </div>
-                    <div class="wayforpay-note">Оплата проходит через защищенный европейский/украинский эквайринг-центр (как в любом интернет-магазине)</div>
-                    <div class="no-subscription">✓ Никаких скрытых подписок. Оплата разовая</div>
-                    <div class="email-warning">⚠️ Убедитесь, что ваш Email введен верно — именно на него система мгновенно отправит ваш доступ</div>
-                    
-                    <div class="security-badges">
-                        <div class="security-badge">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                            PCI DSS
-                        </div>
-                        <div class="security-badge">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
-                            SSL Secure
-                        </div>
-                        <div class="security-badge">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                            Verified
-                        </div>
-                    </div>
-                    <div class="security-text">Ваши данные защищены по международному стандарту безопасности банковских операций. Мы не храним данные ваших карт</div>
-                    
-                    <div class="pricing-note">📧 После оплаты доступ придёт на Email</div>
+                    <div class="pricing-note">📧 Мгновенный доступ на Email</div>
+                    <div class="pricing-note" style="color: var(--success); font-weight: 600; margin-top: 8px;">Это всего 20 грн в день за твоё спокойствие в течение месяца</div>
                 </div>
 
                 <!-- TARIF 3: VIP -->
@@ -778,8 +821,8 @@
                         <li>⭐ Приоритетная поддержка в Telegram</li>
                     </ul>
                     <div class="pricing-price">
+                        <span class="original-price">~~3999 грн~~</span>
                         <div class="amount">1999 грн <span>(~$48)</span></div>
-                        <div class="pricing-note">💳 Оплата в гривнах по курсу вашего банка</div>
                     </div>
                     <div class="pricing-buttons">
                         <a href="https://secure.wayforpay.com/button/ba3b1c45454ae" class="cta-button">Забронировать VIP</a>
@@ -788,40 +831,51 @@
                             Оплатить через PayPal
                         </a>
                     </div>
-                    <div class="wayforpay-note">Оплата проходит через защищенный европейский/украинский эквайринг-центр (как в любом интернет-магазине)</div>
-                    <div class="no-subscription">✓ Никаких скрытых подписок. Оплата разовая</div>
-                    <div class="email-warning">⚠️ Убедитесь, что ваш Email введен верно — именно на него система мгновенно отправит ваш доступ</div>
-                    
-                    <div class="security-badges">
-                        <div class="security-badge">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                            PCI DSS
-                        </div>
-                        <div class="security-badge">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
-                            SSL Secure
-                        </div>
-                        <div class="security-badge">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                            Verified
-                        </div>
-                    </div>
-                    <div class="security-text">Ваши данные защищены по международному стандарту безопасности банковских операций. Мы не храним данные ваших карт</div>
-                    
                     <div class="pricing-note">📧 После оплаты я свяжусь с вами в Telegram</div>
                 </div>
             </div>
 
-            <!-- SECURITY BLOCK UNDER PRICING -->
+            <!-- EMAIL WARNING -->
+            <div class="email-warning fade-in" style="margin: 24px auto; max-width: 600px;">
+                ⚠️ Убедитесь, что ваш Email введен верно — именно на него система мгновенно отправит ваш доступ
+            </div>
+
+            <!-- SECURITY BLOCK -->
             <div class="security-block fade-in">
                 <h4>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
                     🛡️ Безопасность платежа
                 </h4>
-                <p>
-                    Оплата производится через сертифицированную платежную систему <strong>WayForPay</strong>. 
-                    Все данные шифруются по стандарту <strong>AES-256</strong>. Мы получим только уведомление об успешной оплате, 
-                    чтобы мгновенно отправить вам курс.
+                <p class="security-text">Оплата производится через сертифицированную платежную систему WayForPay. Все данные шифруются по стандарту AES-256. Мы получим только уведомление об успешной оплате, чтобы мгновенно отправить вам курс.</p>
+                
+                <div class="security-icons">
+                    <div class="security-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            <circle cx="12" cy="16" r="1"/>
+                        </svg>
+                        <span>PCI DSS Compliant</span>
+                    </div>
+                    <div class="security-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+                        <span>SSL Secure</span>
+                    </div>
+                    <div class="security-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                        <span>Verified by Visa/MC</span>
+                    </div>
+                </div>
+                <p class="security-text" style="margin-top: 12px; font-size: 12px;">
+                    Ваши данные защищены по международному стандарту безопасности банковских операций. Мы не храним данные ваших карт.
                 </p>
             </div>
         </div>
@@ -858,13 +912,13 @@
     <section class="content-section">
         <div class="container">
             <h2 class="section-title">Что внутри курса</h2>
-            <div class="day-card"><h3>День 1: Остановка кортизолового шторма</h3><p class="result">→ Убираем физическую боль в груди и тревогу</p></div>
-            <div class="day-card"><h3>День 2: Возвращение себе ценности</h3><p class="result">→ Восстанавливаем самооценку через технику «Я достоин»</p></div>
-            <div class="day-card"><h3>День 3: Перепросмотр воспоминаний (НЛП)</h3><p class="result">→ Техника «Кинотеатр разума» - стираем эмоциональный заряд</p></div>
-            <div class="day-card"><h3>День 4: Работа с негативными мыслями (КПТ)</h3><p class="result">→ Дневник автоматических мыслей - контроль над внутренним диалогом</p></div>
-            <div class="day-card"><h3>День 5: Якорение ресурсных состояний</h3><p class="result">→ Мгновенный доступ к уверенности и спокойствию</p></div>
-            <div class="day-card"><h3>День 6: Визуализация новой версии себя</h3><p class="result">→ Создание образа себя через год - сильной и свободной</p></div>
-            <div class="day-card"><h3>День 7: Интеграция и новый старт</h3><p class="result">→ Ритуал завершения и точка невозврата</p></div>
+            <div class="day-card"><h3>День 1: Свободный вдох</h3><p class="result">Первый день без «кома в горле». Ты научишься отключать физическую реакцию на мысли о нем. Боль в груди утихнет, а дыхание станет глубоким и спокойным впервые за долгое время.</p></div>
+            <div class="day-card"><h3>День 2: Возвращение опоры</h3><p class="result">Прекращение самобичевания. Ты перестанешь искать в себе изъяны и причины его ухода. Твой фокус внимания вернется с «него» на «себя», возвращая ощущение собственной важности.</p></div>
+            <div class="day-card"><h3>День 3: Эмоциональная дистанция</h3><p class="result">Эффект «старого кино». После этой техники его образ перестанет вызывать слезы и дрожь. Воспоминания останутся, но они станут плоскими и блеклыми, как кадры из чужого забытого фильма.</p></div>
+            <div class="day-card"><h3>День 4: Тишина в голове</h3><p class="result">Остановка навязчивого диалога. Ты перестанешь крутить в голове сценарии «а что, если бы...». Мысли станут управляемыми, и ты наконец-то сможешь заснуть без таблеток и слез.</p></div>
+            <div class="day-card"><h3>День 5: Энергия для жизни</h3><p class="result">Твое секретное «состояние силы». Ты создашь внутренний переключатель, который позволит мгновенно возвращать себе уверенность и спокойствие в моменты, когда накатывает слабость или желание написать ему.</p></div>
+            <div class="day-card"><h3>День 6: Взгляд в будущее</h3><p class="result">Предвкушение новой жизни. Ты увидишь себя свободной, привлекательной и счастливой БЕЗ него. Страх одиночества сменится азартом и желанием двигаться дальше.</p></div>
+            <div class="day-card"><h3>День 7: Точка невозврата</h3><p class="result">Окончательное освобождение. Заключительный протокол, который «перерезает» остатки эмоциональной пуповины. Ты выходишь из этой недели другим человеком — обновленным, цельным и готовым к настоящей любви.</p></div>
         </div>
     </section>
 
@@ -996,35 +1050,70 @@
         });
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { document.querySelectorAll('.modal-overlay.active').forEach(m => { m.classList.remove('active'); }); document.body.style.overflow = ''; }});
 
-        // Social proof popup
+        // Social proof popup with truly random selection
         const socialProofData = [
             { name: 'Марина', city: 'Киева', avatar: 'М', timeAgo: '5 минут назад' },
             { name: 'Анна', city: 'Львова', avatar: 'А', timeAgo: '12 минут назад' },
             { name: 'Елена', city: 'Одессы', avatar: 'Е', timeAgo: '18 минут назад' },
             { name: 'Ольга', city: 'Харькова', avatar: 'О', timeAgo: '23 минуты назад' },
-            { name: 'Татьяна', city: 'Днепра', avatar: 'Т', timeAgo: '31 минуту назад' }
+            { name: 'Татьяна', city: 'Днепра', avatar: 'Т', timeAgo: '31 минуту назад' },
+            { name: 'Мaja', city: 'Варшавы', avatar: 'M', timeAgo: '8 минут назад' },
+            { name: 'Ana', city: 'Берлина', avatar: 'A', timeAgo: '15 минут назад' },
+            { name: 'Nina', city: 'Тель-Авива', avatar: 'N', timeAgo: '27 минут назад' },
+            { name: 'Айгерим', city: 'Алматы', avatar: 'А', timeAgo: '11 минут назад' },
+            { name: 'Madina', city: 'Астаны', avatar: 'M', timeAgo: '22 минуты назад' },
+            { name: 'Lana', city: 'Кракова', avatar: 'L', timeAgo: '35 минут назад' },
+            { name: 'Sara', city: 'Мюнхена', avatar: 'S', timeAgo: '40 минут назад' }
         ];
-        let popupTimeout, popupVisible = false;
+        let popupTimeout, popupVisible = false, lastShownIndex = -1;
+        
         function showSocialPopup() {
             if (popupVisible) return;
+            
+            // Truly random selection (avoid showing same person twice in a row)
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * socialProofData.length);
+            } while (randomIndex === lastShownIndex && socialProofData.length > 1);
+            lastShownIndex = randomIndex;
+            
             const popup = document.getElementById('socialPopup');
-            const data = socialProofData[Math.floor(Math.random() * socialProofData.length)];
+            const data = socialProofData[randomIndex];
+            
             document.getElementById('popupName').textContent = data.name;
             document.getElementById('popupCity').textContent = data.city;
             document.getElementById('popupAvatar').textContent = data.avatar;
             document.getElementById('popupTime').textContent = data.timeAgo;
+            
             popup.classList.add('active'); popupVisible = true;
+            
+            // Auto-hide after 8 seconds
             setTimeout(() => { closeSocialPopup(); }, 8000);
         }
+
         function closeSocialPopup() {
             document.getElementById('socialPopup').classList.remove('active'); popupVisible = false;
-            const nextDelay = Math.random() * 10000 + 30000;
+            // Random delay 30-40 seconds for next popup
+            const nextDelay = Math.floor(Math.random() * 10000) + 30000;
             popupTimeout = setTimeout(showSocialPopup, nextDelay);
         }
-        setTimeout(() => { const firstDelay = Math.random() * 10000 + 20000; popupTimeout = setTimeout(showSocialPopup, firstDelay); }, 10000);
-        document.addEventListener('click', () => { if (popupVisible) { clearTimeout(popupTimeout); popupTimeout = setTimeout(() => { const nextDelay = Math.random() * 10000 + 30000; popupTimeout = setTimeout(showSocialPopup, nextDelay); }, 30000); }}, { passive: true });
+
+        // Start popup cycle after initial delay
+        setTimeout(() => { 
+            const firstDelay = Math.floor(Math.random() * 10000) + 20000; 
+            popupTimeout = setTimeout(showSocialPopup, firstDelay); 
+        }, 10000);
+
+        // Pause popup when user interacts with page
+        document.addEventListener('click', () => { 
+            if (popupVisible) { 
+                clearTimeout(popupTimeout); 
+                popupTimeout = setTimeout(() => { 
+                    const nextDelay = Math.floor(Math.random() * 10000) + 30000; 
+                    popupTimeout = setTimeout(showSocialPopup, nextDelay); 
+                }, 30000); 
+            }
+        }, { passive: true });
     </script>
 </body>
 </html>
-
-
