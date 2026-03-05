@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спасибо за покупку! — 7 дней без боли</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #DC2626; --secondary: #7C3AED; --dark: #0F0F1A;
+            --darker: #080810; --light: #FFFFFF; --gray: #9CA3AF;
+            --accent: #F59E0B; --success: #28a745; --card-bg: rgba(255,255,255,0.03);
+            --card-border: rgba(255,255,255,0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .bg-gradient {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(40, 167, 69, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .thank-you-card {
+            background: var(--card-bg);
+            border: 2px solid var(--success);
+            border-radius: 24px;
+            padding: 40px 32px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(40, 167, 69, 0.2);
+            animation: slideUp 0.6s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--success), #059669);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            color: white;
+        }
+
+        .thank-you-card h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--success), #6EE7B7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .thank-you-card .subtitle {
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 24px;
+        }
+
+        .package-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid var(--secondary);
+            color: var(--light);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 32px;
+        }
+
+        .resources-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 32px 0 20px;
+            text-align: left;
+            padding-left: 8px;
+        }
+
+        .resource-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .resource-item {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .resource-item:hover {
+            border-color: var(--secondary);
+            transform: translateX(4px);
+            background: rgba(124, 58, 237, 0.1);
+        }
+
+        .resource-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--secondary), #A78BFA);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .resource-icon.pdf {
+            background: linear-gradient(135deg, #DC2626, #F87171);
+        }
+
+        .resource-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .resource-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .resource-info h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--light);
+        }
+
+        .resource-info p {
+            font-size: 13px;
+            color: var(--gray);
+        }
+
+        .resource-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--success);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .resource-btn:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+
+        .next-steps {
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px dashed var(--secondary);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 32px 0;
+            text-align: left;
+        }
+
+        .next-steps h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .next-steps ol {
+            padding-left: 20px;
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .next-steps li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .next-steps li strong {
+            color: var(--light);
+        }
+
+        .pro-tip {
+            background: rgba(245, 158, 11, 0.15);
+            border-left: 4px solid var(--accent);
+            padding: 16px;
+            border-radius: 0 12px 12px 0;
+            margin-top: 24px;
+            font-size: 14px;
+            color: #FCD34D;
+            text-align: left;
+        }
+
+        .pro-tip strong {
+            color: var(--accent);
+        }
+
+        .package-contents {
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 24px 0;
+            text-align: left;
+        }
+
+        .package-contents h4 {
+            color: var(--primary);
+            font-size: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .package-contents ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .package-contents li {
+            font-size: 14px;
+            color: var(--gray);
+            padding: 6px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .package-contents li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .footer-note {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--card-border);
+            font-size: 13px;
+            color: var(--gray);
+        }
+
+        .footer-note a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        .footer-note a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .thank-you-card { padding: 32px 24px; }
+            .thank-you-card h1 { font-size: 26px; }
+            .resource-item { flex-direction: column; text-align: center; }
+            .resource-info { text-align: center; }
+            .resource-btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+
+    <div class="container">
+        <div class="thank-you-card">
+            <!-- Success Icon -->
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M20 6L9 17l-5-5"/>
+                </svg>
+            </div>
+
+            <!-- Main Message -->
+            <h1>Спасибо за покупку! 🎉</h1>
+            <p class="subtitle">Ваш платёж успешно обработан. Доступ к материалам открыт.</p>
+
+            <!-- Package Badge -->
+            <div class="package-badge">
+                📘 Пакет «Самостоятельный» активирован
+            </div>
+
+            <!-- Package Contents -->
+            <div class="package-contents">
+                <h4>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                    </svg>
+                    В вашем пакете:
+                </h4>
+                <ul>
+                    <li>Полный PDF-протокол «7 дней без боли» (39 страниц)</li>
+                    <li>Научное обоснование и техники НЛП/КПТ</li>
+                    <li>Бонус: Инструкция «Как не сорваться»</li>
+                    <li>Доступ навсегда — материалы остаются у вас</li>
+                </ul>
+            </div>
+
+            <!-- Resources List -->
+            <h3 class="resources-title">📚 Ваши материалы:</h3>
+            
+            <div class="resource-list">
+                <!-- Course PDF -->
+                <div class="resource-item">
+                    <div class="resource-icon pdf">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                    </div>
+                    <div class="resource-info">
+                        <h4>Курс «7 дней без боли»</h4>
+                        <p>PDF-протокол • 39 страниц • НЛП + КПТ • 7 дней практик</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1G5jG6plnKNfi3o-uyTgVj-KFD5hHXgM-/view?usp=drivesdk" class="resource-btn" target="_blank">
+                        Открыть курс
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Instruction Bonus -->
+                <div class="resource-item">
+                    <div class="resource-icon pdf">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                    </div>
+                    <div class="resource-info">
+                        <h4>Инструкция «Как не сорваться»</h4>
+                        <p>Бонус • Защита от срывов • Практические техники</p>
+                    </div>
+                    <a href="https://drive.google.com/file/d/1XZ2uGOVZWN7q5EH-OVcug7eyNBzIyB9Q/view?usp=drivesdk" class="resource-btn" target="_blank">
+                        Открыть инструкцию
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Next Steps -->
+            <div class="next-steps">
+                <h3>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    Что делать дальше?
+                </h3>
+                <ol>
+                    <li><strong>Скачайте оба PDF</strong> и сохраните на устройство — доступ навсегда</li>
+                    <li><strong>Начните с Дня 1</strong> — выделите 30 минут сегодня для первой практики</li>
+                    <li><strong>Проходите последовательно</strong> — каждый день строится на предыдущем</li>
+                    <li><strong>Используйте бонус</strong> при первых признаках желания сорваться</li>
+                </ol>
+            </div>
+
+            <!-- Pro Tip -->
+            <div class="pro-tip">
+                <strong>💡 Совет:</strong> Пройдите протокол день за днём без пропусков. Кумулятивный эффект работает только при последовательном выполнении. Если пропустили день — просто продолжите со следующего, не возвращайтесь назад.
+            </div>
+
+            <!-- Footer -->
+            <div class="footer-note">
+                <p>© 2026 7 дней без боли. Все права защищены.</p>
+                <p style="margin-top: 8px;">
+                    <a href="#" onclick="window.history.back()">← Вернуться на сайт</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Track page view for analytics
+        if (typeof ym === 'function') {
+            ym(90131660, 'hit', window.location.href);
+        }
+    </script>
+</body>
+</html>
+
