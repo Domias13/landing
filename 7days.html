@@ -205,7 +205,7 @@
             border-radius: 3px;
         }
         .compact-card {
-            flex: 0 0 280px;
+            flex: 0 0 340px;
             scroll-snap-align: center;
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -214,7 +214,7 @@
             display: flex;
             flex-direction: column;
             position: relative;
-            min-height: 420px;
+            min-height: 520px;
         }
         .compact-card.popular {
             border: 2px solid var(--accent);
@@ -243,6 +243,13 @@
             margin-bottom: 8px;
             text-align: center;
         }
+        .compact-card .subtitle {
+            font-size: 13px;
+            color: var(--gray);
+            text-align: center;
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
         .compact-card .price {
             font-size: 28px;
             font-weight: 900;
@@ -254,13 +261,21 @@
             font-size: 14px;
             color: var(--gray);
         }
+        .compact-card .original-price {
+            font-size: 16px;
+            color: var(--gray);
+            text-decoration: line-through;
+            text-align: center;
+            display: block;
+            margin-bottom: 4px;
+        }
         .compact-card ul {
             list-style: none;
             margin: 16px 0;
             flex-grow: 1;
         }
         .compact-card li {
-            font-size: 13px;
+            font-size: 12px;
             padding: 6px 0;
             color: var(--gray);
             border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -271,10 +286,25 @@
             margin-right: 6px;
             font-weight: 700;
         }
+        .compact-card .pricing-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: auto;
+        }
         .compact-card .cta-button {
             padding: 12px;
             font-size: 13px;
-            margin-top: auto;
+        }
+        .compact-card .paypal-button {
+            padding: 10px;
+            font-size: 11px;
+        }
+        .compact-note {
+            font-size: 11px;
+            color: var(--gray);
+            text-align: center;
+            margin-top: 8px;
         }
 
         /* Dopamine Block */
@@ -655,8 +685,21 @@
                 padding: 20px 5px;
             }
             .compact-card {
-                flex: 0 0 260px;
-                min-height: 400px;
+                flex: 0 0 300px;
+                min-height: 500px;
+                padding: 20px;
+            }
+            .compact-card h3 {
+                font-size: 16px;
+            }
+            .compact-card .subtitle {
+                font-size: 12px;
+            }
+            .compact-card .price {
+                font-size: 24px;
+            }
+            .compact-card li {
+                font-size: 11px;
             }
             .compact-badge {
                 font-size: 10px;
@@ -783,41 +826,114 @@
             <div class="compact-pricing-grid fade-in">
                 <!-- Card 1 -->
                 <div class="compact-card">
-                    <h3>📘 Самостоятельный</h3>
-                    <div class="price">299 грн <span>(~$7)</span></div>
+                    <h3>📘 Пакет «Самостоятельный»</h3>
+                    <p class="subtitle">Для тех, кто готов работать по протоколу самостоятельно</p>
+                    <div class="price">
+                        <span class="original-price">~~599 грн~~</span>
+                        299 грн <span>(~$7)</span>
+                    </div>
                     <ul>
-                        <li>PDF-протокол (39 стр.)</li>
-                        <li>Чек-лист «100 триггеров»</li>
-                        <li>NLP-гайд</li>
-                        <li>Доступ навсегда</li>
+                        <li><strong>Протокол «7 дней без боли»</strong><br>PDF, 39 страниц • SOS-протокол + 7 дней практик</li>
+                        <li><strong>Чек-лист «100 триггеров»</strong><br>Работа с эмоциональными реакциями</li>
+                        <li><strong>NLP-гайд</strong><br>Блокировка компульсивного контакта</li>
+                        <li><strong>Доступ навсегда</strong><br>Все материалы остаются у вас</li>
                     </ul>
-                    <a href="https://cutt.ly/MtQ8xNlI" class="cta-button">Выбрать</a>
+                    <div class="pricing-buttons">
+                        <a href="https://cutt.ly/MtQ8xNlI" class="cta-button">Выбрать базовый</a>
+                        <a href="https://www.paypal.com/ncp/payment/JX2Q4NHBXX792" class="paypal-button" target="_blank">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.774.774 0 0 1 .763-.653h5.812c3.825 0 6.202 1.668 6.202 5.305 0 2.192-.928 3.873-2.535 4.94-1.456.967-3.36 1.343-5.52 1.343H7.732l-.656 6.682zm11.18-14.043l-.66 6.682h4.594a.641.641 0 0 0 .633-.74l.732-7.44a.774.774 0 0 0-.763-.653h-4.536z"/></svg>
+                            PayPal
+                        </a>
+                    </div>
+                    <div class="compact-note">📧 Мгновенный доступ на Email</div>
                 </div>
                 <!-- Card 2 -->
                 <div class="compact-card popular">
                     <div class="compact-badge">🔥 Рекомендуем</div>
-                    <h3>🎧 С поддержкой</h3>
-                    <div class="price">599 грн <span>(~$14)</span></div>
+                    <h3>🎧 Пакет «С поддержкой»</h3>
+                    <p class="subtitle">Максимальное погружение с аудио-практикой</p>
+                    <div class="price">
+                        <span class="original-price">~~999 грн~~</span>
+                        599 грн <span>(~$14)</span>
+                    </div>
                     <ul>
-                        <li>Всё из «Базового»</li>
-                        <li>🎵 Аудио-практика</li>
-                        <li>💬 Telegram-канал</li>
-                        <li>20 грн/день</li>
+                        <li><strong>Всё из пакета «Базовый»</strong><br>Протокол + Чек-лист + NLP-гайд</li>
+                        <li><strong>🎵 Аудио-практика «Экстренное спокойствие»</strong><br>12 минут • Голос автора • Для моментов острой боли</li>
+                        <li><strong>Закрытый Telegram-канал</strong><br>Ежедневная поддержка и советы от автора</li>
+                        <li><strong>Это всего 20 грн в день</strong><br>За твоё спокойствие в течение месяца</li>
                     </ul>
-                    <a href="https://secure.wayforpay.com/button/b141a0f0b3fcf" class="cta-button">Хочу!</a>
+                    <div class="pricing-buttons">
+                        <a href="https://secure.wayforpay.com/button/b141a0f0b3fcf" class="cta-button">Хочу с поддержкой</a>
+                        <a href="https://www.paypal.com/ncp/payment/LBZDF3ZMVSRJE" class="paypal-button" target="_blank">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.774.774 0 0 1 .763-.653h5.812c3.825 0 6.202 1.668 6.202 5.305 0 2.192-.928 3.873-2.535 4.94-1.456.967-3.36 1.343-5.52 1.343H7.732l-.656 6.682zm11.18-14.043l-.66 6.682h4.594a.641.641 0 0 0 .633-.74l.732-7.44a.774.774 0 0 0-.763-.653h-4.536z"/></svg>
+                            PayPal
+                        </a>
+                    </div>
+                    <div class="compact-note">📧 Мгновенный доступ на Email</div>
+                    <div class="compact-note" style="color: var(--success); font-weight: 600;">💬 + Закрытый Telegram-канал</div>
                 </div>
                 <!-- Card 3 -->
                 <div class="compact-card">
-                    <h3>⭐ Личный</h3>
-                    <div class="price">1999 грн <span>(~$48)</span></div>
+                    <h3>⭐ Пакет «Личный»</h3>
+                    <p class="subtitle">Индивидуальный разбор вашей ситуации</p>
+                    <div class="price">
+                        <span class="original-price">~~3999 грн~~</span>
+                        1999 грн <span>(~$48)</span>
+                    </div>
                     <ul>
-                        <li>Всё из «С поддержкой»</li>
-                        <li>🎙️ Личный разбор 15 мин</li>
-                        <li>📝 Индивидуальный план</li>
-                        <li>⭐ VIP поддержка</li>
+                        <li><strong>Всё из пакета «С поддержкой»</strong><br>Протокол + Аудио + Чек-лист + NLP-гайд</li>
+                        <li><strong>🎙️ Личный разбор (15 минут)</strong><br>Голосовой анализ вашей ситуации в Telegram</li>
+                        <li><strong>📝 Индивидуальный план</strong><br>Коррекция протокола под вашу историю</li>
+                        <li><strong>⭐ Приоритетная поддержка</strong><br>Прямая связь с автором</li>
                     </ul>
-                    <a href="https://secure.wayforpay.com/button/ba3b1c45454ae" class="cta-button">Забронировать</a>
+                    <div class="pricing-buttons">
+                        <a href="https://secure.wayforpay.com/button/ba3b1c45454ae" class="cta-button">Забронировать VIP</a>
+                        <a href="https://www.paypal.com/ncp/payment/BPCYATF6DVPK2" class="paypal-button" target="_blank">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.774.774 0 0 1 .763-.653h5.812c3.825 0 6.202 1.668 6.202 5.305 0 2.192-.928 3.873-2.535 4.94-1.456.967-3.36 1.343-5.52 1.343H7.732l-.656 6.682zm11.18-14.043l-.66 6.682h4.594a.641.641 0 0 0 .633-.74l.732-7.44a.774.774 0 0 0-.763-.653h-4.536z"/></svg>
+                            PayPal
+                        </a>
+                    </div>
+                    <div class="compact-note">📧 После оплаты я свяжусь с вами в Telegram</div>
                 </div>
+            </div>
+
+            <!-- SECURITY BLOCK (TOP) -->
+            <div class="security-block fade-in" style="margin: 30px auto 0; max-width: 800px;">
+                <h4>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    🛡️ Безопасность платежа
+                </h4>
+                <p class="security-text">Оплата производится через сертифицированную платежную систему WayForPay. Все данные шифруются по стандарту AES-256. Мы получим только уведомление об успешной оплате, чтобы мгновенно отправить вам материалы.</p>
+                
+                <div class="security-icons">
+                    <div class="security-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            <circle cx="12" cy="16" r="1"/>
+                        </svg>
+                        <span>PCI DSS Compliant</span>
+                    </div>
+                    <div class="security-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+                        <span>SSL Secure</span>
+                    </div>
+                    <div class="security-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                        <span>Verified by Visa/MC</span>
+                    </div>
+                </div>
+                <p class="security-text" style="margin-top: 12px; font-size: 12px;">
+                    Ваши данные защищены по международному стандарту безопасности банковских операций. Мы не храним данные ваших карт.
+                </p>
             </div>
         </div>
     </section>
@@ -1197,4 +1313,3 @@
     </script>
 </body>
 </html>
-
