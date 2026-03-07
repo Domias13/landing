@@ -332,26 +332,63 @@
         }
         .who-needs-content strong { color: var(--primary); }
 
-        /* Author Block */
-        .author-section { padding: 50px 0; background: rgba(255,255,255,0.02); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        /* Author Block - RESCUE STORY */
+        .author-section { padding: 60px 0; background: rgba(255,255,255,0.02); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
         .author-card {
-            display: flex; align-items: center; gap: 30px; max-width: 700px; margin: 0 auto;
-            background: rgba(255,255,255,0.03); padding: 30px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.03);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            align-items: center;
         }
-        .author-avatar {
-            width: 120px; height: 120px; border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex; align-items: center; justify-content: center; font-size: 48px; font-weight: 800;
-            border: 4px solid var(--darker); flex-shrink: 0; overflow: hidden;
+        .author-image {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
         }
-        .author-avatar img { width: 100%; height: 100%; object-fit: cover; }
-        .author-info h3 { font-size: 24px; font-weight: 800; margin-bottom: 10px; color: #fff; }
-        .author-info p { font-size: 15px; color: var(--gray); margin-bottom: 12px; line-height: 1.5; }
+        .author-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .author-content h3 {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--light);
+            line-height: 1.3;
+        }
+        .author-content p {
+            font-size: 16px;
+            color: var(--gray);
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+        .author-content strong {
+            color: var(--light);
+        }
         .author-stats {
-            display: inline-flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.4);
-            padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; color: #fff;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(40, 167, 69, 0.2);
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--success);
+            margin-top: 20px;
         }
-        .author-stats svg { color: var(--primary); width: 16px; height: 16px; }
+        .author-stats svg {
+            color: var(--success);
+            width: 20px;
+            height: 20px;
+        }
 
         /* Pain Points */
         .pain-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 40px; }
@@ -641,7 +678,7 @@
 
         /* Testimonials */
         .testimonials-section { padding: 60px 0; }
-        .testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
         .testimonial-screenshot {
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,255,255,0.1);
@@ -676,7 +713,7 @@
             .security-icons { gap: 16px; }
             .security-icon svg { width: 32px; height: 32px; }
             .hero h1 { font-size: 32px; }
-            .author-card { flex-direction: column; text-align: center; }
+            .author-card { grid-template-columns: 1fr; text-align: center; }
             .cta-group { max-width: 100%; }
             .feature-box { padding: 30px 20px; }
             .feature-box h2 { font-size: 24px; }
@@ -742,6 +779,89 @@
             .social-proof-popup { bottom: 80px; max-width: calc(100% - 30px); }
             .cta-group { margin-bottom: 100px; }
         }
+
+        /* ===== MODAL STYLES ===== */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 1000; opacity: 0; visibility: hidden;
+            transition: all 0.3s ease; padding: 20px;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal {
+            background: var(--dark); border: 2px solid var(--primary);
+            border-radius: 20px; max-width: 700px; width: 100%;
+            max-height: 90vh; overflow-y: auto; position: relative;
+            transform: scale(0.9); transition: transform 0.3s ease;
+            box-shadow: 0 20px 80px rgba(0,0,0,0.6);
+        }
+        .modal-overlay.active .modal { transform: scale(1); }
+        .modal-close {
+            position: absolute; top: 16px; right: 16px; width: 36px; height: 36px;
+            border-radius: 50%; background: rgba(255,255,255,0.1); border: none;
+            color: var(--light); font-size: 24px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.3s; z-index: 10;
+        }
+        .modal-close:hover { background: var(--primary); }
+        .modal-header {
+            padding: 30px 30px 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+        .modal-header h3 { font-size: 24px; font-weight: 800; color: var(--primary); }
+        .modal-body { padding: 20px 30px 30px; }
+        .modal-body h4 { color: var(--accent); margin: 20px 0 12px; font-size: 18px; }
+        .modal-body p { margin-bottom: 12px; color: var(--gray); font-size: 14px; line-height: 1.6; }
+        .modal-body ul { margin: 12px 0 12px 20px; color: var(--gray); font-size: 14px; }
+        .modal-body li { margin-bottom: 6px; }
+        .modal-footer {
+            padding: 15px 30px 25px; border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center; font-size: 12px; color: var(--gray);
+        }
+        .modal-footer strong { color: var(--light); }
+
+        /* Support modal styles */
+        .support-links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .support-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--light);
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+        }
+        .support-link:hover {
+            background: rgba(124, 58, 237, 0.2);
+            border-color: var(--secondary);
+            transform: translateX(4px);
+        }
+        .support-link svg {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+        .support-link .label {
+            font-weight: 600;
+            font-size: 16px;
+        }
+        .support-link .desc {
+            font-size: 13px;
+            color: var(--gray);
+            margin-top: 2px;
+        }
+        .support-link.instagram { border-color: #E1306C; }
+        .support-link.tiktok { border-color: #000; }
+        .support-link.telegram { border-color: #0088cc; }
     </style>
 </head>
 <body>
@@ -763,7 +883,7 @@
     <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
-            <div class="hero-badge">✅ Пошаговый протокол, который прошли уже 130+ человек с результатом 70% облегчения к 3-му дню</div>
+            <div class="hero-badge">Пошаговый протокол, который прошли уже 130+ человек с результатом 70% облегчения к 3-му дню</div>
             <h1>7 дней без боли</h1>
             <p class="hero-subtitle">Научный протокол восстановления биохимии мозга после расставания. Техники НЛП и КПТ для перепрограммирования нейронных связей.</p>
             <div class="hero-highlight"><strong>⚠️ Если ты:</strong> Проверяешь его онлайн каждые 15 минут • Не можешь есть и спать • Физически чувствуешь боль в груди • Срываешься и пишешь ему</div>
@@ -938,16 +1058,19 @@
         </div>
     </section>
 
-    <!-- AUTHOR BLOCK -->
+    <!-- AUTHOR BLOCK - RESCUE STORY -->
     <section class="author-section">
         <div class="container">
             <div class="author-card fade-in">
-                <div class="author-avatar">
-                    <img src="https://i.ibb.co/S73W4nYt/IMG-20250711-200928-458.webp" alt="Роман">
+                <div class="author-image">
+                    <img src="https://i.ibb.co/Z1GGy0vY/Generated-Image-March-07-2026-7-27-AM-2.jpg" alt="Роман: До и После">
                 </div>
-                <div class="author-info">
-                    <h3>Роман</h3>
-                    <p>Эксперт по биохимии мозга. Помогаю выходить из эмоциональной зависимости без психологов и таблеток.</p>
+                <div class="author-content">
+                    <h3>Роман: Я прошел через этот ад и нашел выход</h3>
+                    <p>«17 лет брака закончились в один день. Я знаю, что такое проснуться в пустой квартире и чувствовать, как в груди выжжена земля. Я знаю, что такое "режим Хатико" и бесконечные попытки вернуть то, чего уже нет.</p>
+                    <p>Я не спился и не сдался. Вместо этого я похудел на 40 кг, перестроил свою жизнь с нуля и изучил биохимию мозга, чтобы понять: как выключить эту невыносимую боль?</p>
+                    <p><strong>Протокол "7 дней без боли"</strong> — это система, которую я создал сначала для себя, чтобы просто выжить. Она сработала на мне, нашла отклик у 130+ моих учеников и поможет тебе.</p>
+                    <p>Я не буду тебя жалеть — я дам тебе инструменты, чтобы ты снова начала дышать».</p>
                     <div class="author-stats">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                         130+ человек прошли курс с результатом 70% облегчения к 3-му дню
@@ -987,6 +1110,25 @@
                     <div class="pain-title">Страх за будущее</div>
                     <div class="pain-text">Ощущение, что «лучшее уже позади». Тебе кажется, что больше никто и никогда не вызовет таких чувств. Этот страх заставляет держаться за обломки прошлых отношений.</div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS (MOVED UP) -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">Что говорят те, кто прошел путь</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-screenshot fade-in"><img src="https://i.ibb.co/S4q1LCTf/Screenshot-20260304-063607.png" alt="Отзыв 1"></div>
+                <div class="testimonial-screenshot fade-in"><img src="https://i.ibb.co/b5xSCPGY/Screenshot-20260307-080052.png" alt="Отзыв 2"></div>
+                <div class="testimonial-screenshot fade-in"><img src="https://i.ibb.co/4RXGBkDy/Screenshot-20260225-070317.png" alt="Отзыв 3"></div>
+                <div class="testimonial-screenshot fade-in"><img src="https://i.ibb.co/qYwk49gQ/Screenshot-20260304-063819.png" alt="Отзыв 4"></div>
+                <div class="testimonial-screenshot fade-in"><img src="https://i.ibb.co/twZX8kcs/Screenshot-20260304-063655.png" alt="Отзыв 5"></div>
+                <div class="testimonial-screenshot fade-in"><img src="https://i.ibb.co/TqP94MxJ/Screenshot-20260304-063639.png" alt="Отзыв 6"></div>
+                <div class="testimonial-screenshot fade-in"><img src="https://i.ibb.co/nMBK4wNC/Screenshot-20260307-080355.png" alt="Отзыв 7"></div>
+                <div class="testimonial-screenshot fade-in"><img src="https://i.ibb.co/99Y8Rd3P/Screenshot-20260307-075732.png" alt="Отзыв 8"></div>
+                <div class="testimonial-screenshot fade-in"><img src="https://i.ibb.co/GvZY9PMP/Screenshot-20260225-073516.png" alt="Отзыв 9"></div>
+                <div class="testimonial-screenshot fade-in" style="grid-column: 1 / -1; max-width: 600px; margin: 0 auto;"><img src="https://i.ibb.co/bj4RzcGw/Screenshot-20260225-084353.png" alt="Отзыв 10"></div>
             </div>
         </div>
     </section>
@@ -1113,7 +1255,7 @@
                     <p class="subtitle">Индивидуальный разбор вашей ситуации</p>
                     <ul class="pricing-features">
                         <li><strong>Всё из пакета «С поддержкой»</strong><br>Протокол + Аудио + Чек-лист + NLP-гайд</li>
-                        <li><strong>🎙️ Личный разбор (15 минут)</strong><br>Голосовой анализ вашей ситуации в Telegram</li>
+                        <li><strong>🎙️ Личный разбор</strong><br>Голосовой анализ вашей ситуации в Telegram</li>
                         <li><strong>📝 Индивидуальный план</strong><br>Коррекция протокола под вашу историю</li>
                         <li><strong>⭐ Приоритетная поддержка</strong><br>Прямая связь с автором</li>
                     </ul>
@@ -1190,22 +1332,6 @@
         </div>
     </section>
 
-    <!-- TESTIMONIALS -->
-    <section class="testimonials-section">
-        <div class="container">
-            <h2 class="section-title">Что говорят те, кто прошел путь</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-screenshot fade-in"><img src="https://i.ibb.co/qYwk49gQ/Screenshot-20260304-063819.png" alt="Отзыв 1"></div>
-                <div class="testimonial-screenshot fade-in"><img src="https://i.ibb.co/twZX8kcs/Screenshot-20260304-063655.png" alt="Отзыв 2"></div>
-                <div class="testimonial-screenshot fade-in"><img src="https://i.ibb.co/TqP94MxJ/Screenshot-20260304-063639.png" alt="Отзыв 3"></div>
-                <div class="testimonial-screenshot fade-in"><img src="https://i.ibb.co/S4q1LCTf/Screenshot-20260304-063607.png" alt="Отзыв 4"></div>
-                <div class="testimonial-screenshot fade-in"><img src="https://i.ibb.co/4RXGBkDy/Screenshot-20260225-070317.png" alt="Отзыв 5"></div>
-                <div class="testimonial-screenshot fade-in"><img src="https://i.ibb.co/GvZY9PMP/Screenshot-20260225-073516.png" alt="Отзыв 6"></div>
-                <div class="testimonial-screenshot fade-in" style="grid-column: 1 / -1; max-width: 600px; margin: 0 auto;"><img src="https://i.ibb.co/bj4RzcGw/Screenshot-20260225-084353.png" alt="Отзыв 7"></div>
-            </div>
-        </div>
-    </section>
-
     <!-- FINAL CTA -->
     <section class="final-cta" id="buy">
         <div class="container">
@@ -1228,13 +1354,117 @@
     <footer>
         <div class="container">
             <p>
-                <a href="#">Служба поддержки</a> •
+                <a href="#" id="support-link">Служба поддержки</a> •
                 <a href="#" id="offer-link">Публичная оферта</a> •
                 <a href="#" id="privacy-link">Политика конфиденциальности</a>
             </p>
             <p style="margin-top: 12px; opacity: 0.6;">© 2026 7 дней без боли. Все права защищены.</p>
         </div>
     </footer>
+
+    <!-- ===== MODAL: SUPPORT ===== -->
+    <div class="modal-overlay" id="support-modal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('support-modal')">&times;</button>
+            <div class="modal-header">
+                <h3>💬 Служба поддержки</h3>
+            </div>
+            <div class="modal-body">
+                <p style="margin-bottom: 20px; color: var(--gray);">Напишите нам в удобном для вас мессенджере — мы ответим в течение 24 часов:</p>
+                
+                <div class="support-links">
+                    <a href="https://www.instagram.com/back4_heart" target="_blank" class="support-link instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        <div>
+                            <div class="label">Instagram</div>
+                            <div class="desc">@back4_heart</div>
+                        </div>
+                    </a>
+                    <a href="https://www.tiktok.com/@back4heart" target="_blank" class="support-link tiktok">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                        <div>
+                            <div class="label">TikTok</div>
+                            <div class="desc">@back4heart</div>
+                        </div>
+                    </a>
+                    <a href="https://t.me/back4heart" target="_blank" class="support-link telegram">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 17.97L4.58 13.62 19.54 3.52l1.31 13.28 -2.43-7.59 2.48-7.59L4.58 13.62z"/></svg>
+                        <div>
+                            <div class="label">Telegram</div>
+                            <div class="desc">@back4heart</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <p style="margin-top: 24px; font-size: 13px; color: var(--gray); text-align: center;">
+                    ⏰ Ответим в течение 24 часов в рабочие дни
+                </p>
+            </div>
+            <div class="modal-footer">
+                <strong>back4heart</strong> — поддержка на пути к исцелению
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL: PUBLIC OFFER ===== -->
+    <div class="modal-overlay" id="offer-modal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('offer-modal')">&times;</button>
+            <div class="modal-header"><h3>Публичная оферта</h3></div>
+            <div class="modal-body">
+                <p><strong>1. Общие положения</strong></p>
+                <p>Настоящий документ является официальным предложением (публичной офертой) на приобретение цифрового продукта «7 дней без боли» (далее - Курс).</p>
+                <p>Акцепт оферты (полное и безоговорочное принятие) осуществляется путем оплаты продукта. С момента оплаты договор считается заключенным.</p>
+                <h4>2. Предмет договора</h4>
+                <p>Исполнитель обязуется предоставить Заказчику доступ к цифровому продукту - PDF-курсу с техниками НЛП и КПТ для эмоционального восстановления после расставания.</p>
+                <p>Продукт предоставляется в электронном виде через мгновенный доступ после оплаты.</p>
+                <h4>3. Стоимость и оплата</h4>
+                <p>Стоимость Курса: <strong>299 грн (~$7)</strong> (акционная цена). Доступны пакеты «С поддержкой» (599 грн) и «Личный» (1999 грн).</p>
+                <p>Оплата принимается через платёжные системы: WayForPay, PayPal.</p>
+                <h4>4. Гарантия возврата</h4>
+                <p>Если в течение 7 дней после покупки вы не почувствуете улучшения, вы имеете право запросить полный возврат средств.</p>
+                <h4>5. Права и обязанности</h4>
+                <p><strong>Исполнитель обязуется:</strong> предоставить доступ к продукту в течение 5 минут после оплаты; обеспечить техническую поддержку.</p>
+                <p><strong>Заказчик обязуется:</strong> использовать продукт в личных целях; не передавать, не копировать и не распространять материалы Курса.</p>
+            </div>
+            <div class="modal-footer">Последнее обновление: <strong>Март 2026</strong></div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL: PRIVACY POLICY ===== -->
+    <div class="modal-overlay" id="privacy-modal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('privacy-modal')">&times;</button>
+            <div class="modal-header"><h3>Политика конфиденциальности</h3></div>
+            <div class="modal-body">
+                <p><strong>1. Сбор данных</strong></p>
+                <p>Мы собираем только те данные, которые необходимы для предоставления услуги:</p>
+                <ul>
+                    <li>Email - для отправки доступа к Курсу и поддержки;</li>
+                    <li>Имя (опционально) - для персонализации;</li>
+                    <li>Данные оплаты - обрабатываются платёжными системами (мы не храним данные карт).</li>
+                </ul>
+                <h4>2. Использование данных</h4>
+                <p>Ваши данные используются исключительно для предоставления доступа к продукту, технической поддержки и отправки важной информации о заказе.</p>
+                <p>Мы НЕ передаем ваши данные третьим лицам, НЕ используем для рекламы без вашего согласия.</p>
+                <h4>3. Защита данных</h4>
+                <p>Мы применяем технические меры защиты: SSL-шифрование, безопасное хранение, ограничение доступа к персональным данным.</p>
+            </div>
+            <div class="modal-footer">Последнее обновление: <strong>Март 2026</strong></div>
+        </div>
+    </div>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+        ym(90131660, 'init', {webvisor:true, clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/90131660" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
     <script>
         // Fade in animation
@@ -1246,12 +1476,56 @@
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                if(this.id !== 'offer-link' && this.id !== 'privacy-link') {
+                if(this.id !== 'offer-link' && this.id !== 'privacy-link' && this.id !== 'support-link') {
                     e.preventDefault();
                     const target = document.querySelector(this.getAttribute('href'));
                     if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
+        });
+
+        // Modal functions
+        function openModal(modalId) { 
+            document.getElementById(modalId).classList.add('active'); 
+            document.body.style.overflow = 'hidden'; 
+        }
+        function closeModal(modalId) { 
+            document.getElementById(modalId).classList.remove('active'); 
+            document.body.style.overflow = ''; 
+        }
+
+        // Footer links handlers
+        document.getElementById('support-link').addEventListener('click', (e) => { 
+            e.preventDefault(); 
+            openModal('support-modal'); 
+        });
+        document.getElementById('offer-link').addEventListener('click', (e) => { 
+            e.preventDefault(); 
+            openModal('offer-modal'); 
+        });
+        document.getElementById('privacy-link').addEventListener('click', (e) => { 
+            e.preventDefault(); 
+            openModal('privacy-modal'); 
+        });
+
+        // Close modal on overlay click
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.active').forEach(m => {
+                    m.classList.remove('active');
+                });
+                document.body.style.overflow = '';
+            }
         });
 
         // Social proof popup
@@ -1313,3 +1587,4 @@
     </script>
 </body>
 </html>
+
