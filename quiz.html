@@ -3,2006 +3,283 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Персональный план восстановления | Detox Pro</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Premium Personal Strategy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --accent: #6366F1;
-            --accent-light: #818CF8;
-            --accent-dark: #4F46E5;
-            --accent-glow: rgba(99, 102, 241, 0.3);
-            --bg: #F9F9FB;
-            --bg-gradient: linear-gradient(135deg, #F9F9FB 0%, #F0F0F5 50%, #F9F9FB 100%);
-            --text: #1F2937;
-            --text-secondary: #6B7280;
-            --text-muted: #9CA3AF;
-            --card: rgba(255, 255, 255, 0.95);
-            --card-hover: rgba(255, 255, 255, 1);
-            --card-border: rgba(99, 102, 241, 0.15);
-            --success: #22C55E;
-            --success-bg: #DCFCE7;
-            --warning: #F59E0B;
-            --danger: #EF4444;
-            --green: #22C55E;
-            --shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-            --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.2);
-            --border-radius: 24px;
-            --border-radius-sm: 20px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --accent: #F59E0B;
+            --primary: #0F172A;
+            --bg: #F8FAFC;
+            --text: #1E293B;
+            --border: #E2E8F0;
+            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
-        * { 
-            box-sizing: border-box; 
-            -webkit-tap-highlight-color: transparent;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overscroll-behavior: none;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: var(--bg-gradient);
-            color: var(--text);
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            padding: 0;
-            position: relative;
-        }
-
-        body::before, body::after {
-            content: '';
-            position: fixed;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
-        body::before { top: -150px; right: -150px; opacity: 0.6; }
-        body::after { bottom: -150px; left: -150px; opacity: 0.4; }
-
-        #app {
-            width: 100%;
-            max-width: 480px;
-            background: var(--card);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--card-border);
-            border-radius: 0;
-            padding: 0;
-            box-shadow: none;
-            position: relative;
-            min-height: 100vh;
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); margin: 0; display: flex; justify-content: center; }
+        
+        #app { 
+            width: 100%; 
+            max-width: 500px; 
+            background: white; 
+            min-height: 100vh; 
+            position: relative; 
+            box-shadow: var(--shadow);
             display: flex;
             flex-direction: column;
-            overflow-x: hidden;
         }
 
-        @media (min-width: 481px) {
-            body { padding: 16px; align-items: center; }
-            #app { 
-                border-radius: var(--border-radius); 
-                box-shadow: var(--shadow), var(--shadow-glow);
-                min-height: 680px;
-                max-height: 90vh;
-                overflow-y: auto;
-            }
-            #app::-webkit-scrollbar { display: none; }
-        }
+        .progress-bar { position: sticky; top: 0; height: 6px; background: var(--border); z-index: 1000; }
+        #fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 0.4s ease; }
 
-        .progress-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: rgba(99, 102, 241, 0.1);
-            z-index: 50;
-        }
-        #fill {
-            height: 100%;
-            width: 6%;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light));
-            border-radius: 0 2px 2px 0;
-            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-        #fill::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
-            animation: shimmer 2s infinite;
-        }
-        @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
-
-        .progress-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 24px;
-            padding: 20px 28px 0 28px;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-        .progress-info .step-counter {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.8rem;
-        }
-
-        /* Sticky Header */
-        .sticky-header {
-            position: sticky;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 12px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-        .sticky-timer {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 800;
-            color: var(--green);
-            font-size: 1.2rem;
-            font-variant-numeric: tabular-nums;
-        }
-        .sticky-timer-label {
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-            display: block;
-        }
-        .sticky-btn {
-            background: linear-gradient(135deg, var(--green), #16A34A);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
-            transition: transform 0.2s;
-        }
-        .sticky-btn:active { transform: scale(0.95); }
-
-        .step { display: none; animation: fadeIn 0.4s ease-out; }
+        .step { display: none; padding: 40px 25px; animation: fadeIn 0.4s ease; flex-grow: 1; }
         .step.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        .step-header {
-            text-align: center;
-            margin-bottom: 28px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
-        }
-        .step-title {
-            font-size: 1.6rem;
-            line-height: 1.35;
-            margin: 0 0 8px 0;
-            font-weight: 700;
-            text-align: center;
-            color: var(--text);
-        }
-        .step-subtitle {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin: 0;
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .block-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(99,102,241,0.05));
-            color: var(--accent);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        h2 { font-size: 1.5rem; line-height: 1.35; margin: 0 0 24px 0; font-weight: 700; text-align: center; color: var(--text); }
-        h3 { font-size: 1.3rem; line-height: 1.3; margin: 0 0 16px 0; font-weight: 700; text-align: center; color: var(--text); }
-
-        .options { display: flex; flex-direction: column; gap: 14px; padding: 0 28px; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--primary); text-align: center; margin-bottom: 25px; line-height: 1.3; }
+        p.desc { text-align: center; color: #64748B; margin-top: -15px; margin-bottom: 25px; font-size: 0.95rem; }
 
         .btn-opt {
-            padding: 20px 22px;
-            border: 2px solid rgba(99, 102, 241, 0.15);
-            border-radius: var(--border-radius-sm);
-            background: linear-gradient(135deg, #ffffff, #F9F9FB);
-            color: var(--text);
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            text-align: left;
-            transition: var(--transition);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            width: 100%; padding: 20px; margin-bottom: 12px; border: 1.5px solid var(--border); border-radius: 18px;
+            background: white; font-size: 1rem; font-weight: 500; cursor: pointer; transition: 0.2s;
+            display: flex; align-items: center; justify-content: space-between; text-align: left;
         }
-        .btn-opt::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(135deg, rgba(99,102,241,0.08), transparent);
-            opacity: 0;
-            transition: opacity 0.2s;
-            border-radius: calc(var(--border-radius-sm) - 2px);
-        }
-        .btn-opt:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15);
-        }
-        .btn-opt:hover::before { opacity: 1; }
-        .btn-opt.selected {
-            border-color: var(--accent);
-            background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(99,102,241,0.04));
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.2);
-        }
-        .btn-opt:active { 
-            transform: scale(0.98); 
-            transition-duration: 0.1s; 
-        }
-        .btn-opt span { font-size: 1.4rem; margin-left: 12px; flex-shrink: 0; }
+        .btn-opt:hover { border-color: var(--accent); background: #FFFBEB; transform: translateY(-2px); }
 
-        .visual-options {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin-top: 20px;
-            padding: 0 28px;
-        }
+        .grid-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        .img-card { border-radius: 18px; overflow: hidden; border: 2px solid transparent; cursor: pointer; position: relative; }
+        .img-card img { width: 100%; display: block; }
+        .img-label { position: absolute; bottom: 0; width: 100%; background: rgba(15, 23, 42, 0.8); color: white; padding: 10px; text-align: center; font-size: 0.9rem; font-weight: 600; }
+
+        .timer-header { background: var(--primary); color: white; padding: 15px; text-align: center; font-weight: 700; position: sticky; top: 6px; z-index: 999; }
+        .price-box { border: 2px solid var(--accent); border-radius: 24px; padding: 25px; margin: 25px 0; background: #FFFBEB; position: relative; }
+        .cta-button { width: 100%; padding: 22px; background: var(--primary); color: white; border: none; border-radius: 18px; font-size: 1.1rem; font-weight: 700; cursor: pointer; }
         
-        .visual-option {
-            position: relative;
-            cursor: pointer;
-            border-radius: var(--border-radius-sm);
-            overflow: hidden;
-            transition: var(--transition);
-            border: 3px solid transparent;
-            background: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-        
-        .visual-option:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        }
-        
-        .visual-option.selected {
-            border-color: var(--green);
-            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
-        }
-        
-        .visual-option img {
-            width: 100%;
-            height: auto;
-            display: block;
-            aspect-ratio: 3/4;
-            object-fit: cover;
-        }
-        
-        .visual-label {
-            background: linear-gradient(135deg, var(--green), #16A34A);
-            color: white;
-            padding: 14px;
-            text-align: center;
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-transform: none;
-        }
-
-        .age-options {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin-top: 20px;
-            padding: 0 28px;
-        }
-        
-        .age-option {
-            position: relative;
-            cursor: pointer;
-            border-radius: var(--border-radius-sm);
-            overflow: hidden;
-            transition: var(--transition);
-            border: 3px solid transparent;
-            background: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-        
-        .age-option:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        }
-        
-        .age-option.selected {
-            border-color: var(--green);
-            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
-        }
-        
-        .age-option img {
-            width: 100%;
-            height: auto;
-            display: block;
-            aspect-ratio: 3/4;
-            object-fit: cover;
-        }
-        
-        .age-label {
-            background: linear-gradient(135deg, var(--green), #16A34A);
-            color: white;
-            padding: 14px;
-            text-align: center;
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 18px 20px;
-            border: 2px solid rgba(99, 102, 241, 0.15);
-            border-radius: var(--border-radius-sm);
-            background: white;
-            color: var(--text);
-            font-size: 1rem;
-            font-family: inherit;
-            transition: var(--transition);
-        }
-        .input-field:focus {
-            border-color: var(--accent);
-            outline: none;
-            box-shadow: 0 0 0 4px var(--accent-glow);
-        }
-        .input-field::placeholder { color: var(--text-muted); }
-
-        .loader-box { 
-            text-align: center; 
-            padding: 40px 20px; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 450px;
-        }
-        
-        .pulse-rings {
-            position: relative;
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 30px;
-        }
-        .pulse-ring {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            border: 3px solid var(--accent);
-            border-radius: 50%;
-            animation: pulseRing 1.5s ease-out infinite;
-        }
-        .pulse-ring:nth-child(2) { animation-delay: 0.5s; }
-        .pulse-ring:nth-child(3) { animation-delay: 1s; }
-        @keyframes pulseRing {
-            0% { transform: scale(0.5); opacity: 1; }
-            100% { transform: scale(1.5); opacity: 0; }
-        }
-        .pulse-center {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 20px;
-            height: 20px;
-            background: var(--accent);
-            border-radius: 50%;
-            animation: pulseCenter 1.5s ease-in-out infinite;
-        }
-        @keyframes pulseCenter {
-            0%, 100% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.3); }
-        }
-
-        .analysis-steps {
-            width: 100%;
-            max-width: 340px;
-            margin-top: 30px;
-            text-align: left;
-        }
-        .analysis-step {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 14px 0;
-            color: var(--text-muted);
-            transition: var(--transition);
-            font-size: 0.95rem;
-        }
-        .analysis-step.active { color: var(--text); }
-        .analysis-step.completed { color: var(--text); }
-        .analysis-step.completed .step-icon {
-            background: linear-gradient(135deg, var(--success), #059669);
-            color: white;
-            transform: scale(1.1);
-        }
-        .step-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            font-weight: 700;
-            flex-shrink: 0;
-            transition: var(--transition);
-        }
-
-        .email-form {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            margin-top: 24px;
-            padding: 0 28px;
-        }
-        .email-btn {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            color: white;
-            padding: 20px;
-            border: none;
-            border-radius: var(--border-radius-sm);
-            font-size: 1.05rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 15px var(--accent-glow);
-        }
-        .email-btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.6s;
-        }
-        .email-btn:hover::before { left: 100%; }
-        .email-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px var(--accent-glow);
-        }
-        .email-btn:active { transform: translateY(-1px); transition-duration: 0.1s; }
-
-        .score-circle {
-            width: 140px;
-            height: 140px;
-            border-radius: 70px;
-            border: 6px solid var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.4rem;
-            font-weight: 800;
-            margin: 24px auto;
-            color: var(--text);
-            background: linear-gradient(135deg, rgba(99,102,241,0.1), transparent);
-            position: relative;
-            animation: pulse 2.5s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow); }
-            50% { box-shadow: 0 0 0 25px transparent; }
-        }
-
-        .pricing-section {
-            animation: fadeIn 0.6s ease-out;
-            padding-bottom: 40px;
-        }
-        .pricing-header {
-            text-align: center;
-            margin-bottom: 32px;
-            padding-bottom: 24px;
-            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
-        }
-        .pricing-title {
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin: 0 0 12px 0;
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .pricing-subtitle {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            margin: 0;
-            line-height: 1.5;
-        }
-
-        /* Benefits & Info Blocks */
-        .benefits-list {
-            padding: 20px 28px;
-            background: white;
-            margin: 20px 28px;
-            border-radius: var(--border-radius-sm);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-        .benefit-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 16px;
-            font-size: 1rem;
-            line-height: 1.4;
-        }
-        .benefit-item:last-child { margin-bottom: 0; }
-        .benefit-check {
-            color: var(--green);
-            font-size: 1.2rem;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-        .benefit-text { color: var(--text); }
-        .benefit-highlight { color: var(--green); font-weight: 600; }
-
-        .pain-point-section {
-            padding: 20px 28px;
-            text-align: center;
-        }
-        .pain-point-title {
-            font-size: 1.4rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-            line-height: 1.3;
-        }
-        .pain-point-text {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-            line-height: 1.5;
-        }
-        .pain-point-highlight {
-            background: var(--green);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 8px;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 16px;
-        }
-        .pain-point-img {
-            width: 100%;
-            border-radius: var(--border-radius-sm);
-            margin: 20px 0;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-        }
-
-        .solution-section {
-            padding: 20px 28px;
-            background: linear-gradient(135deg, rgba(99,102,241,0.05), rgba(99,102,241,0.02));
-            margin: 20px 28px;
-            border-radius: var(--border-radius-sm);
-            text-align: center;
-        }
-        .solution-img {
-            max-width: 280px;
-            margin: 20px auto;
-            border-radius: var(--border-radius-sm);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-        }
-
-        .pricing-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            margin: 20px 28px;
-        }
-
-        .price-card {
-            background: linear-gradient(135deg, #ffffff, #F9F9FB);
-            border: 2px solid rgba(99, 102, 241, 0.15);
-            border-radius: var(--border-radius-sm);
-            padding: 26px 22px;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-        }
-        .price-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.15);
-        }
-        .price-card.selected {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 4px var(--accent-glow), 0 20px 50px rgba(99, 102, 241, 0.2);
-        }
-
-        .price-card.recommended {
-            border-color: var(--accent);
-            background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(99,102,241,0.04));
-            transform: scale(1.02);
-            z-index: 2;
-            box-shadow: 0 25px 60px rgba(99, 102, 241, 0.25);
-        }
-        .price-card.recommended:hover {
-            transform: scale(1.02) translateY(-4px);
-        }
-        .recommended-badge {
-            position: absolute;
-            top: -14px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            color: white;
-            padding: 8px 22px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
-            white-space: nowrap;
-        }
-
-        .plan-name {
-            font-size: 1.15rem;
-            font-weight: 700;
-            margin: 8px 0 4px 0;
-            color: var(--text);
-        }
-        .plan-duration {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 16px;
-        }
-
-        .price-block {
-            margin: 14px 0 18px 0;
-        }
-        .old-price {
-            display: block;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            text-decoration: line-through;
-            margin-bottom: 6px;
-        }
-        .new-price {
-            display: block;
-            color: var(--text);
-            font-size: 2.2rem;
-            font-weight: 800;
-            line-height: 1;
-        }
-        .new-price span {
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-        }
-
-        .plan-description {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin: 0 0 22px 0;
-            min-height: 42px;
-        }
-
-        .price-per-day {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(16,185,129,0.08));
-            color: var(--success);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 18px;
-        }
-
-        .buy-btn {
-            width: 100%;
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            color: white;
-            padding: 20px 26px;
-            border: none;
-            border-radius: var(--border-radius-sm);
-            font-size: 1.05rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 15px var(--accent-glow);
-            animation: pulseButton 2s infinite;
-        }
-        @keyframes pulseButton {
-            0%, 100% { box-shadow: 0 4px 15px var(--accent-glow); }
-            50% { box-shadow: 0 8px 25px var(--accent-glow); }
-        }
-        .buy-btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.6s;
-        }
-        .buy-btn:hover::before { left: 100%; }
-        .buy-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 45px var(--accent-glow);
-            animation: none;
-        }
-        .buy-btn:active { transform: translateY(-1px); transition-duration: 0.1s; }
-        .buy-btn.premium {
-            background: linear-gradient(135deg, var(--accent-light), var(--accent));
-        }
-
-        .payment-trust {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid rgba(99, 102, 241, 0.1);
-            width: 100%;
-        }
-        .payment-icons {
-            display: flex;
-            gap: 6px;
-        }
-        .payment-icon {
-            width: 36px;
-            height: 24px;
-            background: linear-gradient(135deg, #f0f0f5, #e0f0e8);
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: var(--text);
-        }
-        .trust-text {
-            color: var(--text-secondary);
-            font-size: 0.8rem;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .trust-text::before {
-            content: '🔒';
-            font-size: 0.9rem;
-        }
-
-        .trust-badges {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-            margin-top: 28px;
-            padding: 28px;
-            border-top: 1px solid rgba(99, 102, 241, 0.1);
-            background: rgba(255,255,255,0.5);
-        }
-        .trust-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            text-align: center;
-        }
-        .trust-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(16,185,129,0.08));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--success);
-            font-size: 1.1rem;
-        }
-        .trust-label {
-            color: var(--text-secondary);
-            font-size: 0.75rem;
-            line-height: 1.3;
-        }
-
-        .social-proof {
-            text-align: center;
-            padding: 22px;
-            background: linear-gradient(135deg, rgba(99,102,241,0.06), rgba(99,102,241,0.03));
-            border-radius: var(--border-radius-sm);
-            margin: 24px 28px;
-            border: 1px solid rgba(99, 102, 241, 0.1);
-        }
-        .social-proof strong { color: var(--warning); }
-
-        /* Отзывы */
-        .reviews-section {
-            padding: 40px 28px;
-            background: white;
-            margin-top: 20px;
-        }
-        .reviews-title {
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 30px;
-        }
-        .review-card {
-            background: #F9F9FB;
-            padding: 20px;
-            border-radius: var(--border-radius-sm);
-            margin-bottom: 20px;
-            position: relative;
-        }
-        .review-user {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-            background: var(--green);
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            width: fit-content;
-        }
-        .review-stars { color: #FCD34D; }
-        .review-text {
-            color: var(--text);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-        .review-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 20px;
-        }
-        .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #D1D5DB;
-        }
-        .dot.active { background: var(--green); }
-
-        /* Что внутри */
-        .whats-inside {
-            padding: 40px 28px;
-            text-align: center;
-        }
-        .whats-inside-title {
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 30px;
-        }
-        .product-mockup {
-            width: 100%;
-            border-radius: var(--border-radius-sm);
-            margin-bottom: 30px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-        }
-        .feature-list {
-            text-align: left;
-            margin-top: 20px;
-        }
-        .feature-item {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 16px;
-            font-size: 0.95rem;
-            line-height: 1.4;
-        }
-        .feature-check {
-            color: var(--green);
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        /* Гарантия */
-        .guarantee-section {
-            background: white;
-            padding: 30px 28px;
-            margin: 20px 28px;
-            border-radius: var(--border-radius-sm);
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-        .guarantee-badge {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 20px;
-        }
-        .guarantee-title {
-            font-size: 1.3rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-        .guarantee-text {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        /* Сообщество */
-        .community-section {
-            padding: 20px 28px;
-            text-align: center;
-        }
-        .community-box {
-            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05));
-            border: 2px dashed var(--green);
-            border-radius: var(--border-radius-sm);
-            padding: 24px;
-            margin-bottom: 20px;
-        }
-        .community-text {
-            font-size: 1rem;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-        .community-text strong { color: var(--text); }
-        .community-map {
-            width: 100%;
-            border-radius: var(--border-radius-sm);
-            opacity: 0.8;
-        }
-
-        /* Новые стили для "Важно" и "Мы не просто приложение" */
-        .intro-section {
-            padding: 30px 28px;
-            text-align: center;
-        }
-        .intro-title {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        .intro-headline {
-            font-size: 1.5rem;
-            font-weight: 800;
-            line-height: 1.3;
-            margin-bottom: 20px;
-        }
-        .intro-headline span {
-            color: var(--green);
-            font-style: italic;
-        }
-        .intro-img {
-            width: 100%;
-            border-radius: var(--border-radius-sm);
-            margin-bottom: 20px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-        }
-        .intro-text {
-            font-size: 1rem;
-            line-height: 1.5;
-            color: var(--text);
-        }
-        .intro-text strong {
-            color: var(--green);
-        }
-
-        .info-card {
-            background: var(--success-bg);
-            border: 2px dashed var(--green);
-            border-radius: var(--border-radius-sm);
-            padding: 24px;
-            margin: 20px 28px;
-            text-align: center;
-        }
-        .info-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 16px;
-            color: var(--green);
-        }
-        .info-text {
-            font-size: 1rem;
-            line-height: 1.5;
-            color: var(--text);
-        }
-        .info-text strong {
-            color: var(--green);
-            font-weight: 700;
-        }
-        .info-highlight {
-            background: var(--green);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            display: inline-block;
-            margin-top: 10px;
-        }
-
-        .timer-banner {
-            background: #FEF3C7;
-            color: var(--text);
-            padding: 12px 20px;
-            border-radius: 12px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            margin: 20px auto;
-            border: 1px solid #FCD34D;
-            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
-        }
-
-        .footer-links {
-            padding: 20px 28px;
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            border-top: 1px solid rgba(0,0,0,0.05);
-            margin-top: 40px;
-        }
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            margin: 0 8px;
-        }
-
-        @media (hover: hover) {
-            .btn-opt, .price-card, .buy-btn, .email-btn, .visual-option, .age-option { will-change: transform; }
-        }
-
-        @media (max-width: 360px) {
-            #app { padding: 0; border-radius: 0; }
-            .step-title { font-size: 1.4rem; }
-            .btn-opt { padding: 18px 20px; font-size: 0.95rem; }
-            .price-card.recommended { transform: scale(1); }
-            .new-price { font-size: 2rem; }
-            .visual-options, .age-options { gap: 12px; }
-        }
-
-        .btn-opt:focus, .input-field:focus, .buy-btn:focus, .email-btn:focus, .price-card:focus, .visual-option:focus, .age-option:focus {
-            outline: 3px solid var(--accent-glow);
-            outline-offset: 2px;
-        }
-        .sr-only {
-            position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-            overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
-        }
+        input[type="email"] { width: 100%; padding: 20px; border-radius: 15px; border: 1.5px solid var(--border); font-size: 1rem; margin-bottom: 20px; outline: none; }
     </style>
 </head>
 <body>
 
-<div id="app" role="application" aria-label="Персональный план восстановления">
-    
-    <div class="progress-container">
-        <div id="fill" aria-hidden="true"></div>
-    </div>
+<div id="app">
+    <div class="progress-bar"><div id="fill"></div></div>
 
-    <div class="progress-info">
-        <span class="step-counter" id="progress-text">Шаг 1 из 17</span>
-        <span>~2 мин</span>
-    </div>
-
-    <!-- Шаг 1: Выбор пола -->
-    <div class="step active" id="s1" role="tabpanel">
-        <h2 class="step-title">Кто вы?</h2>
-        <div class="visual-options">
-            <div class="visual-option" tabindex="0" role="radio" aria-label="Мужчина" onclick="selectVisualOption(this, 'gender', 'male'); go(2)">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=500&fit=crop" alt="Мужчина">
-                <div class="visual-label">Мужчина</div>
-            </div>
-            <div class="visual-option" tabindex="0" role="radio" aria-label="Женщина" onclick="selectVisualOption(this, 'gender', 'female'); go(2)">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=500&fit=crop" alt="Женщина">
-                <div class="visual-label">Женщина</div>
-            </div>
+    <div class="step active" id="s1">
+        <h2>Выберите ваш пол</h2>
+        <div class="grid-options">
+            <div class="img-card" onclick="go(2)"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300"> <div class="img-label">Мужчина</div></div>
+            <div class="img-card" onclick="go(2)"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300"> <div class="img-label">Женщина</div></div>
         </div>
     </div>
 
-    <!-- Шаг 2: Выбор возраста -->
-    <div class="step" id="s2" role="tabpanel">
-        <h2 class="step-title">Какой у вас возраст?</h2>
-        <div class="age-options">
-            <div class="age-option" tabindex="0" role="radio" aria-label="20 лет" onclick="selectVisualOption(this, 'age', '20'); go(3)">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=500&fit=crop" alt="20 лет">
-                <div class="age-label">20 лет</div>
-            </div>
-            <div class="age-option" tabindex="0" role="radio" aria-label="30 лет" onclick="selectVisualOption(this, 'age', '30'); go(3)">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop" alt="30 лет">
-                <div class="age-label">30 лет</div>
-            </div>
-            <div class="age-option" tabindex="0" role="radio" aria-label="40 лет" onclick="selectVisualOption(this, 'age', '40'); go(3)">
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop" alt="40 лет">
-                <div class="age-label">40 лет</div>
-            </div>
-            <div class="age-option" tabindex="0" role="radio" aria-label="50 лет" onclick="selectVisualOption(this, 'age', '50'); go(3)">
-                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop" alt="50 лет">
-                <div class="age-label">50 лет</div>
-            </div>
-            <div class="age-option" tabindex="0" role="radio" aria-label="60 лет" onclick="selectVisualOption(this, 'age', '60'); go(3)" style="grid-column: span 2; max-width: 200px; margin: 0 auto;">
-                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=500&fit=crop" alt="60 лет">
-                <div class="age-label">60 лет</div>
-            </div>
-        </div>
+    <div class="step" id="s2">
+        <h2>Укажите ваш возраст</h2>
+        <p class="desc">Это поможет адаптировать план под ваш жизненный этап</p>
+        <button class="btn-opt" onclick="go(3)">18 - 25 лет <span>🌱</span></button>
+        <button class="btn-opt" onclick="go(3)">26 - 35 лет <span>☀️</span></button>
+        <button class="btn-opt" onclick="go(3)">36 - 45 лет <span>🌳</span></button>
+        <button class="btn-opt" onclick="go(3)">46+ лет <span>🏔️</span></button>
     </div>
 
-    <!-- Шаг 3: Что произошло -->
-    <div class="step" id="s3" role="tabpanel">
-        <div class="block-label">📋 Блок 1: Ситуация</div>
-        <h2 class="step-title">Что именно произошло?</h2>
-        <div class="options" role="radiogroup">
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'situation', 'mutual'); go(4)">
-                Расставание по обоюдному согласию <span>🤝</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'situation', 'dumped'); go(4)">
-                Меня бросили <span>💔</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'situation', 'betrayal'); go(4)">
-                Измена или предательство <span>⚡</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'situation', 'toxic'); go(4)">
-                Токсичные отношения <span>🚫</span>
-            </button>
-        </div>
+    <div class="step" id="s3">
+        <h2>Как долго длились отношения?</h2>
+        <button class="btn-opt" onclick="go(4)">Менее 6 месяцев</button>
+        <button class="btn-opt" onclick="go(4)">От 6 месяцев до 1 года</button>
+        <button class="btn-opt" onclick="go(4)">1 - 3 года</button>
+        <button class="btn-opt" onclick="go(4)">Более 3 лет</button>
     </div>
 
-    <!-- Шаг 4: Как давно -->
-    <div class="step" id="s4" role="tabpanel">
-        <div class="block-label">📋 Блок 1: Ситуация</div>
-        <h2 class="step-title">Как давно вы не вместе?</h2>
-        <div class="options" role="radiogroup">
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'time', 'days'); go(5)">
-                От 1 дня до 2 недель <span>🕐</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'time', 'weeks'); go(5)">
-                От 2 недель до 2 месяцев <span>🗓️</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'time', 'months'); go(5)">
-                От 2 до 6 месяцев <span>📅</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'time', 'year+'); go(5)">
-                Больше года <span>⏳</span>
-            </button>
-        </div>
+    <div class="step" id="s4">
+        <h2>Кто инициировал разрыв?</h2>
+        <button class="btn-opt" onclick="go(5)">Это было моё решение</button>
+        <button class="btn-opt" onclick="go(5)">Это было решение партнера</button>
+        <button class="btn-opt" onclick="go(5)">Мы решили это вместе</button>
+        <button class="btn-opt" onclick="go(5)">Непредвиденные обстоятельства</button>
     </div>
 
-    <!-- Шаг 5: Общий быт -->
-    <div class="step" id="s5" role="tabpanel">
-        <div class="block-label">📋 Блок 1: Ситуация</div>
-        <h2 class="step-title">Есть ли у вас общий быт, дети или работа?</h2>
-        <p class="step-subtitle" style="margin-bottom:20px">Это важно — план будет учитывать невозможность полностью исключить контакты</p>
-        <div class="options" role="radiogroup">
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'contact', 'none'); go(6)">
-                Нет, контактов нет <span>✅</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'contact', 'kids'); go(6)">
-                Да, есть общие дети <span>👨‍</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'contact', 'work'); go(6)">
-                Да, работаем вместе / общий круг <span>💼</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'contact', 'both'); go(6)">
-                И дети, и работа / быт <span>🔄</span>
-            </button>
-        </div>
+    <div class="step" id="s5">
+        <h2>Проверяете ли вы его/её соцсети?</h2>
+        <button class="btn-opt" onclick="go(6)">Постоянно (несколько раз в час)</button>
+        <button class="btn-opt" onclick="go(6)">1-2 раза в день</button>
+        <button class="btn-opt" onclick="go(6)">Редко (раз в неделю)</button>
+        <button class="btn-opt" onclick="go(6)">Удалена вся связь</button>
     </div>
 
-    <!-- Шаг 6: Соцсети -->
-    <div class="step" id="s6" role="tabpanel">
-        <div class="block-label">🧠 Блок 2: Триггеры</div>
-        <h2 class="step-title">Как часто вы заходите на его/её страницу в соцсетях?</h2>
-        <div class="options" role="radiogroup">
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'social', 'daily'); go(7)">
-                Несколько раз в день <span>📱</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'social', 'few-days'); go(7)">
-                Раз в пару дней <span>🔍</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'social', 'rare'); go(7)">
-                Редко, но срываюсь <span>💭</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'social', 'blocked'); go(7)">
-                Заблокировал(а) / не смотрю <span>🛡️</span>
-            </button>
-        </div>
+    <div class="step" id="s6">
+        <h2>Есть ли у вас общие дела?</h2>
+        <p class="desc">Дети, работа или совместное имущество</p>
+        <button class="btn-opt" onclick="go(7)">Да, очень много связей</button>
+        <button class="btn-opt" onclick="go(7)">Только общие друзья</button>
+        <button class="btn-opt" onclick="go(7)">Ничего общего не осталось</button>
     </div>
 
-    <!-- Шаг 7: Желание написать -->
-    <div class="step" id="s7" role="tabpanel">
-        <div class="block-label">🧠 Блок 2: Триггеры</div>
-        <h2 class="step-title">Чувствуете ли вы желание «написать и все выяснить»?</h2>
-        <div class="options" role="radiogroup">
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'impulse', 'constantly'); go(8)">
-                Да, постоянно борюсь с этим <span>📤</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'impulse', 'sometimes'); go(8)">
-                Иногда, особенно вечером <span>🌙</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'impulse', 'rare'); go(8)">
-                Редко, когда очень тяжело <span>💪</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'impulse', 'no'); go(8)">
-                Нет, я это контролирую <span>🎯</span>
-            </button>
-        </div>
+    <div class="step" id="s7">
+        <h2>Что вы чувствуете чаще всего?</h2>
+        <button class="btn-opt" onclick="go(8)">Гнев и несправедливость <span>🔥</span></button>
+        <button class="btn-opt" onclick="go(8)">Постоянную печаль <span>🌧️</span></button>
+        <button class="btn-opt" onclick="go(8)">Надежду на воссоединение <span>✨</span></button>
+        <button class="btn-opt" onclick="go(8)">Апатию и пустоту</button>
     </div>
 
-    <!-- Шаг 8: Вещи-триггеры -->
-    <div class="step" id="s8" role="tabpanel">
-        <div class="block-label">🧠 Блок 2: Триггеры</div>
-        <h2 class="step-title">Есть ли вещи, подарки или места, которые вызывают слёзы?</h2>
-        <div class="options" role="radiogroup">
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'triggers', 'many'); go(9)">
-                Да, много таких триггеров <span>🎁</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'triggers', 'few'); go(9)">
-                Есть 2-3 болезненных момента <span>📍</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'triggers', 'cleaned'); go(9)">
-                Я уже убрал(а) всё лишнее <span>🧹</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'triggers', 'none'); go(9)">
-                Нет, меня это не задевает <span>✨</span>
-            </button>
-        </div>
+    <div class="step" id="s8">
+        <h2>Как изменился ваш аппетит?</h2>
+        <button class="btn-opt" onclick="go(9)">Постоянно хочется "заедать" стресс</button>
+        <button class="btn-opt" onclick="go(9)">Совсем не могу есть</button>
+        <button class="btn-opt" onclick="go(9)">Аппетит не изменился</button>
     </div>
 
-    <!-- Шаг 9: Окружение -->
-    <div class="step" id="s9" role="tabpanel">
-        <div class="block-label">🧠 Блок 2: Триггеры</div>
-        <h2 class="step-title">Ваше окружение поддерживает вас или напоминает о нём/ней?</h2>
-        <div class="options" role="radiogroup">
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'support', 'pressure'); go(10)">
-                Постоянно спрашивают, давят <span>😰</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'support', 'mixed'); go(10)">
-                По-разному: кто-то поддерживает, кто-то нет <span>⚖️</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'support', 'support'); go(10)">
-                Да, меня поддерживают <span>🤗</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'support', 'silent'); go(10)">
-                Я не обсуждаю это ни с кем <span>🤐</span>
-            </button>
-        </div>
+    <div class="step" id="s9">
+        <h2>Ваш текущий режим сна?</h2>
+        <button class="btn-opt" onclick="go(10)">Бессонница / Трудности с засыпанием</button>
+        <button class="btn-opt" onclick="go(10)">Просыпаюсь среди ночи</button>
+        <button class="btn-opt" onclick="go(10)">Сплю больше обычного</button>
+        <button class="btn-opt" onclick="go(10)">Нормальный сон</button>
     </div>
 
-    <!-- Шаг 10: Сон -->
-    <div class="step" id="s10" role="tabpanel">
-        <div class="block-label">💓 Блок 3: Тело</div>
-        <h2 class="step-title">Как изменился ваш сон?</h2>
-        <div class="options" role="radiogroup">
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'sleep', 'insomnia'); go(11)">
-                Бессонница, не могу уснуть <span>😴</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'sleep', 'oversleep'); go(11)">
-                Сплю слишком много, нет сил <span>🛌</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'sleep', 'broken'); go(11)">
-                Прерывистый сон, кошмары <span>🌑</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'sleep', 'normal'); go(11)">
-                Сон в норме <span>✅</span>
-            </button>
-        </div>
+    <div class="step" id="s10">
+        <h2>Как часто вы общаетесь сейчас?</h2>
+        <button class="btn-opt" onclick="go(11)">Общаемся каждый день</button>
+        <button class="btn-opt" onclick="go(11)">Раз в неделю по делу</button>
+        <button class="btn-opt" onclick="go(11)">Полный игнор (No Contact)</button>
     </div>
 
-    <!-- Шаг 11: Аппетит -->
-    <div class="step" id="s11" role="tabpanel">
-        <div class="block-label">💓 Блок 3: Тело</div>
-        <h2 class="step-title">Что происходит с аппетитом?</h2>
-        <div class="options" role="radiogroup">
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'appetite', 'none'); go(12)">
-                Не могу есть, тошнит <span>🤢</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'appetite', 'overeat'); go(12)">
-                Постоянно заедаю стресс <span>🍕</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'appetite', 'irregular'); go(12)">
-                Ем нерегулярно, без аппетита <span>🍽️</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'appetite', 'normal'); go(12)">
-                Аппетит в норме <span>🥗</span>
-            </button>
-        </div>
+    <div class="step" id="s11">
+        <h2>Ваша главная цель на 30 дней?</h2>
+        <button class="btn-opt" onclick="go(12)">Полностью забыть и отпустить</button>
+        <button class="btn-opt" onclick="go(12)">Понять ошибки и вернуть его/её</button>
+        <button class="btn-opt" onclick="go(12)">Просто перестать чувствовать боль</button>
     </div>
 
-    <!-- Шаг 12: Физическая боль -->
-    <div class="step" id="s12" role="tabpanel">
-        <div class="block-label">💓 Блок 3: Тело</div>
-        <h2 class="step-title">Чувствуете ли вы физическую боль в груди или «ком» в горле?</h2>
-        <div class="options" role="radiogroup">
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'somatic', 'chest'); go(13)">
-                Да, боль/давление в груди <span>💔</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'somatic', 'throat'); go(13)">
-                «Ком» в горле, трудно дышать <span>🌬️</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'somatic', 'both'); go(13)">
-                И то, и другое <span>😮‍💨</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'somatic', 'none'); go(13)">
-                Нет, физически чувствую себя нормально <span>💪</span>
-            </button>
-        </div>
+    <div class="step" id="s12">
+        <h2>Ваше окружение поддерживает вас?</h2>
+        <button class="btn-opt" onclick="go(13)">Да, у меня отличные друзья</button>
+        <button class="btn-opt" onclick="go(13)">Друзья устали это обсуждать</button>
+        <button class="btn-opt" onclick="go(13)">Я чувствую себя одиноко</button>
     </div>
 
-    <!-- Шаг 13: Концентрация -->
-    <div class="step" id="s13" role="tabpanel">
-        <div class="block-label">💓 Блок 3: Тело</div>
-        <h2 class="step-title">Удаётся ли концентрироваться на работе/делах дольше 15 минут?</h2>
-        <div class="options" role="radiogroup">
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'focus', 'no'); go(14)">
-                Нет, мысли постоянно возвращаются к нему/ней <span>🌀</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'focus', 'hard'); go(14)">
-                С большим трудом, быстро устаю <span>🧠</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'focus', 'sometimes'); go(14)">
-                Иногда получается, иногда нет <span>⚡</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'focus', 'yes'); go(14)">
-                Да, я могу фокусироваться <span>🎯</span>
-            </button>
-        </div>
+    <div class="step" id="s13">
+        <h2>Как часто возникают флешбэки?</h2>
+        <button class="btn-opt" onclick="go(14)">Любое место напоминает о партнере</button>
+        <button class="btn-opt" onclick="go(14)">Вспоминаю только перед сном</button>
+        <button class="btn-opt" onclick="go(14)">Редко, когда вижу фото</button>
     </div>
 
-    <!-- Шаг 14: Попытки -->
-    <div class="step" id="s14" role="tabpanel">
-        <div class="block-label">🚀 Блок 4: Готовность</div>
-        <h2 class="step-title">Сколько попыток «начать новую жизнь» вы уже предпринимали?</h2>
-        <div class="options" role="radiogroup">
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'attempts', 'many'); go(15)">
-                Много, но всё возвращалось на круги своя <span>🔄</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'attempts', 'few'); go(15)">
-                2-3 попытки, был прогресс, но сорвался(ась) <span>📉</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'attempts', 'one'); go(15)">
-                Одна серьёзная попытка <span>🎯</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'attempts', 'first'); go(15)">
-                Это моя первая осознанная попытка <span>✨</span>
-            </button>
-        </div>
+    <div class="step" id="s14">
+        <h2>Ваша финансовая ситуация?</h2>
+        <p class="desc">Стресс часто влияет на продуктивность</p>
+        <button class="btn-opt" onclick="go(15)">Стабильная</button>
+        <button class="btn-opt" onclick="go(15)">Стало сложно фокусироваться на работе</button>
+        <button class="btn-opt" onclick="go(15)">Серьезные проблемы из-за разрыва</button>
     </div>
 
-    <!-- Шаг 15: Цель -->
-    <div class="step" id="s15" role="tabpanel">
-        <div class="block-label">🚀 Блок 4: Готовность</div>
-        <h2 class="step-title">Какова ваша главная цель сейчас?</h2>
-        <div class="options" role="radiogroup">
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'goal', 'forget'); go(16)">
-                Забыть навсегда и стереть из памяти <span>🗑️</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'goal', 'pain'); go(16)">
-                Избавиться от боли и дышать свободно <span>🕊️</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'goal', 'better'); go(16)">
-                Стать лучше и заставить жалеть <span>🔥</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'goal', 'peace'); go(16)">
-                Обрести внутренний покой и уверенность <span>🧘</span>
-            </button>
-        </div>
+    <div class="step" id="s15">
+        <h2>Готовы ли вы к упражнениям?</h2>
+        <button class="btn-opt" onclick="go(16)">Да, готов(а) делать всё необходимое</button>
+        <button class="btn-opt" onclick="go(16)">Хочу сначала изучить теорию</button>
+        <button class="btn-opt" onclick="go(16)">Мне нужно что-то очень простое</button>
     </div>
 
-    <!-- Шаг 16: Готовность -->
-    <div class="step" id="s16" role="tabpanel">
-        <div class="block-label">🚀 Блок 4: Готовность</div>
-        <h2 class="step-title">Готовы ли вы уделять 15 минут в день чётким инструкциям ради результата?</h2>
-        <p class="step-subtitle" style="margin-bottom:24px">Это микро-обязательство — основа вашего успеха</p>
-        <div class="options" role="radiogroup">
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'commitment', 'yes'); go(17)">
-                Да, я готов(а) следовать плану <span>✅</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'commitment', 'maybe'); go(17)">
-                Готов(а) попробовать, если будет понятно <span>🤔</span>
-            </button>
-            <button class="btn-opt" role="radio" onclick="selectOption(this, 'commitment', 'need-help'); go(17)">
-                Мне нужна поддержка и структура <span>🤝</span>
-            </button>
-        </div>
+    <div class="step" id="s16">
+        <h2>Какой формат уроков вам ближе?</h2>
+        <button class="btn-opt" onclick="go(17)">Текстовые инструкции и чек-листы</button>
+        <button class="btn-opt" onclick="go(17)">Аудио-практики (медитации)</button>
+        <button class="btn-opt" onclick="go(17)">Короткие видео-разборы</button>
     </div>
 
-    <!-- Шаг 17: Сбор Email -->
-    <div class="step" id="s17" role="tabpanel">
-        <div class="step-header">
-            <h2 class="step-title">Почти готово! 🎯</h2>
-            <p class="step-subtitle">Куда отправить ваш <strong>персональный план восстановления</strong> с учётом всех 15 факторов?</p>
-        </div>
-        <form id="emailForm" class="email-form">
-            <input type="email" id="userEmail" class="input-field" placeholder="Ваш Email *" required aria-label="Email адрес">
-            <button type="button" id="submitEmailBtn" class="email-btn" onclick="submitEmail()">✨ Сгенерировать мой план →</button>
-        </form>
-        <p style="text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 16px;">
-            🔒 Ваши данные защищены. Никакого спама. Отписка в 1 клик.
-        </p>
+    <div class="step" id="s17">
+        <h2>Ваш анализ почти завершен!</h2>
+        <p class="desc">Мы подготовили персональный PDF-план на основе ваших ответов.</p>
+        <input type="email" id="email" placeholder="Введите ваш Email" required>
+        <button class="cta-button" onclick="validateAndGo(18)">Получить результаты 📩</button>
     </div>
 
-    <!-- Шаг 18: Лоадер -->
-    <div class="step" id="s18" role="tabpanel" aria-live="polite">
-        <div class="loader-box">
-            <div class="pulse-rings">
-                <div class="pulse-ring"></div>
-                <div class="pulse-ring"></div>
-                <div class="pulse-ring"></div>
-                <div class="pulse-center"></div>
-            </div>
-            <h2 style="margin-bottom:8px" id="load-text">Анализируем ваши ответы...</h2>
-            <p style="color: var(--text-secondary); margin:0; font-size: 0.95rem;">Алгоритм сопоставляет ваши ответы с базой данных...</p>
-            
-            <div class="analysis-steps">
-                <div class="analysis-step" id="step-a1">
-                    <span class="step-icon">1</span>
-                    <span>Обработка 15 параметров...</span>
-                </div>
-                <div class="analysis-step" id="step-a2">
-                    <span class="step-icon">2</span>
-                    <span>Оценка уровня привязанности...</span>
-                </div>
-                <div class="analysis-step" id="step-a3">
-                    <span class="step-icon">3</span>
-                    <span>Анализ психосоматических маркеров...</span>
-                </div>
-                <div class="analysis-step" id="step-a4">
-                    <span class="step-icon">4</span>
-                    <span>Расчёт оптимальной длительности...</span>
-                </div>
-                <div class="analysis-step" id="step-a5">
-                    <span class="step-icon">5</span>
-                    <span>Генерация персонального плана...</span>
-                </div>
-            </div>
+    <div class="step" id="s18">
+        <h2 id="loader-status">Анализируем данные...</h2>
+        <div style="height:10px; background:#eee; border-radius:10px; overflow:hidden; margin:30px 0;">
+            <div id="loader-fill" style="width:0%; height:100%; background:var(--accent); transition:1.2s;"></div>
         </div>
+        <div id="log" style="font-size:0.85rem; color:#64748B; line-height:2.2; text-align:left;"></div>
     </div>
 
-    <!-- Шаг 19: Pricing (Обновленный) -->
-    <div class="step" id="s19" role="tabpanel">
-        <!-- Sticky Header -->
-        <div class="sticky-header">
-            <div class="sticky-timer">
-                <div>
-                    <span class="sticky-timer-label">до конца акции</span>
-                    <span id="countdown">09:43</span>
+    <div class="step" id="s19" style="padding:0;">
+        <div class="timer-header">Спецпредложение истекает: <span id="timer">09:59</span></div>
+        <div style="padding:25px;">
+            <h2>План готов на 100%</h2>
+            <div class="price-box">
+                <div style="font-size:1.3rem; font-weight:700; margin-bottom:15px;">Курс "Восстановление 2.0"</div>
+                <ul style="padding-left:20px; font-size:0.9rem; color:#475569; margin-bottom:20px;">
+                    <li>30-дневный график заданий</li>
+                    <li>Техники эмоциональной разрядки</li>
+                    <li>Секретный протокол "No Contact"</li>
+                </ul>
+                <div style="display:flex; justify-content:space-between; align-items:center; pt:15px; border-top:1px solid #FDE68A;">
+                    <span style="color:#94A3B8; text-decoration:line-through;">$49.00</span>
+                    <span style="font-size:2.2rem; font-weight:800; color:var(--primary);">$9.95</span>
                 </div>
             </div>
-            <button class="sticky-btn" onclick="scrollToPlans()">Получить план</button>
-        </div>
-
-        <div class="pricing-section">
-            <!-- Блок выгод -->
-            <div class="benefits-list">
-                <div class="benefit-item">
-                    <span class="benefit-check">✔</span>
-                    <span class="benefit-text">Перестанете <span class="benefit-highlight">плакать по ночам</span></span>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-check">✔</span>
-                    <span class="benefit-text">Вернете <span class="benefit-highlight">радость жизни</span></span>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-check">✔</span>
-                    <span class="benefit-text">Появятся <span class="benefit-highlight">силы на хобби</span></span>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-check">✔</span>
-                    <span class="benefit-text">Перестанете тратить на <span class="benefit-highlight">импульсивные покупки</span></span>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-check">✔</span>
-                    <span class="benefit-text">Наладите <span class="benefit-highlight">отношения с друзьями</span></span>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-check">✔</span>
-                    <span class="benefit-text">Будете готовы к <span class="benefit-highlight">новым отношениям</span></span>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-check">✔</span>
-                    <span class="benefit-text">Полюбите <span class="benefit-highlight">себя снова</span></span>
-                </div>
-                <div class="benefit-item">
-                    <span class="benefit-check">✔</span>
-                    <span class="benefit-text">И <span class="benefit-highlight">многое другое!</span></span>
-                </div>
-            </div>
-
-            <!-- Блок "Мы не просто приложение" -->
-            <div class="intro-section">
-                <p class="intro-title">Мы не просто приложение, курс или программа коучинга...</p>
-                <h3 class="intro-headline">Мы — ваш путь к <span>освобождению от оков прошлого</span></h3>
-                <img src="https://image.qwenlm.ai/public_source/e6c9702e-8b2e-4897-9e6f-28eb958b9dec/197c49005-1557-49e7-b481-66680fa6934f.png" alt="Психология и наука" class="intro-img">
-                <p class="intro-text">Наша команда экспертов по психологии отношений предоставит вам самые мощные техники для построения <strong>дисциплины и самоконтроля</strong></p>
-            </div>
-
-            <!-- Блок Сообщества -->
-            <div style="padding: 0 28px; margin: 20px 0;">
-                <img src="https://image.qwenlm.ai/public_source/e6c9702e-8b2e-4897-9e6f-28eb958b9dec/1ba56a35e-06ef-4f4a-974d-1258195a696f.png" alt="Сообщество" style="width:100%; border-radius: var(--border-radius-sm); box-shadow: 0 8px 24px rgba(0,0,0,0.1);">
-                <p class="pain-point-text" style="margin-top: 16px; font-weight: 600;">Наше сообщество из <span style="color: var(--green);">более 10,000 человек</span> будет поддерживать вас</p>
-            </div>
-
-            <!-- Блок AI -->
-            <div style="padding: 0 28px; margin: 20px 0;">
-                <img src="https://image.qwenlm.ai/public_source/e6c9702e-8b2e-4897-9e6f-28eb958b9dec/19a5a5aff-dee0-46b6-a20e-ae4b77e83d5f.png" alt="AI Приложение" style="width:100%; border-radius: var(--border-radius-sm); box-shadow: 0 8px 24px rgba(0,0,0,0.1);">
-                <p class="pain-point-text" style="margin-top: 16px;">Наше приложение на базе AI <span style="color: var(--green); font-weight: 600;">предоставит вам самые последние техники</span> и обеспечит их внедрение</p>
-            </div>
-
-            <!-- Блок "Пора решать" -->
-            <div class="pain-point-section">
-                <h3 class="pain-point-title">Пора решать свои проблемы с помощью технологий <span class="pain-point-highlight">21 века</span></h3>
-            </div>
-
-            <!-- Таймер желтый -->
-            <div style="text-align: center; padding: 0 28px;">
-                <div class="timer-banner">
-                    <span>⏰</span> Это предложение заканчивается через <span id="timer-inline">06:59</span> минут
-                </div>
-            </div>
-
-            <!-- Тарифы 1 -->
-            <div style="padding: 0 28px; margin-bottom: 20px; margin-top: 30px;">
-                <div style="display: flex; gap: 10px; margin-bottom: 20px; font-size: 0.9rem; color: var(--text-secondary);">
-                    <span style="font-weight: 700; color: var(--text);">1. Выберите свой план</span>
-                    <span>2. Способ оплаты</span>
-                </div>
-            </div>
-
-            <div class="pricing-cards" id="plans-section">
-                
-                <div class="price-card" tabindex="0" role="radio" aria-label="Тариф 8 недель" onclick="selectPlan(this, '8weeks')">
-                    <div style="background: var(--green); color: white; padding: 4px 12px; border-radius: 8px; font-size: 0.7rem; font-weight: 800; margin-bottom: 8px; text-transform: uppercase;">Лучшая цена</div>
-                    <div class="plan-name">8-недельный план</div>
-                    <div style="background: #E5E7EB; color: var(--text); padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; margin: 4px 0;">СЭКОНОМЬТЕ 79%</div>
-                    <div style="text-decoration: line-through; color: var(--text-muted); font-size: 0.85rem;">$87.72 $18.64</div>
-                    <div class="price-block">
-                        <span class="new-price" style="color: var(--green);">$0.33<span style="font-size: 0.9rem; color: var(--text-secondary);">/день</span></span>
-                    </div>
-                    <button class="buy-btn" style="background: var(--green);" onclick="proceedToPayment('8weeks', 47)">Выбрать план</button>
-                </div>
-
-                <div class="price-card recommended" tabindex="0" role="radio" aria-label="Тариф 4 недели" onclick="selectPlan(this, '4weeks')">
-                    <div class="recommended-badge">🔥 Самый популярный</div>
-                    <div class="plan-name">4-недельный план</div>
-                    <div style="background: #FCD34D; color: var(--text); padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; margin: 4px 0;">СЭКОНОМЬТЕ 80%</div>
-                    <div style="text-decoration: line-through; color: var(--text-muted); font-size: 0.85rem;">$49.93 $9.92</div>
-                    <div class="price-block">
-                        <span class="new-price" style="color: var(--green);">$0.35<span style="font-size: 0.9rem; color: var(--text-secondary);">/день</span></span>
-                    </div>
-                    <button class="buy-btn" onclick="proceedToPayment('4weeks', 27)">Выбрать план</button>
-                </div>
-
-                <div class="price-card" tabindex="0" role="radio" aria-label="Тариф 1 неделя" onclick="selectPlan(this, '1week')">
-                    <div class="plan-name">1-недельный план</div>
-                    <div style="background: #E5E7EB; color: var(--text); padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; margin: 4px 0;">СЭКОНОМЬТЕ 92%</div>
-                    <div style="text-decoration: line-through; color: var(--text-muted); font-size: 0.85rem;">$87.72 $6.93</div>
-                    <div class="price-block">
-                        <span class="new-price" style="color: var(--green);">$0.99<span style="font-size: 0.9rem; color: var(--text-secondary);">/день</span></span>
-                    </div>
-                    <button class="buy-btn" onclick="proceedToPayment('1week', 9)">Выбрать план</button>
-                </div>
-
-            </div>
-
-            <!-- Гарантия -->
-            <div class="guarantee-section">
-                <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px; color: var(--green); font-weight: 800;">
-                    <span>30 ДНЕЙ</span>
-                    <div style="width: 50px; height: 50px; border: 2px solid var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; text-align: center; line-height: 1;">MONEY<br>BACK</div>
-                    <span>ГАРАНТИЯ ВОЗВРАТА</span>
-                </div>
-                <button class="buy-btn" style="background: var(--green); max-width: 300px; margin: 0 auto; display: block;" onclick="scrollToPlans()">Получить мой план</button>
-                <p style="font-size: 0.7rem; color: var(--text-muted); margin-top: 12px; line-height: 1.4;">Нажимая «Получить мой план», вы соглашаетесь на автоматическое продление подписки. Первые 4 недели – $9.92, затем $49.93/4 недели. Отмена через email: info@detox.pro.</p>
-            </div>
-
-            <!-- Блок "Важно" (Зеленые карточки) -->
-            <h3 style="padding: 0 28px; margin-top: 40px;">Важно</h3>
-
-            <div class="info-card">
-                <!-- SVG Icon: Hands holding gear/brain -->
-                <svg class="info-icon" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M30 5C25 5 21 9 21 14V18C15 19 10 24 10 30C10 36 15 41 21 42V46C21 51 25 55 30 55C35 55 39 51 39 46V42C45 41 50 36 50 30C50 24 45 19 39 18V14C39 9 35 5 30 5Z" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="30" cy="30" r="8" stroke="#22C55E" stroke-width="3"/>
-                    <path d="M30 26V30L33 33" stroke="#22C55E" stroke-width="3" stroke-linecap="round"/>
-                </svg>
-                <p class="info-text">Detox Pro действительно экономит ваше время, используя последние достижения в области поведенческой науки для сокращения навязчивых мыслей, <strong>что сделает вас более продуктивным, эффективным и бдительным</strong></p>
-            </div>
-
-            <div class="info-card">
-                <!-- SVG Icon: Phone with smile -->
-                <svg class="info-icon" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="18" y="8" width="24" height="44" rx="4" stroke="#22C55E" stroke-width="3"/>
-                    <circle cx="30" cy="42" r="2" fill="#22C55E"/>
-                    <path d="M24 24C24 24 26 28 30 28C34 28 36 24 36 24" stroke="#22C55E" stroke-width="3" stroke-linecap="round"/>
-                    <circle cx="26" cy="22" r="1.5" fill="#22C55E"/>
-                    <circle cx="34" cy="22" r="1.5" fill="#22C55E"/>
-                </svg>
-                <p class="info-text">Detox Pro очень удобен в использовании, поэтому у вас не возникнет проблем с выполнением плана для достижения <strong>максимальных результатов</strong></p>
-            </div>
-
-            <div class="info-card">
-                <!-- SVG Icon: Crown -->
-                <svg class="info-icon" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 20L20 30L30 15L40 30L50 20V45H10V20Z" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M10 45H50V50C50 52 48 54 46 54H14C12 54 10 52 10 50V45Z" fill="#22C55E"/>
-                    <path d="M30 5V10" stroke="#22C55E" stroke-width="3" stroke-linecap="round"/>
-                    <path d="M55 20L50 25" stroke="#22C55E" stroke-width="3" stroke-linecap="round"/>
-                    <path d="M5 20L10 25" stroke="#22C55E" stroke-width="3" stroke-linecap="round"/>
-                </svg>
-                <p class="info-text">Вы получите премиум доступ к своему персональному плану, нашему приложению на базе AI, рабочим тетрадям и передовому обучению, <strong>чтобы гарантировать быстрые результаты.</strong></p>
-            </div>
-
-            <div class="info-card">
-                <!-- SVG Icon: Money Back Arrow -->
-                <svg class="info-icon" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="30" cy="30" r="20" stroke="#22C55E" stroke-width="3"/>
-                    <path d="M30 15V30L35 35" stroke="#22C55E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                    <text x="30" y="36" text-anchor="middle" fill="#22C55E" font-size="16" font-weight="bold">$</text>
-                </svg>
-                <p class="info-text">Если вы попробуете и не увидите результатов в первые 30 дней, <strong>мы вернем вам 100% ваших денег</strong> и даже позволим вам оставить ваш персональный план бесплатно.</p>
-            </div>
-
-            <!-- Таймер желтый (повтор) -->
-            <div style="text-align: center; padding: 0 28px; margin-top: 20px;">
-                <div class="timer-banner">
-                    <span>⏰</span> Это предложение заканчивается через <span id="timer-bottom">06:34</span> минут
-                </div>
-            </div>
-
-            <!-- Тарифы 2 (повтор) -->
-            <div style="padding: 0 28px; margin-bottom: 20px; margin-top: 30px;">
-                <div style="display: flex; gap: 10px; margin-bottom: 20px; font-size: 0.9rem; color: var(--text-secondary);">
-                    <span style="font-weight: 700; color: var(--text);">1. Выберите свой план</span>
-                    <span>2. Способ оплаты</span>
-                </div>
-            </div>
-
-            <div class="pricing-cards" style="margin-bottom: 40px;">
-                <div class="price-card" tabindex="0" role="radio" onclick="selectPlan(this, '8weeks')">
-                    <div style="background: var(--green); color: white; padding: 4px 12px; border-radius: 8px; font-size: 0.7rem; font-weight: 800; margin-bottom: 8px; text-transform: uppercase;">Лучшая цена</div>
-                    <div class="plan-name">8-недельный план</div>
-                    <div style="text-decoration: line-through; color: var(--text-muted); font-size: 0.85rem;">$87.72 $18.64</div>
-                    <div class="price-block">
-                        <span class="new-price" style="color: var(--green);">$0.33<span style="font-size: 0.9rem; color: var(--text-secondary);">/день</span></span>
-                    </div>
-                    <button class="buy-btn" style="background: var(--green);" onclick="proceedToPayment('8weeks', 47)">Выбрать план</button>
-                </div>
-
-                <div class="price-card recommended" tabindex="0" role="radio" onclick="selectPlan(this, '4weeks')">
-                    <div class="recommended-badge">🔥 Самый популярный</div>
-                    <div class="plan-name">4-недельный план</div>
-                    <div style="text-decoration: line-through; color: var(--text-muted); font-size: 0.85rem;">$49.93 $9.92</div>
-                    <div class="price-block">
-                        <span class="new-price" style="color: var(--green);">$0.35<span style="font-size: 0.9rem; color: var(--text-secondary);">/день</span></span>
-                    </div>
-                    <button class="buy-btn" onclick="proceedToPayment('4weeks', 27)">Выбрать план</button>
-                </div>
-            </div>
-
-            <!-- Footer -->
-            <div class="footer-links">
-                <div style="margin-bottom: 10px;">
-                    <a href="#">Политика конфиденциальности</a> | <a href="#">Условия использования</a>
-                </div>
-                <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 10px;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M2 17L12 22L22 17" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M2 12L12 17L22 12" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span style="font-weight: 700; color: var(--text);">Detox Pro</span>
-                </div>
-                <p>© 2024, Detox Pro. Все права защищены.</p>
-            </div>
-
+            <button class="cta-button" onclick="alert('Переход к оплате...')">Открыть доступ сейчас 💎</button>
+            <p style="text-align:center; font-size:0.75rem; color:gray; margin-top:20px;">Гарантия возврата средств в течение 30 дней.</p>
         </div>
     </div>
-
 </div>
 
 <script>
-    let step = 1;
-    const totalSteps = 19;
-    let answers = {};
-    let emailSubmitted = false;
-    let recommendedPlan = '4weeks';
-    let loaderRunning = false;
+    let currentStep = 1;
 
     function go(n) {
-        const currentStep = document.getElementById(`s${step}`);
-        if (currentStep) currentStep.classList.remove('active');
+        document.getElementById(`s${currentStep}`).classList.remove('active');
+        document.getElementById(`s${n}`).classList.add('active');
+        currentStep = n;
         
-        step = n;
+        const percent = (n / 19) * 100;
+        document.getElementById('fill').style.width = percent + '%';
         
-        const nextStep = document.getElementById(`s${step}`);
-        if (nextStep) {
-            nextStep.classList.add('active');
-            updateProgress(step);
-        }
-
-        if (n === 18 && !loaderRunning) {
-            loaderRunning = true;
-            runLoader();
-        }
-        
-        if (n === 19) {
-            startCountdown();
-        }
+        if(n === 18) startLoading();
+        if(n === 19) startTimer();
+        window.scrollTo(0,0);
     }
 
-    function updateProgress(currentStep) {
-        const quizSteps = 17;
-        const progressPercent = Math.min((Math.min(currentStep, quizSteps) / quizSteps) * 100, 100);
-        document.getElementById('fill').style.width = progressPercent + '%';
-        
-        const displayStep = Math.min(currentStep, quizSteps);
-        document.getElementById('progress-text').textContent = `Шаг ${displayStep} из ${quizSteps}`;
+    function validateAndGo(n) {
+        const mail = document.getElementById('email').value;
+        if(mail.includes('@') && mail.length > 5) go(n);
+        else alert('Введите корректный Email');
     }
 
-    function runLoader() {
-        const analysisSteps = ['step-a1','step-a2','step-a3','step-a4','step-a5'];
-        const phrases = [
-            "Анализируем ваши ответы...",
-            "Сопоставляем физиологические маркеры...",
-            "Оцениваем уровень эмоциональной зависимости...",
-            "Анализируем паттерны поведения...",
-            "Рассчитываем оптимальную длительность...",
-            "Генерируем персональный план..."
+    function startLoading() {
+        const fill = document.getElementById('loader-fill');
+        const log = document.getElementById('log');
+        const tasks = [
+            "Оценка стадии проживания горя...",
+            "Расчет индекса привязанности...",
+            "Адаптация упражнений под возраст...",
+            "Подготовка медиа-материалов...",
+            "Генерация финального отчета."
         ];
-        
-        let phraseIndex = 0;
-        let stepIndex = 0;
-        
-        const phraseInterval = setInterval(() => {
-            if (phraseIndex < phrases.length) {
-                document.getElementById('load-text').innerText = phrases[phraseIndex];
-                phraseIndex++;
-            }
-        }, 1200);
-        
-        const stepInterval = setInterval(() => {
-            if (stepIndex < analysisSteps.length) {
-                const stepEl = document.getElementById(analysisSteps[stepIndex]);
-                if (stepEl) {
-                    stepEl.classList.add('completed', 'active');
-                    stepEl.querySelector('.step-icon').textContent = '✓';
-                }
-                stepIndex++;
-            }
-        }, 1300);
-        
-        setTimeout(() => {
-            clearInterval(phraseInterval);
-            clearInterval(stepInterval);
-            go(19);
-        }, 7500);
-    }
 
-    function selectVisualOption(element, key, value) {
-        const parent = element.parentElement;
-        const siblings = parent.querySelectorAll('.visual-option, .age-option');
-        siblings.forEach(el => el.classList.remove('selected'));
-        element.classList.add('selected');
-        answers[key] = value;
-        
-        if (key === 'gender') {
-            updateAgeImages(value);
-        }
-    }
-
-    function updateAgeImages(gender) {
-        const ageOptions = document.querySelectorAll('.age-option');
-        const maleImages = [
-            'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=500&fit=crop',
-            'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop',
-            'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop',
-            'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop',
-            'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=500&fit=crop'
-        ];
-        const femaleImages = [
-            'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=500&fit=crop',
-            'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=500&fit=crop',
-            'https://images.unsplash.com/photo-1552058544-f2b08422138a?w=400&h=500&fit=crop',
-            'https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&h=500&fit=crop',
-            'https://images.unsplash.com/photo-1573426656494-2fc374aa4189?w=400&h=500&fit=crop'
-        ];
-        
-        const images = gender === 'male' ? maleImages : femaleImages;
-        ageOptions.forEach((option, index) => {
-            const img = option.querySelector('img');
-            if (img && images[index]) {
-                img.src = images[index];
+        let i = 0;
+        const interval = setInterval(() => {
+            if(i < tasks.length) {
+                fill.style.width = ((i + 1) * 20) + '%';
+                log.innerHTML += `<div>✓ ${tasks[i]}</div>`;
+                i++;
+            } else {
+                clearInterval(interval);
+                setTimeout(() => go(19), 800);
             }
-        });
-    }
-    
-    function selectOption(btn, key, value) {
-        const siblings = btn.parentElement.querySelectorAll('.btn-opt');
-        siblings.forEach(b => {
-            b.classList.remove('selected');
-            b.setAttribute('aria-checked', 'false');
-        });
-        btn.classList.add('selected');
-        btn.setAttribute('aria-checked', 'true');
-        answers[key] = value;
-        
-        if (key === 'situation' && value === 'betrayal') {
-            recommendedPlan = '8weeks';
-        }
-    }
-
-    function submitEmail() {
-        const emailInput = document.getElementById('userEmail');
-        const email = emailInput.value.trim();
-        const btn = document.getElementById('submitEmailBtn');
-        
-        if (!email || !email.includes('@') || !email.includes('.')) {
-            emailInput.style.borderColor = 'var(--danger)';
-            emailInput.focus();
-            return;
-        }
-        
-        emailInput.style.borderColor = 'rgba(99, 102, 241, 0.15)';
-        answers['email'] = email;
-        
-        console.log('Лид собран:', answers);
-        
-        btn.disabled = true;
-        btn.textContent = 'Генерируем... ✨';
-        btn.style.opacity = '0.8';
-        
-        setTimeout(() => {
-            emailSubmitted = true;
-            btn.textContent = 'Готово! ✓';
-            btn.style.background = 'var(--success)';
-            
-            setTimeout(() => {
-                document.getElementById('s17').classList.remove('active');
-                document.getElementById('s18').classList.add('active');
-                updateProgress(18);
-                runLoader();
-            }, 800);
         }, 1200);
     }
 
-    document.querySelectorAll('.input-field').forEach(input => {
-        input.addEventListener('input', function() {
-            this.style.borderColor = 'rgba(99, 102, 241, 0.15)';
-        });
-        
-        input.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                submitEmail();
-            }
-        });
-    });
-
-    function startCountdown() {
-        let timeLeft = 10 * 60; // 10 минут
-        const countdownEls = [
-            document.getElementById('countdown'),
-            document.getElementById('timer-inline'),
-            document.getElementById('timer-bottom')
-        ];
-        
-        const timer = setInterval(() => {
-            const minutes = Math.floor(timeLeft / 60);
-            const seconds = timeLeft % 60;
-            const timeString = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
-            
-            countdownEls.forEach(el => {
-                if (el) el.textContent = timeString;
-            });
-            
-            timeLeft--;
-            if (timeLeft < 0) {
-                clearInterval(timer);
-                countdownEls.forEach(el => { if (el) el.textContent = '00:00'; });
-            }
+    function startTimer() {
+        let time = 599;
+        const display = document.getElementById('timer');
+        setInterval(() => {
+            let m = Math.floor(time / 60);
+            let s = time % 60;
+            display.textContent = `${m}:${s < 10 ? '0' + s : s}`;
+            if (time > 0) time--;
         }, 1000);
     }
-
-    function scrollToPlans() {
-        document.getElementById('plans-section').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function selectPlan(card, planId) {
-        document.querySelectorAll('.price-card').forEach(c => c.classList.remove('selected'));
-        card.classList.add('selected');
-    }
-
-    function proceedToPayment(plan, price) {
-        const planNames = {'1week':'Base','4weeks':'Optimal','8weeks':'Premium'};
-        alert(`🎉 Переход к оплате:\nПлан ${planNames[plan]} — $${price}\n\n(Здесь будет подключение платёжного шлюза)`);
-        console.log('Purchase intent:', {plan, price, answers});
-    }
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') {
-            const activeStep = document.querySelector('.step.active');
-            if (activeStep) {
-                const firstBtn = activeStep.querySelector('.btn-opt, .email-btn, .buy-btn');
-                if (firstBtn && document.activeElement.tagName !== 'INPUT') {
-                    firstBtn.click();
-                }
-            }
-        }
-    });
-
-    window.addEventListener('beforeunload', function() {
-        if (step < 19 && Object.keys(answers).length > 0) {
-            localStorage.setItem('quiz_progress_v2', JSON.stringify({step, answers, timestamp: Date.now()}));
-        }
-    });
-
-    window.addEventListener('load', function() {
-        const saved = localStorage.getItem('quiz_progress_v2');
-        if (saved) {
-            try {
-                const data = JSON.parse(saved);
-                if (Date.now() - data.timestamp < 86400000) {
-                    console.log('Найден сохранённый прогресс:', data);
-                } else {
-                    localStorage.removeItem('quiz_progress_v2');
-                }
-            } catch(e) { localStorage.removeItem('quiz_progress_v2'); }
-        }
-    });
-
-    document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(() => {
-            document.getElementById('app').style.opacity = '1';
-            document.getElementById('app').style.transform = 'translateY(0)';
-        }, 100);
-    });
 </script>
 
 </body>
 </html>
-
