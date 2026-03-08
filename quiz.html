@@ -3,60 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Premium Personal Strategy</title>
+    <title>Premium Recovery Pro</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --accent: #F59E0B;
-            --primary: #0F172A;
-            --bg: #F8FAFC;
-            --text: #1E293B;
-            --border: #E2E8F0;
-            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --accent: #F59E0B; --primary: #0F172A; --bg: #F8FAFC; --text: #1E293B;
+            --border: #E2E8F0; --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
-
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        * { box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background-color: var(--bg); margin: 0; display: flex; justify-content: center; }
+        #app { width: 100%; max-width: 500px; background: white; min-height: 100vh; position: relative; box-shadow: var(--shadow); }
         
-        #app { 
-            width: 100%; 
-            max-width: 500px; 
-            background: white; 
-            min-height: 100vh; 
-            position: relative; 
-            box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
-        }
-
         .progress-bar { position: sticky; top: 0; height: 6px; background: var(--border); z-index: 1000; }
-        #fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 0.4s ease; }
+        #fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 0.4s; }
 
-        .step { display: none; padding: 40px 25px; animation: fadeIn 0.4s ease; flex-grow: 1; }
+        .step { display: none; padding: 40px 25px; animation: fadeIn 0.4s ease; }
         .step.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--primary); text-align: center; margin-bottom: 25px; line-height: 1.3; }
-        p.desc { text-align: center; color: #64748B; margin-top: -15px; margin-bottom: 25px; font-size: 0.95rem; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 1.7rem; color: var(--primary); text-align: center; margin-bottom: 25px; }
 
         .btn-opt {
-            width: 100%; padding: 20px; margin-bottom: 12px; border: 1.5px solid var(--border); border-radius: 18px;
-            background: white; font-size: 1rem; font-weight: 500; cursor: pointer; transition: 0.2s;
-            display: flex; align-items: center; justify-content: space-between; text-align: left;
+            width: 100%; padding: 18px; margin-bottom: 12px; border: 1.5px solid var(--border); border-radius: 16px;
+            background: white; font-size: 1rem; cursor: pointer; display: flex; justify-content: space-between;
         }
-        .btn-opt:hover { border-color: var(--accent); background: #FFFBEB; transform: translateY(-2px); }
+        .btn-opt:hover { border-color: var(--accent); background: #FFFBEB; }
 
-        .grid-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
-        .img-card { border-radius: 18px; overflow: hidden; border: 2px solid transparent; cursor: pointer; position: relative; }
-        .img-card img { width: 100%; display: block; }
-        .img-label { position: absolute; bottom: 0; width: 100%; background: rgba(15, 23, 42, 0.8); color: white; padding: 10px; text-align: center; font-size: 0.9rem; font-weight: 600; }
+        /* Loader Styles */
+        .loader-media { width: 100%; height: 250px; border-radius: 20px; overflow: hidden; margin-bottom: 20px; position: relative; }
+        .loader-media img { width: 100%; height: 100%; object-fit: cover; position: absolute; opacity: 0; transition: 1s; }
+        .loader-media img.active { opacity: 1; }
+        .spinner-circle { width: 50px; height: 50px; border: 4px solid #eee; border-top-4px-solid var(--accent); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto; }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-        .timer-header { background: var(--primary); color: white; padding: 15px; text-align: center; font-weight: 700; position: sticky; top: 6px; z-index: 999; }
-        .price-box { border: 2px solid var(--accent); border-radius: 24px; padding: 25px; margin: 25px 0; background: #FFFBEB; position: relative; }
-        .cta-button { width: 100%; padding: 22px; background: var(--primary); color: white; border: none; border-radius: 18px; font-size: 1.1rem; font-weight: 700; cursor: pointer; }
-        
-        input[type="email"] { width: 100%; padding: 20px; border-radius: 15px; border: 1.5px solid var(--border); font-size: 1rem; margin-bottom: 20px; outline: none; }
+        /* Pricing Grid */
+        .pricing-grid { display: grid; gap: 15px; margin-top: 20px; }
+        .plan-card { border: 2px solid var(--border); border-radius: 20px; padding: 20px; position: relative; transition: 0.3s; }
+        .plan-card.active { border-color: var(--accent); background: #FFFBEB; transform: scale(1.02); }
+        .popular-badge { position: absolute; top: -10px; right: 20px; background: var(--accent); color: white; padding: 2px 10px; border-radius: 10px; font-size: 0.7rem; font-weight: 800; }
+
+        .info-row { display: flex; gap: 10px; margin-bottom: 15px; background: #f1f5f9; padding: 15px; border-radius: 12px; font-size: 0.85rem; }
     </style>
 </head>
 <body>
@@ -65,221 +51,116 @@
     <div class="progress-bar"><div id="fill"></div></div>
 
     <div class="step active" id="s1">
-        <h2>Выберите ваш пол</h2>
-        <div class="grid-options">
-            <div class="img-card" onclick="go(2)"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300"> <div class="img-label">Мужчина</div></div>
-            <div class="img-card" onclick="go(2)"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300"> <div class="img-label">Женщина</div></div>
-        </div>
+        <h2>Ваш пол</h2>
+        <button class="btn-opt" onclick="go(2)">Мужчина <span>👨</span></button>
+        <button class="btn-opt" onclick="go(2)">Женщина <span>👩</span></button>
     </div>
 
-    <div class="step" id="s2">
-        <h2>Укажите ваш возраст</h2>
-        <p class="desc">Это поможет адаптировать план под ваш жизненный этап</p>
-        <button class="btn-opt" onclick="go(3)">18 - 25 лет <span>🌱</span></button>
-        <button class="btn-opt" onclick="go(3)">26 - 35 лет <span>☀️</span></button>
-        <button class="btn-opt" onclick="go(3)">36 - 45 лет <span>🌳</span></button>
-        <button class="btn-opt" onclick="go(3)">46+ лет <span>🏔️</span></button>
-    </div>
-
-    <div class="step" id="s3">
-        <h2>Как долго длились отношения?</h2>
-        <button class="btn-opt" onclick="go(4)">Менее 6 месяцев</button>
-        <button class="btn-opt" onclick="go(4)">От 6 месяцев до 1 года</button>
-        <button class="btn-opt" onclick="go(4)">1 - 3 года</button>
-        <button class="btn-opt" onclick="go(4)">Более 3 лет</button>
-    </div>
-
-    <div class="step" id="s4">
-        <h2>Кто инициировал разрыв?</h2>
-        <button class="btn-opt" onclick="go(5)">Это было моё решение</button>
-        <button class="btn-opt" onclick="go(5)">Это было решение партнера</button>
-        <button class="btn-opt" onclick="go(5)">Мы решили это вместе</button>
-        <button class="btn-opt" onclick="go(5)">Непредвиденные обстоятельства</button>
-    </div>
-
-    <div class="step" id="s5">
-        <h2>Проверяете ли вы его/её соцсети?</h2>
-        <button class="btn-opt" onclick="go(6)">Постоянно (несколько раз в час)</button>
-        <button class="btn-opt" onclick="go(6)">1-2 раза в день</button>
-        <button class="btn-opt" onclick="go(6)">Редко (раз в неделю)</button>
-        <button class="btn-opt" onclick="go(6)">Удалена вся связь</button>
-    </div>
-
-    <div class="step" id="s6">
-        <h2>Есть ли у вас общие дела?</h2>
-        <p class="desc">Дети, работа или совместное имущество</p>
-        <button class="btn-opt" onclick="go(7)">Да, очень много связей</button>
-        <button class="btn-opt" onclick="go(7)">Только общие друзья</button>
-        <button class="btn-opt" onclick="go(7)">Ничего общего не осталось</button>
-    </div>
-
-    <div class="step" id="s7">
-        <h2>Что вы чувствуете чаще всего?</h2>
-        <button class="btn-opt" onclick="go(8)">Гнев и несправедливость <span>🔥</span></button>
-        <button class="btn-opt" onclick="go(8)">Постоянную печаль <span>🌧️</span></button>
-        <button class="btn-opt" onclick="go(8)">Надежду на воссоединение <span>✨</span></button>
-        <button class="btn-opt" onclick="go(8)">Апатию и пустоту</button>
-    </div>
-
-    <div class="step" id="s8">
-        <h2>Как изменился ваш аппетит?</h2>
-        <button class="btn-opt" onclick="go(9)">Постоянно хочется "заедать" стресс</button>
-        <button class="btn-opt" onclick="go(9)">Совсем не могу есть</button>
-        <button class="btn-opt" onclick="go(9)">Аппетит не изменился</button>
-    </div>
-
-    <div class="step" id="s9">
-        <h2>Ваш текущий режим сна?</h2>
-        <button class="btn-opt" onclick="go(10)">Бессонница / Трудности с засыпанием</button>
-        <button class="btn-opt" onclick="go(10)">Просыпаюсь среди ночи</button>
-        <button class="btn-opt" onclick="go(10)">Сплю больше обычного</button>
-        <button class="btn-opt" onclick="go(10)">Нормальный сон</button>
-    </div>
-
-    <div class="step" id="s10">
-        <h2>Как часто вы общаетесь сейчас?</h2>
-        <button class="btn-opt" onclick="go(11)">Общаемся каждый день</button>
-        <button class="btn-opt" onclick="go(11)">Раз в неделю по делу</button>
-        <button class="btn-opt" onclick="go(11)">Полный игнор (No Contact)</button>
-    </div>
-
-    <div class="step" id="s11">
-        <h2>Ваша главная цель на 30 дней?</h2>
-        <button class="btn-opt" onclick="go(12)">Полностью забыть и отпустить</button>
-        <button class="btn-opt" onclick="go(12)">Понять ошибки и вернуть его/её</button>
-        <button class="btn-opt" onclick="go(12)">Просто перестать чувствовать боль</button>
-    </div>
-
-    <div class="step" id="s12">
-        <h2>Ваше окружение поддерживает вас?</h2>
-        <button class="btn-opt" onclick="go(13)">Да, у меня отличные друзья</button>
-        <button class="btn-opt" onclick="go(13)">Друзья устали это обсуждать</button>
-        <button class="btn-opt" onclick="go(13)">Я чувствую себя одиноко</button>
-    </div>
-
-    <div class="step" id="s13">
-        <h2>Как часто возникают флешбэки?</h2>
-        <button class="btn-opt" onclick="go(14)">Любое место напоминает о партнере</button>
-        <button class="btn-opt" onclick="go(14)">Вспоминаю только перед сном</button>
-        <button class="btn-opt" onclick="go(14)">Редко, когда вижу фото</button>
-    </div>
-
-    <div class="step" id="s14">
-        <h2>Ваша финансовая ситуация?</h2>
-        <p class="desc">Стресс часто влияет на продуктивность</p>
-        <button class="btn-opt" onclick="go(15)">Стабильная</button>
-        <button class="btn-opt" onclick="go(15)">Стало сложно фокусироваться на работе</button>
-        <button class="btn-opt" onclick="go(15)">Серьезные проблемы из-за разрыва</button>
-    </div>
-
-    <div class="step" id="s15">
-        <h2>Готовы ли вы к упражнениям?</h2>
-        <button class="btn-opt" onclick="go(16)">Да, готов(а) делать всё необходимое</button>
-        <button class="btn-opt" onclick="go(16)">Хочу сначала изучить теорию</button>
-        <button class="btn-opt" onclick="go(16)">Мне нужно что-то очень простое</button>
-    </div>
-
-    <div class="step" id="s16">
-        <h2>Какой формат уроков вам ближе?</h2>
-        <button class="btn-opt" onclick="go(17)">Текстовые инструкции и чек-листы</button>
-        <button class="btn-opt" onclick="go(17)">Аудио-практики (медитации)</button>
-        <button class="btn-opt" onclick="go(17)">Короткие видео-разборы</button>
-    </div>
+    <div class="step" id="s2"><h2>Ваш возраст</h2><button class="btn-opt" onclick="go(3)">18-25</button><button class="btn-opt" onclick="go(3)">26-35</button><button class="btn-opt" onclick="go(3)">36-45</button><button class="btn-opt" onclick="go(3)">46+</button></div>
+    <div class="step" id="s3"><h2>Срок отношений</h2><button class="btn-opt" onclick="go(4)">До года</button><button class="btn-opt" onclick="go(4)">1-3 года</button><button class="btn-opt" onclick="go(4)">3-5 лет</button><button class="btn-opt" onclick="go(4)">5+ лет</button></div>
+    <div class="step" id="s4"><h2>Инициатор</h2><button class="btn-opt" onclick="go(5)">Я</button><button class="btn-opt" onclick="go(5)">Партнер</button><button class="btn-opt" onclick="go(5)">Оба</button></div>
+    <div class="step" id="s5"><h2>Соцсети</h2><button class="btn-opt" onclick="go(6)">Часто</button><button class="btn-opt" onclick="go(6)">Редко</button><button class="btn-opt" onclick="go(6)">Никогда</button></div>
+    <div class="step" id="s6"><h2>Общие связи</h2><button class="btn-opt" onclick="go(7)">Дети/Дом</button><button class="btn-opt" onclick="go(7)">Друзья</button><button class="btn-opt" onclick="go(7)">Нет</button></div>
+    <div class="step" id="s7"><h2>Чувства</h2><button class="btn-opt" onclick="go(8)">Гнев</button><button class="btn-opt" onclick="go(8)">Боль</button><button class="btn-opt" onclick="go(8)">Пустота</button></div>
+    <div class="step" id="s8"><h2>Аппетит</h2><button class="btn-opt" onclick="go(9)">Много ем</button><button class="btn-opt" onclick="go(9)">Не ем</button><button class="btn-opt" onclick="go(9)">Норма</button></div>
+    <div class="step" id="s9"><h2>Сон</h2><button class="btn-opt" onclick="go(10)">Бессонница</button><button class="btn-opt" onclick="go(10)">Много сплю</button><button class="btn-opt" onclick="go(10)">Норма</button></div>
+    <div class="step" id="s10"><h2>Контакт</h2><button class="btn-opt" onclick="go(11)">Общаемся</button><button class="btn-opt" onclick="go(11)">Редко</button><button class="btn-opt" onclick="go(11)">Игнор</button></div>
+    <div class="step" id="s11"><h2>Цель</h2><button class="btn-opt" onclick="go(12)">Вернуть</button><button class="btn-opt" onclick="go(12)">Забыть</button><button class="btn-opt" onclick="go(12)">Успокоиться</button></div>
+    <div class="step" id="s12"><h2>Поддержка</h2><button class="btn-opt" onclick="go(13)">Есть</button><button class="btn-opt" onclick="go(13)">Нет</button></div>
+    <div class="step" id="s13"><h2>Флешбэки</h2><button class="btn-opt" onclick="go(14)">Постоянно</button><button class="btn-opt" onclick="go(14)">Иногда</button></div>
+    <div class="step" id="s14"><h2>Финансы</h2><button class="btn-opt" onclick="go(15)">Ок</button><button class="btn-opt" onclick="go(15)">Проблемы</button></div>
+    <div class="step" id="s15"><h2>Готовность</h2><button class="btn-opt" onclick="go(16)">Да</button><button class="btn-opt" onclick="go(16)">Не знаю</button></div>
+    <div class="step" id="s16"><h2>Формат</h2><button class="btn-opt" onclick="go(17)">PDF</button><button class="btn-opt" onclick="go(17)">Видео</button></div>
 
     <div class="step" id="s17">
-        <h2>Ваш анализ почти завершен!</h2>
-        <p class="desc">Мы подготовили персональный PDF-план на основе ваших ответов.</p>
-        <input type="email" id="email" placeholder="Введите ваш Email" required>
-        <button class="cta-button" onclick="validateAndGo(18)">Получить результаты 📩</button>
+        <h2>Введите почту</h2>
+        <input type="email" id="email" style="width:100%; padding:15px; border-radius:10px; border:1px solid #ccc; margin-bottom:20px;">
+        <button class="btn-opt" onclick="validateAndGo(18)" style="background:var(--primary); color:white; justify-content:center;">Рассчитать план</button>
     </div>
 
     <div class="step" id="s18">
-        <h2 id="loader-status">Анализируем данные...</h2>
-        <div style="height:10px; background:#eee; border-radius:10px; overflow:hidden; margin:30px 0;">
-            <div id="loader-fill" style="width:0%; height:100%; background:var(--accent); transition:1.2s;"></div>
+        <div class="loader-media" id="loader-images">
+            <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400" class="active">
+            <img src="https://images.unsplash.com/photo-1499209974431-9dac3adaf471?w=400">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400">
         </div>
-        <div id="log" style="font-size:0.85rem; color:#64748B; line-height:2.2; text-align:left;"></div>
+        <div class="spinner-circle"></div>
+        <h2 id="l-status" style="margin-top:20px;">Анализ ответов...</h2>
+        <div id="l-log" style="font-size:0.8rem; color:gray; text-align:center;"></div>
     </div>
 
-    <div class="step" id="s19" style="padding:0;">
-        <div class="timer-header">Спецпредложение истекает: <span id="timer">09:59</span></div>
-        <div style="padding:25px;">
-            <h2>План готов на 100%</h2>
-            <div class="price-box">
-                <div style="font-size:1.3rem; font-weight:700; margin-bottom:15px;">Курс "Восстановление 2.0"</div>
-                <ul style="padding-left:20px; font-size:0.9rem; color:#475569; margin-bottom:20px;">
-                    <li>30-дневный график заданий</li>
-                    <li>Техники эмоциональной разрядки</li>
-                    <li>Секретный протокол "No Contact"</li>
-                </ul>
-                <div style="display:flex; justify-content:space-between; align-items:center; pt:15px; border-top:1px solid #FDE68A;">
-                    <span style="color:#94A3B8; text-decoration:line-through;">$49.00</span>
-                    <span style="font-size:2.2rem; font-weight:800; color:var(--primary);">$9.95</span>
-                </div>
+    <div class="step" id="s19">
+        <h2 style="margin-bottom:10px;">План готов на 100%</h2>
+        <p style="text-align:center; color:gray; font-size:0.8rem; margin-bottom:20px;">На основе ваших 16 ответов мы сформировали 3 пути решения</p>
+
+        <div class="info-row"><span>🚀</span> Что внутри: 30 уроков, чек-листы по восстановлению, доступ в закрытый чат.</div>
+        <div class="info-row"><span>📈</span> Результат: Снижение боли на 70% уже через 14 дней (согласно тестам).</div>
+
+        <div class="pricing-grid">
+            <div class="plan-card" onclick="selP(this)">
+                <div style="font-weight:700">BASIC</div>
+                <div style="font-size:0.8rem; color:gray;">Только PDF-инструкция</div>
+                <div style="font-size:1.2rem; font-weight:800; margin-top:10px;">$9.90</div>
             </div>
-            <button class="cta-button" onclick="alert('Переход к оплате...')">Открыть доступ сейчас 💎</button>
-            <p style="text-align:center; font-size:0.75rem; color:gray; margin-top:20px;">Гарантия возврата средств в течение 30 дней.</p>
+            <div class="plan-card active" onclick="selP(this)">
+                <div class="popular-badge">POPULAR</div>
+                <div style="font-weight:700">PREMIUM</div>
+                <div style="font-size:0.8rem; color:gray;">План + Видео-курс</div>
+                <div style="font-size:1.2rem; font-weight:800; margin-top:10px;">$19.90</div>
+            </div>
+            <div class="plan-card" onclick="selP(this)">
+                <div style="font-weight:700">ULTRA</div>
+                <div style="font-size:0.8rem; color:gray;">Всё + Консультация</div>
+                <div style="font-size:1.2rem; font-weight:800; margin-top:10px;">$49.90</div>
+            </div>
         </div>
+
+        <button class="btn-opt" style="background:var(--primary); color:white; margin-top:25px; justify-content:center;">Получить доступ</button>
+        <div style="text-align:center; font-size:0.7rem; color:gray; margin-top:15px;">🔒 Безопасная оплата. Гарантия возврата 30 дней.</div>
     </div>
 </div>
 
 <script>
-    let currentStep = 1;
-
+    let cur = 1;
     function go(n) {
-        document.getElementById(`s${currentStep}`).classList.remove('active');
-        document.getElementById(`s${n}`).classList.add('active');
-        currentStep = n;
-        
-        const percent = (n / 19) * 100;
-        document.getElementById('fill').style.width = percent + '%';
-        
-        if(n === 18) startLoading();
-        if(n === 19) startTimer();
+        document.getElementById('s'+cur).classList.remove('active');
+        document.getElementById('s'+n).classList.add('active');
+        cur = n;
+        document.getElementById('fill').style.width = (n/19*100)+'%';
+        if(n===18) runLoader();
         window.scrollTo(0,0);
     }
 
     function validateAndGo(n) {
-        const mail = document.getElementById('email').value;
-        if(mail.includes('@') && mail.length > 5) go(n);
-        else alert('Введите корректный Email');
+        if(document.getElementById('email').value.includes('@')) go(n);
+        else alert('Введите Email');
     }
 
-    function startLoading() {
-        const fill = document.getElementById('loader-fill');
-        const log = document.getElementById('log');
-        const tasks = [
-            "Оценка стадии проживания горя...",
-            "Расчет индекса привязанности...",
-            "Адаптация упражнений под возраст...",
-            "Подготовка медиа-материалов...",
-            "Генерация финального отчета."
-        ];
-
+    function runLoader() {
+        const imgs = document.querySelectorAll('#loader-images img');
         let i = 0;
-        const interval = setInterval(() => {
-            if(i < tasks.length) {
-                fill.style.width = ((i + 1) * 20) + '%';
-                log.innerHTML += `<div>✓ ${tasks[i]}</div>`;
-                i++;
-            } else {
-                clearInterval(interval);
-                setTimeout(() => go(19), 800);
+        const itv = setInterval(() => {
+            imgs.forEach(img => img.classList.remove('active'));
+            imgs[i % imgs.length].classList.add('active');
+            i++;
+        }, 1500);
+
+        const logs = ["Психологический профиль...", "Гормональный баланс...", "План реабилитации..."];
+        let j = 0;
+        const lInt = setInterval(() => {
+            document.getElementById('l-log').innerText = logs[j];
+            j++;
+            if(j >= logs.length) {
+                clearInterval(itv); clearInterval(lInt);
+                setTimeout(() => go(19), 1000);
             }
-        }, 1200);
+        }, 2000);
     }
 
-    function startTimer() {
-        let time = 599;
-        const display = document.getElementById('timer');
-        setInterval(() => {
-            let m = Math.floor(time / 60);
-            let s = time % 60;
-            display.textContent = `${m}:${s < 10 ? '0' + s : s}`;
-            if (time > 0) time--;
-        }, 1000);
+    function selP(el) {
+        document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('active'));
+        el.classList.add('active');
     }
 </script>
-
 </body>
 </html>
