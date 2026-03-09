@@ -1226,10 +1226,10 @@
             font-size: 0.8rem;
             color: var(--text-muted);
             border-top: 1px solid rgba(245, 158, 11, 0.08);
-            margin-top: 30px;
+            margin-top: 20px;
         }
         .footer-links a {
-            color: var(--success);
+            color: var(--text-secondary);
             text-decoration: none;
             margin: 0 12px;
             transition: color 0.25s;
@@ -1818,30 +1818,12 @@
             margin-top: 30px;
         }
         .lp-footer a {
-            color: var(--success);
+            color: var(--text-secondary);
             text-decoration: none;
+            margin: 0 12px;
+            transition: color 0.25s;
         }
-
-        @media (hover: hover) {
-            .card-opt, .visual-option, .buy-btn, .email-btn, .next-btn, .price-card { will-change: transform; }
-        }
-
-        @media (max-width: 360px) {
-            #app { padding: 0; border-radius: 0; }
-            .step-title { font-size: 1.55rem; }
-            .card-opt { padding: 18px 20px; }
-            .price-card.recommended { transform: scale(1); }
-            .visual-options { gap: 16px; }
-        }
-
-        .card-opt:focus, .input-field:focus, .buy-btn:focus, .email-btn:focus, .visual-option:focus, .next-btn:focus, .price-card:focus {
-            outline: 3px solid var(--accent-glow);
-            outline-offset: 3px;
-        }
-        .sr-only {
-            position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-            overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
-        }
+        .lp-footer a:hover { color: var(--accent); }
 
         .offer-warning-block {
             background: rgba(239, 68, 68, 0.1);
@@ -1971,6 +1953,55 @@
             border-top: 1px solid rgba(255,255,255,0.1);
             padding-top: 10px;
         }
+
+        /* Modal Styles for Legal Pages */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 200; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.8); 
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background-color: var(--primary-light);
+            margin: 10% auto; 
+            padding: 30px;
+            border: 1px solid var(--accent);
+            border-radius: 16px;
+            width: 90%;
+            max-width: 500px;
+            color: var(--text);
+            position: relative;
+        }
+        .close-modal {
+            color: var(--text-muted);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+        .close-modal:hover {
+            color: var(--accent);
+        }
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .modal-text {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
     </style>
 </head>
 <body>
@@ -2097,11 +2128,11 @@
     <div class="step" id="s5" role="tabpanel">
         <div class="info-screen">
             <h2 class="info-screen-title">Вы находитесь в правильном месте</h2>
-            <p class="info-screen-subtitle">Я уже помг более 263 людям восстановить отношения и обрести уверенность</p>
+            <p class="info-screen-subtitle">Я уже помог более 263 людям восстановить отношения и обрести уверенность</p>
             
             <div style="display: flex; justify-content: center; gap: 20px; margin: 30px 0; flex-wrap: wrap;">
                 <div style="background: rgba(245, 158, 11, 0.1); padding: 20px; border-radius: 12px; min-width: 120px;">
-                    <div style="font-size: 2rem; font-weight: 800; color: var(--accent);">10k+</div>
+                    <div style="font-size: 2rem; font-weight: 800; color: var(--accent);">263+</div>
                     <div style="font-size: 0.8rem; color: var(--text-secondary);">Довольных клиентов</div>
                 </div>
                 <div style="background: rgba(16, 185, 129, 0.1); padding: 20px; border-radius: 12px; min-width: 120px;">
@@ -2110,7 +2141,7 @@
                 </div>
             </div>
 
-            <p class="info-screen-subtitle" style="font-size: 0.95rem;">Ваша ситуация уникальна, но решение уже существует. Моя методика проанализировала тысячи похожих случаев и готова предложить оптимальную стратегию именно для вас.</p>
+            <p class="info-screen-subtitle" style="font-size: 0.95rem;">Ваша ситуация уникальна, но решение уже существует. Моя методика проанализировала сотни похожих случаев и готова предложить оптимальную стратегию именно для вас.</p>
 
             <button class="next-btn" onclick="go(6)">Продолжить анализ →</button>
         </div>
@@ -2424,7 +2455,7 @@
     <!-- Шаг 17: Email -->
     <div class="step" id="s17" role="tabpanel">
         <div class="email-result-screen">
-            <h2 class="email-result-title">Отправить ваш протокол на почту, чтобы не потерять доступ к скидке</h2>
+            <h2 class="email-result-title">Получите ваш протокол на почту, чтобы не потерять доступ к скидке</h2>
             
             <div class="email-result-img-container">
                 <div style="width: 100px; height: 140px; background: var(--success); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem; text-align: center; padding: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.3);">
@@ -2640,9 +2671,6 @@
                 <div class="calm-guarantee-text">
                     Если через 7 дней выполнения протокола вы не почувствуете облегчения, мы вернем деньги. Мы продаем результат, а не PDF-файлы.
                 </div>
-                <p class="legal-text" style="font-size: 0.7rem; color: var(--text-muted); margin-top: 10px;">
-                    Нажимая «Получить мой план», вы соглашаетесь на автоматическое продление подписки. Первые 4 недели – $9.92, затем $49.93/4 недели. Отмена через email: info@detox.pro.
-                </p>
             </div>
 
             <!-- Reviews Carousel -->
@@ -2794,112 +2822,8 @@
                 </div>
                 <div class="lp-important-box">
                     <span class="lp-important-icon">💰</span>
-                    <p class="lp-important-text">Если вы попробуете и не увидите результатов в первые 30 дней, <span>я верну вам 100% ваших денег</span> и даже позволю вам оставить план бесплатно.</p>
+                    <p class="lp-important-text">Если вы попробуете и не увидите результатов в первых 7 дней, <span>я верну вам 100% ваших денег</span> и даже позволю вам оставить план бесплатно.</p>
                 </div>
-            </div>
-
-            <!-- Pricing Cards (Repeated) -->
-            <div class="lp-timer-box" style="background: rgba(245, 158, 11, 0.15); border: 1px solid var(--accent); color: var(--accent-light);">
-                <span>⏰</span> Это предложение заканчивается через <span id="timer-inline-2">06:34</span> минут
-            </div>
-            
-            <div class="steps-indicator" style="color: var(--text); padding: 0 10px;">
-                <span class="step-active">1. Выберите свой план</span>
-                <span class="step-inactive">2. Способ оплаты</span>
-            </div>
-
-            <div class="pricing-cards" style="margin: 10px 20px;">
-                <!-- 1 Week Plan -->
-                <div class="price-card price-card-simple" tabindex="0" role="radio" aria-label="Тариф 1 неделя" onclick="selectPlan(this, '1week')">
-                    <div class="price-card-left">
-                        <div class="price-checkbox" style="border-color: #4B5563; background: rgba(15, 23, 42, 0.5);">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        </div>
-                        <div class="price-card-info">
-                            <h3 class="price-card-title" style="color: var(--text);">Протокол «АНТИ-СОРЫВ»</h3>
-                            <span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Экстренная помощь</span>
-                            <div class="price-card-old-total" style="color: var(--text-muted);">
-                                <span class="strike">$39.99</span>
-                                <span class="bold" style="color: var(--text);">$9.99</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="price-card-right">
-                        <span class="price-card-old-daily" style="color: var(--text-muted);">$5.71</span>
-                        <span class="price-card-new-daily" style="color: var(--accent);">$1.43</span>
-                        <span class="price-card-period" style="color: var(--text-secondary);">в день</span>
-                    </div>
-                    <a href="https://secure.wayforpay.com/button/b8061f99dcd1c" style="position: absolute; inset: 0; z-index: 10;" aria-label="Купить Антисрыв"></a>
-                </div>
-
-                <!-- 4 Weeks Plan -->
-                <div class="price-card recommended" tabindex="0" role="radio" aria-label="Тариф 4 недели" onclick="selectPlan(this, '4weeks')">
-                    <div class="price-card-badge" style="background: #F59E0B;">Самый популярный</div>
-                    <div class="price-card-left">
-                        <div class="price-checkbox" style="border-color: #4B5563; background: rgba(15, 23, 42, 0.5);">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        </div>
-                        <div class="price-card-info">
-                            <h3 class="price-card-title" style="color: var(--text);">Курс «ПЕРЕЗАГРУЗКА»</h3>
-                            <span class="price-card-discount" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-light);">Новые привычки</span>
-                            <div class="price-card-old-total" style="color: var(--text-muted);">
-                                <span class="strike">$59.99</span>
-                                <span class="bold" style="color: var(--text);">$14.99</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="price-card-right">
-                        <span class="price-card-old-daily" style="color: var(--text-muted);">$2.14</span>
-                        <span class="price-card-new-daily" style="color: var(--accent);">$0.54</span>
-                        <span class="price-card-period" style="color: var(--text-secondary);">в день</span>
-                    </div>
-                    <a href="https://secure.wayforpay.com/button/b552a6aef6ce2" style="position: absolute; inset: 0; z-index: 10;" aria-label="Купить Перезагрузка"></a>
-                </div>
-
-                <!-- 8 Weeks Plan -->
-                <div class="price-card price-card-gold" tabindex="0" role="radio" aria-label="Тариф 8 недель" onclick="selectPlan(this, '8weeks')">
-                    <div class="price-card-badge" style="background: var(--success);">Лучшая цена</div>
-                    <div class="price-card-left">
-                        <div class="price-checkbox" style="border-color: #4B5563; background: rgba(15, 23, 42, 0.5);">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        </div>
-                        <div class="price-card-info">
-                            <h3 class="price-card-title" style="color: var(--text);">Стратегия «НОВАЯ ЖИЗНЬ»</h3>
-                            <span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Фундаментальный результат</span>
-                            <div class="price-card-old-total" style="color: var(--text-muted);">
-                                <span class="strike">$119.99</span>
-                                <span class="bold" style="color: var(--text);">$27.99</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="price-card-right">
-                        <span class="price-card-old-daily" style="color: var(--text-muted);">$2.14</span>
-                        <span class="price-card-new-daily" style="color: var(--accent);">$0.50</span>
-                        <span class="price-card-period" style="color: var(--text-secondary);">в день</span>
-                    </div>
-                    <a href="https://secure.wayforpay.com/button/bc5112a184f73" style="position: absolute; inset: 0; z-index: 10;" aria-label="Купить Новая жизнь"></a>
-                </div>
-            </div>
-
-            <!-- Guarantee (Repeated) -->
-            <div class="lp-guarantee-box" style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(245, 158, 11, 0.1);">
-                <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 15px; font-weight: 800; font-size: 1.1rem; color: var(--text-secondary);">
-                    <span style="color: var(--success); font-size: 1.5rem;">30 ДНЕЙ</span>
-                    <svg class="guarantee-badge-img" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="50" r="45" stroke="#10B981" stroke-width="5"/>
-                        <path d="M50 25V50L65 65" stroke="#10B981" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <text x="50" y="85" text-anchor="middle" fill="#10B981" font-size="10" font-weight="bold">100% GUARANTEE</text>
-                    </svg>
-                    <span>ГАРАНТИЯ ВОЗВРАТА ДЕНЕГ</span>
-                </div>
-                <button class="buy-btn-large" onclick="handleBuyBtnClick()">Получить мой план</button>
-                <!-- Guarantee of Calm Text -->
-                <div class="calm-guarantee-text">
-                    Если через 7 дней выполнения протокола вы не почувствуете облегчения, мы вернем деньги. Мы продаем результат, а не PDF-файлы.
-                </div>
-                <p class="legal-text" style="font-size: 0.7rem; color: var(--text-muted); margin-top: 10px;">
-                    Нажимая «Получить мой план», вы соглашаетесь на автоматическое продление подписки. Первые 4 недели – $9.92, затем $49.93/4 недели. Отмена через email: info@detox.pro.
-                </p>
             </div>
 
             <!-- Footer -->
@@ -2910,15 +2834,43 @@
                         <path d="M2 17L12 22L22 17" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M2 12L12 17L22 12" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                    <span style="font-weight: 800; color: var(--text);">Detox Pro</span>
+                    <span style="font-weight: 800; color: var(--text);">Back4heart</span>
                 </div>
-                <p>© 2024, Detox Pro. Все права защищены.</p>
-                <p><a href="#">Политика конфиденциальности</a> | <a href="#">Условия использования</a></p>
+                <p>© 2026, Back4heart. Все права защищены.</p>
+                <div style="margin-top: 15px;">
+                    <a href="#" onclick="openModal('privacyModal')">Политика конфиденциальности</a> | 
+                    <a href="#" onclick="openModal('termsModal')">Условия использования</a> | 
+                    <a href="https://t.me/back4heart" target="_blank">Контакты</a>
+                </div>
             </div>
 
         </div>
     </div>
 
+</div>
+
+<!-- Privacy Policy Modal -->
+<div id="privacyModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('privacyModal')">&times;</span>
+        <h2 class="modal-title">Политика конфиденциальности</h2>
+        <div class="modal-text">
+            <p>Мы уважаем вашу конфиденциальность. Вся информация, предоставленная вами в ходе теста, используется исключительно для формирования персональной стратегии восстановления.</p>
+            <p>Мы не передаем ваши данные третьим лицам и не используем их для рассылки спама.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Terms of Use Modal -->
+<div id="termsModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('termsModal')">&times;</span>
+        <h2 class="modal-title">Условия использования</h2>
+        <div class="modal-text">
+            <p>Используя данный сервис, вы соглашаетесь с тем, что предоставленная информация носит рекомендательный характер.</p>
+            <p>Сервис не заменяет профессиональную медицинскую или психологическую помощь.</p>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -3155,6 +3107,22 @@
         window.location.href = links[recommendedPlan];
     }
 
+    // Modal Functions
+    function openModal(modalId) {
+        document.getElementById(modalId).style.display = "block";
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+    }
+
+    // Close modal if clicked outside
+    window.onclick = function(event) {
+        if (event.target.classList.contains('modal')) {
+            event.target.style.display = "none";
+        }
+    }
+
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') {
             const activeStep = document.querySelector('.step.active');
@@ -3194,22 +3162,6 @@
         }, 100);
     });
 </script>
-
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
-
-    ym(90131660, 'init', {webvisor:true, clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/90131660" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
-
 
 </body>
 </html>
