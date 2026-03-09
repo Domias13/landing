@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Персональная стратегия восстановления | Detox Elite</title>
+    <title>Персональная стратегия восстановления | Detox Pro</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230F172A'/%3E%3Ctext x='50' y='65' text-anchor='middle' fill='%23F59E0B' font-size='50' font-weight='bold'%3ED%3C/text%3E%3C/svg%3E">
     
     <!-- Meta Tags -->
-    <meta property="og:title" content="Персональная стратегия восстановления | Detox Elite">
+    <meta property="og:title" content="Персональная стратегия восстановления | Detox Pro">
     <meta property="og:description" content="Персональная стратегия восстановления отношений">
     <meta property="og:type" content="website">
     <meta name="description" content="Персональная стратегия восстановления отношений">
@@ -277,7 +277,6 @@
             padding: 0 32px;
         }
 
-        /* Обновленные кнопки - увеличена ширина на 20% (10% в каждую сторону) */
         .card-opt {
             position: relative;
             border-radius: var(--border-radius-sm);
@@ -287,7 +286,7 @@
             border: 2px solid rgba(245, 158, 11, 0.15);
             background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
             min-height: 77px;
-            max-width: 290px; /* Увеличено с 242px до 290px */
+            max-width: 290px;
             margin: 0 auto;
             width: 100%;
             padding: 0;
@@ -1227,10 +1226,10 @@
             font-size: 0.8rem;
             color: var(--text-muted);
             border-top: 1px solid rgba(245, 158, 11, 0.08);
-            margin-top: 20px;
+            margin-top: 30px;
         }
         .footer-links a {
-            color: var(--text-secondary);
+            color: var(--success);
             text-decoration: none;
             margin: 0 12px;
             transition: color 0.25s;
@@ -1345,7 +1344,7 @@
         .email-result-input:focus {
             border-color: var(--accent);
             outline: none;
-            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 4px var(--accent-glow);
         }
         .email-result-privacy {
             font-size: 0.85rem;
@@ -1844,7 +1843,6 @@
             overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
         }
 
-        /* NEW STYLES FOR OFFER SCREEN */
         .offer-warning-block {
             background: rgba(239, 68, 68, 0.1);
             border: 1px solid var(--danger);
@@ -1935,54 +1933,43 @@
             background: rgba(30, 41, 59, 0.5);
         }
 
-        .cafe-comparison {
-            font-size: 0.85rem;
+        .diagnosis-block {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid var(--danger);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 10px 20px 20px 20px;
+            text-align: left;
+        }
+        .diagnosis-title {
+            color: var(--danger);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .diagnosis-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        .diagnosis-highlight {
+            color: var(--text);
+            font-weight: 700;
+        }
+        
+        .calm-guarantee-text {
+            font-size: 0.75rem;
             color: var(--text-muted);
             text-align: center;
             margin-top: 10px;
+            line-height: 1.4;
             font-style: italic;
             border-top: 1px solid rgba(255,255,255,0.1);
             padding-top: 10px;
-        }
-
-        /* Live Feed Notification */
-        .live-feed-notification {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            max-width: 440px;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--success);
-            border-radius: 12px;
-            padding: 12px 16px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transform: translateY(150%);
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 200;
-            margin: 0 auto;
-            left: 50%;
-            transform: translateX(-50%) translateY(150%);
-        }
-        .live-feed-notification.show {
-            transform: translateX(-50%) translateY(0);
-        }
-        .live-feed-icon {
-            font-size: 1.5rem;
-        }
-        .live-feed-text {
-            font-size: 0.85rem;
-            color: var(--text);
-            line-height: 1.3;
-        }
-        .live-feed-time {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 2px;
         }
     </style>
 </head>
@@ -2024,19 +2011,19 @@
         <h2 class="step-title">Какой у вас возраст?</h2>
         <div class="visual-options" style="grid-template-columns: repeat(2, 1fr);">
             <div class="visual-option" tabindex="0" role="radio" aria-label="20 лет" onclick="selectVisualOption(this, 'age', '20'); go(3)">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=500&fit=crop" alt="20 лет">
+                <img src="" alt="20 лет">
                 <div class="visual-label">20 лет</div>
             </div>
             <div class="visual-option" tabindex="0" role="radio" aria-label="30 лет" onclick="selectVisualOption(this, 'age', '30'); go(3)">
-                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop" alt="30 лет">
+                <img src="" alt="30 лет">
                 <div class="visual-label">30 лет</div>
             </div>
             <div class="visual-option" tabindex="0" role="radio" aria-label="40 лет" onclick="selectVisualOption(this, 'age', '40'); go(3)">
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop" alt="40 лет">
+                <img src="" alt="40 лет">
                 <div class="visual-label">40 лет</div>
             </div>
             <div class="visual-option" tabindex="0" role="radio" aria-label="50 лет" onclick="selectVisualOption(this, 'age', '50'); go(3)">
-                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop" alt="50 лет">
+                <img src="" alt="50 лет">
                 <div class="visual-label">50 лет</div>
             </div>
         </div>
@@ -2155,21 +2142,20 @@
         </div>
     </div>
 
-    <!-- Шаг 7: ИНФО-ЭКРАН "ЦИФРОВАЯ ЛОМКА" -->
+    <!-- NEW Шаг 7: Петля зависимости -->
     <div class="step" id="s7" role="tabpanel">
         <div class="info-screen">
-            <h2 class="info-screen-title" style="color: var(--danger);">Диагноз: Цифровая ломка</h2>
-            <p class="info-screen-subtitle" style="color: var(--text); font-weight: 500;">Ваш мозг сейчас работает как у зависимого.</p>
-            
+            <h2 class="step-title" style="color: var(--danger);">Петля зависимости</h2>
             <div style="text-align: left; background: rgba(239, 68, 68, 0.1); padding: 24px; border-radius: 16px; border: 1px solid var(--danger); margin: 20px 0;">
                 <p style="font-size: 1rem; line-height: 1.6; color: var(--text);">
-                    Каждая проверка его/её страницы дает всплеск ложной надежды (дофамин), за которой следует глубокий провал (кортизол). 
+                    Каждая проверка профиля — это не поиск информации. Это попытка получить дозу временного успокоения. 
                     <br><br>
-                    <strong style="color: var(--danger);">Вы обнуляете свое восстановление каждый раз, когда берете телефон в руки.</strong>
+                    Но за этой дозой всегда следует еще более глубокий провал и чувство унижения. 
+                    <br><br>
+                    <strong style="color: var(--danger);">То, что вы делаете сейчас — это саморазрушение.</strong>
                 </p>
             </div>
-
-            <button class="next-btn" onclick="go(8)">Понятно, что делать дальше? →</button>
+            <button class="next-btn" onclick="go(8)">Понятно, идем дальше →</button>
         </div>
     </div>
 
@@ -2391,25 +2377,42 @@
         </div>
     </div>
 
-    <!-- Шаг 15: Готовность -->
+    <!-- NEW Шаг 15: Эмоциональное истощение -->
     <div class="step" id="s15" role="tabpanel">
+        <div class="info-screen">
+            <h2 class="step-title" style="color: var(--warning);">Эмоциональное истощение</h2>
+            <div style="text-align: left; background: rgba(245, 158, 11, 0.1); padding: 24px; border-radius: 16px; border: 1px solid var(--warning); margin: 20px 0;">
+                <p style="font-size: 1rem; line-height: 1.6; color: var(--text);">
+                    <strong>Ваш внутренний ресурс на нуле.</strong>
+                    <br><br>
+                    Постоянные мысли о прошлом сжигают столько же энергии, сколько 12-часовая смена тяжелого физического труда. Именно поэтому у вас нет сил на работу и новую жизнь.
+                    <br><br>
+                    <strong style="color: var(--warning);">Без внешнего плана вы не восстановитесь.</strong>
+                </p>
+            </div>
+            <button class="next-btn" onclick="go(16)">Понятно, идем дальше →</button>
+        </div>
+    </div>
+
+    <!-- Шаг 16: Готовность -->
+    <div class="step" id="s16" role="tabpanel">
         <div class="block-label">🚀 Блок 4: Готовность</div>
         <h2 class="step-title">Готовы ли вы уделять 15 минут в день чётким инструкциям ради результата?</h2>
         <p class="step-subtitle" style="margin-bottom:26px">Это микро-обязательство — основа вашего успеха</p>
         <div class="options" role="radiogroup">
-            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'commitment', 'yes'); go(16)">
+            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'commitment', 'yes'); go(17)">
                 <div class="card-opt-content">
                     <span class="card-opt-text">Да, я готов(а) следовать плану</span>
                     <span class="card-opt-icon">✅</span>
                 </div>
             </div>
-            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'commitment', 'maybe'); go(16)">
+            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'commitment', 'maybe'); go(17)">
                 <div class="card-opt-content">
                     <span class="card-opt-text">Готов(а) попробовать, если будет понятно</span>
                     <span class="card-opt-icon">🤔</span>
                 </div>
             </div>
-            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'commitment', 'need-help'); go(16)">
+            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'commitment', 'need-help'); go(17)">
                 <div class="card-opt-content">
                     <span class="card-opt-text">Мне нужна поддержка и структура</span>
                     <span class="card-opt-icon">🤝</span>
@@ -2418,26 +2421,42 @@
         </div>
     </div>
 
-    <!-- Шаг 16: ИНФО-ЭКРАН "ЭНЕРГЕТИЧЕСКИЙ ИЗНОС" -->
-    <div class="step" id="s16" role="tabpanel">
-        <div class="info-screen">
-            <h2 class="info-screen-title" style="color: var(--warning);">Диагноз: Энергетический износ</h2>
-            <p class="info-screen-subtitle" style="color: var(--text); font-weight: 500;">Ваша "эмоциональная жвачка" съедает до 70% ваших ресурсов.</p>
+    <!-- Шаг 17: Email -->
+    <div class="step" id="s17" role="tabpanel">
+        <div class="email-result-screen">
+            <h2 class="email-result-title">Сохраните ваш протокол, чтобы не потерять доступ к скидке</h2>
             
-            <div style="text-align: left; background: rgba(245, 158, 11, 0.1); padding: 24px; border-radius: 16px; border: 1px solid var(--warning); margin: 20px 0;">
-                <p style="font-size: 1rem; line-height: 1.6; color: var(--text);">
-                    Именно поэтому у вас нет сил на работу и жизнь. Вы тратите всю энергию на внутреннюю борьбу.
-                    <br><br>
-                    <strong style="color: var(--warning);">Если не остановить этот цикл сейчас, наступит стадия клинической апатии.</strong>
-                </p>
+            <div class="email-result-img-container">
+                <div style="width: 100px; height: 140px; background: var(--success); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem; text-align: center; padding: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.3);">
+                    Персональный<br>Протокол<br>Восстановления
+                </div>
+                <div class="email-result-check">✔</div>
             </div>
 
-            <button class="next-btn" onclick="go(17)">Запустить генерацию плана →</button>
+            <form class="email-form" onsubmit="submitNewEmail(event)" style="padding: 0;">
+                <input type="email" id="newUserEmail" class="email-result-input" placeholder="Введите адрес электронной почты" required>
+                
+                <div class="email-result-privacy">
+                    <span style="font-size: 1.2rem;">🔒</span>
+                    <span>Ваши данные зашифрованы. Протокол будет отправлен немедленно.</span>
+                </div>
+            </form>
+
+            <div class="email-result-social-proof">
+                <span class="email-result-social-icon">🙌</span>
+                <span>БОЛЕЕ 236 ЧЕЛОВЕК ВЫБРАЛИ МЕНЯ</span>
+            </div>
+
+            <button type="button" class="email-result-btn" onclick="submitNewEmail(event)">Сохранить Протокол</button>
+
+            <p class="email-result-terms">
+                Продолжая, вы соглашаетесь с моими <a href="#">условиями обслуживания</a> и <a href="#">политикой конфиденциальности</a>
+            </p>
         </div>
     </div>
 
-    <!-- Шаг 17: Лоадер -->
-    <div class="step" id="s17" role="tabpanel" aria-live="polite">
+    <!-- NEW Шаг 18: Лоадер (только загрузка) -->
+    <div class="step" id="s18" role="tabpanel">
         <div class="loader-box">
             <div class="pulse-dots">
                 <div class="pulse-dot"></div>
@@ -2445,8 +2464,7 @@
                 <div class="pulse-dot"></div>
                 <div class="pulse-dot"></div>
             </div>
-            <h2 style="margin-bottom:12px; font-family: 'Playfair Display', serif;" id="load-text">Анализ завершен...</h2>
-            <p style="color: var(--text-secondary); margin:0; font-size: 0.98rem;">Формируется персональная стратегия</p>
+            <h2 style="margin-bottom:12px; font-family: 'Playfair Display', serif;" id="load-text">Идет расчет индивидуального плана...</h2>
             
             <div class="analysis-steps">
                 <div class="analysis-step" id="step-a1">
@@ -2473,56 +2491,27 @@
         </div>
     </div>
 
-    <!-- Шаг 18: Email Result Screen -->
-    <div class="step" id="s18" role="tabpanel">
-        <div class="email-result-screen">
-            <h2 class="email-result-title">Введите свой email, чтобы получить персональный план <strong>по восстановлению</strong></h2>
-            
-            <div class="email-result-img-container">
-                <div style="width: 100px; height: 140px; background: var(--success); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem; text-align: center; padding: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.3);">
-                    Персональная<br>стратегия<br>восстановления
-                </div>
-                <div class="email-result-check">✔</div>
-            </div>
-
-            <form class="email-form" onsubmit="submitNewEmail(event)" style="padding: 0;">
-                <input type="email" id="newUserEmail" class="email-result-input" placeholder="Введите адрес электронной почты" required>
-                
-                <div class="email-result-privacy">
-                    <span style="font-size: 1.2rem;">🔒</span>
-                    <span>Я ценю вашу конфиденциальность и гарантирую, что не продам и не сдам ваши личные данные. Кроме того, я не занимаюсь рассылкой спама.</span>
-                </div>
-            </form>
-
-            <div class="email-result-social-proof">
-                <span class="email-result-social-icon">🙌</span>
-                <span>БОЛЕЕ 692,418 ЧЕЛОВЕК ВЫБРАЛИ МЕНЯ</span>
-            </div>
-
-            <button type="button" class="email-result-btn" onclick="submitNewEmail(event)">Продолжить</button>
-
-            <p class="email-result-terms">
-                Продолжая, вы соглашаетесь с моими <a href="#">условиями обслуживания</a> и <a href="#">политикой конфиденциальности</a>
-            </p>
-        </div>
-    </div>
-
-    <!-- Шаг 19: ИНФО-ЭКРАН "ДИАГНОЗ" -->
+    <!-- NEW Шаг 19: Предварительный диагноз (отдельный экран) -->
     <div class="step" id="s19" role="tabpanel">
         <div class="info-screen">
-            <h2 class="info-screen-title" style="color: var(--success);">Анализ завершен</h2>
+            <h2 class="step-title" style="color: var(--danger);">Предварительный диагноз</h2>
             
-            <div style="text-align: left; background: rgba(16, 185, 129, 0.1); padding: 24px; border-radius: 16px; border: 1px solid var(--success); margin: 20px 0;">
-                <p style="font-size: 1.1rem; line-height: 1.6; color: var(--text);">
-                    <strong style="color: var(--success);">Диагноз:</strong> Выявлена критическая фиксация на прошлом.
+            <div class="diagnosis-block">
+                <div class="diagnosis-title">
+                    <span>📊</span> Результаты анализа
+                </div>
+                <p class="diagnosis-text">
+                    Уровень вашей фиксации на бывшем партнере признан <strong>критическим</strong>. 
                     <br><br>
-                    Самостоятельный выход из этой петли занимает от 2 до 5 лет. 
+                    Риск застрять в этом состоянии на годы — высокий. 
                     <br><br>
-                    <strong style="color: var(--success);">У нас есть способ сократить это до 7 дней.</strong>
+                    <span style="color: var(--text);">Ваш случай типичен для стадии хронической надежды.</span>
+                    <br><br>
+                    <strong style="color: var(--success);">Мы подготовили план экстренного выхода.</strong>
                 </p>
             </div>
 
-            <button class="next-btn" onclick="go(20)">Посмотреть варианты плана →</button>
+            <button class="next-btn" onclick="go(20)">Продолжить →</button>
         </div>
     </div>
 
@@ -2544,12 +2533,12 @@
                 <h2 class="lp-title" style="font-size: 1.6rem; margin-bottom: 20px; color: var(--danger);">Твой результат: Критическая зависимость. Медлить нельзя.</h2>
             </div>
 
-            <!-- NEW: Limit Warning -->
+            <!-- Limit Warning -->
             <div class="limit-warning-box">
                 <span>⚠️</span> Твоя персональная скидка 60% сгорит через <span id="timer-inline">10:00</span>. После этого доступ к Протоколу будет закрыт.
             </div>
 
-            <!-- NEW: Offer Warning Block -->
+            <!-- Offer Warning Block -->
             <div class="offer-warning-block">
                 <div class="offer-warning-title">
                     <span>📉</span> Что произойдет, если оставить всё как есть?
@@ -2564,14 +2553,14 @@
             </div>
 
             <div class="pricing-cards" id="plans-section" style="margin: 10px 20px;">
-                <!-- 1 Week Plan: Anti-Relapse (Simple) -->
-                <div class="price-card price-card-simple" tabindex="0" role="radio" aria-label="Тариф 1 неделя" onclick="selectPlan(this, '1week')" style="background: rgba(30, 41, 59, 0.5); border: 1px solid var(--card-border);">
+                <!-- 1 Week Plan -->
+                <div class="price-card price-card-simple" tabindex="0" role="radio" aria-label="Тариф 1 неделя" onclick="selectPlan(this, '1week')">
                     <div class="price-card-left">
                         <div class="price-checkbox" style="border-color: #4B5563; background: rgba(15, 23, 42, 0.5);">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
                         <div class="price-card-info">
-                            <h3 class="price-card-title" style="color: var(--text);">1 неделя: «Анти-Срыв»</h3>
+                            <h3 class="price-card-title" style="color: var(--text);">Протокол «АНТИ-СОРЫВ»</h3>
                             <span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Экстренная помощь</span>
                             <div class="price-card-old-total" style="color: var(--text-muted);">
                                 <span class="strike">$39.99</span>
@@ -2584,20 +2573,18 @@
                         <span class="price-card-new-daily" style="color: var(--accent);">$1.43</span>
                         <span class="price-card-period" style="color: var(--text-secondary);">в день</span>
                     </div>
-                    <div class="cafe-comparison">
-                        Стоимость одной недели свободы меньше, чем один твой поход в кафе, где ты будешь сидеть и плакать над телефоном.
-                    </div>
+                    <a href="https://secure.wayforpay.com/button/b8061f99dcd1c" style="position: absolute; inset: 0; z-index: 10;" aria-label="Купить Антисрыв"></a>
                 </div>
 
-                <!-- 4 Weeks Plan: Reboot (Recommended) -->
-                <div class="price-card recommended" tabindex="0" role="radio" aria-label="Тариф 4 недели" onclick="selectPlan(this, '4weeks')" style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9)); color: var(--text); border: 2px solid var(--accent);">
+                <!-- 4 Weeks Plan -->
+                <div class="price-card recommended" tabindex="0" role="radio" aria-label="Тариф 4 недели" onclick="selectPlan(this, '4weeks')">
                     <div class="price-card-badge" style="background: #F59E0B;">Самый популярный</div>
                     <div class="price-card-left">
-                        <div class="price-checkbox" style="border-color: var(--accent); background: var(--accent); color: var(--primary);">
+                        <div class="price-checkbox" style="border-color: #4B5563; background: rgba(15, 23, 42, 0.5);">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
                         <div class="price-card-info">
-                            <h3 class="price-card-title" style="color: var(--text);">4 недели: «Перезагрузка»</h3>
+                            <h3 class="price-card-title" style="color: var(--text);">Курс «ПЕРЕЗАГРУЗКА»</h3>
                             <span class="price-card-discount" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-light);">Новые привычки</span>
                             <div class="price-card-old-total" style="color: var(--text-muted);">
                                 <span class="strike">$59.99</span>
@@ -2610,20 +2597,18 @@
                         <span class="price-card-new-daily" style="color: var(--accent);">$0.54</span>
                         <span class="price-card-period" style="color: var(--text-secondary);">в день</span>
                     </div>
-                    <div class="cafe-comparison">
-                        Стоимость одной недели свободы меньше, чем один твой поход в кафе, где ты будешь сидеть и плакать над телефоном.
-                    </div>
+                    <a href="https://secure.wayforpay.com/button/b552a6aef6ce2" style="position: absolute; inset: 0; z-index: 10;" aria-label="Купить Перезагрузка"></a>
                 </div>
 
-                <!-- 8 Weeks Plan: New Life (Gold/Animated) -->
-                <div class="price-card price-card-gold" tabindex="0" role="radio" aria-label="Тариф 8 недель" onclick="selectPlan(this, '8weeks')" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(15, 23, 42, 0.9)); border: 2px solid var(--accent);">
+                <!-- 8 Weeks Plan -->
+                <div class="price-card price-card-gold" tabindex="0" role="radio" aria-label="Тариф 8 недель" onclick="selectPlan(this, '8weeks')">
                     <div class="price-card-badge" style="background: var(--success);">Лучшая цена</div>
                     <div class="price-card-left">
                         <div class="price-checkbox" style="border-color: #4B5563; background: rgba(15, 23, 42, 0.5);">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
                         <div class="price-card-info">
-                            <h3 class="price-card-title" style="color: var(--text);">8 недель: «Новая жизнь»</h3>
+                            <h3 class="price-card-title" style="color: var(--text);">Стратегия «НОВАЯ ЖИЗНЬ»</h3>
                             <span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Фундаментальный результат</span>
                             <div class="price-card-old-total" style="color: var(--text-muted);">
                                 <span class="strike">$119.99</span>
@@ -2636,9 +2621,7 @@
                         <span class="price-card-new-daily" style="color: var(--accent);">$0.50</span>
                         <span class="price-card-period" style="color: var(--text-secondary);">в день</span>
                     </div>
-                    <div class="cafe-comparison">
-                        Стоимость одной недели свободы меньше, чем один твой поход в кафе, где ты будешь сидеть и плакать над телефоном.
-                    </div>
+                    <a href="https://secure.wayforpay.com/button/bc5112a184f73" style="position: absolute; inset: 0; z-index: 10;" aria-label="Купить Новая жизнь"></a>
                 </div>
             </div>
 
@@ -2652,13 +2635,17 @@
                     </svg>
                     <span>ГАРАНТИЯ ВОЗВРАТА ДЕНЕГ</span>
                 </div>
-                <button class="buy-btn-large" onclick="proceedToPayment('4weeks', 14.99)" style="width: 100%; margin: 20px 0; color: white;">Получить мой план</button>
-                <p class="legal-text" style="font-size: 0.7rem; color: var(--text-muted);">
-                    Нажимая «Получить мой план», вы соглашаетесь на автоматическое продление подписки. Первые 4 недели — $14.99, затем $27.99/4 недели. Отмена через email: info@detox.pro.
+                <button class="buy-btn-large" onclick="handleBuyBtnClick()">Получить мой план</button>
+                <!-- Guarantee of Calm Text -->
+                <div class="calm-guarantee-text">
+                    Если через 7 дней выполнения протокола вы не почувствуете облегчения, мы вернем деньги. Мы продаем результат, а не PDF-файлы.
+                </div>
+                <p class="legal-text" style="font-size: 0.7rem; color: var(--text-muted); margin-top: 10px;">
+                    Нажимая «Получить мой план», вы соглашаетесь на автоматическое продление подписки. Первые 4 недели – $9.92, затем $49.93/4 недели. Отмена через email: info@detox.pro.
                 </p>
             </div>
 
-            <!-- Reviews Carousel with Screenshots -->
+            <!-- Reviews Carousel -->
             <div class="lp-section">
                 <h3 class="lp-title" style="text-align: center; font-style: italic;">Реальные отзывы от моих пользователей</h3>
                 <div class="lp-reviews-carousel" id="reviewsCarousel">
@@ -2709,10 +2696,12 @@
 
             <!-- Community -->
             <div class="lp-section">
-                <div class="lp-map-text" style="background: rgba(16, 185, 129, 0.1); border: 2px dashed var(--success); color: var(--text);">
-                    Люди, подобные вам, использовали мой план, чтобы укрепить свою дисциплину и <strong>НАВСЕГДА</strong> забыть бывшего
+                <div class="lp-map-container">
+                    <div class="lp-map-text" style="background: rgba(16, 185, 129, 0.1); border: 2px dashed var(--success); color: var(--text);">
+                        Люди, подобные вам, использовали мой план, чтобы укрепить свою дисциплину и <strong>НАВСЕГДА</strong> забыть бывшего
+                    </div>
+                    <img src="https://image.qwenlm.ai/public_source/e6c9702e-8b2e-4897-9e6f-28eb958b9dec/183844b00-d0c2-44d7-8c26-3acab9b9500b.png" alt="Сообщество" class="lp-community-img">
                 </div>
-                <img src="https://image.qwenlm.ai/public_source/e6c9702e-8b2e-4897-9e6f-28eb958b9dec/183844b00-d0c2-44d7-8c26-3acab9b9500b.png" alt="Сообщество" class="lp-community-img">
             </div>
 
             <!-- How it Works -->
@@ -2721,7 +2710,7 @@
                 <div class="lp-steps">
                     <div class="lp-step">
                         <div class="lp-step-num">1</div>
-                        <div class="lp-step-title">Я создал(а) ваш персональный план для восстановления</div>
+                        <div class="lp-step-title">Я создал ваш персональный план для восстановления</div>
                         <div class="lp-step-desc">Моя методика выбрала действия, которые окажут наибольшее влияние для вас</div>
                     </div>
                     <div class="lp-step">
@@ -2742,7 +2731,7 @@
                     <div class="lp-step">
                         <div class="lp-step-num">5</div>
                         <div class="lp-step-title">Через несколько недель вы заметите, что стали увереннее</div>
-                        <div class="lp-step-desc">Вы будете поражены тем, как здорово чувствовать себя свободной</div>
+                        <div class="lp-step-desc">Вы будете поражены тем, как здорово чувствовать себя свободным</div>
                     </div>
                 </div>
             </div>
@@ -2821,13 +2810,13 @@
 
             <div class="pricing-cards" style="margin: 10px 20px;">
                 <!-- 1 Week Plan -->
-                <div class="price-card price-card-simple" tabindex="0" role="radio" aria-label="Тариф 1 неделя" onclick="selectPlan(this, '1week')" style="background: rgba(30, 41, 59, 0.5); border: 1px solid var(--card-border);">
+                <div class="price-card price-card-simple" tabindex="0" role="radio" aria-label="Тариф 1 неделя" onclick="selectPlan(this, '1week')">
                     <div class="price-card-left">
                         <div class="price-checkbox" style="border-color: #4B5563; background: rgba(15, 23, 42, 0.5);">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
                         <div class="price-card-info">
-                            <h3 class="price-card-title" style="color: var(--text);">1 неделя: «Анти-Срыв»</h3>
+                            <h3 class="price-card-title" style="color: var(--text);">Протокол «АНТИ-СОРЫВ»</h3>
                             <span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Экстренная помощь</span>
                             <div class="price-card-old-total" style="color: var(--text-muted);">
                                 <span class="strike">$39.99</span>
@@ -2840,20 +2829,18 @@
                         <span class="price-card-new-daily" style="color: var(--accent);">$1.43</span>
                         <span class="price-card-period" style="color: var(--text-secondary);">в день</span>
                     </div>
-                    <div class="cafe-comparison">
-                        Стоимость одной недели свободы меньше, чем один твой поход в кафе, где ты будешь сидеть и плакать над телефоном.
-                    </div>
+                    <a href="https://secure.wayforpay.com/button/b8061f99dcd1c" style="position: absolute; inset: 0; z-index: 10;" aria-label="Купить Антисрыв"></a>
                 </div>
 
                 <!-- 4 Weeks Plan -->
-                <div class="price-card recommended" tabindex="0" role="radio" aria-label="Тариф 4 недели" onclick="selectPlan(this, '4weeks')" style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9)); color: var(--text); border: 2px solid var(--accent);">
+                <div class="price-card recommended" tabindex="0" role="radio" aria-label="Тариф 4 недели" onclick="selectPlan(this, '4weeks')">
                     <div class="price-card-badge" style="background: #F59E0B;">Самый популярный</div>
                     <div class="price-card-left">
-                        <div class="price-checkbox" style="border-color: var(--accent); background: var(--accent); color: var(--primary);">
+                        <div class="price-checkbox" style="border-color: #4B5563; background: rgba(15, 23, 42, 0.5);">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
                         <div class="price-card-info">
-                            <h3 class="price-card-title" style="color: var(--text);">4 недели: «Перезагрузка»</h3>
+                            <h3 class="price-card-title" style="color: var(--text);">Курс «ПЕРЕЗАГРУЗКА»</h3>
                             <span class="price-card-discount" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-light);">Новые привычки</span>
                             <div class="price-card-old-total" style="color: var(--text-muted);">
                                 <span class="strike">$59.99</span>
@@ -2866,20 +2853,18 @@
                         <span class="price-card-new-daily" style="color: var(--accent);">$0.54</span>
                         <span class="price-card-period" style="color: var(--text-secondary);">в день</span>
                     </div>
-                    <div class="cafe-comparison">
-                        Стоимость одной недели свободы меньше, чем один твой поход в кафе, где ты будешь сидеть и плакать над телефоном.
-                    </div>
+                    <a href="https://secure.wayforpay.com/button/b552a6aef6ce2" style="position: absolute; inset: 0; z-index: 10;" aria-label="Купить Перезагрузка"></a>
                 </div>
 
                 <!-- 8 Weeks Plan -->
-                <div class="price-card price-card-gold" tabindex="0" role="radio" aria-label="Тариф 8 недель" onclick="selectPlan(this, '8weeks')" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(15, 23, 42, 0.9)); border: 2px solid var(--accent);">
+                <div class="price-card price-card-gold" tabindex="0" role="radio" aria-label="Тариф 8 недель" onclick="selectPlan(this, '8weeks')">
                     <div class="price-card-badge" style="background: var(--success);">Лучшая цена</div>
                     <div class="price-card-left">
                         <div class="price-checkbox" style="border-color: #4B5563; background: rgba(15, 23, 42, 0.5);">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
                         <div class="price-card-info">
-                            <h3 class="price-card-title" style="color: var(--text);">8 недель: «Новая жизнь»</h3>
+                            <h3 class="price-card-title" style="color: var(--text);">Стратегия «НОВАЯ ЖИЗНЬ»</h3>
                             <span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Фундаментальный результат</span>
                             <div class="price-card-old-total" style="color: var(--text-muted);">
                                 <span class="strike">$119.99</span>
@@ -2892,9 +2877,7 @@
                         <span class="price-card-new-daily" style="color: var(--accent);">$0.50</span>
                         <span class="price-card-period" style="color: var(--text-secondary);">в день</span>
                     </div>
-                    <div class="cafe-comparison">
-                        Стоимость одной недели свободы меньше, чем один твой поход в кафе, где ты будешь сидеть и плакать над телефоном.
-                    </div>
+                    <a href="https://secure.wayforpay.com/button/bc5112a184f73" style="position: absolute; inset: 0; z-index: 10;" aria-label="Купить Новая жизнь"></a>
                 </div>
             </div>
 
@@ -2909,31 +2892,30 @@
                     </svg>
                     <span>ГАРАНТИЯ ВОЗВРАТА ДЕНЕГ</span>
                 </div>
-                <button class="buy-btn-large" onclick="proceedToPayment('4weeks', 14.99)" style="width: 100%; margin: 20px 0; color: white;">Получить мой план</button>
-                <p class="legal-text" style="font-size: 0.7rem; color: var(--text-muted);">
-                    Нажимая «Получить мой план», вы соглашаетесь на автоматическое продление подписки. Первые 4 недели — $14.99, затем $27.99/4 недели. Отмена через email: info@detox.pro.
+                <button class="buy-btn-large" onclick="handleBuyBtnClick()">Получить мой план</button>
+                <!-- Guarantee of Calm Text -->
+                <div class="calm-guarantee-text">
+                    Если через 7 дней выполнения протокола вы не почувствуете облегчения, мы вернем деньги. Мы продаем результат, а не PDF-файлы.
+                </div>
+                <p class="legal-text" style="font-size: 0.7rem; color: var(--text-muted); margin-top: 10px;">
+                    Нажимая «Получить мой план», вы соглашаетесь на автоматическое продление подписки. Первые 4 недели – $9.92, затем $49.93/4 недели. Отмена через email: info@detox.pro.
                 </p>
             </div>
 
             <!-- Footer -->
             <div class="lp-footer">
                 <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 17L12 22L22 17" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M2 12L12 17L22 12" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                     <span style="font-weight: 800; color: var(--text);">Detox Pro</span>
                 </div>
                 <p>© 2024, Detox Pro. Все права защищены.</p>
                 <p><a href="#">Политика конфиденциальности</a> | <a href="#">Условия использования</a></p>
             </div>
 
-        </div>
-    </div>
-
-    <!-- Live Feed Notification -->
-    <div class="live-feed-notification" id="liveFeed">
-        <div class="live-feed-icon">🔔</div>
-        <div>
-            <div class="live-feed-text" id="liveFeedText">Оксана (Киев) только что приобрела План на 4 недели</div>
-            <div class="live-feed-time">Только что</div>
         </div>
     </div>
 
@@ -2947,6 +2929,21 @@
     let recommendedPlan = '4weeks';
     let loaderRunning = false;
     let userGender = '';
+    let painLevel = 'Moderate';
+
+    // Image maps for age selection based on gender - UPDATED with new images for 40 and 50 year old women
+    const maleImages = [
+        'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=500&fit=crop', // 20s
+        'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop', // 30s
+        'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop', // 50s (swapped)
+        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop'  // 40s (swapped)
+    ];
+    const femaleImages = [
+        'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=500&fit=crop', // 20s
+        'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=500&fit=crop', // 30s
+        'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=400&h=500&fit=crop', // 40s (new - mature woman)
+        'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=500&fit=crop'  // 50s (new - mature woman)
+    ];
 
     function go(n) {
         const currentStep = document.getElementById(`s${step}`);
@@ -2964,7 +2961,7 @@
             document.getElementById('welcomeText').classList.add('hidden');
         }
 
-        if (n === 17 && !loaderRunning) {
+        if (n === 18 && !loaderRunning) {
             loaderRunning = true;
             runLoader();
         }
@@ -2972,7 +2969,6 @@
         if (n === 20) {
             startCountdown();
             startReviewsCarousel();
-            startLiveFeed();
         }
     }
 
@@ -3020,14 +3016,16 @@
         setTimeout(() => {
             clearInterval(phraseInterval);
             clearInterval(stepInterval);
-            document.getElementById('s17').classList.remove('active');
-            go(18);
+            document.getElementById('s18').classList.remove('active');
+            go(19);
         }, 8000);
     }
 
     function selectGender(gender) {
         userGender = gender;
         answers['gender'] = gender;
+        // Update images immediately upon selection
+        updateAgeImages(gender);
     }
 
     function selectVisualOption(element, key, value) {
@@ -3046,6 +3044,18 @@
         answers[key] = value;
     }
 
+    function updateAgeImages(gender) {
+        const ageOptions = document.querySelectorAll('#s2 .visual-option');
+        const images = gender === 'male' ? maleImages : femaleImages;
+        
+        ageOptions.forEach((option, index) => {
+            const img = option.querySelector('img');
+            if (img && images[index]) {
+                img.src = images[index];
+            }
+        });
+    }
+
     function submitNewEmail(e) {
         if(e) e.preventDefault();
         const emailInput = document.getElementById('newUserEmail');
@@ -3061,7 +3071,7 @@
         answers['email'] = email;
         
         console.log('Лид собран:', answers);
-        go(19);
+        go(18);
     }
 
     function startCountdown() {
@@ -3122,43 +3132,6 @@
         });
     }
 
-    // NEW: Live Feed Notification Logic
-    function startLiveFeed() {
-        const notifications = [
-            { text: "Оксана (Киев) только что приобрела План на 4 недели", time: "Только что" },
-            { text: "Нина заблокировала бывшего 15 минут назад по Протоколу", time: "15 мин назад" },
-            { text: "Елена (Москва) купила План «Новая жизнь»", time: "2 мин назад" },
-            { text: "Мария начала курс «Анти-Срыв»", time: "5 мин назад" }
-        ];
-        
-        let index = 0;
-        const feedEl = document.getElementById('liveFeed');
-        const textEl = document.getElementById('liveFeedText');
-        const timeEl = document.querySelector('.live-feed-time');
-        
-        // Show first notification after 3 seconds
-        setTimeout(() => {
-            showNotification();
-            // Then show new ones every 8 seconds
-            setInterval(showNotification, 8000);
-        }, 3000);
-        
-        function showNotification() {
-            const notification = notifications[index % notifications.length];
-            textEl.textContent = notification.text;
-            timeEl.textContent = notification.time;
-            
-            feedEl.classList.add('show');
-            
-            // Hide after 5 seconds
-            setTimeout(() => {
-                feedEl.classList.remove('show');
-            }, 5000);
-            
-            index++;
-        }
-    }
-
     function scrollToPlans() {
         document.getElementById('plans-section').scrollIntoView({ behavior: 'smooth' });
     }
@@ -3173,10 +3146,13 @@
         recommendedPlan = planId;
     }
 
-    function proceedToPayment(plan, price) {
-        const planNames = {'1week':'Base','4weeks':'Optimal','8weeks':'Premium'};
-        alert(`🎉 Переход к оплате:\nПлан ${planNames[plan]} — $${price}\n\n(Здесь будет подключение платёжного шлюза)`);
-        console.log('Purchase intent:', {plan, price, answers});
+    function handleBuyBtnClick() {
+        const links = {
+            '1week': 'https://secure.wayforpay.com/button/b8061f99dcd1c',
+            '4weeks': 'https://secure.wayforpay.com/button/b552a6aef6ce2',
+            '8weeks': 'https://secure.wayforpay.com/button/bc5112a184f73'
+        };
+        window.location.href = links[recommendedPlan];
     }
 
     document.addEventListener('keydown', function(e) {
