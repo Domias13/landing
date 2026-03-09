@@ -1843,6 +1843,147 @@
             position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
             overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
         }
+
+        /* NEW STYLES FOR OFFER SCREEN */
+        .offer-warning-block {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid var(--danger);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 10px 20px 20px 20px;
+            text-align: left;
+        }
+        .offer-warning-title {
+            color: var(--danger);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .offer-warning-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        .stuck-progress-container {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            height: 12px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .stuck-progress-bar {
+            background: linear-gradient(90deg, var(--danger), var(--warning));
+            height: 100%;
+            width: 90%;
+            border-radius: 10px;
+            position: relative;
+        }
+        .stuck-progress-bar::after {
+            content: '90%';
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+        .stuck-progress-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        .limit-warning-box {
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid var(--accent);
+            color: var(--accent-light);
+            padding: 12px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin: 10px 20px 20px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            animation: pulseWarning 2s infinite;
+        }
+        @keyframes pulseWarning {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+        }
+
+        .price-card-gold {
+            border: 2px solid var(--accent);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(15, 23, 42, 0.9));
+            animation: goldPulse 3s infinite;
+        }
+        @keyframes goldPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+        }
+        .price-card-simple {
+            border: 1px solid var(--card-border);
+            background: rgba(30, 41, 59, 0.5);
+        }
+
+        .cafe-comparison {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 10px;
+            font-style: italic;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 10px;
+        }
+
+        /* Live Feed Notification */
+        .live-feed-notification {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            max-width: 440px;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--success);
+            border-radius: 12px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transform: translateY(150%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 200;
+            margin: 0 auto;
+            left: 50%;
+            transform: translateX(-50%) translateY(150%);
+        }
+        .live-feed-notification.show {
+            transform: translateX(-50%) translateY(0);
+        }
+        .live-feed-icon {
+            font-size: 1.5rem;
+        }
+        .live-feed-text {
+            font-size: 0.85rem;
+            color: var(--text);
+            line-height: 1.3;
+        }
+        .live-feed-time {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
     </style>
 </head>
 <body>
@@ -1863,7 +2004,7 @@
         <p>Это займёт всего <strong>2 минуты</strong></p>
     </div>
 
-    <!-- Шаг 1: Гендерный разделитель (НОВЫЙ) -->
+    <!-- Шаг 1: Гендерный разделитель -->
     <div class="step active" id="s1" role="tabpanel">
         <h2 class="step-title">Кто проходит тест?</h2>
         <div class="visual-options">
@@ -2014,7 +2155,7 @@
         </div>
     </div>
 
-    <!-- Шаг 7: ИНФО-ЭКРАН "ЦИФРОВАЯ ЛОМКА" (НОВЫЙ) -->
+    <!-- Шаг 7: ИНФО-ЭКРАН "ЦИФРОВАЯ ЛОМКА" -->
     <div class="step" id="s7" role="tabpanel">
         <div class="info-screen">
             <h2 class="info-screen-title" style="color: var(--danger);">Диагноз: Цифровая ломка</h2>
@@ -2032,7 +2173,7 @@
         </div>
     </div>
 
-    <!-- Шаг 8: Мысли-паразиты (НОВЫЙ ВОПРОС) -->
+    <!-- Шаг 8: Мысли-паразиты -->
     <div class="step" id="s8" role="tabpanel">
         <div class="block-label">🧠 Блок 2: Триггеры</div>
         <h2 class="step-title">Бывает ли так, что вы часами ведете воображаемый диалог, доказывая свою правоту?</h2>
@@ -2277,7 +2418,7 @@
         </div>
     </div>
 
-    <!-- Шаг 16: ИНФО-ЭКРАН "ЭНЕРГЕТИЧЕСКИЙ ИЗНОС" (НОВЫЙ) -->
+    <!-- Шаг 16: ИНФО-ЭКРАН "ЭНЕРГЕТИЧЕСКИЙ ИЗНОС" -->
     <div class="step" id="s16" role="tabpanel">
         <div class="info-screen">
             <h2 class="info-screen-title" style="color: var(--warning);">Диагноз: Энергетический износ</h2>
@@ -2366,7 +2507,7 @@
         </div>
     </div>
 
-    <!-- Шаг 19: ИНФО-ЭКРАН "ДИАГНОЗ" (НОВЫЙ) -->
+    <!-- Шаг 19: ИНФО-ЭКРАН "ДИАГНОЗ" -->
     <div class="step" id="s19" role="tabpanel">
         <div class="info-screen">
             <h2 class="info-screen-title" style="color: var(--success);">Анализ завершен</h2>
@@ -2400,24 +2541,38 @@
             </div>
 
             <div class="lp-section" style="text-align: center;">
-                <h2 class="lp-title" style="font-size: 1.6rem; margin-bottom: 20px;">Ваш персональный план готов</h2>
-                <p class="lp-text" style="font-size: 1.1rem;">Выберите стратегию, которая подходит именно вам.</p>
+                <h2 class="lp-title" style="font-size: 1.6rem; margin-bottom: 20px; color: var(--danger);">Твой результат: Критическая зависимость. Медлить нельзя.</h2>
             </div>
 
-            <div class="lp-timer-box" style="background: rgba(245, 158, 11, 0.15); border: 1px solid var(--accent); color: var(--accent-light);">
-                <span>⚠️</span> Это предложение заканчивается через <span id="timer-inline">09:36</span> минут
+            <!-- NEW: Limit Warning -->
+            <div class="limit-warning-box">
+                <span>⚠️</span> Твоя персональная скидка 60% сгорит через <span id="timer-inline">10:00</span>. После этого доступ к Протоколу будет закрыт.
             </div>
 
-            <div class="pricing-cards" id="plans-section" style="margin: 10px 15px;">
-                <!-- 1 Week Plan: Протокол «Экстренная остановка» -->
-                <div class="price-card" tabindex="0" role="radio" aria-label="Тариф 1 неделя" onclick="selectPlan(this, '1week')" style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9)); color: var(--text); border: 1px solid rgba(245, 158, 11, 0.15);">
+            <!-- NEW: Offer Warning Block -->
+            <div class="offer-warning-block">
+                <div class="offer-warning-title">
+                    <span>📉</span> Что произойдет, если оставить всё как есть?
+                </div>
+                <p class="offer-warning-text">
+                    Статистика показывает: 90% людей, не разорвавших цикл "эмоциональной жвачки" в первые недели, остаются в депрессивном состоянии более 2 лет. Каждый день слежки в соцсетях отбрасывает твое восстановление на месяц назад.
+                </p>
+                <div class="stuck-progress-container">
+                    <div class="stuck-progress-bar"></div>
+                </div>
+                <div class="stuck-progress-label">Твой прогресс застрял на 90%. Последние 10% пути без Протокола пройти невозможно.</div>
+            </div>
+
+            <div class="pricing-cards" id="plans-section" style="margin: 10px 20px;">
+                <!-- 1 Week Plan: Anti-Relapse (Simple) -->
+                <div class="price-card price-card-simple" tabindex="0" role="radio" aria-label="Тариф 1 неделя" onclick="selectPlan(this, '1week')" style="background: rgba(30, 41, 59, 0.5); border: 1px solid var(--card-border);">
                     <div class="price-card-left">
                         <div class="price-checkbox" style="border-color: #4B5563; background: rgba(15, 23, 42, 0.5);">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
                         <div class="price-card-info">
-                            <h3 class="price-card-title" style="color: var(--text);">1 неделя: «Экстренная остановка»</h3>
-                            <span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Протокол</span>
+                            <h3 class="price-card-title" style="color: var(--text);">1 неделя: «Анти-Срыв»</h3>
+                            <span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Экстренная помощь</span>
                             <div class="price-card-old-total" style="color: var(--text-muted);">
                                 <span class="strike">$39.99</span>
                                 <span class="bold" style="color: var(--text);">$9.99</span>
@@ -2429,9 +2584,12 @@
                         <span class="price-card-new-daily" style="color: var(--accent);">$1.43</span>
                         <span class="price-card-period" style="color: var(--text-secondary);">в день</span>
                     </div>
+                    <div class="cafe-comparison">
+                        Стоимость одной недели свободы меньше, чем один твой поход в кафе, где ты будешь сидеть и плакать над телефоном.
+                    </div>
                 </div>
 
-                <!-- 4 Weeks Plan: Курс «Детокс и перепрошивка» -->
+                <!-- 4 Weeks Plan: Reboot (Recommended) -->
                 <div class="price-card recommended" tabindex="0" role="radio" aria-label="Тариф 4 недели" onclick="selectPlan(this, '4weeks')" style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9)); color: var(--text); border: 2px solid var(--accent);">
                     <div class="price-card-badge" style="background: #F59E0B;">Самый популярный</div>
                     <div class="price-card-left">
@@ -2439,8 +2597,8 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
                         <div class="price-card-info">
-                            <h3 class="price-card-title" style="color: var(--text);">4 недели: «Детокс и перепрошивка»</h3>
-                            <span class="price-card-discount" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-light);">Курс</span>
+                            <h3 class="price-card-title" style="color: var(--text);">4 недели: «Перезагрузка»</h3>
+                            <span class="price-card-discount" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-light);">Новые привычки</span>
                             <div class="price-card-old-total" style="color: var(--text-muted);">
                                 <span class="strike">$59.99</span>
                                 <span class="bold" style="color: var(--text);">$14.99</span>
@@ -2452,18 +2610,21 @@
                         <span class="price-card-new-daily" style="color: var(--accent);">$0.54</span>
                         <span class="price-card-period" style="color: var(--text-secondary);">в день</span>
                     </div>
+                    <div class="cafe-comparison">
+                        Стоимость одной недели свободы меньше, чем один твой поход в кафе, где ты будешь сидеть и плакать над телефоном.
+                    </div>
                 </div>
 
-                <!-- 8 Weeks Plan: Стратегия «Полное равнодушие» -->
-                <div class="price-card" tabindex="0" role="radio" aria-label="Тариф 8 недель" onclick="selectPlan(this, '8weeks')" style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9)); color: var(--text); border: 1px solid rgba(245, 158, 11, 0.15);">
+                <!-- 8 Weeks Plan: New Life (Gold/Animated) -->
+                <div class="price-card price-card-gold" tabindex="0" role="radio" aria-label="Тариф 8 недель" onclick="selectPlan(this, '8weeks')" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(15, 23, 42, 0.9)); border: 2px solid var(--accent);">
                     <div class="price-card-badge" style="background: var(--success);">Лучшая цена</div>
                     <div class="price-card-left">
                         <div class="price-checkbox" style="border-color: #4B5563; background: rgba(15, 23, 42, 0.5);">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
                         <div class="price-card-info">
-                            <h3 class="price-card-title" style="color: var(--text);">8 недель: «Полное равнодушие»</h3>
-                            <span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Стратегия</span>
+                            <h3 class="price-card-title" style="color: var(--text);">8 недель: «Новая жизнь»</h3>
+                            <span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Фундаментальный результат</span>
                             <div class="price-card-old-total" style="color: var(--text-muted);">
                                 <span class="strike">$119.99</span>
                                 <span class="bold" style="color: var(--text);">$27.99</span>
@@ -2474,6 +2635,9 @@
                         <span class="price-card-old-daily" style="color: var(--text-muted);">$2.14</span>
                         <span class="price-card-new-daily" style="color: var(--accent);">$0.50</span>
                         <span class="price-card-period" style="color: var(--text-secondary);">в день</span>
+                    </div>
+                    <div class="cafe-comparison">
+                        Стоимость одной недели свободы меньше, чем один твой поход в кафе, где ты будешь сидеть и плакать над телефоном.
                     </div>
                 </div>
             </div>
@@ -2655,16 +2819,16 @@
                 <span class="step-inactive">2. Способ оплаты</span>
             </div>
 
-            <div class="pricing-cards" style="margin: 10px 15px;">
+            <div class="pricing-cards" style="margin: 10px 20px;">
                 <!-- 1 Week Plan -->
-                <div class="price-card" tabindex="0" role="radio" aria-label="Тариф 1 неделя" onclick="selectPlan(this, '1week')" style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9)); color: var(--text); border: 1px solid rgba(245, 158, 11, 0.15);">
+                <div class="price-card price-card-simple" tabindex="0" role="radio" aria-label="Тариф 1 неделя" onclick="selectPlan(this, '1week')" style="background: rgba(30, 41, 59, 0.5); border: 1px solid var(--card-border);">
                     <div class="price-card-left">
                         <div class="price-checkbox" style="border-color: #4B5563; background: rgba(15, 23, 42, 0.5);">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
                         <div class="price-card-info">
-                            <h3 class="price-card-title" style="color: var(--text);">1 неделя: «Экстренная остановка»</h3>
-                            <span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Протокол</span>
+                            <h3 class="price-card-title" style="color: var(--text);">1 неделя: «Анти-Срыв»</h3>
+                            <span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Экстренная помощь</span>
                             <div class="price-card-old-total" style="color: var(--text-muted);">
                                 <span class="strike">$39.99</span>
                                 <span class="bold" style="color: var(--text);">$9.99</span>
@@ -2676,6 +2840,9 @@
                         <span class="price-card-new-daily" style="color: var(--accent);">$1.43</span>
                         <span class="price-card-period" style="color: var(--text-secondary);">в день</span>
                     </div>
+                    <div class="cafe-comparison">
+                        Стоимость одной недели свободы меньше, чем один твой поход в кафе, где ты будешь сидеть и плакать над телефоном.
+                    </div>
                 </div>
 
                 <!-- 4 Weeks Plan -->
@@ -2686,8 +2853,8 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
                         <div class="price-card-info">
-                            <h3 class="price-card-title" style="color: var(--text);">4 недели: «Детокс и перепрошивка»</h3>
-                            <span class="price-card-discount" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-light);">Курс</span>
+                            <h3 class="price-card-title" style="color: var(--text);">4 недели: «Перезагрузка»</h3>
+                            <span class="price-card-discount" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-light);">Новые привычки</span>
                             <div class="price-card-old-total" style="color: var(--text-muted);">
                                 <span class="strike">$59.99</span>
                                 <span class="bold" style="color: var(--text);">$14.99</span>
@@ -2699,18 +2866,21 @@
                         <span class="price-card-new-daily" style="color: var(--accent);">$0.54</span>
                         <span class="price-card-period" style="color: var(--text-secondary);">в день</span>
                     </div>
+                    <div class="cafe-comparison">
+                        Стоимость одной недели свободы меньше, чем один твой поход в кафе, где ты будешь сидеть и плакать над телефоном.
+                    </div>
                 </div>
 
                 <!-- 8 Weeks Plan -->
-                <div class="price-card" tabindex="0" role="radio" aria-label="Тариф 8 недель" onclick="selectPlan(this, '8weeks')" style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9)); color: var(--text); border: 1px solid rgba(245, 158, 11, 0.15);">
+                <div class="price-card price-card-gold" tabindex="0" role="radio" aria-label="Тариф 8 недель" onclick="selectPlan(this, '8weeks')" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(15, 23, 42, 0.9)); border: 2px solid var(--accent);">
                     <div class="price-card-badge" style="background: var(--success);">Лучшая цена</div>
                     <div class="price-card-left">
                         <div class="price-checkbox" style="border-color: #4B5563; background: rgba(15, 23, 42, 0.5);">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
                         <div class="price-card-info">
-                            <h3 class="price-card-title" style="color: var(--text);">8 недель: «Полное равнодушие»</h3>
-                            <span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Стратегия</span>
+                            <h3 class="price-card-title" style="color: var(--text);">8 недель: «Новая жизнь»</h3>
+                            <span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Фундаментальный результат</span>
                             <div class="price-card-old-total" style="color: var(--text-muted);">
                                 <span class="strike">$119.99</span>
                                 <span class="bold" style="color: var(--text);">$27.99</span>
@@ -2721,6 +2891,9 @@
                         <span class="price-card-old-daily" style="color: var(--text-muted);">$2.14</span>
                         <span class="price-card-new-daily" style="color: var(--accent);">$0.50</span>
                         <span class="price-card-period" style="color: var(--text-secondary);">в день</span>
+                    </div>
+                    <div class="cafe-comparison">
+                        Стоимость одной недели свободы меньше, чем один твой поход в кафе, где ты будешь сидеть и плакать над телефоном.
                     </div>
                 </div>
             </div>
@@ -2755,6 +2928,15 @@
         </div>
     </div>
 
+    <!-- Live Feed Notification -->
+    <div class="live-feed-notification" id="liveFeed">
+        <div class="live-feed-icon">🔔</div>
+        <div>
+            <div class="live-feed-text" id="liveFeedText">Оксана (Киев) только что приобрела План на 4 недели</div>
+            <div class="live-feed-time">Только что</div>
+        </div>
+    </div>
+
 </div>
 
 <script>
@@ -2764,7 +2946,7 @@
     let emailSubmitted = false;
     let recommendedPlan = '4weeks';
     let loaderRunning = false;
-    let userGender = ''; // Переменная для хранения пола
+    let userGender = '';
 
     function go(n) {
         const currentStep = document.getElementById(`s${step}`);
@@ -2790,6 +2972,7 @@
         if (n === 20) {
             startCountdown();
             startReviewsCarousel();
+            startLiveFeed();
         }
     }
 
@@ -2842,7 +3025,6 @@
         }, 8000);
     }
 
-    // НОВАЯ ФУНКЦИЯ: Выбор пола
     function selectGender(gender) {
         userGender = gender;
         answers['gender'] = gender;
@@ -2938,6 +3120,43 @@
                 });
             }
         });
+    }
+
+    // NEW: Live Feed Notification Logic
+    function startLiveFeed() {
+        const notifications = [
+            { text: "Оксана (Киев) только что приобрела План на 4 недели", time: "Только что" },
+            { text: "Нина заблокировала бывшего 15 минут назад по Протоколу", time: "15 мин назад" },
+            { text: "Елена (Москва) купила План «Новая жизнь»", time: "2 мин назад" },
+            { text: "Мария начала курс «Анти-Срыв»", time: "5 мин назад" }
+        ];
+        
+        let index = 0;
+        const feedEl = document.getElementById('liveFeed');
+        const textEl = document.getElementById('liveFeedText');
+        const timeEl = document.querySelector('.live-feed-time');
+        
+        // Show first notification after 3 seconds
+        setTimeout(() => {
+            showNotification();
+            // Then show new ones every 8 seconds
+            setInterval(showNotification, 8000);
+        }, 3000);
+        
+        function showNotification() {
+            const notification = notifications[index % notifications.length];
+            textEl.textContent = notification.text;
+            timeEl.textContent = notification.time;
+            
+            feedEl.classList.add('show');
+            
+            // Hide after 5 seconds
+            setTimeout(() => {
+                feedEl.classList.remove('show');
+            }, 5000);
+            
+            index++;
+        }
     }
 
     function scrollToPlans() {
