@@ -1863,22 +1863,22 @@
         <p>Это займёт всего <strong>2 минуты</strong></p>
     </div>
 
-    <!-- Шаг 1: Выбор пола -->
+    <!-- Шаг 1: Гендерный разделитель (НОВЫЙ) -->
     <div class="step active" id="s1" role="tabpanel">
-        <h2 class="step-title">С кем вы планируете восстановить связь?</h2>
+        <h2 class="step-title">Кто проходит тест?</h2>
         <div class="visual-options">
-            <div class="visual-option" tabindex="0" role="radio" aria-label="Мужчина" onclick="selectVisualOption(this, 'gender', 'male'); go(2)">
+            <div class="visual-option" tabindex="0" role="radio" aria-label="Мужчина" onclick="selectGender('male'); go(2)">
                 <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=500&fit=crop" alt="Мужчина">
                 <div class="visual-label">Мужчина</div>
             </div>
-            <div class="visual-option" tabindex="0" role="radio" aria-label="Женщина" onclick="selectVisualOption(this, 'gender', 'female'); go(2)">
+            <div class="visual-option" tabindex="0" role="radio" aria-label="Женщина" onclick="selectGender('female'); go(2)">
                 <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=500&fit=crop" alt="Женщина">
                 <div class="visual-label">Женщина</div>
             </div>
         </div>
     </div>
 
-    <!-- Шаг 2: Выбор возраста -->
+    <!-- Шаг 2: Возраст -->
     <div class="step" id="s2" role="tabpanel">
         <h2 class="step-title">Какой у вас возраст?</h2>
         <div class="visual-options" style="grid-template-columns: repeat(2, 1fr);">
@@ -1988,107 +1988,77 @@
         </div>
     </div>
 
-    <!-- Шаг 6: Соцсети -->
+    <!-- Шаг 6: Соцсети (ЦИФРОВАЯ СЛЕЖКА) -->
     <div class="step" id="s6" role="tabpanel">
         <div class="block-label">🧠 Блок 2: Триггеры</div>
-        <h2 class="step-title">Как часто вы заходите на его/её страницу в соцсетях?</h2>
+        <h2 class="step-title">Как часто вы заходите в его/её профиль, чтобы проверить время последнего входа или новые подписки?</h2>
         <div class="options" role="radiogroup">
-            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'social', 'daily'); go(7)">
+            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'social', '15min'); go(7)">
                 <div class="card-opt-content">
-                    <span class="card-opt-text">Несколько раз в день</span>
+                    <span class="card-opt-text">Каждые 15 минут</span>
                     <span class="card-opt-icon">📱</span>
                 </div>
             </div>
-            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'social', 'few-days'); go(7)">
+            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'social', 'evening'); go(7)">
                 <div class="card-opt-content">
-                    <span class="card-opt-text">Раз в пару дней</span>
-                    <span class="card-opt-icon">🔍</span>
+                    <span class="card-opt-text">Только вечером</span>
+                    <span class="card-opt-icon">🌙</span>
                 </div>
             </div>
-            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'social', 'rare'); go(7)">
+            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'social', 'fake'); go(7)">
                 <div class="card-opt-content">
-                    <span class="card-opt-text">Редко, но срываюсь</span>
+                    <span class="card-opt-text">С фейковых аккаунтов</span>
+                    <span class="card-opt-icon">🕵️</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Шаг 7: ИНФО-ЭКРАН "ЦИФРОВАЯ ЛОМКА" (НОВЫЙ) -->
+    <div class="step" id="s7" role="tabpanel">
+        <div class="info-screen">
+            <h2 class="info-screen-title" style="color: var(--danger);">Диагноз: Цифровая ломка</h2>
+            <p class="info-screen-subtitle" style="color: var(--text); font-weight: 500;">Ваш мозг сейчас работает как у зависимого.</p>
+            
+            <div style="text-align: left; background: rgba(239, 68, 68, 0.1); padding: 24px; border-radius: 16px; border: 1px solid var(--danger); margin: 20px 0;">
+                <p style="font-size: 1rem; line-height: 1.6; color: var(--text);">
+                    Каждая проверка его/её страницы дает всплеск ложной надежды (дофамин), за которой следует глубокий провал (кортизол). 
+                    <br><br>
+                    <strong style="color: var(--danger);">Вы обнуляете свое восстановление каждый раз, когда берете телефон в руки.</strong>
+                </p>
+            </div>
+
+            <button class="next-btn" onclick="go(8)">Понятно, что делать дальше? →</button>
+        </div>
+    </div>
+
+    <!-- Шаг 8: Мысли-паразиты (НОВЫЙ ВОПРОС) -->
+    <div class="step" id="s8" role="tabpanel">
+        <div class="block-label">🧠 Блок 2: Триггеры</div>
+        <h2 class="step-title">Бывает ли так, что вы часами ведете воображаемый диалог, доказывая свою правоту?</h2>
+        <div class="options" role="radiogroup">
+            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'rumination', 'yes'); go(9)">
+                <div class="card-opt-content">
+                    <span class="card-opt-text">Да, это "эмоциональная жвачка"</span>
+                    <span class="card-opt-icon">🌀</span>
+                </div>
+            </div>
+            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'rumination', 'rarely'); go(9)">
+                <div class="card-opt-content">
+                    <span class="card-opt-text">Редко, только когда очень больно</span>
                     <span class="card-opt-icon">💭</span>
                 </div>
             </div>
-            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'social', 'blocked'); go(7)">
+            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'rumination', 'no'); go(9)">
                 <div class="card-opt-content">
-                    <span class="card-opt-text">Заблокировал(а) / не смотрю</span>
+                    <span class="card-opt-text">Нет, я контролирую мысли</span>
                     <span class="card-opt-icon">🛡️</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Шаг 7: Желание написать -->
-    <div class="step" id="s7" role="tabpanel">
-        <div class="block-label">🧠 Блок 2: Триггеры</div>
-        <h2 class="step-title">Чувствуете ли вы желание «написать и все выяснить»?</h2>
-        <div class="options" role="radiogroup">
-            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'impulse', 'constantly'); go(8)">
-                <div class="card-opt-content">
-                    <span class="card-opt-text">Да, постоянно борюсь с этим</span>
-                    <span class="card-opt-icon">📤</span>
-                </div>
-            </div>
-            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'impulse', 'sometimes'); go(8)">
-                <div class="card-opt-content">
-                    <span class="card-opt-text">Иногда, особенно вечером</span>
-                    <span class="card-opt-icon">🌙</span>
-                </div>
-            </div>
-            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'impulse', 'rare'); go(8)">
-                <div class="card-opt-content">
-                    <span class="card-opt-text">Редко, когда очень тяжело</span>
-                    <span class="card-opt-icon">💪</span>
-                </div>
-            </div>
-            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'impulse', 'no'); go(8)">
-                <div class="card-opt-content">
-                    <span class="card-opt-text">Нет, я это контролирую</span>
-                    <span class="card-opt-icon">🎯</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Шаг 8: ИНФО-ЭКРАН 2 -->
-    <div class="step" id="s8" role="tabpanel">
-        <div class="info-screen">
-            <h2 class="info-screen-title">Внутренние триггеры</h2>
-            <p class="info-screen-subtitle">Почему вы не можете просто «взять и забыть»?</p>
-            
-            <div style="text-align: left; background: rgba(15, 23, 42, 0.6); padding: 24px; border-radius: 16px; border: 1px solid rgba(245, 158, 11, 0.1); margin: 20px 0;">
-                <div style="display: flex; gap: 12px; margin-bottom: 16px;">
-                    <div style="font-size: 1.5rem;">🧠</div>
-                    <div>
-                        <div style="font-weight: 700; color: var(--text); margin-bottom: 4px;">Химия мозга</div>
-                        <div style="font-size: 0.9rem; color: var(--text-secondary);">Ваш мозг привык к дофаминовым всплескам от общения. Сейчас он испытывает «ломку».</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 12px; margin-bottom: 16px;">
-                    <div style="font-size: 1.5rem;">🔗</div>
-                    <div>
-                        <div style="font-weight: 700; color: var(--text); margin-bottom: 4px;">Эмоциональный якорь</div>
-                        <div style="font-size: 0.9rem; color: var(--text-secondary);">Любое воспоминание запускает цепную реакцию эмоций, которую сложно остановить силой воли.</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 12px;">
-                    <div style="font-size: 1.5rem;">🛡️</div>
-                    <div>
-                        <div style="font-weight: 700; color: var(--text); margin-bottom: 4px;">Защитная реакция</div>
-                        <div style="font-size: 0.9rem; color: var(--text-secondary);">Психика пытается вернуть контроль, создавая иллюзию, что «всё можно исправить».</div>
-                    </div>
-                </div>
-            </div>
-
-            <p class="info-screen-subtitle" style="font-size: 0.95rem;">Понимание этих механизмов — первый шаг к свободе. Мой план научит вас управлять ими.</p>
-
-            <button class="next-btn" onclick="go(9)">Продолжить →</button>
-        </div>
-    </div>
-
-    <!-- Шаг 9-15: Остальные вопросы -->
+    <!-- Шаг 9: Сон -->
     <div class="step" id="s9" role="tabpanel">
         <div class="block-label">💓 Блок 3: Тело</div>
         <h2 class="step-title">Как изменился ваш сон?</h2>
@@ -2120,6 +2090,7 @@
         </div>
     </div>
 
+    <!-- Шаг 10: Аппетит -->
     <div class="step" id="s10" role="tabpanel">
         <div class="block-label">💓 Блок 3: Тело</div>
         <h2 class="step-title">Что происходит с аппетитом?</h2>
@@ -2151,6 +2122,7 @@
         </div>
     </div>
 
+    <!-- Шаг 11: Физическая боль -->
     <div class="step" id="s11" role="tabpanel">
         <div class="block-label">💓 Блок 3: Тело</div>
         <h2 class="step-title">Чувствуете ли вы физическую боль в груди или «ком» в горле?</h2>
@@ -2182,6 +2154,7 @@
         </div>
     </div>
 
+    <!-- Шаг 12: Концентрация -->
     <div class="step" id="s12" role="tabpanel">
         <div class="block-label">💓 Блок 3: Тело</div>
         <h2 class="step-title">Удаётся ли концентрироваться на работе/делах дольше 15 минут?</h2>
@@ -2213,6 +2186,7 @@
         </div>
     </div>
 
+    <!-- Шаг 13: Попытки -->
     <div class="step" id="s13" role="tabpanel">
         <div class="block-label">🚀 Блок 4: Готовность</div>
         <h2 class="step-title">Сколько попыток «начать новую жизнь» вы уже предпринимали?</h2>
@@ -2244,6 +2218,7 @@
         </div>
     </div>
 
+    <!-- Шаг 14: Цель -->
     <div class="step" id="s14" role="tabpanel">
         <div class="block-label">🚀 Блок 4: Готовность</div>
         <h2 class="step-title">Какова ваша главная цель сейчас?</h2>
@@ -2275,29 +2250,48 @@
         </div>
     </div>
 
+    <!-- Шаг 15: Готовность -->
     <div class="step" id="s15" role="tabpanel">
         <div class="block-label">🚀 Блок 4: Готовность</div>
         <h2 class="step-title">Готовы ли вы уделять 15 минут в день чётким инструкциям ради результата?</h2>
         <p class="step-subtitle" style="margin-bottom:26px">Это микро-обязательство — основа вашего успеха</p>
         <div class="options" role="radiogroup">
-            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'commitment', 'yes'); go(17)">
+            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'commitment', 'yes'); go(16)">
                 <div class="card-opt-content">
                     <span class="card-opt-text">Да, я готов(а) следовать плану</span>
                     <span class="card-opt-icon">✅</span>
                 </div>
             </div>
-            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'commitment', 'maybe'); go(17)">
+            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'commitment', 'maybe'); go(16)">
                 <div class="card-opt-content">
                     <span class="card-opt-text">Готов(а) попробовать, если будет понятно</span>
                     <span class="card-opt-icon">🤔</span>
                 </div>
             </div>
-            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'commitment', 'need-help'); go(17)">
+            <div class="card-opt" role="radio" onclick="selectCardOption(this, 'commitment', 'need-help'); go(16)">
                 <div class="card-opt-content">
                     <span class="card-opt-text">Мне нужна поддержка и структура</span>
                     <span class="card-opt-icon">🤝</span>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Шаг 16: ИНФО-ЭКРАН "ЭНЕРГЕТИЧЕСКИЙ ИЗНОС" (НОВЫЙ) -->
+    <div class="step" id="s16" role="tabpanel">
+        <div class="info-screen">
+            <h2 class="info-screen-title" style="color: var(--warning);">Диагноз: Энергетический износ</h2>
+            <p class="info-screen-subtitle" style="color: var(--text); font-weight: 500;">Ваша "эмоциональная жвачка" съедает до 70% ваших ресурсов.</p>
+            
+            <div style="text-align: left; background: rgba(245, 158, 11, 0.1); padding: 24px; border-radius: 16px; border: 1px solid var(--warning); margin: 20px 0;">
+                <p style="font-size: 1rem; line-height: 1.6; color: var(--text);">
+                    Именно поэтому у вас нет сил на работу и жизнь. Вы тратите всю энергию на внутреннюю борьбу.
+                    <br><br>
+                    <strong style="color: var(--warning);">Если не остановить этот цикл сейчас, наступит стадия клинической апатии.</strong>
+                </p>
+            </div>
+
+            <button class="next-btn" onclick="go(17)">Запустить генерацию плана →</button>
         </div>
     </div>
 
@@ -2310,8 +2304,8 @@
                 <div class="pulse-dot"></div>
                 <div class="pulse-dot"></div>
             </div>
-            <h2 style="margin-bottom:12px; font-family: 'Playfair Display', serif;" id="load-text">Генерация персональной стратегии...</h2>
-            <p style="color: var(--text-secondary); margin:0; font-size: 0.98rem;">Анализируется 15 параметров вашей ситуации</p>
+            <h2 style="margin-bottom:12px; font-family: 'Playfair Display', serif;" id="load-text">Анализ завершен...</h2>
+            <p style="color: var(--text-secondary); margin:0; font-size: 0.98rem;">Формируется персональная стратегия</p>
             
             <div class="analysis-steps">
                 <div class="analysis-step" id="step-a1">
@@ -2372,92 +2366,22 @@
         </div>
     </div>
 
-    <!-- Шаг 19: Combined Summary Screen -->
+    <!-- Шаг 19: ИНФО-ЭКРАН "ДИАГНОЗ" (НОВЫЙ) -->
     <div class="step" id="s19" role="tabpanel">
-        <div class="summary-screen">
-            <div class="summary-section">
-                <h2 class="summary-title" style="color: var(--success);">План готов на 100%</h2>
-                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 30px;">Ваша персональная стратегия восстановления успешно сгенерирована</p>
-                
-                <div class="graph-container">
-                    <div class="graph-label-today">Сегодня</div>
-                    <div class="graph-label-after">После использования<br>плана</div>
-                    <svg class="graph-svg" viewBox="0 0 400 200" preserveAspectRatio="none">
-                        <line x1="0" y1="40" x2="400" y2="40" stroke="#E5E7EB" stroke-width="1" />
-                        <line x1="0" y1="80" x2="400" y2="80" stroke="#E5E7EB" stroke-width="1" />
-                        <line x1="0" y1="120" x2="400" y2="120" stroke="#E5E7EB" stroke-width="1" />
-                        <line x1="0" y1="160" x2="400" y2="160" stroke="#E5E7EB" stroke-width="1" />
-                        <path d="M40,40 C100,40 140,80 200,100 C260,120 300,140 360,160" fill="none" stroke="url(#gradient)" stroke-width="8" stroke-linecap="round" />
-                        <defs>
-                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" style="stop-color:#EF4444;stop-opacity:1" />
-                                <stop offset="50%" style="stop-color:#F59E0B;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#10B981;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <circle cx="40" cy="40" r="8" fill="#EF4444" stroke="white" stroke-width="3" />
-                        <circle cx="140" cy="80" r="8" fill="#F97316" stroke="white" stroke-width="3" />
-                        <circle cx="260" cy="120" r="8" fill="#FCD34D" stroke="white" stroke-width="3" />
-                        <circle cx="360" cy="160" r="8" fill="#10B981" stroke="white" stroke-width="3" />
-                        <line x1="40" y1="40" x2="40" y2="180" stroke="#9CA3AF" stroke-width="1" stroke-dasharray="4" />
-                        <line x1="140" y1="80" x2="140" y2="180" stroke="#9CA3AF" stroke-width="1" stroke-dasharray="4" />
-                        <line x1="260" y1="120" x2="260" y2="180" stroke="#9CA3AF" stroke-width="1" stroke-dasharray="4" />
-                        <line x1="360" y1="160" x2="360" y2="180" stroke="#9CA3AF" stroke-width="1" stroke-dasharray="4" />
-                    </svg>
-                    <div class="graph-weeks">
-                        <div>1-я неделя</div>
-                        <div>2-я неделя</div>
-                        <div>3-я неделя</div>
-                        <div>4-я неделя</div>
-                    </div>
-                </div>
+        <div class="info-screen">
+            <h2 class="info-screen-title" style="color: var(--success);">Анализ завершен</h2>
+            
+            <div style="text-align: left; background: rgba(16, 185, 129, 0.1); padding: 24px; border-radius: 16px; border: 1px solid var(--success); margin: 20px 0;">
+                <p style="font-size: 1.1rem; line-height: 1.6; color: var(--text);">
+                    <strong style="color: var(--success);">Диагноз:</strong> Выявлена критическая фиксация на прошлом.
+                    <br><br>
+                    Самостоятельный выход из этой петли занимает от 2 до 5 лет. 
+                    <br><br>
+                    <strong style="color: var(--success);">У нас есть способ сократить это до 7 дней.</strong>
+                </p>
             </div>
 
-            <div class="summary-section">
-                <h2 class="summary-title">Архитектура вашей трансформации</h2>
-                <div class="roadmap">
-                    <div class="roadmap-item">
-                        <div class="roadmap-item-phase">Этап 1</div>
-                        <h3 class="roadmap-item-title">Купирование боли и эмоциональная стабилизация</h3>
-                        <p class="roadmap-item-desc">Техники экстренной помощи при острых приступах тоски. Нормализация сна и аппетита.</p>
-                    </div>
-                    <div class="roadmap-item">
-                        <div class="roadmap-item-phase">Этап 2</div>
-                        <h3 class="roadmap-item-title">Детоксикация и разрыв зависимости</h3>
-                        <p class="roadmap-item-desc">Полный информационный детокс. Работа с триггерами и паттернами поведения.</p>
-                    </div>
-                    <div class="roadmap-item">
-                        <div class="roadmap-item-phase">Этап 3</div>
-                        <h3 class="roadmap-item-title">Техники косвенного влияния и триггеры интереса</h3>
-                        <p class="roadmap-item-desc">Стратегии возобновления контакта. Создание ситуации дефицита вашего внимания.</p>
-                    </div>
-                    <div class="roadmap-item">
-                        <div class="roadmap-item-phase">Этап 4</div>
-                        <h3 class="roadmap-item-title">Перезагрузка личности и новые границы</h3>
-                        <p class="roadmap-item-desc">Трансформация на глубинном уровне. Формирование новой идентичности.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="summary-section">
-                <h2 class="summary-title">Моя методика:</h2>
-                <div class="info-screen-list" style="background: transparent; border: none; padding: 0;">
-                    <div class="info-screen-list-item" style="color: var(--text); font-size: 1.1rem;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span><strong>Проанализировала</strong> ответы на ваш тест...</span>
-                    </div>
-                    <div class="info-screen-list-item" style="color: var(--text); font-size: 1.1rem;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span><strong>Обнаружила</strong> ключевые психологические триггеры...</span>
-                    </div>
-                    <div class="info-screen-list-item" style="color: var(--text); font-size: 1.1rem;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span><strong>Составила</strong> пошаговый план действий...</span>
-                    </div>
-                </div>
-            </div>
-
-            <button class="summary-fixed-btn" onclick="go(20)">Продолжить</button>
+            <button class="next-btn" onclick="go(20)">Посмотреть варианты плана →</button>
         </div>
     </div>
 
@@ -2476,8 +2400,8 @@
             </div>
 
             <div class="lp-section" style="text-align: center;">
-                <h2 class="lp-title" style="font-size: 1.6rem; margin-bottom: 20px;">Поздравляем! Ваш персональный план по восстановлению готов</h2>
-                <p class="lp-text" style="font-size: 1.1rem;">Моя методика проанализировала ваши ответы и составила индивидуальную стратегию, которая поможет вам забыть бывшего и обрести счастье.</p>
+                <h2 class="lp-title" style="font-size: 1.6rem; margin-bottom: 20px;">Ваш персональный план готов</h2>
+                <p class="lp-text" style="font-size: 1.1rem;">Выберите стратегию, которая подходит именно вам.</p>
             </div>
 
             <div class="lp-timer-box" style="background: rgba(245, 158, 11, 0.15); border: 1px solid var(--accent); color: var(--accent-light);">
@@ -2485,15 +2409,15 @@
             </div>
 
             <div class="pricing-cards" id="plans-section" style="margin: 10px 15px;">
-                <!-- 1 Week Plan -->
+                <!-- 1 Week Plan: Протокол «Экстренная остановка» -->
                 <div class="price-card" tabindex="0" role="radio" aria-label="Тариф 1 неделя" onclick="selectPlan(this, '1week')" style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9)); color: var(--text); border: 1px solid rgba(245, 158, 11, 0.15);">
                     <div class="price-card-left">
                         <div class="price-checkbox" style="border-color: #4B5563; background: rgba(15, 23, 42, 0.5);">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
                         <div class="price-card-info">
-                            <h3 class="price-card-title" style="color: var(--text);">1-недельный план</h3>
-                            <span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Сэкономьте 75%</span>
+                            <h3 class="price-card-title" style="color: var(--text);">1 неделя: «Экстренная остановка»</h3>
+                            <span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Протокол</span>
                             <div class="price-card-old-total" style="color: var(--text-muted);">
                                 <span class="strike">$39.99</span>
                                 <span class="bold" style="color: var(--text);">$9.99</span>
@@ -2507,7 +2431,7 @@
                     </div>
                 </div>
 
-                <!-- 4 Weeks Plan (Recommended) -->
+                <!-- 4 Weeks Plan: Курс «Детокс и перепрошивка» -->
                 <div class="price-card recommended" tabindex="0" role="radio" aria-label="Тариф 4 недели" onclick="selectPlan(this, '4weeks')" style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9)); color: var(--text); border: 2px solid var(--accent);">
                     <div class="price-card-badge" style="background: #F59E0B;">Самый популярный</div>
                     <div class="price-card-left">
@@ -2515,8 +2439,8 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
                         <div class="price-card-info">
-                            <h3 class="price-card-title" style="color: var(--text);">4-недельный план</h3>
-                            <span class="price-card-discount" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-light);">Сэкономьте 75%</span>
+                            <h3 class="price-card-title" style="color: var(--text);">4 недели: «Детокс и перепрошивка»</h3>
+                            <span class="price-card-discount" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-light);">Курс</span>
                             <div class="price-card-old-total" style="color: var(--text-muted);">
                                 <span class="strike">$59.99</span>
                                 <span class="bold" style="color: var(--text);">$14.99</span>
@@ -2530,7 +2454,7 @@
                     </div>
                 </div>
 
-                <!-- 8 Weeks Plan -->
+                <!-- 8 Weeks Plan: Стратегия «Полное равнодушие» -->
                 <div class="price-card" tabindex="0" role="radio" aria-label="Тариф 8 недель" onclick="selectPlan(this, '8weeks')" style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9)); color: var(--text); border: 1px solid rgba(245, 158, 11, 0.15);">
                     <div class="price-card-badge" style="background: var(--success);">Лучшая цена</div>
                     <div class="price-card-left">
@@ -2538,8 +2462,8 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
                         <div class="price-card-info">
-                            <h3 class="price-card-title" style="color: var(--text);">8-недельный план</h3>
-                            <span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Сэкономьте 76%</span>
+                            <h3 class="price-card-title" style="color: var(--text);">8 недель: «Полное равнодушие»</h3>
+                            <span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Стратегия</span>
                             <div class="price-card-old-total" style="color: var(--text-muted);">
                                 <span class="strike">$119.99</span>
                                 <span class="bold" style="color: var(--text);">$27.99</span>
@@ -2601,28 +2525,20 @@
 
             <!-- What You Get -->
             <div class="lp-section">
-                <h3 class="lp-title" style="text-align: center;">Вот что вы получите:</h3>
+                <h3 class="lp-title" style="text-align: center;">Что входит в планы:</h3>
                 <img src="https://image.qwenlm.ai/public_source/e6c9702e-8b2e-4897-9e6f-28eb958b9dec/1046923d2-328a-431d-ab04-13c5916099ce.png" alt="Что вы получите" class="lp-what-get-img">
                 <ul class="lp-check-list">
                     <li>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span>Персональный план с <span class="highlight">ключевыми привычками и биохаками</span> для контроля над вашими эмоциями</span>
+                        <span><strong>1 неделя:</strong> PDF по цифровой изоляции, скрипты-антидоты, техника «Стоп-мысль», чек-лист «168 часов».</span>
                     </li>
                     <li>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span>Пошаговый видеотренинг для построения дисциплины и развития твердого самоконтроля</span>
+                        <span><strong>4 недели:</strong> Всё из 1 недели + 28-дневный график привычек, методика «Инвентаризация иллюзий», план восстановления сна.</span>
                     </li>
                     <li>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span>Мои рабочие материалы с последними достижениями в области поведенческой науки</span>
-                    </li>
-                    <li>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span>Гайд: <span class="highlight">Устойчивое Мышление</span>, чтобы развить необходимую уверенность и самоконтроль</span>
-                    </li>
-                    <li>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span>Доступ к <span class="highlight">закрытому чату поддержки</span></span>
+                        <span><strong>8 недель:</strong> Всё из 4 недель + модуль «Архетипы прошлого», инструкция «Выход в свет», финальный тест на готовность.</span>
                     </li>
                 </ul>
             </div>
@@ -2637,7 +2553,7 @@
 
             <!-- How it Works -->
             <div class="lp-section">
-                <h3 class="lp-title" style="text-align: center;">Вот как это работает</h3>
+                <h3 class="lp-title" style="text-align: center;">Как это работает</h3>
                 <div class="lp-steps">
                     <div class="lp-step">
                         <div class="lp-step-num">1</div>
@@ -2747,8 +2663,8 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
                         <div class="price-card-info">
-                            <h3 class="price-card-title" style="color: var(--text);">1-недельный план</h3>
-                            <span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Сэкономьте 75%</span>
+                            <h3 class="price-card-title" style="color: var(--text);">1 неделя: «Экстренная остановка»</h3>
+                            <span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Протокол</span>
                             <div class="price-card-old-total" style="color: var(--text-muted);">
                                 <span class="strike">$39.99</span>
                                 <span class="bold" style="color: var(--text);">$9.99</span>
@@ -2762,7 +2678,7 @@
                     </div>
                 </div>
 
-                <!-- 4 Weeks Plan (Recommended) -->
+                <!-- 4 Weeks Plan -->
                 <div class="price-card recommended" tabindex="0" role="radio" aria-label="Тариф 4 недели" onclick="selectPlan(this, '4weeks')" style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9)); color: var(--text); border: 2px solid var(--accent);">
                     <div class="price-card-badge" style="background: #F59E0B;">Самый популярный</div>
                     <div class="price-card-left">
@@ -2770,8 +2686,8 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
                         <div class="price-card-info">
-                            <h3 class="price-card-title" style="color: var(--text);">4-недельный план</h3>
-                            <span class="price-card-discount" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-light);">Сэкономьте 75%</span>
+                            <h3 class="price-card-title" style="color: var(--text);">4 недели: «Детокс и перепрошивка»</h3>
+                            <span class="price-card-discount" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-light);">Курс</span>
                             <div class="price-card-old-total" style="color: var(--text-muted);">
                                 <span class="strike">$59.99</span>
                                 <span class="bold" style="color: var(--text);">$14.99</span>
@@ -2793,8 +2709,8 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
                         </div>
                         <div class="price-card-info">
-                            <h3 class="price-card-title" style="color: var(--text);">8-недельный план</h3>
-                            <span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Сэкономьте 76%</span>
+                            <h3 class="price-card-title" style="color: var(--text);">8 недель: «Полное равнодушие»</h3>
+                            <span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Стратегия</span>
                             <div class="price-card-old-total" style="color: var(--text-muted);">
                                 <span class="strike">$119.99</span>
                                 <span class="bold" style="color: var(--text);">$27.99</span>
@@ -2848,6 +2764,7 @@
     let emailSubmitted = false;
     let recommendedPlan = '4weeks';
     let loaderRunning = false;
+    let userGender = ''; // Переменная для хранения пола
 
     function go(n) {
         const currentStep = document.getElementById(`s${step}`);
@@ -2925,16 +2842,18 @@
         }, 8000);
     }
 
+    // НОВАЯ ФУНКЦИЯ: Выбор пола
+    function selectGender(gender) {
+        userGender = gender;
+        answers['gender'] = gender;
+    }
+
     function selectVisualOption(element, key, value) {
         const parent = element.parentElement;
         const siblings = parent.querySelectorAll('.visual-option');
         siblings.forEach(el => el.classList.remove('selected'));
         element.classList.add('selected');
         answers[key] = value;
-        
-        if (key === 'gender') {
-            updateAgeImages(value);
-        }
     }
 
     function selectCardOption(element, key, value) {
@@ -2943,30 +2862,6 @@
         siblings.forEach(el => el.classList.remove('selected'));
         element.classList.add('selected');
         answers[key] = value;
-    }
-
-    function updateAgeImages(gender) {
-        const ageOptions = document.querySelectorAll('.visual-option');
-        const maleImages = [
-            'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=500&fit=crop',
-            'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop',
-            'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop',
-            'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop'
-        ];
-        const femaleImages = [
-            'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=500&fit=crop',
-            'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=500&fit=crop',
-            'https://images.unsplash.com/photo-1552058544-f2b08422138a?w=400&h=500&fit=crop',
-            'https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&h=500&fit=crop'
-        ];
-        
-        const images = gender === 'male' ? maleImages : femaleImages;
-        ageOptions.forEach((option, index) => {
-            const img = option.querySelector('img');
-            if (img && images[index]) {
-                img.src = images[index];
-            }
-        });
     }
 
     function submitNewEmail(e) {
