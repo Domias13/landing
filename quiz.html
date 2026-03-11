@@ -817,7 +817,7 @@ border-color: var(--accent);
 transform: translateY(-4px);
 box-shadow: 0 10px 20px rgba(245, 158, 11, 0.15);
 }
-.price-card.selected {
+.price-card.active {
 border-color: var(--accent);
 background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(15, 23, 42, 0.95));
 box-shadow: 0 0 0 2px var(--accent);
@@ -827,7 +827,7 @@ border-color: var(--accent);
 border-width: 2px;
 background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(15, 23, 42, 0.9));
 }
-.price-card.recommended.selected {
+.price-card.recommended.active {
 background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(15, 23, 42, 0.95));
 }
 .price-card-badge {
@@ -865,7 +865,7 @@ flex-shrink: 0;
 transition: var(--transition);
 background: rgba(15, 23, 42, 0.5);
 }
-.price-card.selected .price-checkbox {
+.price-card.active .price-checkbox {
 background: var(--accent);
 border-color: var(--accent);
 color: var(--primary);
@@ -875,7 +875,7 @@ width: 16px;
 height: 16px;
 display: none;
 }
-.price-card.selected .price-checkbox svg {
+.price-card.active .price-checkbox svg {
 display: block;
 }
 .price-card-info {
@@ -934,7 +934,7 @@ display: block;
 .price-card-new-daily {
 font-size: 1.75rem;
 font-weight: 800;
-color: var(--accent);
+color: var(--success);
 line-height: 1;
 display: block;
 }
@@ -943,6 +943,30 @@ font-size: 0.8rem;
 color: var(--text-secondary);
 margin-top: 4px;
 display: block;
+}
+.price-card-features {
+margin-top: 15px;
+padding-top: 15px;
+border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.price-card-features ul {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+.price-card-features li {
+font-size: 0.85rem;
+color: var(--text-secondary);
+margin-bottom: 6px;
+padding-left: 16px;
+position: relative;
+}
+.price-card-features li::before {
+content: '✓';
+position: absolute;
+left: 0;
+color: var(--success);
+font-weight: bold;
 }
 .benefits-card {
 background: rgba(30, 41, 59, 0.5);
@@ -1129,8 +1153,8 @@ position: relative;
 overflow: hidden;
 box-shadow: 0 10px 35px rgba(16, 185, 129, 0.4);
 letter-spacing: -0.3px;
-width: calc(100% - 64px);
-margin: 20px 32px;
+width: calc(100% - 40px);
+margin: 20px 20px;
 text-transform: uppercase;
 }
 .buy-btn-large:hover {
@@ -2101,6 +2125,21 @@ text-align: center;
 margin-top: 8px;
 font-style: italic;
 }
+/* Sticky Discount Bar */
+.sticky-discount-bar {
+position: sticky;
+top: 0;
+left: 0;
+right: 0;
+background: linear-gradient(90deg, var(--warning), var(--danger));
+color: white;
+padding: 10px 20px;
+text-align: center;
+font-weight: 700;
+font-size: 0.9rem;
+z-index: 101;
+box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
 </style>
 </head>
 <body>
@@ -2109,7 +2148,7 @@ font-style: italic;
 <div id="fill" aria-hidden="true"></div>
 </div>
 <div class="progress-info">
-<span class="step-counter" id="progress-text">Шаг 1 из 18</span>
+<span class="step-counter" id="progress-text">Шаг 1 из 21</span>
 <span>~2 мин</span>
 </div>
 <div class="welcome-text" id="welcomeText">
@@ -2157,25 +2196,25 @@ font-style: italic;
 <div class="block-label">📋 Блок 1: Ситуация</div>
 <h2 class="step-title">Что именно произошло?</h2>
 <div class="options" role="radiogroup">
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'situation', 'mutual'); go(4)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'situation', 'mutual', 1); go(4)">
 <div class="card-opt-content">
 <span class="card-opt-text">Расставание по обоюдному согласию</span>
 <span class="card-opt-icon">🤝</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'situation', 'dumped'); go(4)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'situation', 'dumped', 3); go(4)">
 <div class="card-opt-content">
 <span class="card-opt-text">Меня бросили</span>
 <span class="card-opt-icon">💔</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'situation', 'betrayal'); go(4)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'situation', 'betrayal', 3); go(4)">
 <div class="card-opt-content">
 <span class="card-opt-text">Измена или предательство</span>
 <span class="card-opt-icon">⚡</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'situation', 'toxic'); go(4)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'situation', 'toxic', 2); go(4)">
 <div class="card-opt-content">
 <span class="card-opt-text">Токсичные отношения</span>
 <span class="card-opt-icon">🚫</span>
@@ -2188,25 +2227,25 @@ font-style: italic;
 <div class="block-label">📋 Блок 1: Ситуация</div>
 <h2 class="step-title">Как долго длились отношения</h2>
 <div class="options" role="radiogroup">
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'time', 'days'); go(5)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'time', 'days', 1); go(5)">
 <div class="card-opt-content">
 <span class="card-opt-text">От 1 дня до 2 недель</span>
 <span class="card-opt-icon">🕐</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'time', 'weeks'); go(5)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'time', 'weeks', 2); go(5)">
 <div class="card-opt-content">
 <span class="card-opt-text">От 2 недель до 2 месяцев</span>
 <span class="card-opt-icon">🗓️</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'time', 'months'); go(5)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'time', 'months', 2); go(5)">
 <div class="card-opt-content">
 <span class="card-opt-text">От 2 до 6 месяцев</span>
 <span class="card-opt-icon">📅</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'time', 'year+'); go(5)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'time', 'year+', 3); go(5)">
 <div class="card-opt-content">
 <span class="card-opt-text">Больше года</span>
 <span class="card-opt-icon">⏳</span>
@@ -2219,25 +2258,25 @@ font-style: italic;
 <div class="block-label">🧠 Блок 2: Триггеры</div>
 <h2 class="step-title">Как часто вы заходите в его/её профиль, чтобы проверить время последнего входа или новые подписки?</h2>
 <div class="options" role="radiogroup">
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'social', '15min'); go(6)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'social', '15min', 3); go(6)">
 <div class="card-opt-content">
 <span class="card-opt-text">Каждые 15 минут</span>
 <span class="card-opt-icon">📱</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'social', 'evening'); go(6)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'social', 'evening', 2); go(6)">
 <div class="card-opt-content">
 <span class="card-opt-text">Только вечером</span>
 <span class="card-opt-icon">🌙</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'social', 'fake'); go(6)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'social', 'fake', 3); go(6)">
 <div class="card-opt-content">
 <span class="card-opt-text">С фейковых аккаунтов</span>
 <span class="card-opt-icon">🕵️</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'social', 'blocked'); go(6)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'social', 'blocked', 1); go(6)">
 <div class="card-opt-content">
 <span class="card-opt-text">Заблокировал(а) / не смотрю</span>
 <span class="card-opt-icon">🛡️</span>
@@ -2251,11 +2290,11 @@ font-style: italic;
 <h2 class="step-title" style="color: var(--danger);">Петля зависимости</h2>
 <div style="text-align: left; background: rgba(239, 68, 68, 0.1); padding: 24px; border-radius: 16px; border: 1px solid var(--danger); margin: 20px 0;">
 <p style="font-size: 1rem; line-height: 1.6; color: var(--text);">
-Каждая проверка профиля — это не поиск информации. Это попытка получить дозу временного успокоения.
+Каждая проверка профиля - это не поиск информации. Это попытка получить дозу временного успокоения.
 <br><br>
 Но за этой дозой всегда следует еще более глубокий провал и чувство унижения.
 <br><br>
-<strong style="color: var(--danger);">То, что вы делаете сейчас — это саморазрушение.</strong>
+<strong style="color: var(--danger);">То, что вы делаете сейчас - это саморазрушение.</strong>
 </p>
 </div>
 <button class="next-btn" onclick="go(7)">Понятно, идем дальше →</button>
@@ -2266,19 +2305,19 @@ font-style: italic;
 <div class="block-label">🧠 Блок 2: Триггеры</div>
 <h2 class="step-title">Бывает ли так, что вы часами думаете о нем/ней и не можете остановить эти мысли?</h2>
 <div class="options" role="radiogroup">
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'rumination', 'yes'); go(8)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'rumination', 'yes', 3); go(8)">
 <div class="card-opt-content">
 <span class="card-opt-text">Да, это "эмоциональная жвачка"</span>
 <span class="card-opt-icon">🌀</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'rumination', 'rarely'); go(8)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'rumination', 'rarely', 2); go(8)">
 <div class="card-opt-content">
 <span class="card-opt-text">Редко, только когда очень больно</span>
 <span class="card-opt-icon">💭</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'rumination', 'no'); go(8)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'rumination', 'no', 1); go(8)">
 <div class="card-opt-content">
 <span class="card-opt-text">Нет, я контролирую мысли</span>
 <span class="card-opt-icon">🛡️</span>
@@ -2292,13 +2331,7 @@ font-style: italic;
 <h2 class="step-title" style="color: var(--danger);">Почему самостоятельный выход не работает?</h2>
 <div style="text-align: left; background: rgba(239, 68, 68, 0.1); padding: 24px; border-radius: 16px; border: 1px solid var(--danger); margin: 20px 0;">
 <p style="font-size: 1.1rem; line-height: 1.6; color: var(--text); margin-bottom: 20px;">
-<strong style="color: var(--danger);">80% людей терпят неудачу</strong> при попытке самостоятельно выйти из зависимых отношений.
-</p>
-<p style="font-size: 1rem; line-height: 1.6; color: var(--text); margin-bottom: 20px;">
-<strong>Причина:</strong> вы пытаетесь решить проблему изнутри системы, которая вас удерживает. Нужен внешний взгляд и профессиональный план.
-</p>
-<p style="font-size: 1.1rem; line-height: 1.6; color: var(--text);">
-<strong style="color: var(--success);">Именно здесь я могу вам помочь.</strong>
+Я прошел через это сам и знаю: когда ты внутри этой боли, мозг работает против тебя. Тебе не нужны советы "просто забудь", тебе нужен план перехвата собственного внимания. Мой опыт - это твой короткий путь к выходу.
 </p>
 </div>
 <button class="next-btn" onclick="go(9)">Продолжить →</button>
@@ -2309,25 +2342,25 @@ font-style: italic;
 <div class="block-label">💓 Блок 3: Тело</div>
 <h2 class="step-title">Как изменился ваш сон?</h2>
 <div class="options" role="radiogroup">
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'sleep', 'insomnia'); go(10)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'sleep', 'insomnia', 3); go(10)">
 <div class="card-opt-content">
 <span class="card-opt-text">Бессонница, не могу уснуть</span>
 <span class="card-opt-icon">😴</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'sleep', 'oversleep'); go(10)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'sleep', 'oversleep', 2); go(10)">
 <div class="card-opt-content">
 <span class="card-opt-text">Сплю слишком много, нет сил</span>
 <span class="card-opt-icon">🛌</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'sleep', 'broken'); go(10)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'sleep', 'broken', 3); go(10)">
 <div class="card-opt-content">
 <span class="card-opt-text">Прерывистый сон, кошмары</span>
 <span class="card-opt-icon">🌑</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'sleep', 'normal'); go(10)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'sleep', 'normal', 1); go(10)">
 <div class="card-opt-content">
 <span class="card-opt-text">Сон в норме</span>
 <span class="card-opt-icon">✅</span>
@@ -2340,25 +2373,25 @@ font-style: italic;
 <div class="block-label">💓 Блок 3: Тело</div>
 <h2 class="step-title">Что происходит с аппетитом?</h2>
 <div class="options" role="radiogroup">
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'appetite', 'none'); go(11)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'appetite', 'none', 3); go(11)">
 <div class="card-opt-content">
 <span class="card-opt-text">Не могу есть, тошнит</span>
 <span class="card-opt-icon">🤢</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'appetite', 'overeat'); go(11)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'appetite', 'overeat', 2); go(11)">
 <div class="card-opt-content">
 <span class="card-opt-text">Постоянно заедаю стресс</span>
 <span class="card-opt-icon">🍕</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'appetite', 'irregular'); go(11)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'appetite', 'irregular', 2); go(11)">
 <div class="card-opt-content">
 <span class="card-opt-text">Ем нерегулярно, без аппетита</span>
 <span class="card-opt-icon">🍽️</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'appetite', 'normal'); go(11)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'appetite', 'normal', 1); go(11)">
 <div class="card-opt-content">
 <span class="card-opt-text">Аппетит в норме</span>
 <span class="card-opt-icon">🥗</span>
@@ -2371,25 +2404,25 @@ font-style: italic;
 <div class="block-label">💓 Блок 3: Тело</div>
 <h2 class="step-title">Чувствуете ли вы физическую боль в груди или «ком» в горле?</h2>
 <div class="options" role="radiogroup">
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'somatic', 'chest'); go(12)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'somatic', 'chest', 3); go(12)">
 <div class="card-opt-content">
 <span class="card-opt-text">Да, боль/давление в груди</span>
 <span class="card-opt-icon">💔</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'somatic', 'throat'); go(12)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'somatic', 'throat', 2); go(12)">
 <div class="card-opt-content">
 <span class="card-opt-text">«Ком» в горле, трудно дышать</span>
 <span class="card-opt-icon">🌬️</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'somatic', 'both'); go(12)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'somatic', 'both', 3); go(12)">
 <div class="card-opt-content">
 <span class="card-opt-text">И то, и другое</span>
 <span class="card-opt-icon">😮‍💨</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'somatic', 'none'); go(12)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'somatic', 'none', 1); go(12)">
 <div class="card-opt-content">
 <span class="card-opt-text">Нет, физически чувствую себя нормально</span>
 <span class="card-opt-icon">💪</span>
@@ -2402,25 +2435,25 @@ font-style: italic;
 <div class="block-label">💓 Блок 3: Тело</div>
 <h2 class="step-title">Удаётся ли концентрироваться на работе/делах дольше 15 минут?</h2>
 <div class="options" role="radiogroup">
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'focus', 'no'); go(13)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'focus', 'no', 3); go(13)">
 <div class="card-opt-content">
 <span class="card-opt-text">Нет, мысли постоянно возвращаются</span>
 <span class="card-opt-icon">🌀</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'focus', 'hard'); go(13)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'focus', 'hard', 2); go(13)">
 <div class="card-opt-content">
 <span class="card-opt-text">С большим трудом, быстро устаю</span>
 <span class="card-opt-icon">🧠</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'focus', 'sometimes'); go(13)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'focus', 'sometimes', 2); go(13)">
 <div class="card-opt-content">
 <span class="card-opt-text">Иногда получается, иногда нет</span>
 <span class="card-opt-icon">⚡</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'focus', 'yes'); go(13)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'focus', 'yes', 1); go(13)">
 <div class="card-opt-content">
 <span class="card-opt-text">Да, я могу фокусироваться</span>
 <span class="card-opt-icon">🎯</span>
@@ -2433,25 +2466,25 @@ font-style: italic;
 <div class="block-label">💔 Блок 4: Боль</div>
 <h2 class="step-title">Как вы расстались ?</h2>
 <div class="options" role="radiogroup">
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'pain_duration', 'month'); go(14)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'pain_duration', 'month', 1); go(14)">
 <div class="card-opt-content">
 <span class="card-opt-text">Меньше месяца</span>
 <span class="card-opt-icon">🗓️</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'pain_duration', 'months'); go(14)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'pain_duration', 'months', 2); go(14)">
 <div class="card-opt-content">
 <span class="card-opt-text">Несколько месяцев</span>
 <span class="card-opt-icon">🗓️</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'pain_duration', 'year'); go(14)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'pain_duration', 'year', 3); go(14)">
 <div class="card-opt-content">
 <span class="card-opt-text">Более года</span>
 <span class="card-opt-icon">🗓️</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'pain_duration', 'years'); go(14)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'pain_duration', 'years', 3); go(14)">
 <div class="card-opt-content">
 <span class="card-opt-text">Несколько лет</span>
 <span class="card-opt-icon">🗓️</span>
@@ -2464,25 +2497,25 @@ font-style: italic;
 <div class="block-label">🚀 Блок 5: Цель</div>
 <h2 class="step-title">Чего вы хотите сейчас?</h2>
 <div class="options" role="radiogroup">
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'goal', 'forget'); go(15)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'goal', 'forget', 2); go(15)">
 <div class="card-opt-content">
 <span class="card-opt-text">Забыть навсегда и стереть из памяти</span>
 <span class="card-opt-icon">🗑️</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'goal', 'pain'); go(15)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'goal', 'pain', 2); go(15)">
 <div class="card-opt-content">
 <span class="card-opt-text">Избавиться от боли и дышать свободно</span>
 <span class="card-opt-icon">🕊️</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'goal', 'better'); go(15)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'goal', 'better', 1); go(15)">
 <div class="card-opt-content">
 <span class="card-opt-text">Стать лучше и заставить жалеть</span>
 <span class="card-opt-icon">🔥</span>
 </div>
 </div>
-<div class="card-opt" role="radio" onclick="selectCardOption(this, 'goal', 'peace'); go(15)">
+<div class="card-opt" role="radio" onclick="selectCardOption(this, 'goal', 'peace', 3); go(15)">
 <div class="card-opt-content">
 <span class="card-opt-text">Вернуть</span>
 <span class="card-opt-icon">💔</span>
@@ -2582,127 +2615,107 @@ font-style: italic;
 <!-- Step 18: Pricing -->
 <div class="step" id="s18" role="tabpanel">
 <div class="lp-container">
-<div class="sticky-header" style="background: rgba(15, 23, 42, 0.98); border-bottom: 1px solid rgba(245, 158, 11, 0.12); box-shadow: 0 2px 10px rgba(0,0,0,0.3);">
-<div class="sticky-timer" style="color: var(--accent);">
+<!-- Sticky Discount Bar -->
+<div class="sticky-discount-bar">
+Скидка 60% сгорит через: <span id="discount-timer">10:00</span>
+</div>
+
+<div class="sticky-header">
+<div class="sticky-timer">
 <div>
-<span class="sticky-timer-label" style="color: var(--text-secondary);">до конца акции</span>
-<span id="countdown">09:36</span>
+<span class="sticky-timer-label">до конца акции</span>
+<span id="countdown">09:59</span>
 </div>
 </div>
-<button class="sticky-btn" onclick="scrollToBuy()">Получить мой план</button>
+<button class="sticky-btn" onclick="scrollToBuy()">Получить план</button>
 </div>
-<div class="lp-section" style="text-align: center;">
-<h2 class="lp-title" style="font-size: 1.6rem; margin-bottom: 20px; color: var(--danger);">Медлить нельзя.</h2>
+
+<div class="lp-section" style="text-align: center; margin-top: 20px;">
+<h2 class="lp-title" style="font-size: 1.6rem; margin-bottom: 20px; color: var(--danger);">Выберите период доступа</h2>
 </div>
-<!-- Limit Warning -->
-<div class="limit-warning-box">
-<span>⚠️</span> Твоя персональная скидка 60% сгорит через <span id="timer-inline">10:00</span>. После этого доступ к Протоколу будет закрыт.
-</div>
-<!-- Offer Warning Block -->
-<div class="offer-warning-block">
-<div class="offer-warning-title">
-<span>📉</span> Что произойдет, если оставить всё как есть?
-</div>
-<p class="offer-warning-text">
-Статистика показывает: 90% людей, не разорвавших цикл "эмоциональной жвачки" в первые недели, остаются в депрессивном состоянии более 2 лет. Каждый день слежки в соцсетях отбрасывает твое восстановление на месяц назад.
-</p>
-<div class="stuck-progress-container">
-<div class="stuck-progress-bar"></div>
-</div>
-<div class="stuck-progress-label">Твой прогресс застрял на 90%. Последние 10% пути без Протокола пройти невозможно.</div>
-</div>
+
 <div class="pricing-cards" id="plans-section">
-<!-- 1 Week Plan -->
+<!-- 1 Week Plan (Trial) -->
 <div class="price-card price-card-simple" tabindex="0" role="radio" aria-label="Тариф 1 неделя" onclick="selectPlan(this, '1week')">
+<div class="price-card-badge" style="background: var(--text-muted);">Пробный</div>
 <div class="price-card-left">
-<div class="price-checkbox" style="border-color: #4B5563; background: rgba(15, 23, 42, 0.5);">
+<div class="price-checkbox">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
 </div>
 <div class="price-card-info">
-<h3 class="price-card-title" style="color: var(--text);">Протокол «АНТИ-СОРЫВ»</h3>
-<span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Экстренная помощь</span>
-<div class="price-card-old-total" style="color: var(--text-muted);">
-<span class="strike">$39.99</span>
-<span class="bold" style="color: var(--text);">$9.99</span>
-</div>
+<h3 class="price-card-title" style="color: var(--text);">1 Неделя</h3>
+<span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Быстрый старт</span>
 </div>
 </div>
 <div class="price-card-right">
-<span class="price-card-old-daily" style="color: var(--text-muted);">$5.71</span>
-<span class="price-card-new-daily" style="color: var(--accent);">$1.43</span>
-<span class="price-card-period" style="color: var(--text-secondary);">в день</span>
+<span class="price-card-new-daily">$1.43</span>
+<span class="price-card-period">в день</span>
+<div class="price-card-old-total">
+<span class="bold">$9.99</span> итого
 </div>
-<a href="https://secure.wayforpay.com/button/b8061f99dcd1c" style="position: absolute; inset: 0; z-index: 10;" aria-label="Купить Антисрыв"></a>
 </div>
-<!-- 4 Weeks Plan -->
-<div class="price-card recommended" tabindex="0" role="radio" aria-label="Тариф 4 недели" onclick="selectPlan(this, '4weeks')">
-<div class="price-card-badge" style="background: #F59E0B;">Самый популярный</div>
+<div class="price-card-features">
+<ul>
+<li>Базовый протокол + SOS-методика</li>
+</ul>
+</div>
+</div>
+
+<!-- 4 Weeks Plan (Popular - Default) -->
+<div class="price-card recommended active" tabindex="0" role="radio" aria-label="Тариф 4 недели" onclick="selectPlan(this, '4weeks')">
+<div class="price-card-badge" style="background: #F59E0B;">Популярный</div>
 <div class="price-card-left">
-<div class="price-checkbox" style="border-color: #4B5563; background: rgba(15, 23, 42, 0.5);">
+<div class="price-checkbox">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
 </div>
 <div class="price-card-info">
-<h3 class="price-card-title" style="color: var(--text);">Курс «ПЕРЕЗАГРУЗКА»</h3>
-<span class="price-card-discount" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-light);">Новые привычки</span>
-<div class="price-card-old-total" style="color: var(--text-muted);">
-<span class="strike">$59.99</span>
-<span class="bold" style="color: var(--text);">$14.99</span>
-</div>
+<h3 class="price-card-title" style="color: var(--text);">4 Недели</h3>
+<span class="price-card-discount" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-light);">Оптимальный курс</span>
 </div>
 </div>
 <div class="price-card-right">
-<span class="price-card-old-daily" style="color: var(--text-muted);">$2.14</span>
-<span class="price-card-new-daily" style="color: var(--accent);">$0.54</span>
-<span class="price-card-period" style="color: var(--text-secondary);">в день</span>
+<span class="price-card-new-daily">$0.54</span>
+<span class="price-card-period">в день</span>
+<div class="price-card-old-total">
+<span class="bold">$14.99</span> итого
 </div>
-<a href="https://secure.wayforpay.com/button/b552a6aef6ce2" style="position: absolute; inset: 0; z-index: 10;" aria-label="Купить Перезагрузка"></a>
 </div>
-<!-- 8 Weeks Plan -->
+<div class="price-card-features">
+<ul>
+<li>Базовый протокол + 100 триггеров + NLP-гайд (Блокировка контакта)</li>
+</ul>
+</div>
+</div>
+
+<!-- 8 Weeks Plan (Best Value) -->
 <div class="price-card price-card-gold" tabindex="0" role="radio" aria-label="Тариф 8 недель" onclick="selectPlan(this, '8weeks')">
-<div class="price-card-badge" style="background: var(--success);">Лучшая цена</div>
+<div class="price-card-badge" style="background: var(--success);">Выгодный</div>
 <div class="price-card-left">
-<div class="price-checkbox" style="border-color: #4B5563; background: rgba(15, 23, 42, 0.5);">
+<div class="price-checkbox">
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
 </div>
 <div class="price-card-info">
-<h3 class="price-card-title" style="color: var(--text);">Стратегия «НОВАЯ ЖИЗНЬ»</h3>
-<span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Фундаментальный результат</span>
-<div class="price-card-old-total" style="color: var(--text-muted);">
-<span class="strike">$119.99</span>
-<span class="bold" style="color: var(--text);">$27.99</span>
-</div>
+<h3 class="price-card-title" style="color: var(--text);">8 Недель</h3>
+<span class="price-card-discount" style="background: rgba(255,255,255,0.1); color: var(--text-secondary);">Полная трансформация</span>
 </div>
 </div>
 <div class="price-card-right">
-<span class="price-card-old-daily" style="color: var(--text-muted);">$2.14</span>
-<span class="price-card-new-daily" style="color: var(--accent);">$0.50</span>
-<span class="price-card-period" style="color: var(--text-secondary);">в день</span>
+<span class="price-card-new-daily">$0.50</span>
+<span class="price-card-period">в день</span>
+<div class="price-card-old-total">
+<span class="bold">$27.99</span> итого
 </div>
-<a href="https://secure.wayforpay.com/button/bc5112a184f73" style="position: absolute; inset: 0; z-index: 10;" aria-label="Купить Новая жизнь"></a>
 </div>
-<!-- NEW: Individual Consultation Card -->
-<div class="price-card price-card-special">
-<div class="price-card-left" style="flex-direction: column; align-items: flex-start; width: 100%;">
-<h3 class="price-card-title">Индивидуальный разбор ситуации</h3>
-<div class="price-card-info">
-<p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">
-На данный момент запись на личные консультации закрыта. Из-за высокой загрузки и работы с текущими группами я временно не беру новых клиентов в индивидуальное сопровождение.
-</p>
-<div class="sos-btn-container">
-<p style="font-size: 0.85rem; color: var(--text); margin-bottom: 8px; font-weight: 600;">
-Если у вас экстренная ситуация (острый приступ боли, риск совершить непоправимую ошибку или потребность в срочном разборе прямо сейчас), вы можете написать мне в Telegram напрямую. Рассматриваю такие сообщения в приоритетном порядке.
-</p>
-<a href="https://t.me/back4heart" class="sos-btn" target="_blank">
-<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.05.01-.24-.09-.34-.1-.1-.24-.07-.35-.05-.15.03-2.39 1.52-6.75 4.46-.64.43-1.22.64-1.73.63-.57-.01-1.67-.32-2.48-.59-1-.33-1.78-.51-1.71-1.08.04-.3.45-.61 1.23-.92 3.42-1.49 5.7-2.47 6.84-2.94 3.26-1.36 3.93-1.6 4.39-1.61.1 0 .32.02.47.14.12.1.15.24.17.39.01.13.02.27.01.41z"/></svg>
-Написать в Telegram (SOS) 🚩
-</a>
-<p class="sos-response-time">Среднее время ответа: до 3-х часов</p>
+<div class="price-card-features">
+<ul>
+<li>Полный курс восстановления + Доступ в чат поддержки + Аудио-практики</li>
+</ul>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="lp-guarantee-box" style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(245, 158, 11, 0.1);">
+
+<!-- Guarantee Block -->
+<div class="lp-guarantee-box" style="background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(245, 158, 11, 0.1); margin: 20px 20px 10px 20px;">
 <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 15px; font-weight: 800; font-size: 1.1rem; color: var(--text-secondary);">
 <span style="color: var(--success); font-size: 1.5rem;">30 ДНЕЙ</span>
 <svg class="guarantee-badge-img" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2712,7 +2725,10 @@ font-style: italic;
 </svg>
 <span>ГАРАНТИЯ ВОЗВРАТА ДЕНЕГ</span>
 </div>
-<button class="buy-btn-large" onclick="handleBuyBtnClick()">Получить мой план</button>
+
+<!-- Final Button -->
+<button class="buy-btn-large" id="buyBtn" onclick="handleBuyBtnClick()">ПОЛУЧИТЬ МОЙ ПЛАН</button>
+
 <!-- Payment Security Icons -->
 <div class="payment-security">
 <svg class="security-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
@@ -2728,156 +2744,7 @@ font-style: italic;
 Если через 7 дней выполнения протокола вы не почувствуете облегчения, мы вернем деньги. Мы продаем результат, а не PDF-файлы.
 </div>
 </div>
-<!-- What You Get -->
-<div class="lp-section">
-<h3 class="lp-title" style="text-align: center;">Что входит в планы:</h3>
-<img src="https://image.qwenlm.ai/public_source/e6c9702e-8b2e-4897-9e6f-28eb958b9dec/1046923d2-328a-431d-ab04-13c5916099ce.png" alt="Что вы получите" class="lp-what-get-img">
-<ul class="lp-check-list">
-<li>
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-<span><strong>1 неделя:</strong> PDF по цифровой изоляции, скрипты-антидоты, техника «Стоп-мысль», чек-лист «168 часов».</span>
-</li>
-<li>
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-<span><strong>4 недели:</strong> Всё из 1 недели + 28-дневный график привычек, методика «Инвентаризация иллюзий», план восстановления сна.</span>
-</li>
-<li>
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-<span><strong>8 недель:</strong> Всё из 4 недель + модуль «Архетипы прошлого», инструкция «Выход в свет», финальный тест на готовность, <strong>чек-лист «100 триггеров»</strong>.</span>
-</li>
-</ul>
-</div>
-<!-- Community -->
-<div class="lp-section">
-<div class="lp-map-container">
-<div class="lp-map-text" style="background: rgba(16, 185, 129, 0.1); border: 2px dashed var(--success); color: var(--text);">
-Люди, подобные вам, использовали мой план, чтобы укрепить свою дисциплину и <strong>НАВСЕГДА</strong> забыть бывшего
-</div>
-<img src="https://image.qwenlm.ai/public_source/e6c9702e-8b2e-4897-9e6f-28eb958b9dec/183844b00-d0c2-44d7-8c26-3acab9b9500b.png" alt="Сообщество" class="lp-community-img">
-</div>
-</div>
-<!-- How it Works -->
-<div class="lp-section">
-<h3 class="lp-title" style="text-align: center;">Как это работает</h3>
-<div class="lp-steps">
-<div class="lp-step">
-<div class="lp-step-num">1</div>
-<div class="lp-step-title">Я создал ваш персональный план для восстановления</div>
-<div class="lp-step-desc">Моя методика выбрала действия, которые окажут наибольшее влияние для вас</div>
-</div>
-<div class="lp-step">
-<div class="lp-step-num">2</div>
-<div class="lp-step-title">Ваш план будет отправлен в телеграм или на Email</div>
-<div class="lp-step-desc">Вы можете начать внедрять его прямо сейчас</div>
-</div>
-<div class="lp-step">
-<div class="lp-step-num">3</div>
-<div class="lp-step-title">Вы получите доступ к моим материалам по психологии</div>
-<div class="lp-step-desc">Я предоставлю вам самые современные методы для решения вашей проблемы</div>
-</div>
-<div class="lp-step">
-<div class="lp-step-num">4</div>
-<div class="lp-step-title">План будет адаптироваться на основе вашего прогресса</div>
-<div class="lp-step-desc">Это обеспечит вам уверенность в том, что вы не останетесь в бездействии</div>
-</div>
-<div class="lp-step">
-<div class="lp-step-num">5</div>
-<div class="lp-step-title">Через несколько недель вы заметите, что стали увереннее</div>
-<div class="lp-step-desc">Вы будете поражены тем, как здорово чувствовать себя свободным</div>
-</div>
-</div>
-</div>
-<!-- Comparison -->
-<div class="lp-section">
-<h3 class="lp-title" style="text-align: center;">Проще говоря, мой план – это единственный инструмент, который вам нужен для <span>реальных изменений в вашей жизни</span></h3>
-<table class="lp-comparison-table">
-<thead>
-<tr>
-<th></th>
-<th>Мой план</th>
-<th>Другие программы</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Персональный <span>план восстановления</span></td>
-<td><span class="check">✔</span></td>
-<td><span class="cross">✖</span></td>
-</tr>
-<tr>
-<td>Передовое обучение для <span>развития дисциплины</span></td>
-<td><span class="check">✔</span></td>
-<td><span class="cross">✖</span></td>
-</tr>
-<tr>
-<td>Методика – <span>№1 по восстановлению</span></td>
-<td><span class="check">✔</span></td>
-<td><span class="cross">✖</span></td>
-</tr>
-<tr>
-<td><span>Практические упражнения</span> прямо в материалах</td>
-<td><span class="check">✔</span></td>
-<td><span class="cross">✖</span></td>
-</tr>
-<tr>
-<td><span>Более 100 привычек</span> для того, чтобы взять под контроль свою жизнь</td>
-<td><span class="check">✔</span></td>
-<td><span class="cross">✖</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-<!-- Important Info -->
-<div class="lp-section">
-<h3 class="lp-title" style="text-align: center;">Важно</h3>
-<div class="lp-important-box">
-<span class="lp-important-icon">🤲</span>
-<p class="lp-important-text">Мой план действительно сэкономит ваше время, используя последние достижения в области поведенческой науки для сокращения навязчивых мыслей, <span>что сделает вас более продуктивным, эффективным и бдительным</span></p>
-</div>
-<div class="lp-important-box">
-<span class="lp-important-icon">📱</span>
-<p class="lp-important-text">Мои материалы очень удобны в использовании, поэтому у вас не возникнет проблем с выполнением для достижения <span>максимальных результатов</span></p>
-</div>
-<div class="lp-important-box">
-<span class="lp-important-icon">👑</span>
-<p class="lp-important-text">Вы получите премиум доступ к своему персональному плану, моим рабочим материалам и передовому обучению, <span>чтобы гарантировать быстрые результаты.</span></p>
-</div>
-<div class="lp-important-box">
-<span class="lp-important-icon">💰</span>
-<p class="lp-important-text">Если вы попробуете и не увидите результатов в первые 30 дней, <span>я верну вам 100% ваших денег</span> и даже позволю вам оставить план бесплатно.</p>
-</div>
-</div>
-<!-- FAQ Section -->
-<div class="faq-section">
-<h3 class="lp-title" style="text-align: center; margin-bottom: 20px;">Часто задаваемые вопросы</h3>
-<div class="faq-item">
-<div class="faq-question" onclick="toggleFaq(this)">
-А если мне не поможет?
-<span class="faq-toggle">+</span>
-</div>
-<div class="faq-answer">
-Методика основана на пошаговом отключении привязанности. Если вы выполните все задания, результат неизбежен.
-</div>
-</div>
-<div class="faq-item">
-<div class="faq-question" onclick="toggleFaq(this)">
-Как я получу материалы?
-<span class="faq-toggle">+</span>
-</div>
-<div class="faq-answer">
-Мгновенно в Telegram или на почту сразу после оплаты.
-</div>
-</div>
-<div class="faq-item">
-<div class="faq-question" onclick="toggleFaq(this)">
-Сколько времени занимает выполнение?
-<span class="faq-toggle">+</span>
-</div>
-<div class="faq-answer">
-Всего 15 минут в день. Это микро-обязательство, которое легко вписать в любой график.
-</div>
-</div>
-</div>
+
 <!-- Footer -->
 <div class="lp-footer">
 <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px;">
@@ -2897,11 +2764,6 @@ font-style: italic;
 </div>
 </div>
 </div>
-</div>
-<!-- Live Activity Notification -->
-<div class="live-activity" id="liveActivity">
-<div class="live-activity-icon">🔔</div>
-<div class="live-activity-text" id="liveActivityText">Анна из Кракова только что выбрала курс 7 дней без боли</div>
 </div>
 <!-- Privacy Policy Modal -->
 <div id="privacyModal" class="modal">
@@ -2925,6 +2787,11 @@ font-style: italic;
 </div>
 </div>
 </div>
+<!-- Live Activity Notification -->
+<div class="live-activity" id="liveActivity">
+<div class="live-activity-icon">🔔</div>
+<div class="live-activity-text" id="liveActivityText">Анна из Кракова только что выбрала курс 7 дней без боли</div>
+</div>
 <script>
 let step = 1;
 const totalSteps = 18;
@@ -2934,6 +2801,7 @@ let recommendedPlan = '4weeks';
 let loaderRunning = false;
 let userGender = '';
 let painLevel = 'Moderate';
+let totalScore = 0;
 const maleImages = [
 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=500&fit=crop',
 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop',
@@ -2967,6 +2835,7 @@ runLoader();
 if (n === 18) {
 startCountdown();
 startReviewsCarousel();
+startDiscountTimer();
 }
 }, 300);
 }
@@ -3024,12 +2893,13 @@ siblings.forEach(el => el.classList.remove('selected'));
 element.classList.add('selected');
 answers[key] = value;
 }
-function selectCardOption(element, key, value) {
+function selectCardOption(element, key, value, points) {
 const parent = element.parentElement;
 const siblings = parent.querySelectorAll('.card-opt');
 siblings.forEach(el => el.classList.remove('selected'));
 element.classList.add('selected');
 answers[key] = value;
+answers[key + '_points'] = points;
 }
 function updateAgeImages(gender) {
 const ageOptions = document.querySelectorAll('#s2 .visual-option');
@@ -3056,19 +2926,38 @@ console.log('Лид собран:', answers);
 go(16);
 }
 function startCountdown() {
-let timeLeft = 9 * 60 + 36;
-const countdownEls = [document.getElementById('countdown'), document.getElementById('timer-inline'), document.getElementById('timer-inline-2')];
+let timeLeft = 9 * 60 + 59;
+const countdownEl = document.getElementById('countdown');
 const timer = setInterval(() => {
 const minutes = Math.floor(timeLeft / 60);
 const seconds = timeLeft % 60;
 const timeString = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
-countdownEls.forEach(el => {
-if (el) el.textContent = timeString;
-});
+if (countdownEl) countdownEl.textContent = timeString;
 timeLeft--;
 if (timeLeft < 0) {
 clearInterval(timer);
-countdownEls.forEach(el => { if (el) el.textContent = '00:00'; });
+if (countdownEl) countdownEl.textContent = '00:00';
+}
+}, 1000);
+}
+function startDiscountTimer() {
+let timeLeft = 10 * 60;
+const discountTimerEl = document.getElementById('discount-timer');
+const timer = setInterval(() => {
+const minutes = Math.floor(timeLeft / 60);
+const seconds = timeLeft % 60;
+const timeString = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+if (discountTimerEl) discountTimerEl.textContent = timeString;
+timeLeft--;
+if (timeLeft < 0) {
+clearInterval(timer);
+if (discountTimerEl) discountTimerEl.textContent = '00:00';
+const buyBtn = document.getElementById('buyBtn');
+if (buyBtn) {
+buyBtn.disabled = true;
+buyBtn.textContent = 'АКЦИЯ ЗАВЕРШЕНА';
+buyBtn.style.background = '#64748B';
+}
 }
 }, 1000);
 }
@@ -3109,8 +2998,8 @@ function scrollToBuy() {
 document.querySelector('.buy-btn-large').scrollIntoView({ behavior: 'smooth' });
 }
 function selectPlan(card, planId) {
-document.querySelectorAll('.price-card').forEach(c => c.classList.remove('selected'));
-card.classList.add('selected');
+document.querySelectorAll('.price-card').forEach(c => c.classList.remove('active'));
+card.classList.add('active');
 recommendedPlan = planId;
 const notifications = [
 "🔥 Осталось всего 3 места по этой цене!",
@@ -3133,6 +3022,15 @@ const links = {
 '8weeks': 'https://secure.wayforpay.com/button/bc5112a184f73'
 };
 window.location.href = links[recommendedPlan];
+}
+function calculateScore() {
+totalScore = 0;
+for (let key in answers) {
+if (key.endsWith('_points')) {
+totalScore += answers[key];
+}
+}
+console.log('Total Score:', totalScore);
 }
 function updateDiagnosis() {
 const textElement = document.getElementById('dynamic-diagnosis-text');
