@@ -1441,6 +1441,367 @@ font-size: 0.9rem;
 line-height: 1.4;
 }
 
+
+/* === CONVERSION ELEMENTS === */
+
+/* Счётчик мест */
+.seats-counter {
+background: linear-gradient(135deg, rgba(239,68,68,0.15), rgba(239,68,68,0.05));
+border: 1px solid rgba(239,68,68,0.4);
+border-radius: 12px;
+padding: 12px 20px;
+margin: 0 20px 16px 20px;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+font-size: 0.9rem;
+font-weight: 600;
+color: #FCA5A5;
+animation: pulseWarning 2s infinite;
+}
+.seats-number {
+font-size: 1.4rem;
+font-weight: 800;
+color: var(--danger);
+font-family: 'Playfair Display', serif;
+min-width: 28px;
+text-align: center;
+transition: all 0.4s ease;
+}
+
+/* Плашка "смотрят сейчас" */
+.viewers-badge {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+padding: 10px 20px;
+margin: 0 20px 16px 20px;
+background: rgba(16,185,129,0.08);
+border: 1px solid rgba(16,185,129,0.25);
+border-radius: 12px;
+font-size: 0.85rem;
+color: var(--text-secondary);
+}
+.viewers-dot {
+width: 8px; height: 8px; border-radius: 50%;
+background: var(--success);
+animation: pulseDot 1.5s ease-in-out infinite;
+flex-shrink: 0;
+}
+.viewers-count {
+font-weight: 700;
+color: var(--success);
+font-size: 1rem;
+}
+
+/* Гарантия-баннер вверху */
+.top-guarantee-bar {
+background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(16,185,129,0.05));
+border: 1px solid rgba(16,185,129,0.3);
+border-radius: 14px;
+padding: 16px 20px;
+margin: 12px 20px;
+display: flex;
+align-items: center;
+gap: 14px;
+}
+.top-guarantee-icon {
+font-size: 2rem;
+flex-shrink: 0;
+}
+.top-guarantee-text {
+font-size: 0.88rem;
+color: var(--text-secondary);
+line-height: 1.5;
+}
+.top-guarantee-text strong {
+color: var(--success);
+font-size: 1rem;
+display: block;
+margin-bottom: 2px;
+}
+
+/* Диагноз-блок */
+.diagnosis-result-block {
+background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(245,158,11,0.04));
+border: 2px solid rgba(245,158,11,0.4);
+border-radius: 18px;
+padding: 22px 20px;
+margin: 12px 20px;
+}
+.diagnosis-result-label {
+font-size: 0.72rem;
+text-transform: uppercase;
+letter-spacing: 1.2px;
+color: var(--accent);
+font-weight: 700;
+margin-bottom: 8px;
+}
+.diagnosis-result-title {
+font-family: 'Playfair Display', serif;
+font-size: 1.25rem;
+font-weight: 700;
+color: var(--text);
+margin-bottom: 8px;
+line-height: 1.3;
+}
+.diagnosis-result-text {
+font-size: 0.88rem;
+color: var(--text-secondary);
+line-height: 1.55;
+margin-bottom: 14px;
+}
+.diagnosis-recommended-plan {
+display: flex;
+align-items: center;
+gap: 10px;
+background: rgba(245,158,11,0.12);
+border-radius: 10px;
+padding: 10px 14px;
+font-size: 0.88rem;
+font-weight: 600;
+color: var(--accent-light);
+}
+
+/* Сравнение с психологом */
+.psychologist-compare {
+background: rgba(30,41,59,0.7);
+border: 1px solid rgba(245,158,11,0.15);
+border-radius: 16px;
+padding: 20px;
+margin: 0 20px 16px 20px;
+}
+.psychologist-compare-title {
+font-size: 0.8rem;
+text-transform: uppercase;
+letter-spacing: 1px;
+color: var(--text-muted);
+font-weight: 700;
+margin-bottom: 14px;
+text-align: center;
+}
+.compare-row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px 0;
+border-bottom: 1px solid rgba(255,255,255,0.05);
+font-size: 0.88rem;
+}
+.compare-row:last-child { border-bottom: none; }
+.compare-label { color: var(--text-secondary); }
+.compare-them { color: var(--danger); font-weight: 600; text-decoration: line-through; opacity: 0.7; }
+.compare-us { color: var(--success); font-weight: 700; font-size: 1rem; }
+.coffee-line {
+text-align: center;
+margin-top: 12px;
+padding: 10px;
+background: rgba(245,158,11,0.08);
+border-radius: 8px;
+font-size: 0.82rem;
+color: var(--accent-light);
+}
+
+/* Счётчик купивших сегодня рядом с кнопкой */
+.bought-today {
+text-align: center;
+font-size: 0.8rem;
+color: var(--text-muted);
+margin-top: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 6px;
+}
+.bought-today-count {
+color: var(--success);
+font-weight: 700;
+}
+
+/* Exit intent popup */
+.exit-popup {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.85);
+z-index: 1000;
+align-items: center;
+justify-content: center;
+padding: 20px;
+}
+.exit-popup.show { display: flex; }
+.exit-popup-inner {
+background: linear-gradient(135deg, #1E293B, #0F172A);
+border: 2px solid var(--accent);
+border-radius: 24px;
+padding: 32px 28px;
+max-width: 420px;
+width: 100%;
+text-align: center;
+position: relative;
+box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 60px rgba(245,158,11,0.15);
+animation: fadeIn 0.4s ease;
+}
+.exit-popup-icon { font-size: 3.5rem; margin-bottom: 16px; animation: pulse 2s infinite; }
+.exit-popup-title {
+font-family: 'Playfair Display', serif;
+font-size: 1.6rem;
+font-weight: 700;
+color: var(--text);
+margin-bottom: 12px;
+line-height: 1.25;
+}
+.exit-popup-subtitle {
+font-size: 0.95rem;
+color: var(--text-secondary);
+line-height: 1.6;
+margin-bottom: 20px;
+}
+.exit-popup-timer {
+background: rgba(239,68,68,0.15);
+border: 1px solid var(--danger);
+border-radius: 12px;
+padding: 14px;
+margin-bottom: 24px;
+font-size: 0.9rem;
+color: #FCA5A5;
+}
+.exit-popup-timer span {
+font-size: 1.8rem;
+font-weight: 800;
+color: var(--danger);
+font-family: 'Playfair Display', serif;
+display: block;
+margin-bottom: 4px;
+}
+.exit-popup-btn {
+background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+color: var(--primary);
+border: none;
+border-radius: 14px;
+padding: 18px 32px;
+font-size: 1.05rem;
+font-weight: 800;
+cursor: pointer;
+width: 100%;
+transition: var(--transition);
+box-shadow: 0 10px 30px var(--accent-glow);
+margin-bottom: 12px;
+}
+.exit-popup-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px var(--accent-glow); }
+.exit-popup-close {
+font-size: 0.82rem;
+color: var(--text-muted);
+cursor: pointer;
+text-decoration: underline;
+}
+.exit-popup-close:hover { color: var(--text-secondary); }
+
+/* === ЖИВАЯ ЛЕНТА ПОКУПОК — мобильный дизайн === */
+.live-feed {
+position: fixed;
+bottom: 0;
+left: 0;
+right: 0;
+z-index: 200;
+pointer-events: none;
+display: flex;
+justify-content: center;
+padding: 0 0 env(safe-area-inset-bottom, 0px) 0;
+}
+.live-feed-inner {
+pointer-events: all;
+display: flex;
+align-items: center;
+gap: 12px;
+background: rgba(10, 18, 35, 0.97);
+border-top: 2px solid var(--success);
+border-left: none;
+border-right: none;
+border-bottom: none;
+padding: 14px 20px 18px 20px;
+width: 100%;
+max-width: 480px;
+box-shadow: 0 -8px 40px rgba(0,0,0,0.6), 0 -2px 0 rgba(16,185,129,0.3);
+transform: translateY(100%);
+transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.live-feed.show .live-feed-inner {
+transform: translateY(0);
+}
+.live-feed-left {
+position: relative;
+flex-shrink: 0;
+}
+.live-feed-avatar {
+width: 44px;
+height: 44px;
+border-radius: 50%;
+background: linear-gradient(135deg, var(--success), #059669);
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: 800;
+font-size: 1.1rem;
+color: white;
+}
+.live-feed-online {
+position: absolute;
+bottom: 1px;
+right: 1px;
+width: 12px;
+height: 12px;
+background: var(--success);
+border-radius: 50%;
+border: 2px solid rgba(10,18,35,0.97);
+animation: pulseDot 1.4s ease-in-out infinite;
+}
+.live-feed-body {
+flex: 1;
+min-width: 0;
+}
+.live-feed-name {
+font-size: 0.9rem;
+font-weight: 700;
+color: var(--text);
+margin-bottom: 2px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+.live-feed-action {
+font-size: 0.8rem;
+color: var(--text-secondary);
+line-height: 1.3;
+}
+.live-feed-action strong {
+color: var(--success);
+}
+.live-feed-time {
+font-size: 0.72rem;
+color: var(--text-muted);
+flex-shrink: 0;
+align-self: flex-start;
+padding-top: 2px;
+}
+.live-feed-close {
+flex-shrink: 0;
+width: 28px;
+height: 28px;
+border-radius: 50%;
+background: rgba(255,255,255,0.08);
+border: none;
+color: var(--text-muted);
+font-size: 1rem;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: background 0.2s;
+}
+.live-feed-close:active { background: rgba(255,255,255,0.15); }
 </style>
 </head>
 <body>
@@ -2100,10 +2461,45 @@ line-height: 1.4;
 <div class="sticky-timer"><span id="countdown">09:59</span></div>
 <button class="sticky-btn" onclick="scrollToBuy()">Получить план</button>
 </div>
+
+<!-- ГАРАНТИЯ ВВЕРХУ — снятие страха перед покупкой -->
+<div class="top-guarantee-bar">
+<div class="top-guarantee-icon">🔒</div>
+<div class="top-guarantee-text">
+<strong>Гарантия возврата 14 дней</strong>
+Если не почувствуете результат — вернём 100% денег. Без вопросов и бюрократии.
+</div>
+</div>
+
+<!-- БЛОК ДИАГНОЗА — персонализация оффера -->
+<div class="diagnosis-result-block" id="diagnosis-block">
+<div class="diagnosis-result-label">🔬 Ваш личный анализ</div>
+<div class="diagnosis-result-title" id="diagnosis-title">Определяется...</div>
+<div class="diagnosis-result-text" id="diagnosis-text"></div>
+<div class="diagnosis-recommended-plan" id="diagnosis-plan">
+<span>💡</span><span id="diagnosis-plan-text">Рекомендованный план определяется...</span>
+</div>
+</div>
+
 <div class="lp-section" style="text-align: center;">
 <h2 class="lp-title" id="final-title" style="color: var(--accent); font-size: 1.8rem;">Ваш план готов</h2>
 <p style="color: var(--text-secondary); font-size: 0.95rem; margin-top: -10px;">Выберите подходящий вариант</p>
 </div>
+
+<!-- ПЛАШКА СМОТРЯТ СЕЙЧАС -->
+<div class="viewers-badge">
+<div class="viewers-dot"></div>
+<span>Прямо сейчас эту страницу смотрят</span>
+<span class="viewers-count" id="viewers-count">7</span>
+<span>человек</span>
+</div>
+
+<!-- СЧЁТЧИК МЕСТ -->
+<div class="seats-counter">
+<span>🔥 Осталось мест по этой цене:</span>
+<span class="seats-number" id="seats-count">11</span>
+</div>
+
 <!-- Trust Badge -->
 <div class="trust-badge">
 <span>🔥</span>
@@ -2220,6 +2616,11 @@ line-height: 1.4;
 <span style="font-size: 1rem; font-weight: 600;">ГАРАНТИЯ</span>
 </div>
 <button class="buy-btn-large" onclick="handleBuyBtnClick()">ПОЛУЧИТЬ МОЙ ПЛАН</button>
+<div class="bought-today">
+<span>✅</span>
+<span class="bought-today-count" id="bought-today-count">47</span>
+<span>человек купили сегодня</span>
+</div>
 <div class="payment-security">
 <span style="font-size: 0.85rem; color: var(--text-secondary);">Безопасный платеж</span>
 <div class="payment-logos">
@@ -2234,6 +2635,24 @@ line-height: 1.4;
 <span>Гарантия возврата средств в течение 14 дней</span>
 </div>
 </div>
+<!-- СРАВНЕНИЕ С ПСИХОЛОГОМ — работа с возражением "дорого" -->
+<div class="psychologist-compare">
+<div class="psychologist-compare-title">💰 Почему это выгоднее психолога</div>
+<div class="compare-row">
+<span class="compare-label">1 сессия психолога</span>
+<span class="compare-them">$80–120</span>
+</div>
+<div class="compare-row">
+<span class="compare-label">Наш полный курс</span>
+<span class="compare-us" id="compare-our-price">от $27</span>
+</div>
+<div class="compare-row">
+<span class="compare-label">Онлайн-терапия (мес)</span>
+<span class="compare-them">$200+</span>
+</div>
+<div class="coffee-line">☕ Это меньше, чем <strong id="coffee-text">3 чашки кофе</strong> — но результат на всю жизнь</div>
+</div>
+
 <div class="lp-section">
 <h3 class="lp-title" style="text-align: center;">Что входит в планы:</h3>
 <ul class="lp-check-list" id="plan-features"></ul>
@@ -2427,6 +2846,37 @@ line-height: 1.4;
 </div>
 </div>
 
+
+<!-- EXIT INTENT POPUP -->
+<div class="exit-popup" id="exitPopup">
+<div class="exit-popup-inner">
+<div class="exit-popup-icon">⚠️</div>
+<div class="exit-popup-title">Подождите! Ваш план будет удалён</div>
+<div class="exit-popup-subtitle">Мы сохранили персональный план специально для вас. После закрытия страницы он <strong>исчезнет навсегда</strong>, и придётся проходить тест заново.</div>
+<div class="exit-popup-timer">
+Ваш план удалится через:
+<span id="exit-timer">10:00</span>
+</div>
+<button class="exit-popup-btn" onclick="closeExitPopup()">← Вернуться к плану</button>
+<div class="exit-popup-close" onclick="dismissExitPopup()">Закрыть и потерять план</div>
+</div>
+</div>
+
+<!-- ЖИВАЯ ЛЕНТА ПОКУПОК -->
+<div class="live-feed" id="liveFeed">
+<div class="live-feed-inner">
+<div class="live-feed-left">
+<div class="live-feed-avatar" id="liveFeedAvatar">А</div>
+<div class="live-feed-online"></div>
+</div>
+<div class="live-feed-body">
+<div class="live-feed-name" id="liveFeedName">Анна из Киева</div>
+<div class="live-feed-action" id="liveFeedAction">только что купила <strong>Интенсив</strong></div>
+</div>
+<div class="live-feed-time" id="liveFeedTime">сейчас</div>
+<button class="live-feed-close" onclick="document.getElementById('liveFeed').classList.remove('show')" aria-label="Закрыть">×</button>
+</div>
+</div>
 
 <!-- Live Activity -->
 <div class="live-activity" id="liveActivity">
@@ -2732,6 +3182,8 @@ if (!timersStarted) {
 timersStarted = true;
 startCountdown();
 startDiscountTimer();
+// Запускаем конверсионные фичи
+setTimeout(initConversionFeatures, 300);
 }
 // Скролл наверх страницы тарифов
 tariffsStep.scrollTop = 0;
@@ -2864,6 +3316,269 @@ const textEl = document.getElementById('liveActivityText');
 textEl.textContent = notifications[Math.floor(Math.random() * notifications.length)];
 activityEl.classList.add('show');
 setTimeout(() => activityEl.classList.remove('show'), 5000);
+}
+
+
+// ============================================================
+// === CONVERSION FEATURES JS ===
+// ============================================================
+
+// --- ДИАГНОЗ пользователя на основе ответов ---
+function buildDiagnosis() {
+const path = userPath;
+const time = answers['breakup_time'] || answers['time'] || '';
+const pain = answers['pain_level'] || 5;
+const contact = answers['contact'] || '';
+const mistakes = answers['mistakes'] || '';
+
+let stage = '', text = '', plan = '';
+
+if (path === 'return') {
+if (time === 'week' || (pain >= 8)) {
+stage = '🔴 Стадия: Острый разрыв';
+text = 'Вы в самой болезненной точке — первые дни критически важны. Каждое неверное действие сейчас снижает шансы на 40%. Нужна чёткая пошаговая стратегия.';
+plan = 'Рекомендую: Интенсив «Точка возврата» — начать сегодня';
+recommendedPlan = 'standard';
+} else if (time === 'months' || contact === 'ignore' || contact === 'blocked') {
+stage = '🟠 Стадия: Дистанция и холод';
+text = 'Партнёр отстранился и выстроил стену. Стандартные подходы не работают. Нужна техника преодоления эмоционального барьера.';
+plan = 'Рекомендую: Курс «Метод Восстановления» — полный протокол';
+recommendedPlan = 'maximum';
+} else {
+stage = '🟡 Стадия: Неопределённость';
+text = 'Ситуация ещё не зафиксирована — у вас есть окно возможностей. Правильные действия сейчас дают 78% шанс на восстановление.';
+plan = 'Рекомендую: Гайд «Стоп-ошибки» — быстрый старт';
+recommendedPlan = 'economy';
+}
+} else {
+if (pain >= 8 || time === 'week') {
+stage = '🔴 Стадия: Острая боль';
+text = 'Интенсивность переживаний указывает на сильную нейронную привязанность. Без направленных действий боль будет нарастать ещё 2–3 месяца.';
+plan = 'Рекомендую: Интенсив «7 дней без боли» — немедленно';
+recommendedPlan = 'standard';
+} else if (time === 'months' || time === 'year+') {
+stage = '🟠 Стадия: Хроническая зависимость';
+text = 'Длительное переживание говорит о глубоко укоренившемся паттерне. Обычные советы здесь не помогут — нужна работа с подсознанием.';
+plan = 'Рекомендую: Курс «Метод Освобождения» — глубокая работа';
+recommendedPlan = 'maximum';
+} else {
+stage = '🟡 Стадия: Переходный период';
+text = 'Вы уже осознаёте проблему — это первый шаг. Сейчас важно закрепить намерение правильными инструментами.';
+plan = 'Рекомендую: Гайд «Снятие боли» — первые шаги';
+recommendedPlan = 'economy';
+}
+}
+
+const diagTitle = document.getElementById('diagnosis-title');
+const diagText = document.getElementById('diagnosis-text');
+const diagPlan = document.getElementById('diagnosis-plan-text');
+if (diagTitle) diagTitle.textContent = stage;
+if (diagText) diagText.textContent = text;
+if (diagPlan) diagPlan.textContent = plan;
+
+// Выделяем рекомендованный тариф
+setTimeout(() => {
+document.querySelectorAll('.price-card').forEach(c => c.classList.remove('active'));
+const recCard = document.querySelector(`[onclick*="selectPlan(this, '${recommendedPlan}')"]`);
+if (recCard) recCard.classList.add('active');
+}, 300);
+
+// Обновляем сравнение с психологом
+const comparePrice = document.getElementById('compare-our-price');
+const coffeeText = document.getElementById('coffee-text');
+const prices = { economy: '$9.99', standard: '$27.99', maximum: '$47.99' };
+const coffees = { economy: '1 чашку кофе', standard: '3 чашки кофе', maximum: '5 чашек кофе' };
+if (comparePrice) comparePrice.textContent = 'от ' + prices[recommendedPlan];
+if (coffeeText) coffeeText.textContent = coffees[recommendedPlan];
+}
+
+// --- СЧЁТЧИК МЕСТ (убывает случайно) ---
+function startSeatsCounter() {
+let seats = Math.floor(Math.random() * 5) + 9; // 9–13
+const el = document.getElementById('seats-count');
+if (el) el.textContent = seats;
+
+function decreaseSeat() {
+if (seats > 2) {
+const delay = Math.floor(Math.random() * 45000) + 20000; // 20–65 сек
+setTimeout(() => {
+seats--;
+if (el) {
+el.style.transform = 'scale(1.4)';
+el.style.color = '#EF4444';
+el.textContent = seats;
+setTimeout(() => {
+el.style.transform = 'scale(1)';
+}, 400);
+}
+decreaseSeat();
+}, delay);
+}
+}
+decreaseSeat();
+}
+
+// --- СЧЁТЧИК СМОТРЯЩИХ (колеблется) ---
+function startViewersCounter() {
+const el = document.getElementById('viewers-count');
+if (!el) return;
+let viewers = Math.floor(Math.random() * 6) + 5; // 5–10
+el.textContent = viewers;
+setInterval(() => {
+const change = Math.random() < 0.5 ? 1 : -1;
+viewers = Math.max(3, Math.min(14, viewers + change));
+el.textContent = viewers;
+}, Math.floor(Math.random() * 8000) + 7000);
+}
+
+// --- СЧЁТЧИК КУПИВШИХ СЕГОДНЯ ---
+function startBoughtCounter() {
+const el = document.getElementById('bought-today-count');
+if (!el) return;
+let count = Math.floor(Math.random() * 20) + 38; // 38–57
+el.textContent = count;
+setInterval(() => {
+if (Math.random() < 0.3) {
+count++;
+el.textContent = count;
+el.style.color = '#10B981';
+setTimeout(() => { el.style.color = ''; }, 600);
+}
+}, 30000);
+}
+
+// --- ЖИВАЯ ЛЕНТА ПОКУПОК ---
+const liveFeedMessages = [
+{ name: 'Анна', city: 'Киева', plan: 'Интенсив' },
+{ name: 'Максим', city: 'Москвы', plan: 'Курс Максимум' },
+{ name: 'Ольга', city: 'Минска', plan: 'Интенсив' },
+{ name: 'Дмитрий', city: 'Харькова', plan: 'Гайд' },
+{ name: 'Юлия', city: 'СПб', plan: 'Интенсив' },
+{ name: 'Андрей', city: 'Одессы', plan: 'Курс Максимум' },
+{ name: 'Марина', city: 'Варшавы', plan: 'Интенсив' },
+{ name: 'Сергей', city: 'Риги', plan: 'Гайд' },
+{ name: 'Катя', city: 'Праги', plan: 'Интенсив' },
+{ name: 'Виктор', city: 'Берлина', plan: 'Курс Максимум' },
+];
+let feedIndex = 0;
+
+function startLiveFeed() {
+const feed = document.getElementById('liveFeed');
+if (!feed) return;
+
+// Цвета для аватаров
+const avatarColors = [
+'linear-gradient(135deg,#10B981,#059669)',
+'linear-gradient(135deg,#8B5CF6,#7C3AED)',
+'linear-gradient(135deg,#F59E0B,#B45309)',
+'linear-gradient(135deg,#3B82F6,#1D4ED8)',
+'linear-gradient(135deg,#EF4444,#B91C1C)',
+'linear-gradient(135deg,#06B6D4,#0891B2)',
+];
+
+function showNextFeed() {
+// Не показывать если тарифы не активны
+if (!document.getElementById('step-tariffs')?.classList.contains('active')) {
+setTimeout(showNextFeed, 5000);
+return;
+}
+
+const msg = liveFeedMessages[feedIndex % liveFeedMessages.length];
+feedIndex++;
+
+// Обновляем контент
+const avatarEl = document.getElementById('liveFeedAvatar');
+const nameEl = document.getElementById('liveFeedName');
+const actionEl = document.getElementById('liveFeedAction');
+const timeEl = document.getElementById('liveFeedTime');
+
+if (avatarEl) {
+avatarEl.textContent = msg.name.charAt(0);
+avatarEl.style.background = avatarColors[feedIndex % avatarColors.length];
+}
+if (nameEl) nameEl.textContent = msg.name + ' из ' + msg.city;
+if (actionEl) actionEl.innerHTML = 'только что купил(а) <strong>' + msg.plan + '</strong>';
+if (timeEl) timeEl.textContent = 'сейчас';
+
+// Показываем
+feed.classList.add('show');
+
+// Через 2 сек меняем время на "1 мин назад"
+setTimeout(() => { if (timeEl) timeEl.textContent = '1 мин'; }, 2000);
+
+// Прячем через 7 сек
+setTimeout(() => feed.classList.remove('show'), 7000);
+
+// Следующий показ через 30–40 сек
+const nextDelay = Math.floor(Math.random() * 10000) + 30000;
+setTimeout(showNextFeed, nextDelay);
+}
+
+// Первый показ через 5 сек после открытия тарифов
+setTimeout(showNextFeed, 5000);
+}
+
+// --- EXIT INTENT POPUP ---
+let exitPopupShown = false;
+let exitTimerInterval = null;
+
+function initExitIntent() {
+document.addEventListener('mouseleave', function(e) {
+if (e.clientY <= 5 && !exitPopupShown && document.getElementById('step-tariffs').classList.contains('active')) {
+showExitPopup();
+}
+});
+// Mobile: back button / visibility change
+document.addEventListener('visibilitychange', function() {
+if (document.hidden && !exitPopupShown && document.getElementById('step-tariffs')?.classList.contains('active')) {
+showExitPopup();
+}
+});
+}
+
+function showExitPopup() {
+exitPopupShown = true;
+const popup = document.getElementById('exitPopup');
+if (!popup) return;
+popup.classList.add('show');
+
+let timeLeft = 10 * 60;
+const timerEl = document.getElementById('exit-timer');
+exitTimerInterval = setInterval(() => {
+const m = Math.floor(timeLeft / 60).toString().padStart(2,'0');
+const s = (timeLeft % 60).toString().padStart(2,'0');
+if (timerEl) timerEl.textContent = `${m}:${s}`;
+timeLeft--;
+if (timeLeft < 0) {
+clearInterval(exitTimerInterval);
+if (timerEl) timerEl.textContent = '00:00';
+}
+}, 1000);
+}
+
+function closeExitPopup() {
+const popup = document.getElementById('exitPopup');
+if (popup) popup.classList.remove('show');
+clearInterval(exitTimerInterval);
+scrollToBuy();
+}
+
+function dismissExitPopup() {
+const popup = document.getElementById('exitPopup');
+if (popup) popup.classList.remove('show');
+clearInterval(exitTimerInterval);
+}
+
+// ============================================================
+// === ЗАПУСК ВСЕГО ПРИ ПОКАЗЕ СТРАНИЦЫ ТАРИФОВ ===
+// ============================================================
+function initConversionFeatures() {
+buildDiagnosis();
+startSeatsCounter();
+startViewersCounter();
+startBoughtCounter();
+startLiveFeed();
+initExitIntent();
 }
 
 // === ПРОГРЕСС БАР ===
