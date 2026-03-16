@@ -1702,34 +1702,35 @@ text-decoration: underline;
 /* === ЖИВАЯ ЛЕНТА ПОКУПОК — мобильный дизайн === */
 .live-feed {
 position: fixed;
-bottom: 0;
-left: 0;
-right: 0;
-z-index: 200;
+bottom: 24px;
+left: 16px;
+right: 16px;
+z-index: 9999;
+max-width: 448px;
+margin: 0 auto;
+opacity: 0;
+transform: translateY(30px);
 pointer-events: none;
-display: flex;
-justify-content: center;
-padding: 0 0 env(safe-area-inset-bottom, 0px) 0;
+transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+.live-feed.show {
+opacity: 1;
+transform: translateY(0);
+pointer-events: all;
 }
 .live-feed-inner {
-pointer-events: all;
 display: flex;
 align-items: center;
 gap: 12px;
-background: rgba(10, 18, 35, 0.97);
-border-top: 2px solid var(--success);
-border-left: none;
-border-right: none;
-border-bottom: none;
-padding: 14px 20px 18px 20px;
+background: rgba(10, 18, 35, 0.98);
+border: 1px solid rgba(16,185,129,0.5);
+border-left: 3px solid var(--success);
+border-radius: 14px;
+padding: 12px 14px 12px 14px;
 width: 100%;
-max-width: 480px;
-box-shadow: 0 -8px 40px rgba(0,0,0,0.6), 0 -2px 0 rgba(16,185,129,0.3);
-transform: translateY(100%);
-transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.live-feed.show .live-feed-inner {
-transform: translateY(0);
+box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(16,185,129,0.1);
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
 }
 .live-feed-left {
 position: relative;
@@ -1824,7 +1825,7 @@ transition: background 0.2s;
 <div class="options">
 <div class="card-opt" onclick="selectPath('return'); go(1)">
 <div class="card-opt-content">
-<span class="card-opt-text">Я хочу вернуть бывшего партнёра / партнёршу</span>
+<span class="card-opt-text">Я хочу вернуть бывшего партнёра</span>
 <span class="card-opt-icon">💕</span>
 </div>
 </div>
@@ -1859,7 +1860,7 @@ transition: background 0.2s;
 <div class="options">
 <div class="card-opt" onclick="selectCardOption(this, 'initiator', 'me'); go(3)"><div class="card-opt-content"><span class="card-opt-text">Я ушёл(шла)</span>
 <span class="card-opt-icon">👋</span></div></div>
-<div class="card-opt" onclick="selectCardOption(this, 'initiator', 'them'); go(3)"><div class="card-opt-content"><span class="card-opt-text">Он/она ушёл(шла)</span>
+<div class="card-opt" onclick="selectCardOption(this, 'initiator', 'them'); go(3)"><div class="card-opt-content"><span class="card-opt-text">Партнер ушел</span>
 <span class="card-opt-icon">💔</span></div></div>
 <div class="card-opt" onclick="selectCardOption(this, 'initiator', 'mutual'); go(3)"><div class="card-opt-content"><span class="card-opt-text">По обоюдному согласию</span>
 <span class="card-opt-icon">🤝</span></div></div>
@@ -1989,7 +1990,7 @@ transition: background 0.2s;
 
 <div class="step" id="s12-return" data-branch="return">
 <div class="block-label">📱 Блок 5</div>
-<h2 class="step-title">Бывший(-яя) заблокировал(а) вас в соцсетях?</h2>
+<h2 class="step-title">Бывший(-ая) заблокировал(а) вас в соцсетях?</h2>
 <div class="options">
 <div class="card-opt" onclick="selectCardOption(this, 'blocked_social', 'all'); go(13)"><div class="card-opt-content"><span class="card-opt-text">Да, везде</span>
 <span class="card-opt-icon">🚫</span></div></div>
@@ -2002,7 +2003,7 @@ transition: background 0.2s;
 
 <div class="step" id="s13-return" data-branch="return">
 <div class="block-label">👀 Блок 5</div>
-<h2 class="step-title">Бывший(-яя) следит за вашими историями?</h2>
+<h2 class="step-title">Бывший(-ая) следит за вашими историями?</h2>
 <div class="options">
 <div class="card-opt" onclick="selectCardOption(this, 'watching', 'yes'); go(14)"><div class="card-opt-content"><span class="card-opt-text">Да</span>
 <span class="card-opt-icon">🏠</span></div></div>
@@ -2032,7 +2033,7 @@ transition: background 0.2s;
 
 <div class="step" id="s15-return" data-branch="return">
 <div class="block-label">🚀 Блок 6</div>
-<h2 class="step-title">Готовы(ы) следовать плану 2 недели?</h2>
+<h2 class="step-title">Готовы следовать плану 2 недели?</h2>
 <div class="options">
 <div class="card-opt" onclick="selectCardOption(this, 'ready', 'yes'); go(16)"><div class="card-opt-content"><span class="card-opt-text">Да</span>
 <span class="card-opt-icon">🏠</span></div></div>
@@ -2248,7 +2249,7 @@ transition: background 0.2s;
 
 <div class="step" id="s15-forget" data-branch="forget">
 <div class="block-label">🚀 Блок 6</div>
-<h2 class="step-title">Готов(а) к 7 дням терапии?</h2>
+<h2 class="step-title">Готовы к 7 дням терапии?</h2>
 <div class="options">
 <div class="card-opt" onclick="selectCardOption(this, 'ready', 'yes'); go(16)"><div class="card-opt-content"><span class="card-opt-text">Да</span>
 <span class="card-opt-icon">🏠</span></div></div>
@@ -2327,7 +2328,7 @@ transition: background 0.2s;
 <div class="interstitial-screen">
 <div class="interstitial-icon">🧠</div>
 <h2 class="interstitial-title">Почему 90% людей застревают в боли?</h2>
-<p class="interstitial-text">Мы проанализировали <strong>более 10 000 случаев</strong> и выявили главную ошибку: люди ждут, пока боль пройдёт сама. Но без правильных действий она только усиливается.</p>
+<p class="interstitial-text">Я проанализировал <strong>более 10 000 случаев</strong> и выявил главную ошибку: люди ждут, пока боль пройдёт сама. Но без правильных действий она только усиливается.</p>
 
 <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger); border-radius: 16px; padding: 20px; margin: 20px auto; max-width: 360px; text-align: left;">
 <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
@@ -2344,7 +2345,7 @@ transition: background 0.2s;
 <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 16px; padding: 20px; margin: 20px auto; max-width: 360px;">
 <div style="display: flex; align-items: center; justify-content: center; gap: 10px; color: var(--success); font-weight: 600;">
 <span style="font-size: 1.3rem;">✅</span>
-<span>Наш метод даёт результат за 7-14 дней</span>
+<span>Мой метод даёт результат за 7-14 дней</span>
 </div>
 </div>
 
@@ -2357,7 +2358,7 @@ transition: background 0.2s;
 <div class="interstitial-screen">
 <div class="interstitial-icon">🔍</div>
 <h2 class="interstitial-title">Промежуточный анализ ситуации...</h2>
-<p class="interstitial-text">Мы обработали первые 7 ответов. Видим четкие паттерны. Следующие вопросы помогут завершить расчет стратегии.</p>
+<p class="interstitial-text">Обработаны первые 7 ответов. Видны четкие паттерны. Следующие вопросы помогут завершить расчет стратегии.</p>
 <button class="next-btn" onclick="continueQuiz()">Продолжить</button>
 </div>
 </div>
@@ -2378,14 +2379,14 @@ transition: background 0.2s;
 <div style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
 <p style="margin: 0 0 10px 0;">• При мысли о бывшем выделяется дофамин — «гормон удовольствия»</p>
 <p style="margin: 0 0 10px 0;">• Мозг формирует нейронные связи, которые сложно разорвать</p>
-<p style="margin: 0;">• Наш метод использует нейропластичность для перепрограммирования</p>
+<p style="margin: 0;">• Мой метод использует нейропластичность для перепрограммирования</p>
 </div>
 </div>
 
 <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 16px; padding: 20px; margin: 20px auto; max-width: 360px;">
 <div style="display: flex; align-items: center; justify-content: center; gap: 10px; color: var(--success); font-weight: 600;">
 <span style="font-size: 1.3rem;">💡</span>
-<span>Мы знаем, как «перезагрузить» ваш мозг</span>
+<span>Я знаю, как «перезагрузить» ваш мозг</span>
 </div>
 </div>
 
@@ -2510,7 +2511,7 @@ transition: background 0.2s;
 </div>
 <div class="offer-warning-block">
 <div class="offer-warning-title"><span>📉</span> Что будет, если ничего не делать?</div>
-<p class="offer-warning-text">90% людей остаются в состоянии более 2 лет.</p>
+<p class="offer-warning-text">90% людей остаются в состоянии более 4 лет.</p>
 <div class="stuck-progress-container"><div class="stuck-progress-bar"></div></div>
 <div class="stuck-progress-label">Прогресс застрял на 90%</div>
 </div>
@@ -2629,7 +2630,7 @@ transition: background 0.2s;
 <div class="payment-logo">Apple</div>
 </div>
 </div>
-<div class="calm-guarantee-text">Если через 7 дней не почувствуете облегчения, вернем деньги.</div>
+<div class="calm-guarantee-text">Если через 14 дней не почувствуете облегчения, вернем деньги.</div>
 <div class="guarantee-text-under">
 <span>🔒</span>
 <span>Гарантия возврата средств в течение 14 дней</span>
@@ -2643,7 +2644,7 @@ transition: background 0.2s;
 <span class="compare-them">$80–120</span>
 </div>
 <div class="compare-row">
-<span class="compare-label">Наш полный курс</span>
+<span class="compare-label">Мой полный курс</span>
 <span class="compare-us" id="compare-our-price">от $27</span>
 </div>
 <div class="compare-row">
@@ -2862,21 +2863,7 @@ transition: background 0.2s;
 </div>
 </div>
 
-<!-- ЖИВАЯ ЛЕНТА ПОКУПОК -->
-<div class="live-feed" id="liveFeed">
-<div class="live-feed-inner">
-<div class="live-feed-left">
-<div class="live-feed-avatar" id="liveFeedAvatar">А</div>
-<div class="live-feed-online"></div>
-</div>
-<div class="live-feed-body">
-<div class="live-feed-name" id="liveFeedName">Анна из Киева</div>
-<div class="live-feed-action" id="liveFeedAction">только что купила <strong>Интенсив</strong></div>
-</div>
-<div class="live-feed-time" id="liveFeedTime">сейчас</div>
-<button class="live-feed-close" onclick="document.getElementById('liveFeed').classList.remove('show')" aria-label="Закрыть">×</button>
-</div>
-</div>
+
 
 <!-- Live Activity -->
 <div class="live-activity" id="liveActivity">
@@ -2897,6 +2884,22 @@ transition: background 0.2s;
 <h2 class="lp-title">Условия использования</h2>
 <div style="color: var(--text-secondary); line-height: 1.6;">Сервис предоставляет информационные материалы и не заменяет профессиональную психологическую помощь.</div>
 </div>
+</div>
+</div>
+
+<!-- ЖИВАЯ ЛЕНТА — перенесена в body вне #app, чтобы fixed работал корректно -->
+<div class="live-feed" id="liveFeed">
+<div class="live-feed-inner">
+<div class="live-feed-left">
+<div class="live-feed-avatar" id="liveFeedAvatar">А</div>
+<div class="live-feed-online"></div>
+</div>
+<div class="live-feed-body">
+<div class="live-feed-name" id="liveFeedName">Анна из Киева</div>
+<div class="live-feed-action" id="liveFeedAction">только что купила <strong>Интенсив</strong></div>
+</div>
+<div class="live-feed-time" id="liveFeedTime">сейчас</div>
+<button class="live-feed-close" onclick="document.getElementById('liveFeed').classList.remove('show')" aria-label="Закрыть">×</button>
 </div>
 </div>
 
@@ -3450,21 +3453,37 @@ setTimeout(() => { el.style.color = ''; }, 600);
 // --- ЖИВАЯ ЛЕНТА ПОКУПОК ---
 const liveFeedMessages = [
 { name: 'Анна', city: 'Киева', plan: 'Интенсив' },
-{ name: 'Максим', city: 'Москвы', plan: 'Курс Максимум' },
-{ name: 'Ольга', city: 'Минска', plan: 'Интенсив' },
+{ name: 'Максим', city: 'Варшавы', plan: 'Курс Максимум' },
+{ name: 'Ольга', city: 'Тель-Авива', plan: 'Интенсив' },
 { name: 'Дмитрий', city: 'Харькова', plan: 'Гайд' },
-{ name: 'Юлия', city: 'СПб', plan: 'Интенсив' },
+{ name: 'Юлия', city: 'Берлина', plan: 'Интенсив' },
 { name: 'Андрей', city: 'Одессы', plan: 'Курс Максимум' },
-{ name: 'Марина', city: 'Варшавы', plan: 'Интенсив' },
-{ name: 'Сергей', city: 'Риги', plan: 'Гайд' },
-{ name: 'Катя', city: 'Праги', plan: 'Интенсив' },
-{ name: 'Виктор', city: 'Берлина', plan: 'Курс Максимум' },
+{ name: 'Марина', city: 'Праги', plan: 'Интенсив' },
+{ name: 'Сергей', city: 'Кишинёва', plan: 'Гайд' },
+{ name: 'Катя', city: 'Лондона', plan: 'Интенсив' },
+{ name: 'Виктор', city: 'Нью-Йорка', plan: 'Курс Максимум' },
+{ name: 'Алина', city: 'Львова', plan: 'Интенсив' },
+{ name: 'Роман', city: 'Барселоны', plan: 'Гайд' },
+{ name: 'Наталья', city: 'Амстердама', plan: 'Курс Максимум' },
+{ name: 'Павел', city: 'Вены', plan: 'Интенсив' },
+{ name: 'Ирина', city: 'Хайфы', plan: 'Гайд' },
+{ name: 'Денис', city: 'Торонто', plan: 'Курс Максимум' },
+{ name: 'Оксана', city: 'Днепра', plan: 'Интенсив' },
+{ name: 'Артём', city: 'Мюнхена', plan: 'Гайд' },
+{ name: 'Светлана', city: 'Лос-Анджелеса', plan: 'Интенсив' },
+{ name: 'Игорь', city: 'Бухареста', plan: 'Курс Максимум' },
 ];
 let feedIndex = 0;
 
 function startLiveFeed() {
-const feed = document.getElementById('liveFeed');
+// Переносим ленту напрямую в <body> чтобы position:fixed работал корректно
+// (transform на #app создаёт новый stacking context и ломает fixed-дочерние элементы)
+let feed = document.getElementById('liveFeed');
 if (!feed) return;
+if (feed.parentElement !== document.body) {
+document.body.appendChild(feed);
+}
+feed = document.getElementById('liveFeed');
 
 // Цвета для аватаров
 const avatarColors = [
@@ -3523,6 +3542,11 @@ let exitPopupShown = false;
 let exitTimerInterval = null;
 
 function initExitIntent() {
+// Также переносим exit popup в body
+const exitPopup = document.getElementById('exitPopup');
+if (exitPopup && exitPopup.parentElement !== document.body) {
+document.body.appendChild(exitPopup);
+}
 document.addEventListener('mouseleave', function(e) {
 if (e.clientY <= 5 && !exitPopupShown && document.getElementById('step-tariffs').classList.contains('active')) {
 showExitPopup();
