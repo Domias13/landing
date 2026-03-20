@@ -359,9 +359,10 @@
         .security-box { background: rgba(58,138,110,0.06); border: 1px solid rgba(58,138,110,0.2); border-radius: 18px; padding: 24px; margin: 36px auto 0; max-width: 860px; text-align: center; }
         .security-box h4 { color: var(--success); font-size: 17px; margin-bottom: 12px; font-family: 'Jost', sans-serif; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .sec-icons { display: flex; justify-content: center; gap: 26px; flex-wrap: wrap; margin: 14px 0; }
-        .sec-icon { display: flex; flex-direction: column; align-items: center; gap: 7px; opacity: 0.65; }
-        .sec-icon svg { width: 34px; height: 34px; color: var(--mid-gray); }
-        .sec-icon span { font-size: 11px; color: var(--mid-gray); max-width: 76px; text-align: center; }
+        .sec-icon { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .sec-icon img { height: 32px; width: auto; object-fit: contain; opacity: 0.75; }
+        .sec-icon svg { width: 34px; height: 34px; color: var(--mid-gray); opacity: 0.65; }
+        .sec-icon span { font-size: 11px; color: var(--mid-gray); max-width: 80px; text-align: center; }
         .sec-text { font-size: 13px; color: var(--mid-gray); line-height: 1.6; margin-top: 12px; }
         .email-warn { background: rgba(201,149,74,0.1); border: 1px solid rgba(201,149,74,0.3); padding: 13px 18px; border-radius: 10px; font-size: 13px; color: #8b6120; text-align: center; margin: 24px auto 0; max-width: 580px; font-weight: 500; line-height: 1.5; }
 
@@ -639,9 +640,11 @@
         .pay-btn-wfp:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,107,114,0.4);}
         .pay-btn-pp{display:flex;align-items:center;justify-content:center;gap:10px;padding:16px 20px;border-radius:14px;background:#FFC43A;color:#003087;text-decoration:none;font-size:15px;font-weight:700;font-family:'Jost',sans-serif;transition:all 0.3s;box-shadow:0 5px 18px rgba(255,196,58,0.35);flex-direction:column;}
         .pay-btn-pp:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,196,58,0.5);}
-        .pay-icons-row{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:8px;flex-wrap:wrap;}
-        .pay-icon-badge{height:20px;background:white;border-radius:4px;padding:0 6px;display:flex;align-items:center;justify-content:center;}
+        .pay-icons-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;flex-wrap:wrap;}
+        .pay-icon-badge{height:24px;background:white;border-radius:5px;padding:2px 6px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,0.1);}
+        .pay-icon-badge img{height:16px;width:auto;display:block;object-fit:contain;}
         .pay-icon-badge svg{display:block;}
+        .pay-wfp-logo{height:22px;width:auto;display:block;filter:brightness(0) invert(1);margin-left:4px;}
         .pay-pp-note{font-size:11px;color:rgba(0,48,135,0.7);margin-top:3px;}
         .pay-divider{display:flex;align-items:center;gap:10px;margin:2px 0;}
         .pay-divider::before,.pay-divider::after{content:'';flex:1;height:1px;background:var(--greige-dark);}
@@ -772,7 +775,7 @@
     <div class="container">
         <div class="foryou-box">
             <span class="section-eyebrow">Узнаёшь свою ситуацию?</span>
-            <h2>Это работает именно для тебя,<br>если прямо сейчас...</h2>
+            <h2>Это подходит тебе,<br>если прямо сейчас...</h2>
             <p class="fy-sub">Неважно сколько времени прошло и что именно произошло между вами.</p>
             <div class="fy-grid fade-in">
                 <div class="fy-item">
@@ -789,7 +792,7 @@
                 </div>
                 <div class="fy-item">
                     <div class="fy-icon">🎭</div>
-                    <div class="fy-text"><strong>Дует то холодом, то теплом</strong>То пишет и кажется что всё хорошо, то снова исчезает. Голова идёт кругом.</div>
+                    <div class="fy-text"><strong>То тепло, то холодно</strong>То пишет и кажется что всё хорошо, то снова исчезает. Голова идёт кругом.</div>
                 </div>
                 <div class="fy-item">
                     <div class="fy-icon">⏸️</div>
@@ -833,7 +836,7 @@
             <div>
                 <div class="author-badge">✦ Роман - я видел это их глазами</div>
                 <h2>Я знаю, что он чувствует,<br>когда молчит</h2>
-                <p>Я прошёл через развод. Я был тем мужчиной, который молчал, уходил в игнор и отправлял «всё хорошо», когда внутри - катастрофа. <strong>Я видел это их глазами. Я знаю, что они чувствуют, когда молчат.</strong></p>
+                <p>Я был тем мужчиной, который молчал, уходил в игнор и отправлял «всё хорошо», когда внутри - катастрофа. <strong>Я видел это их глазами. Я знаю, что они чувствуют, когда молчат.</strong></p>
                 <div class="author-quote">
                     «Когда мужчина молчит - это не безразличие. Это защитная реакция, за которой скрывается кое-что другое. Я знаю, как на неё влиять. И я дам тебе готовые инструменты - не теорию, а конкретные слова и действия, которые меняют ситуацию.»
                 </div>
@@ -855,7 +858,7 @@
 <section class="testi-sec">
     <div class="container">
         <span class="section-eyebrow">Реальные результаты</span>
-        <h2 style="font-size:34px;color:var(--charcoal);">Скриншоты - не слова.<br><em style="color:var(--teal);font-style:italic;">Живые отзывы реальных женщин.</em></h2>
+        <h2 style="font-size:34px;color:var(--charcoal);"><em style="color:var(--teal);font-style:italic;">Живые отзывы реальных женщин.</em></h2>
         <p style="font-size:15px;color:var(--mid-gray);text-align:center;margin-bottom:32px;max-width:520px;margin-left:auto;margin-right:auto;">130+ женщин уже применили гайд. Вот что они пишут в личку:</p>
         <div class="screenshots-grid">
             <div class="screenshot-card fade-in"><img src="https://i.ibb.co/99Y8Rd3P/Screenshot-20260307-075732.png" alt="Отзыв" loading="lazy"></div>
@@ -902,23 +905,23 @@
     <div class="container">
         <div class="sample-box">
             <span class="section-eyebrow">Пример из гайда</span>
-            <h3>Он прочитал - не ответил. Что пишешь?</h3>
-            <p class="sample-sub">Вот один реальный скрипт из гайда - с объяснением почему это работает:</p>
+            <h3>Он написал три слова. Ты не знаешь что ответить.</h3>
+            <p class="sample-sub">Разбор одного реального сообщения - откуда оно, зачем, и что за ним стоит.</p>
             <div class="sample-situation">
                 <div class="sit-label">Ситуация</div>
-                <p class="sit-text">Он отвечал раньше. Теперь читает твои сообщения - и молчит. Ты видишь что он онлайн. Руки тянутся написать что-то вроде «ты чего-то хочешь?»</p>
+                <p class="sit-text">После недели молчания он написал: «Как ты?» Короткое. Без объяснений. Ты не знаешь - это попытка восстановить контакт или просто проверка. Большинство сразу отвечают длинно - и теряют позицию.</p>
             </div>
             <div class="sample-message">
-                <div class="msg-label">Скрипт из гайда «Ответ на холод»</div>
-                <div class="msg-bubble">Готовила ответить. Потом решила не отвечать вообще. Спрашиваю себя - зачем?</div>
+                <div class="msg-label">Скрипт из гайда - раздел «Ответ на внезапный контакт»</div>
+                <div class="msg-bubble">Нормально. Занята была.</div>
             </div>
             <div class="sample-why">
-                <div class="why-label">Почему это работает</div>
-                <p class="why-text">Мужчина ждёт реакции. Когда ты не отвечаешь - <strong>ты становишься загадкой</strong>, а не женщиной которая ждёт. Его мозг автоматически переключается в режим <strong>«хочу узнать»</strong>. Именно в такие моменты он выходит на связь первым.</p>
+                <div class="why-label">Почему именно так</div>
+                <p class="why-text">Два слова. Без вопросов в ответ, без эмоций, без намёка что ты ждала. Мужчина получает сигнал: <strong>она живёт своей жизнью</strong>. Это единственное что запускает у него интерес снова - не слова о чувствах, не объяснения, а твоя очевидная занятость собой.</p>
             </div>
             <div class="sample-cta">
                 <a href="#pricing-top" class="btn-primary">Хочу ещё 58 таких скриптов →</a>
-                <p>Плюс объяснение психологии к каждому - <strong>почему это работает на его мозг</strong></p>
+                <p>К каждому - объяснение что за этим стоит <strong>с его стороны</strong></p>
             </div>
         </div>
     </div>
@@ -929,21 +932,21 @@
     <div class="container">
         <div class="example-box">
             <span class="section-eyebrow">Один пример из 59</span>
-            <h2>Вот как это работает<br>на практике</h2>
-            <p class="ex-sub">Реальная ситуация. Реальный текст. И объяснение - почему именно эти слова, а не другие.</p>
+            <h2>Он провоцирует.<br>Что ты напишешь?</h2>
+            <p class="ex-sub">Одна ситуация, один ответ - и разбор что за ним стоит.</p>
             <div class="ex-situation">
-                <strong>Ситуация:</strong> Он прочитал твоё сообщение - ответил сухо, односложно. Ты чувствуешь холод. Внутри паника: написать ещё или замолчать? Большинство женщин пишут больше - и это главная ошибка.
+                <strong>Ситуация:</strong> Он написал что-то обидное или холодное - чтобы проверить твою реакцию. Хочется ответить развёрнуто, объяснить, защититься. Это именно то чего он ждёт.
             </div>
             <div class="ex-chat">
                 <div class="ex-msg-wrap">
-                    <div class="ex-msg">Окей, поняла тебя. Буду.</div>
+                    <div class="ex-msg">Хорошо. Удачи.</div>
                 </div>
             </div>
             <div class="ex-why">
-                <div class="ex-why-label">Почему это работает - объясняет Роман</div>
-                <p>Три слова. Никакого давления. Никаких вопросов. Мужчина получает сигнал: ты не в панике, ты не цепляешься. Именно это включает у него желание продолжить разговор - потому что ты не ведёшь себя как большинство. Краткость в этот момент читается как сила, а не равнодушие.</p>
+                <div class="ex-why-label">Что за этим стоит - объясняет Роман</div>
+                <p>Два слова. Никакой защиты, никаких объяснений. Мужчина ждёт реакции - её нет. Это сбивает его сценарий. <strong>Ты не ведёшь себя как большинство</strong> - и это единственное что заставляет его думать о тебе после того как он закрыл переписку.</p>
             </div>
-            <p class="ex-cta-note">Это один из 59 скриптов. <strong>Для каждой ситуации - своя формулировка и объяснение почему она работает на мужской мозг.</strong></p>
+            <p class="ex-cta-note">Это один из 59 скриптов. <strong>К каждому - объяснение что именно происходит в его голове в этот момент.</strong></p>
         </div>
     </div>
 </section>
@@ -971,7 +974,7 @@
                 <ul class="ba-list">
                     <li>Знаешь что написать и когда - без паники</li>
                     <li>Читаешь его поведение как открытую книгу</li>
-                    <li>Действуешь с позиции силы, не нужды</li>
+                    <li>Действуешь - и знаешь зачем</li>
                     <li>Его молчание больше не управляет твоим днём</li>
                     <li>Голова свободна - ты снова думаешь о себе</li>
                     <li>Он чувствует: что-то изменилось. И это не он контролирует.</li>
@@ -1003,7 +1006,7 @@
                     <span>Это манипуляция? Мне некомфортно «играть» с человеком.</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
                 </div>
-                <div class="faq-a">Это не манипуляция - это понимание. Ты не обманываешь его, ты перестаёшь совершать ошибки которые сама же делаешь из страха и незнания. Гайд - про действие из силы, а не из паники.</div>
+                <div class="faq-a">Это не манипуляция - это понимание. Ты не обманываешь его, ты перестаёшь совершать ошибки которые сама же делаешь от страха и незнания. Гайд - про осознанные действия, а не хаотичные.</div>
             </div>
             <div class="faq-item fade-in">
                 <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
@@ -1108,7 +1111,7 @@
                 </div>
                 <div class="nfy-item">
                     <div class="nfy-icon">💬</div>
-                    <span><strong>Ищешь способ манипулировать им</strong>Здесь нет «как заставить его вернуться любой ценой». Только понимание - и действие из силы.</span>
+                    <span><strong>Ищешь способ манипулировать им</strong>Здесь нет «как заставить его вернуться любой ценой». Только понимание - и осознанные действия.</span>
                 </div>
                 <div class="nfy-item">
                     <div class="nfy-icon">🙈</div>
@@ -1116,7 +1119,7 @@
                 </div>
             </div>
             <div class="nfy-flip">
-                <strong>А вот если ты хочешь понять что происходит</strong> - перестать гадать, перестать делать ошибки из паники и наконец действовать с пониманием - тогда это именно для тебя. И именно сейчас.
+                <strong>А вот если ты хочешь понять что происходит</strong> - перестать гадать, перестать делать ошибки в состоянии потери и наконец действовать с пониманием - тогда это именно для тебя. И именно сейчас.
             </div>
         </div>
     </div>
@@ -1181,7 +1184,7 @@
                     <li>Протокол «Радикальное отстранение»: как стать недосягаемой</li>
                     <li>Аудио «Экстренное спокойствие» - как уснуть и остановить мысли</li>
                     <li>🧠 <strong>«7 дней без боли»</strong> - протокол восстановления: 7 техник НЛП и КПТ чтобы выйти из петли мыслей и отпустить</li>
-                    <li>📋 <strong>Чек-лист «100 триггеров»</strong> - осознай что именно держит тебя в боли и убери это по шагам</li>
+                    <li>📋 <strong>Чек-лист «100 триггеров»</strong> - осознай что именно заставляет тебя чувствовать боль и убери это по шагам</li>
                 </ul>
                 <div class="cp-mini-review">
                     <div class="mr-text">Он позвонил сам через 2 часа после месяца молчания. Впервые почувствовала контроль</div>
@@ -1233,7 +1236,7 @@
                 </div>
                 <div class="inv-item">
                     <div class="inv-num">2</div>
-                    <div><strong>Совет подруги</strong><span>«Забудь его», «найди другого» - слышала это 100 раз. Она не видела его глазами. Ты хочешь понять - не забыть.</span></div>
+                    <div><strong>Совет подруги</strong><span>«Забудь его», «найди другого» - слышала это 100 раз. Она не видела его твоими глазами. Ты хочешь понять - не забыть.</span></div>
                 </div>
                 <div class="inv-item">
                     <div class="inv-num">3</div>
@@ -1251,7 +1254,7 @@
             <div class="warn-header">💡 Запиши себе на память</div>
             <div class="warn-title">Мужчины ненавидят одно поведение - и оно меняет всё.</div>
             <p>Есть слова, которые мужчина запоминает. Есть действия, которые заставляют его думать. Есть паузы, которые говорят больше любых слов. Всё это - внутри гайда.</p>
-            <p>Одно предупреждение: <strong>если применишь это правильно - он увидит другую тебя.</strong> Не ту, которая ждёт. Ту, которую не отвернёшь.</p>
+            <p>Одно предупреждение: <strong>если применишь это правильно - он увидит другую тебя.</strong> Не ту, которая ждёт. Ту, от которой не уйдёшь.</p>
             <p>Просто реши - готова ли ты к этому.</p>
         </div>
     </div>
@@ -1297,7 +1300,7 @@
                 <p class="fp-sub">Для экстренной помощи - готовый план, чтобы перестать унижаться и начать действовать</p>
                 <ul class="fp-features">
                     <li><strong>Гайд «59 готовых СМС бывшему»</strong><br>Ответы на игнор, провокации и холод</li>
-                    <li><strong>Методика «СМС-крючок»</strong><br>Как заставить его написать первым, не проявляя нужды</li>
+                    <li><strong>Методика «СМС-крючок»</strong><br>Как заставить его написать первым, не показывая нужды</li>
                     <li><strong>Чек-лист «48 часов тишины»</strong><br>Как не сорваться и сохранить достоинство</li>
                     <li><strong>Гайд «3 стоп-фразы»</strong><br>Слова, которые навсегда убивают твою ценность в его глазах</li>
                     <li><strong>Результат:</strong> Ты знаешь что ответить прямо сейчас - сохранив достоинство</li>
@@ -1325,8 +1328,8 @@
                     <li><strong>Протокол «Радикальное отстранение»</strong><br>Как стать недосягаемой и вернуть себе статус «Приза»</li>
                     <li><strong>Аудио «Экстренное спокойствие»</strong><br>Как уснуть и перестать гонять мысли о нём по кругу</li>
                     <li><strong>🧠 Протокол «7 дней без боли»</strong><br>НЛП и КПТ техники для перепрограммирования нейронных связей после расставания - 7 дней, 7 упражнений, научная база</li>
-                    <li><strong>📋 Чек-лист «100 триггеров»</strong><br>Полный список того что держит тебя в боли - от цифрового следа до эмоций. Осознай и убери по шагам</li>
-                    <li><strong>Результат:</strong> Ты понимаешь его, действуешь из силы - и освобождаешь себя от боли</li>
+                    <li><strong>📋 Чек-лист «100 триггеров»</strong><br>Полный список того что заставляет тебя чувствовать боль - от цифрового следа до эмоций. Осознай и убери по шагам</li>
+                    <li><strong>Результат:</strong> Ты понимаешь его, действуешь - и освобождаешь себя от боли</li>
                 </ul>
 </div>
                 <div class="fp-price-wrap">
@@ -1366,10 +1369,7 @@
             <h4><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>🛡️ Безопасность платежа</h4>
             <p class="sec-text">Оплата через сертифицированную систему WayForPay. Шифрование AES-256. Данные твоей карты мы не храним.</p>
             <div class="sec-icons">
-                <div class="sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/></svg><span>PCI DSS</span></div>
-                <div class="sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>SSL 256-bit</span></div>
-                <div class="sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6L9 17l-5-5"/></svg><span>Гарантия возврата</span></div>
-                <div class="sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Доступ за 5 минут</span></div>
+                <div class="sec-icon"><img src="https://i.ibb.co/ycXvdgTS/SSL-Secure-Connection.png" alt="SSL Secure Connection" style="height:40px;opacity:0.85;"></div>
             </div>
         </div>
 </section>
@@ -1853,7 +1853,7 @@ const note1 = cp1.querySelector('.cp-note');
             'Протокол «Радикальне відсторонення»: як стати недосяжною',
             'Аудіо «Екстренний спокій» - як заснути і зупинити думки',
             '🧠 «7 днів без болю» - протокол: 7 технік НЛП/КПТ щоб вийти з петлі думок і відпустити',
-            '📋 Чек-лист «100 тригерів» - усвідом що тримає тебе в болі і прибери це по кроках'
+            '📋 Чек-лист «100 тригерів» - усвідом що змушує тебе відчувати біль і прибери це по кроках'
         ];
         lis.forEach((li, i) => { if (cp2texts[i]) li.textContent = cp2texts[i]; });
 const note2 = cp2.querySelector('.cp-note');
@@ -2137,7 +2137,7 @@ const note2 = fp2.querySelector('.fp-note');
     var _baBL=document.querySelector('.ba-before .ba-label');if(_baBL)_baBL.textContent='😔 Зараз';
     var _baAL=document.querySelector('.ba-after .ba-label');if(_baAL)_baAL.textContent='✨ Після гайда';
     ['Телефон в руці кожні 5 хвилин','Не розумієш що він думає','Боїшся написати - раптом виглядатиму нав’язливою','Будь-яка його дія вибиває ґрунт з-під ніг','Думки по колу - зупинитися неможливо','Відчуваєш себе слабкою в цій ситуації'].forEach(function(t,i){var li=document.querySelectorAll('.ba-before .ba-list li')[i];if(li)li.textContent=t;});
-    ['Знаєш що написати і коли - без паніки','Читаєш його поведінку як відкриту книгу','Дієш з позиції сили, не потреби','Його мовчання більше не керує твоїм днем','Голова вільна - ти знову думаєш про себе','Він відчуває: щось змінилось. І це не він контролює.'].forEach(function(t,i){var li=document.querySelectorAll('.ba-after .ba-list li')[i];if(li)li.textContent=t;});
+    ['Знаєш що написати і коли - без паніки','Читаєш його поведінку як відкриту книгу','Дієш - і знаєш навіщо','Його мовчання більше не керує твоїм днем','Голова вільна - ти знову думаєш про себе','Він відчуває: щось змінилось. І це не він контролює.'].forEach(function(t,i){var li=document.querySelectorAll('.ba-after .ba-list li')[i];if(li)li.textContent=t;});
     var _baCta=document.querySelector('.ba-cta .btn-primary'),_baRV=(document.getElementById('baPriceRef')||{}).textContent||'';
     if(_baCta)_baCta.innerHTML='Хочу цей стан - за <span id="baPriceRef">'+_baRV+'</span> →';
     // === FAQ UA ===
@@ -2178,7 +2178,7 @@ const note2 = fp2.querySelector('.fp-note');
     var _wT=document.querySelector('.warn-title');if(_wT)_wT.textContent='Чоловіки ненавидять одну поведінку - і вона змінює все.';
     var _wPs=document.querySelectorAll('.warning-box p');
     if(_wPs[0])_wPs[0].textContent='Є слова, які чоловік запам’ятовує. Є дії, які змушують його думати. Є паузи, які говорять більше будь-яких слів. Усе це - всередині гайда.';
-    if(_wPs[1])_wPs[1].innerHTML='Одне попередження: <strong>якщо застосуєш це правильно - він побачить іншу тебе.</strong> Не ту, яка чекає. Ту, яку не відпустиш.';
+    if(_wPs[1])_wPs[1].innerHTML='Одне попередження: <strong>якщо застосуєш це правильно - він побачить іншу тебе.</strong> Не ту, яка чекає. Ту, від якої не підеш.';
     if(_wPs[2])_wPs[2].textContent='Просто виріши - готова ли ти до цього.';
     // === INACTION UA ===
     var _inH=document.querySelector('.inaction-box h3');if(_inH)_inH.innerHTML='Поки ти гадаєш -<br>він живе дальше';
@@ -2228,7 +2228,7 @@ const note2 = fp2.querySelector('.fp-note');
     _mrAu.forEach(function(el,i){if(_mrA[i])el.textContent=_mrA[i];});
     // === FOR-YOU UA ===
     var _fyEy=document.querySelector('.foryou-sec .section-eyebrow');if(_fyEy)_fyEy.textContent='Впізнаєш свою ситуацію?';
-    var _fyH2=document.querySelector('.foryou-box h2');if(_fyH2)_fyH2.innerHTML='Це працює саме для тебе,<br>якщо зараз...';
+    var _fyH2=document.querySelector('.foryou-box h2');if(_fyH2)_fyH2.innerHTML='Це підходить тобі,<br>якщо зараз...';
     var _fySub=document.querySelector('.fy-sub');if(_fySub)_fySub.textContent='Неважливо скільки часу минуло і що саме сталося між вами.';
     var _fyItems=document.querySelectorAll('.fy-item');
     var _fyT=['Ігнор / тиша','Став холодним','Розлучились','То холодний, то теплий','«Нам потрібна пауза»','Написав після мовчання'];
@@ -2262,7 +2262,7 @@ const note2 = fp2.querySelector('.fp-note');
     if(_inSub)_inSub.innerHTML='Ти вже витратила більше ніж <span id="investPrice">'+_inPrV+'</span> - просто на день втраченої продуктивності, їжі яку не відчуваєш, сну якого немає. І за все це ти не отримуєш відповідь на головне питання.';
     var _inIs=document.querySelectorAll('.inv-item strong'),_inSs=document.querySelectorAll('.inv-item span');
     var _inIT=['Сесія у психолога','Порада подруги','Ще одна ніч з телефоном'];
-    var _inST=['Від 3000 грн за годину. Ти будеш довго розповідати як все почалось. І жодної відповіді чому він мовчить.','«Забудь його», «знайди іншого» - чула це 100 разів. Вона не бачила його очима. Ти хочеш зрозуміти - не забути.','Це 15 хвилин читання - і ти знаєш що відбувається, що написати і як себе вести. А не продовжуєш гадати в темряві.'];
+    var _inST=['Від 3000 грн за годину. Ти будеш довго розповідати як все почалось. І жодної відповіді чому він мовчить.','«Забудь його», «знайди іншого» - чула це 100 разів. Вона не бачила його твоїми очима. Ти хочеш зрозуміти - не забути.','Це 15 хвилин читання - і ти знаєш що відбувається, що написати і як себе вести. А не продовжуєш гадати в темряві.'];
     _inIs.forEach(function(el,i){if(_inIT[i])el.textContent=_inIT[i];});
     _inSs.forEach(function(el,i){if(_inST[i])el.textContent=_inST[i];});
 
@@ -2544,13 +2544,11 @@ function closeExitPopup(){
         <p class="pay-subtitle" id="payModalSubtitle">Мгновенный доступ после оплаты</p>
         <div class="pay-options">
             <a href="#" class="pay-btn-wfp" id="payWFP" target="_blank" rel="noopener">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
-                WayForPay
+                <img src="https://i.ibb.co/CsKp9z3H/wayforpay-logo-mixfin-scaled.webp" alt="WayForPay" class="pay-wfp-logo">
                 <div class="pay-icons-row">
-                    <div class="pay-icon-badge" title="Visa"><svg height="13" viewBox="0 0 46 16" xmlns="http://www.w3.org/2000/svg"><text y="13" font-family="Arial,sans-serif" font-size="14" font-weight="900" font-style="italic" fill="#1A1F71">VISA</text></svg></div>
-                    <div class="pay-icon-badge" title="Mastercard"><svg height="18" viewBox="0 0 32 20" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="10" r="7" fill="#EB001B"/><circle cx="20" cy="10" r="7" fill="#F79E1B"/><path d="M16 4.8a7 7 0 0 1 0 10.4A7 7 0 0 1 16 4.8z" fill="#FF5F00"/></svg></div>
-                    <div class="pay-icon-badge" title="Apple Pay"><svg height="16" viewBox="0 0 52 20" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 4c.5-.7 1.2-1.1 1.9-1.2-.1 1.2-.5 2.3-1.1 3C7.7 6.5 7 7 6.2 6.9 6.1 5.7 6.7 4.7 7.5 4zm1.7 1.6c1.1 0 2.2.6 2.9.6.7 0 1.8-.6 3-.6 1.5 0 2.9.9 3.7 2.4-3.2 1.9-2.7 6.7.5 8C18.2 17.4 16.8 20 15 20c-.8 0-1.6-.6-2.5-.6-.9 0-1.8.6-2.5.6-1.9 0-4.3-3.4-5-6.7C4.4 11 5.1 7.8 7 6.4c.7-.5 1.5-.8 2.2-.8z" fill="#000"/><text x="22" y="14" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#000">Pay</text></svg></div>
-                    <div class="pay-icon-badge" title="Google Pay"><svg height="15" viewBox="0 0 58 18" xmlns="http://www.w3.org/2000/svg"><text y="13" font-family="Arial,sans-serif" font-size="12"><tspan fill="#4285F4" font-weight="700">G</tspan><tspan fill="#EA4335" font-weight="700">o</tspan><tspan fill="#FBBC05" font-weight="700">o</tspan><tspan fill="#34A853" font-weight="700">g</tspan><tspan fill="#4285F4" font-weight="700">le</tspan><tspan fill="#000" font-weight="600"> Pay</tspan></text></svg></div>
+                    <div class="pay-icon-badge" title="Visa/Mastercard"><img src="https://i.ibb.co/Y4kmPPn9/392-3926074-credit-or-debit-card-visa-mastercard-logo-hd.jpg" alt="Visa Mastercard"></div>
+                    <div class="pay-icon-badge" title="Apple Pay"><img src="https://i.ibb.co/d43816bk/apple-pay-og-twitter.jpg" alt="Apple Pay"></div>
+                    <div class="pay-icon-badge" title="Google Pay"><img src="https://i.ibb.co/mrNtmknS/google-pay-mark.png" alt="Google Pay"></div>
                 </div>
             </a>
             <div class="pay-divider" id="payDivider"><span>или</span></div>
