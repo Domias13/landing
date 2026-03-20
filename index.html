@@ -644,7 +644,6 @@
         .pay-icon-badge{height:24px;background:white;border-radius:5px;padding:2px 6px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,0.1);}
         .pay-icon-badge img{height:16px;width:auto;display:block;object-fit:contain;}
         .pay-icon-badge svg{display:block;}
-        .pay-wfp-logo{height:22px;width:auto;display:block;filter:brightness(0) invert(1);margin-left:4px;}
         .pay-pp-note{font-size:11px;color:rgba(0,48,135,0.7);margin-top:3px;}
         .pay-divider{display:flex;align-items:center;gap:10px;margin:2px 0;}
         .pay-divider::before,.pay-divider::after{content:'';flex:1;height:1px;background:var(--greige-dark);}
@@ -2544,11 +2543,13 @@ function closeExitPopup(){
         <p class="pay-subtitle" id="payModalSubtitle">Мгновенный доступ после оплаты</p>
         <div class="pay-options">
             <a href="#" class="pay-btn-wfp" id="payWFP" target="_blank" rel="noopener">
-                <img src="https://i.ibb.co/CsKp9z3H/wayforpay-logo-mixfin-scaled.webp" alt="WayForPay" class="pay-wfp-logo">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+                Оплатить
                 <div class="pay-icons-row">
-                    <div class="pay-icon-badge" title="Visa/Mastercard"><img src="https://i.ibb.co/Y4kmPPn9/392-3926074-credit-or-debit-card-visa-mastercard-logo-hd.jpg" alt="Visa Mastercard"></div>
-                    <div class="pay-icon-badge" title="Apple Pay"><img src="https://i.ibb.co/d43816bk/apple-pay-og-twitter.jpg" alt="Apple Pay"></div>
-                    <div class="pay-icon-badge" title="Google Pay"><img src="https://i.ibb.co/mrNtmknS/google-pay-mark.png" alt="Google Pay"></div>
+                    <span class="pay-icon-badge">Visa</span>
+                    <span class="pay-icon-badge">Mastercard</span>
+                    <span class="pay-icon-badge">Apple Pay</span>
+                    <span class="pay-icon-badge">Google Pay</span>
                 </div>
             </a>
             <div class="pay-divider" id="payDivider"><span>или</span></div>
