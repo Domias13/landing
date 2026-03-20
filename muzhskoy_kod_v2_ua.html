@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мужской Код: Перезагрузка — Роман | Инсайдерский Гайд от мужчины, прошедшего развод</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --teal: #1a6b72;
+            --teal-light: #2a8f98;
+            --teal-pale: #e8f4f5;
+            --teal-mid: rgba(26,107,114,0.12);
+            --sage: #7a9e8e;
+            --sage-light: #c8ddd6;
+            --greige: #f5f0e8;
+            --greige-dark: #e8e0d0;
+            --warm-white: #fefcf8;
+            --charcoal: #2c2c2c;
+            --mid-gray: #6b6b6b;
+            --light-gray: #9a9a9a;
+            --gold: #c9954a;
+            --gold-light: #e8b96a;
+            --success: #3a8a6e;
+            --paypal-yellow: #FFD700;
+            --card-border: rgba(122,158,142,0.25);
+            --shadow-sm: 0 4px 20px rgba(26,107,114,0.08);
+            --shadow-md: 0 8px 40px rgba(26,107,114,0.12);
+            --shadow-lg: 0 20px 60px rgba(26,107,114,0.15);
+        }
+
+        body { font-family: 'Jost', sans-serif; background: var(--warm-white); color: var(--charcoal); line-height: 1.7; }
+        h1,h2,h3 { font-family: 'Playfair Display', serif; }
+        .container { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+        .section-eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; color: var(--teal); margin-bottom: 10px; display: block; }
+
+        /* ===== URGENCY BAR ===== */
+        .urgency-bar {
+            background: linear-gradient(90deg, var(--teal) 0%, var(--teal-light) 100%);
+            padding: 11px 20px; text-align: center; font-size: 14px; font-weight: 500;
+            color: white; position: sticky; top: 0; z-index: 200;
+            display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;
+        }
+        .urgency-bar .ub-price { color: var(--gold-light); font-weight: 700; }
+        .countdown-chip {
+            background: rgba(0,0,0,0.22); padding: 4px 13px; border-radius: 20px;
+            font-size: 13px; display: inline-flex; align-items: center; gap: 6px;
+        }
+        .countdown-chip strong { font-size: 15px; letter-spacing: 1.5px; font-variant-numeric: tabular-nums; }
+
+        /* ===== SOCIAL PROOF POPUP ===== */
+        .sp-popup {
+            position: fixed; bottom: 80px; left: 50%;
+            transform: translateX(-50%) translateY(120px);
+            background: white; border: 1px solid var(--card-border);
+            border-radius: 16px; padding: 14px 18px;
+            max-width: 360px; width: calc(100% - 40px);
+            z-index: 9999; box-shadow: var(--shadow-lg);
+            display: flex; align-items: center; gap: 12px;
+            opacity: 0; visibility: hidden; transition: all 0.4s ease;
+        }
+        .sp-popup.active { transform: translateX(-50%) translateY(0); opacity: 1; visibility: visible; }
+        .sp-avatar {
+            width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+            background: linear-gradient(135deg, var(--teal), var(--teal-light));
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 15px; color: white;
+        }
+        .sp-content { flex: 1; min-width: 0; }
+        .sp-text { font-size: 13px; color: var(--charcoal); line-height: 1.4; }
+        .sp-text strong { color: var(--teal); }
+        .sp-tariff { font-size: 12px; color: var(--gold); font-weight: 600; margin-top: 3px; }
+        .sp-time { font-size: 11px; color: var(--light-gray); margin-top: 2px; }
+        .sp-close { background: none; border: none; color: var(--light-gray); font-size: 20px; cursor: pointer; padding: 4px; flex-shrink: 0; line-height: 1; }
+
+        /* ===== STICKY BOTTOM BAR ===== */
+        .sticky-bar {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: white; border-top: 1px solid var(--greige-dark);
+            padding: 11px 20px; z-index: 99;
+            display: flex; justify-content: center;
+            box-shadow: 0 -6px 24px rgba(0,0,0,0.09);
+            transform: translateY(100%); transition: transform 0.35s ease;
+        }
+        .sticky-bar.visible { transform: translateY(0); }
+        .sticky-inner { display: flex; align-items: center; gap: 14px; max-width: 500px; width: 100%; }
+        .sticky-text { flex: 1; font-size: 13px; color: var(--mid-gray); line-height: 1.3; }
+        .sticky-text strong { display: block; font-size: 14px; color: var(--charcoal); }
+        .sticky-text .st-old { text-decoration: line-through; color: var(--light-gray); font-size: 12px; }
+        .sticky-btn {
+            background: linear-gradient(135deg, var(--teal), var(--teal-light));
+            color: white; padding: 12px 22px; border-radius: 50px;
+            font-size: 14px; font-weight: 700; text-decoration: none;
+            white-space: nowrap; font-family: 'Jost', sans-serif;
+            box-shadow: 0 5px 18px rgba(26,107,114,0.3);
+            animation: pulse-btn 2.5s infinite;
+        }
+        @keyframes pulse-btn { 0%,100%{box-shadow:0 5px 18px rgba(26,107,114,0.3)} 50%{box-shadow:0 8px 26px rgba(26,107,114,0.5)} }
+        @media(max-width:480px){ .sticky-text{display:none} }
+
+        /* ===== HERO ===== */
+        .hero { background: var(--greige); padding: 56px 0 48px; position: relative; overflow: hidden; }
+        .hero::before {
+            content:''; position:absolute; top:-80px; right:-80px;
+            width:380px; height:380px; border-radius:50%;
+            background:radial-gradient(circle, rgba(26,107,114,0.07) 0%, transparent 70%);
+        }
+        .hero::after {
+            content:''; position:absolute; bottom:-60px; left:-40px;
+            width:280px; height:280px; border-radius:50%;
+            background:radial-gradient(circle, rgba(201,149,74,0.08) 0%, transparent 70%);
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: white; border: 1px solid var(--card-border);
+            padding: 8px 18px; border-radius: 50px; font-size: 13px; font-weight: 500;
+            color: var(--teal); margin-bottom: 22px; box-shadow: var(--shadow-sm);
+        }
+        .hero-badge::before { content:'✦'; color:var(--gold); }
+        .hero h1 { font-size: 44px; font-weight: 700; line-height: 1.15; margin-bottom: 18px; color: var(--charcoal); max-width: 680px; }
+        .hero h1 em { font-style: italic; color: var(--teal); }
+        .hero-sub { font-size: 18px; color: var(--mid-gray); max-width: 560px; margin-bottom: 26px; line-height: 1.65; font-weight: 400; }
+        .empathy-box {
+            background: white; border-left: 3px solid var(--teal);
+            border-radius: 0 16px 16px 0; padding: 20px 24px;
+            max-width: 620px; margin: 24px 0; box-shadow: var(--shadow-sm);
+            font-size: 16px; color: var(--charcoal); line-height: 1.75;
+        }
+        .empathy-box strong { color: var(--teal); }
+        .hero-cta-wrap { margin: 28px 0; }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: linear-gradient(135deg, var(--teal), var(--teal-light));
+            color: white; padding: 17px 36px; border-radius: 50px;
+            font-size: 17px; font-weight: 700; text-decoration: none;
+            font-family: 'Jost', sans-serif;
+            box-shadow: 0 10px 32px rgba(26,107,114,0.35);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(26,107,114,0.45); }
+        .trust-row { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 16px; }
+        .trust-item { display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--mid-gray); font-weight: 500; }
+        .trust-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sage); flex-shrink: 0; }
+
+        /* ===== PRODUCT SHOWCASE ===== */
+        .showcase { padding: 64px 0; background: white; }
+        .showcase-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 44px; align-items: center; margin-top: 36px; background: var(--greige); border-radius: 24px; padding: 36px; border: 1px solid var(--greige-dark); }
+        .showcase-img { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); }
+        .showcase-img img { width: 100%; display: block; }
+        .showcase-list h4 { font-family: 'Playfair Display', serif; font-size: 21px; margin-bottom: 18px; color: var(--charcoal); }
+        .showcase-list ul { list-style: none; }
+        .showcase-list li { display: flex; align-items: flex-start; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--greige-dark); font-size: 15px; color: var(--charcoal); line-height: 1.5; }
+        .showcase-list li:last-child { border-bottom: none; }
+        .sl-icon { width: 30px; height: 30px; border-radius: 50%; background: var(--teal-pale); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+        .bonus-pill { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: white; padding: 9px 18px; border-radius: 50px; font-size: 13px; font-weight: 700; margin-top: 18px; }
+
+        /* ===== PAIN SECTION ===== */
+        .pain-sec { padding: 64px 0; background: var(--greige); }
+        .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px; }
+        .pain-card { background: white; border-radius: 20px; padding: 26px; box-shadow: var(--shadow-sm); border: 1px solid var(--card-border); transition: transform 0.3s, box-shadow 0.3s; }
+        .pain-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+        .pain-icon { font-size: 30px; margin-bottom: 12px; }
+        .pain-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; margin-bottom: 9px; color: var(--charcoal); }
+        .pain-text { font-size: 14px; color: var(--mid-gray); line-height: 1.65; }
+        .pain-text strong { color: var(--charcoal); }
+
+        /* ===== PULT SECTION ===== */
+        .pult-sec { padding: 64px 0; background: white; }
+        .pult-sec h2 { font-size: 34px; color: var(--charcoal); line-height: 1.25; margin-bottom: 12px; }
+        .pult-sec .pult-intro { font-size: 17px; color: var(--mid-gray); max-width: 600px; line-height: 1.7; margin-bottom: 32px; }
+        .pult-cards { display: flex; gap: 14px; flex-wrap: wrap; justify-content: flex-start; margin-bottom: 28px; }
+        .pult-card { flex: 1; min-width: 160px; max-width: 200px; border-radius: 18px; padding: 22px 18px; text-align: center; }
+        .pult-card.good { background: rgba(58,138,110,0.07); border: 1.5px solid rgba(58,138,110,0.22); }
+        .pult-card.bad { background: rgba(201,149,74,0.07); border: 1.5px solid rgba(201,149,74,0.22); }
+        .pult-card .pc-icon { font-size: 28px; margin-bottom: 9px; }
+        .pult-card .pc-text { font-size: 15px; color: var(--charcoal); line-height: 1.4; }
+        .pult-card .pc-text strong { font-weight: 700; }
+        .pult-conclusion {
+            background: var(--greige); border-left: 3px solid var(--gold);
+            border-radius: 0 14px 14px 0; padding: 22px 26px;
+            max-width: 660px; font-size: 16px; color: var(--charcoal); line-height: 1.75;
+        }
+        .pult-conclusion strong { color: var(--teal); }
+
+        /* ===== AUTHOR ===== */
+        .author-sec { padding: 64px 0; background: var(--greige); }
+        .author-grid { display: grid; grid-template-columns: 300px 1fr; gap: 48px; align-items: center; max-width: 960px; margin: 0 auto; }
+        .author-photo { border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-lg); }
+        .author-photo img { width: 100%; display: block; object-fit: cover; }
+        .author-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--teal-pale); border: 1px solid rgba(26,107,114,0.2); color: var(--teal); padding: 7px 15px; border-radius: 50px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 18px; }
+        .author-sec h2 { font-size: 30px; margin-bottom: 16px; color: var(--charcoal); line-height: 1.25; }
+        .author-sec p { font-size: 15px; color: var(--mid-gray); line-height: 1.8; margin-bottom: 14px; }
+        .author-sec p strong { color: var(--charcoal); }
+        .author-quote { background: white; border-left: 3px solid var(--gold); border-radius: 0 12px 12px 0; padding: 18px 22px; margin: 18px 0; font-style: italic; font-size: 15px; color: var(--charcoal); line-height: 1.75; }
+        .author-stat { display: flex; align-items: center; gap: 9px; font-size: 13px; color: var(--teal); font-weight: 600; margin-top: 14px; }
+        .author-stat svg { width: 18px; height: 18px; fill: var(--teal); flex-shrink: 0; }
+
+        /* ===== INVESTMENT BLOCK ===== */
+        .invest-sec { padding: 56px 0; background: white; }
+        .invest-box { background: linear-gradient(135deg, var(--greige) 0%, var(--teal-pale) 100%); border: 1px solid var(--card-border); border-radius: 24px; padding: 42px 40px; max-width: 820px; margin: 0 auto; box-shadow: var(--shadow-md); }
+        .invest-box h3 { font-size: 26px; color: var(--charcoal); margin-bottom: 8px; }
+        .invest-box .inv-sub { font-size: 15px; color: var(--mid-gray); margin-bottom: 26px; line-height: 1.6; }
+        .inv-items { display: flex; flex-direction: column; gap: 14px; }
+        .inv-item { display: flex; align-items: flex-start; gap: 16px; background: white; border-radius: 14px; padding: 18px 20px; box-shadow: var(--shadow-sm); border: 1px solid var(--card-border); }
+        .inv-num { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, var(--teal), var(--teal-light)); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; flex-shrink: 0; }
+        .inv-item strong { display: block; font-size: 15px; color: var(--charcoal); margin-bottom: 3px; font-weight: 700; }
+        .inv-item span { font-size: 14px; color: var(--mid-gray); line-height: 1.5; }
+
+        /* ===== WARNING ===== */
+        .warning-sec { padding: 0 0 56px; background: white; }
+        .warning-box { background: rgba(201,149,74,0.07); border: 1.5px solid rgba(201,149,74,0.38); border-radius: 20px; padding: 28px 32px; max-width: 820px; margin: 0 auto; }
+        .warn-header { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); margin-bottom: 8px; }
+        .warn-title { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 700; color: var(--charcoal); margin-bottom: 14px; }
+        .warning-box p { font-size: 15px; color: var(--charcoal); line-height: 1.75; margin-bottom: 10px; }
+        .warning-box p:last-child { margin-bottom: 0; color: var(--mid-gray); font-style: italic; }
+        .warning-box strong { color: var(--teal); }
+
+        /* ===== COMPACT PRICING ===== */
+        .compact-pricing { padding: 56px 0; background: var(--greige); border-top: 1px solid var(--greige-dark); border-bottom: 1px solid var(--greige-dark); }
+        .cp-header { text-align: center; margin-bottom: 36px; }
+        .cp-header h2 { font-size: 32px; color: var(--charcoal); margin-bottom: 8px; }
+        .cp-header p { font-size: 15px; color: var(--mid-gray); }
+        .cp-grid { display: flex; gap: 18px; overflow-x: auto; padding: 6px 4px 20px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: var(--sage-light) transparent; }
+        .cp-grid::-webkit-scrollbar { height: 4px; }
+        .cp-grid::-webkit-scrollbar-thumb { background: var(--sage-light); border-radius: 2px; }
+        .cp-card { flex: 0 0 310px; scroll-snap-align: center; background: white; border: 1px solid var(--card-border); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; position: relative; box-shadow: var(--shadow-sm); transition: transform 0.3s, box-shadow 0.3s; }
+        .cp-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+        .cp-card.popular { border: 2px solid var(--teal); padding-top: 42px; background: linear-gradient(160deg, rgba(26,107,114,0.03) 0%, white 60%); }
+        .cp-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--teal), var(--teal-light)); color: white; padding: 6px 18px; border-radius: 12px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; box-shadow: 0 4px 14px rgba(26,107,114,0.35); }
+        .cp-card h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; margin-bottom: 6px; color: var(--charcoal); }
+        .cp-card .cp-sub { font-size: 13px; color: var(--mid-gray); margin-bottom: 16px; line-height: 1.45; }
+        .cp-price-old { font-size: 13px; color: var(--light-gray); text-decoration: line-through; }
+        .cp-price { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--charcoal); margin: 6px 0 16px; }
+        .cp-price .cp-currency { font-family: 'Jost', sans-serif; font-size: 14px; color: var(--mid-gray); font-weight: 400; }
+        .cp-card ul { list-style: none; flex-grow: 1; margin-bottom: 18px; }
+        .cp-card li { font-size: 13px; padding: 7px 0; color: var(--mid-gray); border-bottom: 1px solid rgba(0,0,0,0.04); display: flex; align-items: flex-start; gap: 8px; line-height: 1.45; }
+        .cp-card li:last-child { border-bottom: none; }
+        .cp-card li::before { content: '✓'; color: var(--success); font-weight: 700; flex-shrink: 0; font-size: 13px; margin-top: 1px; }
+        .cp-bump { background: rgba(26,107,114,0.05); border: 1px dashed rgba(26,107,114,0.35); border-radius: 10px; padding: 10px 12px; margin-bottom: 14px; }
+        .cp-bump label { display: flex; align-items: flex-start; gap: 9px; cursor: pointer; font-size: 12px; color: var(--charcoal); line-height: 1.45; }
+        .cp-bump input[type="checkbox"] { margin-top: 2px; accent-color: var(--teal); flex-shrink: 0; }
+        .cp-bump strong { color: var(--teal); }
+        .cp-btns { display: flex; flex-direction: column; gap: 9px; margin-top: auto; }
+        .cp-note { font-size: 11px; color: var(--light-gray); text-align: center; margin-top: 8px; }
+
+        /* ===== BUTTONS ===== */
+        .btn-cta {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            background: linear-gradient(135deg, var(--teal), var(--teal-light));
+            color: white; padding: 13px 20px; border-radius: 50px;
+            font-size: 14px; font-weight: 700; text-decoration: none; border: none;
+            cursor: pointer; width: 100%; font-family: 'Jost', sans-serif;
+            box-shadow: 0 6px 22px rgba(26,107,114,0.28); transition: all 0.3s;
+        }
+        .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(26,107,114,0.4); }
+        .btn-paypal {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            background: var(--paypal-yellow); color: #1a1a1a;
+            padding: 11px 20px; border-radius: 50px; font-size: 13px; font-weight: 700;
+            text-decoration: none; border: 2px solid #E6C200; cursor: pointer;
+            width: 100%; font-family: 'Jost', sans-serif; transition: all 0.3s;
+        }
+        .btn-paypal:hover { background: #ffe033; transform: translateY(-1px); }
+        .btn-paypal svg { width: 17px; height: 17px; flex-shrink: 0; }
+        .paypal-svg-path { fill: #003087; }
+
+        /* ===== TESTIMONIALS ===== */
+        .testi-sec { padding: 64px 0; background: white; }
+        .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 36px; }
+        .testi-card { background: var(--greige); border-radius: 20px; padding: 26px 22px; display: flex; flex-direction: column; gap: 14px; box-shadow: var(--shadow-sm); border: 1px solid var(--greige-dark); transition: transform 0.3s, box-shadow 0.3s; }
+        .testi-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+        .testi-result { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--teal); line-height: 1.3; padding-bottom: 14px; border-bottom: 1px solid var(--greige-dark); }
+        .testi-result::before { content:'«'; } .testi-result::after { content:'»'; }
+        .testi-body { font-size: 14px; color: var(--mid-gray); line-height: 1.75; font-style: italic; flex: 1; }
+        .testi-body::before { content:'«'; color:var(--gold); font-style:normal; } .testi-body::after { content:'»'; color:var(--gold); font-style:normal; }
+        .testi-author { font-size: 13px; font-weight: 700; color: var(--charcoal); display: flex; align-items: center; gap: 8px; }
+        .testi-author::before { content:''; display:block; width:22px; height:2px; background:var(--teal); flex-shrink:0; }
+
+        /* ===== INACTION ===== */
+        .inaction-wrap { padding: 0 0 56px; background: white; }
+        .inaction-box { max-width: 760px; margin: 0 auto; background: linear-gradient(135deg, var(--teal), #0e4f55); border-radius: 24px; padding: 42px 38px; text-align: center; color: white; }
+        .inaction-box h3 { font-size: 26px; margin-bottom: 18px; line-height: 1.3; }
+        .inaction-list { list-style: none; display: flex; flex-direction: column; gap: 11px; margin: 18px 0; }
+        .inaction-list li { display: flex; align-items: center; gap: 11px; font-size: 15px; justify-content: center; }
+        .inaction-list li::before { content:'×'; font-size: 20px; color: rgba(255,255,255,0.45); font-weight: 300; }
+        .inaction-box p { font-size: 15px; color: rgba(255,255,255,0.75); margin-top: 14px; }
+
+        /* ===== GUIDE CONTENT ===== */
+        .guide-sec { padding: 64px 0; background: var(--greige); }
+        .guide-grid { margin-top: 28px; display: flex; flex-direction: column; gap: 14px; }
+        .guide-card { background: white; border-radius: 16px; padding: 22px 26px; display: grid; grid-template-columns: 56px 1fr; gap: 18px; align-items: center; box-shadow: var(--shadow-sm); border: 1px solid var(--card-border); transition: transform 0.3s; }
+        .guide-card:hover { transform: translateX(4px); }
+        .guide-emoji { font-size: 30px; text-align: center; }
+        .guide-card h3 { font-family: 'Playfair Display', serif; font-size: 17px; color: var(--teal); margin-bottom: 5px; }
+        .guide-card p { font-size: 14px; color: var(--mid-gray); line-height: 1.65; }
+
+        /* ===== FULL PRICING ===== */
+        .full-pricing { padding: 64px 0; background: white; }
+        .fp-header { text-align: center; margin-bottom: 28px; }
+        .fp-header h2 { font-size: 34px; color: var(--charcoal); margin-bottom: 8px; }
+        .fp-header p { color: var(--mid-gray); font-size: 15px; }
+        .fp-steps { background: var(--teal-pale); border-radius: 14px; padding: 18px 22px; max-width: 560px; margin: 0 auto 36px; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+        .fp-step { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--teal); }
+        .fp-step-num { width: 26px; height: 26px; background: var(--teal); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+        .fp-sep { color: var(--sage); font-size: 16px; }
+        .fp-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; max-width: 1040px; margin: 0 auto; }
+        .fp-card { background: white; border: 1px solid var(--card-border); border-radius: 24px; padding: 30px; display: flex; flex-direction: column; position: relative; box-shadow: var(--shadow-sm); transition: transform 0.3s, box-shadow 0.3s; }
+        .fp-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .fp-card.popular { border: 2px solid var(--teal); padding-top: 44px; background: linear-gradient(160deg, rgba(26,107,114,0.03) 0%, white 50%); }
+        .fp-popular-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--teal), var(--teal-light)); color: white; padding: 7px 20px; border-radius: 12px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; box-shadow: 0 4px 14px rgba(26,107,114,0.35); }
+        .fp-card h3 { font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 700; margin-bottom: 6px; color: var(--charcoal); }
+        .fp-card .fp-sub { font-size: 14px; color: var(--mid-gray); margin-bottom: 18px; line-height: 1.5; }
+        .fp-features { list-style: none; margin-bottom: 22px; flex-grow: 1; }
+        .fp-features li { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; font-size: 14px; color: var(--mid-gray); border-bottom: 1px solid rgba(0,0,0,0.04); line-height: 1.5; }
+        .fp-features li:last-child { border-bottom: none; }
+        .fp-features li::before { content:'✓'; color:var(--success); font-weight:800; font-size:14px; flex-shrink:0; margin-top:2px; }
+        .fp-price-wrap { padding-top: 18px; border-top: 1px solid var(--card-border); margin-bottom: 16px; }
+        .fp-price-old { font-size: 15px; color: var(--light-gray); text-decoration: line-through; display: block; margin-bottom: 3px; }
+        .fp-price { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; color: var(--charcoal); }
+        .fp-price .fp-currency-sub { font-family: 'Jost', sans-serif; font-size: 14px; color: var(--mid-gray); font-weight: 400; }
+        .fp-btns { display: flex; flex-direction: column; gap: 10px; margin-top: auto; }
+        .fp-note { font-size: 12px; color: var(--light-gray); text-align: center; margin-top: 10px; line-height: 1.45; }
+        .fp-bump { background: rgba(26,107,114,0.05); border: 1.5px dashed rgba(26,107,114,0.35); border-radius: 14px; padding: 15px 18px; margin-bottom: 4px; }
+        .fp-bump-header { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: var(--teal); margin-bottom: 9px; }
+        .fp-bump label { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; }
+        .fp-bump input[type="checkbox"] { margin-top: 3px; accent-color: var(--teal); flex-shrink: 0; }
+        .fp-bump-content { font-size: 13px; color: var(--charcoal); line-height: 1.5; }
+        .fp-bump-content strong { display: block; margin-bottom: 2px; font-weight: 700; }
+        .fp-bump-content em { font-style: normal; font-size: 12px; color: var(--mid-gray); display: block; }
+        .fp-bump-content .bump-price { color: var(--teal); font-weight: 700; font-style: normal; font-size: 13px; }
+
+        /* ===== SECURITY ===== */
+        .security-box { background: rgba(58,138,110,0.06); border: 1px solid rgba(58,138,110,0.2); border-radius: 18px; padding: 24px; margin: 36px auto 0; max-width: 860px; text-align: center; }
+        .security-box h4 { color: var(--success); font-size: 17px; margin-bottom: 12px; font-family: 'Jost', sans-serif; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .sec-icons { display: flex; justify-content: center; gap: 26px; flex-wrap: wrap; margin: 14px 0; }
+        .sec-icon { display: flex; flex-direction: column; align-items: center; gap: 7px; opacity: 0.65; }
+        .sec-icon svg { width: 34px; height: 34px; color: var(--mid-gray); }
+        .sec-icon span { font-size: 11px; color: var(--mid-gray); max-width: 76px; text-align: center; }
+        .sec-text { font-size: 13px; color: var(--mid-gray); line-height: 1.6; margin-top: 12px; }
+        .email-warn { background: rgba(201,149,74,0.1); border: 1px solid rgba(201,149,74,0.3); padding: 13px 18px; border-radius: 10px; font-size: 13px; color: #8b6120; text-align: center; margin: 24px auto 0; max-width: 580px; font-weight: 500; line-height: 1.5; }
+
+        /* ===== FINAL CTA ===== */
+        .final-cta { padding: 72px 0; background: var(--greige); text-align: center; }
+        .final-box { background: linear-gradient(135deg, var(--teal-pale) 0%, var(--greige) 100%); border: 1px solid var(--card-border); border-radius: 28px; padding: 52px 36px; position: relative; max-width: 780px; margin: 0 auto; box-shadow: var(--shadow-lg); }
+        .guarantee-badge { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: var(--success); color: white; padding: 8px 22px; border-radius: 20px; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 7px; box-shadow: 0 5px 18px rgba(58,138,110,0.3); white-space: nowrap; font-family: 'Jost', sans-serif; }
+        .final-box h2 { font-size: 34px; margin-bottom: 14px; color: var(--charcoal); }
+        .final-box h2 em { font-style: italic; color: var(--teal); }
+        .final-box p { font-size: 16px; color: var(--mid-gray); margin-bottom: 28px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.65; }
+        .final-box .btn-primary { margin: 0 auto; }
+        .final-trust { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 20px; font-size: 13px; color: var(--mid-gray); }
+        .final-trust svg { width: 17px; height: 17px; color: var(--success); flex-shrink: 0; }
+
+        /* ===== FOOTER ===== */
+        footer { padding: 26px 0 88px; border-top: 1px solid var(--greige-dark); background: var(--greige); text-align: center; color: var(--light-gray); font-size: 13px; }
+        footer a { color: var(--teal); text-decoration: none; cursor: pointer; }
+        footer a:hover { text-decoration: underline; }
+
+        /* ===== FADE IN ===== */
+        .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ===== MODALS ===== */
+        .modal-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(44,44,44,0.78); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; z-index:1000; opacity:0; visibility:hidden; transition:all 0.3s; padding:20px; }
+        .modal-overlay.active { opacity:1; visibility:visible; }
+        .modal { background:white; border:1px solid var(--card-border); border-radius:22px; max-width:660px; width:100%; max-height:90vh; overflow-y:auto; position:relative; transform:scale(0.95); transition:transform 0.3s; box-shadow:var(--shadow-lg); }
+        .modal-overlay.active .modal { transform:scale(1); }
+        .modal-close { position:absolute; top:14px; right:14px; width:32px; height:32px; border-radius:50%; background:var(--greige); border:1px solid var(--greige-dark); color:var(--charcoal); font-size:21px; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:10; transition:background 0.3s; }
+        .modal-close:hover { background:var(--greige-dark); }
+        .modal-header { padding:26px 26px 18px; border-bottom:1px solid var(--greige-dark); }
+        .modal-header h3 { font-size:21px; font-weight:700; color:var(--teal); }
+        .modal-body { padding:18px 26px 26px; }
+        .modal-body h4 { color:var(--charcoal); margin:18px 0 9px; font-size:15px; font-weight:700; }
+        .modal-body p { margin-bottom:11px; color:var(--mid-gray); font-size:14px; line-height:1.7; }
+        .modal-body ul { margin:9px 0 9px 16px; color:var(--mid-gray); font-size:14px; }
+        .modal-body li { margin-bottom:5px; }
+        .modal-footer { padding:13px 26px 20px; border-top:1px solid var(--greige-dark); text-align:center; font-size:12px; color:var(--light-gray); }
+        .modal-footer strong { color:var(--charcoal); }
+        .support-links { display:flex; flex-direction:column; gap:12px; margin-top:16px; }
+        .support-link { display:flex; align-items:center; gap:11px; padding:13px 15px; background:var(--greige); border-radius:12px; text-decoration:none; color:var(--charcoal); border:1px solid var(--greige-dark); transition:all 0.3s; }
+        .support-link:hover { background:var(--teal-pale); border-color:rgba(26,107,114,0.22); transform:translateX(4px); }
+        .support-link svg { width:21px; height:21px; flex-shrink:0; }
+        .support-link .label { font-weight:600; font-size:15px; }
+        .support-link .desc { font-size:12px; color:var(--mid-gray); margin-top:1px; }
+
+        /* ===== RESPONSIVE ===== */
+        @media(max-width:900px){
+            .fp-grid { grid-template-columns:1fr; max-width:420px; margin:0 auto; }
+            .pain-grid { grid-template-columns:1fr; }
+            .testi-grid { grid-template-columns:1fr; max-width:420px; margin:36px auto 0; }
+            .hero h1 { font-size:32px; }
+            .author-grid { grid-template-columns:1fr; text-align:center; }
+            .author-photo { max-width:260px; margin:0 auto; border-radius:20px; }
+            .showcase-grid { grid-template-columns:1fr; }
+            .pult-cards { justify-content:center; }
+            .guide-card { grid-template-columns:44px 1fr; gap:12px; }
+        }
+        @media(max-width:600px){
+            .hero h1 { font-size:28px; }
+            .cp-card { flex:0 0 285px; }
+            .inaction-box { padding:28px 20px; }
+            .final-box { padding:40px 20px; }
+            .invest-box { padding:28px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- SOCIAL PROOF POPUP -->
+<div class="sp-popup" id="spPopup">
+    <div class="sp-avatar" id="spAvatar">А</div>
+    <div class="sp-content">
+        <div class="sp-text"><strong id="spName">Аня</strong> оформила <span id="spTariff">«Быстрый выход» за $17</span></div>
+        <div class="sp-time" id="spTime">12 минут назад</div>
+    </div>
+    <button class="sp-close" onclick="closeSP()">&times;</button>
+</div>
+
+<!-- STICKY BAR -->
+<div class="sticky-bar" id="stickyBar">
+    <div class="sticky-inner">
+        <div class="sticky-text">
+            <strong>«Мужской Код: Перезагрузка»</strong>
+            <span class="st-old" id="stickyOld">$47</span> <span id="stickyNow">$17</span>
+        </div>
+        <a href="#pricing-top" class="sticky-btn" id="stickyBtn">Забрать за $17 →</a>
+    </div>
+</div>
+
+<!-- URGENCY BAR -->
+<div class="urgency-bar">
+    <span>🔥 Только сегодня: Гайд «59 СМС» — <span class="ub-price" id="ubPrice">$17</span> вместо <span id="ubOld">$47</span>. Время пошло...</span>
+    <div class="countdown-chip">⏱ <strong id="countdown">23:59:59</strong></div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+    <div class="container">
+        <div class="hero-badge">Инсайдерская информация — код доступа к его мыслям</div>
+        <h1>Почему он замолчал<br>и <em>чего он ждёт</em><br>на самом деле?</h1>
+        <p class="hero-sub">Узнайте всю правду о мужском игноре от мужчины, который прошёл через развод и знает «код доступа» к его мыслям.</p>
+        <div class="empathy-box">
+            Когда я переживал свой развод, я увидел ситуацию с той стороны, которую женщины никогда не видят. Я знаю, почему мы (мужчины) уходим в игнор, зачем тайно проверяем ваши соцсети и что чувствуем на самом деле, когда кажемся равнодушными.<br><br>
+            <strong>Я собрал этот Гайд, чтобы вы перестали быть жертвой неопределённости и получили в руки пульт управления ситуацией.</strong>
+        </div>
+        <div class="hero-cta-wrap">
+            <a href="#pricing-top" class="btn-primary">
+                Забрать Гайд за <span id="heroPrice">$17</span> →
+            </a>
+        </div>
+        <div class="trust-row">
+            <div class="trust-item"><div class="trust-dot"></div>Мгновенный доступ на Email</div>
+            <div class="trust-item"><div class="trust-dot"></div>Гарантия возврата 7 дней</div>
+            <div class="trust-item"><div class="trust-dot"></div>Безопасная оплата</div>
+        </div>
+    </div>
+</section>
+
+<!-- SHOWCASE -->
+<section class="showcase">
+    <div class="container">
+        <span class="section-eyebrow">Что вы получаете</span>
+        <h2 style="font-size:34px;color:var(--charcoal);line-height:1.2;margin-bottom:10px;">Что внутри Гайда<br><em style="color:var(--teal);font-style:italic;">«59 готовых СМС бывшему»</em></h2>
+        <p style="font-size:16px;color:var(--mid-gray);max-width:520px;line-height:1.65;">Не шаблоны из интернета. Конкретные формулировки, которые я, как мужчина, знаю — они работают на наш мозг.</p>
+        <div class="showcase-grid fade-in">
+            <div class="showcase-img">
+                <img src="https://i.ibb.co/v6hzKsgD/Chat-GPT-Image-25-2026-08-37-55.png" alt="Гайд 59 СМС бывшему">
+            </div>
+            <div class="showcase-list">
+                <h4>Сразу после оплаты вы получите:</h4>
+                <ul>
+                    <li><div class="sl-icon">💬</div><div><strong>59 готовых скриптов</strong> — ответы на игнор, провокации, «прощупывание почвы» и «пьяные» сообщения</div></li>
+                    <li><div class="sl-icon">🎣</div><div><strong>Методика «СМС-крючок»</strong> — как заставить его выйти на связь первым, не проявляя нужды</div></li>
+                    <li><div class="sl-icon">⏳</div><div><strong>Чек-лист «48 часов тишины»</strong> — пошаговый план, как не сорваться и не написать первой</div></li>
+                    <li><div class="sl-icon">🚫</div><div><strong>Гайд «3 стоп-фразы»</strong> — слова, которые навсегда убивают вашу ценность в его глазах (не говорите их никогда)</div></li>
+                    <li><div class="sl-icon">📱</div><div><strong>Мгновенный доступ на Email</strong> — все материалы у вас через 5 минут после оплаты</div></li>
+                </ul>
+                <div class="bonus-pill">🎁 Бонус: Аудио «Как уснуть» за <span id="bumpPrice">$7</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PAIN SECTION -->
+<section class="pain-sec">
+    <div class="container">
+        <span class="section-eyebrow">Узнаёте себя?</span>
+        <h2 style="font-size:34px;color:var(--charcoal);margin-bottom:36px;line-height:1.2;">Это происходит с вами<br>прямо сейчас?</h2>
+        <div class="pain-grid">
+            <div class="pain-card fade-in">
+                <div class="pain-icon">📩</div>
+                <div class="pain-title">Перечитываете его последнее сообщение</div>
+                <div class="pain-text">Снова и снова. Ищете скрытый смысл. <strong>Мозг отказывается остановиться.</strong></div>
+            </div>
+            <div class="pain-card fade-in">
+                <div class="pain-icon">👁️</div>
+                <div class="pain-title">Проверяете его статус «онлайн»</div>
+                <div class="pain-text">Хотя обещали себе этого не делать. Он был в сети — <strong>и сердце снова сжалось.</strong></div>
+            </div>
+            <div class="pain-card fade-in">
+                <div class="pain-icon">😔</div>
+                <div class="pain-title">Чувствуете вину</div>
+                <div class="pain-text">«А что, если бы я сделала иначе?» — пока он демонстрирует холод. <strong>Вы винитесь. Он молчит.</strong></div>
+            </div>
+            <div class="pain-card fade-in">
+                <div class="pain-icon">✍️</div>
+                <div class="pain-title">Хотите написать, но боитесь</div>
+                <div class="pain-text">Боитесь выглядеть униженной или навязчивой. <strong>Каждый день — внутренняя борьба.</strong></div>
+            </div>
+            <div class="pain-card fade-in">
+                <div class="pain-icon">🪞</div>
+                <div class="pain-title">Не узнаёте себя</div>
+                <div class="pain-text">Ещё недавно вы были уверенной женщиной. Теперь <strong>строите весь день вокруг его «онлайн».</strong></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PULT SECTION -->
+<section class="pult-sec">
+    <div class="container">
+        <span class="section-eyebrow">Это про вас?</span>
+        <h2>Я знаю, что сейчас вы<br>чувствуете себя в ловушке</h2>
+        <p class="pult-intro fade-in">Даже если вы успешны в жизни — в этой ситуации вы чувствуете полную беспомощность. Кажется, что «пульт управления» вашим настроением находится в его руках:</p>
+        <div class="pult-cards fade-in">
+            <div class="pult-card good"><div class="pc-icon">💬</div><div class="pc-text"><strong>Написал</strong> — вам легче</div></div>
+            <div class="pult-card bad"><div class="pc-icon">🔇</div><div class="pc-text"><strong>Молчит</strong> — мир рушится</div></div>
+            <div class="pult-card bad"><div class="pc-icon">📸</div><div class="pc-text"><strong>Увидели его Stories</strong> — сердце в пятки</div></div>
+        </div>
+        <div class="pult-conclusion fade-in">
+            Ваша главная боль — это <strong>потеря опоры на саму себя.</strong> Вы превратились в тень, которая ждёт одобрения. Я здесь, чтобы вернуть вам вашу ценность и ваш контроль.
+        </div>
+    </div>
+</section>
+
+<!-- AUTHOR -->
+<section class="author-sec">
+    <div class="container">
+        <div class="author-grid fade-in">
+            <div class="author-photo">
+                <img src="https://i.ibb.co/S73W4nYt/IMG-20250711-200928-458.webp" alt="Роман — автор Гайда" onerror="this.src='https://i.ibb.co/v6hzKsgD/Chat-GPT-Image-25-2026-08-37-55.png'">
+            </div>
+            <div>
+                <div class="author-badge">✦ Роман — я видел это их глазами</div>
+                <h2>Я знаю, что он чувствует,<br>когда молчит</h2>
+                <p>Я прошёл через развод. Я был тем мужчиной, который молчал, уходил в игнор и отправлял «всё хорошо», когда внутри — катастрофа. <strong>Я видел это их глазами. Я знаю, что они чувствуют, когда молчат.</strong></p>
+                <div class="author-quote">
+                    «Когда мужчина молчит — это не безразличие. Это защитная реакция, за которой скрывается кое-что другое. Я знаю, как на неё влиять. И я дам вам готовые инструменты — не теорию, а конкретные слова и действия, которые меняют ситуацию.»
+                </div>
+                <p>130+ женщин уже применили эти инструменты. <strong>Они перестали ждать и начали действовать.</strong></p>
+                <div class="author-stat">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    130+ женщин — 70% чувствуют облегчение уже на 2-й день
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-sec">
+    <div class="container">
+        <span class="section-eyebrow">Реальные результаты</span>
+        <h2 style="font-size:34px;color:var(--charcoal);">Что говорят те,<br>кто уже применил</h2>
+        <div class="testi-grid">
+            <div class="testi-card fade-in">
+                <div class="testi-result">Он позвонил сам через 2 часа после месяца молчания</div>
+                <div class="testi-body">Я написала по схеме «СМС-крючок», и бывший, который игнорил меня 4 недели, вышел на связь. Впервые почувствовала, что ситуация под моим контролем.</div>
+                <div class="testi-author">Елена, 42 года</div>
+            </div>
+            <div class="testi-card fade-in">
+                <div class="testi-result">Наконец-то я выспалась</div>
+                <div class="testi-body">Чек-лист «48 часов тишины» спас мою психику. Я перестала проверять его онлайн каждые 15 минут. Тревога ушла на второй день.</div>
+                <div class="testi-author">Мария, 38 лет</div>
+            </div>
+            <div class="testi-card fade-in">
+                <div class="testi-result">Почувствовала себя снова живой</div>
+                <div class="testi-body">Я год была в состоянии жертвы. Роман объяснил всё так жёстко и честно, как не скажет ни одна подруга. «СМС-точка» сработала идеально — поставила точку красиво и с достоинством.</div>
+                <div class="testi-author">Ольга, 46 лет</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- COMPACT PRICING -->
+<section class="compact-pricing" id="pricing-top">
+    <div class="container">
+        <div class="cp-header">
+            <span class="section-eyebrow">Тарифы</span>
+            <h2>Выберите свой вариант перезагрузки</h2>
+            <p>Мгновенный доступ на Email сразу после оплаты</p>
+        </div>
+        <div class="cp-grid">
+
+            <!-- T1 -->
+            <div class="cp-card fade-in">
+                <h3>🆘 «Быстрый выход»</h3>
+                <p class="cp-sub">Для экстренной помощи — готовый план, чтобы перестать унижаться и начать действовать</p>
+                <div class="cp-price-old" id="cp1old">$47</div>
+                <div class="cp-price" id="cp1price">$17 <span class="cp-currency" id="cp1cur">(~699 грн)</span></div>
+                <ul>
+                    <li>Гайд «59 готовых СМС»: ответы на игнор, провокации и холод</li>
+                    <li>Методика «СМС-крючок»: как заставить его написать первым</li>
+                    <li>Чек-лист «48 часов тишины»: как не сорваться и сохранить достоинство</li>
+                    <li>Гайд «3 стоп-фразы»: слова, которые убивают вашу ценность</li>
+                    <li>Мгновенный доступ сразу после оплаты</li>
+                </ul>
+                <div class="cp-bump">
+                    <label>
+                        <input type="checkbox" class="bump-cb">
+                        <span><strong>+ Аудио «Как уснуть, когда мысли только о нём» — <span class="bump-price-label" id="bumpLbl1">$7</span></strong></span>
+                    </label>
+                </div>
+                <div class="cp-btns">
+                    <a href="https://cutt.ly/MtQ8xNlI" class="btn-cta" id="cp1btn">Забрать Гайд за $17 →</a>
+                    <a href="https://www.paypal.com/ncp/payment/JX2Q4NHBXX792" class="btn-paypal" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.774.774 0 0 1 .763-.653h5.812c3.825 0 6.202 1.668 6.202 5.305 0 2.192-.928 3.873-2.535 4.94-1.456.967-3.36 1.343-5.52 1.343H7.732l-.656 6.682zm11.18-14.043l-.66 6.682h4.594a.641.641 0 0 0 .633-.74l.732-7.44a.774.774 0 0 0-.763-.653h-4.536z" fill="#003087"/></svg>
+                        PayPal
+                    </a>
+                </div>
+                <p class="cp-note">📧 Мгновенный доступ на Email</p>
+            </div>
+
+            <!-- T2 POPULAR -->
+            <div class="cp-card popular fade-in">
+                <div class="cp-badge">✦ Максимальный результат</div>
+                <h3>💼 «Система: Взгляд изнутри»</h3>
+                <p class="cp-sub">Для тех, кто хочет не просто ответить на СМС, а полностью изменить свою позицию в ситуации</p>
+                <div class="cp-price-old" id="cp2old">$97</div>
+                <div class="cp-price" id="cp2price">$47 <span class="cp-currency" id="cp2cur">(~1890 грн)</span></div>
+                <ul>
+                    <li>Всё из тарифа «Быстрый выход»</li>
+                    <li>Видео-интенсив (3 урока): «Почему они уходят и о каких женщинах жалеют»</li>
+                    <li>Гайд «Магнит в соцсетях»: что публиковать, чтобы он «кусал локти»</li>
+                    <li>Протокол «Радикальное отстранение»: как стать недосягаемой</li>
+                    <li>Бонус: Аудио «Экстренное спокойствие» — как уснуть и остановить мысли</li>
+                </ul>
+                <div class="cp-bump">
+                    <label>
+                        <input type="checkbox" class="bump-cb">
+                        <span><strong>+ Аудио «Как уснуть, когда мысли только о нём» — <span class="bump-price-label" id="bumpLbl2">$7</span></strong></span>
+                    </label>
+                </div>
+                <div class="cp-btns">
+                    <a href="https://secure.wayforpay.com/button/b141a0f0b3fcf" class="btn-cta" id="cp2btn">Забрать Систему за $47 →</a>
+                    <a href="https://www.paypal.com/ncp/payment/LBZDF3ZMVSRJE" class="btn-paypal" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.774.774 0 0 1 .763-.653h5.812c3.825 0 6.202 1.668 6.202 5.305 0 2.192-.928 3.873-2.535 4.94-1.456.967-3.36 1.343-5.52 1.343H7.732l-.656 6.682zm11.18-14.043l-.66 6.682h4.594a.641.641 0 0 0 .633-.74l.732-7.44a.774.774 0 0 0-.763-.653h-4.536z" fill="#003087"/></svg>
+                        PayPal
+                    </a>
+                </div>
+                <p class="cp-note">📧 Мгновенный доступ • 💬 Telegram-канал</p>
+            </div>
+
+            <!-- T3 -->
+            <div class="cp-card fade-in">
+                <h3>⭐ «Личная стратегия»</h3>
+                <p class="cp-sub">Индивидуальный разбор вашей ситуации со мной. Для тех, кому нужен результат без права на ошибку</p>
+                <div class="cp-price-old" id="cp3old">$297</div>
+                <div class="cp-price" id="cp3price">$150 <span class="cp-currency" id="cp3cur">(~6000 грн)</span></div>
+                <ul>
+                    <li>Все продукты тарифа «Система»</li>
+                    <li>1 личная сессия со мной (45–60 мин): разбор вашей ситуации «глазами мужчины»</li>
+                    <li>Сопровождение в Telegram (7 дней): проверяю ваши ответы ему в реальном времени</li>
+                    <li>Бонус: Гайд «Мужской взгляд на свидания 40+»</li>
+                </ul>
+                <div class="cp-btns">
+                    <a href="https://secure.wayforpay.com/button/ba3b1c45454ae" class="btn-cta" id="cp3btn">Забронировать место →</a>
+                    <a href="https://www.paypal.com/ncp/payment/BPCYATF6DVPK2" class="btn-paypal" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.774.774 0 0 1 .763-.653h5.812c3.825 0 6.202 1.668 6.202 5.305 0 2.192-.928 3.873-2.535 4.94-1.456.967-3.36 1.343-5.52 1.343H7.732l-.656 6.682zm11.18-14.043l-.66 6.682h4.594a.641.641 0 0 0 .633-.74l.732-7.44a.774.774 0 0 0-.763-.653h-4.536z" fill="#003087"/></svg>
+                        PayPal
+                    </a>
+                </div>
+                <p class="cp-note">📧 Свяжусь с вами в течение 2 часов</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- INVESTMENT BLOCK -->
+<section class="invest-sec">
+    <div class="container">
+        <div class="invest-box fade-in">
+            <span class="section-eyebrow">Почему это мало</span>
+            <h3>Ваша инвестиция в достоинство — всего <span id="investPrice">$17</span></h3>
+            <p class="inv-sub">Это не просто цена PDF-файла. Это стоимость вашего выхода из состояния «ждущей у окна».</p>
+            <div class="inv-items">
+                <div class="inv-item">
+                    <div class="inv-num">1</div>
+                    <div><strong>Смена ролей</strong><span>Из той, кто «выпрашивает» внимание — в ту, кто диктует условия коммуникации.</span></div>
+                </div>
+                <div class="inv-item">
+                    <div class="inv-num">2</div>
+                    <div><strong>Инструмент влияния</strong><span>Вы перестанете совершать ошибки, которые делают вас слабой в его глазах.</span></div>
+                </div>
+                <div class="inv-item">
+                    <div class="inv-num">3</div>
+                    <div><strong>Экономия на терапии</strong><span>Вместо месяцев анализа «почему он так поступил» — за 15 минут вы поймёте его мотив и закроете этот вопрос навсегда.</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WARNING -->
+<section class="warning-sec">
+    <div class="container">
+        <div class="warning-box fade-in">
+            <div class="warn-header">⚠️ Внимание: техника безвозвратного действия</div>
+            <div class="warn-title">Прочитайте перед применением</div>
+            <p>Эти методы основаны на глубоких мужских триггерах. Я обязан предупредить: <strong>не применяйте эти СМС, если вы всё ещё надеетесь на «просто поговорить»</strong> или хотите вернуть старую модель отношений.</p>
+            <p>После этих слов он увидит в вас <strong>совершенно другую женщину — сильную и недосягаемую.</strong> Пути назад к прежней созависимости не будет.</p>
+            <p>Используйте только в том случае, если готовы к новой жизни.</p>
+        </div>
+    </div>
+</section>
+
+<!-- INACTION -->
+<div class="inaction-wrap">
+    <div class="container">
+        <div class="inaction-box fade-in">
+            <h3>Пока вы гадаете —<br>он живёт своей жизнью</h3>
+            <ul class="inaction-list">
+                <li>30 бессонных ночей с телефоном в руке</li>
+                <li>Тысячи проверок его «онлайн» вместо своей жизни</li>
+                <li>Достоинство, которое уходит с каждым днём бездействия</li>
+            </ul>
+            <p>Хватит гадать. Начните действовать.</p>
+        </div>
+    </div>
+</div>
+
+<!-- GUIDE CONTENT -->
+<section class="guide-sec">
+    <div class="container">
+        <span class="section-eyebrow">Что внутри</span>
+        <h2 style="font-size:34px;color:var(--charcoal);margin-bottom:6px;">Разделы Гайда «59 СМС»</h2>
+        <p style="font-size:16px;color:var(--mid-gray);max-width:560px;line-height:1.65;margin-bottom:4px;">Конкретные формулировки, которые я, как мужчина, знаю — они работают на наш мозг.</p>
+        <div class="guide-grid">
+            <div class="guide-card fade-in">
+                <div class="guide-emoji">💬</div>
+                <div><h3>«СМС-крючок»</h3><p>Как заставить его выйти на связь первым — без намёков и без унижения. С объяснением, почему это срабатывает на мужской мозг.</p></div>
+            </div>
+            <div class="guide-card fade-in">
+                <div class="guide-emoji">🧊</div>
+                <div><h3>«Ответ на холод»</h3><p>Он ответил сухо или с задержкой. Большинство женщин паникуют и пишут больше. Я покажу, что делать вместо этого.</p></div>
+            </div>
+            <div class="guide-card fade-in">
+                <div class="guide-emoji">🎯</div>
+                <div><h3>«СМС-точка»</h3><p>Как закрыть гештальт так, чтобы он начал жалеть о потере. Слова, после которых вы чувствуете себя победительницей — независимо от его реакции.</p></div>
+            </div>
+            <div class="guide-card fade-in">
+                <div class="guide-emoji">🔥</div>
+                <div><h3>«Ответ на провокацию»</h3><p>Он пишет что-то обидное. Как ответить с достоинством, без агрессии — чтобы он понял: перед ним сильная женщина, а не жертва.</p></div>
+            </div>
+            <div class="guide-card fade-in">
+                <div class="guide-emoji">🌙</div>
+                <div><h3>«Пьяные» и ночные сообщения</h3><p>Он написал что-то неожиданное поздно ночью. Это знак? Слабость? Точный разбор мужской логики — и как ответить, не навредив себе.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FULL PRICING -->
+<section class="full-pricing" id="pricing">
+    <div class="container">
+        <div class="fp-header fade-in">
+            <span class="section-eyebrow">Подробно о тарифах</span>
+            <h2>Выберите свой формат</h2>
+            <p>Мгновенный доступ на Email — читать можно через 5 минут</p>
+        </div>
+        <div class="fp-steps fade-in">
+            <div class="fp-step"><span class="fp-step-num">1</span>Выбираете тариф</div>
+            <span class="fp-sep">→</span>
+            <div class="fp-step"><span class="fp-step-num">2</span>Вводите Email</div>
+            <span class="fp-sep">→</span>
+            <div class="fp-step"><span class="fp-step-num">3</span>Получаете доступ</div>
+        </div>
+        <div class="fp-grid">
+
+            <!-- FP T1 -->
+            <div class="fp-card fade-in">
+                <h3>🆘 «Быстрый выход»</h3>
+                <p class="fp-sub">Для экстренной помощи — готовый план, чтобы перестать унижаться и начать действовать</p>
+                <ul class="fp-features">
+                    <li><strong>Гайд «59 готовых СМС бывшему»</strong><br>Ответы на игнор, провокации и холод</li>
+                    <li><strong>Методика «СМС-крючок»</strong><br>Как заставить его написать первым, не проявляя нужды</li>
+                    <li><strong>Чек-лист «48 часов тишины»</strong><br>Как не сорваться и сохранить достоинство</li>
+                    <li><strong>Гайд «3 стоп-фразы»</strong><br>Слова, которые навсегда убивают вашу ценность в его глазах</li>
+                    <li><strong>Результат:</strong> Вы знаете, что ответить прямо сейчас — сохранив достоинство</li>
+                </ul>
+                <div class="fp-bump">
+                    <div class="fp-bump-header">Добавить к заказу</div>
+                    <label>
+                        <input type="checkbox" class="bump-cb">
+                        <div class="fp-bump-content">
+                            <strong>Аудио «Как уснуть, когда мысли только о нём»</strong>
+                            <em>12 минут • Голос автора • Для острых моментов</em>
+                            <span class="bump-price" id="fpbump1">+ $7</span>
+                        </div>
+                    </label>
+                </div>
+                <div class="fp-price-wrap">
+                    <span class="fp-price-old" id="fp1old">$47</span>
+                    <div class="fp-price" id="fp1price">$17 <span class="fp-currency-sub" id="fp1cur">(~699 грн)</span></div>
+                </div>
+                <div class="fp-btns">
+                    <a href="https://cutt.ly/MtQ8xNlI" class="btn-cta" id="fp1btn">Забрать Гайд за $17 →</a>
+                    <a href="https://www.paypal.com/ncp/payment/JX2Q4NHBXX792" class="btn-paypal" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="none" width="17" height="17"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.774.774 0 0 1 .763-.653h5.812c3.825 0 6.202 1.668 6.202 5.305 0 2.192-.928 3.873-2.535 4.94-1.456.967-3.36 1.343-5.52 1.343H7.732l-.656 6.682zm11.18-14.043l-.66 6.682h4.594a.641.641 0 0 0 .633-.74l.732-7.44a.774.774 0 0 0-.763-.653h-4.536z" fill="#003087"/></svg>
+                        Оплатить через PayPal
+                    </a>
+                </div>
+                <div class="fp-note">📧 Мгновенный доступ на Email</div>
+            </div>
+
+            <!-- FP T2 -->
+            <div class="fp-card popular fade-in">
+                <div class="fp-popular-badge">✦ Максимальный результат</div>
+                <h3>💼 «Система: Взгляд изнутри»</h3>
+                <p class="fp-sub">Для тех, кто хочет не просто ответить на СМС, а полностью изменить свою позицию в ситуации</p>
+                <ul class="fp-features">
+                    <li><strong>Всё из тарифа «Быстрый выход»</strong></li>
+                    <li><strong>Видео-интенсив (3 урока)</strong><br>«Почему они уходят и о каких женщинах жалеют» — честный разбор мужской психологии 40+ от первого лица</li>
+                    <li><strong>Гайд «Магнит в соцсетях»</strong><br>Что и как публиковать в Stories и постах, чтобы транслировать силу и заставить его «кусать локти»</li>
+                    <li><strong>Протокол «Радикальное отстранение»</strong><br>Как стать недосягаемой и вернуть себе статус «Приза»</li>
+                    <li><strong>Бонус: Аудио «Экстренное спокойствие»</strong><br>Как уснуть и перестать гонять мысли о нём по кругу</li>
+                    <li><strong>Результат:</strong> Вы понимаете его логику и перестаёте быть жертвой ситуации</li>
+                </ul>
+                <div class="fp-bump">
+                    <div class="fp-bump-header">Добавить к заказу</div>
+                    <label>
+                        <input type="checkbox" class="bump-cb">
+                        <div class="fp-bump-content">
+                            <strong>Аудио «Как уснуть, когда мысли только о нём»</strong>
+                            <em>12 минут • Голос автора • Для острых моментов</em>
+                            <span class="bump-price" id="fpbump2">+ $7</span>
+                        </div>
+                    </label>
+                </div>
+                <div class="fp-price-wrap">
+                    <span class="fp-price-old" id="fp2old">$97</span>
+                    <div class="fp-price" id="fp2price">$47 <span class="fp-currency-sub" id="fp2cur">(~1890 грн)</span></div>
+                </div>
+                <div class="fp-btns">
+                    <a href="https://secure.wayforpay.com/button/b141a0f0b3fcf" class="btn-cta" id="fp2btn">Забрать Систему за $47 →</a>
+                    <a href="https://www.paypal.com/ncp/payment/LBZDF3ZMVSRJE" class="btn-paypal" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="none" width="17" height="17"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.774.774 0 0 1 .763-.653h5.812c3.825 0 6.202 1.668 6.202 5.305 0 2.192-.928 3.873-2.535 4.94-1.456.967-3.36 1.343-5.52 1.343H7.732l-.656 6.682zm11.18-14.043l-.66 6.682h4.594a.641.641 0 0 0 .633-.74l.732-7.44a.774.774 0 0 0-.763-.653h-4.536z" fill="#003087"/></svg>
+                        Оплатить через PayPal
+                    </a>
+                </div>
+                <div class="fp-note">📧 Мгновенный доступ • 💬 Закрытый Telegram-канал</div>
+            </div>
+
+            <!-- FP T3 -->
+            <div class="fp-card fade-in">
+                <h3>⭐ «Личная стратегия»</h3>
+                <p class="fp-sub">Индивидуальный разбор вашей ситуации со мной. Для тех, кому нужен результат без права на ошибку</p>
+                <ul class="fp-features">
+                    <li><strong>Все продукты тарифа «Система»</strong></li>
+                    <li><strong>1 личная сессия со мной (45–60 мин)</strong><br>Инсайдерский разбор вашей ситуации «глазами мужчины» + составление индивидуального плана переписки и поведения</li>
+                    <li><strong>Сопровождение в Telegram (7 дней)</strong><br>Лично проверяю ваши ответы ему и корректирую стратегию в реальном времени</li>
+                    <li><strong>Бонус: Гайд «Мужской взгляд на свидания 40+»</strong><br>Как не наступить на те же грабли в новых отношениях</li>
+                    <li><strong>Результат:</strong> У вас есть чёткий индивидуальный план — не шаблон, а решение под вашу историю</li>
+                </ul>
+                <div class="fp-price-wrap">
+                    <span class="fp-price-old" id="fp3old">$297</span>
+                    <div class="fp-price" id="fp3price">$150 <span class="fp-currency-sub" id="fp3cur">(~6000 грн)</span></div>
+                </div>
+                <div class="fp-btns">
+                    <a href="https://secure.wayforpay.com/button/ba3b1c45454ae" class="btn-cta" id="fp3btn">Забронировать место →</a>
+                    <a href="https://www.paypal.com/ncp/payment/BPCYATF6DVPK2" class="btn-paypal" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="none" width="17" height="17"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.774.774 0 0 1 .763-.653h5.812c3.825 0 6.202 1.668 6.202 5.305 0 2.192-.928 3.873-2.535 4.94-1.456.967-3.36 1.343-5.52 1.343H7.732l-.656 6.682zm11.18-14.043l-.66 6.682h4.594a.641.641 0 0 0 .633-.74l.732-7.44a.774.774 0 0 0-.763-.653h-4.536z" fill="#003087"/></svg>
+                        Оплатить через PayPal
+                    </a>
+                </div>
+                <div class="fp-note">📧 Свяжусь с вами в течение 2 часов</div>
+            </div>
+        </div>
+
+        <div class="email-warn fade-in">⚠️ Убедитесь, что ваш Email введён верно — именно на него придёт доступ к материалам</div>
+
+        <div class="security-box fade-in">
+            <h4><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>🛡️ Безопасность платежа</h4>
+            <p class="sec-text">Оплата через сертифицированную систему WayForPay. Шифрование AES-256. Данные вашей карты мы не храним.</p>
+            <div class="sec-icons">
+                <div class="sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/></svg><span>PCI DSS</span></div>
+                <div class="sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>SSL 256-bit</span></div>
+                <div class="sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6L9 17l-5-5"/></svg><span>Гарантия возврата</span></div>
+                <div class="sec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>Доступ за 5 минут</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+    <div class="container">
+        <div class="final-box">
+            <div class="guarantee-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>ГАРАНТИЯ ВОЗВРАТА 7 ДНЕЙ</div>
+            <h2>Хватит гадать.<br><em>Начните действовать.</em></h2>
+            <p>Мгновенный доступ сразу после оплаты. Ваше восстановление начнётся через 5 минут.</p>
+            <a href="#pricing-top" class="btn-primary" style="display:inline-flex;margin:0 auto;">
+                Забрать Гайд за <span id="finalPrice">$17</span> →
+            </a>
+            <div class="final-trust">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>Мгновенный доступ • Безопасная оплата • Поддержка 24/7</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <p>
+            <a href="#" id="supportLink">Служба поддержки</a> •
+            <a href="#" id="offerLink">Публичная оферта</a> •
+            <a href="#" id="privacyLink">Политика конфиденциальности</a>
+        </p>
+        <p style="margin-top:10px;opacity:0.6;">© 2026 Мужской Код: Перезагрузка. Все права защищены.</p>
+    </div>
+</footer>
+
+<!-- MODAL: SUPPORT -->
+<div class="modal-overlay" id="supportModal">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal('supportModal')">&times;</button>
+        <div class="modal-header"><h3>💬 Служба поддержки</h3></div>
+        <div class="modal-body">
+            <p>Напишите нам в удобном мессенджере — ответим в течение 24 часов:</p>
+            <div class="support-links">
+                <a href="https://www.instagram.com/back4_heart" target="_blank" class="support-link">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    <div><div class="label">Instagram</div><div class="desc">@back4_heart</div></div>
+                </a>
+                <a href="https://t.me/back4heart" target="_blank" class="support-link">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.96 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    <div><div class="label">Telegram</div><div class="desc">@back4heart</div></div>
+                </a>
+                <a href="https://www.tiktok.com/@back4heart" target="_blank" class="support-link">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                    <div><div class="label">TikTok</div><div class="desc">@back4heart</div></div>
+                </a>
+            </div>
+        </div>
+        <div class="modal-footer">⏰ Ответим в течение 24 часов • <strong>Роман | back4heart</strong></div>
+    </div>
+</div>
+
+<!-- MODAL: OFFER -->
+<div class="modal-overlay" id="offerModal">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal('offerModal')">&times;</button>
+        <div class="modal-header"><h3>Публичная оферта</h3></div>
+        <div class="modal-body">
+            <p><strong>1. Общие положения</strong></p>
+            <p>Настоящий документ является официальным предложением (публичной офертой) на приобретение цифрового продукта «Мужской Код: Перезагрузка» (далее — Гайд). Акцепт — оплата продукта.</p>
+            <h4>2. Предмет договора</h4>
+            <p>Доступ к цифровому продукту — PDF-Гайду и сопутствующим материалам для восстановления после расставания. Доступ предоставляется мгновенно после оплаты.</p>
+            <h4>3. Стоимость</h4>
+            <p>«Быстрый выход» — от $12 / «Система: Взгляд изнутри» — от $37 / «Личная стратегия» — от $120. Оплата через WayForPay, PayPal.</p>
+            <h4>4. Гарантия возврата</h4>
+            <p>Если в течение 7 дней после покупки вы не почувствуете улучшения — полный возврат средств.</p>
+            <h4>5. Права и обязанности</h4>
+            <p><strong>Исполнитель:</strong> предоставить доступ в течение 5 минут после оплаты; обеспечить техническую поддержку.</p>
+            <p><strong>Заказчик:</strong> использовать продукт в личных целях; не передавать и не распространять материалы.</p>
+        </div>
+        <div class="modal-footer">Последнее обновление: <strong>Март 2026</strong></div>
+    </div>
+</div>
+
+<!-- MODAL: PRIVACY -->
+<div class="modal-overlay" id="privacyModal">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModal('privacyModal')">&times;</button>
+        <div class="modal-header"><h3>Политика конфиденциальности</h3></div>
+        <div class="modal-body">
+            <p><strong>1. Сбор данных</strong></p>
+            <p>Email — для отправки доступа; имя (опционально) — для персонализации; данные оплаты — обрабатываются платёжными системами (мы не храним данные карт).</p>
+            <h4>2. Использование данных</h4>
+            <p>Данные используются исключительно для предоставления доступа к продукту. Мы НЕ передаём данные третьим лицам, НЕ используем для рекламы без согласия.</p>
+            <h4>3. Защита данных</h4>
+            <p>SSL-шифрование, безопасное хранение, ограничение доступа к персональным данным.</p>
+        </div>
+        <div class="modal-footer">Последнее обновление: <strong>Март 2026</strong></div>
+    </div>
+</div>
+
+<!-- Yandex.Metrika -->
+<script type="text/javascript">
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
+ym(90131660,'init',{webvisor:true,clickmap:true,referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/90131660" style="position:absolute;left:-9999px;" alt=""></div></noscript>
+
+<script>
+// ===== GEO PRICING =====
+// Полная региональная сетка цен
+// UA: Украина — гривны, психологический порог «один поход в магазин»
+// PL: Польша — злотые, «2–3 чашки кофе»
+// EU: Германия и остальная ЕС — евро
+// HIGH: США, Израиль, Канада, Австралия, Великобритания — высокая платёжеспособность
+// DEFAULT: остальные страны — доллары
+
+const GEO = {
+    UA: {
+        t1: { display: '495 грн', bump: '200 грн', old_display: '1960 грн' },
+        t2: { display: '1530 грн', old_display: '3800 грн' },
+        t3: { display: '4950 грн', old_display: '11900 грн' },
+        invest: '495 грн',
+        heroBtn: 'Забрати Гайд за 495 грн →',
+        ubPrice: '495 грн', ubOld: '1960 грн',
+        stickyOld: '1960 грн', stickyNow: '495 грн',
+        stickyBtn: 'Забрати за 495 грн →',
+        finalPrice: '495 грн',
+        fp1btn: 'Забрати Гайд за 495 грн →',
+        fp2btn: 'Забрати Систему за 1530 грн →',
+        fp3btn: 'Забронювати місце →',
+        cp1btn: 'Забрати Гайд за 495 грн →',
+        cp2btn: 'Забрати Систему за 1530 грн →',
+    },
+    PL: {
+        t1: { display: '69 zł', bump: '29 zł', old_display: '169 zł' },
+        t2: { display: '195 zł', old_display: '389 zł' },
+        t3: { display: '620 zł', old_display: '1190 zł' },
+        invest: '69 zł',
+        heroBtn: 'Zabrać Poradnik za 69 zł →',
+        ubPrice: '69 zł', ubOld: '169 zł',
+        stickyOld: '169 zł', stickyNow: '69 zł',
+        stickyBtn: 'Zabrać za 69 zł →',
+        finalPrice: '69 zł',
+        fp1btn: 'Zabrać Poradnik za 69 zł →',
+        fp2btn: 'Zabrać System za 195 zł →',
+        fp3btn: 'Zarezerwować miejsce →',
+        cp1btn: 'Zabrać Poradnik za 69 zł →',
+        cp2btn: 'Zabrać System za 195 zł →',
+    },
+    EU: {
+        t1: { display: '17€', bump: '7€', old_display: '44€' },
+        t2: { display: '52€', old_display: '104€' },
+        t3: { display: '185€', old_display: '370€' },
+        invest: '17€',
+        heroBtn: 'Забрать Гайд за 17€ →',
+        ubPrice: '17€', ubOld: '44€',
+        stickyOld: '44€', stickyNow: '17€',
+        stickyBtn: 'Забрать за 17€ →',
+        finalPrice: '17€',
+        fp1btn: 'Забрать Гайд за 17€ →',
+        fp2btn: 'Забрать Систему за 52€ →',
+        fp3btn: 'Забронировать место →',
+        cp1btn: 'Забрать Гайд за 17€ →',
+        cp2btn: 'Забрать Систему за 52€ →',
+    },
+    HIGH: {
+        t1: { display: '$27', bump: '$9', old_display: '$67' },
+        t2: { display: '$97', old_display: '$197' },
+        t3: { display: '$297', old_display: '$597' },
+        invest: '$27',
+        heroBtn: 'Забрать Гайд за $27 →',
+        ubPrice: '$27', ubOld: '$67',
+        stickyOld: '$67', stickyNow: '$27',
+        stickyBtn: 'Забрать за $27 →',
+        finalPrice: '$27',
+        fp1btn: 'Забрать Гайд за $27 →',
+        fp2btn: 'Забрать Систему за $97 →',
+        fp3btn: 'Забронировать место →',
+        cp1btn: 'Забрать Гайд за $27 →',
+        cp2btn: 'Забрать Систему за $97 →',
+    },
+    DEFAULT: {
+        t1: { display: '$17', bump: '$7', old_display: '$47' },
+        t2: { display: '$47', old_display: '$97' },
+        t3: { display: '$150', old_display: '$297' },
+        invest: '$17',
+        heroBtn: 'Забрать Гайд за $17 →',
+        ubPrice: '$17', ubOld: '$47',
+        stickyOld: '$47', stickyNow: '$17',
+        stickyBtn: 'Забрать за $17 →',
+        finalPrice: '$17',
+        fp1btn: 'Забрать Гайд за $17 →',
+        fp2btn: 'Забрать Систему за $47 →',
+        fp3btn: 'Забронировать место →',
+        cp1btn: 'Забрать Гайд за $17 →',
+        cp2btn: 'Забрать Систему за $47 →',
+    }
+};
+
+function applyGeo(geo) {
+    const g = GEO[geo] || GEO.DEFAULT;
+    // Urgency bar
+    document.getElementById('ubPrice').textContent = g.ubPrice;
+    document.getElementById('ubOld').textContent = g.ubOld;
+    // Hero
+    document.getElementById('heroPrice').textContent = g.t1.display;
+    // Sticky
+    document.getElementById('stickyOld').textContent = g.stickyOld;
+    document.getElementById('stickyNow').textContent = g.stickyNow;
+    document.getElementById('stickyBtn').textContent = g.stickyBtn;
+    // Invest
+    document.getElementById('investPrice').textContent = g.invest;
+    // Final
+    document.getElementById('finalPrice').textContent = g.t1.display;
+    // Bump labels
+    const bumpVal = g.t1.bump;
+    document.getElementById('bumpPrice').textContent = bumpVal + ' при оформлении';
+    ['bumpLbl1','bumpLbl2'].forEach(id => { const el = document.getElementById(id); if(el) el.textContent = bumpVal; });
+    ['fpbump1','fpbump2'].forEach(id => { const el = document.getElementById(id); if(el) el.textContent = '+ ' + bumpVal; });
+
+    // Compact cards
+    document.getElementById('cp1old').textContent = g.t1.old_display;
+    document.getElementById('cp1price').childNodes[0].textContent = g.t1.display + ' ';
+    document.getElementById('cp1cur').textContent = '';
+    document.getElementById('cp2old').textContent = g.t2.old_display;
+    document.getElementById('cp2price').childNodes[0].textContent = g.t2.display + ' ';
+    document.getElementById('cp2cur').textContent = '';
+    document.getElementById('cp3old').textContent = g.t3.old_display;
+    document.getElementById('cp3price').childNodes[0].textContent = g.t3.display + ' ';
+    document.getElementById('cp3cur').textContent = '';
+    // Full pricing
+    document.getElementById('fp1old').textContent = g.t1.old_display;
+    document.getElementById('fp1price').childNodes[0].textContent = g.t1.display + ' ';
+    document.getElementById('fp1cur').textContent = '';
+    document.getElementById('fp2old').textContent = g.t2.old_display;
+    document.getElementById('fp2price').childNodes[0].textContent = g.t2.display + ' ';
+    document.getElementById('fp2cur').textContent = '';
+    document.getElementById('fp3old').textContent = g.t3.old_display;
+    document.getElementById('fp3price').childNodes[0].textContent = g.t3.display + ' ';
+    document.getElementById('fp3cur').textContent = '';
+    // Buttons
+    document.getElementById('cp1btn').textContent = g.cp1btn;
+    document.getElementById('cp2btn').textContent = g.cp2btn;
+    document.getElementById('fp1btn').textContent = g.fp1btn;
+    document.getElementById('fp2btn').textContent = g.fp2btn;
+    document.getElementById('fp3btn').textContent = g.fp3btn;
+    document.getElementById('cp3btn').textContent = g.fp3btn;
+}
+
+function applyUkrainian() {
+    // === <html> lang ===
+    document.documentElement.lang = 'uk';
+
+    // === <title> ===
+    document.title = 'Чоловічий Код: Перезавантаження — Роман | Інсайдерський Гайд від чоловіка, який пройшов через розлучення';
+
+    // === URGENCY BAR ===
+    const ubSpan = document.querySelector('.urgency-bar span');
+    if (ubSpan) {
+        ubSpan.innerHTML = '🔥 Тільки сьогодні: Гайд «59 СМС» — <span class="ub-price" id="ubPrice">$17</span> замість <span id="ubOld">$47</span>. Час пішов...';
+    }
+
+    // === STICKY BAR ===
+    const stickyStrong = document.querySelector('.sticky-text strong');
+    if (stickyStrong) stickyStrong.textContent = '«Чоловічий Код: Перезавантаження»';
+    const stickyBtn = document.getElementById('stickyBtn');
+    if (stickyBtn) stickyBtn.textContent = 'Забрати за $17 →';
+
+    // === SOCIAL PROOF POPUP ===
+    const spText = document.querySelector('.sp-text');
+    if (spText) spText.innerHTML = '<strong id="spName">Аня</strong> оформила <span id="spTariff">«Швидкий вихід» за $17</span>';
+
+    // === HERO ===
+    const heroBadge = document.querySelector('.hero-badge');
+    if (heroBadge) heroBadge.textContent = 'Інсайдерська інформація — код доступу до його думок';
+
+    const heroH1 = document.querySelector('.hero h1');
+    if (heroH1) heroH1.innerHTML = 'Чому він замовчав<br>і <em>чого він чекає</em><br>насправді?';
+
+    const heroSub = document.querySelector('.hero-sub');
+    if (heroSub) heroSub.textContent = 'Дізнайтесь всю правду про чоловічий ігнор від чоловіка, який пройшов через розлучення і знає «код доступу» до його думок.';
+
+    const empathy = document.querySelector('.empathy-box');
+    if (empathy) empathy.innerHTML = 'Коли я переживав своє розлучення, я побачив ситуацію з того боку, який жінки ніколи не бачать. Я знаю, чому ми (чоловіки) йдемо в ігнор, навіщо таємно перевіряємо ваші соцмережі і що відчуваємо насправді, коли здаємося байдужими.<br><br><strong>Я зібрав цей Гайд, щоб ви перестали бути жертвою невизначеності та отримали в руки пульт керування ситуацією.</strong>';
+
+    const heroBtn = document.querySelector('.hero-cta-wrap .btn-primary');
+    if (heroBtn) heroBtn.innerHTML = 'Забрати Гайд за <span id="heroPrice">$17</span> →';
+
+    const trustItems = document.querySelectorAll('.trust-item');
+    const trustTexts = ['Миттєвий доступ на Email', 'Гарантія повернення 7 днів', 'Безпечна оплата'];
+    trustItems.forEach((el, i) => {
+        const dot = el.querySelector('.trust-dot');
+        el.textContent = '';
+        if (dot) el.appendChild(dot);
+        el.appendChild(document.createTextNode(trustTexts[i] || ''));
+    });
+
+    // === SHOWCASE ===
+    const showcaseEyebrow = document.querySelector('.showcase .section-eyebrow');
+    if (showcaseEyebrow) showcaseEyebrow.textContent = 'Що ви отримуєте';
+
+    const showcaseH2 = document.querySelector('.showcase h2');
+    if (showcaseH2) showcaseH2.innerHTML = 'Що всередині Гайда<br><em style="color:var(--teal);font-style:italic;">«59 готових СМС колишньому»</em>';
+
+    const showcaseP = document.querySelector('.showcase > .container > p');
+    if (showcaseP) showcaseP.textContent = 'Не шаблони з інтернету. Конкретні формулювання, які я, як чоловік, знаю — вони працюють на наш мозок.';
+
+    const showcaseH4 = document.querySelector('.showcase-list h4');
+    if (showcaseH4) showcaseH4.textContent = 'Одразу після оплати ви отримаєте:';
+
+    const showcaseItems = document.querySelectorAll('.showcase-list li');
+    const showcaseTexts = [
+        '<div class="sl-icon">💬</div><div><strong>59 готових скриптів</strong> — відповіді на ігнор, провокації, «прощупування» і «п\'яні» повідомлення</div>',
+        '<div class="sl-icon">🎣</div><div><strong>Методика «СМС-гачок»</strong> — як змусити його вийти на зв\'язок першим, не проявляючи потреби</div>',
+        '<div class="sl-icon">⏳</div><div><strong>Чек-лист «48 годин тиші»</strong> — покроковий план, як не зірватися і не написати першою</div>',
+        '<div class="sl-icon">🚫</div><div><strong>Гайд «3 стоп-фрази»</strong> — слова, які назавжди вбивають вашу цінність в його очах (не кажіть їх ніколи)</div>',
+        '<div class="sl-icon">📱</div><div><strong>Миттєвий доступ на Email</strong> — всі матеріали у вас через 5 хвилин після оплати</div>',
+    ];
+    showcaseItems.forEach((el, i) => { if (showcaseTexts[i]) el.innerHTML = showcaseTexts[i]; });
+
+    const bonusPill = document.querySelector('.bonus-pill');
+    if (bonusPill) bonusPill.innerHTML = '🎁 Бонус: Аудіо «Як заснути» за <span id="bumpPrice">$7</span>';
+
+    // === PAIN SECTION ===
+    const painEyebrow = document.querySelector('.pain-sec .section-eyebrow');
+    if (painEyebrow) painEyebrow.textContent = 'Впізнаєте себе?';
+
+    const painH2 = document.querySelector('.pain-sec h2');
+    if (painH2) painH2.innerHTML = 'Це відбувається з вами<br>прямо зараз?';
+
+    const painData = [
+        { title: 'Перечитуєте його останнє повідомлення', text: 'Знову і знову. Шукаєте прихований сенс. <strong>Мозок відмовляється зупинитися.</strong>' },
+        { title: 'Перевіряєте його статус «онлайн»', text: 'Хоча обіцяли собі цього не робити. Він був в мережі — <strong>і серце знову стиснулося.</strong>' },
+        { title: 'Відчуваєте провину', text: '«А що, якби я зробила інакше?» — поки він демонструє холод. <strong>Ви звинувачуєте себе. Він мовчить.</strong>' },
+        { title: 'Хочете написати, але боїтеся', text: 'Боїтеся виглядати приниженою або нав\'язливою. <strong>Щодня — внутрішня боротьба.</strong>' },
+        { title: 'Не впізнаєте себе', text: 'Ще недавно ви були впевненою жінкою. Тепер <strong>будуєте весь день навколо його «онлайн».</strong>' },
+    ];
+    document.querySelectorAll('.pain-card').forEach((card, i) => {
+        if (!painData[i]) return;
+        const title = card.querySelector('.pain-title');
+        const text = card.querySelector('.pain-text');
+        if (title) title.textContent = painData[i].title;
+        if (text) text.innerHTML = painData[i].text;
+    });
+
+    // === PULT SECTION ===
+    const pultEyebrow = document.querySelector('.pult-sec .section-eyebrow');
+    if (pultEyebrow) pultEyebrow.textContent = 'Це про вас?';
+
+    const pultH2 = document.querySelector('.pult-sec h2');
+    if (pultH2) pultH2.innerHTML = 'Я знаю, що зараз ви<br>відчуваєте себе в пастці';
+
+    const pultIntro = document.querySelector('.pult-intro');
+    if (pultIntro) pultIntro.textContent = 'Навіть якщо ви успішні в житті — в цій ситуації ви відчуваєте повну безпорадність. Здається, що «пульт керування» вашим настроєм знаходиться в його руках:';
+
+    const pultCards = document.querySelectorAll('.pult-card .pc-text');
+    const pultCardTexts = ['<strong>Написав</strong> — вам легше', '<strong>Мовчить</strong> — світ руйнується', '<strong>Побачили його Stories</strong> — серце в п\'яти'];
+    pultCards.forEach((el, i) => { if (pultCardTexts[i]) el.innerHTML = pultCardTexts[i]; });
+
+    const pultConclusion = document.querySelector('.pult-conclusion');
+    if (pultConclusion) pultConclusion.innerHTML = 'Ваш головний біль — це <strong>втрата опори на саму себе.</strong> Ви перетворилися на тінь, яка чекає схвалення. Я тут, щоб повернути вам вашу цінність і ваш контроль.';
+
+    // === AUTHOR ===
+    const authorBadge = document.querySelector('.author-badge');
+    if (authorBadge) authorBadge.innerHTML = '✦ Роман — я бачив це їхніми очима';
+
+    const authorH2 = document.querySelector('.author-sec h2');
+    if (authorH2) authorH2.innerHTML = 'Я знаю, що він відчуває,<br>коли мовчить';
+
+    const authorPs = document.querySelectorAll('.author-sec > .container > .author-grid > div > p');
+    if (authorPs[0]) authorPs[0].innerHTML = 'Я пройшов через розлучення. Я був тим чоловіком, який мовчав, йшов в ігнор і надсилав «все гаразд», коли всередині — катастрофа. <strong>Я бачив це їхніми очима. Я знаю, що вони відчувають, коли мовчать.</strong>';
+
+    const authorQuote = document.querySelector('.author-quote');
+    if (authorQuote) authorQuote.textContent = '«Коли чоловік мовчить — це не байдужість. Це захисна реакція, за якою ховається дещо інше. Я знаю, як на неї впливати. І я дам вам готові інструменти — не теорію, а конкретні слова і дії, які змінюють ситуацію.»';
+
+    if (authorPs[1]) authorPs[1].innerHTML = '130+ жінок вже застосували ці інструменти. <strong>Вони перестали чекати і почали діяти.</strong>';
+
+    const authorStat = document.querySelector('.author-stat');
+    if (authorStat) {
+        const svg = authorStat.querySelector('svg');
+        authorStat.textContent = '130+ жінок — 70% відчувають полегшення вже на 2-й день';
+        if (svg) authorStat.prepend(svg);
+    }
+
+    // === TESTIMONIALS ===
+    const testiEyebrow = document.querySelector('.testi-sec .section-eyebrow');
+    if (testiEyebrow) testiEyebrow.textContent = 'Реальні результати';
+
+    const testiH2 = document.querySelector('.testi-sec h2');
+    if (testiH2) testiH2.innerHTML = 'Що кажуть ті,<br>хто вже застосував';
+
+    const testiData = [
+        { result: 'Він подзвонив сам через 2 години після місяця мовчання', body: 'Я написала за схемою «СМС-гачок», і колишній, який ігнорував мене 4 тижні, вийшов на зв\'язок. Вперше відчула, що ситуація під моїм контролем.', author: 'Олена, 42 роки' },
+        { result: 'Нарешті я виспалася', body: 'Чек-лист «48 годин тиші» врятував мою психіку. Я перестала перевіряти його онлайн кожні 15 хвилин. Тривога пішла на другий день.', author: 'Марія, 38 років' },
+        { result: 'Відчула себе знову живою', body: 'Я рік була в стані жертви. Роман пояснив все так жорстко і чесно, як не скаже жодна подруга. «СМС-точка» спрацювала ідеально — поставила крапку красиво і з гідністю.', author: 'Ольга, 46 років' },
+    ];
+    document.querySelectorAll('.testi-card').forEach((card, i) => {
+        if (!testiData[i]) return;
+        const result = card.querySelector('.testi-result');
+        const body = card.querySelector('.testi-body');
+        const author = card.querySelector('.testi-author');
+        if (result) result.textContent = testiData[i].result;
+        if (body) body.textContent = testiData[i].body;
+        if (author) author.textContent = testiData[i].author;
+    });
+
+    // === COMPACT PRICING ===
+    const cpEyebrow = document.querySelector('.compact-pricing .section-eyebrow');
+    if (cpEyebrow) cpEyebrow.textContent = 'Тарифи';
+
+    const cpH2 = document.querySelector('.cp-header h2');
+    if (cpH2) cpH2.textContent = 'Оберіть свій варіант перезавантаження';
+
+    const cpP = document.querySelector('.cp-header p');
+    if (cpP) cpP.textContent = 'Миттєвий доступ на Email одразу після оплати';
+
+    // CP CARD 1
+    const cp1 = document.querySelectorAll('.cp-card')[0];
+    if (cp1) {
+        cp1.querySelector('h3').textContent = '🆘 «Швидкий вихід»';
+        cp1.querySelector('.cp-sub').textContent = 'Для екстреної допомоги — готовий план, щоб перестати принижатися і почати діяти';
+        const lis = cp1.querySelectorAll('li');
+        const cp1texts = [
+            'Гайд «59 готових СМС»: відповіді на ігнор, провокації і холод',
+            'Методика «СМС-гачок»: як змусити його написати першим',
+            'Чек-лист «48 годин тиші»: як не зірватися і зберегти гідність',
+            'Гайд «3 стоп-фрази»: слова, що вбивають вашу цінність',
+            'Миттєвий доступ одразу після оплати',
+        ];
+        lis.forEach((li, i) => { if (cp1texts[i]) li.textContent = cp1texts[i]; });
+        const bump1 = cp1.querySelector('.cp-bump label span strong');
+        if (bump1) bump1.innerHTML = '+ Аудіо «Як заснути, коли думки тільки про нього» — <span class="bump-price-label" id="bumpLbl1">$7</span>';
+        const note1 = cp1.querySelector('.cp-note');
+        if (note1) note1.textContent = '📧 Миттєвий доступ на Email';
+    }
+
+    // CP CARD 2
+    const cp2 = document.querySelectorAll('.cp-card')[1];
+    if (cp2) {
+        cp2.querySelector('.cp-badge').textContent = '✦ Максимальний результат';
+        cp2.querySelector('h3').textContent = '💼 «Система: Погляд зсередини»';
+        cp2.querySelector('.cp-sub').textContent = 'Для тих, хто хоче не просто відповісти на СМС, а повністю змінити свою позицію в ситуації';
+        const lis = cp2.querySelectorAll('li');
+        const cp2texts = [
+            'Все з тарифу «Швидкий вихід»',
+            'Відео-інтенсив (3 уроки): «Чому вони йдуть і про яких жінок жалкують»',
+            'Гайд «Магніт у соцмережах»: що публікувати, щоб він «кусав лікті»',
+            'Протокол «Радикальне відсторонення»: як стати недосяжною',
+            'Бонус: Аудіо «Екстрений спокій» — як заснути і зупинити думки',
+        ];
+        lis.forEach((li, i) => { if (cp2texts[i]) li.textContent = cp2texts[i]; });
+        const bump2 = cp2.querySelector('.cp-bump label span strong');
+        if (bump2) bump2.innerHTML = '+ Аудіо «Як заснути, коли думки тільки про нього» — <span class="bump-price-label" id="bumpLbl2">$7</span>';
+        const note2 = cp2.querySelector('.cp-note');
+        if (note2) note2.textContent = '📧 Миттєвий доступ • 💬 Telegram-канал';
+    }
+
+    // CP CARD 3
+    const cp3 = document.querySelectorAll('.cp-card')[2];
+    if (cp3) {
+        cp3.querySelector('h3').textContent = '⭐ «Особиста стратегія»';
+        cp3.querySelector('.cp-sub').textContent = 'Індивідуальний розбір вашої ситуації зі мною. Для тих, кому потрібен результат без права на помилку';
+        const lis = cp3.querySelectorAll('li');
+        const cp3texts = [
+            'Всі продукти тарифу «Система»',
+            '1 особиста сесія зі мною (45–60 хв): розбір вашої ситуації «очима чоловіка»',
+            'Супровід у Telegram (7 днів): перевіряю ваші відповіді йому в реальному часі',
+            'Бонус: Гайд «Чоловічий погляд на побачення 40+»',
+        ];
+        lis.forEach((li, i) => { if (cp3texts[i]) li.textContent = cp3texts[i]; });
+        const note3 = cp3.querySelector('.cp-note');
+        if (note3) note3.textContent = '📧 Зв\'яжуся з вами протягом 2 годин';
+        const btn3 = document.getElementById('cp3btn');
+        if (btn3) btn3.textContent = 'Забронювати місце →';
+    }
+
+    // === INVESTMENT BLOCK ===
+    const investEyebrow = document.querySelector('.invest-sec .section-eyebrow');
+    if (investEyebrow) investEyebrow.textContent = 'Чому це мало';
+
+    const investH3 = document.querySelector('.invest-box h3');
+    if (investH3) investH3.innerHTML = 'Ваша інвестиція у гідність — лише <span id="investPrice">$17</span>';
+
+    const investSub = document.querySelector('.inv-sub');
+    if (investSub) investSub.textContent = 'Це не просто ціна PDF-файлу. Це вартість вашого виходу зі стану «що чекає біля вікна».';
+
+    const invItems = document.querySelectorAll('.inv-item');
+    const invData = [
+        { title: 'Зміна ролей', text: 'З тієї, хто «випрошує» увагу — на ту, хто диктує умови комунікації.' },
+        { title: 'Інструмент впливу', text: 'Ви перестанете робити помилки, які роблять вас слабкою в його очах.' },
+        { title: 'Економія на терапії', text: 'Замість місяців аналізу «чому він так вчинив» — за 15 хвилин ви зрозумієте його мотив і закриєте це питання назавжди.' },
+    ];
+    invItems.forEach((item, i) => {
+        if (!invData[i]) return;
+        const strong = item.querySelector('strong');
+        const span = item.querySelector('span');
+        if (strong) strong.textContent = invData[i].title;
+        if (span) span.textContent = invData[i].text;
+    });
+
+    // === WARNING ===
+    const warnHeader = document.querySelector('.warn-header');
+    if (warnHeader) warnHeader.textContent = '⚠️ Увага: техніка безповоротної дії';
+
+    const warnTitle = document.querySelector('.warn-title');
+    if (warnTitle) warnTitle.textContent = 'Прочитайте перед застосуванням';
+
+    const warnPs = document.querySelectorAll('.warning-box p');
+    if (warnPs[0]) warnPs[0].innerHTML = 'Ці методи засновані на глибоких чоловічих тригерах. Я зобов\'язаний попередити: <strong>не застосовуйте ці СМС, якщо ви ще сподіваєтеся на «просто поговорити»</strong> або хочете повернути стару модель стосунків.';
+    if (warnPs[1]) warnPs[1].innerHTML = 'Після цих слів він побачить у вас <strong>зовсім іншу жінку — сильну і недосяжну.</strong> Шляху назад до колишньої співзалежності не буде.';
+    if (warnPs[2]) warnPs[2].textContent = 'Використовуйте лише в тому випадку, якщо готові до нового життя.';
+
+    // === INACTION ===
+    const inactionH3 = document.querySelector('.inaction-box h3');
+    if (inactionH3) inactionH3.innerHTML = 'Поки ви гадаєте —<br>він живе своїм життям';
+
+    const inactionLis = document.querySelectorAll('.inaction-list li');
+    const inactionTexts = ['30 безсонних ночей з телефоном в руці', 'Тисячі перевірок його «онлайн» замість свого життя', 'Гідність, що йде з кожним днем бездіяльності'];
+    inactionLis.forEach((li, i) => { if (inactionTexts[i]) li.textContent = inactionTexts[i]; });
+
+    const inactionP = document.querySelector('.inaction-box > p');
+    if (inactionP) inactionP.textContent = 'Годі гадати. Починайте діяти.';
+
+    // === GUIDE SECTION ===
+    const guideEyebrow = document.querySelector('.guide-sec .section-eyebrow');
+    if (guideEyebrow) guideEyebrow.textContent = 'Що всередині';
+
+    const guideH2 = document.querySelector('.guide-sec h2');
+    if (guideH2) guideH2.textContent = 'Розділи Гайда «59 СМС»';
+
+    const guideSubP = document.querySelector('.guide-sec > .container > p');
+    if (guideSubP) guideSubP.textContent = 'Конкретні формулювання, які я, як чоловік, знаю — вони працюють на наш мозок.';
+
+    const guideCardData = [
+        { title: '«СМС-гачок»', text: 'Як змусити його вийти на зв\'язок першим — без натяків і без приниження. З поясненням, чому це спрацьовує на чоловічий мозок.' },
+        { title: '«Відповідь на холод»', text: 'Він відповів сухо або із затримкою. Більшість жінок панікують і пишуть більше. Я покажу, що робити замість цього.' },
+        { title: '«СМС-точка»', text: 'Як закрити гештальт так, щоб він почав жалкувати про втрату. Слова, після яких ви відчуваєте себе переможницею — незалежно від його реакції.' },
+        { title: '«Відповідь на провокацію»', text: 'Він пише щось образливе. Як відповісти з гідністю, без агресії — щоб він зрозумів: перед ним сильна жінка, а не жертва.' },
+        { title: '«П\'яні» і нічні повідомлення', text: 'Він написав щось несподіване пізно вночі. Це знак? Слабкість? Точний розбір чоловічої логіки — і як відповісти, не нашкодивши собі.' },
+    ];
+    document.querySelectorAll('.guide-card').forEach((card, i) => {
+        if (!guideCardData[i]) return;
+        const h3 = card.querySelector('h3');
+        const p = card.querySelector('p');
+        if (h3) h3.textContent = guideCardData[i].title;
+        if (p) p.textContent = guideCardData[i].text;
+    });
+
+    // === FULL PRICING ===
+    const fpEyebrow = document.querySelector('.full-pricing .section-eyebrow');
+    if (fpEyebrow) fpEyebrow.textContent = 'Детально про тарифи';
+
+    const fpH2 = document.querySelector('.fp-header h2');
+    if (fpH2) fpH2.textContent = 'Оберіть свій формат';
+
+    const fpP = document.querySelector('.fp-header p');
+    if (fpP) fpP.textContent = 'Миттєвий доступ на Email — читати можна через 5 хвилин';
+
+    const fpSteps = document.querySelectorAll('.fp-step');
+    const fpStepTexts = ['Обираєте тариф', 'Вводите Email', 'Отримуєте доступ'];
+    fpSteps.forEach((step, i) => {
+        const num = step.querySelector('.fp-step-num');
+        step.textContent = fpStepTexts[i] || '';
+        if (num) step.prepend(num);
+    });
+
+    // FP CARD 1
+    const fp1 = document.querySelectorAll('.fp-card')[0];
+    if (fp1) {
+        fp1.querySelector('h3').textContent = '🆘 «Швидкий вихід»';
+        fp1.querySelector('.fp-sub').textContent = 'Для екстреної допомоги — готовий план, щоб перестати принижатися і почати діяти';
+        const lis = fp1.querySelectorAll('.fp-features li');
+        const fp1texts = [
+            ['Гайд «59 готових СМС бывшему»', 'Відповіді на ігнор, провокації і холод'],
+            ['Методика «СМС-гачок»', 'Як змусити його написати першим, не проявляючи потреби'],
+            ['Чек-лист «48 годин тиші»', 'Як не зірватися і зберегти гідність'],
+            ['Гайд «3 стоп-фрази»', 'Слова, які назавжди вбивають вашу цінність в його очах'],
+            ['Результат:', 'Ви знаєте, що відповісти прямо зараз — зберігши гідність'],
+        ];
+        lis.forEach((li, i) => {
+            if (!fp1texts[i]) return;
+            li.innerHTML = `<strong>${fp1texts[i][0]}</strong><br>${fp1texts[i][1]}`;
+        });
+        const bumpHeader1 = fp1.querySelector('.fp-bump-header');
+        if (bumpHeader1) bumpHeader1.textContent = 'Додати до замовлення';
+        const bumpStrong1 = fp1.querySelector('.fp-bump-content strong');
+        if (bumpStrong1) bumpStrong1.textContent = 'Аудіо «Як заснути, коли думки тільки про нього»';
+        const bumpEm1 = fp1.querySelector('.fp-bump-content em');
+        if (bumpEm1) bumpEm1.textContent = '12 хвилин • Голос автора • Для гострих моментів';
+        const note1 = fp1.querySelector('.fp-note');
+        if (note1) note1.textContent = '📧 Миттєвий доступ на Email';
+    }
+
+    // FP CARD 2 — popular
+    const fp2 = document.querySelectorAll('.fp-card')[1];
+    if (fp2) {
+        const badge2 = fp2.querySelector('.fp-popular-badge');
+        if (badge2) badge2.textContent = '✦ Максимальний результат';
+        fp2.querySelector('h3').textContent = '💼 «Система: Погляд зсередини»';
+        fp2.querySelector('.fp-sub').textContent = 'Для тих, хто хоче не просто відповісти на СМС, а повністю змінити свою позицію в ситуації';
+        const lis = fp2.querySelectorAll('.fp-features li');
+        const fp2texts = [
+            ['Все з тарифу «Швидкий вихід»', ''],
+            ['Відео-інтенсив (3 уроки)', '«Чому вони йдуть і про яких жінок жалкують»'],
+            ['Гайд «Магніт у соцмережах»', 'Що публікувати, щоб він «кусав лікті»'],
+            ['Протокол «Радикальне відсторонення»', 'Як стати недосяжною'],
+            ['Бонус: Аудіо «Екстрений спокій»', 'Як заснути і зупинити думки'],
+        ];
+        lis.forEach((li, i) => {
+            if (!fp2texts[i]) return;
+            li.innerHTML = fp2texts[i][1] ? `<strong>${fp2texts[i][0]}</strong><br>${fp2texts[i][1]}` : fp2texts[i][0];
+        });
+        const bumpHeader2 = fp2.querySelector('.fp-bump-header');
+        if (bumpHeader2) bumpHeader2.textContent = 'Додати до замовлення';
+        const bumpStrong2 = fp2.querySelector('.fp-bump-content strong');
+        if (bumpStrong2) bumpStrong2.textContent = 'Аудіо «Як заснути, коли думки тільки про нього»';
+        const bumpEm2 = fp2.querySelector('.fp-bump-content em');
+        if (bumpEm2) bumpEm2.textContent = '12 хвилин • Голос автора • Для гострих моментів';
+        const note2 = fp2.querySelector('.fp-note');
+        if (note2) note2.textContent = '📧 Миттєвий доступ • 💬 Telegram-канал';
+    }
+
+    // FP CARD 3
+    const fp3 = document.querySelectorAll('.fp-card')[2];
+    if (fp3) {
+        fp3.querySelector('h3').textContent = '⭐ «Особиста стратегія»';
+        fp3.querySelector('.fp-sub').textContent = 'Індивідуальний розбір вашої ситуації зі мною. Для тих, кому потрібен результат без права на помилку';
+        const lis = fp3.querySelectorAll('.fp-features li');
+        const fp3texts = [
+            ['Всі продукти тарифу «Система»', ''],
+            ['1 особиста сесія (45–60 хв)', 'Розбір вашої ситуації «очима чоловіка»'],
+            ['Супровід у Telegram (7 днів)', 'Перевіряю ваші відповіді йому в реальному часі'],
+            ['Бонус: Гайд «Чоловічий погляд на побачення 40+»', ''],
+        ];
+        lis.forEach((li, i) => {
+            if (!fp3texts[i]) return;
+            li.innerHTML = fp3texts[i][1] ? `<strong>${fp3texts[i][0]}</strong><br>${fp3texts[i][1]}` : fp3texts[i][0];
+        });
+        const note3 = fp3.querySelector('.fp-note');
+        if (note3) note3.textContent = '📧 Зв\'яжуся з вами протягом 2 годин';
+    }
+
+    // SECURITY BOX
+    const secH4 = document.querySelector('.security-box h4');
+    if (secH4) secH4.innerHTML = (secH4.querySelector('svg') ? secH4.querySelector('svg').outerHTML : '') + ' Захищена оплата';
+    const secText = document.querySelector('.sec-text');
+    if (secText) secText.textContent = 'Всі транзакції захищені. Ми не зберігаємо дані карток. Оплата через WayForPay та PayPal.';
+    const emailWarn = document.querySelector('.email-warn');
+    if (emailWarn) emailWarn.textContent = '📧 Після оплати перевірте папку «Спам» — доступ може потрапити туди. Якщо протягом 15 хвилин листа немає — пишіть нам у Telegram.';
+
+    const secIcons = document.querySelectorAll('.sec-icon span');
+    const secIconTexts = ['PCI DSS', 'SSL 256-bit', 'Гарантія повернення', 'Доступ за 5 хвилин'];
+    secIcons.forEach((el, i) => { if (secIconTexts[i]) el.textContent = secIconTexts[i]; });
+
+    // FP BUTTONS
+    const fp1btn = document.getElementById('fp1btn');
+    const fp2btn = document.getElementById('fp2btn');
+    const fp3btn = document.getElementById('fp3btn');
+    // Note: applyGeo already sets button text from geo config — we override below
+    const paypalBtns = document.querySelectorAll('.btn-paypal');
+    paypalBtns.forEach(btn => {
+        const lastText = btn.lastChild;
+        if (lastText && lastText.nodeType === 3) lastText.textContent = ' Оплатити через PayPal';
+    });
+
+    // === FINAL CTA ===
+    const guaranteeBadge = document.querySelector('.guarantee-badge');
+    if (guaranteeBadge) {
+        const svg = guaranteeBadge.querySelector('svg');
+        guaranteeBadge.textContent = 'ГАРАНТІЯ ПОВЕРНЕННЯ 7 ДНІВ';
+        if (svg) guaranteeBadge.prepend(svg);
+    }
+
+    const finalH2 = document.querySelector('.final-box h2');
+    if (finalH2) finalH2.innerHTML = 'Годі гадати.<br><em>Починайте діяти.</em>';
+
+    const finalP = document.querySelector('.final-box > p');
+    if (finalP) finalP.textContent = 'Миттєвий доступ одразу після оплати. Ваше відновлення почнеться через 5 хвилин.';
+
+    const finalBtn = document.querySelector('.final-box .btn-primary');
+    if (finalBtn) finalBtn.innerHTML = 'Забрати Гайд за <span id="finalPrice">$17</span> →';
+
+    const finalTrustSpan = document.querySelector('.final-trust span');
+    if (finalTrustSpan) finalTrustSpan.textContent = 'Миттєвий доступ • Безпечна оплата • Підтримка 24/7';
+
+    // === FOOTER ===
+    const footerCopyright = document.querySelector('footer p:last-child');
+    if (footerCopyright) footerCopyright.innerHTML = '© 2026 Чоловічий Код: Перезавантаження. Всі права захищені.';
+
+    const supportLink = document.getElementById('supportLink');
+    if (supportLink) supportLink.textContent = 'Служба підтримки';
+    const offerLink = document.getElementById('offerLink');
+    if (offerLink) offerLink.textContent = 'Публічна оферта';
+    const privacyLink = document.getElementById('privacyLink');
+    if (privacyLink) privacyLink.textContent = 'Політика конфіденційності';
+
+    // === MODALS ===
+    // Support modal
+    const supportH3 = document.querySelector('#supportModal .modal-header h3');
+    if (supportH3) supportH3.textContent = '💬 Служба підтримки';
+    const supportBodyP = document.querySelector('#supportModal .modal-body p');
+    if (supportBodyP) supportBodyP.textContent = 'Напишіть нам у зручному месенджері — відповімо протягом 24 годин:';
+    const supportFooter = document.querySelector('#supportModal .modal-footer');
+    if (supportFooter) supportFooter.innerHTML = '⏰ Відповімо протягом 24 годин • <strong>Роман | back4heart</strong>';
+
+    // Offer modal
+    const offerH3 = document.querySelector('#offerModal .modal-header h3');
+    if (offerH3) offerH3.textContent = 'Публічна оферта';
+    const offerPs = document.querySelectorAll('#offerModal .modal-body p');
+    const offerH4s = document.querySelectorAll('#offerModal .modal-body h4');
+    if (offerPs[0]) offerPs[0].innerHTML = '<strong>1. Загальні положення</strong>';
+    if (offerPs[1]) offerPs[1].textContent = 'Цей документ є офіційною пропозицією (публічною офертою) на придбання цифрового продукту «Чоловічий Код: Перезавантаження» (далі — Гайд). Акцепт — оплата продукту.';
+    if (offerH4s[0]) offerH4s[0].textContent = '2. Предмет договору';
+    if (offerPs[2]) offerPs[2].textContent = 'Доступ до цифрового продукту — PDF-Гайду та супутніх матеріалів для відновлення після розставання. Доступ надається миттєво після оплати.';
+    if (offerH4s[1]) offerH4s[1].textContent = '3. Вартість';
+    if (offerPs[3]) offerPs[3].textContent = '«Швидкий вихід» — від $12 / «Система: Погляд зсередини» — від $37 / «Особиста стратегія» — від $120. Оплата через WayForPay, PayPal.';
+    if (offerH4s[2]) offerH4s[2].textContent = '4. Гарантія повернення';
+    if (offerPs[4]) offerPs[4].textContent = 'Якщо протягом 7 днів після покупки ви не відчуєте покращення — повне повернення коштів.';
+    if (offerH4s[3]) offerH4s[3].textContent = '5. Права та обов\'язки';
+    if (offerPs[5]) offerPs[5].innerHTML = '<strong>Виконавець:</strong> надати доступ протягом 5 хвилин після оплати; забезпечити технічну підтримку.';
+    if (offerPs[6]) offerPs[6].innerHTML = '<strong>Замовник:</strong> використовувати продукт в особистих цілях; не передавати і не розповсюджувати матеріали.';
+    const offerFooter = document.querySelector('#offerModal .modal-footer');
+    if (offerFooter) offerFooter.innerHTML = 'Останнє оновлення: <strong>Березень 2026</strong>';
+
+    // Privacy modal
+    const privH3 = document.querySelector('#privacyModal .modal-header h3');
+    if (privH3) privH3.textContent = 'Політика конфіденційності';
+    const privPs = document.querySelectorAll('#privacyModal .modal-body p');
+    const privH4s = document.querySelectorAll('#privacyModal .modal-body h4');
+    if (privPs[0]) privPs[0].innerHTML = '<strong>1. Збір даних</strong>';
+    if (privPs[1]) privPs[1].textContent = 'Email — для відправки доступу; ім\'я (опціонально) — для персоналізації; дані оплати — обробляються платіжними системами (ми не зберігаємо дані карток).';
+    if (privH4s[0]) privH4s[0].textContent = '2. Використання даних';
+    if (privPs[2]) privPs[2].textContent = 'Дані використовуються виключно для надання доступу до продукту. Ми НЕ передаємо дані третім особам, НЕ використовуємо для реклами без згоди.';
+    if (privH4s[1]) privH4s[1].textContent = '3. Захист даних';
+    if (privPs[3]) privPs[3].textContent = 'SSL-шифрування, безпечне зберігання, обмеження доступу до персональних даних.';
+    const privFooter = document.querySelector('#privacyModal .modal-footer');
+    if (privFooter) privFooter.innerHTML = 'Останнє оновлення: <strong>Березень 2026</strong>';
+
+    // === SOCIAL PROOF DATA ===
+    window.SP_DATA_UA = [
+        { name:'Аня', avatar:'А', tariff:'«Швидкий вихід» за $17', time:'12 хвилин тому' },
+        { name:'Марина', avatar:'М', tariff:'«Систему: Погляд зсередини»', time:'5 хвилин тому' },
+        { name:'Олена', avatar:'О', tariff:'«Особисту стратегію»', time:'18 хвилин тому' },
+        { name:'Ольга', avatar:'О', tariff:'«Швидкий вихід» за $17', time:'23 хвилини тому' },
+        { name:'Тетяна', avatar:'Т', tariff:'«Систему: Погляд зсередини»', time:'31 хвилину тому' },
+        { name:'Maja', avatar:'M', tariff:'«Швидкий вихід» за $17', time:'8 хвилин тому' },
+        { name:'Nina', avatar:'N', tariff:'«Особисту стратегію»', time:'15 хвилин тому' },
+        { name:'Айгерім', avatar:'А', tariff:'«Систему: Погляд зсередини»', time:'11 хвилин тому' },
+    ];
+    // Override showSP to use Ukrainian data
+    window.showSP = function() {
+        if (spVisible) return;
+        const data = window.SP_DATA_UA;
+        let idx; do { idx = Math.floor(Math.random()*data.length); } while(idx===spLast && data.length>1);
+        spLast = idx;
+        const d = data[idx];
+        document.getElementById('spAvatar').textContent = d.avatar;
+        document.getElementById('spName').textContent = d.name;
+        document.getElementById('spTariff').textContent = d.tariff;
+        document.getElementById('spTime').textContent = d.time;
+        document.getElementById('spPopup').classList.add('active');
+        spVisible = true;
+        setTimeout(window.closeSP, 8000);
+    };
+
+    // Override SP popup text template
+    const spTextEl = document.querySelector('.sp-text');
+    if (spTextEl) spTextEl.innerHTML = '<strong id="spName">Аня</strong> оформила <span id="spTariff">«Швидкий вихід» за $17</span>';
+}
+
+async function detectGeo() {
+    try {
+        const r = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(4000) });
+        const d = await r.json();
+        const cc = (d.country_code || '').toUpperCase();
+        // Украина
+        if (cc === 'UA') return 'UA';
+        // Польша — отдельный тариф
+        if (cc === 'PL') return 'PL';
+        // Высокоплатёжные рынки: США, Израиль, Канада, Австралия, Великобритания
+        const HIGH = ['US','IL','CA','AU','GB','NZ','SG','AE','CH'];
+        if (HIGH.includes(cc)) return 'HIGH';
+        // ЕС (без Польши)
+        const EU = ['DE','AT','FR','IT','ES','NL','BE','SE','NO','DK','FI','CZ','SK','HU','RO','BG','HR','SI','EE','LV','LT','PT','GR','IE','LU','CY','MT','IS'];
+        if (EU.includes(cc)) return 'EU';
+        // Всё остальное — дефолтные $ цены
+        return 'DEFAULT';
+    } catch(e) {
+        return 'DEFAULT';
+    }
+}
+
+detectGeo().then(geo => {
+    applyGeo(geo);
+    if (geo === 'UA') applyUkrainian();
+});
+
+// ===== COUNTDOWN =====
+function initCountdown() {
+    const KEY = 'mkpCdEnd';
+    let end = parseInt(localStorage.getItem(KEY) || '0');
+    if (!end || end < Date.now()) {
+        end = Date.now() + 23*3600000 + 47*60000 + 12000;
+        try { localStorage.setItem(KEY, end); } catch(e){}
+    }
+    function tick() {
+        const diff = end - Date.now();
+        const el = document.getElementById('countdown');
+        if (!el) return;
+        if (diff <= 0) { el.textContent = '00:00:00'; return; }
+        const h = Math.floor(diff/3600000);
+        const m = Math.floor((diff%3600000)/60000);
+        const s = Math.floor((diff%60000)/1000);
+        const f = n => String(n).padStart(2,'0');
+        el.textContent = f(h)+':'+f(m)+':'+f(s);
+    }
+    tick(); setInterval(tick, 1000);
+}
+initCountdown();
+
+// ===== STICKY BAR =====
+const stickyBar = document.getElementById('stickyBar');
+const heroSection = document.getElementById('top');
+window.addEventListener('scroll', () => {
+    if (heroSection.getBoundingClientRect().bottom < 0) stickyBar.classList.add('visible');
+    else stickyBar.classList.remove('visible');
+}, { passive: true });
+
+// ===== FADE IN =====
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ===== SMOOTH SCROLL =====
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        if (['#pricing-top','#pricing'].includes(href)) {
+            e.preventDefault();
+            const t = document.querySelector(href);
+            if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+// ===== MODALS =====
+function openModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow='hidden'; }
+function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow=''; }
+document.getElementById('supportLink').addEventListener('click', e => { e.preventDefault(); openModal('supportModal'); });
+document.getElementById('offerLink').addEventListener('click', e => { e.preventDefault(); openModal('offerModal'); });
+document.getElementById('privacyLink').addEventListener('click', e => { e.preventDefault(); openModal('privacyModal'); });
+document.querySelectorAll('.modal-overlay').forEach(ov => {
+    ov.addEventListener('click', e => { if(e.target===ov){ ov.classList.remove('active'); document.body.style.overflow=''; } });
+});
+document.addEventListener('keydown', e => {
+    if(e.key==='Escape') { document.querySelectorAll('.modal-overlay.active').forEach(m=>m.classList.remove('active')); document.body.style.overflow=''; }
+});
+
+// ===== ORDER BUMP HIGHLIGHT =====
+document.querySelectorAll('.bump-cb').forEach(cb => {
+    cb.addEventListener('change', function() {
+        const box = this.closest('.cp-bump, .fp-bump');
+        if (box) box.style.background = this.checked ? 'rgba(26,107,114,0.1)' : '';
+    });
+});
+
+// ===== SOCIAL PROOF =====
+const SP_DATA = [
+    { name:'Аня', avatar:'А', tariff:'«Быстрый выход» за $17', time:'12 минут назад' },
+    { name:'Марина', avatar:'М', tariff:'«Систему: Взгляд изнутри»', time:'5 минут назад' },
+    { name:'Елена', avatar:'Е', tariff:'«Личную стратегию»', time:'18 минут назад' },
+    { name:'Ольга', avatar:'О', tariff:'«Быстрый выход» за $17', time:'23 минуты назад' },
+    { name:'Татьяна', avatar:'Т', tariff:'«Систему: Взгляд изнутри»', time:'31 минуту назад' },
+    { name:'Maja', avatar:'M', tariff:'«Быстрый выход» за $17', time:'8 минут назад' },
+    { name:'Nina', avatar:'N', tariff:'«Личную стратегию»', time:'15 минут назад' },
+    { name:'Айгерим', avatar:'А', tariff:'«Систему: Взгляд изнутри»', time:'11 минут назад' },
+];
+let spVisible = false, spLast = -1, spTimer;
+function showSP() {
+    if (spVisible) return;
+    let idx; do { idx = Math.floor(Math.random()*SP_DATA.length); } while(idx===spLast && SP_DATA.length>1);
+    spLast = idx;
+    const d = SP_DATA[idx];
+    document.getElementById('spAvatar').textContent = d.avatar;
+    document.getElementById('spName').textContent = d.name;
+    document.getElementById('spTariff').textContent = d.tariff;
+    document.getElementById('spTime').textContent = d.time;
+    document.getElementById('spPopup').classList.add('active');
+    spVisible = true;
+    setTimeout(closeSP, 8000);
+}
+function closeSP() {
+    document.getElementById('spPopup').classList.remove('active');
+    spVisible = false;
+    spTimer = setTimeout(showSP, Math.random()*10000+30000);
+}
+setTimeout(() => { spTimer = setTimeout(showSP, Math.random()*8000+15000); }, 8000);
+</script>
+</body>
+</html>
