@@ -626,6 +626,27 @@
         .nfy-item span strong{color:var(--charcoal);display:block;margin-bottom:2px;}
         .nfy-flip{background:linear-gradient(135deg,rgba(26,107,114,0.07),rgba(26,107,114,0.03));border:1.5px solid rgba(26,107,114,0.25);border-radius:16px;padding:20px 24px;font-size:15px;color:var(--charcoal);line-height:1.7;}
         .nfy-flip strong{color:var(--teal);}
+
+        /* ===== PAYMENT MODAL ===== */
+        .pay-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.72);backdrop-filter:blur(6px);z-index:10001;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:all 0.3s;}
+        .pay-overlay.active{opacity:1;visibility:visible;}
+        .pay-modal{background:white;border-radius:24px;padding:36px 32px;max-width:420px;width:100%;position:relative;box-shadow:0 30px 80px rgba(0,0,0,0.25);text-align:center;}
+        .pay-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:26px;color:var(--light-gray);cursor:pointer;line-height:1;}
+        .pay-title{font-family:'Playfair Display',serif;font-size:22px;color:var(--charcoal);margin-bottom:6px;}
+        .pay-subtitle{font-size:14px;color:var(--mid-gray);margin-bottom:24px;line-height:1.5;}
+        .pay-options{display:flex;flex-direction:column;gap:12px;}
+        .pay-btn-wfp{display:flex;align-items:center;justify-content:center;gap:10px;padding:16px 20px;border-radius:14px;background:linear-gradient(135deg,var(--teal),var(--teal-light));color:white;text-decoration:none;font-size:15px;font-weight:700;font-family:'Jost',sans-serif;transition:all 0.3s;box-shadow:0 5px 18px rgba(26,107,114,0.28);flex-wrap:wrap;}
+        .pay-btn-wfp:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(26,107,114,0.4);}
+        .pay-btn-pp{display:flex;align-items:center;justify-content:center;gap:10px;padding:16px 20px;border-radius:14px;background:#FFC43A;color:#003087;text-decoration:none;font-size:15px;font-weight:700;font-family:'Jost',sans-serif;transition:all 0.3s;box-shadow:0 5px 18px rgba(255,196,58,0.35);flex-direction:column;}
+        .pay-btn-pp:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,196,58,0.5);}
+        .pay-icons-row{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:8px;flex-wrap:wrap;}
+        .pay-icon-badge{height:20px;background:white;border-radius:4px;padding:0 6px;display:flex;align-items:center;justify-content:center;}
+        .pay-icon-badge svg{display:block;}
+        .pay-pp-note{font-size:11px;color:rgba(0,48,135,0.7);margin-top:3px;}
+        .pay-divider{display:flex;align-items:center;gap:10px;margin:2px 0;}
+        .pay-divider::before,.pay-divider::after{content:'';flex:1;height:1px;background:var(--greige-dark);}
+        .pay-divider span{font-size:12px;color:var(--light-gray);}
+        .pay-note{font-size:12px;color:var(--light-gray);margin-top:16px;line-height:1.5;}
     </style>
 </head>
 <body>
@@ -869,6 +890,7 @@
                     <li><div class="sl-icon">⏳</div><div><strong>Перестанешь ждать</strong> - чек-лист «48 часов» даёт пошаговый план как не сорваться прямо сейчас</div></li>
                     <li><div class="sl-icon">🚫</div><div><strong>Узнаешь 3 слова которые нельзя</strong> - они убивают твою ценность в его глазах навсегда</div></li>
                     <li><div class="sl-icon">📱</div><div><strong>Через 5 минут на твой Email</strong> - читать можно сейчас</div></li>
+                    <li><div class="sl-icon">🧠</div><div><strong>В тарифе «Система» - ещё два инструмента:</strong> протокол «7 дней без боли» (НЛП/КПТ техники) и чек-лист «100 триггеров» - для тех кто хочет не только действовать, но и отпустить</div></li>
                 </ul>
 </div>
         </div>
@@ -1082,7 +1104,7 @@
                 </div>
                 <div class="nfy-item">
                     <div class="nfy-icon">🛋️</div>
-                    <span><strong>Хочешь месяцами разбирать это с психологом</strong>Глубинная работа - важна. Это другое: конкретные слова на сейчас, не терапия.</span>
+                    <span><strong>Ищешь только глубокую терапию</strong>Здесь конкретные инструменты - для понимания его, для правильных слов и для отпускания. Не замена терапевту, а то что работает прямо сейчас.</span>
                 </div>
                 <div class="nfy-item">
                     <div class="nfy-icon">💬</div>
@@ -1149,7 +1171,7 @@
             <div class="cp-card popular fade-in">
                 <div class="cp-badge">🔥 Хит продаж</div>
                 <h3>💼 «Система: Взгляд изнутри»</h3>
-                <p class="cp-sub">Хочешь чтобы он не просто ответил, а <em>начал думать</em> - этот тариф про смену его отношения к тебе</p>
+                <p class="cp-sub">Для тех кто хочет и действовать, и отпустить - полный набор инструментов: понять его, написать правильно и освободить себя</p>
                 <div class="cp-price-old" id="cp2old">$97</div>
                 <div class="cp-price" id="cp2price">$47 <span class="cp-currency" id="cp2cur">(~1890 грн)</span></div>
                 <ul>
@@ -1157,7 +1179,9 @@
                     <li>Видео-интенсив (3 урока): «Почему они уходят и о каких женщинах жалеют»</li>
                     <li>Гайд «Магнит в соцсетях»: что публиковать, чтобы он «кусал локти»</li>
                     <li>Протокол «Радикальное отстранение»: как стать недосягаемой</li>
-                    <li>Бонус: Аудио «Экстренное спокойствие» - как уснуть и остановить мысли</li>
+                    <li>Аудио «Экстренное спокойствие» - как уснуть и остановить мысли</li>
+                    <li>🧠 <strong>«7 дней без боли»</strong> - протокол восстановления: 7 техник НЛП и КПТ чтобы выйти из петли мыслей и отпустить</li>
+                    <li>📋 <strong>Чек-лист «100 триггеров»</strong> - осознай что именно держит тебя в боли и убери это по шагам</li>
                 </ul>
                 <div class="cp-mini-review">
                     <div class="mr-text">Он позвонил сам через 2 часа после месяца молчания. Впервые почувствовала контроль</div>
@@ -1296,11 +1320,13 @@
                 <p class="fp-sub">Для тех, кто хочет не просто ответить на СМС, а полностью изменить свою позицию в ситуации</p>
                 <ul class="fp-features">
                     <li><strong>Всё из тарифа «Быстрый выход»</strong></li>
-                    <li><strong>Видео-интенсив (3 урока)</strong><br>«Почему они уходят и о каких женщинах жалеют» - честный разбор мужской психологии 40+ от первого лица</li>
+                    <li><strong>Видео-интенсив (3 урока)</strong><br>«Почему они уходят и о каких женщинах жалеют» - честный разбор мужской психологии от первого лица</li>
                     <li><strong>Гайд «Магнит в соцсетях»</strong><br>Что и как публиковать в Stories и постах, чтобы транслировать силу и заставить его «кусать локти»</li>
                     <li><strong>Протокол «Радикальное отстранение»</strong><br>Как стать недосягаемой и вернуть себе статус «Приза»</li>
-                    <li><strong>Бонус: Аудио «Экстренное спокойствие»</strong><br>Как уснуть и перестать гонять мысли о нём по кругу</li>
-                    <li><strong>Результат:</strong> Ты понимаешь его логику и перестаёшь быть жертвой ситуации</li>
+                    <li><strong>Аудио «Экстренное спокойствие»</strong><br>Как уснуть и перестать гонять мысли о нём по кругу</li>
+                    <li><strong>🧠 Протокол «7 дней без боли»</strong><br>НЛП и КПТ техники для перепрограммирования нейронных связей после расставания - 7 дней, 7 упражнений, научная база</li>
+                    <li><strong>📋 Чек-лист «100 триггеров»</strong><br>Полный список того что держит тебя в боли - от цифрового следа до эмоций. Осознай и убери по шагам</li>
+                    <li><strong>Результат:</strong> Ты понимаешь его, действуешь из силы - и освобождаешь себя от боли</li>
                 </ul>
 </div>
                 <div class="fp-price-wrap">
@@ -1579,6 +1605,7 @@ const GEO = {
 };
 
 function applyGeo(geo) {
+    _currentGeo = geo;
     const g = GEO[geo] || GEO.DEFAULT;
     // Urgency bar
     document.getElementById('ubPrice').textContent = g.ubPrice;
@@ -1821,10 +1848,12 @@ const note1 = cp1.querySelector('.cp-note');
         const lis = cp2.querySelectorAll('li');
         const cp2texts = [
             'Все з тарифу «Швидкий вихід»',
-            'Відео-інтенсив (3 уроки): «Чому вони йдуть і про яких жінок жалкують»',
-            'Гайд «Магніт у соцмережах»: що публікувати, щоб він «кусав лікті»',
+            'Відео-інтенсив (3 уроки): «Чому вони йдуть і за якими жінками шкодують»',
+            'Гайд «Магніт у соцмережах»: що публікувати, щоб він «кусав локті»',
             'Протокол «Радикальне відсторонення»: як стати недосяжною',
-            'Бонус: Аудіо «Екстрений спокій» - як заснути і зупинити думки',
+            'Аудіо «Екстренний спокій» - як заснути і зупинити думки',
+            '🧠 «7 днів без болю» - протокол: 7 технік НЛП/КПТ щоб вийти з петлі думок і відпустити',
+            '📋 Чек-лист «100 тригерів» - усвідом що тримає тебе в болі і прибери це по кроках'
         ];
         lis.forEach((li, i) => { if (cp2texts[i]) li.textContent = cp2texts[i]; });
 const note2 = cp2.querySelector('.cp-note');
@@ -2169,7 +2198,7 @@ const note2 = fp2.querySelector('.fp-note');
     var _scP=document.querySelector('.showcase>div>p');if(_scP)_scP.textContent='Не шаблони. Не теорія. Конкретні слова від чоловіка який знає його сторону.';
     var _scH4=document.querySelector('.showcase-list h4');if(_scH4)_scH4.textContent='Що змінюється вже сьогодні ввечері:';
     var _scLi=document.querySelectorAll('.showcase-list li');
-    var _scLiT=['Дізнаєшся чому він мовчить - і яке одне повідомлення змушує його різко змінити поведінку','Перестанеш робити помилки - які сама знаєш, але все одно робиш - зі страху','Перестанеш чекати - чек-лист 48 годин дає покроковий план як не зірватися прямо зараз','Дізнаєшся 3 слова які не можна - вони вбивають твою цінність в його очах назавжди','Через 5 хвилин на твій Email - читати можна зараз'];
+    var _scLiT=['Дізнаєшся чому він мовчить - і яке одне повідомлення змушує його різко змінити поведінку','Перестанеш робити помилки - які сама знаєш, але все одно робиш - зі страху','Перестанеш чекати - чек-лист 48 годин дає покроковий план як не зірватися прямо зараз','Дізнаєшся 3 слова які не можна - вони вбивають твою цінність в його очах назавжди','Через 5 хвилин на твій Email - читати можна зараз','🧠 У тарифі «Система» - ще два інструменти: протокол «7 днів без болю» і чек-лист «100 тригерів»'];
     _scLi.forEach(function(li,i){
         if(!_scLiT[i])return;
         var ic=li.querySelector('.sl-icon'),txt=li.querySelector('div:last-child');
@@ -2245,7 +2274,7 @@ const note2 = fp2.querySelector('.fp-note');
     var _nfyIT=[
         ['Хочеш поплакати з подругами','Почути «він козел, ти краща» - це важливо. Але не це тут.'],
         ['Чекаєш що саме мине','Якщо готова просто чекати - гайд не прискорить цей процес.'],
-        ['Хочеш місяцями розбирати це з психологом','Глибинна робота - важлива. Це інше: конкретні слова на зараз, не терапія.'],
+        ['Хочеш місяцями розбирати це з психологом','Тут конкретні інструменти - для розуміння, правильних слів і відпускання. Не заміна терапевту, а те, що працює зараз.'],
         ['Шукаєш спосіб маніпулювати ним','Тут немає «як змусити його повернутися будь-якою ціною». Тільки розуміння - і дія з сили.'],
         ['Хочеш просто забути без розуміння','Якщо хочеш заплющити очі і не знати - це не сюди.'],
     ];
@@ -2258,6 +2287,15 @@ const note2 = fp2.querySelector('.fp-note');
     });
     var _nfyFlip=document.querySelector('.nfy-flip');
     if(_nfyFlip)_nfyFlip.innerHTML='<strong>А ось якщо ти хочеш зрозуміти що відбувається</strong> - перестати гадати, перестати робити помилки з паніки і нарешті діяти з розумінням - тоді це саме для тебе. І саме зараз.';
+    // === PAYMENT MODAL UA ===
+    var _pmT=document.getElementById('payModalTitle');
+    if(_pmT)_pmT.textContent='Обери спосіб оплати';
+    var _pmS=document.getElementById('payModalSubtitle');
+    if(_pmS)_pmS.textContent='Миттєвий доступ після оплати';
+    var _pmN=document.getElementById('payModalNote');
+    if(_pmN)_pmN.textContent='🔒 Безпечна оплата · Гарантія повернення 7 днів';
+    var _pmOr=document.querySelector('#payModal .pay-divider span');
+    if(_pmOr)_pmOr.textContent='або';
     const _spT1 = (document.getElementById('heroPrice')||{}).textContent || '';
     window.SP_DATA_UA = [
         { name:'Аня', avatar:'А', tariff:'«Швидкий вихід» за '+_spT1, time:'12 хвилин тому' },
@@ -2419,6 +2457,49 @@ function closeSP() {
 }
 setTimeout(() => { spTimer = setTimeout(showSP, Math.random()*8000+15000); }, 8000);
 
+// ===== PAYMENT MODAL =====
+var _currentGeo = 'DEFAULT';
+var _ppLinks = {
+    DEFAULT: { t1:'https://www.paypal.com/ncp/payment/DS28N8RJZNWVC', t2:'https://www.paypal.com/ncp/payment/T3UHGYKY4PXR8', t3:'https://www.paypal.com/ncp/payment/BWTMR5CGYSEEG' },
+    HIGH:    { t1:'https://www.paypal.com/ncp/payment/DS28N8RJZNWVC', t2:'https://www.paypal.com/ncp/payment/T3UHGYKY4PXR8', t3:'https://www.paypal.com/ncp/payment/BWTMR5CGYSEEG' },
+    EU:      { t1:'https://www.paypal.com/ncp/payment/S6SUVK5T84RXA', t2:'https://www.paypal.com/ncp/payment/C5Y8K3QNXLR8N', t3:'https://www.paypal.com/ncp/payment/GCDZMLJET99X6' },
+};
+function openPayModal(tariff, wfpUrl, btnText) {
+    var modal = document.getElementById('payModal');
+    var wfpBtn = document.getElementById('payWFP');
+    var ppBtn  = document.getElementById('payPP');
+    var divider = document.getElementById('payDivider');
+    if (wfpBtn) wfpBtn.href = wfpUrl;
+    var ppMap = _ppLinks[_currentGeo];
+    if (ppMap && ppMap[tariff]) {
+        if (ppBtn)  { ppBtn.href = ppMap[tariff]; ppBtn.style.display = ''; }
+        if (divider) divider.style.display = '';
+    } else {
+        if (ppBtn)  ppBtn.style.display = 'none';
+        if (divider) divider.style.display = 'none';
+    }
+    if (modal) { modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
+}
+function closePayModal() {
+    var modal = document.getElementById('payModal');
+    if (modal) { modal.classList.remove('active'); document.body.style.overflow = ''; }
+}
+document.addEventListener('DOMContentLoaded', function() {
+    var modal = document.getElementById('payModal');
+    if (modal) modal.addEventListener('click', function(e) { if (e.target === this) closePayModal(); });
+    var tariffMap = { cp1btn:'t1', fp1btn:'t1', heroMiniBtn:'t1', cp2btn:'t2', fp2btn:'t2', cp3btn:'t3', fp3btn:'t3' };
+    Object.keys(tariffMap).forEach(function(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener('click', function(e) {
+            if (_currentGeo === 'UA' || _currentGeo === 'PL') return;
+            e.preventDefault();
+            openPayModal(tariffMap[id], el.href, el.textContent.trim());
+        });
+    });
+});
+
+
 // ===== LIVE COUNTER =====
 (function() {
     var base = 131, el1 = document.getElementById('liveCounter'), el2 = document.getElementById('liveCounterBig');
@@ -2453,6 +2534,34 @@ function closeExitPopup(){
 })();
 
 </script>
+
+<!-- PAYMENT MODAL -->
+<div class="pay-overlay" id="payModal">
+    <div class="pay-modal">
+        <button class="pay-close" onclick="closePayModal()">&times;</button>
+        <div style="font-size:32px;margin-bottom:10px;">💳</div>
+        <h3 class="pay-title" id="payModalTitle">Выбери способ оплаты</h3>
+        <p class="pay-subtitle" id="payModalSubtitle">Мгновенный доступ после оплаты</p>
+        <div class="pay-options">
+            <a href="#" class="pay-btn-wfp" id="payWFP" target="_blank" rel="noopener">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg>
+                WayForPay
+                <div class="pay-icons-row">
+                    <div class="pay-icon-badge" title="Visa"><svg height="13" viewBox="0 0 46 16" xmlns="http://www.w3.org/2000/svg"><text y="13" font-family="Arial,sans-serif" font-size="14" font-weight="900" font-style="italic" fill="#1A1F71">VISA</text></svg></div>
+                    <div class="pay-icon-badge" title="Mastercard"><svg height="18" viewBox="0 0 32 20" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="10" r="7" fill="#EB001B"/><circle cx="20" cy="10" r="7" fill="#F79E1B"/><path d="M16 4.8a7 7 0 0 1 0 10.4A7 7 0 0 1 16 4.8z" fill="#FF5F00"/></svg></div>
+                    <div class="pay-icon-badge" title="Apple Pay"><svg height="16" viewBox="0 0 52 20" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 4c.5-.7 1.2-1.1 1.9-1.2-.1 1.2-.5 2.3-1.1 3C7.7 6.5 7 7 6.2 6.9 6.1 5.7 6.7 4.7 7.5 4zm1.7 1.6c1.1 0 2.2.6 2.9.6.7 0 1.8-.6 3-.6 1.5 0 2.9.9 3.7 2.4-3.2 1.9-2.7 6.7.5 8C18.2 17.4 16.8 20 15 20c-.8 0-1.6-.6-2.5-.6-.9 0-1.8.6-2.5.6-1.9 0-4.3-3.4-5-6.7C4.4 11 5.1 7.8 7 6.4c.7-.5 1.5-.8 2.2-.8z" fill="#000"/><text x="22" y="14" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#000">Pay</text></svg></div>
+                    <div class="pay-icon-badge" title="Google Pay"><svg height="15" viewBox="0 0 58 18" xmlns="http://www.w3.org/2000/svg"><text y="13" font-family="Arial,sans-serif" font-size="12"><tspan fill="#4285F4" font-weight="700">G</tspan><tspan fill="#EA4335" font-weight="700">o</tspan><tspan fill="#FBBC05" font-weight="700">o</tspan><tspan fill="#34A853" font-weight="700">g</tspan><tspan fill="#4285F4" font-weight="700">le</tspan><tspan fill="#000" font-weight="600"> Pay</tspan></text></svg></div>
+                </div>
+            </a>
+            <div class="pay-divider" id="payDivider"><span>или</span></div>
+            <a href="#" class="pay-btn-pp" id="payPP" target="_blank" rel="noopener">
+                <span style="font-size:16px;font-weight:800;letter-spacing:-0.5px;">Pay<span style="color:#009cde;">Pal</span></span>
+                <div class="pay-pp-note">Credit Card · Debit Card · PayPal Balance</div>
+            </a>
+        </div>
+        <p class="pay-note" id="payModalNote">🔒 Безопасная оплата · Гарантия возврата 7 дней</p>
+    </div>
+</div>
 
 <!-- EXIT INTENT POPUP -->
 <div class="exit-overlay" id="exitPopup">
