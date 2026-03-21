@@ -519,7 +519,7 @@
 <div class="sp-popup" id="spPopup">
     <div class="sp-avatar" id="spAvatar">А</div>
     <div class="sp-content">
-        <div class="sp-text"><strong id="spName">Аня</strong> из <strong id="spCity">Кракова</strong> подключила <span id="spTariff">Восстановление</span></div>
+        <div class="sp-text"><strong id="spName">Аня</strong> <span data-i18n="sp_from">из</span> <strong id="spCity">Кракова</strong> <span data-i18n="sp_connected">подключила</span> <span id="spTariff">Восстановление</span></div>
         <div class="sp-tariff" data-i18n="brand_name">Перезагрузка. 7 дней</div>
         <div class="sp-time" id="spTime" data-i18n="sp_time_default">12 минут назад</div>
     </div>
@@ -707,7 +707,7 @@
                 <h2 data-i18n="author_h2">Роман: Я прошёл через этот ад — и создал выход</h2>
                 <p data-i18n="author_p1">«17 лет брака закончились в один день. Я знаю, что такое проснуться в пустой квартире и чувствовать, как в груди выжжена земля. Я знаю режим «Хатико» и бесконечные попытки вернуть то, чего уже нет.</p>
                 <p data-i18n="author_p2">Я не сдался. Вместо этого я похудел на 40 кг, перестроил жизнь с нуля и изучил биохимию мозга — чтобы понять, как <strong>выключить невыносимую боль</strong>.</p>
-                <div class="author-quote">
+                <div class="author-quote" data-i18n="author_quote">
                     Перезагрузка. 7 дней — система, которую я создал сначала для себя, чтобы просто выжить. Она сработала. Потом помогла 130+ ученикам. Теперь помогает тебе вернуть контроль.
                 </div>
                 <div class="author-stat" data-i18n="author_stat">
@@ -781,8 +781,8 @@
                     <p data-i18n="feat_s3_desc">Мозг перестаёт считывать событие как «опасное». Боль уходит за 15 минут.</p>
                 </div>
             </div>
-            <div class="feature-warn">
-                <strong data-i18n="feat_warn">⚠ Внимание:</strong> технику нельзя применять к тем, кого ты хочешь оставить в своей жизни — пути назад к прежним чувствам не будет.
+            <div class="feature-warn" data-i18n="feat_warn_block">
+                <strong>⚠ Внимание:</strong> технику нельзя применять к тем, кого ты хочешь оставить в своей жизни — пути назад к прежним чувствам не будет.
             </div>
         </div>
     </div>
@@ -858,7 +858,7 @@
         <div class="day-cards">
             <div class="day-card fade-in">
                 <div class="day-num-wrap"><span class="day-num" data-i18n="day0_num">День 0</span></div>
-                <div><h3>Экстренный протокол</h3><p>Экстренный модуль для тех, кому больно прямо сейчас. Руководство + Аудио «Экстренное спокойствие». <strong>Первое облегчение в течение часа.</strong></p></div>
+                <div><h3 data-i18n="day0_h">Экстренный протокол</h3><p data-i18n="day0_p">Экстренный модуль для тех, кому больно прямо сейчас. Руководство + Аудио «Экстренное спокойствие». <strong>Первое облегчение в течение часа.</strong></p></div>
             </div>
             <div class="day-card fade-in">
                 <div class="day-num-wrap"><span class="day-num" data-i18n="day1_num">День 1</span></div>
@@ -1167,7 +1167,7 @@
                     <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(155,155,155,0.1);border:1px solid rgba(155,155,155,0.3);padding:5px 14px;border-radius:50px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--light-gray);margin-bottom:14px;" data-i18n="vip_badge">Персональный уровень</div>
                     <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:var(--mid-gray);margin-bottom:8px;" data-i18n="vip_title">Индивидуальное сопровождение</h3>
                     <p style="font-size:14px;color:var(--light-gray);line-height:1.65;margin-bottom:14px;" data-i18n="vip_desc">Личный разбор ситуации, индивидуальная настройка протокола, прямая связь с автором в течение 7 дней.</p>
-                    <ul style="list-style:none;display:flex;flex-direction:column;gap:7px;">
+                    <ul style="list-style:none;display:flex;flex-direction:column;gap:7px;" data-i18n="vip_features">
                         <li style="font-size:13px;color:var(--light-gray);display:flex;align-items:flex-start;gap:8px;"><span style="font-weight:800;flex-shrink:0;">✓</span>Всё из тарифа «Полный контроль»</li>
                         <li style="font-size:13px;color:var(--light-gray);display:flex;align-items:flex-start;gap:8px;"><span style="font-weight:800;flex-shrink:0;">✓</span>Личный разбор твоей ситуации в Telegram</li>
                         <li style="font-size:13px;color:var(--light-gray);display:flex;align-items:flex-start;gap:8px;"><span style="font-weight:800;flex-shrink:0;">✓</span>Индивидуальная корректировка протокола</li>
@@ -1594,6 +1594,7 @@
             who_h2:         'Кому этот протокол<br><em style="color:var(--teal);">жизненно необходим</em>',
             // Author
             author_badge:   'Автор протокола',
+            author_quote: 'Перезагрузка. 7 дней — система, которую я создал сначала для себя, чтобы просто выжить. Она сработала. Потом помогла 130+ ученикам. Теперь помогает тебе вернуть контроль.',
             author_h2:      'Роман: Я прошёл через этот ад — и создал выход',
             author_stat:    '<svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>\n                    130+ участников · 70% облегчения к 3-му дню',
             // Testimonials
@@ -1645,6 +1646,7 @@
             vip_badge:      'Персональный уровень',
             vip_title:      'Индивидуальное сопровождение',
             vip_price_sub:  'за полное сопровождение',
+            vip_features: '<li style="font-size:13px;color:var(--light-gray);display:flex;align-items:flex-start;gap:8px;"><span style="font-weight:800;flex-shrink:0;">✓</span>Всё из тарифа «Полный контроль»</li><li style="font-size:13px;color:var(--light-gray);display:flex;align-items:flex-start;gap:8px;"><span style="font-weight:800;flex-shrink:0;">✓</span>Личный разбор твоей ситуации в Telegram</li><li style="font-size:13px;color:var(--light-gray);display:flex;align-items:flex-start;gap:8px;"><span style="font-weight:800;flex-shrink:0;">✓</span>Индивидуальная корректировка протокола под тебя</li>',
             vip_status_label:'Статус',
             vip_status:     'Мест нет',
             vip_window:     'Ближайшее окно — через 3 недели',
@@ -1692,6 +1694,8 @@
             sticky_label_init: 'Перезагрузка. 7 дней',
             sticky_price_init: 'от $9.99',
             sp_time_default:'12 минут назад',
+            sp_from: 'из',
+            sp_connected: 'подключила',
             sos_features: '<li><strong>«День 0: Экстренный протокол»</strong> — руководство первой помощи за первый час</li><li><strong>Аудио-практика «Экстренное спокойствие»</strong> — 12 минут, голос автора</li><li>Мгновенный доступ на Email</li><li>Доступ навсегда</li>',
             rec_features: '<li><strong>Полный курс 7 дней</strong> — проработка руминаций, привязанности, новая идентичность</li><li><strong>Аудио-практика «Экстренное спокойствие»</strong></li><li><strong>Чек-лист «100 триггеров»</strong> — защита от срывов</li><li>Мгновенный доступ на Email</li><li>Доступ навсегда</li>',
             int_features: '<li><strong>Полный курс 7 дней</strong> — проработка руминаций, привязанности, создание новой идентичности</li><li><strong>«День 0: Экстренный протокол»</strong> — руководство первой помощи</li><li><strong>Аудио-практика «Экстренное спокойствие»</strong> — 12 минут</li><li><strong>Чек-лист «100 триггеров»</strong> — защита от срывов</li><li><strong>Воркбук «Карта новой идентичности»</strong> — пошаговые упражнения для создания себя после разрыва: ценности, роли, образ будущего</li><li><strong>Скрипты перехвата контроля</strong> — разбор 10 честных причин его поведения: от эмоционального блока до стратегической манипуляции</li><li>Приоритетный доступ навсегда</li>',
@@ -1736,7 +1740,7 @@
             feat_s1_title:'01 — Берёшь болезненный эпизод', feat_s1_desc:'Выбираешь самое тяжёлое воспоминание, которое причиняет боль прямо сейчас.',
             feat_s2_title:'02 — Пропускаешь через 3 фильтра', feat_s2_desc:'Применяешь технику «Кинотеатра» — меняешь субмодальности воспоминания.',
             feat_s3_title:'03 — Эмоциональный заряд обнуляется', feat_s3_desc:'Мозг перестаёт считывать событие как «опасное». Боль уходит за 15 минут.',
-            feat_warn: '<strong>⚠ Внимание:</strong> технику нельзя применять к тем, кого ты хочешь оставить в своей жизни — пути назад к прежним чувствам не будет.',
+            feat_warn_block: '<strong>⚠ Внимание:</strong> технику нельзя применять к тем, кого ты хочешь оставить в своей жизни — пути назад к прежним чувствам не будет.',
             // Showcase
             showcase_list_title: 'Комплектация протокола:',
             showcase_l1: '<strong>Руководство «7 дней нейро-перезагрузки»</strong> — концентрат НЛП и нейробиологии, 39 страниц',
@@ -1839,6 +1843,7 @@
             who_h2:         'Кому цей протокол<br><em style="color:var(--teal);">життєво необхідний</em>',
             // Author
             author_badge:   'Автор протоколу',
+            author_quote: 'Перезавантаження. 7 днів — система, яку я створив спочатку для себе, щоб просто вижити. Вона спрацювала. Потім допомогла 130+ учням. Тепер допомагає тобі повернути контроль.',
             author_h2:      'Роман: Я пройшов через це пекло — і створив вихід',
             author_stat:    '<svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>\n                    130+ учасників · 70% полегшення до 3-го дня',
             // Testimonials
@@ -1890,6 +1895,7 @@
             vip_badge:      'Персональний рівень',
             vip_title:      'Індивідуальний супровід',
             vip_price_sub:  'за повний супровід',
+            vip_features: '<li style="font-size:13px;color:var(--light-gray);display:flex;align-items:flex-start;gap:8px;"><span style="font-weight:800;flex-shrink:0;">✓</span>Все з тарифу «Повний контроль»</li><li style="font-size:13px;color:var(--light-gray);display:flex;align-items:flex-start;gap:8px;"><span style="font-weight:800;flex-shrink:0;">✓</span>Особистий розбір твоєї ситуації в Telegram</li><li style="font-size:13px;color:var(--light-gray);display:flex;align-items:flex-start;gap:8px;"><span style="font-weight:800;flex-shrink:0;">✓</span>Індивідуальне коригування протоколу під тебе</li>',
             vip_status_label:'Статус',
             vip_status:     'Місць немає',
             vip_window:     'Найближче вікно — через 3 тижні',
@@ -1937,6 +1943,8 @@
             sticky_label_init: 'Перезавантаження. 7 днів',
             sticky_price_init: 'від 449 грн',
             sp_time_default:'12 хвилин тому',
+            sp_from: 'з',
+            sp_connected: 'підключила',
             sos_features: '<li><strong>«День 0: Екстрений протокол»</strong> — посібник першої допомоги за першу годину</li><li><strong>Аудіо-практика «Екстрений спокій»</strong> — 12 хвилин, голос автора</li><li>Миттєвий доступ на Email</li><li>Доступ назавжди</li>',
             rec_features: '<li><strong>Повний курс 7 днів</strong> — опрацювання румінацій, прив\'язаності, нова ідентичність</li><li><strong>Аудіо-практика «Екстрений спокій»</strong></li><li><strong>Чек-лист «100 тригерів»</strong> — захист від зривів</li><li>Миттєвий доступ на Email</li><li>Доступ назавжди</li>',
             int_features: '<li><strong>Повний курс 7 днів</strong> — опрацювання румінацій, прив\'язаності, створення нової ідентичності</li><li><strong>«День 0: Екстрений протокол»</strong> — посібник першої допомоги</li><li><strong>Аудіо-практика «Екстрений спокій»</strong> — 12 хвилин</li><li><strong>Чек-лист «100 тригерів»</strong> — захист від зривів</li><li><strong>Воркбук «Карта нової ідентичності»</strong> — покрокові вправи для створення себе після розриву: цінності, ролі, образ майбутнього</li><li><strong>Скрипти перехоплення контролю</strong> — розбір 10 чесних причин його поведінки: від емоційного блоку до стратегічної маніпуляції</li><li>Пріоритетний доступ назавжди</li>',
@@ -1944,6 +1952,8 @@
             modal_offer_footer: 'Останнє оновлення: <strong>Березень 2026</strong>',
             modal_privacy_body: '<p><strong>Збір даних:</strong> Email (для доступу та підтримки), ім\'я (опціонально), дані оплати (обробляються платіжною системою).</p><h4>Використання даних</h4><p>Виключно для надання доступу та технічної підтримки. Не передаються третім особам.</p><h4>Захист даних</h4><p>SSL-шифрування, безпечне зберігання, обмежений доступ до персональних даних.</p>',
             sp_time_default:'12 хвилин тому',
+            sp_from: 'з',
+            sp_connected: 'підключила',
             // For You cards
             fy_1: '<strong style="color:var(--teal);display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Розставання</strong>Розрив стався — і біль не відпускає. Думки по колу, немає сил жити в звичайному режимі.',
             fy_2: '<strong style="color:var(--teal);display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Застрягла в минулому</strong>Минули тижні або місяці, а ти все ще там. Щоранку прокидаєшся з тим самим болем.',
@@ -1983,7 +1993,7 @@
             feat_s1_title:'01 — Береш болісний епізод', feat_s1_desc:'Обираєш найважчий спогад, який завдає болю прямо зараз.',
             feat_s2_title:'02 — Пропускаєш через 3 фільтри', feat_s2_desc:'Застосовуєш техніку «Кінотеатру» — змінюєш субмодальності спогаду.',
             feat_s3_title:'03 — Емоційний заряд обнуляється', feat_s3_desc:'Мозок перестає зчитувати подію як «небезпечну». Біль минає за 15 хвилин.',
-            feat_warn: '<strong>⚠ Увага:</strong> техніку не можна застосовувати до тих, кого ти хочеш залишити у своєму житті — шляху назад до колишніх почуттів не буде.',
+            feat_warn_block: '<strong>⚠ Увага:</strong> техніку не можна застосовувати до тих, кого ти хочеш залишити у своєму житті — шляху назад до колишніх почуттів не буде.',
             // Showcase
             showcase_list_title: 'Комплектація протоколу:',
             showcase_l1: '<strong>Посібник «7 днів нейро-перезавантаження»</strong> — концентрат НЛП і нейробіології, 39 сторінок',
