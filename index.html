@@ -385,19 +385,7 @@
             min-height: 52px;
         }
         .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(26,107,114,0.4); }
-
-        /* ===== VIP ANCHOR ===== */
-        .vip-anchor {
-            max-width: 860px; margin: 28px auto 0; text-align: center;
-            padding: 18px 20px; border-top: 1px solid var(--greige-dark);
-        }
-        .vip-anchor p { font-size: 14px; color: var(--mid-gray); line-height: 1.6; }
-        .vip-anchor .vip-status {
-            font-size: 11px; font-weight: 800; text-transform: uppercase;
-            letter-spacing: 1.2px; color: var(--gold);
-        }
-
-        /* ===== SECURITY ===== */
+/* ===== SECURITY ===== */
         .security-box {
             background: rgba(58,138,110,0.06); border: 1px solid rgba(58,138,110,0.2);
             border-radius: 18px; padding: 24px; margin: 32px auto 0; max-width: 860px; text-align: center;
@@ -726,9 +714,9 @@
                     <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
                     130+ участников · 70% облегчения к 3-му дню
                 </div>
-                <div class="live-counter" data-i18n="live_counter">
+                <div class="live-counter">
                     <div class="live-dot"></div>
-                    <span id="liveCounterBig">47</span> человек читают это прямо сейчас
+                    <span id="liveCounterBig">47</span><span data-i18n="live_counter_text"> человек читают это прямо сейчас</span>
                 </div>
             </div>
         </div>
@@ -1178,7 +1166,7 @@
                 <div>
                     <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(155,155,155,0.1);border:1px solid rgba(155,155,155,0.3);padding:5px 14px;border-radius:50px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--light-gray);margin-bottom:14px;" data-i18n="vip_badge">Персональный уровень</div>
                     <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:var(--mid-gray);margin-bottom:8px;" data-i18n="vip_title">Индивидуальное сопровождение</h3>
-                    <p style="font-size:14px;color:var(--light-gray);line-height:1.65;margin-bottom:14px;">Личный разбор ситуации, индивидуальная настройка протокола, прямая связь с автором в течение 7 дней.</p>
+                    <p style="font-size:14px;color:var(--light-gray);line-height:1.65;margin-bottom:14px;" data-i18n="vip_desc">Личный разбор ситуации, индивидуальная настройка протокола, прямая связь с автором в течение 7 дней.</p>
                     <ul style="list-style:none;display:flex;flex-direction:column;gap:7px;">
                         <li style="font-size:13px;color:var(--light-gray);display:flex;align-items:flex-start;gap:8px;"><span style="font-weight:800;flex-shrink:0;">✓</span>Всё из тарифа «Полный контроль»</li>
                         <li style="font-size:13px;color:var(--light-gray);display:flex;align-items:flex-start;gap:8px;"><span style="font-weight:800;flex-shrink:0;">✓</span>Личный разбор твоей ситуации в Telegram</li>
@@ -1189,11 +1177,11 @@
                     <div style="font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--mid-gray);line-height:1;">$100</div>
                     <div style="font-size:12px;color:var(--light-gray);margin-bottom:14px;" data-i18n="vip_price_sub">за полное сопровождение</div>
                     <div style="background:rgba(155,155,155,0.08);border:1px solid rgba(155,155,155,0.25);border-radius:10px;padding:10px 14px;margin-bottom:12px;">
-                        <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--light-gray);">Статус</div>
+                        <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--light-gray);" data-i18n="vip_status_label">Статус</div>
                         <div style="font-size:13px;color:var(--mid-gray);font-weight:600;margin-top:3px;" data-i18n="vip_status">Мест нет</div>
                         <div style="font-size:11px;color:var(--light-gray);margin-top:2px;" data-i18n="vip_window">Ближайшее окно — через 3 недели</div>
                     </div>
-                    <a href="https://t.me/back4heart" target="_blank" style="display:inline-flex;align-items:center;justify-content:center;gap:7px;background:rgba(155,155,155,0.15);border:1px solid rgba(155,155,155,0.3);color:var(--mid-gray);padding:10px 18px;border-radius:50px;font-size:12px;font-weight:600;text-decoration:none;font-family:'Jost',sans-serif;width:100%;box-sizing:border-box;transition:all 0.3s;" onmouseover="this.style.background='rgba(155,155,155,0.25)'" onmouseout="this.style.background='rgba(155,155,155,0.15)'">Лист ожидания →</a>
+                    <a href="https://t.me/back4heart" target="_blank" style="display:inline-flex;align-items:center;justify-content:center;gap:7px;background:rgba(155,155,155,0.15);border:1px solid rgba(155,155,155,0.3);color:var(--mid-gray);padding:10px 18px;border-radius:50px;font-size:12px;font-weight:600;text-decoration:none;font-family:'Jost',sans-serif;width:100%;box-sizing:border-box;transition:all 0.3s;" onmouseover="this.style.background='rgba(155,155,155,0.25)'" onmouseout="this.style.background='rgba(155,155,155,0.15)'" data-i18n="vip_btn">Лист ожидания →</a>
                 </div>
             </div>
         </div>
@@ -1206,7 +1194,7 @@
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 Безопасность платежа
             </h4>
-            <p class="sec-text">Оплата через сертифицированную систему WayForPay. Шифрование AES-256. Данные карт не хранятся.</p>
+            <p class="sec-text" data-i18n="sec_text">Оплата через сертифицированную систему WayForPay. Шифрование AES-256. Данные карт не хранятся.</p>
             <div class="sec-icons">
                 <div class="sec-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/></svg>
@@ -1231,7 +1219,7 @@
         <div style="max-width:720px;margin:0 auto;">
             <span class="section-eyebrow" data-i18n="nfy_eyebrow">Честность прежде всего</span>
             <h2 style="font-size:32px;color:var(--charcoal);margin-bottom:8px;line-height:1.3;" data-i18n="nfy_h2">Кому этот протокол<br><em style="color:var(--gold);">не подойдёт</em></h2>
-            <p style="font-size:15px;color:var(--mid-gray);margin-bottom:28px;line-height:1.65;">Я хочу, чтобы ты приняла осознанное решение. Протокол даёт результат — но только при определённых условиях.</p>
+            <p style="font-size:15px;color:var(--mid-gray);margin-bottom:28px;line-height:1.65;" data-i18n="nfy_intro">Я хочу, чтобы ты приняла осознанное решение. Протокол даёт результат — но только при определённых условиях.</p>
 
             <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:28px;">
 
@@ -1315,9 +1303,9 @@
         <div class="modal-body">
             <p data-i18n="modal_support_sub">Напиши нам — ответим в течение 24 часов:</p>
             <div class="support-links">
-                <a href="https://www.instagram.com/back4heart" target="_blank" class="support-link">
+                <a href="https://www.instagram.com/back4_heart" target="_blank" class="support-link">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    <div><div class="label">Instagram</div><div class="desc">@back4heart</div></div>
+                    <div><div class="label">Instagram</div><div class="desc">@back4_heart</div></div>
                 </a>
                 <a href="https://www.tiktok.com/@back4heart" target="_blank" class="support-link">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
@@ -1707,7 +1695,6 @@
             sos_features: '<li><strong>«День 0: Экстренный протокол»</strong> — руководство первой помощи за первый час</li><li><strong>Аудио-практика «Экстренное спокойствие»</strong> — 12 минут, голос автора</li><li>Мгновенный доступ на Email</li><li>Доступ навсегда</li>',
             rec_features: '<li><strong>Полный курс 7 дней</strong> — проработка руминаций, привязанности, новая идентичность</li><li><strong>Аудио-практика «Экстренное спокойствие»</strong></li><li><strong>Чек-лист «100 триггеров»</strong> — защита от срывов</li><li>Мгновенный доступ на Email</li><li>Доступ навсегда</li>',
             int_features: '<li><strong>Полный курс 7 дней</strong> — проработка руминаций, привязанности, создание новой идентичности</li><li><strong>«День 0: Экстренный протокол»</strong> — руководство первой помощи</li><li><strong>Аудио-практика «Экстренное спокойствие»</strong> — 12 минут</li><li><strong>Чек-лист «100 триггеров»</strong> — защита от срывов</li><li><strong>Воркбук «Карта новой идентичности»</strong> — пошаговые упражнения для создания себя после разрыва: ценности, роли, образ будущего</li><li><strong>Скрипты перехвата контроля</strong> — разбор 10 честных причин его поведения: от эмоционального блока до стратегической манипуляции</li><li>Приоритетный доступ навсегда</li>',
-            vip_features: '<li style="font-size:14px;color:var(--charcoal);display:flex;align-items:flex-start;gap:8px;"><span style="color:var(--success);font-weight:800;flex-shrink:0;">✓</span>Всё из тарифа «Полный контроль»</li><li style="font-size:14px;color:var(--charcoal);display:flex;align-items:flex-start;gap:8px;"><span style="color:var(--success);font-weight:800;flex-shrink:0;">✓</span>Личный разбор твоей ситуации в Telegram</li><li style="font-size:14px;color:var(--charcoal);display:flex;align-items:flex-start;gap:8px;"><span style="color:var(--success);font-weight:800;flex-shrink:0;">✓</span>Индивидуальная корректировка протокола под тебя</li>',
             modal_offer_body: '<p><strong>1. Общие положения</strong></p><p>Настоящий документ является публичной офертой на приобретение цифрового продукта «Перезагрузка. 7 дней».</p><h4>2. Предмет договора</h4><p>Предоставление доступа к цифровому руководству с техниками НЛП и КПТ. Доставка мгновенно после оплаты на Email.</p><h4>3. Стоимость</h4><p>Экстренный: <strong>от $9.99</strong>. Восстановление: <strong>от $17</strong>. Полный контроль: <strong>от $47</strong>. Оплата через WayForPay.</p><h4>4. Гарантия возврата</h4><p>В течение 7 дней после покупки — полный возврат средств по запросу без объяснений.</p><h4>5. Права сторон</h4><p>Исполнитель: предоставить доступ в течение 5 минут. Заказчик: использовать в личных целях, не распространять материалы третьим лицам.</p>',
             modal_offer_footer: 'Последнее обновление: <strong>Март 2026</strong>',
             modal_privacy_body: '<p><strong>Сбор данных:</strong> Email (для доступа и поддержки), имя (опционально), данные оплаты (обрабатываются платёжной системой).</p><h4>Использование данных</h4><p>Исключительно для предоставления доступа и технической поддержки. Не передаются третьим лицам.</p><h4>Защита данных</h4><p>SSL-шифрование, безопасное хранение, ограниченный доступ к персональным данным.</p>',
@@ -1740,8 +1727,6 @@
             // Author
             author_p1: '«17 лет брака закончились в один день. Я знаю, что такое проснуться в пустой квартире и чувствовать, как в груди выжжена земля. Я знаю режим «Хатико» и бесконечные попытки вернуть то, чего уже нет.</p>',
             author_p2: 'Я не сдался. Вместо этого я похудел на 40 кг, перестроил жизнь с нуля и изучил биохимию мозга — чтобы понять, как <strong>выключить невыносимую боль</strong>.</p>',
-            author_quote: 'PROTOCOL: CONTROL — система, которую я создал сначала для себя, чтобы просто выжить. Она сработала. Потом помогла 130+ ученикам. Теперь помогает тебе вернуть контроль.',
-            live_counter: '<div class="live-dot"></div>\n                    <span id="liveCounterBig">47</span> человек читают это прямо сейчас',
             // Inaction list
             inact_l1: '30 бессонных ночей и выжженной энергии',
             inact_l2: '3000 проверок его «онлайн» — ты статист в его жизни',
@@ -1819,6 +1804,12 @@
             exit_title:     'Подожди секунду.',
             exit_body:      'Прямо сейчас твоя нервная система в кортикальном шторме.<br><strong>Через 15 минут после активации протокола — станет легче.</strong>',
             exit_skip:      'Нет, я пока не готова',
+            sec_text: 'Оплата через сертифицированную систему WayForPay. Шифрование AES-256. Данные карт не хранятся.',
+            exit_label: '— специальная цена',
+            exit_cta: 'Запустить протокол →',
+            nfy_intro: 'Я хочу, чтобы ты приняла осознанное решение. Протокол даёт результат — но только при определённых условиях.',
+            vip_desc: 'Личный разбор ситуации, индивидуальная настройка протокола, прямая связь с автором в течение 7 дней.',
+            vip_btn: 'Лист ожидания →',
         },
         uk: {
             // Urgency + Hero
@@ -1949,7 +1940,6 @@
             sos_features: '<li><strong>«День 0: Екстрений протокол»</strong> — посібник першої допомоги за першу годину</li><li><strong>Аудіо-практика «Екстрений спокій»</strong> — 12 хвилин, голос автора</li><li>Миттєвий доступ на Email</li><li>Доступ назавжди</li>',
             rec_features: '<li><strong>Повний курс 7 днів</strong> — опрацювання румінацій, прив\'язаності, нова ідентичність</li><li><strong>Аудіо-практика «Екстрений спокій»</strong></li><li><strong>Чек-лист «100 тригерів»</strong> — захист від зривів</li><li>Миттєвий доступ на Email</li><li>Доступ назавжди</li>',
             int_features: '<li><strong>Повний курс 7 днів</strong> — опрацювання румінацій, прив\'язаності, створення нової ідентичності</li><li><strong>«День 0: Екстрений протокол»</strong> — посібник першої допомоги</li><li><strong>Аудіо-практика «Екстрений спокій»</strong> — 12 хвилин</li><li><strong>Чек-лист «100 тригерів»</strong> — захист від зривів</li><li><strong>Воркбук «Карта нової ідентичності»</strong> — покрокові вправи для створення себе після розриву: цінності, ролі, образ майбутнього</li><li><strong>Скрипти перехоплення контролю</strong> — розбір 10 чесних причин його поведінки: від емоційного блоку до стратегічної маніпуляції</li><li>Пріоритетний доступ назавжди</li>',
-            vip_features: '<li style="font-size:14px;color:var(--charcoal);display:flex;align-items:flex-start;gap:8px;"><span style="color:var(--success);font-weight:800;flex-shrink:0;">✓</span>Все з тарифу «Повний контроль»</li><li style="font-size:14px;color:var(--charcoal);display:flex;align-items:flex-start;gap:8px;"><span style="color:var(--success);font-weight:800;flex-shrink:0;">✓</span>Особистий розбір твоєї ситуації в Telegram</li><li style="font-size:14px;color:var(--charcoal);display:flex;align-items:flex-start;gap:8px;"><span style="color:var(--success);font-weight:800;flex-shrink:0;">✓</span>Індивідуальне коригування протоколу під тебе</li>',
             modal_offer_body: '<p><strong>1. Загальні положення</strong></p><p>Цей документ є публічною офертою на придбання цифрового продукту «Перезавантаження. 7 днів».</p><h4>2. Предмет договору</h4><p>Надання доступу до цифрового посібника з техніками НЛП та КПТ. Доставка миттєво після оплати на Email.</p><h4>3. Вартість</h4><p>Екстрений: <strong>від 449 грн</strong>. Відновлення: <strong>від 790 грн</strong>. Повний контроль: <strong>від 2100 грн</strong>. Оплата через WayForPay.</p><h4>4. Гарантія повернення</h4><p>Протягом 7 днів після покупки — повне повернення коштів на запит без пояснень.</p><h4>5. Права сторін</h4><p>Виконавець: надати доступ протягом 5 хвилин. Замовник: використовувати в особистих цілях, не поширювати матеріали третім особам.</p>',
             modal_offer_footer: 'Останнє оновлення: <strong>Березень 2026</strong>',
             modal_privacy_body: '<p><strong>Збір даних:</strong> Email (для доступу та підтримки), ім\'я (опціонально), дані оплати (обробляються платіжною системою).</p><h4>Використання даних</h4><p>Виключно для надання доступу та технічної підтримки. Не передаються третім особам.</p><h4>Захист даних</h4><p>SSL-шифрування, безпечне зберігання, обмежений доступ до персональних даних.</p>',
@@ -1983,8 +1973,7 @@
             // Author
             author_p1: '«17 років шлюбу закінчилися за один день. Я знаю, що таке прокинутися в порожній квартирі і відчувати, як у грудях випалена земля. Я знаю режим «Хатіко» і нескінченні спроби повернути те, чого вже немає.</p>',
             author_p2: 'Я не здався. Натомість я схуд на 40 кг, відбудував життя з нуля і вивчив біохімію мозку — щоб зрозуміти, як <strong>вимкнути нестерпний біль</strong>.</p>',
-            author_quote: 'Перезавантаження. 7 днів — система, яку я створив спочатку для себе, щоб просто вижити. Вона спрацювала. Потім допомогла 130+ учням. Тепер допомагає тобі повернути контроль.',
-            live_counter: '<div class="live-dot"></div>\n                    <span id="liveCounterBig">47</span> людей читають це прямо зараз',
+            live_counter_text: ' людей читають це прямо зараз',
             // Inaction
             inact_l1: '30 безсонних ночей і випаленої енергії',
             inact_l2: '3000 перевірок його «онлайн» — ти статист у його житті',
@@ -2062,6 +2051,12 @@
             exit_title:     'Зачекай секунду.',
             exit_body:      'Прямо зараз твоя нервова система в кортикальному шторм.<br><strong>Через 15 хвилин після активації протоколу — стане легше.</strong>',
             exit_skip:      'Ні, я поки не готова',
+            sec_text: 'Оплата через сертифіковану систему WayForPay. Шифрування AES-256. Дані карт не зберігаються.',
+            exit_label: '— спеціальна ціна',
+            exit_cta: 'Запустити протокол →',
+            nfy_intro: 'Я хочу, щоб ти прийняла усвідомлене рішення. Протокол дає результат — але лише за певних умов.',
+            vip_desc: 'Особистий розбір ситуації, індивідуальне налаштування протоколу, прямий зв&#x27;язок з автором протягом 7 днів.',
+            vip_btn: 'Лист очікування →',
         }
     };
 
@@ -2266,9 +2261,9 @@
     const stickyBtn    = document.getElementById('stickyBtn');
 
     const tariffState = {
-        sos:   { label: 'Экстренный',      price: '$9.99', link: 'ССЫЛКА_SOS_999' },
-        rec:   { label: 'Восстановление',  price: '$17',   link: 'ССЫЛКА_RECOVERY_17' },
-        intel: { label: 'Полный контроль', price: '$47',   link: 'ССЫЛКА_INTELLIGENCE_47' },
+        sos:   { label: 'Экстренный',      price: '$9.99', link: 'https://secure.wayforpay.com/button/b5466e5a54f82' },
+        rec:   { label: 'Восстановление',  price: '$17',   link: 'https://secure.wayforpay.com/button/bbb175da43cd3' },
+        intel: { label: 'Полный контроль', price: '$47',   link: 'https://secure.wayforpay.com/button/b91848ffb57ac' },
     };
     let activeTariff = null;
 
@@ -2401,9 +2396,9 @@
         <div class="exit-price-row">
             <span class="exit-old">$49</span>
             <span class="exit-new">$17</span>
-            <span class="exit-label">— специальная цена</span>
+            <span class="exit-label" data-i18n="exit_label">— специальная цена</span>
         </div>
-        <a href="#pricing" class="btn-primary exit-btn" onclick="closeExitPopup()">Запустить протокол →</a>
+        <a href="#pricing" class="btn-primary exit-btn" onclick="closeExitPopup()" data-i18n="exit_cta">Запустить протокол →</a>
         <button class="exit-skip" data-i18n="exit_skip" onclick="closeExitPopup()">Нет, я пока не готова</button>
     </div>
 </div>
