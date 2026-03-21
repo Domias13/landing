@@ -262,6 +262,14 @@
         }
         .feature-step strong { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--teal); display: block; margin-bottom: 7px; }
         .feature-step p { font-size: 13px; color: var(--mid-gray); line-height: 1.6; }
+        .feat-gentle {
+            margin-top: 18px; padding: 16px 20px;
+            background: rgba(58,138,110,0.07); border-radius: 14px;
+            border-left: 3px solid var(--success);
+            font-size: 15px; color: var(--charcoal); line-height: 1.7;
+            max-width: 680px; margin-left: auto; margin-right: auto;
+        }
+        .feat-gentle strong { color: var(--teal); }
         .feature-warn {
             background: rgba(201,149,74,0.1); border: 1px solid rgba(201,149,74,0.3);
             border-radius: 12px; padding: 14px 20px; margin-top: 28px;
@@ -504,6 +512,10 @@
         .exit-skip { display: block; margin: 14px auto 0; background: none; border: none; font-size: 12px; color: var(--light-gray); cursor: pointer; text-decoration: underline; font-family: 'Jost', sans-serif; }
         .exit-skip:hover { color: var(--mid-gray); }
 
+        /* ===== AFTER 7 DAYS GRID ===== */
+        @media(max-width:700px) {
+            [style*="grid-template-columns:1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
+        }
         @media(max-width:700px) {
             [style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
             .two-col-grid { grid-template-columns: 1fr !important; }
@@ -545,15 +557,15 @@
 <!-- HERO -->
 <section class="hero" id="top">
     <div class="container">
-        <div class="hero-badge" data-i18n="hero_badge">Научно обоснованный протокол · НЛП + КПТ · 130+ участников</div>
+        <div class="hero-badge" data-i18n="hero_badge">130+ женщин вышли из этой петли · Гарантия возврата 7 дней</div>
         <h1>
             <span class="proto-label" data-i18n="proto_label">Перезагрузка. 7 дней</span>
-            <span data-i18n="hero_h1">Верни себе контроль<br>над своей жизнью<br><em>за 7 дней.</em></span>
+            <span data-i18n="hero_h1">Ты вложила в эти отношения<br>лучшие годы. Пора вложить<br><em>7 дней — в себя.</em></span>
         </h1>
-        <p class="hero-sub" data-i18n="hero_sub"><strong>Нейро-перезагрузка на базе НЛП и КПТ.</strong> Научно обоснованный алгоритм, который переключает тебя из режима зрителя в режим автора. Хватит быть статистом в чужом сценарии.</p>
-        <div class="empathy-box" data-i18n="empathy">Проверяешь его онлайн каждые 15 минут. Не можешь нормально есть и спать. Физически чувствуешь боль в груди. Срываешься и пишешь ему.<br><br><strong>Это не слабость — это кортикальный шторм. И у него есть конкретное решение.</strong></div>
+        <p class="hero-sub" data-i18n="hero_sub">Протокол восстановления для тех, кому уже не остро — но всё равно плохо. Когда прошло уже <strong>полгода, год, два</strong> — а он всё ещё живёт в твоей голове.</p>
+        <div class="empathy-box" data-i18n="empathy">Ты не слабая. Ты просто устала нести это одна — и уже достаточно долго.<br><br>Ты уже не пишешь ему. Уже не проверяешь соцсети каждые 5 минут. Но он всё равно живёт в твоей голове — в 3 часа ночи, за рабочим совещанием, когда видишь пару в кафе.<br><br><strong>Прошло уже достаточно времени. А легче — не стало. Это не твоя вина. И это можно изменить.</strong></div>
         <div class="hero-cta-wrap">
-            <a href="#pricing" class="btn-primary" data-i18n="hero_cta">Запустить Протокол →</a>
+            <a href="#pricing" class="btn-primary" data-i18n="hero_cta">Я хочу наконец выдохнуть →</a>
         </div>
         <div class="trust-row">
             <div class="trust-item" data-i18n="trust1"><div class="trust-dot"></div>Мгновенный доступ на Email</div>
@@ -599,8 +611,12 @@
                     <div style="font-size:14px;color:var(--charcoal);line-height:1.55;" data-i18n="fy_5"><strong style="color:var(--teal);display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Телефон — первое и последнее</strong>Проверяешь его онлайн, его сторис, его аккаунты. День построен вокруг его активности.</div>
                 </div>
                 <div style="background:white;border-radius:14px;padding:16px 20px;display:flex;align-items:flex-start;gap:12px;border:1px solid var(--card-border);box-shadow:var(--shadow-sm);">
-                    <span style="font-size:22px;flex-shrink:0;margin-top:1px;">🕳️</span>
-                    <div style="font-size:14px;color:var(--charcoal);line-height:1.55;" data-i18n="fy_6"><strong style="color:var(--teal);display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Страх будущего</strong>Кажется, что лучшее уже было. Что больше никто и никогда не вызовет таких чувств.</div>
+                    <span style="font-size:22px;flex-shrink:0;margin-top:1px;">🏋️</span>
+                    <div style="font-size:14px;color:var(--charcoal);line-height:1.55;" data-i18n="fy_7"><strong style="color:var(--teal);display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Держишь лицо</strong>На работе — профессионал. Дома — мама и хозяйка. А внутри — пустота. Для других ты держишься. В одиночестве — рассыпаешься.</div>
+                </div>
+                <div style="background:white;border-radius:14px;padding:16px 20px;display:flex;align-items:flex-start;gap:12px;border:1px solid var(--card-border);box-shadow:var(--shadow-sm);">
+                    <span style="font-size:22px;flex-shrink:0;margin-top:1px;">⏰</span>
+                    <div style="font-size:14px;color:var(--charcoal);line-height:1.55;" data-i18n="fy_8"><strong style="color:var(--teal);display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Ждёшь «само пройдёт»</strong>Уже прошло полгода. Или год. Ты знаешь, что это не нормально — но не знаешь, что делать. Просто ждёшь и несёшь.</div>
                 </div>
             </div>
             <div style="margin-top:24px;padding:16px 20px;background:white;border-radius:14px;border-left:3px solid var(--gold);font-size:14px;color:var(--mid-gray);line-height:1.65;" class="fade-in" data-i18n="fy_note">
@@ -649,8 +665,8 @@
             </div>
             <div class="pain-card fade-in">
                 <div class="pain-icon">🎭</div>
-                <div class="pain-title" data-i18n="pain_t2">Потеря субъектности</div>
-                <div class="pain-text" data-i18n="pain_d2">Режим «Хатико». Твоё настроение зависит от того, посмотрел ли он историю. <strong>Ты чувствуешь, как теряешь достоинство — и не можешь выйти из этого круга.</strong></div>
+                <div class="pain-title" data-i18n="pain_t2">Ты стала функцией его настроения</div>
+                <div class="pain-text" data-i18n="pain_d2">Режим «Хатико». Написал — день спасён. Молчит — мир рухнул. <strong>Ты чувствуешь, как теряешь себя — и не можешь выйти из этого круга.</strong></div>
             </div>
             <div class="pain-card fade-in">
                 <div class="pain-icon">🔥</div>
@@ -671,14 +687,21 @@
     </div>
 </section>
 
+<!-- PAIN BREATH - relief moment after pain block -->
+<div style="background:linear-gradient(135deg,var(--teal-pale),var(--greige));padding:22px 20px;text-align:center;border-top:1px solid var(--card-border);border-bottom:1px solid var(--card-border);">
+    <div class="container">
+        <p style="font-size:16px;color:var(--charcoal);max-width:600px;margin:0 auto;line-height:1.7;" data-i18n="pain_breath">Представь: едешь на работу и вдруг понимаешь — <strong style="color:var(--teal);">ты не думала о нём с вечера.</strong> Это возможно. Именно это происходит к 3-му дню алгоритма.</p>
+    </div>
+</div>
+
 <!-- CORTICAL STORM -->
 <section class="storm-sec">
     <div class="container">
         <div class="storm-box fade-in">
-            <span class="storm-label" data-i18n="storm_label">⚠ Кортикальный шторм</span>
-            <h3 data-i18n="storm_h3">То, что ты чувствуешь — это не просто тоска</h3>
-            <p data-i18n="storm_p1">Мозг чувствует игнор как <strong>физическую боль</strong> — это доказанный нейробиологический факт. Твоя нервная система перегружена гормонами стресса. Миндалевидное тело застряло в режиме выживания, заставляя снова и снова прокручивать прошлое.</p>
-            <p data-i18n="storm_p2">Мы не будем «лечить» душу разговорами — мы применим <strong>техники нейропластичности</strong>, чтобы перезагрузить систему и вернуть тебе субъектность. Перезагрузка. 7 дней — это физическое решение.</p>
+            <span class="storm-label" data-i18n="storm_label">Это не слабость. Это физиология.</span>
+            <h3 data-i18n="storm_h3">Почему это не проходит само — даже у сильных женщин?</h3>
+            <p data-i18n="storm_p1">Это не слабость. И не значит, что ты до сих пор его любишь. <strong>Мозг просто не умеет «выключить» привязанность усилием воли</strong> — точно так же, как нельзя усилием воли перестать ощущать холод. Именно поэтому ни сила характера, ни жизненный опыт не помогают. Это физиология — и она поддаётся перенастройке.</p>
+            <p data-i18n="storm_p2">Мы не будем «лечить» душу разговорами — мы применим <strong>техники нейропластичности</strong>, чтобы перезагрузить систему и вернуть тебе себя. <strong>Бережно.</strong> Без принудительного проживания боли заново.</p>
         </div>
     </div>
 </section>
@@ -688,9 +711,9 @@
     <div class="container">
         <h2 class="section-title" style="font-size:36px;text-align:center;margin-bottom:28px;color:var(--charcoal);" data-i18n="who_h2">Кому этот протокол<br><em style="color:var(--teal);">жизненно необходим</em></h2>
         <div class="who-text fade-in" data-i18n="who_text">
-            <p>Для тех, кто <strong>застрял в роли зрителя</strong> в чужом сценарии и не видит выхода.</p>
-            <p>Для тех, кто каждое утро просыпается с мыслью о нём и засыпает, перебирая «что я сделала не так».</p>
-            <p>Для тех, кто понимает: так больше продолжаться не может — и готов взять ответственность за собственную жизнь.</p>
+            <p>Для тех, кто <strong>сильная на людях — но рассыпается дома.</strong> Кто держит работу, детей, родителей — а внутри пустота.</p>
+            <p>Для тех, кому годы жизненного опыта не помогают справиться — и это пугает больше всего. Ты знаешь себя. Ты справлялась со многим. Но именно здесь — нет.</p>
+            <p>Для тех, кто хочет не «забыть и двигаться дальше», а <strong>вернуть себе достоинство и ясность.</strong> Выйти из этого с собой — не без шрамов, но целой.</p>
         </div>
     </div>
 </section>
@@ -706,9 +729,14 @@
                 <div class="author-badge" data-i18n="author_badge">Автор протокола</div>
                 <h2 data-i18n="author_h2">Роман: Я прошёл через этот ад — и создал выход</h2>
                 <p data-i18n="author_p1">«17 лет брака закончились в один день. Я знаю, что такое проснуться в пустой квартире и чувствовать, как в груди выжжена земля. Я знаю режим «Хатико» и бесконечные попытки вернуть то, чего уже нет.</p>
-                <p data-i18n="author_p2">Я не сдался. Вместо этого я похудел на 40 кг, перестроил жизнь с нуля и изучил биохимию мозга — чтобы понять, как <strong>выключить невыносимую боль</strong>.</p>
+                <p data-i18n="author_p2">Я не сдался. Вместо этого я перестроил жизнь с нуля и три года изучал биохимию мозга, НЛП и КПТ — чтобы понять, как <strong>выключить невыносимую боль</strong>. Потом работал с 130+ женщинами — и увидел: у всех одинаковый механизм. И одинаковый выход.</p>
                 <div class="author-quote" data-i18n="author_quote">
                     Перезагрузка. 7 дней — система, которую я создал сначала для себя, чтобы просто выжить. Она сработала. Потом помогла 130+ ученикам. Теперь помогает тебе вернуть контроль.
+                </div>
+                <p style="font-size:14px;color:var(--mid-gray);line-height:1.75;font-style:italic;margin-top:4px;">Боль потери одинакова — вне зависимости от того, кто её переживает. Именно поэтому я понимаю твою ситуацию изнутри: я видел этот механизм в себе и в 130+ женщинах, с которыми работал. У всех он одинаковый. И выход — тоже.</p>
+                <div style="margin-top:18px;background:white;border-radius:14px;padding:16px 20px;border-left:3px solid var(--gold);box-shadow:var(--shadow-sm);">
+                    <p style="font-size:14px;color:var(--charcoal);line-height:1.65;font-style:italic;margin:0;">"Я не верила, что мужчина может это понять. Он понял. Лучше, чем подруги, которые говорили «просто забудь»."</p>
+                    <p style="font-size:12px;color:var(--teal);font-weight:600;margin:8px 0 0;font-style:normal;">— Марина, 41 год, Киев</p>
                 </div>
                 <div class="author-stat" data-i18n="author_stat">
                     <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
@@ -728,6 +756,7 @@
     <div class="container">
         <span class="section-eyebrow" data-i18n="testi_eyebrow">Результаты участниц</span>
         <h2 style="font-size:34px;color:var(--charcoal);line-height:1.2;" data-i18n="testi_h2">Что говорят те, кто<br><em style="color:var(--teal);">прошёл протокол</em></h2>
+        <p style="font-size:15px;color:var(--mid-gray);text-align:center;margin-bottom:24px;max-width:620px;margin-left:auto;margin-right:auto;" data-i18n="testi_cases">«Мы были вместе 11 лет. После развода прошло полгода — я держалась на работе, плакала дома. Подруги говорили "забудь". Психолог брал 80$ в час. На третий день протокола я впервые за полгода поспала без снотворного. На седьмой — поняла, что целый день не думала о нём.»</p>
         <div class="screenshots-grid">
             <div class="screenshot-card fade-in"><img src="https://i.ibb.co/S4q1LCTf/Screenshot-20260304-063607.png" alt="Отзыв 1" loading="lazy"></div>
             <div class="screenshot-card fade-in"><img src="https://i.ibb.co/b5xSCPGY/Screenshot-20260307-080052.png" alt="Отзыв 2" loading="lazy"></div>
@@ -746,13 +775,13 @@
 <section class="inaction-wrap">
     <div class="container">
         <div class="inaction-box fade-in">
-            <h3 data-i18n="inaction_h3">Что ты теряешь за месяц бездействия?</h3>
+            <h3 data-i18n="inaction_h3">Что возвращается за 7 дней</h3>
             <ul class="inaction-list">
-                <li data-i18n="inact_l1">30 бессонных ночей и выжженной энергии</li>
-                <li data-i18n="inact_l2">3000 проверок его «онлайн» — ты статист в его жизни</li>
-                <li data-i18n="inact_l3">Полная потеря самооценки, субъектности и своей идентичности</li>
+                <li data-i18n="inact_l1">30 ночей нормального сна — и снова есть силы на работу, детей, себя</li>
+                <li data-i18n="inact_l2">Энергия, которая была занята им — возвращается тебе</li>
+                <li data-i18n="inact_l3">Первый день, когда ты думаешь о себе — а не о нём</li>
             </ul>
-            <p data-i18n="inaction_p">Каждый день без протокола — это день, когда контроль в чужих руках. Начни сегодня.</p>
+            <p data-i18n="inaction_p">Это не обещание новой жизни через неделю. Это первая критическая точка — когда ты снова начинаешь чувствовать себя собой. <strong>Начни сегодня.</strong></p>
         </div>
     </div>
 </section>
@@ -762,10 +791,11 @@
     <div class="container">
         <div class="feature-box fade-in">
             <div class="feature-icon">🎬📼</div>
-            <h2 data-i18n="feature_h2">Секретный протокол<br><em>«Кинотеатр разума»</em></h2>
-            <p class="desc" data-i18n="feature_desc">Это не медитация. Это прямой взлом визуальной кодировки мозга.</p>
+            <h2 data-i18n="feature_h2">Упражнение<br><em>«Кинотеатр разума»</em></h2>
+            <p class="desc" data-i18n="feature_desc">Это не гипноз, не транс и не эзотерика. Это упражнение с воображением — ты остаёшься в полном контроле всё время.</p>
             <p class="sub-desc">
-                <span data-i18n="feat_body">Большинство пытаются бороться с чувствами — но чувства лишь следствие картинок, которые крутит подсознание. Пока эти «фильмы» яркие и близкие — больно. Мы применим приём из арсенала когнитивной лингвистики, который физически перезаписывает файл с воспоминанием.</span>
+                <span data-i18n="feat_body">Ты сама выбираешь воспоминание, сама управляешь им и сама останавливаешься когда захочешь. Никакого «погружения» и никакого вмешательства в психику. Техника помогает <strong>«отклеить» образ бывшего от физической боли в груди</strong> — после этого мысль о нём остаётся, но перестаёт причинять боль. Работает с любым сроком отношений — от года до 20 лет.</span>
+                <p class="feat-gentle fade-in" data-i18n="feat_gentle">Упражнение занимает 15 минут. Ты читаешь инструкцию и делаешь шаги сама, в своём темпе. Не нужно ничего «отпускать» усилием воли — механизм сработает сам.</p>
             </p>
             <div class="feature-steps">
                 <div class="feature-step">
@@ -774,16 +804,21 @@
                 </div>
                 <div class="feature-step">
                     <strong data-i18n="feat_s2_title">02 — Пропускаешь через 3 фильтра</strong>
-                    <p data-i18n="feat_s2_desc">Применяешь технику «Кинотеатра» — меняешь субмодальности воспоминания.</p>
+                    <p data-i18n="feat_s2_desc">Применяешь технику «Кинотеатра» — убавляешь «громкость» и «яркость» воспоминания, делаешь его блёклым и далёким.</p>
                 </div>
                 <div class="feature-step">
                     <strong data-i18n="feat_s3_title">03 — Эмоциональный заряд обнуляется</strong>
                     <p data-i18n="feat_s3_desc">Мозг перестаёт считывать событие как «опасное». Боль уходит за 15 минут.</p>
                 </div>
             </div>
-            <div class="feature-warn" data-i18n="feat_warn_block">
-                <strong>⚠ Внимание:</strong> технику нельзя применять к тем, кого ты хочешь оставить в своей жизни — пути назад к прежним чувствам не будет.
-            </div>
+            <details style="margin-top:24px;max-width:680px;margin-left:auto;margin-right:auto;">
+                <summary style="cursor:pointer;font-size:13px;color:var(--mid-gray);list-style:none;display:flex;align-items:center;gap:6px;">
+                    <span style="color:var(--gold);">▸</span> Важное уточнение перед применением
+                </summary>
+                <div class="feature-warn" style="margin-top:10px;" data-i18n="feat_warn_block">
+                    <strong>⚠ Внимание:</strong> технику нельзя применять к тем, кого ты хочешь оставить в своей жизни — пути назад к прежним чувствам не будет.
+                </div>
+            </details>
         </div>
     </div>
 </section>
@@ -802,10 +837,10 @@
                 <ul>
                     <li data-i18n="showcase_l1"><strong>Руководство «7 дней нейро-перезагрузки»</strong> — концентрат НЛП и нейробиологии, 39 страниц</li>
                     <li data-i18n="showcase_l2"><strong>«День 0: Экстренный протокол»</strong> — руководство первой помощи, первое облегчение в течение часа</li>
-                    <li data-i18n="showcase_l3"><strong>Аудио-практика «Экстренное спокойствие»</strong> — 12 минут, голос автора, мгновенный выход из кортикального шторма</li>
+                    <li data-i18n="showcase_l3"><strong>Аудио-практика «Экстренное спокойствие»</strong> — 12 минут, голос автора, первое облегчение в течение часа</li>
                     <li data-i18n="showcase_l4"><strong>Чек-лист «100 триггеров»</strong> — твоя защита от срывов и режима «Хатико»</li>
                     <li data-i18n="showcase_l5"><strong>Воркбук «Карта новой идентичности»</strong> — пошаговые упражнения для создания себя после разрыва (в тарифе «Полный контроль»)</li>
-                    <li data-i18n="showcase_l6"><strong>Скрипты перехвата контроля</strong> — готовые алгоритмы возврата субъектности (в тарифе «Полный контроль»)</li>
+                    <li data-i18n="showcase_l6"><strong>Скрипты перехвата контроля</strong> — готовые заготовки «что ответить / как реагировать» в 12 типовых ситуациях. Не нужно придумывать — просто выбери подходящий (в тарифе «Полный контроль»)</li>
                     <li data-i18n="showcase_l7"><strong>Мгновенный доступ на Email</strong> — читать можно сразу</li>
                 </ul>
             </div>
@@ -817,7 +852,7 @@
 <section style="padding:64px 0;background:var(--greige);">
     <div class="container">
         <span class="section-eyebrow" data-i18n="ba_eyebrow">Что меняется</span>
-        <h2 style="font-size:34px;color:var(--charcoal);margin-bottom:8px;line-height:1.2;" data-i18n="ba_h2">Одна неделя.<br><em style="color:var(--teal);">Два разных состояния.</em></h2>
+        <h2 style="font-size:34px;color:var(--charcoal);margin-bottom:8px;line-height:1.2;" data-i18n="ba_h2">Одна неделя —<br><em style="color:var(--teal);">годы жизни назад.</em></h2>
         <p style="font-size:16px;color:var(--mid-gray);max-width:520px;line-height:1.65;margin-bottom:36px;" data-i18n="ba_sub">Это не про «он вернётся». Это про то, что ты перестаёшь быть заложницей своей нервной системы.</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:32px;" class="two-col-grid">
             <div style="border-radius:20px;padding:28px 26px;background:rgba(201,149,74,0.07);border:1.5px solid rgba(201,149,74,0.3);">
@@ -844,7 +879,7 @@
             </div>
         </div>
         <div class="fade-in" style="text-align:center;">
-            <a href="#pricing" class="btn-primary" data-i18n="ba_cta">Хочу это состояние →</a>
+            <a href="#pricing" class="btn-primary" data-i18n="ba_cta">Хочу так засыпать →</a>
             <p style="font-size:13px;color:var(--mid-gray);margin-top:12px;" data-i18n="ba_note">Мгновенный доступ · Гарантия возврата 7 дней</p>
         </div>
     </div>
@@ -853,8 +888,9 @@
 <!-- CONTENT DAYS -->
 <section class="content-sec">
     <div class="container">
-        <span class="section-eyebrow" data-i18n="days_eyebrow">Структура протокола</span>
-        <h2 style="font-size:34px;color:var(--charcoal);line-height:1.2;" data-i18n="days_h2">7 дней — <em style="color:var(--teal);">7 шагов к контролю</em></h2>
+        <span class="section-eyebrow" data-i18n="days_eyebrow">Структура алгоритма</span>
+        <h2 style="font-size:34px;color:var(--charcoal);line-height:1.2;" data-i18n="days_h2">Первая критическая точка —<br><em style="color:var(--teal);">за 7 дней</em></h2>
+        <p style="font-size:16px;color:var(--mid-gray);max-width:580px;line-height:1.65;margin-bottom:8px;" data-i18n="days_sub">Мы не обещаем новую жизнь через неделю. Мы обещаем: через 7 дней ты сможешь нормально спать, есть — и перестанешь плакать на работе. Это честно. И этого достаточно, чтобы начать.</p>
         <div class="day-cards">
             <div class="day-card fade-in">
                 <div class="day-num-wrap"><span class="day-num" data-i18n="day0_num">День 0</span></div>
@@ -870,7 +906,7 @@
             </div>
             <div class="day-card fade-in">
                 <div class="day-num-wrap"><span class="day-num" data-i18n="day3_num">День 3</span></div>
-                <div><h3 data-i18n="day3_h">Эмоциональная дистанция</h3><p data-i18n="day3_p">Эффект «старого кино». Воспоминания останутся, но станут плоскими и блёклыми. <strong>Кортикальный шторм начинает стихать.</strong></p></div>
+                <div><h3 data-i18n="day3_h">Эмоциональная дистанция</h3><p data-i18n="day3_p">Эффект «старого кино». Воспоминания останутся, но станут плоскими и блёклыми. <strong>Боль начинает стихать.</strong></p></div>
             </div>
             <div class="day-card fade-in">
                 <div class="day-num-wrap"><span class="day-num" data-i18n="day4_num">День 4</span></div>
@@ -882,11 +918,40 @@
             </div>
             <div class="day-card fade-in">
                 <div class="day-num-wrap"><span class="day-num" data-i18n="day6_num">День 6</span></div>
-                <div><h3 data-i18n="day6_h">Дешифратор мужского молчания</h3><p data-i18n="day6_p">Ты узнаешь истинную причину его тишины. Страх сменится пониманием — и перестанешь искать ответы там, где их нет.</p></div>
+                <div><h3 data-i18n="day6_h">Освобождение от вопроса «почему»</h3><p data-i18n="day6_p">Ты перестаёшь искать объяснения его поведению. Не потому что смирилась — а потому что вопрос перестаёт быть важным. Это освобождает больше, чем любой ответ.</p></div>
             </div>
             <div class="day-card fade-in">
                 <div class="day-num-wrap"><span class="day-num" data-i18n="day7_num">День 7</span></div>
-                <div><h3 data-i18n="day7_h">Точка невозврата</h3><p data-i18n="day7_p">Финальный протокол «перерезает» остатки эмоциональной пуповины. <strong>Ты выходишь другим человеком — обновлённым, цельным, с контролем в руках.</strong></p></div>
+                <div><h3 data-i18n="day7_h">Точка опоры</h3><p data-i18n="day7_p">Финальный шаг создаёт внутреннюю опору — место, к которому ты можешь вернуться в любой момент. <strong>Ты выходишь обновлённой, цельной — со своей жизнью в своих руках.</strong></p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- AFTER 7 DAYS -->
+<section style="padding:56px 0;background:var(--greige);">
+    <div class="container">
+        <div style="max-width:760px;margin:0 auto;text-align:center;">
+            <span class="section-eyebrow" data-i18n="after7_eyebrow">А что потом?</span>
+            <h2 style="font-size:34px;color:var(--charcoal);margin-bottom:16px;line-height:1.25;" data-i18n="after7_h2">7 дней — это фундамент.<br><em style="color:var(--teal);">Не просто облегчение — иммунитет.</em></h2>
+            <p style="font-size:17px;color:var(--mid-gray);line-height:1.75;margin-bottom:28px;max-width:640px;margin-left:auto;margin-right:auto;" data-i18n="after7_p">После протокола ты не просто «перестанешь думать о нём». Ты выйдешь с новой настройкой нервной системы: больше никто не сможет так просто забрать твой контроль над собой. Это экономит годы терапии — и возвращает годы жизни.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;" class="fade-in two-col-grid">
+                <div style="background:white;border-radius:16px;padding:22px 20px;border:1px solid var(--card-border);box-shadow:var(--shadow-sm);">
+                    <div style="font-size:28px;margin-bottom:10px;">🧠</div>
+                    <div style="font-weight:700;color:var(--charcoal);margin-bottom:6px;font-size:15px;" data-i18n="after7_c1_title">Нейронная перестройка</div>
+                    <div style="font-size:14px;color:var(--mid-gray);line-height:1.6;" data-i18n="after7_c1_text">Мозг перестаёт считывать его как «опасность». Руминации уходят — не подавляются, а исчезают.</div>
+                </div>
+                <div style="background:white;border-radius:16px;padding:22px 20px;border:1px solid var(--card-border);box-shadow:var(--shadow-sm);">
+                    <div style="font-size:28px;margin-bottom:10px;">⚡</div>
+                    <div style="font-weight:700;color:var(--charcoal);margin-bottom:6px;font-size:15px;" data-i18n="after7_c2_title">Энергия возвращается</div>
+                    <div style="font-size:14px;color:var(--mid-gray);line-height:1.6;" data-i18n="after7_c2_text">Силы, которые уходили на внутренний диалог, возвращаются тебе — на работу, детей, саму себя.</div>
+                </div>
+                <div style="background:white;border-radius:16px;padding:22px 20px;border:1px solid var(--card-border);box-shadow:var(--shadow-sm);">
+                    <div style="font-size:28px;margin-bottom:10px;">🛡️</div>
+                    <div style="font-weight:700;color:var(--charcoal);margin-bottom:6px;font-size:15px;" data-i18n="after7_c3_title">Иммунитет к боли</div>
+                    <div style="font-size:14px;color:var(--mid-gray);line-height:1.6;" data-i18n="after7_c3_text">Больше никто не получит такой власти над твоим состоянием. Твой возраст — это твоё преимущество, не приговор.</div>
+                </div>
             </div>
         </div>
     </div>
@@ -936,7 +1001,7 @@
                     <span data-i18n="faq_q5">Я хочу просто отпустить и забыть — это подойдёт?</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
                 </div>
-                <div class="faq-a" data-i18n="faq_a5">Да, именно для этого протокол и создан. Он не про «вернуть его» — он про восстановление твоей нервной системы, субъектности и идентичности. Отпустить с достоинством — это один из ключевых результатов.</div>
+                <div class="faq-a" data-i18n="faq_a5">Да, именно для этого алгоритм и создан. Он не про «вернуть его» — он про восстановление твоей нервной системы, твоего «я» и ощущения собственной жизни. Отпустить с достоинством — это один из ключевых результатов.</div>
             </div>
 
             <div class="faq-item fade-in">
@@ -956,7 +1021,7 @@
     <div class="container">
         <p style="font-family:'Playfair Display',serif;font-size:26px;color:white;margin-bottom:24px;line-height:1.35;max-width:600px;margin-left:auto;margin-right:auto;" data-i18n="anchor_q">Ты уже знаешь что сделаешь<br><em style="font-style:italic;color:var(--gold-light);">сегодня вечером?</em></p>
         <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
-            <a href="#pricing" style="padding:14px 28px;border-radius:50px;font-size:15px;font-weight:600;text-decoration:none;font-family:'Jost',sans-serif;transition:all 0.3s;background:white;color:var(--teal);" data-i18n="anchor_yes">Да — хочу выбрать тариф →</a>
+            <a href="#pricing" style="padding:14px 28px;border-radius:50px;font-size:15px;font-weight:600;text-decoration:none;font-family:'Jost',sans-serif;transition:all 0.3s;background:white;color:var(--teal);" data-i18n="anchor_yes">Да — хочу наконец выдохнуть →</a>
             <a href="#pricing" style="padding:14px 28px;border-radius:50px;font-size:15px;font-weight:600;text-decoration:none;font-family:'Jost',sans-serif;transition:all 0.3s;background:rgba(255,255,255,0.12);color:white;border:1.5px solid rgba(255,255,255,0.3);" data-i18n="anchor_no">Нет — именно поэтому мне нужен протокол</a>
         </div>
         <p style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:16px;" data-i18n="anchor_note">Оба варианта ведут к одному результату: ты наконец берёшь контроль.</p>
@@ -1025,7 +1090,7 @@
             <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:8px;" data-i18n="warn_label">💡 Важно понять до начала</div>
             <div style="font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--charcoal);margin-bottom:14px;" data-i18n="warn_title">Есть одна вещь, которую нервная система не прощает — и это меняет всё.</div>
             <p style="font-size:15px;color:var(--charcoal);line-height:1.75;margin-bottom:10px;" data-i18n="warn_p1">Есть паттерны поведения, которые в остром состоянии кажутся правильными — но биохимически закрепляют боль. Есть техники, которые выглядят «слишком просто» — но перезаписывают нейронные связи за 15 минут. Всё это внутри протокола.</p>
-            <p style="font-size:15px;color:var(--mid-gray);line-height:1.75;font-style:italic;" data-i18n="warn_p2">Одно предупреждение: <strong style="color:var(--teal);font-style:normal;">если применишь протокол — ты изменишься.</strong> Не «станет легче». Именно изменишься. Будь к этому готова.</p>
+            <p style="font-size:15px;color:var(--mid-gray);line-height:1.75;font-style:italic;" data-i18n="warn_p2">Приятное предупреждение: после 7 дней ты удивишься, насколько легче стало. Это не магия — это нейробиология. Просто будь готова к тому, что твой мозг наконец <strong style="color:var(--teal);font-style:normal;">перестанет работать против тебя.</strong></p>
         </div>
     </div>
 </section>
@@ -1036,8 +1101,8 @@
     <div style="max-width:660px;margin:20px auto 0;background:white;border:2px solid var(--success);border-radius:18px;padding:20px 26px;display:flex;align-items:center;gap:18px;box-shadow:0 4px 20px rgba(58,138,110,0.12);">
         <div style="font-size:36px;flex-shrink:0;">🛡️</div>
         <div>
-            <strong style="display:block;font-size:16px;color:var(--charcoal);margin-bottom:4px;" data-i18n="guarantee_strong">Гарантия возврата 7 дней — без объяснений</strong>
-            <span style="font-size:14px;color:var(--mid-gray);line-height:1.5;" data-i18n="guarantee_text">Если через неделю ты не почувствуешь разницы в своём состоянии — просто напиши в Telegram @back4heart. Верну деньги полностью. Никаких форм, никаких объяснений.</span>
+            <strong style="display:block;font-size:16px;color:var(--charcoal);margin-bottom:4px;" data-i18n="guarantee_strong">Моё личное обязательство — Роман</strong>
+            <span style="font-size:14px;color:var(--mid-gray);line-height:1.5;" data-i18n="guarantee_text">Если через 7 дней не почувствуешь разницы — напиши одно слово в Telegram @back4heart. Я верну деньги без вопросов. Это не политика возврата. Это моё личное обязательство.</span>
         </div>
     </div>
 </div>
@@ -1047,7 +1112,7 @@
     <div class="container">
         <div class="fp-header fade-in">
             <span class="section-eyebrow" data-i18n="pricing_eyebrow">Выбери уровень протокола</span>
-            <h2 data-i18n="pricing_h2">Активировать<br>Перезагрузка. 7 дней</h2>
+            <h2 data-i18n="pricing_h2">Выбери свою стадию.<br><em style="color:var(--teal);font-style:italic;">Начни сегодня.</em></h2>
             <p data-i18n="pricing_sub">Все тарифы включают мгновенный доступ после оплаты</p>
         </div>
 
@@ -1063,8 +1128,9 @@
 
             <!-- SOS -->
             <div class="fp-card fade-in">
-                <h3 data-i18n="card_sos_title">Экстренный</h3>
-                <p class="fp-sub" data-i18n="card_sos_sub">Экстренный модуль для тех, кому больно прямо сейчас</p>
+                <div style="text-align:center;margin-bottom:14px;font-size:13px;color:var(--mid-gray);background:var(--greige);border-radius:8px;padding:7px 12px;line-height:1.4;">Боль острая → <strong style="color:var(--charcoal);">прямо сейчас</strong><br><span style="font-size:11px;color:var(--light-gray);">Разрыв — до 2 недель назад</span></div>
+                <h3 data-i18n="card_sos_title">Мне больно прямо сейчас</h3>
+                <p class="fp-sub" data-i18n="card_sos_sub">Для тех, кто не может дождаться утра. Первое облегчение — в течение часа.</p>
                 <ul class="fp-features" data-i18n="sos_features">
                     <li><strong>«День 0: Экстренный протокол»</strong> — руководство первой помощи за первый час</li>
                     <li><strong>Аудио-практика «Экстренное спокойствие»</strong> — 12 минут, голос автора</li>
@@ -1087,16 +1153,16 @@
                             </div>
                         </label>
                     </div>
-                    <a href="https://secure.wayforpay.com/button/b5466e5a54f82" class="btn-cta" id="sosBuyBtn">Получить экстренный доступ →</a>
+                    <a href="https://secure.wayforpay.com/button/b5466e5a54f82" class="btn-cta" id="sosBuyBtn">Начать восстановление →</a>
                 </div>
                 <p class="fp-note" data-i18n="fp_note">📧 Мгновенный доступ на Email</p>
-            </div>
-
-            <!-- RECOVERY (POPULAR) -->
+                <p style="font-size:12px;color:var(--success);text-align:center;margin-top:6px;font-weight:500;">🛡️ Не подошло — верну деньги. Одно слово в Telegram.</p>
+            </div>            <!-- RECOVERY (POPULAR) -->
             <div class="fp-card popular fade-in">
                 <div class="fp-popular-badge" data-i18n="popular_badge">⚡ Выбор 85% участниц</div>
-                <h3 data-i18n="card_rec_title">Восстановление</h3>
-                <p class="fp-sub" data-i18n="card_rec_sub">Полный протокол восстановления субъектности</p>
+                <div style="text-align:center;margin-bottom:14px;font-size:13px;color:var(--mid-gray);background:var(--teal-pale);border-radius:8px;padding:7px 12px;line-height:1.4;margin-top:6px;">Прошли месяцы, легче не стало → <strong style="color:var(--teal);">мой вариант</strong><br><span style="font-size:11px;color:var(--teal);opacity:0.7;">Прошло больше месяца, а легче не стало</span></div>
+                <h3 data-i18n="card_rec_title">Мне плохо уже давно</h3>
+                <p class="fp-sub" data-i18n="card_rec_sub">Для тех, кому уже не остро — но всё равно плохо. Хочу наконец выспаться и думать о своей жизни, а не о нём.</p>
                 <ul class="fp-features" data-i18n="rec_features">
                     <li><strong>Полный курс 7 дней</strong> — проработка руминаций, привязанности, новая идентичность</li>
                     <li><strong>Аудио-практика «Экстренное спокойствие»</strong></li>
@@ -1120,15 +1186,17 @@
                             </div>
                         </label>
                     </div>
-                    <a href="https://secure.wayforpay.com/button/bbb175da43cd3" class="btn-cta" id="recoveryBuyBtn">Запустить Восстановление — $17 →</a>
+                    <a href="https://secure.wayforpay.com/button/bbb175da43cd3" class="btn-cta" id="recoveryBuyBtn">Хочу вернуть себе себя — $17 →</a>
                 </div>
                 <p class="fp-note" data-i18n="fp_note2">📧 Мгновенный доступ на Email</p>
+                <p style="font-size:12px;color:var(--success);text-align:center;margin-top:6px;font-weight:500;">🛡️ Не подошло — верну деньги. Одно слово в Telegram.</p>
             </div>
 
             <!-- INTELLIGENCE -->
             <div class="fp-card fade-in">
-                <h3 data-i18n="card_int_title">Полный контроль</h3>
-                <p class="fp-sub" data-i18n="card_int_sub">Полный арсенал: курс + мужская психология + скрипты контроля</p>
+                <div style="text-align:center;margin-bottom:14px;font-size:13px;color:var(--mid-gray);background:var(--greige);border-radius:8px;padding:7px 12px;line-height:1.4;">Хочу разобраться в себе полностью → <strong style="color:var(--charcoal);">всё включено</strong><br><span style="font-size:11px;color:var(--light-gray);">Хочу понять себя, а не только его</span></div>
+                <h3 data-i18n="card_int_title">Я хочу полностью изменить себя</h3>
+                <p class="fp-sub" data-i18n="card_int_sub">Полный арсенал + <strong style="color:var(--teal);">готовые скрипты</strong>: что ответить, как реагировать — в любой ситуации</p>
                 <ul class="fp-features" data-i18n="int_features">
                     <li><strong>Полный курс 7 дней</strong> — проработка руминаций, привязанности, создание новой идентичности</li>
                     <li><strong>«День 0: Экстренный протокол»</strong> — руководство первой помощи</li>
@@ -1154,9 +1222,10 @@
                             </div>
                         </label>
                     </div>
-                    <a href="https://secure.wayforpay.com/button/b91848ffb57ac" class="btn-cta" id="intBuyBtn">Активировать полный контроль — $47 →</a>
+                    <a href="https://secure.wayforpay.com/button/b91848ffb57ac" class="btn-cta" id="intBuyBtn">Забрать полный доступ — $47 →</a>
                 </div>
                 <p class="fp-note" data-i18n="fp_note3">📧 Мгновенный доступ на Email</p>
+                <p style="font-size:12px;color:var(--success);text-align:center;margin-top:6px;font-weight:500;">🛡️ Не подошло — верну деньги. Одно слово в Telegram.</p>
             </div>
         </div>
 
@@ -1272,9 +1341,9 @@
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>
                 Гарантия возврата 7 дней
             </div>
-            <h2 data-i18n="final_h2">Верни себе <em>контроль</em><br>прямо сейчас</h2>
-            <p data-i18n="final_sub">Выбери уровень протокола — и начни нейро-перезагрузку</p>
-            <a href="#pricing" class="btn-primary" data-i18n="final_cta">Выбрать протокол →</a>
+            <h2 data-i18n="final_h2">Ты заслуживаешь<br><em>наконец выдохнуть.</em></h2>
+            <p data-i18n="final_sub">7 дней — и он перестанет занимать твою голову. Выбери свой уровень и начни сегодня. Проект <strong>Back4Heart</strong> — экосистема восстановления после разрыва, которой доверяют 130+ женщин.</p>
+            <a href="#pricing" class="btn-primary" data-i18n="final_cta">Хочу наконец выдохнуть →</a>
             <div class="final-trust">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 <span data-i18n="final_trust">Мгновенный доступ · Безопасная оплата · Поддержка 24/7</span>
@@ -1403,9 +1472,9 @@
                 forever: 'Миттєвий доступ на Email',
                 sticky_default: 'від 449 грн',
                 sticky_label: 'Перезавантаження. 7 днів',
-                btn_sos:   'Отримати екстрений доступ →',
-                btn_rec:   'Запустити Відновлення — 790 грн →',
-                btn_int:   'Активувати Повний контроль — 2100 грн →',
+                btn_sos:   'Почати відновлення →',
+                btn_rec:   'Хочу повернути себе собі — 790 грн →',
+                btn_int:   'Забрати повний доступ — 2100 грн →',
                 bump_sos_title: 'Гайд «Заборонені дії»',
                 bump_sos_desc:  '10 речей, які не можна робити в перші 48 годин — щоб не втратити гідність',
                 bump_rec_title: 'Відео «Кінотеатр розуму»',
@@ -1443,9 +1512,9 @@
                 forever: 'Мгновенный доступ на Email',
                 sticky_default: 'от 449 грн',
                 sticky_label: 'Перезагрузка. 7 дней',
-                btn_sos:   'Получить экстренный доступ →',
-                btn_rec:   'Запустить Восстановление — 790 грн →',
-                btn_int:   'Активировать полный контроль — 2100 грн →',
+                btn_sos:   'Начать восстановление →',
+                btn_rec:   'Хочу вернуть себе себя — 790 грн →',
+                btn_int:   'Забрать полный доступ — 2100 грн →',
                 bump_sos_title: 'Гайд «Запрещённые действия»',
                 bump_sos_desc:  '10 вещей, которые нельзя делать в первые 48 часов — чтобы не потерять достоинство',
                 bump_rec_title: 'Видео «Кинотеатр разума»',
@@ -1483,9 +1552,9 @@
                 forever: 'Мгновенный доступ на Email',
                 sticky_default: 'от 9.99 €',
                 sticky_label: 'Перезагрузка. 7 дней',
-                btn_sos:   'Получить экстренный доступ →',
-                btn_rec:   'Запустить Восстановление — 17 € →',
-                btn_int:   'Активировать полный контроль — 45 € →',
+                btn_sos:   'Начать восстановление →',
+                btn_rec:   'Хочу вернуть себе себя — 17 € →',
+                btn_int:   'Забрать полный доступ — 45 € →',
                 bump_sos_title: 'Гайд «Запрещённые действия»',
                 bump_sos_desc:  '10 вещей, которые нельзя делать в первые 48 часов — чтобы не потерять достоинство',
                 bump_rec_title: 'Видео «Кинотеатр разума»',
@@ -1523,9 +1592,9 @@
                 forever: 'Мгновенный доступ на Email',
                 sticky_default: 'от $9.99',
                 sticky_label: 'Перезагрузка. 7 дней',
-                btn_sos:   'Получить экстренный доступ →',
-                btn_rec:   'Запустить Восстановление — $17 →',
-                btn_int:   'Активировать полный контроль — $47 →',
+                btn_sos:   'Начать восстановление →',
+                btn_rec:   'Хочу вернуть себе себя — $17 →',
+                btn_int:   'Забрать полный доступ — $47 →',
                 bump_sos_title: 'Гайд «Запрещённые действия»',
                 bump_sos_desc:  '10 вещей, которые нельзя делать в первые 48 часов — чтобы не потерять достоинство',
                 bump_rec_title: 'Видео «Кинотеатр разума»',
@@ -1548,7 +1617,16 @@
                 rec_bump:   'https://secure.wayforpay.com/button/bd0eb269151d2',
                 intel:      'https://secure.wayforpay.com/button/b91848ffb57ac',
                 intel_bump: 'https://secure.wayforpay.com/button/b4788081efbfa',
-            }
+            },
+            after7_eyebrow: 'А что потом?',
+            after7_h2: '7 дней — это фундамент.<br><em style="color:var(--teal);">Не просто облегчение — иммунитет.</em>',
+            after7_p: 'После алгоритма ты не просто «перестанешь думать о нём». Ты выйдешь с новой настройкой нервной системы: больше никто не сможет так просто забрать твой покой. Это экономит годы терапии — и возвращает годы жизни.',
+            after7_c1_title: 'Нейронная перестройка',
+            after7_c1_text: 'Мозг перестаёт считывать его как «опасность». Руминации уходят — не подавляются, а исчезают.',
+            after7_c2_title: 'Энергия возвращается',
+            after7_c2_text: 'Силы, которые уходили на внутренний диалог, возвращаются тебе — на работу, детей, саму себя.',
+            after7_c3_title: 'Иммунитет к боли',
+            after7_c3_text: 'Больше никто не получит такой власти над твоим состоянием. Твой возраст — это твоё преимущество, не приговор.',
         }
     };
 
@@ -1570,12 +1648,12 @@
             // Urgency + Hero
             urgency:        '⚡ Специальная цена активна до конца недели — <span class="ub-price">верни контроль прямо сейчас</span>',
             hook:           '👇 Твоя нервная система перегружена — это не метафора, это нейробиология.<br><strong>Прочитай 30 секунд — это про тебя.</strong>',
-            hero_badge:     'Научно обоснованный протокол · НЛП + КПТ · 130+ участников',
+            hero_badge:     '130+ женщин вышли из этой петли · Гарантия возврата 7 дней',
             proto_label:    'Перезагрузка. 7 дней',
-            hero_h1:        'Верни себе контроль<br>над своей жизнью<br><em>за 7 дней.</em>',
-            hero_sub:       '<strong>Нейро-перезагрузка на базе НЛП и КПТ.</strong> Научно обоснованный алгоритм, который переключает тебя из режима зрителя в режим автора. Хватит быть статистом в чужом сценарии.',
-            empathy:        'Проверяешь его онлайн каждые 15 минут. Не можешь нормально есть и спать. Физически чувствуешь боль в груди. Срываешься и пишешь ему.<br><br><strong>Это не слабость — это кортикальный шторм. И у него есть конкретное решение.</strong>',
-            hero_cta:       'Запустить Протокол →',
+            hero_h1:        'Ты вложила в эти отношения<br>лучшие годы. Пора вложить<br><em>7 дней — в себя.</em>',
+            hero_sub:       'Протокол восстановления для тех, кому уже не остро — но всё равно плохо. Когда прошло уже <strong>полгода, год, два</strong> — а он всё ещё живёт в твоей голове.',
+            empathy:        'Ты не слабая. Ты просто устала нести это одна — и уже достаточно долго.<br><br>Ты уже не пишешь ему. Уже не проверяешь соцсети каждые 5 минут. Но он всё равно живёт в твоей голове — в 3 часа ночи, за рабочим совещанием, когда видишь пару в кафе.<br><br><strong>Прошло уже достаточно времени. А легче — не стало. Это не твоя вина. И это можно изменить.</strong>',
+            hero_cta:       'Я хочу наконец выдохнуть →',
             trust1:         '<div class="trust-dot"></div>Мгновенный доступ на Email',
             trust2:         '<div class="trust-dot"></div>Гарантия возврата 7 дней',
             trust3:         '<div class="trust-dot"></div>130+ участниц с результатом',
@@ -1590,6 +1668,7 @@
             // Pain
             pain_eyebrow:   'Скажи честно',
             pain_h2:        'Тебе знакомо это?',
+            pain_breath:    'Представь: едешь на работу и вдруг понимаешь — <strong style="color:var(--teal);">ты не думала о нём с вечера.</strong> Это возможно. Именно это происходит к 3-му дню алгоритма.',
             // Who needs
             who_h2:         'Кому этот протокол<br><em style="color:var(--teal);">жизненно необходим</em>',
             // Author
@@ -1601,11 +1680,11 @@
             testi_eyebrow:  'Результаты участниц',
             testi_h2:       'Что говорят те, кто<br><em style="color:var(--teal);">прошёл протокол</em>',
             // Inaction
-            inaction_h3:    'Что ты теряешь за месяц бездействия?',
-            inaction_p:     'Каждый день без протокола — это день, когда контроль в чужих руках. Начни сегодня.',
+            inaction_h3:    'Что возвращается за 7 дней',
+            inaction_p:     'Это не обещание новой жизни через неделю. Это первая критическая точка — когда ты снова начинаешь чувствовать себя собой. <strong>Начни сегодня.</strong>',
             // Feature
-            feature_h2:     'Секретный протокол<br><em>«Кинотеатр разума»</em>',
-            feature_desc:   'Это не медитация. Это прямой взлом визуальной кодировки мозга.',
+            feature_h2:     'Упражнение<br><em>«Кинотеатр разума»</em>',
+            feature_desc:   'Это не гипноз, не транс и не эзотерика. Это упражнение с воображением — ты остаёшься в полном контроле всё время.',
             // Showcase
             showcase_eyebrow: 'Сразу после оплаты',
             showcase_h2:    'Вот что ты<br><em style="color:var(--teal);">получаешь при активации</em>',
@@ -1613,8 +1692,9 @@
             ba_eyebrow:     'Что меняется',
             ba_h2:          'Одна неделя.<br><em style="color:var(--teal);">Два разных состояния.</em>',
             // Days
-            days_eyebrow:   'Структура протокола',
-            days_h2:        '7 дней — <em style="color:var(--teal);">7 шагов к контролю</em>',
+            days_eyebrow:   'Структура алгоритма',
+            days_h2:        'Первая критическая точка —<br><em style="color:var(--teal);">за 7 дней</em>',
+            days_sub:       'Мы не обещаем новую жизнь через неделю. Мы обещаем: через 7 дней ты сможешь нормально спать, есть — и перестанешь плакать на работе. Это честно. И этого достаточно, чтобы начать.',
             // FAQ
             faq_eyebrow:    'Частые вопросы',
             faq_h2:         'Что тебя<br><em style="color:var(--teal);">останавливает?</em>',
@@ -1632,12 +1712,12 @@
             step2:          '<span class="fp-step-num">2</span> Вводишь Email',
             step3:          '<span class="fp-step-num">3</span> Получаешь доступ',
             // Cards
-            card_sos_title: 'Экстренный',
+            card_sos_title: 'Мне больно прямо сейчас',
             card_sos_sub:   'Экстренный модуль для тех, кому больно прямо сейчас',
             popular_badge:  '⚡ Выбор 85% участниц',
-            card_rec_title: 'Восстановление',
-            card_rec_sub:   'Полный протокол восстановления субъектности',
-            card_int_title: 'Полный контроль',
+            card_rec_title: 'Мне плохо уже давно',
+            card_rec_sub:   'Для тех, кому уже не остро — но всё равно плохо. Хочу наконец выспаться и думать о своей жизни.',
+            card_int_title: 'Я хочу полностью изменить себя',
             card_int_sub:   'Полный арсенал: курс + мужская психология + скрипты контроля',
             fp_note:        '📧 Мгновенный доступ на Email',
             fp_note2:       '📧 Мгновенный доступ на Email',
@@ -1655,9 +1735,9 @@
             email_warn:     '⚠ Убедись, что Email введён верно — именно на него система мгновенно отправит доступ к протоколу',
             // Final
             guarantee_badge:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>\n                Гарантия возврата 7 дней',
-            final_h2:       'Верни себе <em>контроль</em><br>прямо сейчас',
-            final_sub:      'Выбери уровень протокола — и начни нейро-перезагрузку',
-            final_cta:      'Выбрать протокол →',
+            final_h2:       'Ты заслуживаешь<br><em>наконец выдохнуть.</em>',
+            final_sub:      '7 дней — и он перестанет занимать твою голову. Выбери свой уровень и начни сегодня. Проект <strong>Back4Heart</strong> — экосистема восстановления после разрыва, которой доверяют 130+ женщин.',
+            final_cta:      'Хочу наконец выдохнуть →',
             final_trust:    'Мгновенный доступ · Безопасная оплата · Поддержка 24/7',
             // Before/After
             ba_now:   '😔 Сейчас',
@@ -1677,7 +1757,7 @@
             warn_label: '💡 Важно понять до начала',
             warn_title: 'Есть одна вещь, которую нервная система не прощает — и это меняет всё.',
             warn_p1: 'Есть паттерны поведения, которые в остром состоянии кажутся правильными — но биохимически закрепляют боль. Есть техники, которые выглядят «слишком просто» — но перезаписывают нейронные связи за 15 минут. Всё это внутри протокола.</p>',
-            warn_p2: 'Одно предупреждение: <strong style="color:var(--teal);font-style:normal;">если применишь протокол — ты изменишься.</strong> Не «станет легче». Именно изменишься. Будь к этому готова.</p>',
+            warn_p2: 'Приятное предупреждение: после 7 дней ты удивишься, насколько легче стало. Это не магия — это нейробиология. Просто будь готова к тому, что твой мозг наконец <strong style="color:var(--teal);font-style:normal;">перестанет работать против тебя.</strong>',
             // NFY descriptions
             nfy_d1: 'Протокол направлен на восстановление <em style="color:var(--teal);font-style:normal;font-weight:600;">тебя</em>, а не на манипуляции с другим человеком. Если цель — заставить его вернуться любой ценой, это не то, что здесь происходит.',
             nfy_d2: 'Протокол работает — но требует от 15 до 30 минут ежедневной практики. Если ты не готова выделить это время, результата не будет.',
@@ -1709,60 +1789,64 @@
             fy_4: '<strong style="color:var(--teal);display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Руминации</strong>Прокручиваешь одни и те же сцены, фразы, моменты. Понимаешь что это бессмысленно — но остановить не можешь.',
             fy_5: '<strong style="color:var(--teal);display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Телефон — первое и последнее</strong>Проверяешь его онлайн, его сторис, его аккаунты. День построен вокруг его активности.',
             fy_6: '<strong style="color:var(--teal);display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Страх будущего</strong>Кажется, что лучшее уже было. Что больше никто и никогда не вызовет таких чувств.',
+            fy_7: '<strong style="color:var(--teal);display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Держишь лицо</strong>На работе — профессионал. Дома — мама и хозяйка. А внутри — пустота. Для других ты держишься. В одиночестве — рассыпаешься.',
+            fy_8: '<strong style="color:var(--teal);display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Ждёшь «само пройдёт»</strong>Уже прошло полгода. Или год. Ты знаешь, что это не нормально — но не знаешь, что делать. Просто ждёшь и несёшь.',
             fy_note: '<strong style="color:var(--charcoal);">Не нашла свою ситуацию?</strong> Протокол содержит техники для всех стадий — от острой боли в первые сутки до хронической «фоновой» тоски спустя месяцы. Твоя ситуация там есть.',
             // Pult
             pult_c1: '<strong>Написал</strong> — тебе легче',
             pult_c2: '<strong>Молчит</strong> — мир рушится',
             pult_c3: '<strong>Увидела его Stories</strong> — сердце в пятки',
-            pult_conclusion: 'Это не слабость — это нормальная реакция перегруженной нервной системы. Мозг не может остановиться, пока не получит ответ. <strong style="color:var(--teal);">Протокол перезагружает систему — и возвращает контроль тебе.</strong>',
+            pult_conclusion: 'Ты справляешься со всем — с работой, детьми, родителями. Ты устала справляться с этим одна. <strong style="color:var(--teal);">Протокол не требует от тебя ещё одного усилия. Он просто делает то, что воля сделать не может.</strong>',
             // Pain
             pain_t1: 'Ментальная жвачка (Руминация)', pain_d1: 'Бесконечный внутренний диалог. Ты часами прокручиваешь одни и те же фразы. <strong>Понимаешь, что это глупо — но остановиться не можешь.</strong>',
-            pain_t2: 'Потеря субъектности', pain_d2: 'Режим «Хатико». Твоё настроение зависит от того, посмотрел ли он историю. <strong>Ты чувствуешь, как теряешь достоинство — и не можешь выйти из этого круга.</strong>',
+            pain_t2: 'Ты стала функцией его настроения', pain_d2: 'Режим «Хатико». Написал — день спасён. Молчит — мир рухнул. <strong>Ты чувствуешь, как теряешь себя — и не можешь выйти из этого круга.</strong>',
             pain_t3: 'Физическое истощение', pain_d3: 'Ощущение «выжженной земли». Просыпаешься уже уставшей. <strong>Физический спазм в груди</strong> — это не метафора, это нейробиология.',
             pain_t4: 'Социальная изоляция', pain_d4: 'Друзьям уже надоело слушать. Ты врёшь, что стало лучше. Внутри — вакуум, который ты заполняешь едой или бесконечным скроллингом.',
             pain_t5: 'Страх за будущее', pain_d5: '«Лучшее уже позади». Тебе кажется, что никто больше не вызовет таких чувств. <strong>Этот страх удерживает тебя в роли зрителя.</strong>',
             // Storm
-            storm_label: '⚠ Кортикальный шторм',
-            storm_h3: 'То, что ты чувствуешь — это не просто тоска',
-            storm_p1: 'Мозг чувствует игнор как <strong>физическую боль</strong> — это доказанный нейробиологический факт.',
-            storm_p2: 'Мы не будем «лечить» душу разговорами — мы применим <strong>техники нейропластичности</strong>, чтобы перезагрузить систему и вернуть тебе субъектность. Перезагрузка. 7 дней — это физическое решение.',
+            storm_label: 'Это не слабость. Это физиология.',
+            storm_h3: 'Почему это не проходит само — даже у сильных женщин?',
+            storm_p1: 'Это не слабость. И не значит, что ты до сих пор его любишь. <strong>Мозг просто не умеет «выключить» привязанность усилием воли</strong> — точно так же, как нельзя усилием воли перестать ощущать холод. Именно поэтому ни сила характера, ни жизненный опыт не помогают. Это физиология — и она поддаётся перенастройке.',
+            storm_p2: 'Мы не будем «лечить» душу разговорами — мы применим <strong>техники нейропластичности</strong>, чтобы перезагрузить систему и вернуть тебе себя. <strong>Бережно.</strong> Без принудительного проживания боли заново.',
             // Who
-            who_text: '<p style="margin-bottom: 16px;">Для тех, кто <strong>застрял в роли зрителя</strong> в чужом сценарии и не видит выхода.</p><p style="margin-bottom: 16px;">Для тех, кто каждое утро просыпается с мыслью о нём и засыпает, перебирая «что я сделала не так».</p><p>Для тех, кто понимает: так больше продолжаться не может — и готов взять ответственность за собственную жизнь.</p>',
+            who_text: '<p style="margin-bottom: 16px;">Для тех, кто <strong>сильная на людях — но рассыпается дома.</strong> Кто держит работу, детей, родителей — а внутри пустота.</p><p style="margin-bottom: 16px;">Для тех, кому годы жизненного опыта не помогают справиться — и это пугает больше всего. Ты знаешь себя. Ты справлялась со многим. Но именно здесь — нет.</p><p>Для тех, кто хочет не «забыть и двигаться дальше», а <strong>вернуть себе достоинство и ясность.</strong> Выйти из этого с собой — не без шрамов, но целой.</p>',
             // Author
             author_p1: '«17 лет брака закончились в один день. Я знаю, что такое проснуться в пустой квартире и чувствовать, как в груди выжжена земля. Я знаю режим «Хатико» и бесконечные попытки вернуть то, чего уже нет.</p>',
-            author_p2: 'Я не сдался. Вместо этого я похудел на 40 кг, перестроил жизнь с нуля и изучил биохимию мозга — чтобы понять, как <strong>выключить невыносимую боль</strong>.</p>',
+            author_p2: 'Я не сдался. Вместо этого я перестроил жизнь с нуля и три года изучал биохимию мозга, НЛП и КПТ — чтобы понять, как <strong>выключить невыносимую боль</strong>. Потом работал с 130+ женщинами — и увидел: у всех одинаковый механизм. И одинаковый выход.</p>',
             // Inaction list
-            inact_l1: '30 бессонных ночей и выжженной энергии',
-            inact_l2: '3000 проверок его «онлайн» — ты статист в его жизни',
-            inact_l3: 'Полная потеря самооценки, субъектности и своей идентичности',
+            inact_l1: '30 ночей нормального сна — и снова есть силы на работу, детей, себя',
+            inact_l2: 'Энергия, которая была занята им — возвращается тебе',
+            inact_l3: 'Первый день, когда ты думаешь о себе — а не о нём',
             // Feature
-            feat_body: 'Большинство пытаются бороться с чувствами — но чувства лишь следствие картинок, которые крутит подсознание. Пока эти «фильмы» яркие и близкие — больно. Мы применим приём из арсенала когнитивной лингвистики, который физически перезаписывает файл с воспоминанием.',
-            feat_s1_title:'01 — Берёшь болезненный эпизод', feat_s1_desc:'Выбираешь самое тяжёлое воспоминание, которое причиняет боль прямо сейчас.',
-            feat_s2_title:'02 — Пропускаешь через 3 фильтра', feat_s2_desc:'Применяешь технику «Кинотеатра» — меняешь субмодальности воспоминания.',
-            feat_s3_title:'03 — Эмоциональный заряд обнуляется', feat_s3_desc:'Мозг перестаёт считывать событие как «опасное». Боль уходит за 15 минут.',
+            feat_body: 'Ты сама выбираешь воспоминание, сама управляешь им и сама останавливаешься когда захочешь. Никакого «погружения» и никакого вмешательства в психику. Техника помогает <strong>«отклеить» образ бывшего от физической боли в груди</strong> — после этого мысль о нём остаётся, но перестаёт причинять боль. Работает с любым сроком отношений — от года до 20 лет.',
+            feat_s1_title:'01 — Выбираешь эпизод', feat_s1_desc:'Берёшь воспоминание, которое сейчас причиняет боль. Ты полностью контролируешь этот выбор.',
+            feat_s2_title:'02 — Меняешь его «настройки»', feat_s2_desc:'Применяешь технику «Кинотеатра» — убавляешь «громкость» и «яркость» воспоминания, делаешь его блёклым и далёким.',
+            feat_s3_title:'03 — Боль уходит', feat_s3_desc:'Мозг перестаёт считывать событие как угрозу. Воспоминание остаётся — но перестаёт жечь.',
+            feat_gentle: 'Упражнение занимает 15 минут. Ты читаешь инструкцию и делаешь шаги сама, в своём темпе. Не нужно ничего «отпускать» усилием воли — механизм сработает сам.',
+            testi_cases: '«Мы были вместе 11 лет. После развода прошло полгода — я держалась на работе, плакала дома. Подруги говорили "забудь". Психолог брал 80$ в час. На третий день протокола я впервые за полгода поспала без снотворного. На седьмой — поняла, что целый день не думала о нём.»',
             feat_warn_block: '<strong>⚠ Внимание:</strong> технику нельзя применять к тем, кого ты хочешь оставить в своей жизни — пути назад к прежним чувствам не будет.',
             // Showcase
             showcase_list_title: 'Комплектация протокола:',
             showcase_l1: '<strong>Руководство «7 дней нейро-перезагрузки»</strong> — концентрат НЛП и нейробиологии, 39 страниц',
             showcase_l2: '<strong>«День 0: Экстренный протокол»</strong> — руководство первой помощи, первое облегчение в течение часа',
-            showcase_l3: '<strong>Аудио-практика «Экстренное спокойствие»</strong> — 12 минут, голос автора, мгновенный выход из кортикального шторма',
+            showcase_l3: '<strong>Аудио-практика «Экстренное спокойствие»</strong> — 12 минут, голос автора, первое облегчение в течение часа',
             showcase_l4: '<strong>Чек-лист «100 триггеров»</strong> — твоя защита от срывов и режима «Хатико»',
             showcase_l5: '<strong>Воркбук «Карта новой идентичности»</strong> — пошаговые упражнения для создания себя после разрыва (в тарифе «Полный контроль»)',
-            showcase_l6: '<strong>Скрипты перехвата контроля</strong> — готовые алгоритмы возврата субъектности (в тарифе «Полный контроль»)',
+            showcase_l6: '<strong>Скрипты перехвата контроля</strong> — готовые заготовки «что ответить / как реагировать» в 12 типовых ситуациях. Не нужно придумывать — просто выбери подходящий (в тарифе «Полный контроль»)',
             showcase_l7: '<strong>Мгновенный доступ на Email</strong> — читать можно сразу',
             // Before/After
             ba_sub: 'Это не про «он вернётся». Это про то, что ты перестаёшь быть заложницей своей нервной системы.',
-            ba_cta: 'Хочу это состояние →',
+            ba_cta: 'Хочу так засыпать →',
             ba_note: 'Мгновенный доступ · Гарантия возврата 7 дней',
             // Days
             day0_num:'День 0', day0_h:'Экстренный протокол', day0_p:'SOS-модуль для тех, кому больно прямо сейчас. Руководство + Аудио «Экстренное спокойствие». <strong>Первое облегчение в течение часа.</strong>',
             day1_num:'День 1', day1_h:'Свободный вдох', day1_p:'Первый день без «кома в горле». Ты научишься отключать физическую реакцию на мысли о нём. <strong>Боль в груди утихнет.</strong>',
             day2_num:'День 2', day2_h:'Проработка руминаций', day2_p:'Остановка бесконечного внутреннего диалога. Твой фокус вернётся с «него» на «себя». <strong>Возвращение ощущения собственной важности.</strong>',
-            day3_num:'День 3', day3_h:'Эмоциональная дистанция', day3_p:'Эффект «старого кино». Воспоминания останутся, но станут плоскими и блёклыми. <strong>Кортикальный шторм начинает стихать.</strong>',
+            day3_num:'День 3', day3_h:'Эмоциональная дистанция', day3_p:'Эффект «старого кино». Воспоминания останутся, но станут плоскими и блёклыми. <strong>Боль начинает стихать.</strong>',
             day4_num:'День 4', day4_h:'Работа с привязанностью', day4_p:'Разрыв нейронных связей привязанности. Ты перестанешь крутить сценарии «а что, если бы...». <strong>Засыпание без таблеток и слёз.</strong>',
             day5_num:'День 5', day5_h:'Новая идентичность', day5_p:'Создание внутреннего переключателя уверенности. <strong>Ты перестаёшь быть зрителем — становишься автором.</strong>',
             day6_num:'День 6', day6_h:'Дешифратор мужского молчания', day6_p:'Ты узнаешь истинную причину его тишины. Страх сменится пониманием — и перестанешь искать ответы там, где их нет.',
-            day7_num:'День 7', day7_h:'Точка невозврата', day7_p:'Финальный протокол «перерезает» остатки эмоциональной пуповины. <strong>Ты выходишь другим человеком — обновлённым, цельным, с контролем в руках.</strong>',
+            day7_num:'День 7', day7_h:'Точка опоры', day7_p:'Финальный шаг создаёт внутреннюю опору — место, к которому ты можешь вернуться в любой момент. <strong>Ты выходишь обновлённой, цельной — со своей жизнью в своих руках.</strong>',
             // FAQ
             faq_q1:'А вдруг это не сработает в моей ситуации?',
             faq_a1:'Именно поэтому есть гарантия возврата 7 дней — без вопросов. Если в течение недели ты не почувствуешь разницы в своём состоянии, я верну деньги полностью. Ты ничем не рискуешь.</div>',
@@ -1773,12 +1857,12 @@
             faq_q4:'Когда я получу доступ после оплаты?',
             faq_a4:'Мгновенно — в течение 5 минут на Email. Проверь папку «Спам» если письмо не пришло. Если через 15 минут ничего нет — напиши в Telegram @back4heart.</div>',
             faq_q5:'Я хочу просто отпустить и забыть — это подойдёт?',
-            faq_a5:'Да, именно для этого протокол и создан. Он не про «вернуть его» — он про восстановление твоей нервной системы, субъектности и идентичности. Отпустить с достоинством — это один из ключевых результатов.</div>',
+            faq_a5:'Да, именно для этого алгоритм и создан. Он не про «вернуть его» — он про восстановление твоей нервной системы, твоего «я» и ощущения собственной жизни. Отпустить с достоинством — это один из ключевых результатов.',
             faq_q6:'У меня особый случай — вдруг мне не подойдёт?',
             faq_a6:'Тариф «Полный контроль» включает Скрипты перехвата контроля — адаптивные техники под разные ситуации. Если хочешь разбор именно своего случая — запишись в лист ожидания на индивидуальное сопровождение через @back4heart.</div>',
             // Anchor
             anchor_q: 'Ты уже знаешь что сделаешь<br><em style="font-style:italic;color:var(--gold-light);">сегодня вечером?</em>',
-            anchor_yes: 'Да — хочу выбрать тариф →',
+            anchor_yes: 'Да — хочу наконец выдохнуть →',
             anchor_no: 'Нет — именно поэтому мне нужен протокол',
             anchor_note: 'Оба варианта ведут к одному результату: ты наконец берёшь контроль.',
             // After purchase
@@ -1788,8 +1872,8 @@
             invest_sub: 'Ты уже потратила больше — просто на потерянную продуктивность, еду которую не чувствуешь, сон которого нет. И за всё это ты не получаешь выход.',
             // Pre-pricing
             pre_pricing_p: 'Работает <strong style="color:var(--charcoal);">если боль острая или хроническая.</strong> Работает <strong style="color:var(--charcoal);">сразу после разрыва</strong> и <strong style="color:var(--charcoal);">через месяцы после него.</strong> Работает <strong style="color:var(--charcoal);">если хочешь отпустить</strong> или <strong style="color:var(--charcoal);">восстановить себя.</strong>',
-            guarantee_strong: 'Гарантия возврата 7 дней — без объяснений',
-            guarantee_text: 'Если через неделю ты не почувствуешь разницы в своём состоянии — просто напиши в Telegram @back4heart. Верну деньги полностью. Никаких форм, никаких объяснений.',
+            guarantee_strong: 'Моё личное обязательство — Роман',
+            guarantee_text: 'Если через 7 дней не почувствуешь разницы — напиши одно слово в Telegram @back4heart. Я верну деньги без вопросов. Это не политика возврата. Это моё личное обязательство.',
             // Card features
             li_forever: 'Доступ навсегда',
             li_email: 'Мгновенный доступ на Email',
@@ -1806,7 +1890,7 @@
             footer_privacy: 'Политика конфиденциальности',
             footer_copy: '© 2026 Перезагрузка. 7 дней. Все права защищены.',
             exit_title:     'Подожди секунду.',
-            exit_body:      'Прямо сейчас твоя нервная система в кортикальном шторме.<br><strong>Через 15 минут после активации протокола — станет легче.</strong>',
+            exit_body:      'Прямо сейчас тебе тяжело. Это нормально.<br><strong>Через 15 минут после начала — станет легче.</strong>',
             exit_skip:      'Нет, я пока не готова',
             sec_text: 'Оплата через сертифицированную систему WayForPay. Шифрование AES-256. Данные карт не хранятся.',
             exit_label: '— специальная цена',
@@ -1814,17 +1898,27 @@
             nfy_intro: 'Я хочу, чтобы ты приняла осознанное решение. Протокол даёт результат — но только при определённых условиях.',
             vip_desc: 'Личный разбор ситуации, индивидуальная настройка протокола, прямая связь с автором в течение 7 дней.',
             vip_btn: 'Лист ожидания →',
+
+            after7_eyebrow: 'А что потом?',
+            after7_h2: '7 дней — это фундамент.<br><em style="color:var(--teal);">Не просто облегчение — иммунитет.</em>',
+            after7_p: 'После протокола ты не просто «перестанешь думать о нём». Ты выйдешь с новой настройкой нервной системы: больше никто не сможет так просто забрать твой контроль над собой. Это экономит годы терапии — и возвращает годы жизни.',
+            after7_c1_title: 'Нейронная перестройка',
+            after7_c1_text: 'Мозг перестаёт считывать его как «опасность». Руминации уходят — не подавляются, а исчезают.',
+            after7_c2_title: 'Энергия возвращается',
+            after7_c2_text: 'Силы, которые уходили на внутренний диалог, возвращаются тебе — на работу, детей, саму себя.',
+            after7_c3_title: 'Иммунитет к боли',
+            after7_c3_text: 'Больше никто не получит такой власти над твоим состоянием. Твой возраст — это твоё преимущество, не приговор.',
         },
         uk: {
             // Urgency + Hero
             urgency:        '⚡ Спеціальна ціна діє до кінця тижня — <span class="ub-price">поверни контроль прямо зараз</span>',
             hook:           '👇 Твоя нервова система перевантажена — це не метафора, це нейробіологія.<br><strong>Прочитай 30 секунд — це про тебе.</strong>',
-            hero_badge:     'Науково обґрунтований протокол · НЛП + КПТ · 130+ учасників',
+            hero_badge:     '130+ жінок вийшли з цієї петлі · Гарантія повернення 7 днів',
             proto_label:    'Перезавантаження. 7 днів',
-            hero_h1:        'Повернись до контролю<br>над своїм життям<br><em>за 7 днів.</em>',
-            hero_sub:       '<strong>Нейро-перезавантаження на базі НЛП та КПТ.</strong> Науково обґрунтований алгоритм, який перемикає тебе з режиму глядача в режим автора. Досить бути статистом у чужому сценарії.',
-            empathy:        'Перевіряєш його онлайн кожні 15 хвилин. Не можеш нормально їсти і спати. Фізично відчуваєш біль у грудях. Зриваєшся і пишеш йому.<br><br><strong>Це не слабкість — це кортикальний шторм. І у нього є конкретне рішення.</strong>',
-            hero_cta:       'Запустити Протокол →',
+            hero_h1:        'Ти вклала в ці стосунки<br>найкращі роки. Час вкласти<br><em>7 днів — у себе.</em>',
+            hero_sub:       'Протокол відновлення для тих, кому вже не гостро — але все одно погано. Коли минуло вже <strong>пів року, рік, два</strong> — а він все ще живе в твоїй голові.',
+            empathy:        'Ти не слабка. Ти просто втомилася нести це одна — і вже досить довго.<br><br>Ти вже не пишеш йому. Вже не перевіряєш соцмережі кожні 5 хвилин. Але він все одно живе в твоїй голові — о 3 ночі, на робочій нараді, коли бачиш пару в кафе.<br><br><strong>Вже минуло досить часу. А легше — не стало. Це не твоя вина. І це можна змінити.</strong>',
+            hero_cta:       'Я хочу нарешті видихнути →',
             trust1:         '<div class="trust-dot"></div>Миттєвий доступ на Email',
             trust2:         '<div class="trust-dot"></div>Гарантія повернення 7 днів',
             trust3:         '<div class="trust-dot"></div>130+ учасниць з результатом',
@@ -1839,6 +1933,7 @@
             // Pain
             pain_eyebrow:   'Скажи чесно',
             pain_h2:        'Тобі знайоме це?',
+            pain_breath:    'Уяви: їдеш на роботу і раптом розумієш — <strong style="color:var(--teal);">ти не думала про нього з вечора.</strong> Це можливо. Саме це відбувається до 3-го дня алгоритму.',
             // Who needs
             who_h2:         'Кому цей протокол<br><em style="color:var(--teal);">життєво необхідний</em>',
             // Author
@@ -1850,11 +1945,11 @@
             testi_eyebrow:  'Результати учасниць',
             testi_h2:       'Що кажуть ті, хто<br><em style="color:var(--teal);">пройшов протокол</em>',
             // Inaction
-            inaction_h3:    'Що ти втрачаєш за місяць бездіяльності?',
-            inaction_p:     'Кожен день без протоколу — це день, коли контроль у чужих руках. Починай сьогодні.',
+            inaction_h3:    'Що повертається за 7 днів',
+            inaction_p:     'Це не обіцянка нового життя через тиждень. Це перша критична точка — коли ти знову починаєш відчувати себе собою. <strong>Починай сьогодні.</strong>',
             // Feature
-            feature_h2:     'Секретний протокол<br><em>«Кінотеатр розуму»</em>',
-            feature_desc:   'Це не медитація. Це прямий злам візуального кодування мозку.',
+            feature_h2:     'Вправа<br><em>«Кінотеатр розуму»</em>',
+            feature_desc:   'Це не гіпноз, не транс і не езотерика. Це вправа з уявою — ти залишаєшся в повному контролі весь час.',
             // Showcase
             showcase_eyebrow: 'Відразу після оплати',
             showcase_h2:    'Ось що ти<br><em style="color:var(--teal);">отримуєш при активації</em>',
@@ -1862,8 +1957,9 @@
             ba_eyebrow:     'Що змінюється',
             ba_h2:          'Один тиждень.<br><em style="color:var(--teal);">Два різних стани.</em>',
             // Days
-            days_eyebrow:   'Структура протоколу',
-            days_h2:        '7 днів — <em style="color:var(--teal);">7 кроків до контролю</em>',
+            days_eyebrow:   'Структура алгоритму',
+            days_h2:        'Перша критична точка —<br><em style="color:var(--teal);">за 7 днів</em>',
+            days_sub:       'Ми не обіцяємо нове життя через тиждень. Ми обіцяємо: через 7 днів ти зможеш нормально спати, їсти — і перестанеш плакати на роботі. Це чесно. І цього достатньо, щоб почати.',
             // FAQ
             faq_eyebrow:    'Часті запитання',
             faq_h2:         'Що тебе<br><em style="color:var(--teal);">зупиняє?</em>',
@@ -1881,12 +1977,12 @@
             step2:          '<span class="fp-step-num">2</span> Вводиш Email',
             step3:          '<span class="fp-step-num">3</span> Отримуєш доступ',
             // Cards
-            card_sos_title: 'Екстрений',
+            card_sos_title: 'Мені боляче прямо зараз',
             card_sos_sub:   'Екстрений модуль для тих, кому боляче прямо зараз',
             popular_badge:  '⚡ Вибір 85% учасниць',
-            card_rec_title: 'Відновлення',
+            card_rec_title: 'Мені погано вже давно',
             card_rec_sub:   'Повний протокол відновлення суб\'єктності',
-            card_int_title: 'Повний контроль',
+            card_int_title: 'Я хочу повністю змінити себе',
             card_int_sub:   'Повний арсенал: курс + чоловіча психологія + скрипти контролю',
             fp_note:        '📧 Миттєвий доступ на Email',
             fp_note2:       '📧 Миттєвий доступ на Email',
@@ -1904,9 +2000,9 @@
             email_warn:     '⚠ Переконайся, що Email введено вірно — саме на нього система миттєво надішле доступ до протоколу',
             // Final
             guarantee_badge:'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>\n                Гарантія повернення 7 днів',
-            final_h2:       'Повернись до <em>контролю</em><br>прямо зараз',
-            final_sub:      'Обери рівень протоколу — і почни нейро-перезавантаження',
-            final_cta:      'Обрати протокол →',
+            final_h2:       'Ти заслуговуєш<br><em>нарешті видихнути.</em>',
+            final_sub:      '7 днів — і він перестане займати твою голову. Обери свій рівень і починай сьогодні. Проект <strong>Back4Heart</strong> — екосистема відновлення після розриву, якій довіряють 130+ жінок.',
+            final_cta:      'Хочу нарешті видихнути →',
             final_trust:    'Миттєвий доступ · Безпечна оплата · Підтримка 24/7',
             // Before/After
             ba_now:   '😔 Зараз',
@@ -1926,7 +2022,7 @@
             warn_label: '💡 Важливо зрозуміти до початку',
             warn_title: 'Є одна річ, яку нервова система не пробачає — і це змінює все.',
             warn_p1: 'Є патерни поведінки, які в гострому стані здаються правильними — але біохімічно закріплюють біль. Є техніки, які виглядають «занадто просто» — але перезаписують нейронні зв\'язки за 15 хвилин. Все це всередині протоколу.</p>',
-            warn_p2: 'Одне попередження: <strong style="color:var(--teal);font-style:normal;">якщо застосуєш протокол — ти зміниш себе.</strong> Не «стане легше». Саме зміниш себе. Будь до цього готова.</p>',
+            warn_p2: 'Приємне попередження: після 7 днів ти здивуєшся, наскільки легше стало. Це не магія — це нейробіологія. Просто будь готова до того, що твій мозок нарешті <strong style="color:var(--teal);font-style:normal;">перестане працювати проти тебе.</strong>',
             // NFY descriptions
             nfy_d1: 'Протокол спрямований на відновлення <em style="color:var(--teal);font-style:normal;font-weight:600;">тебе</em>, а не на маніпуляції з іншою людиною. Якщо мета — змусити його повернутися будь-якою ціною, це не те, що тут відбувається.',
             nfy_d2: 'Протокол працює — але вимагає від 15 до 30 хвилин щоденної практики. Якщо ти не готова виділити цей час, результату не буде.',
@@ -1961,61 +2057,65 @@
             fy_4: '<strong style="color:var(--teal);display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Румінації</strong>Прокручуєш одні й ті самі сцени, фрази, моменти. Розумієш що це безглуздо — але зупинити не можеш.',
             fy_5: '<strong style="color:var(--teal);display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Телефон — перше і останнє</strong>Перевіряєш його онлайн, його сторіс, його акаунти. День побудований навколо його активності.',
             fy_6: '<strong style="color:var(--teal);display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Страх майбутнього</strong>Здається, що найкраще вже було. Що більше ніхто і ніколи не викличе таких почуттів.',
+            fy_7: '<strong style="color:var(--teal);display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Тримаєш обличчя</strong>На роботі — професіонал. Вдома — мама і господиня. А всередині — порожнеча. Для інших ти тримаєшся. На самоті — розсипаєшся.',
+            fy_8: '<strong style="color:var(--teal);display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:3px;">Чекаєш «само мине»</strong>Вже минуло пів року. Або рік. Ти знаєш, що це ненормально — але не знаєш, що робити. Просто чекаєш і несеш.',
             fy_note: '<strong style="color:var(--charcoal);">Не знайшла свою ситуацію?</strong> Протокол містить техніки для всіх стадій — від гострого болю в перші доби до хронічної «фонової» туги через місяці. Твоя ситуація там є.',
             // Pult
             pult_c1: '<strong>Написав</strong> — тобі легше',
             pult_c2: '<strong>Мовчить</strong> — світ руйнується',
             pult_c3: '<strong>Побачила його Stories</strong> — серце в п\'яти',
-            pult_conclusion: 'Це не слабкість — це нормальна реакція перевантаженої нервової системи. Мозок не може зупинитися, поки не отримає відповідь. <strong style="color:var(--teal);">Протокол перезавантажує систему — і повертає контроль тобі.</strong>',
+            pult_conclusion: 'Ти справляєшся з усім — з роботою, дітьми, батьками. Ти втомилася справлятися з цим одна. <strong style="color:var(--teal);">Протокол не вимагає від тебе ще одного зусилля. Він просто робить те, що воля зробити не може.</strong>',
             // Pain
             pain_t1: 'Ментальна жуйка (Румінація)', pain_d1: 'Нескінченний внутрішній діалог. Ти годинами прокручуєш одні й ті самі фрази. <strong>Розумієш, що це безглуздо — але зупинитися не можеш.</strong>',
-            pain_t2: 'Втрата суб\'єктності', pain_d2: 'Режим «Хатіко». Твій настрій залежить від того, чи подивився він сторіс. <strong>Ти відчуваєш, як втрачаєш гідність — і не можеш вийти з цього кола.</strong>',
+            pain_t2: 'Ти стала функцією його настрою', pain_d2: 'Режим «Хатіко». Написав — день врятований. Мовчить — світ зруйнувався. <strong>Ти відчуваєш, як втрачаєш себе — і не можеш вийти з цього кола.</strong>',
             pain_t3: 'Фізичне виснаження', pain_d3: 'Відчуття «випаленої землі». Прокидаєшся вже втомленою. <strong>Фізичний спазм у грудях</strong> — це не метафора, це нейробіологія.',
             pain_t4: 'Соціальна ізоляція', pain_d4: 'Подругам вже набридло слухати. Ти брешеш, що стало краще. Всередині — вакуум, який ти заповнюєш їжею або нескінченним скролінгом.',
             pain_t5: 'Страх за майбутнє', pain_d5: '«Найкраще вже позаду». Тобі здається, що ніхто більше не викличе таких почуттів. <strong>Цей страх утримує тебе в ролі глядача.</strong>',
             // Storm
-            storm_label: '⚠ Кортикальний шторм',
-            storm_h3: 'Те, що ти відчуваєш — це не просто туга',
-            storm_p1: 'Мозок відчуває ігнор як <strong>фізичний біль</strong> — це доведений нейробіологічний факт.',
-            storm_p2: 'Ми не будемо «лікувати» душу розмовами — ми застосуємо <strong>техніки нейропластичності</strong>, щоб перезавантажити систему і повернути тобі суб\'єктність. Перезавантаження. 7 днів — це фізичне рішення.',
+            storm_label: 'Це не слабкість. Це фізіологія.',
+            storm_h3: 'Чому це не минає само — навіть у сильних жінок?',
+            storm_p1: 'Це не слабкість. І не означає, що ти досі його любиш. <strong>Мозок просто не вміє «вимкнути» прив\'язаність зусиллям волі</strong> — так само, як не можна зусиллям волі перестати відчувати холод. Саме тому ні сила характеру, ні життєвий досвід не допомагають. Це фізіологія — і вона піддається перебудові.',
+            storm_p2: 'Ми не будемо «лікувати» душу розмовами — ми застосуємо <strong>техніки нейропластичності</strong>, щоб перезавантажити систему і повернути тобі себе. <strong>Дбайливо.</strong> Без примусового переживання болю знову.',
             // Who
-            who_text: '<p style="margin-bottom: 16px;">Для тих, хто <strong>застряг у ролі глядача</strong> в чужому сценарії і не бачить виходу.</p><p style="margin-bottom: 16px;">Для тих, хто щоранку прокидається з думкою про нього і засинає, перебираючи «що я зробила не так».</p><p>Для тих, хто розуміє: так більше тривати не може — і готова взяти відповідальність за власне життя.</p>',
+            who_text: '<p style="margin-bottom: 16px;">Для тих, хто <strong>сильна на людях — але розсипається вдома.</strong> Хто тримає роботу, дітей, батьків — а всередині порожнеча.</p><p style="margin-bottom: 16px;">Для тих, кому роки життєвого досвіду не допомагають впоратися — і це лякає більше за все. Ти знаєш себе. Ти справлялася з багатьом. Але саме тут — ні.</p><p>Для тих, хто хоче не «забути і рухатися далі», а <strong>повернути собі гідність і ясність.</strong> Вийти з цього з собою — не без шрамів, але цілою.</p>',
             // Author
             author_p1: '«17 років шлюбу закінчилися за один день. Я знаю, що таке прокинутися в порожній квартирі і відчувати, як у грудях випалена земля. Я знаю режим «Хатіко» і нескінченні спроби повернути те, чого вже немає.</p>',
-            author_p2: 'Я не здався. Натомість я схуд на 40 кг, відбудував життя з нуля і вивчив біохімію мозку — щоб зрозуміти, як <strong>вимкнути нестерпний біль</strong>.</p>',
+            author_p2: 'Я не здався. Натомість я відбудував життя з нуля і три роки вивчав біохімію мозку, НЛП та КПТ — щоб зрозуміти, як <strong>вимкнути нестерпний біль</strong>. Потім працював із 130+ жінками — і побачив: у всіх однаковий механізм. І однаковий вихід.</p>',
             live_counter_text: ' людей читають це прямо зараз',
             // Inaction
-            inact_l1: '30 безсонних ночей і випаленої енергії',
-            inact_l2: '3000 перевірок його «онлайн» — ти статист у його житті',
-            inact_l3: 'Повна втрата самооцінки, суб\'єктності та своєї ідентичності',
+            inact_l1: '30 ночей нормального сну — і знову є сили на роботу, дітей, себе',
+            inact_l2: 'Енергія, яка була зайнята ним — повертається тобі',
+            inact_l3: 'Перший день, коли ти думаєш про себе — а не про нього',
             // Feature
-            feat_body: 'Більшість намагаються боротися з почуттями — але почуття лише наслідок картинок, які крутить підсвідомість. Поки ці «фільми» яскраві і близькі — боляче. Ми застосуємо прийом з арсеналу когнітивної лінгвістики, який фізично перезаписує файл із спогадом.',
-            feat_s1_title:'01 — Береш болісний епізод', feat_s1_desc:'Обираєш найважчий спогад, який завдає болю прямо зараз.',
-            feat_s2_title:'02 — Пропускаєш через 3 фільтри', feat_s2_desc:'Застосовуєш техніку «Кінотеатру» — змінюєш субмодальності спогаду.',
-            feat_s3_title:'03 — Емоційний заряд обнуляється', feat_s3_desc:'Мозок перестає зчитувати подію як «небезпечну». Біль минає за 15 хвилин.',
+            feat_body: 'Ти сама обираєш спогад, сама керуєш ним і сама зупиняєшся коли захочеш. Жодного «занурення» і жодного втручання в психіку. Техніка допомагає <strong>«відклеїти» образ колишнього від фізичного болю в грудях</strong> — після цього думка про нього залишається, але перестає завдавати болю. Працює з будь-яким терміном стосунків — від року до 20 років.',
+            feat_s1_title:'01 — Обираєш епізод', feat_s1_desc:'Береш спогад, який зараз завдає болю. Ти повністю контролюєш цей вибір.',
+            feat_s2_title:'02 — Змінюєш його «налаштування»', feat_s2_desc:'Застосовуєш техніку «Кінотеатру» — зменшуєш «гучність» і «яскравість» спогаду, робиш його блідим і далеким.',
+            feat_s3_title:'03 — Біль іде', feat_s3_desc:'Мозок перестає зчитувати подію як загрозу. Спогад залишається — але перестає пекти.',
+            feat_gentle: 'Вправа займає 15 хвилин. Ти читаєш інструкцію і робиш кроки сама, у своєму темпі. Не потрібно нічого «відпускати» зусиллям волі — механізм спрацює сам.',
+            testi_cases: '«Ми були разом 11 років. Після розлучення минуло пів року — я трималася на роботі, плакала вдома. Подруги казали "забудь". Психолог брав 80$ за годину. На третій день протоколу я вперше за пів року поспала без снодійного. На сьомий — зрозуміла, що цілий день не думала про нього.»',
             feat_warn_block: '<strong>⚠ Увага:</strong> техніку не можна застосовувати до тих, кого ти хочеш залишити у своєму житті — шляху назад до колишніх почуттів не буде.',
             // Showcase
             showcase_list_title: 'Комплектація протоколу:',
             showcase_l1: '<strong>Посібник «7 днів нейро-перезавантаження»</strong> — концентрат НЛП і нейробіології, 39 сторінок',
             showcase_l2: '<strong>«День 0: Екстрений протокол»</strong> — посібник першої допомоги, перше полегшення протягом години',
-            showcase_l3: '<strong>Аудіо-практика «Екстрений спокій»</strong> — 12 хвилин, голос автора, миттєвий вихід із кортикального шторму',
+            showcase_l3: '<strong>Аудіо-практика «Екстрений спокій»</strong> — 12 хвилин, голос автора, перше полегшення протягом години',
             showcase_l4: '<strong>Чек-лист «100 тригерів»</strong> — твій захист від зривів і режиму «Хатіко»',
             showcase_l5: '<strong>Воркбук «Карта нової ідентичності»</strong> — покрокові вправи для створення себе після розриву (у тарифі «Повний контроль»)',
-            showcase_l6: '<strong>Скрипти перехоплення контролю</strong> — готові алгоритми повернення суб\'єктності (у тарифі «Повний контроль»)',
+            showcase_l6: '<strong>Скрипти перехоплення контролю</strong> — готові заготовки «що відповісти / як реагувати» у 12 типових ситуаціях. Не потрібно придумувати — просто обери підходящий (у тарифі «Повний контроль»)',
             showcase_l7: '<strong>Миттєвий доступ на Email</strong> — читати можна одразу',
             // Before/After
             ba_sub: 'Це не про «він повернеться». Це про те, що ти перестаєш бути заручницею своєї нервової системи.',
-            ba_cta: 'Хочу цей стан →',
+            ba_cta: 'Хочу так засинати →',
             ba_note: 'Миттєвий доступ · Гарантія повернення 7 днів',
             // Days
             day0_num:'День 0', day0_h:'Екстрений протокол', day0_p:'SOS-модуль для тих, кому боляче прямо зараз. Посібник + Аудіо «Екстрений спокій». <strong>Перше полегшення протягом години.</strong>',
             day1_num:'День 1', day1_h:'Вільний подих', day1_p:'Перший день без «грудки в горлі». Ти навчишся вимикати фізичну реакцію на думки про нього. <strong>Біль у грудях вщухне.</strong>',
             day2_num:'День 2', day2_h:'Опрацювання румінацій', day2_p:'Зупинка нескінченного внутрішнього діалогу. Твій фокус повернеться з «нього» на «себе». <strong>Повернення відчуття власної важливості.</strong>',
-            day3_num:'День 3', day3_h:'Емоційна дистанція', day3_p:'Ефект «старого кіно». Спогади залишаться, але стануть плоскими і блідими. <strong>Кортикальний шторм починає вщухати.</strong>',
+            day3_num:'День 3', day3_h:'Емоційна дистанція', day3_p:'Ефект «старого кіно». Спогади залишаться, але стануть плоскими і блідими. <strong>Біль починає вщухати.</strong>',
             day4_num:'День 4', day4_h:'Робота з прив\'язаністю', day4_p:'Розрив нейронних зв\'язків прив\'язаності. Ти перестанеш крутити сценарії «а що, якби...». <strong>Засинання без таблеток і сліз.</strong>',
             day5_num:'День 5', day5_h:'Нова ідентичність', day5_p:'Створення внутрішнього перемикача впевненості. <strong>Ти перестаєш бути глядачем — стаєш автором.</strong>',
             day6_num:'День 6', day6_h:'Дешифратор чоловічого мовчання', day6_p:'Ти дізнаєшся справжню причину його тиші. Страх зміниться розумінням — і перестанеш шукати відповіді там, де їх немає.',
-            day7_num:'День 7', day7_h:'Точка неповернення', day7_p:'Фінальний протокол «перерізає» залишки емоційної пуповини. <strong>Ти виходиш іншою людиною — оновленою, цілісною, з контролем у руках.</strong>',
+            day7_num:'День 7', day7_h:'Точка опори', day7_p:'Фінальний крок створює внутрішню опору — місце, до якого ти можеш повернутися будь-якої миті. <strong>Ти виходиш оновленою, цілісною — зі своїм життям у своїх руках.</strong>',
             // FAQ
             faq_q1:'А раптом це не спрацює в моїй ситуації?',
             faq_a1:'Саме тому є гарантія повернення 7 днів — без запитань. Якщо протягом тижня ти не відчуєш різниці у своєму стані, я поверну гроші повністю. Ти нічим не ризикуєш.</div>',
@@ -2026,12 +2126,12 @@
             faq_q4:'Коли я отримаю доступ після оплати?',
             faq_a4:'Миттєво — протягом 5 хвилин на Email. Перевір папку «Спам» якщо листа не прийшло. Якщо через 15 хвилин нічого немає — напиши в Telegram @back4heart.</div>',
             faq_q5:'Я хочу просто відпустити і забути — це підійде?',
-            faq_a5:'Так, саме для цього протокол і створений. Він не про «повернути його» — він про відновлення твоєї нервової системи, суб\'єктності та ідентичності.</div>',
+            faq_a5:'Так, саме для цього алгоритм і створений. Він не про «повернути його» — він про відновлення твоєї нервової системи, твого «я» та відчуття власного життя. Відпустити з гідністю — це один із ключових результатів.',
             faq_q6:'У мене особливий випадок — раптом мені не підійде?',
             faq_a6:'Тариф «Повний контроль» включає Скрипти перехоплення контролю — адаптивні техніки під різні ситуації. Якщо хочеш розбір саме свого випадку — запишись у лист очікування на індивідуальний супровід через @back4heart.</div>',
             // Anchor
             anchor_q: 'Ти вже знаєш що зробиш<br><em style="font-style:italic;color:var(--gold-light);">сьогодні ввечері?</em>',
-            anchor_yes: 'Так — хочу обрати тариф →',
+            anchor_yes: 'Так — хочу нарешті видихнути →',
             anchor_no: 'Ні — саме тому мені потрібен протокол',
             anchor_note: 'Обидва варіанти ведуть до одного результату: ти нарешті береш контроль.',
             // After purchase
@@ -2041,8 +2141,8 @@
             invest_sub: 'Ти вже витратила більше — просто на втрачену продуктивність, їжу яку не відчуваєш, сон якого немає. І за все це ти не отримуєш виходу.',
             // Pre-pricing
             pre_pricing_p: 'Працює <strong style="color:var(--charcoal);">якщо біль гострий або хронічний.</strong> Працює <strong style="color:var(--charcoal);">одразу після розриву</strong> і <strong style="color:var(--charcoal);">через місяці після нього.</strong> Працює <strong style="color:var(--charcoal);">якщо хочеш відпустити</strong> або <strong style="color:var(--charcoal);">відновити себе.</strong>',
-            guarantee_strong: 'Гарантія повернення 7 днів — без пояснень',
-            guarantee_text: 'Якщо через тиждень ти не відчуєш різниці у своєму стані — просто напиши в Telegram @back4heart. Поверну гроші повністю. Жодних форм, жодних пояснень.',
+            guarantee_strong: 'Моє особисте зобов\'язання — Роман',
+            guarantee_text: 'Якщо через 7 днів не відчуєш різниці — напиши одне слово в Telegram @back4heart. Я поверну гроші без запитань. Це не політика повернення. Це моє особисте зобов\'язання.',
             // Card features
             li_forever: 'Доступ назавжди',
             li_email: 'Миттєвий доступ на Email',
@@ -2059,7 +2159,7 @@
             footer_privacy: 'Політика конфіденційності',
             footer_copy: '© 2026 Перезавантаження. 7 днів. Всі права захищені.',
             exit_title:     'Зачекай секунду.',
-            exit_body:      'Прямо зараз твоя нервова система в кортикальному шторм.<br><strong>Через 15 хвилин після активації протоколу — стане легше.</strong>',
+            exit_body:      'Прямо зараз тобі важко. Це нормально.<br><strong>Через 15 хвилин після початку — стане легше.</strong>',
             exit_skip:      'Ні, я поки не готова',
             sec_text: 'Оплата через сертифіковану систему WayForPay. Шифрування AES-256. Дані карт не зберігаються.',
             exit_label: '— спеціальна ціна',
@@ -2067,6 +2167,15 @@
             nfy_intro: 'Я хочу, щоб ти прийняла усвідомлене рішення. Протокол дає результат — але лише за певних умов.',
             vip_desc: 'Особистий розбір ситуації, індивідуальне налаштування протоколу, прямий зв&#x27;язок з автором протягом 7 днів.',
             vip_btn: 'Лист очікування →',
+            after7_eyebrow: 'А що потім?',
+            after7_h2: '7 днів — це фундамент.<br><em style="color:var(--teal);">Не просто полегшення — імунітет.</em>',
+            after7_p: 'Після протоколу ти не просто «перестанеш думати про нього». Ти вийдеш з новим налаштуванням нервової системи: більше ніхто не зможе так просто забрати твій контроль над собою. Це економить роки терапії — і повертає роки життя.',
+            after7_c1_title: 'Нейронна перебудова',
+            after7_c1_text: 'Мозок перестає зчитувати його як «небезпеку». Румінації йдуть — не пригнічуються, а зникають.',
+            after7_c2_title: 'Енергія повертається',
+            after7_c2_text: 'Сили, що йшли на внутрішній діалог, повертаються тобі — на роботу, дітей, себе.',
+            after7_c3_title: 'Імунітет до болю',
+            after7_c3_text: 'Більше ніхто не отримає такої влади над твоїм станом. Твій вік — це твоя перевага, не вирок.',
         }
     };
 
@@ -2401,15 +2510,15 @@
     <div class="exit-modal">
         <button class="exit-close" onclick="closeExitPopup()">×</button>
         <div class="exit-icon">⏸️</div>
-        <h3 class="exit-title" data-i18n="exit_title">Подожди секунду.</h3>
-        <p class="exit-body" data-i18n="exit_body">Прямо сейчас твоя нервная система в кортикальном шторме.<br><strong>Через 15 минут после активации протокола — станет легче.</strong></p>
+        <h3 class="exit-title" data-i18n="exit_title">Ты зашла сюда не случайно.</h3>
+        <p class="exit-body" data-i18n="exit_body">В такое время сюда не заходят от нечего делать.<br><strong>Первое облегчение — уже через 15 минут после активации.</strong></p>
         <div class="exit-price-row">
             <span class="exit-old">$49</span>
             <span class="exit-new">$17</span>
             <span class="exit-label" data-i18n="exit_label">— специальная цена</span>
         </div>
         <a href="#pricing" class="btn-primary exit-btn" onclick="closeExitPopup()" data-i18n="exit_cta">Запустить протокол →</a>
-        <button class="exit-skip" data-i18n="exit_skip" onclick="closeExitPopup()">Нет, я пока не готова</button>
+        <button class="exit-skip" data-i18n="exit_skip" onclick="closeExitPopup()">Я ещё подумаю</button>
     </div>
 </div>
 
