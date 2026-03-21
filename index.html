@@ -1762,10 +1762,11 @@
         if (activeTariff === key) updateStickyBar(key);
     }
 
-    // --- Detect geo — primary: ipapi.co, fallback: ip-api.com ---
+    // --- Detect geo — 3 fallback services ---
     function detectGeo() {
         function applyByCC(cc) {
-            cc = (cc || '').toUpperCase();
+            cc = (cc || '').toString().toUpperCase().trim();
+            if (!cc || cc.length !== 2) return applyGeo(GEO_DATA.DEFAULT);
             if (cc === 'UA' || cc === 'PL') {
                 applyGeo(GEO_DATA.UA);
             } else if (EU_COUNTRIES.has(cc)) {
@@ -1775,22 +1776,35 @@
             }
         }
 
-        // Primary: ipapi.co
-        fetch('https://ipapi.co/json/', { cache: 'no-store' })
-            .then(r => r.json())
-            .then(data => {
-                if (data && data.country_code) {
-                    applyByCC(data.country_code);
+        // Service 1: cloudflare trace (always works, no CORS, no rate limit)
+        fetch('https://www.cloudflare.com/cdn-cgi/trace')
+            .then(r => r.text())
+            .then(text => {
+                const match = text.match(/loc=([A-Z]{2})/);
+                if (match && match[1]) {
+                    applyByCC(match[1]);
                 } else {
-                    throw new Error('no country_code');
+                    throw new Error('no loc');
                 }
             })
             .catch(() => {
-                // Fallback: ip-api.com (different provider, higher rate limit)
-                fetch('https://ip-api.com/json/?fields=countryCode', { cache: 'no-store' })
+                // Service 2: ipapi.co
+                fetch('https://ipapi.co/json/')
                     .then(r => r.json())
-                    .then(data => applyByCC(data.countryCode))
-                    .catch(() => applyGeo(GEO_DATA.DEFAULT));
+                    .then(data => {
+                        if (data && data.country_code && !data.error) {
+                            applyByCC(data.country_code);
+                        } else {
+                            throw new Error('ipapi error');
+                        }
+                    })
+                    .catch(() => {
+                        // Service 3: freeipapi.com (CORS-friendly, HTTPS)
+                        fetch('https://freeipapi.com/api/json')
+                            .then(r => r.json())
+                            .then(data => applyByCC(data.countryCode || ''))
+                            .catch(() => applyGeo(GEO_DATA.DEFAULT));
+                    });
             });
     }
 
