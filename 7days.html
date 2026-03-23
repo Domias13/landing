@@ -2946,6 +2946,12 @@
         }
 
         const region = getRegion(countryCode);
+
+        // Redirect RU and BY to Telegram channel
+        if (countryCode === 'RU' || countryCode === 'BY') {
+            window.location.replace('https://t.me/+4W3kJQuZpiIwMzE0');
+            return;
+        }
         
         // Apply Ukrainian translation if UA
         if (region === 'UA') {
