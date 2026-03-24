@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7 дней без боли — Протокол восстановления после расставания</title>
+    <title>7 дней без боли - Протокол восстановления после расставания</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -159,6 +159,21 @@
             color: var(--success);
             font-weight: 800;
             font-size: 18px;
+        }
+        .bullet-desc {
+            display: block;
+            text-align: right;
+            font-size: 13px;
+            color: var(--gray);
+            margin-top: 2px;
+            font-style: italic;
+        }
+        .card-desc {
+            display: block;
+            text-align: right;
+            font-size: 12px;
+            color: var(--gray);
+            margin-top: 3px;
         }
         .pages-count {
             display: inline-flex; align-items: center; gap: 8px; background: rgba(124, 58, 237, 0.2);
@@ -862,36 +877,285 @@
         .support-link.instagram { border-color: #E1306C; }
         .support-link.tiktok { border-color: #000; }
         .support-link.telegram { border-color: #0088cc; }
+
+        /* ===== GENDER SELECTION SCREEN ===== */
+        #gender-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: #080810;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+            transition: opacity 0.5s ease;
+        }
+        #gender-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .gender-logo {
+            font-size: 40px;
+            margin-bottom: 16px;
+            animation: pulse-logo 2s infinite;
+        }
+        @keyframes pulse-logo {
+            0%,100%{transform:scale(1);} 50%{transform:scale(1.08);}
+        }
+        .gender-title {
+            font-size: clamp(22px, 5vw, 36px);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #fff 0%, #FCA5A5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+        .gender-subtitle {
+            font-size: 16px;
+            color: #9CA3AF;
+            text-align: center;
+            margin-bottom: 48px;
+            max-width: 420px;
+        }
+        .gender-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .gender-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            width: 180px;
+            height: 180px;
+            border-radius: 24px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: #fff;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.04);
+            position: relative;
+            overflow: hidden;
+        }
+        .gender-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .gender-btn-male {
+            border-color: rgba(59,130,246,0.5);
+        }
+        .gender-btn-male::before {
+            background: radial-gradient(circle at 50% 50%, rgba(59,130,246,0.3), transparent 70%);
+        }
+        .gender-btn-male:hover {
+            border-color: #3B82F6;
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(59,130,246,0.35);
+        }
+        .gender-btn-male:hover::before { opacity: 1; }
+
+        .gender-btn-female {
+            border-color: rgba(236,72,153,0.5);
+        }
+        .gender-btn-female::before {
+            background: radial-gradient(circle at 50% 50%, rgba(236,72,153,0.3), transparent 70%);
+        }
+        .gender-btn-female:hover {
+            border-color: #EC4899;
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(236,72,153,0.35);
+        }
+        .gender-btn-female:hover::before { opacity: 1; }
+
+        .gender-btn-icon {
+            font-size: 52px;
+            line-height: 1;
+            position: relative;
+            z-index: 1;
+        }
+        .gender-btn-label {
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.3px;
+        }
+        .gender-note {
+            margin-top: 36px;
+            font-size: 13px;
+            color: #4B5563;
+            text-align: center;
+        }
+        /* ===== STATS / PROGRESS BARS ===== */
+        .stats-section { padding: 60px 0; background: var(--dark); }
+        .stats-grid { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+        .stat-bar-item { display: flex; flex-direction: column; gap: 8px; }
+        .stat-bar-header { display: flex; justify-content: space-between; align-items: center; }
+        .stat-label { font-size: 15px; color: #E5E7EB; font-weight: 600; }
+        .stat-value { font-size: 20px; font-weight: 900; color: var(--success); min-width: 48px; text-align: right; }
+        .stat-bar-track { height: 10px; background: rgba(255,255,255,0.08); border-radius: 10px; overflow: hidden; }
+        .stat-bar-fill {
+            height: 100%; border-radius: 10px;
+            background: linear-gradient(90deg, var(--success), #059669);
+            transition: width 1.4s cubic-bezier(.4,0,.2,1);
+            box-shadow: 0 0 12px rgba(40,167,69,0.4);
+        }
+        .stats-note { text-align: center; font-size: 12px; color: #4B5563; margin-top: 24px; }
+
+        /* ===== RECOVERY GRAPH ===== */
+        .graph-section { padding: 60px 0; background: var(--darker); }
+        .graph-subtitle { text-align: center; color: var(--gray); margin-bottom: 32px; font-size: 15px; }
+        .graph-wrap { display: flex; gap: 12px; align-items: stretch; max-width: 760px; margin: 0 auto; }
+        .graph-y-axis {
+            display: flex; flex-direction: column; justify-content: space-between;
+            font-size: 11px; color: #4B5563; padding-bottom: 28px; min-width: 20px; text-align: right;
+        }
+        .graph-area { flex: 1; display: flex; flex-direction: column; }
+        .graph-svg { width: 100%; height: 220px; display: block; }
+        .graph-x-axis {
+            display: flex; justify-content: space-between;
+            font-size: 11px; color: #6B7280; margin-top: 8px; padding: 0 2px;
+        }
+        .graph-legend { display: flex; gap: 24px; justify-content: center; margin-top: 20px; }
+        .legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--gray); }
+        .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+        .legend-line-dash {
+            width: 24px; height: 2px; flex-shrink: 0;
+            background: repeating-linear-gradient(90deg, rgba(220,38,38,0.6) 0, rgba(220,38,38,0.6) 5px, transparent 5px, transparent 9px);
+        }
+
+        /* ===== BRAIN INFOGRAPHIC ===== */
+        .brain-section { padding: 60px 0; background: var(--dark); }
+        .brain-flow {
+            display: flex; flex-wrap: wrap; align-items: center;
+            justify-content: center; gap: 8px; max-width: 1000px; margin: 0 auto;
+        }
+        .brain-step {
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+            padding: 20px 16px; border-radius: 16px; width: 130px; gap: 8px;
+            border: 1px solid;
+        }
+        .brain-step-bad   { background: rgba(220,38,38,0.08); border-color: rgba(220,38,38,0.25); }
+        .brain-step-protocol { background: rgba(124,58,237,0.15); border-color: rgba(124,58,237,0.5); }
+        .brain-step-good  { background: rgba(40,167,69,0.1);  border-color: rgba(40,167,69,0.4); }
+        .brain-step-icon  { font-size: 30px; line-height: 1; }
+        .brain-step-title { font-size: 13px; font-weight: 800; color: #fff; }
+        .brain-step-desc  { font-size: 11px; color: var(--gray); line-height: 1.4; }
+        .brain-arrow { font-size: 20px; color: #4B5563; flex-shrink: 0; }
+        .brain-arrow-down { width: 100%; text-align: center; font-size: 24px; color: var(--secondary); margin: 4px 0; }
+        @media (max-width: 600px) {
+            .brain-flow { gap: 6px; }
+            .brain-step { width: 100px; padding: 14px 10px; }
+            .brain-arrow-down { display: block; }
+        }
+
+        /* ===== COMPARISON TABLE ===== */
+        .compare-section { padding: 60px 0; background: var(--darker); }
+        .compare-table { max-width: 800px; margin: 0 auto; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
+        .compare-header, .compare-row {
+            display: grid; grid-template-columns: 1.2fr 1.5fr 1.5fr;
+        }
+        .compare-header {
+            background: rgba(255,255,255,0.04);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .compare-row { border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .compare-row:last-child { border-bottom: none; }
+        .compare-row:hover { background: rgba(255,255,255,0.02); }
+        .compare-col-label {
+            padding: 14px 16px; font-size: 13px; font-weight: 700;
+            color: #9CA3AF; display: flex; align-items: center;
+            border-right: 1px solid rgba(255,255,255,0.05);
+        }
+        .compare-col {
+            padding: 14px 16px; font-size: 13px; display: flex; align-items: center;
+        }
+        .compare-col-bad  { color: #FCA5A5; background: rgba(220,38,38,0.04); }
+        .compare-col-good { color: #86EFAC; background: rgba(40,167,69,0.05); font-weight: 600; }
+        .compare-header .compare-col-bad  { font-weight: 800; font-size: 14px; color: #EF4444; justify-content: center; text-align: center; }
+        .compare-header .compare-col-good { font-weight: 800; font-size: 14px; color: var(--success); justify-content: center; text-align: center; }
+        @media (max-width: 560px) {
+            .compare-header, .compare-row { grid-template-columns: 1fr 1.2fr 1.2fr; }
+            .compare-col, .compare-col-label { padding: 10px 10px; font-size: 12px; }
+        }
+
+        .graph-note { text-align: center; font-size: 13px; color: #6B7280; margin-top: 12px; font-style: italic; }
+        .remind-section { padding: 40px 0; background: var(--dark); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .remind-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 800px; margin: 0 auto; text-align: center; }
+        .remind-stat { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+        .remind-num { font-size: 36px; font-weight: 900; color: var(--success); line-height: 1; }
+        .remind-label { font-size: 13px; color: var(--gray); line-height: 1.3; }
+        @media (max-width: 560px) {
+            .remind-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* ===== SWITCH GENDER BUTTON ===== */
+        #switch-gender-btn {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
+
+    <!-- ===== GENDER SELECTION SCREEN ===== -->
+    <div id="gender-screen">
+        <div class="gender-logo">💔</div>
+        <div class="gender-title">7 дней без боли</div>
+        <div class="gender-subtitle">Боль после разрыва у мужчин и женщин проявляется по-разному.</div>
+        <div class="gender-buttons">
+            <button class="gender-btn gender-btn-male" onclick="selectGender('male')">
+                <span class="gender-btn-icon">👨</span>
+                <span class="gender-btn-label">Я мужчина</span>
+            </button>
+            <button class="gender-btn gender-btn-female" onclick="selectGender('female')">
+                <span class="gender-btn-icon">👩</span>
+                <span class="gender-btn-label">Я женщина</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ===== SWITCH GENDER BUTTON ===== -->
+    <button id="switch-gender-btn" onclick="resetGender()" style="display:none;">
+        ⇄ <span id="switch-gender-label">Сменить</span>
+    </button>
+
     <div class="bg-gradient"></div>
 
     <!-- SOCIAL PROOF POPUP -->
     <div class="social-proof-popup" id="socialPopup">
         <div class="avatar" id="popupAvatar">А</div>
         <div class="content">
-            <div class="text"><strong id="popupName">Аня</strong> из <strong id="popupCity">Кракова</strong> оформила <span id="popupTariff">пакет «С поддержкой»</span></div>
+            <div class="text"><strong id="popupName">Аня</strong> из <strong id="popupCity">Кракова</strong> <span id="popupVerb">оформила</span> <span id="popupTariff">пакет «С поддержкой»</span></div>
             <div class="time" id="popupTime">12 минут назад</div>
         </div>
         <button class="close-btn" onclick="closeSocialPopup()">&times;</button>
     </div>
 
     <!-- URGENCY BAR -->
-    <div class="urgency-bar">🔥 Спеццена 299 грн (~$7) действует только до конца недели!</div>
+    <div class="urgency-bar">⚡ Пока ты читаешь это - он живёт своей жизнью. Начни жить своей. Спеццена до конца недели.</div>
 
     <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
-            <div class="hero-badge">Пошаговый протокол, который прошли уже 130+ человек с результатом 70% облегчения к 3-му дню</div>
-            <h1>7 дней без боли</h1>
-            <p class="hero-subtitle">Научный протокол восстановления биохимии мозга после расставания. Техники НЛП и КПТ для перепрограммирования нейронных связей.</p>
-            <div class="hero-highlight"><strong>⚠️ Если ты:</strong> Проверяешь его онлайн каждые 15 минут • Не можешь есть и спать • Физически чувствуешь боль в груди • Срываешься и пишешь ему</div>
+            <div class="hero-badge">130+ человек вышли из этого состояния. 70% почувствовали облегчение уже к 3-му дню</div>
+            <h1>Ты не можешь перестать думать о нём/ней.<br>Это не слабость - это химия.</h1>
+            <p class="hero-subtitle">Твой мозг буквально подсел на него/неё как на наркотик. Разрыв - это ломка. И у неё есть конкретный протокол выхода - без «отпусти и живи» и без месяцев терапии.</p>
+            <div class="hero-highlight"><strong>⚠️ Узнаёшь себя?</strong> Проверяешь его/её онлайн по 50 раз в день • Физически болит в груди • Засыпаешь - и снова думаешь о нём/ней • Знаешь, что надо остановиться - и не можешь</div>
 
             <!-- QUICK CTA BUTTON -->
             <div class="quick-cta">
                 <a href="#pricing-top" class="quick-cta-btn">
-                    <span>🚀 Купить в 1 клик</span>
+                    <span>🚀 Хочу выйти из этого состояния</span>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
@@ -900,18 +1164,207 @@
 
             <!-- PRODUCT SHOWCASE WITH BULLETS -->
             <div class="product-showcase">
-                <span class="section-label">📱 Вот что вы получите:</span>
+                <span class="section-label">📱 Что именно ты получишь:</span>
                 <div class="mockup-container">
                     <img src="https://i.ibb.co/v6hzKsgD/Chat-GPT-Image-25-2026-08-37-55.png" alt="Курс 7 дней без боли" class="product-image">
                     <div class="product-bullets">
                         <ul>
-                            <li><strong>📄 PDF-протокол (39 стр.)</strong> — концентрат НЛП и нейробиологии</li>
-                            <li><strong>🎧 Аудио-практика «Стоп-паника»</strong> — мгновенное успокоение</li>
-                            <li><strong>📋 Чек-лист «100 триггеров»</strong> — твоя защита от срывов</li>
-                            <li><strong>🚀 Мгновенный доступ на Email</strong> сразу после оплаты</li>
+                            <li><strong>📄 PDF-протокол (39 стр.)</strong><span class="bullet-desc">не теория, а конкретные техники на каждый из 7 дней</span></li>
+                            <li><strong>🎧 Аудио «Стоп-паника»</strong><span class="bullet-desc">включаешь в момент острой боли, 12 минут - и дышишь</span></li>
+                            <li><strong>📋 Чек-лист «100 триггеров»</strong><span class="bullet-desc">знаешь заранее что тебя накроет и как это остановить</span></li>
+                            <li><strong>⚡ Доступ через 5 минут после оплаты</strong><span class="bullet-desc">не завтра, не «в течение дня»</span></li>
                         </ul>
                     </div>
-                    <div class="bonus-badge">🎁 БОНУС: NLP-гайд по блокировке контакта</div>
+                    <div class="bonus-badge">🎁 БОНУС: Гайд «Как не написать ему» - 7 техник блокировки импульса</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- VISUAL BLOCKS: GRAPH + INFOGRAPHIC + TABLE + BARS -->
+    <!-- ══════════════════════════════════════════════ -->
+
+    <!-- 1. PROGRESS BARS - результаты -->
+    <section class="stats-section">
+        <div class="container">
+            <h2 class="section-title fade-in" id="stats-title">Что говорят цифры</h2>
+            <div class="stats-grid fade-in">
+                <div class="stat-bar-item">
+                    <div class="stat-bar-header">
+                        <span class="stat-label" id="stat-label-1">Облегчение к 3-му дню</span>
+                        <span class="stat-value">70%</span>
+                    </div>
+                    <div class="stat-bar-track"><div class="stat-bar-fill" data-width="70" style="width:0%"></div></div>
+                </div>
+                <div class="stat-bar-item">
+                    <div class="stat-bar-header">
+                        <span class="stat-label" id="stat-label-2">Дошли до конца протокола</span>
+                        <span class="stat-value">89%</span>
+                    </div>
+                    <div class="stat-bar-track"><div class="stat-bar-fill" data-width="89" style="width:0%"></div></div>
+                </div>
+                <div class="stat-bar-item">
+                    <div class="stat-bar-header">
+                        <span class="stat-label" id="stat-label-3">Снизили тревогу за 7 дней</span>
+                        <span class="stat-value">82%</span>
+                    </div>
+                    <div class="stat-bar-track"><div class="stat-bar-fill" data-width="82" style="width:0%"></div></div>
+                </div>
+                <div class="stat-bar-item">
+                    <div class="stat-bar-header">
+                        <span class="stat-label" id="stat-label-4">Перестали проверять её онлайн</span>
+                        <span class="stat-value">76%</span>
+                    </div>
+                    <div class="stat-bar-track"><div class="stat-bar-fill" data-width="76" style="width:0%"></div></div>
+                </div>
+            </div>
+            <p class="stats-note fade-in" id="stats-note">* по данным опроса 130+ участников курса</p>
+        </div>
+    </section>
+
+    <!-- 2. RECOVERY GRAPH - кривая восстановления по дням -->
+    <section class="graph-section">
+        <div class="container">
+            <h2 class="section-title fade-in" id="graph-title">Как меняется боль по дням</h2>
+            <p class="graph-subtitle fade-in" id="graph-subtitle">Среднее снижение интенсивности боли у участников протокола</p>
+            <div class="graph-wrap fade-in">
+                <div class="graph-y-axis">
+                    <span>10</span><span>8</span><span>6</span><span>4</span><span>2</span><span>0</span>
+                </div>
+                <div class="graph-area">
+                    <svg class="graph-svg" viewBox="0 0 700 220" preserveAspectRatio="none">
+                        <line x1="0" y1="22" x2="700" y2="22" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                        <line x1="0" y1="66" x2="700" y2="66" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                        <line x1="0" y1="110" x2="700" y2="110" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                        <line x1="0" y1="154" x2="700" y2="154" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                        <line x1="0" y1="198" x2="700" y2="198" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                        <polyline points="0,22 100,28 200,30 300,32 400,28 500,30 600,26 700,24"
+                            fill="none" stroke="rgba(220,38,38,0.5)" stroke-width="2" stroke-dasharray="6,4"/>
+                        <polyline points="0,22 100,66 200,99 300,132 400,154 500,172 600,188 700,200"
+                            fill="none" stroke="#28a745" stroke-width="3" stroke-linecap="round"/>
+                        <polygon points="0,22 100,66 200,99 300,132 400,154 500,172 600,188 700,200 700,220 0,220"
+                            fill="url(#greenGrad)" opacity="0.15"/>
+                        <defs>
+                            <linearGradient id="greenGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#28a745"/>
+                                <stop offset="100%" stop-color="transparent"/>
+                            </linearGradient>
+                        </defs>
+                        <circle cx="0"   cy="22"  r="5" fill="#28a745"/>
+                        <circle cx="100" cy="66"  r="5" fill="#28a745"/>
+                        <circle cx="200" cy="99"  r="5" fill="#28a745"/>
+                        <circle cx="300" cy="132" r="5" fill="#28a745"/>
+                        <circle cx="400" cy="154" r="5" fill="#28a745"/>
+                        <circle cx="500" cy="172" r="5" fill="#28a745"/>
+                        <circle cx="600" cy="188" r="5" fill="#28a745"/>
+                        <circle cx="700" cy="200" r="5" fill="#28a745"/>
+                        <text x="8"   y="15"  fill="rgba(255,255,255,0.7)" font-size="11">9/10</text>
+                        <text x="92"  y="59"  fill="rgba(255,255,255,0.7)" font-size="11">7/10</text>
+                        <text x="192" y="92"  fill="rgba(255,255,255,0.7)" font-size="11">6/10</text>
+                        <text x="292" y="125" fill="rgba(255,255,255,0.7)" font-size="11">4/10</text>
+                        <text x="392" y="147" fill="rgba(255,255,255,0.7)" font-size="11">3/10</text>
+                        <text x="492" y="165" fill="rgba(255,255,255,0.7)" font-size="11">2/10</text>
+                        <text x="592" y="181" fill="rgba(255,255,255,0.7)" font-size="11">1/10</text>
+                        <text x="680" y="194" fill="#28a745" font-size="11" font-weight="bold">≈0</text>
+                    </svg>
+                    <div class="graph-x-axis">
+                        <span>День 0</span><span>День 1</span><span>День 2</span><span>День 3</span>
+                        <span>День 4</span><span>День 5</span><span>День 6</span><span>День 7</span>
+                    </div>
+                </div>
+            </div>
+            <div class="graph-legend fade-in">
+                <div class="legend-item"><span class="legend-dot" style="background:#28a745"></span> С протоколом</div>
+                <div class="legend-item"><span class="legend-line-dash"></span> Без протокола</div>
+            </div>
+            <div class="graph-note fade-in" id="graph-note"></div>
+        </div>
+    </section>
+
+    <!-- 3. BRAIN INFOGRAPHIC - мозг → протокол → выход -->
+    <section class="brain-section">
+        <div class="container">
+            <h2 class="section-title fade-in" id="brain-title">Почему «просто возьми себя в руки» не работает</h2>
+            <div class="brain-flow fade-in">
+                <div class="brain-step brain-step-bad">
+                    <div class="brain-step-icon">💔</div>
+                    <div class="brain-step-title" id="brain-step1-title">Разрыв</div>
+                    <div class="brain-step-desc" id="brain-step1-desc">Мозг теряет главный источник дофамина</div>
+                </div>
+                <div class="brain-arrow">→</div>
+                <div class="brain-step brain-step-bad">
+                    <div class="brain-step-icon" id="brain-step2-icon">📉</div>
+                    <div class="brain-step-title" id="brain-step2-title">Дофамин падает</div>
+                    <div class="brain-step-desc" id="brain-step2-desc">Нет радости, нет мотивации, нет сил</div>
+                </div>
+                <div class="brain-arrow">→</div>
+                <div class="brain-step brain-step-bad">
+                    <div class="brain-step-icon">🔺</div>
+                    <div class="brain-step-title" id="brain-step3-title">Кортизол растёт</div>
+                    <div class="brain-step-desc" id="brain-step3-desc">Тревога, бессонница, боль в груди</div>
+                </div>
+                <div class="brain-arrow">→</div>
+                <div class="brain-step brain-step-bad">
+                    <div class="brain-step-icon" id="brain-step4-icon">🔄</div>
+                    <div class="brain-step-title" id="brain-loop-title">Петля мыслей</div>
+                    <div class="brain-step-desc" id="brain-loop-desc">Мозг ищет «дозу» - снова и снова прокручивает воспоминания</div>
+                </div>
+                <div class="brain-arrow brain-arrow-down">↓</div>
+                <div class="brain-step brain-step-protocol">
+                    <div class="brain-step-icon">⚡</div>
+                    <div class="brain-step-title">Протокол</div>
+                    <div class="brain-step-desc" id="brain-protocol-desc">7 NLP-техник перезагружают нейрохимию напрямую</div>
+                </div>
+                <div class="brain-arrow">→</div>
+                <div class="brain-step brain-step-good">
+                    <div class="brain-step-icon">✅</div>
+                    <div class="brain-step-title" id="brain-exit-title">Выход</div>
+                    <div class="brain-step-desc" id="brain-exit-desc">Боль управляема. Ты снова контролируешь себя</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. COMPARISON TABLE - без/с протоколом -->
+    <section class="compare-section">
+        <div class="container">
+            <h2 class="section-title fade-in" id="compare-title">Без протокола vs С протоколом</h2>
+            <div class="compare-table fade-in">
+                <div class="compare-header">
+                    <div class="compare-col-label"></div>
+                    <div class="compare-col compare-col-bad">❌ Без протокола</div>
+                    <div class="compare-col compare-col-good">✅ С протоколом</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-col-label" id="compare-label-day3">Через 3 дня</div>
+                    <div class="compare-col compare-col-bad" id="compare-bad-day3">Та же острая боль</div>
+                    <div class="compare-col compare-col-good" id="compare-good-day3">Боль снизилась на 40–60%</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-col-label" id="compare-label-nights">Ночи</div>
+                    <div class="compare-col compare-col-bad" id="compare-bad-nights">Бессонница, мысли по кругу</div>
+                    <div class="compare-col compare-col-good" id="compare-good-nights">Засыпаешь без таблеток</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-col-label" id="compare-label-phone">Телефон</div>
+                    <div class="compare-col compare-col-bad" id="compare-bad-phone">Проверяешь её каждый час</div>
+                    <div class="compare-col compare-col-good" id="compare-good-phone">Импульс остановлен техникой</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-col-label" id="compare-label-thoughts">Мысли</div>
+                    <div class="compare-col compare-col-bad" id="compare-bad-thoughts">Петля на автопилоте</div>
+                    <div class="compare-col compare-col-good" id="compare-good-thoughts">Управляемо с Дня 2</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-col-label" id="compare-label-body">Тело</div>
+                    <div class="compare-col compare-col-bad" id="compare-bad-body">Спазм в груди, нет аппетита</div>
+                    <div class="compare-col compare-col-good" id="compare-good-body">Физическая реакция отключена</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-col-label" id="compare-label-day7">Через 7 дней</div>
+                    <div class="compare-col compare-col-bad" id="compare-bad-day7">Месяцы впереди</div>
+                    <div class="compare-col compare-col-good" id="compare-good-day7">Эмоциональный заряд нейтрализован</div>
                 </div>
             </div>
         </div>
@@ -921,8 +1374,8 @@
     <section class="pain-section">
         <div class="container">
             <div class="pain-reveal fade-in">
-                <h3>То, что ты чувствуешь - это не просто тоска.</h3>
-                <p>Твоя нервная система перегружена гормонами стресса. Мозг застрял в режиме выживания, заставляя тебя снова и снова возвращаться в прошлое. Мы не будем "лечить" душу разговорами - мы применим техники нейропластичности, чтобы успокоить систему и вернуть тебе контроль над своими мыслями</p>
+                <h3>То, что ты чувствуешь - это не слабость характера.<br>Это физиология.</h3>
+                <p>После разрыва мозг теряет источник дофамина и кортизола одновременно. Он входит в режим ломки - и гонит тебя по кругу: снова те же мысли, снова то же место. Это не ты «не можешь отпустить». Это химия. И у химии есть выключатель.</p>
             </div>
         </div>
     </section>
@@ -930,11 +1383,11 @@
     <!-- WHO NEEDS THIS BLOCK -->
     <section class="who-needs-section">
         <div class="container">
-            <h2 class="section-title fade-in">Кому этот курс жизненно необходим</h2>
+            <h2 class="section-title fade-in">Это точно про тебя, если...</h2>
             <div class="who-needs-content fade-in">
-                <p style="margin-bottom: 20px;">Этот курс для тех, кто <strong>застрял в прошлом и не видит будущего</strong>.</p>
-                <p style="margin-bottom: 20px;">Для тех, кто каждое утро просыпается с мыслью о нём и засыпает со слезами.</p>
-                <p>Для тех, кто понимает, что так больше продолжаться не может, и готов взять ответственность за своё исцеление.</p>
+                <p style="margin-bottom: 20px;">Ты просыпаешься - и первая мысль о нём. Засыпаешь - и последняя тоже. <strong>Прошло уже несколько недель, а лучше не становится.</strong></p>
+                <p style="margin-bottom: 20px;">Ты уже пробовал(а) «просто не думать», «занять себя», «встретиться с друзьями». Помогает на час. Потом всё возвращается.</p>
+                <p>Ты не сломлен(а). Ты просто застрял(а) в петле - и тебе нужен выход, а не очередной совет «полюби себя».</p>
             </div>
         </div>
     </section>
@@ -942,21 +1395,21 @@
     <!-- COMPACT PRICING (TOP) -->
     <section class="compact-pricing-section" id="pricing-top">
         <div class="container">
-            <h2 class="compact-pricing-title fade-in">💎 Выбери свой пакет</h2>
+            <h2 class="compact-pricing-title fade-in">💎 С чего начать прямо сейчас</h2>
             <div class="compact-pricing-grid fade-in">
                 <!-- Card 1 -->
                 <div class="compact-card">
                     <h3>📘 Пакет «Самостоятельный»</h3>
-                    <p class="subtitle">Для тех, кто готов работать по протоколу самостоятельно</p>
+                    <p class="subtitle">Протокол + инструменты. Работаешь сама в своём темпе</p>
                     <div class="price">
                         <span class="original-price">~~599 грн~~</span>
                         299 грн <span>(~$7)</span>
                     </div>
                     <ul>
-                        <li><strong>Протокол «7 дней без боли»</strong><br>PDF, 39 страниц • SOS-протокол + 7 дней практик</li>
-                        <li><strong>Чек-лист «100 триггеров»</strong><br>Работа с эмоциональными реакциями</li>
-                        <li><strong>NLP-гайд</strong><br>Блокировка компульсивного контакта</li>
-                        <li><strong>Доступ навсегда</strong><br>Все материалы остаются у вас</li>
+                        <li><strong>Протокол «7 дней без боли»</strong><span class="card-desc">39 стр. • Каждый день - конкретная техника, не теория</span></li>
+                        <li><strong>Чек-лист «100 триггеров»</strong><span class="card-desc">Знаешь заранее что накроет - и как это остановить</span></li>
+                        <li><strong>NLP-гайд «Не пиши ему»</strong><span class="card-desc">7 техник блокировки импульса в момент срыва</span></li>
+                        <li><strong>Доступ навсегда</strong><span class="card-desc">Материалы твои - возвращайся когда нужно</span></li>
                     </ul>
                     <div class="pricing-buttons">
                         <a href="https://secure.wayforpay.com/button/bc555d8cad235" class="cta-button">Выбрать базовый</a>
@@ -971,19 +1424,19 @@
                 <div class="compact-card popular">
                     <div class="compact-badge">🔥 Рекомендуем</div>
                     <h3>🎧 Пакет «С поддержкой»</h3>
-                    <p class="subtitle">Максимальное погружение с аудио-практикой</p>
+                    <p class="subtitle">Протокол + аудио на случай острой боли + живая поддержка в канале</p>
                     <div class="price">
                         <span class="original-price">~~999 грн~~</span>
                         599 грн <span>(~$14)</span>
                     </div>
                     <ul>
-                        <li><strong>Всё из пакета «Базовый»</strong><br>Протокол + Чек-лист + NLP-гайд</li>
-                        <li><strong>🎵 Аудио-практика «Экстренное спокойствие»</strong><br>12 минут • Голос автора • Для моментов острой боли</li>
-                        <li><strong>Закрытый Telegram-канал</strong><br>Ежедневная поддержка и советы от автора</li>
-                        <li><strong>Это всего 20 грн в день</strong><br>За твоё спокойствие в течение месяца</li>
+                        <li><strong>Всё из пакета «Базовый»</strong><span class="card-desc">Протокол + Чек-лист + NLP-гайд</span></li>
+                        <li><strong>🎵 Аудио-практика «Экстренное спокойствие»</strong><span class="card-desc">12 минут • Голос автора • Для моментов острой боли</span></li>
+                        <li><strong>Закрытый Telegram-канал</strong><span class="card-desc">Ежедневная поддержка и советы от автора</span></li>
+                        <li><strong>Это дешевле одной чашки кофе в день</strong><span class="card-desc">За месяц без бессонных ночей и проверок его/её онлайн</span></li>
                     </ul>
                     <div class="pricing-buttons">
-                        <a href="https://secure.wayforpay.com/button/b3330b596ef07" class="cta-button">Хочу с поддержкой</a>
+                        <a href="https://secure.wayforpay.com/button/b3330b596ef07" class="cta-button">Хочу + поддержку</a>
                         <a href="https://www.paypal.com/ncp/payment/LBZDF3ZMVSRJE" class="paypal-button" target="_blank">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.774.774 0 0 1 .763-.653h5.812c3.825 0 6.202 1.668 6.202 5.305 0 2.192-.928 3.873-2.535 4.94-1.456.967-3.36 1.343-5.52 1.343H7.732l-.656 6.682zm11.18-14.043l-.66 6.682h4.594a.641.641 0 0 0 .633-.74l.732-7.44a.774.774 0 0 0-.763-.653h-4.536z"/></svg>
                             PayPal
@@ -995,16 +1448,16 @@
                 <!-- Card 3 -->
                 <div class="compact-card">
                     <h3>⭐ Пакет «Личный»</h3>
-                    <p class="subtitle">Индивидуальный разбор вашей ситуации</p>
+                    <p class="subtitle">Роман лично разбирает твою ситуацию и корректирует протокол под тебя</p>
                     <div class="price">
                         <span class="original-price">~~3999 грн~~</span>
                         1999 грн <span>(~$48)</span>
                     </div>
                     <ul>
-                        <li><strong>Всё из пакета «С поддержкой»</strong><br>Протокол + Аудио + Чек-лист + NLP-гайд</li>
-                        <li><strong>🎙️ Личный разбор (15 минут)</strong><br>Голосовой анализ вашей ситуации в Telegram</li>
-                        <li><strong>📝 Индивидуальный план</strong><br>Коррекция протокола под вашу историю</li>
-                        <li><strong>⭐ Приоритетная поддержка</strong><br>Прямая связь с автором</li>
+                        <li><strong>Всё из пакета «С поддержкой»</strong><span class="card-desc">Протокол + Аудио + Чек-лист + NLP-гайд</span></li>
+                        <li><strong>🎙️ Роман слушает твою ситуацию</strong><span class="card-desc">Голосовой разбор в Telegram - 15 минут один на один</span></li>
+                        <li><strong>📝 Протокол под тебя</strong><span class="card-desc">Не шаблон, а конкретные шаги исходя из твоей истории</span></li>
+                        <li><strong>⭐ Прямой контакт</strong><span class="card-desc">Пишешь Роману когда накрывает - он отвечает</span></li>
                     </ul>
                     <div class="pricing-buttons">
                         <a href="https://secure.wayforpay.com/button/bc8aa27e6e382" class="cta-button">Забронировать VIP</a>
@@ -1067,10 +1520,11 @@
                 </div>
                 <div class="author-content">
                     <h3>Роман: Я прошел через этот ад и нашел выход</h3>
-                    <p>«17 лет брака закончились в один день. Я знаю, что такое проснуться в пустой квартире и чувствовать, как в груди выжжена земля. Я знаю, что такое "режим Хатико" и бесконечные попытки вернуть то, чего уже нет.</p>
-                    <p>Я не спился и не сдался. Вместо этого я похудел на 40 кг, перестроил свою жизнь с нуля и изучил биохимию мозга, чтобы понять: как выключить эту невыносимую боль?</p>
-                    <p><strong>Протокол "7 дней без боли"</strong> — это система, которую я создал сначала для себя, чтобы просто выжить. Она сработала на мне, нашла отклик у 130+ моих учеников и поможет тебе.</p>
-                    <p>Я не буду тебя жалеть — я дам тебе инструменты, чтобы ты снова начала дышать».</p>
+                    <p>«17 лет брака закончились в один день. Я знаю, что такое проснуться в пустой квартире и чувствовать, как в груди выжжена земля. Я знаю, что такое режим «она вернётся» и бесконечные попытки вернуть то, чего уже нет.</p>
+                    <p>Я не спился и не сдался. Вместо этого я перестроил свою жизнь с нуля и изучил биохимию мозга, чтобы понять: как выключить эту невыносимую боль?</p>
+                    <p><strong>Протокол "7 дней без боли"</strong> - это система, которую я создал сначала для себя, чтобы просто выжить. Она сработала на мне, прошла через 130+ человек - и поможет тебе.</p>
+                    <p>Я не буду тебя жалеть - я дам тебе инструменты, чтобы ты снова начал(а) дышать».</p>
+                    <!-- gender-patched by JS -->
                     <div class="author-stats">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                         130+ человек прошли курс с результатом 70% облегчения к 3-му дню
@@ -1083,32 +1537,32 @@
     <!-- PAIN POINTS -->
     <section class="pain-section">
         <div class="container">
-            <h2 class="section-title">Тебе знакомо это?</h2>
+            <h2 class="section-title">Ты узнаёшь себя в этом?</h2>
             <div class="pain-grid">
                 <div class="pain-card fade-in">
                     <div class="pain-icon">🔄</div>
-                    <div class="pain-title">Ментальная жвачка (Руминация)</div>
-                    <div class="pain-text">Бесконечный внутренний диалог. Ты часами прокручиваешь в голове одни и те же фразы. Твой мозг занят им 24/7. <strong>Ты понимаешь, что это глупо, но не можешь остановиться.</strong></div>
+                    <div class="pain-title">Ты не можешь выключить голову</div>
+                    <div class="pain-text">«Что, если я написала что-то не то?», «А вдруг он встретил другую?», «Почему он так легко отпустил?» - одни и те же мысли по кругу. 3 часа ночи. <strong>Ты уже ненавидишь себя за это - и всё равно продолжаешь.</strong></div>
                 </div>
                 <div class="pain-card fade-in">
                     <div class="pain-icon">🎭</div>
-                    <div class="pain-title">Потеря субъектности (Унижение)</div>
-                    <div class="pain-text">Режим «Хатико». Ты подстраиваешь свой график под его онлайн. Твое настроение зависит от того, посмотрел ли он твою историю. Ты чувствуешь, как теряешь достоинство.</div>
+                    <div class="pain-title">Ты живёшь по его/её расписанию</div>
+                    <div class="pain-text">Он/она зашёл в сеть - и у тебя всё оборвалось внутри. Посмотрел сторис - эйфория на час. Не посмотрел - чёрная дыра до утра. <strong>Твоё настроение теперь принадлежит не тебе.</strong></div>
                 </div>
                 <div class="pain-card fade-in">
                     <div class="pain-icon">🔥</div>
-                    <div class="pain-title">Физическое истощение</div>
-                    <div class="pain-text">Ощущение «выжженной земли». У тебя нет сил на элементарные вещи. Утром ты просыпаешься уже уставшей, а любая мелочь вызывает физическую тошноту и спазм в груди.</div>
+                    <div class="pain-title">Тело тоже сломалось</div>
+                    <div class="pain-text">Ты не притворяешься. Боль в груди настоящая. Тошнота - настоящая. Нет аппетита, нет сил, нет желания вставать. <strong>Это не депрессия и не слабость - это cortisol crash. Его можно остановить.</strong></div>
                 </div>
                 <div class="pain-card fade-in">
                     <div class="pain-icon">🌑</div>
-                    <div class="pain-title">Социальная изоляция</div>
-                    <div class="pain-text">Токсичное одиночество. Друзьям уже надоело слушать об «этом», и ты начинаешь врать, что тебе стало легче. Внутри — вакуум, который ты пытаешься заполнить едой или скроллингом.</div>
+                    <div class="pain-title">Тебе уже стыдно говорить об этом</div>
+                    <div class="pain-text">Близкие говорят «ну хватит уже». И ты начинаешь врать - «да, мне лучше». А внутри всё то же самое. Ты чувствуешь себя одиноким(ой) дважды - и в боли, и в молчании об этой боли.</div>
                 </div>
                 <div class="pain-card fade-in">
                     <div class="pain-icon">🕳️</div>
-                    <div class="pain-title">Страх за будущее</div>
-                    <div class="pain-text">Ощущение, что «лучшее уже позади». Тебе кажется, что больше никто и никогда не вызовет таких чувств. Этот страх заставляет держаться за обломки прошлых отношений.</div>
+                    <div class="pain-title">Ты думаешь, что таких чувств больше не будет</div>
+                    <div class="pain-text">«Это была любовь всей моей жизни» - и теперь кажется, что всё остальное будет серым. <strong>Это ложь, которую говорит тебе травмированный мозг.</strong> Не ты. Не реальность.</div>
                 </div>
             </div>
         </div>
@@ -1117,7 +1571,7 @@
     <!-- TESTIMONIALS (MOVED UP) -->
     <section class="testimonials-section">
         <div class="container">
-            <h2 class="section-title">Что говорят те, кто прошел путь</h2>
+            <h2 class="section-title">Они тоже думали, что не смогут. Смогли.</h2>
             <div class="testimonials-grid">
                 <div class="testimonial-screenshot fade-in"><img src="https://i.ibb.co/S4q1LCTf/Screenshot-20260304-063607.png" alt="Отзыв 1"></div>
                 <div class="testimonial-screenshot fade-in"><img src="https://i.ibb.co/b5xSCPGY/Screenshot-20260307-080052.png" alt="Отзыв 2"></div>
@@ -1135,13 +1589,13 @@
 
     <!-- INACTION BLOCK -->
     <div class="inaction-block fade-in">
-        <h3>Что ты теряешь за месяц бездействия?</h3>
+        <h3>Пока ты ждёшь что «само пройдёт»...</h3>
         <ul class="inaction-list">
-            <li>30 бессонных ночей</li>
-            <li>3000 проверок его "онлайн"</li>
-            <li>Полная потеря самооценки и энергии</li>
+            <li>30 бессонных ночей - и усталость, которая копится</li>
+            <li>Тысячи проверок его/её онлайн - и каждая делает тебя слабее</li>
+            <li>Самооценка, которая тает с каждым днём без действий</li>
         </ul>
-        <p style="font-size: 16px; color: var(--gray); margin-top: 20px;">Начни действовать сегодня — не откладывай свою жизнь на потом</p>
+        <p style="font-size: 16px; color: var(--gray); margin-top: 20px;">Это не «само пройдёт». Без протокола это может тянуться месяцами.</p>
     </div>
 
     <!-- KILLER FEATURE -->
@@ -1151,30 +1605,54 @@
                 <div class="feature-icon">🎬📼</div>
                 <h2>🎬 Секретный протокол<br><span class="highlight">«Кинотеатр разума»</span></h2>
                 <p style="font-size: 18px; margin-bottom: 20px; color: #E5E7EB; max-width: 700px; margin-left: auto; margin-right: auto;">
-                    Это не медитация и не попытка «забыть». Это прямой <strong>взлом визуальной кодировки твоего мозга</strong>.
+                    Ты не можешь «просто перестать думать» о нём - потому что не ты управляешь этими мыслями. Пока управляют они. Техника «Кинотеатра» меняет это за 15 минут.
                 </p>
                 <p style="color: #9CA3AF; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">
-                    Большинство людей пытаются бороться с чувствами, но чувства — это лишь следствие картинок, которые крутит твоё подсознание. Пока эти «фильмы» яркие, громкие и близкие — тебе будет больно. Мы применим спецприём из арсенала когнитивной лингвистики, который физически перезаписывает файл с воспоминанием.
+                    Каждое воспоминание хранится в мозге как видеофайл: яркий, громкий, близкий. Боль - это не само воспоминание. Это его настройки. Ты меняешь цвет, размер, звук - и боль уходит. Воспоминание остаётся.
                 </p>
                 <div class="feature-steps">
                     <div class="feature-step">
-                        <strong>1. Берёшь болезненный эпизод</strong>
-                        Выбираешь самое тяжёлое воспоминание, которое причиняет боль прямо сейчас.
+                        <strong>1. Выбираешь одно воспоминание</strong>
+То, которое бьёт сильнее всего. Конкретная сцена, конкретный момент.
                     </div>
                     <div class="feature-step">
-                        <strong>2. Пропускаешь через 3 фильтра</strong>
-                        Применяешь технику «Кинотеатра» — меняешь субмодальности воспоминания.
+                        <strong>2. Меняешь его «настройки»</strong>
+Цвет, расстояние, громкость. Три ручки - и мозг перестаёт считать это важным.
                     </div>
                     <div class="feature-step">
-                        <strong>3. Эмоциональный заряд обнуляется</strong>
-                        Мозг перестает считывать это событие как «важное» или «опасное». Боль исчезает за 15 минут.
+                        <strong>3. Воспоминание есть - боли нет</strong>
+Ты помнишь что было. Но оно больше не режет. Эмоциональный заряд снят.
                     </div>
                 </div>
                 <p style="color: #E5E7EB; margin-top: 30px; font-size: 16px;">
-                    Это выглядит как магия, но это чистая нейрофизиология.
+                    Звучит странно. Работает - точно.
                 </p>
                 <div class="feature-warning">
-                    <strong>⚠️ Внимание:</strong> технику нельзя применять к тем, кого вы хотите оставить в своей жизни — пути назад к прежним чувствам не будет.
+                    <strong>⚠️ Важно:</strong> после этой техники эмоциональный заряд к конкретному воспоминанию исчезает навсегда. Применяй только если точно готов(а) двигаться дальше.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISUAL REMINDER BEFORE BOTTOM PRICING -->
+    <section class="remind-section">
+        <div class="container">
+            <div class="remind-grid fade-in">
+                <div class="remind-stat">
+                    <div class="remind-num">7</div>
+                    <div class="remind-label">дней - полный курс</div>
+                </div>
+                <div class="remind-stat">
+                    <div class="remind-num">70%</div>
+                    <div class="remind-label">уже дышат к 3-му дню</div>
+                </div>
+                <div class="remind-stat">
+                    <div class="remind-num">5 мин</div>
+                    <div class="remind-label">до получения доступа</div>
+                </div>
+                <div class="remind-stat">
+                    <div class="remind-num">130+</div>
+                    <div class="remind-label">прошли протокол</div>
                 </div>
             </div>
         </div>
@@ -1184,8 +1662,8 @@
     <section class="pricing-section" id="pricing">
         <div class="container">
             <div class="pricing-header fade-in">
-                <h2>Подробное описание тарифов</h2>
-                <p>Все тарифы включают мгновенный доступ после оплаты</p>
+                <h2>Выбери формат - и начни сегодня</h2>
+                <p>Доступ приходит на email в течение 5 минут после оплаты</p>
             </div>
 
             <div class="micro-guide fade-in">
@@ -1202,12 +1680,12 @@
                 <!-- TARIF 1: BASIC -->
                 <div class="pricing-card fade-in">
                     <h3>📘 Пакет «Самостоятельный»</h3>
-                    <p class="subtitle">Для тех, кто готов работать по протоколу самостоятельно</p>
+                    <p class="subtitle">Протокол + инструменты. Работаешь сама в своём темпе</p>
                     <ul class="pricing-features">
-                        <li><strong>Протокол «7 дней без боли»</strong><br>PDF, 39 страниц • SOS-протокол + 7 дней практик</li>
-                        <li><strong>Чек-лист «100 триггеров»</strong><br>Работа с эмоциональными реакциями</li>
-                        <li><strong>NLP-гайд</strong><br>Блокировка компульсивного контакта</li>
-                        <li><strong>Доступ навсегда</strong><br>Все материалы остаются у вас</li>
+                        <li><strong>Протокол «7 дней без боли»</strong><span class="card-desc">39 стр. • Каждый день - конкретная техника, не теория</span></li>
+                        <li><strong>Чек-лист «100 триггеров»</strong><span class="card-desc">Знаешь заранее что накроет - и как это остановить</span></li>
+                        <li><strong>NLP-гайд «Не пиши ему»</strong><span class="card-desc">7 техник блокировки импульса в момент срыва</span></li>
+                        <li><strong>Доступ навсегда</strong><span class="card-desc">Материалы твои - возвращайся когда нужно</span></li>
                     </ul>
                     <div class="pricing-price">
                         <span class="original-price">~~599 грн~~</span>
@@ -1227,19 +1705,19 @@
                 <div class="pricing-card popular fade-in">
                     <div class="popular-badge">🔥 Рекомендуем</div>
                     <h3>🎧 Пакет «С поддержкой»</h3>
-                    <p class="subtitle">Максимальное погружение с аудио-практикой</p>
+                    <p class="subtitle">Протокол + аудио на случай острой боли + живая поддержка в канале</p>
                     <ul class="pricing-features">
-                        <li><strong>Всё из пакета «Базовый»</strong><br>Протокол + Чек-лист + NLP-гайд</li>
-                        <li><strong>🎵 Аудио-практика «Экстренное спокойствие»</strong><br>12 минут • Голос автора • Для моментов острой боли</li>
-                        <li><strong>Закрытый Telegram-канал</strong><br>Ежедневная поддержка и советы от автора</li>
-                        <li><strong>Это всего 20 грн в день</strong><br>За твоё спокойствие в течение месяца</li>
+                        <li><strong>Всё из пакета «Базовый»</strong><span class="card-desc">Протокол + Чек-лист + NLP-гайд</span></li>
+                        <li><strong>🎵 Аудио-практика «Экстренное спокойствие»</strong><span class="card-desc">12 минут • Голос автора • Для моментов острой боли</span></li>
+                        <li><strong>Закрытый Telegram-канал</strong><span class="card-desc">Ежедневная поддержка и советы от автора</span></li>
+                        <li><strong>Это дешевле одной чашки кофе в день</strong><span class="card-desc">За месяц без бессонных ночей и проверок его/её онлайн</span></li>
                     </ul>
                     <div class="pricing-price">
                         <span class="original-price">~~999 грн~~</span>
                         <div class="amount">599 грн <span>(~$14)</span></div>
                     </div>
                     <div class="pricing-buttons">
-                        <a href="https://secure.wayforpay.com/button/b3330b596ef07" class="cta-button">Хочу с поддержкой</a>
+                        <a href="https://secure.wayforpay.com/button/b3330b596ef07" class="cta-button">Хочу + поддержку</a>
                         <a href="https://www.paypal.com/ncp/payment/LBZDF3ZMVSRJE" class="paypal-button" target="_blank">
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.774.774 0 0 1 .763-.653h5.812c3.825 0 6.202 1.668 6.202 5.305 0 2.192-.928 3.873-2.535 4.94-1.456.967-3.36 1.343-5.52 1.343H7.732l-.656 6.682zm11.18-14.043l-.66 6.682h4.594a.641.641 0 0 0 .633-.74l.732-7.44a.774.774 0 0 0-.763-.653h-4.536z"/></svg>
                             Оплатить через PayPal
@@ -1252,12 +1730,12 @@
                 <!-- TARIF 3: VIP -->
                 <div class="pricing-card fade-in">
                     <h3>⭐ Пакет «Личный»</h3>
-                    <p class="subtitle">Индивидуальный разбор вашей ситуации</p>
+                    <p class="subtitle">Роман лично разбирает твою ситуацию и корректирует протокол под тебя</p>
                     <ul class="pricing-features">
-                        <li><strong>Всё из пакета «С поддержкой»</strong><br>Протокол + Аудио + Чек-лист + NLP-гайд</li>
-                        <li><strong>🎙️ Личный разбор</strong><br>Голосовой анализ вашей ситуации в Telegram</li>
-                        <li><strong>📝 Индивидуальный план</strong><br>Коррекция протокола под вашу историю</li>
-                        <li><strong>⭐ Приоритетная поддержка</strong><br>Прямая связь с автором</li>
+                        <li><strong>Всё из пакета «С поддержкой»</strong><span class="card-desc">Протокол + Аудио + Чек-лист + NLP-гайд</span></li>
+                        <li><strong>🎙️ Личный разбор</strong><span class="card-desc">Голосовой анализ вашей ситуации в Telegram</span></li>
+                        <li><strong>📝 Индивидуальный план</strong><span class="card-desc">Коррекция протокола под вашу историю</span></li>
+                        <li><strong>⭐ Приоритетная поддержка</strong><span class="card-desc">Прямая связь с автором</span></li>
                     </ul>
                     <div class="pricing-price">
                         <span class="original-price">~~3999 грн~~</span>
@@ -1275,7 +1753,7 @@
             </div>
 
             <div class="email-warning fade-in">
-                ⚠️ Убедитесь, что ваш Email введен верно — именно на него система мгновенно отправит ваш доступ
+                ⚠️ Убедитесь, что ваш Email введен верно - именно на него система мгновенно отправит ваш доступ
             </div>
 
             <div class="security-block fade-in">
@@ -1321,14 +1799,14 @@
     <!-- CONTENT PREVIEW -->
     <section class="content-section">
         <div class="container">
-            <h2 class="section-title">Что внутри курса</h2>
-            <div class="day-card"><h3>День 1: Свободный вдох</h3><p class="result">Первый день без «кома в горле». Ты научишься отключать физическую реакцию на мысли о нем. Боль в груди утихнет, а дыхание станет глубоким и спокойным впервые за долгое время.</p></div>
-            <div class="day-card"><h3>День 2: Возвращение опоры</h3><p class="result">Прекращение самобичевания. Ты перестанешь искать в себе изъяны и причины его ухода. Твой фокус внимания вернется с «него» на «себя», возвращая ощущение собственной важности.</p></div>
-            <div class="day-card"><h3>День 3: Эмоциональная дистанция</h3><p class="result">Эффект «старого кино». После этой техники его образ перестанет вызывать слезы и дрожь. Воспоминания останутся, но они станут плоскими и блеклыми, как кадры из чужого забытого фильма.</p></div>
-            <div class="day-card"><h3>День 4: Тишина в голове</h3><p class="result">Остановка навязчивого диалога. Ты перестанешь крутить в голове сценарии «а что, если бы...». Мысли станут управляемыми, и ты наконец-то сможешь заснуть без таблеток и слез.</p></div>
-            <div class="day-card"><h3>День 5: Энергия для жизни</h3><p class="result">Твое секретное «состояние силы». Ты создашь внутренний переключатель, который позволит мгновенно возвращать себе уверенность и спокойствие в моменты, когда накатывает слабость или желание написать ему.</p></div>
-            <div class="day-card"><h3>День 6: Взгляд в будущее</h3><p class="result">Предвкушение новой жизни. Ты увидишь себя свободной, привлекательной и счастливой БЕЗ него. Страх одиночества сменится азартом и желанием двигаться дальше.</p></div>
-            <div class="day-card"><h3>День 7: Точка невозврата</h3><p class="result">Окончательное освобождение. Заключительный протокол, который «перерезает» остатки эмоциональной пуповины. Ты выходишь из этой недели другим человеком — обновленным, цельным и готовым к настоящей любви.</p></div>
+            <h2 class="section-title">Что происходит каждый из 7 дней</h2>
+            <div class="day-card"><h3>День 1: Стоп-паника</h3><p class="result">Ты получишь технику, которая отключает физическую реакцию тела прямо в момент острой боли. Спазм в груди, паника, желание написать ему - всё это управляемо. Уже с первого дня.</p></div>
+            <div class="day-card"><h3>День 2: Твои мысли снова твои</h3><p class="result">Руминация - это петля. Сегодня ты её разорвёшь. Конкретная техника НЛП останавливает навязчивый диалог. Ты перестаёшь искать в себе причины его/её ухода.</p></div>
+            <div class="day-card"><h3>День 3: Кинотеатр разума</h3><p class="result">Главная техника курса. Ты меняешь «настройки» самого болезненного воспоминания. Оно остаётся - но перестаёт резать. Большинство участниц называют этот день переломным.</p></div>
+            <div class="day-card"><h3>День 4: Первая ночь без слёз</h3><p class="result">Навязчивые сценарии «а вдруг» и «если бы я...» - это автоматические паттерны. Сегодня ты их выключаешь. Засыпаешь без таблеток и без него/неё в голове.</p></div>
+            <div class="day-card"><h3>День 5: Якорь</h3><p class="result">Ты создаёшь личный «переключатель» - состояние уверенности и покоя, которое можно включить в любой момент. Накатывает - нажимаешь. Работает.</p></div>
+            <div class="day-card"><h3>День 6: Ты видишь себя без него</h3><p class="result">Страх «я останусь один(а)» - это не правда, это травмированный мозг. Сегодня ты увидишь себя свободным(ой), живым(ой), уверенным(ой). Без него/неё.</p></div>
+            <div class="day-card"><h3>День 7: Финальный разрыв</h3><p class="result">Последняя техника перерезает эмоциональную связь. Не «забудь его» - а буквально нейтрализует оставшийся заряд. Ты выходишь из этой недели другим человеком.</p></div>
         </div>
     </section>
 
@@ -1336,9 +1814,9 @@
     <section class="final-cta" id="buy">
         <div class="container">
             <div class="cta-box">
-                <div class="guarantee-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>ГАРАНТИЯ ВОЗВРАТА</div>
-                <h2 style="font-size: 36px; margin-bottom: 20px;">Начните восстановление сегодня</h2>
-                <p style="font-size: 18px; color: var(--gray); margin-bottom: 30px;">Выберите пакет, который подходит именно вам</p>
+                <div class="guarantee-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>7 ДНЕЙ ГАРАНТИЯ ВОЗВРАТА</div>
+                <h2 style="font-size: 36px; margin-bottom: 20px;">Хватит ждать что само пройдёт</h2>
+                <p style="font-size: 18px; color: var(--gray); margin-bottom: 30px;">130+ человек уже прошли этот путь. Твоя очередь.</p>
                 
                 <a href="#pricing" class="cta-button" style="font-size: 20px; padding: 20px 40px; max-width: 350px; margin: 0 auto;">
                     <span>Выбрать тариф</span>
@@ -1370,7 +1848,7 @@
                 <h3>💬 Служба поддержки</h3>
             </div>
             <div class="modal-body">
-                <p style="margin-bottom: 20px; color: var(--gray);">Напишите нам в удобном для вас мессенджере — мы ответим в течение 24 часов:</p>
+                <p style="margin-bottom: 20px; color: var(--gray);">Напишите нам в удобном для вас мессенджере - мы ответим в течение 24 часов:</p>
                 
                 <div class="support-links">
                     <a href="https://www.instagram.com/back4_heart" target="_blank" class="support-link instagram">
@@ -1401,7 +1879,7 @@
                 </p>
             </div>
             <div class="modal-footer">
-                <strong>back4heart</strong> — поддержка на пути к исцелению
+                <strong>back4heart</strong> - поддержка на пути к исцелению
             </div>
         </div>
     </div>
@@ -1468,33 +1946,501 @@
 
     <script>
     // =============================================
+    // GENDER SELECTION SYSTEM
+    // =============================================
+    const GENDER_CONTENT = {
+
+        // ══════════════════════════════════════════
+        // МУЖСКАЯ ВЕРСИЯ
+        // Психология: подавление боли, удар по эго и статусу,
+        // уход в действие, стыд за «слабость», одиночество в молчании
+        // ══════════════════════════════════════════
+        male: {
+            urgencyBar: '⚡ Пока ты держишь себя в руках - она живёт своей жизнью. Пора вернуть себе свою. Спеццена до конца недели.',
+            badge: '130+ мужчин прошли этот протокол. 70% почувствовали реальное облегчение уже к 3-му дню',
+
+            // HERO
+            h1: 'Ты держишься. Но по ночам - всё равно думаешь о ней.<br>Это не слабость. Это химия.',
+            heroSubtitle: 'Мозг мужчины после разрыва входит в режим угрозы. Не метафора - так работает физиология. Поэтому «просто взять себя в руки» не работает. Есть протокол выхода - без психологов и без нытья.',
+            heroHighlight: '<strong>⚠️ Узнаёшь себя?</strong> Снаружи - всё нормально. Внутри - 3 часа ночи и снова она • Ушёл в работу / спорт, но в тишине всё возвращается • Злишься - не знаешь на кого • Друзьям не скажешь, а нести это в себе уже невозможно',
+
+            // WHO NEEDS
+            whoTitle: 'Это точно про тебя, если...',
+            who1: 'Снаружи ты держишься - на работе, с друзьями, в зале. Но стоит остаться одному - и всё. <strong>Эта боль никуда не делась. Ты просто научился прятать её.</strong>',
+            who2: 'Ты уже пробовал «занять себя», пахал на работе, «найти другую». Помогает на день. Потом возвращается - и бьёт ещё сильнее.',
+            who3: 'Ты не слабак. Ты просто застрял в петле - и тебе нужен не «психолог» и не «поговори о чувствах». Тебе нужно то, что действительно выключает боль.',
+
+            // DOPAMINE BLOCK
+            dopamineText: 'После разрыва мозг мужчины теряет сразу два сигнала: дофамин (удовольствие) и ощущение контроля над ситуацией. Ты чувствуешь и боль, и что земля ушла из-под ног - одновременно. Это не слабость. Это физиология. И у неё есть выключатель.',
+
+            // PAIN CARDS (5 штук)
+            painTitle1: 'Ты не можешь выключить голову',
+            painText1: '«Что я сделал не так?», «Она уже с кем-то?», «Я же всё делал правильно - почему так вышло?» Одни и те же мысли. 3 ночи. 4 утра. <strong>Ты злишься на себя за то, что не можешь просто остановиться.</strong>',
+
+            painTitle2: 'Занят весь день - но ночью она снова здесь',
+            painText2: 'Работа, спортзал, алкоголь, новые знакомства. Работает - пока ты занят. Стоит лечь - и снова она. <strong>Боль никуда не уходит. Ты просто даёшь ей адрес попозже.</strong>',
+
+            painTitle3: 'Тело включило режим боевой готовности',
+            painText3: 'Ты не «грустишь» - ты на взводе. Раздражение, сжатые челюсти, напряжение в плечах, плохой сон. <strong>Это кортизол застрял на максимуме. Тело переключилось в боевой режим. Это можно выключить.</strong>',
+
+            painTitle4: 'Удар по самооценке - тот, который не признают',
+            painText4: 'Она ушла. Или выбрала другого. Или просто решила, что тебя недостаточно. И где-то внутри сидит мысль: <strong>«Значит, я недостаточно хорош». Это ложь. Но мозг в неё верит.</strong>',
+
+            painTitle5: 'Ты несёшь это в одиночку',
+            painText5: 'Другу не скажешь - засмеёт или не поймёт. Маме не скажешь - лишние вопросы. В итоге - молчишь. И это молчание давит сильнее самой боли. <strong>Ты один на один с тем, что не должен чувствовать «по-мужски».</strong>',
+
+            // WHO NEEDS SECTION TITLE (pain section)
+            painSectionTitle: 'Ты узнаёшь себя в этом?',
+
+            // INACTION BLOCK
+            inactionTitle: 'Пока ты «держишься» и ждёшь что само пройдёт...',
+            inactionItems: [
+                'Каждую ночь ты теряешь немного себя',
+                'Злость и напряжение копятся - и в какой-то момент начинают вылезать там, где не надо',
+                'Ты становишься не собой. И чем дольше - тем труднее вернуться'
+            ],
+            inactionNote: 'Это не «само пройдёт». Без протокола мужчины носят это в себе годами.',
+
+            // MISC
+            nlpGuide: '🚫 NLP-гайд «Не пиши ей»',
+            nlpDesc: '7 техник блокировки импульса - для момента, когда рука уже тянется к телефону',
+            card1subtitle: 'Протокол + инструменты. Работаешь сам, в своём темпе, без лишних слов',
+
+            socialProof: [
+                { name: 'Андрей', city: 'Киева', avatar: 'А', tariff: 'пакет «С поддержкой»', timeAgo: '9 минут назад', gender: 'm' },
+                { name: 'Максим', city: 'Варшавы', avatar: 'М', tariff: 'пакет «Самостоятельный»', timeAgo: '22 минуты назад', gender: 'm' },
+                { name: 'Дмитрий', city: 'Харькова', avatar: 'Д', tariff: 'пакет «Личный»', timeAgo: '34 минуты назад', gender: 'm' },
+                { name: 'Сергей', city: 'Кракова', avatar: 'С', tariff: 'пакет «С поддержкой»', timeAgo: '5 минут назад', gender: 'm' },
+                { name: 'Алексей', city: 'Берлина', avatar: 'А', tariff: 'пакет «Самостоятельный»', timeAgo: '17 минут назад', gender: 'm' },
+                { name: 'Иван', city: 'Праги', avatar: 'И', tariff: 'пакет «Личный»', timeAgo: '28 минут назад', gender: 'm' },
+            ]
+        },
+
+        // ══════════════════════════════════════════
+        // ЖЕНСКАЯ ВЕРСИЯ
+        // Психология: эмоциональное прокручивание, потеря образа будущего,
+        // социальная боль, самообвинение, желание понять «почему»
+        // ══════════════════════════════════════════
+        female: {
+            urgencyBar: '⚡ Пока ты читаешь это - он живёт своей жизнью. Начни жить своей. Спеццена до конца недели.',
+            badge: '130+ женщин прошли этот протокол. 70% почувствовали реальное облегчение уже к 3-му дню',
+
+            // HERO
+            h1: 'Ты не можешь перестать думать о нём.<br>Это не слабость - это химия.',
+            heroSubtitle: 'Твой мозг подсел на него как на наркотик. Разрыв - это ломка. И из этой ломки есть выход - без «отпусти и живи» и без месяцев терапии.',
+            heroHighlight: '<strong>⚠️ Узнаёшь себя?</strong> Проверяешь его онлайн по 50 раз в день • Физически болит в груди • Прокручиваешь одни и те же воспоминания • Знаешь, что надо остановиться - и не можешь',
+
+            // WHO NEEDS
+            whoTitle: 'Это точно про тебя, если...',
+            who1: 'Ты просыпаешься - и первая мысль о нём. Засыпаешь - и последняя тоже. <strong>Несколько недель прошло, а лучше не становится.</strong>',
+            who2: 'Ты уже пробовала «просто не думать», «занять себя», «встретиться с подругами». Помогает на час. Потом всё возвращается - и снова та же боль.',
+            who3: 'Ты не сломлена. Ты просто застряла в петле - и тебе нужен выход, а не очередной совет «полюби себя и всё пройдёт».',
+
+            // DOPAMINE BLOCK
+            dopamineText: 'После разрыва мозг теряет источник дофамина и кортизола одновременно. Он входит в режим ломки - и гонит тебя по кругу: снова те же мысли, снова то же место. Это не ты «не можешь отпустить». Это химия. И у химии есть выключатель.',
+
+            // PAIN CARDS (5 штук)
+            painTitle1: 'Ты не можешь выключить голову',
+            painText1: '«Что, если я написала что-то не то?», «А вдруг он встретил другую?», «Где я ошиблась?» - одни и те же мысли по кругу. 3 часа ночи. <strong>Ты уже ненавидишь себя за это - и всё равно продолжаешь.</strong>',
+
+            painTitle2: 'Ты живёшь по его расписанию',
+            painText2: 'Он зашёл в сеть - и у тебя всё оборвалось внутри. Посмотрел сторис - эйфория на час. Не посмотрел - чёрная дыра до утра. <strong>Твоё настроение теперь принадлежит не тебе.</strong>',
+
+            painTitle3: 'Тело тоже сломалось',
+            painText3: 'Ты не притворяешься. Боль в груди настоящая. Тошнота - настоящая. Нет аппетита, нет сил, нет желания вставать. <strong>Это не депрессия и не слабость - это cortisol crash. Его можно остановить.</strong>',
+
+            painTitle4: 'Тебе уже стыдно говорить об этом',
+            painText4: 'Близкие говорят «ну хватит уже». И ты начинаешь врать - «да, мне лучше». А внутри всё то же самое. Ты чувствуешь себя одинокой дважды - и в боли, и в молчании об этой боли.',
+
+            painTitle5: 'Ты потеряла не только его - ты потеряла образ будущего',
+            painText5: 'Не просто человека. Планы, совместную жизнь, картинку того, как всё должно было быть. И теперь кажется, что впереди - пустота. <strong>Это ложь, которую говорит тебе травмированный мозг.</strong> Не ты. Не реальность.',
+
+            // WHO NEEDS SECTION TITLE (pain section)
+            painSectionTitle: 'Ты узнаёшь себя в этом?',
+
+            // INACTION BLOCK
+            inactionTitle: 'Пока ты ждёшь что «само пройдёт»...',
+            inactionItems: [
+                '30 бессонных ночей - и усталость, которая только копится',
+                'Тысячи проверок его онлайн - каждая делает тебя чуть слабее',
+                'Самооценка тает с каждым днём без реального действия'
+            ],
+            inactionNote: 'Это не «само пройдёт». Без протокола это может тянуться месяцами.',
+
+            // MISC
+            nlpGuide: '🚫 NLP-гайд «Не пиши ему»',
+            nlpDesc: '7 техник блокировки импульса в момент срыва',
+            card1subtitle: 'Протокол + инструменты. Работаешь сама в своём темпе',
+
+            socialProof: [
+                { name: 'Аня', city: 'Кракова', avatar: 'А', tariff: 'пакет «С поддержкой»', timeAgo: '12 минут назад' },
+                { name: 'Марина', city: 'Киева', avatar: 'М', tariff: 'пакет «Самостоятельный»', timeAgo: '5 минут назад' },
+                { name: 'Елена', city: 'Одессы', avatar: 'Е', tariff: 'пакет «Личный»', timeAgo: '18 минут назад' },
+                { name: 'Ольга', city: 'Харькова', avatar: 'О', tariff: 'пакет «С поддержкой»', timeAgo: '23 минуты назад' },
+                { name: 'Татьяна', city: 'Днепра', avatar: 'Т', tariff: 'пакет «Самостоятельный»', timeAgo: '31 минуту назад' },
+                { name: 'Maja', city: 'Варшавы', avatar: 'M', tariff: 'пакет «С поддержкой»', timeAgo: '8 минут назад' },
+            ]
+        }
+    };
+
+    function selectGender(gender) {
+        const screen = document.getElementById('gender-screen');
+        screen.classList.add('hidden');
+        setTimeout(() => { screen.style.display = 'none'; }, 500);
+        sessionStorage.setItem('userGender', gender);
+        applyGenderContent(gender);
+        showSwitchBtn(gender);
+    }
+
+    function showSwitchBtn(gender) {
+        const btn = document.getElementById('switch-gender-btn');
+        const label = document.getElementById('switch-gender-label');
+        if (!btn) return;
+        btn.style.display = 'flex';
+        label.textContent = gender === 'male' ? 'Я женщина' : 'Я мужчина';
+    }
+
+    function resetGender() {
+        sessionStorage.removeItem('userGender');
+        const btn = document.getElementById('switch-gender-btn');
+        if (btn) btn.style.display = 'none';
+        const screen = document.getElementById('gender-screen');
+        screen.style.display = 'flex';
+        setTimeout(() => screen.classList.remove('hidden'), 10);
+    }
+
+    function applyGenderContent(gender) {
+        const c = GENDER_CONTENT[gender];
+        if (!c) return;
+
+        // Urgency bar
+        const urgBar = document.querySelector('.urgency-bar');
+        if (urgBar) urgBar.textContent = c.urgencyBar;
+
+        // Hero badge
+        const badge = document.querySelector('.hero-badge');
+        if (badge) badge.textContent = c.badge;
+
+        // Hero H1
+        const h1 = document.querySelector('.hero h1');
+        if (h1) h1.innerHTML = c.h1;
+
+        // Hero subtitle
+        const sub = document.querySelector('.hero-subtitle');
+        if (sub) sub.textContent = c.heroSubtitle;
+
+        // Hero highlight
+        const highlight = document.querySelector('.hero-highlight');
+        if (highlight) highlight.innerHTML = c.heroHighlight;
+
+        // Who needs - section title
+        const whoTitle = document.querySelector('.who-needs-section .section-title');
+        if (whoTitle) whoTitle.textContent = c.whoTitle;
+
+        // Who needs paragraphs
+        const whoPars = document.querySelectorAll('.who-needs-content p');
+        if (whoPars[0]) whoPars[0].innerHTML = c.who1;
+        if (whoPars[1]) whoPars[1].innerHTML = c.who2;
+        if (whoPars[2]) whoPars[2].innerHTML = c.who3;
+
+        // Dopamine block
+        const dopaEl = document.querySelector('.pain-reveal p');
+        if (dopaEl && c.dopamineText) dopaEl.textContent = c.dopamineText;
+
+        // Pain section title
+        const painSecTitle = document.querySelector('.pain-section + section .section-title, .pain-section .section-title');
+        // find the "Ты узнаёшь себя" section title
+        document.querySelectorAll('.section-title').forEach(el => {
+            if (el.textContent.includes('узнаёшь')) el.textContent = c.painSectionTitle;
+        });
+
+        // Pain cards - all 5
+        const painData = [
+            { title: c.painTitle1, text: c.painText1 },
+            { title: c.painTitle2, text: c.painText2 },
+            { title: c.painTitle3, text: c.painText3 },
+            { title: c.painTitle4, text: c.painText4 },
+            { title: c.painTitle5, text: c.painText5 },
+        ];
+        const painCards = document.querySelectorAll('.pain-card');
+        painCards.forEach((card, i) => {
+            if (!painData[i]) return;
+            const t = card.querySelector('.pain-title');
+            const p = card.querySelector('.pain-text');
+            if (t) t.textContent = painData[i].title;
+            if (p) p.innerHTML = painData[i].text;
+        });
+
+        // Inaction block
+        const inactionTitle = document.querySelector('.inaction-block h3');
+        if (inactionTitle) inactionTitle.textContent = c.inactionTitle;
+
+        const inactionItems = document.querySelectorAll('.inaction-list li');
+        inactionItems.forEach((li, i) => {
+            if (c.inactionItems[i]) li.textContent = c.inactionItems[i];
+        });
+
+        const inactionNote = document.querySelector('.inaction-block > p');
+        if (inactionNote) inactionNote.textContent = c.inactionNote;
+
+        // NLP guide label (product bullets)
+        const bullets = document.querySelectorAll('.product-bullets li');
+        if (bullets[2]) {
+            const strong = bullets[2].querySelector('strong');
+            const desc = bullets[2].querySelector('.bullet-desc');
+            if (strong) strong.textContent = c.nlpGuide;
+            if (desc) desc.textContent = c.nlpDesc;
+        }
+
+        // Pricing card subtitles
+        document.querySelectorAll('.compact-card .subtitle, .pricing-card .subtitle').forEach((el, i) => {
+            if (i === 0 || i === 3) el.textContent = c.card1subtitle; // first card in each section
+        });
+
+        // ═══════════════════════════════════════════
+        // ПАТЧ ВСЕХ СТАТИЧНЫХ HTML-ЭЛЕМЕНТОВ
+        // ═══════════════════════════════════════════
+        const m = gender === 'male';
+
+        // Who-needs: сломлен(а), застрял(а)
+        document.querySelectorAll('.who-needs-content p').forEach(p => {
+            p.innerHTML = p.innerHTML
+                .replace('сломлен(а)', m ? 'сломлен' : 'сломлена')
+                .replace('застрял(а)', m ? 'застрял' : 'застряла')
+                .replace('пробовал(а)', m ? 'пробовал' : 'пробовала');
+        });
+
+        // Блок автора: «начал(а) дышать»
+        document.querySelectorAll('.author-content p').forEach(p => {
+            p.innerHTML = p.innerHTML
+                .replace('начал(а)', m ? 'начал' : 'начала');
+        });
+
+        // Killer feature warning: «готов(а)»
+        const featureWarn = document.querySelector('.feature-warning');
+        if (featureWarn) {
+            featureWarn.innerHTML = featureWarn.innerHTML
+                .replace('готов(а)', m ? 'готов' : 'готова');
+        }
+
+        // Pain card 4 - «одиноким(ой)» (статичный HTML, до патча painData)
+        document.querySelectorAll('.pain-text').forEach(el => {
+            el.innerHTML = el.innerHTML
+                .replace('одиноким(ой)', m ? 'одиноким' : 'одинокой')
+                .replace('Он/она зашёл в сеть', m ? 'Она зашла в сеть' : 'Он зашёл в сеть');
+        });
+        document.querySelectorAll('.pain-title').forEach(el => {
+            if (el.textContent.includes('его/её расписанию'))
+                el.textContent = m ? 'Ты живёшь по её расписанию' : 'Ты живёшь по его расписанию';
+        });
+
+        // Inaction list - «его/её онлайн»
+        document.querySelectorAll('.inaction-list li').forEach(li => {
+            li.innerHTML = li.innerHTML
+                .replace('его/её онлайн', m ? 'её онлайн' : 'его онлайн');
+        });
+
+        // Pricing cards - «Не пиши ему» и «проверок его/её онлайн»
+        document.querySelectorAll('.card-desc').forEach(el => {
+            el.innerHTML = el.innerHTML
+                .replace('Не пиши ему', m ? 'Не пиши ей' : 'Не пиши ему')
+                .replace('проверок его/её онлайн', m ? 'проверок её онлайн' : 'проверок его онлайн');
+        });
+
+        // 7 дней - заголовки и тексты карточек
+        document.querySelectorAll('.day-card').forEach(card => {
+            const h3 = card.querySelector('h3');
+            const p = card.querySelector('.result');
+            if (!h3 || !p) return;
+            if (h3.textContent.includes('День 1'))
+                p.innerHTML = p.innerHTML.replace('написать ему', m ? 'написать ей' : 'написать ему');
+            if (h3.textContent.includes('День 2'))
+                p.innerHTML = p.innerHTML.replace('его/её ухода', m ? 'её ухода' : 'его ухода');
+            if (h3.textContent.includes('День 3'))
+                p.innerHTML = p.innerHTML
+                    .replace('участниц', m ? 'участников' : 'участниц')
+                    .replace('участников', m ? 'участников' : 'участниц');
+            if (h3.textContent.includes('День 4')) {
+                h3.textContent = m ? 'День 4: Первая ночь без мыслей о ней' : 'День 4: Первая ночь без слёз';
+                p.innerHTML = p.innerHTML.replace('без него/неё в голове', m ? 'без неё в голове' : 'без него в голове');
+            }
+            if (h3.textContent.includes('День 6') || h3.textContent.includes('День 4: Первая ночь без')) {
+                if (h3.textContent.includes('День 6')) {
+                    h3.textContent = m ? 'День 6: Ты видишь себя без неё' : 'День 6: Ты видишь себя без него';
+                    p.innerHTML = p.innerHTML
+                        .replace('один(а)', m ? 'один' : 'одна')
+                        .replace('свободным(ой)', m ? 'свободным' : 'свободной')
+                        .replace('живым(ой)', m ? 'живым' : 'живой')
+                        .replace('уверенным(ой)', m ? 'уверенным' : 'уверенной')
+                        .replace('Без него/неё', m ? 'Без неё' : 'Без него');
+                }
+            }
+            if (h3.textContent.includes('День 7'))
+                p.innerHTML = p.innerHTML.replace('забудь его', m ? 'забудь её' : 'забудь его');
+        });
+
+        // Social proof
+        window._socialProofData = c.socialProof;
+
+        // ══════════════════════════════════════════
+        // АДАПТАЦИЯ НОВЫХ ВИЗУАЛЬНЫХ БЛОКОВ
+        // ══════════════════════════════════════════
+
+        const set = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
+        const setH = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
+
+        if (m) {
+            // ── МУЖСКАЯ ВЕРСИЯ ──
+            // Фокус: восстановление контроля, продуктивность, статус, действие
+
+            // Прогресс-бары
+            set('stats-title', 'Что меняется за 7 дней');
+            set('stat-label-1', 'Снижение интенсивности боли к 3-му дню');
+            set('stat-label-2', 'Вернули контроль над мыслями');
+            set('stat-label-3', 'Нормализовали сон к 5-му дню');
+            set('stat-label-4', 'Остановили импульс «написать ей»');
+            set('stats-note', '* по данным опроса 130+ мужчин, прошедших протокол');
+
+            // График
+            set('graph-title', 'Как снижается напряжение по дням');
+            set('graph-subtitle', 'Среднее снижение уровня кортизола и внутреннего напряжения у мужчин');
+            set('graph-note', 'Большинство участников отмечают первый «чистый» день уже на 3–4 сутки');
+
+            // Инфографика мозга
+            set('brain-title', 'Почему «просто займись делом» не помогает');
+            set('brain-step1-desc', 'Мозг теряет источник дофамина И ощущение контроля одновременно');
+            set('brain-step2-icon', '📉');
+            set('brain-step2-title', 'Двойной удар');
+            set('brain-step2-desc', 'Дофамин падает + тестостерон-контроль нарушен');
+            set('brain-step3-desc', 'Раздражение, сжатые челюсти, плохой сон, агрессия');
+            set('brain-step4-icon', '🔒');
+            set('brain-loop-title', 'Подавление');
+            set('brain-loop-desc', 'Уходишь в работу/спорт - но в тишине она снова здесь');
+            set('brain-protocol-desc', '7 техник перезагружают нейрохимию без «говори о чувствах»');
+            set('brain-exit-title', 'Контроль');
+            set('brain-exit-desc', 'Ты снова управляешь собой. Не она - ты.');
+
+            // Таблица сравнения
+            set('compare-title', 'Держишься сам vs Работаешь по протоколу');
+            set('compare-label-day3', 'Через 3 дня');
+            set('compare-bad-day3',   'Та же боль. Прячешь, но она давит');
+            set('compare-good-day3',  'Напряжение снизилось на 40–60%');
+            set('compare-label-nights', 'Ночи');
+            set('compare-bad-nights', 'Бессонница, 3 часа - и снова мысли о ней');
+            set('compare-good-nights', 'Засыпаешь. Без алкоголя, без таблеток');
+            set('compare-label-phone', 'Телефон');
+            set('compare-bad-phone',  'Снова проверяешь её сторис. Снова.');
+            set('compare-good-phone', 'Импульс остановлен до того, как ты открыл приложение');
+            set('compare-label-thoughts', 'Мысли');
+            set('compare-bad-thoughts', 'Злость, прокрутка, «что пошло не так» по кругу');
+            set('compare-good-thoughts', 'Управляемо. Ты выбираешь куда направить голову');
+            set('compare-label-body', 'Энергия');
+            set('compare-bad-body',   'Спортзал не помогает. В тишине - снова пусто');
+            set('compare-good-body',  'Кортизол снижен. Сила возвращается');
+            set('compare-label-day7', 'Через 7 дней');
+            set('compare-bad-day7',   'Всё ещё носишь это в себе. Никто не знает.');
+            set('compare-good-day7',  'Эмоциональная связь нейтрализована. Ты снова свой.');
+
+        } else {
+            // ── ЖЕНСКАЯ ВЕРСИЯ ──
+            // Фокус: остановить петлю мыслей, вернуть себя, образ будущего
+
+            // Прогресс-бары
+            set('stats-title', 'Что говорят цифры');
+            set('stat-label-1', 'Облегчение к 3-му дню');
+            set('stat-label-2', 'Дошли до конца протокола');
+            set('stat-label-3', 'Снизили тревогу за 7 дней');
+            set('stat-label-4', 'Перестали проверять его онлайн');
+            set('stats-note', '* по данным опроса 130+ участниц курса');
+
+            // График
+            set('graph-title', 'Как меняется боль по дням');
+            set('graph-subtitle', 'Среднее снижение интенсивности боли у участниц протокола');
+            set('graph-note', 'Большинство участниц называют День 3 первым «моментом выдоха»');
+
+            // Инфографика мозга
+            set('brain-title', 'Почему «просто отпусти» не работает');
+            set('brain-step1-desc', 'Мозг теряет главный источник дофамина и привязанности');
+            set('brain-step2-icon', '📉');
+            set('brain-step2-title', 'Дофамин падает');
+            set('brain-step2-desc', 'Нет радости, нет мотивации, нет сил');
+            set('brain-step3-desc', 'Тревога, бессонница, физическая боль в груди');
+            set('brain-step4-icon', '🔄');
+            set('brain-loop-title', 'Петля мыслей');
+            set('brain-loop-desc', 'Мозг ищет «дозу» - снова и снова прокручивает воспоминания о нём');
+            set('brain-protocol-desc', '7 NLP-техник перезагружают нейрохимию напрямую');
+            set('brain-exit-title', 'Выход');
+            set('brain-exit-desc', 'Боль управляема. Ты снова принадлежишь себе.');
+
+            // Таблица сравнения
+            set('compare-title', 'Без протокола vs С протоколом');
+            set('compare-label-day3', 'Через 3 дня');
+            set('compare-bad-day3',   'Та же острая боль. Та же петля.');
+            set('compare-good-day3',  'Боль снизилась на 40–60%');
+            set('compare-label-nights', 'Ночи');
+            set('compare-bad-nights', 'Бессонница, мысли по кругу до утра');
+            set('compare-good-nights', 'Засыпаешь без таблеток');
+            set('compare-label-phone', 'Телефон');
+            set('compare-bad-phone',  'Снова проверяешь его сторис. Снова.');
+            set('compare-good-phone', 'Импульс «написать ему» остановлен');
+            set('compare-label-thoughts', 'Мысли');
+            set('compare-bad-thoughts', 'Петля «что я сделала не так» на автопилоте');
+            set('compare-good-thoughts', 'Управляемо с Дня 2');
+            set('compare-label-body', 'Тело');
+            set('compare-bad-body',   'Спазм в груди, нет аппетита, нет сил');
+            set('compare-good-body',  'Физическая реакция отключена');
+            set('compare-label-day7', 'Через 7 дней');
+            set('compare-bad-day7',   'Месяцы впереди. Само не пройдёт.');
+            set('compare-good-day7',  'Эмоциональный заряд нейтрализован. Ты свободна.');
+        }
+    }
+
+    // Check if already selected (e.g. on page refresh)
+    (function() {
+        const saved = sessionStorage.getItem('userGender');
+        if (saved) {
+            document.getElementById('gender-screen').style.display = 'none';
+            applyGenderContent(saved);
+            showSwitchBtn(saved);
+        }
+    })();
+
+    // =============================================
     // GEO-DETECTION + LOCALIZATION SYSTEM
     // =============================================
     const REGIONS = {
-        UA: { // Ukraine — UAH prices, Ukrainian language
+        UA: { // Ukraine - UAH prices, Ukrainian language
             lang: 'uk',
             currency: '₴',
             prices: { solo: '390', support: '790', personal: '2490' },
             urgencyBar: '🔥 Спецціна діє тільки до кінця тижня!',
-            badge: 'Покроковий протокол, який пройшли вже 130+ людей з результатом 70% полегшення до 3-го дня',
-            h1: '7 днів без болю',
-            heroSubtitle: 'Науковий протокол відновлення біохімії мозку після розставання. Техніки НЛП і КПТ для перепрограмування нейронних зв\'язків.',
-            heroHighlight: '<strong>⚠️ Якщо ти:</strong> Перевіряєш його онлайн кожні 15 хвилин • Не можеш їсти і спати • Фізично відчуваєш біль у грудях • Зриваєшся і пишеш йому',
-            quickCta: '🚀 Купити в 1 клік',
+            badge: '130+ жінок вийшли з цього стану. 70% відчули полегшення вже до 3-го дня',
+            badgeMale: '130+ чоловіків вийшли з цього стану. 70% відчули полегшення вже до 3-го дня',
+            h1: 'Ти не можеш перестати думати про нього.<br>Це не слабкість - це хімія.',
+            h1Male: 'Ти тримаєшся. Але вночі - все одно думаєш про неї.<br>Це не слабкість. Це хімія.',
+            heroSubtitle: 'Твій мозок підсів на нього як на наркотик. Розрив - це ломка. І у цієї ломки є протокол виходу - без «відпусти і живи» і без місяців терапії.',
+            heroSubtitleMale: 'Твій мозок після розриву входить у режим загрози. Не метафора - так працює фізіологія. Тому «просто взяти себе в руки» не виходить. Є протокол виходу - без психологів і без скиглення.',
+            heroHighlight: '<strong>⚠️ Впізнаєш себе?</strong> Перевіряєш його онлайн по 50 разів на день • Фізично болить у грудях • Засинаєш - і знову думаєш про нього • Знаєш, що треба зупинитись - і не можеш',
+            heroHighlightMale: '<strong>⚠️ Впізнаєш себе?</strong> Назовні - все нормально. Всередині - 3 ночі і знову вона • Пішов у роботу / спорт, але в тиші все повертається • Злишся - не знаєш на кого • Друзям не скажеш, а нести це в собі вже неможливо',
+            quickCta: '🚀 Хочу вийти з цього стану',
             productLabel: '📱 Ось що ви отримаєте:',
-            sectionTitleWho: 'Кому цей курс життєво необхідний',
-            whoP1: 'Цей курс для тих, хто <strong>застряг у минулому і не бачить майбутнього</strong>.',
-            whoP2: 'Для тих, хто кожного ранку прокидається з думкою про нього і засинає зі сльозами.',
-            whoP3: 'Для тих, хто розуміє, що так більше тривати не може, і готовий взяти відповідальність за своє зцілення.',
-            pricingTitle: '💎 Обери свій пакет',
+            sectionTitleWho: 'Це точно про тебе, якщо...',
+            whoP1: 'Ти прокидаєшся - і перша думка про нього. Засинаєш - і остання теж. <strong>Минуло вже кілька тижнів, а краще не стає.</strong>',
+            whoP1Male: 'Назовні ти тримаєшся - на роботі, з друзями, в залі. Але варто залишитись наодинці - і все. <strong>Цей біль нікуди не дівся. Ти просто навчився його ховати.</strong>',
+            whoP2: 'Ти вже пробувала «просто не думати», «зайнятися собою», «зустрітися з подругами». Допомагає на годину. Потім все повертається.',
+            whoP2Male: 'Ти вже пробував «зайнятися собою», «поринути в роботу», «знайти іншу». Допомагає на день. Потім повертається - і б\'є ще сильніше.',
+            whoP3: 'Ти не зломлена. Ти просто застряла в петлі - і тобі потрібен вихід, а не чергова порада «полюби себе».',
+            whoP3Male: 'Ти не слабак. Ти просто застряг у петлі - і тобі потрібен не «психолог». Тобі потрібно те, що реально працює.',
+            pricingTitle: '💎 З чого почати прямо зараз',
             card1Name: '📘 Пакет «Самостійний»',
-            card1Sub: 'Для тих, хто готовий працювати за протоколом самостійно',
+            card1Sub: 'Протокол + інструменти. Працюєш сама у своєму темпі',
+            card1SubMale: 'Протокол + інструменти. Працюєш сам, у своєму темпі, без зайвих слів',
             card1Btn: 'Обрати базовий',
             card2Name: '🎧 Пакет «З підтримкою»',
-            card2Sub: 'Максимальне занурення з аудіо-практикою',
+            card2Sub: 'Протокол + аудіо на випадок гострого болю + жива підтримка в каналі',
             card2Btn: 'Хочу з підтримкою',
             card3Name: '⭐ Пакет «Особистий»',
-            card3Sub: 'Індивідуальний розбір вашої ситуації',
+            card3Sub: 'Роман особисто розбирає твою ситуацію і коригує протокол під тебе',
             card3Btn: 'Забронювати VIP',
             recommended: '🔥 Рекомендуємо',
             instantEmail: '📧 Миттєвий доступ на Email',
@@ -1505,39 +2451,58 @@
             step1: 'Обираєте тариф',
             step2: 'Вводите Email',
             step3: 'Отримуєте доступ',
-            emailWarning: '⚠️ Переконайтесь, що ваш Email введено вірно — саме на нього система миттєво надішле ваш доступ',
-            painTitle: 'Тобі знайоме це?',
-            pain1title: 'Ментальна жуйка (Румінація)',
-            pain1text: 'Нескінченний внутрішній діалог. Ти годинами прокручуєш в голові одні й ті самі фрази. Твій мозок зайнятий ним 24/7. <strong>Ти розумієш, що це безглуздо, але не можеш зупинитись.</strong>',
-            pain2title: 'Втрата суб\'єктності (Приниження)',
-            pain2text: 'Режим «Хатіко». Ти підлаштовуєш свій графік під його онлайн. Твій настрій залежить від того, чи переглянув він твою історію. Ти відчуваєш, як втрачаєш гідність.',
-            pain3title: 'Фізичне виснаження',
-            pain3text: 'Відчуття «випаленої землі». У тебе немає сил на елементарні речі. Вранці ти прокидаєшся вже стомленою, а будь-яка дрібниця викликає фізичну нудоту і спазм у грудях.',
-            pain4title: 'Соціальна ізоляція',
-            pain4text: 'Токсична самотність. Друзям вже набридло слухати про «це», і ти починаєш брехати, що стало легше. Всередині — вакуум, який ти намагаєшся заповнити їжею або скролінгом.',
-            pain5title: 'Страх за майбутнє',
-            pain5text: 'Відчуття, що «найкраще вже позаду». Тобі здається, що більше ніхто і ніколи не викличе таких почуттів. Цей страх змушує триматися за уламки минулих стосунків.',
-            dopamine: { h3: 'Те, що ти відчуваєш — це не просто туга.', p: 'Твоя нервова система перевантажена гормонами стресу. Мозок застряг у режимі виживання, змушуючи тебе знову і знову повертатися у минуле. Ми не будемо «лікувати» душу розмовами — ми застосуємо техніки нейропластичності, щоб заспокоїти систему і повернути тобі контроль над своїми думками' },
-            inaction: { h3: 'Що ти втрачаєш за місяць бездіяльності?', li1: '30 безсонних ночей', li2: '3000 перевірок його «онлайн»', li3: 'Повна втрата самооцінки та енергії', p: 'Починай діяти сьогодні — не відкладай своє життя на потім' },
-            feature: { badge: 'БОНУС: NLP-гайд по блокуванню контакту', label: '📱 Ось що ви отримаєте:', title: '🎬 Секретний протокол<br><span class="highlight">«Кінотеатр розуму»</span>', p1: 'Це не медитація і не спроба «забути». Це прямий <strong>злом візуального кодування твого мозку</strong>.', step1: '<strong>1. Береш болючий епізод</strong> Обираєш найважчий спогад, який завдає болю прямо зараз.', step2: '<strong>2. Пропускаєш через 3 фільтри</strong> Застосовуєш техніку «Кінотеатру» — змінюєш субмодальності спогаду.', step3: '<strong>3. Емоційний заряд обнуляється</strong> Мозок перестає сприймати цю подію як «важливу» або «небезпечну». Біль зникає за 15 хвилин.', warning: '<strong>⚠️ Увага:</strong> техніку не можна застосовувати до тих, кого ви хочете залишити у своєму житті — шляху назад до колишніх почуттів не буде.' },
-            testimonials: 'Що кажуть ті, хто пройшов шлях',
-            contentTitle: 'Що всередині курсу',
-            days: ['День 1: Вільний вдих', 'День 2: Повернення опори', 'День 3: Емоційна дистанція', 'День 4: Тиша в голові', 'День 5: Енергія для життя', 'День 6: Погляд у майбутнє', 'День 7: Точка неповернення'],
-            daysText: ['Перший день без «грудки в горлі». Ти навчишся відключати фізичну реакцію на думки про нього. Біль у грудях вщухне, а дихання стане глибоким і спокійним вперше за довгий час.', 'Припинення самобичування. Ти перестанеш шукати у собі вади і причини його відходу. Твій фокус уваги повернеться з «нього» на «себе», повертаючи відчуття власної важливості.', 'Ефект «старого кіно». Після цієї техніки його образ перестане викликати сльози і тремтіння. Спогади залишаться, але стануть пласкими і блідими, як кадри з чужого забутого фільму.', 'Зупинка нав\'язливого діалогу. Ти перестанеш крутити в голові сценарії «а що, якби...». Думки стануть керованими, і ти нарешті зможеш заснути без таблеток і сліз.', 'Твій секретний «стан сили». Ти створиш внутрішній перемикач, який дозволить миттєво повертати собі впевненість і спокій у моменти, коли накочує слабкість або бажання написати йому.', 'Передчуття нового життя. Ти побачиш себе вільною, привабливою і щасливою БЕЗ нього. Страх самотності зміниться азартом і бажанням рухатися далі.', 'Остаточне звільнення. Заключний протокол, який «перерізає» залишки емоційної пуповини. Ти виходиш з цього тижня іншою людиною — оновленою, цілісною і готовою до справжнього кохання.'],
-            finalCta: { h2: 'Починай відновлення сьогодні', p: 'Оберіть пакет, який підходить саме вам', btn: 'Обрати тариф', guarantee: 'Миттєвий доступ • Безпечна оплата • Підтримка 24/7' },
+            emailWarning: '⚠️ Переконайтесь, що ваш Email введено вірно - саме на нього система миттєво надішле ваш доступ',
+            painTitle: 'Ти впізнаєш себе в цьому?',
+            pain1title: 'Ти не можеш вимкнути голову',
+            pain1text: '«Що, якщо я написала щось не те?», «А раптом він зустрів іншу?» - одні й ті самі думки по колу. 3 ночі. <strong>Ти вже ненавидиш себе за це - і все одно продовжуєш.</strong>',
+            pain1titleMale: 'Ти не можеш вимкнути голову',
+            pain1textMale: '«Де я помилився?», «Що я зробив не так?», «Вона вже з кимось?» - одні й ті самі думки. 3 ночі. 4 ранку. <strong>Ти злишся на себе за те, що не можеш просто зупинитись.</strong>',
+            pain2title: 'Ти живеш за його розкладом',
+            pain2text: 'Він зайшов у мережу - і у тебе всередині все обірвалось. Переглянув сторіс - ейфорія на годину. Не переглянув - чорна діра до ранку. <strong>Твій настрій тепер не належить тобі.</strong>',
+            pain2titleMale: 'Ти пішов у дію - але тиша все одно дістає',
+            pain2textMale: 'Робота, спортзал, алкоголь, нові знайомства. Працює - поки ти зайнятий. Варто лягти - і знову вона. <strong>Ти не тікаєш від болю. Ти просто відкладаєш зустріч з ним.</strong>',
+            pain3title: 'Тіло теж зламалось',
+            pain3text: 'Ти не вдаєш. Біль у грудях справжній. Нудота - справжня. Немає апетиту, немає сил, немає бажання вставати. <strong>Це не депресія і не слабкість - це cortisol crash. Його можна зупинити.</strong>',
+            pain3titleMale: 'Тіло ввімкнуло режим бойової готовності',
+            pain3textMale: 'Ти не «сумуєш» - ти на взводі. Роздратування, стиснуті щелепи, напруга в плечах, поганий сон. <strong>Це кортизол застряг на максимумі. Мозок вирішив, що ти в небезпеці. Це можна вимкнути.</strong>',
+            pain4title: 'Тобі вже соромно говорити про це',
+            pain4text: 'Подруги кажуть «ну вже досить». І ти починаєш брехати - «та, мені краще». А всередині все те саме. Ти відчуваєш себе самотньою двічі - і в болю, і в мовчанні про цей біль.',
+            pain4titleMale: 'Удар по самооцінці - той, який не визнають',
+            pain4textMale: 'Вона пішла. Або вибрала іншого. І десь всередині сидить думка: <strong>«Значить, я недостатньо хороший». Це брехня. Але мозок вірить саме їй.</strong>',
+            pain5title: 'Ти думаєш, що таких почуттів більше не буде',
+            pain5text: '«Це було кохання всього мого життя» - і тепер здається, що все інше буде сірим. <strong>Це брехня, яку говорить тобі травмований мозок.</strong> Не ти. Не реальність.',
+            pain5titleMale: 'Ти несеш це наодинці',
+            pain5textMale: 'Другу не скажеш - засміє або не зрозуміє. Мамі не скажеш - зайві питання. І це мовчання тисне сильніше за сам біль. <strong>Ти сам на сам з тим, що не повинен відчувати «по-чоловічому».</strong>',
+            dopamine: { h3: 'Те, що ти відчуваєш - це не слабкість характеру.<br>Це фізіологія.', p: 'Після розриву мозок втрачає джерело дофаміну і кортизолу одночасно. Він входить у режим ломки - і жене тебе знову і знову по одному колу. Це не ти «не можеш відпустити». Це хімія. І у хімії є вимикач.' },
+            inaction: { h3: 'Поки ти чекаєш що «саме пройде»...', li1: '30 безсонних ночей - і втома, що накопичується', li2: 'Тисячі перевірок його онлайн - і кожна робить тебе слабшою', li3: 'Самооцінка, що тане з кожним днем без дій', p: 'Це не «саме пройде». Без інструменту це може тягнутись місяцями.' },
+            inactionMale: { h3: 'Поки ти «тримаєшся» і чекаєш що само пройде...', li1: 'Кожну ніч ти втрачаєш силу - не її, а свою власну', li2: 'Злість і напруга накопичуються - і починають впливати на роботу, на інших людей', li3: 'Ти стаєш не собою. І що довше - то важче повернутись', p: 'Це не «само пройде». Без конкретного інструменту чоловіки носять це в собі роками.' },
+            authorP4: 'Я не буду тебе жаліти - я дам тобі інструменти, щоб ти знову почала дихати».',
+            authorP4Male: 'Я не буду тебе жаліти - я дам тобі інструменти, щоб ти знову почав дихати».',
+            finalCta: { h2: 'Годі чекати що само пройде', p: '130+ жінок вже пройшли цей шлях. Твоя черга.', btn: 'Обрати тариф', guarantee: 'Миттєвий доступ • Безпечна оплата • Підтримка 24/7' },
+            finalCtaMale: { h2: 'Годі тримати це в собі', p: '130+ чоловіків вже пройшли цей шлях. Твоя черга.', btn: 'Обрати тариф', guarantee: 'Миттєвий доступ • Безпечна оплата • Підтримка 24/7' },
+            daysText: ['Ти отримаєш техніку, яка відключає фізичну реакцію тіла прямо в момент гострого болю. Спазм у грудях, паніка, бажання написати йому - все це керовано. Вже з першого дня.', 'Румінація - це петля. Сьогодні ти її розірвеш. Конкретна техніка НЛП зупиняє нав\'язливий діалог. Ти перестаєш шукати в собі причини його відходу.', 'Головна техніка курсу. Ти змінюєш «налаштування» найболючішого спогаду. Він залишається - але перестає різати. Більшість учасниць називають цей день переломним.', 'Нав\'язливі сценарії «а раптом» і «якби я...» - це автоматичні патерни. Сьогодні ти їх вимикаєш. Засинаєш без таблеток і без нього в голові.', 'Ти створюєш особистий «перемикач» - стан впевненості і спокою, який можна увімкнути в будь-який момент. Накочує - натискаєш. Працює.', 'Страх «я залишусь одна» - це не правда, це травмований мозок. Сьогодні ти побачиш себе вільною, живою, впевненою. Без нього.', 'Остання техніка перерізає емоційний зв\'язок. Не «забудь його» - а знімає залишковий заряд. Ти виходиш з цього тижня іншою людиною.'],
+            daysTextMale: ['Ти отримаєш техніку, яка відключає фізичну реакцію тіла прямо в момент гострого болю. Спазм у грудях, паніка, бажання написати їй - все це керовано. Вже з першого дня.', 'Румінація - це петля. Сьогодні ти її розірвеш. Конкретна техніка НЛП зупиняє нав\'язливий діалог. Ти перестаєш шукати в собі причини її відходу.', 'Головна техніка курсу. Ти змінюєш «налаштування» найболючішого спогаду. Він залишається - але перестає різати. Більшість учасників називають цей день переломним.', 'Нав\'язливі сценарії «а раптом» і «якби я...» - це автоматичні патерни. Сьогодні ти їх вимикаєш. Засинаєш без таблеток і без неї в голові.', 'Ти створюєш особистий «перемикач» - стан впевненості і спокою, який можна увімкнути в будь-який момент. Накочує - натискаєш. Працює.', 'Страх «я залишусь один» - це не правда, це травмований мозок. Сьогодні ти побачиш себе вільним, живим, впевненим. Без неї.', 'Остання техніка перерізає емоційний зв\'язок. Не «забудь її» - а знімає залишковий заряд. Ти виходиш з цього тижня іншою людиною.'],
+            popupText: (name, city, tariff) => `<strong>${name}</strong> з <strong>${city}</strong> оформила ${tariff}`,
+            popupTextMale: (name, city, tariff) => `<strong>${name}</strong> з <strong>${city}</strong> оформив ${tariff}`,
+            feature: { badge: 'БОНУС: NLP-гайд по блокуванню контакту', label: '📱 Ось що ви отримаєте:', title: '🎬 Секретний протокол<br><span class="highlight">«Кінотеатр розуму»</span>', p1: 'Це не медитація і не спроба «забути». Це прямий <strong>злом візуального кодування твого мозку</strong>.', step1: '<strong>1. Береш болючий епізод</strong> Обираєш найважчий спогад, який завдає болю прямо зараз.', step2: '<strong>2. Пропускаєш через 3 фільтри</strong> Застосовуєш техніку «Кінотеатру» - змінюєш субмодальності спогаду.', step3: '<strong>3. Емоційний заряд обнуляється</strong> Мозок перестає сприймати цю подію як «важливу» або «небезпечну». Біль зникає за 15 хвилин.', warning: '<strong>⚠️ Увага:</strong> техніку не можна застосовувати до тих, кого ви хочете залишити у своєму житті - шляху назад до колишніх почуттів не буде.' },
+            testimonials: 'Вони теж думали, що не зможуть. Змогли.',
+            contentTitle: 'Що відбувається кожен із 7 днів',
+            days: ['День 1: Стоп-паніка', 'День 2: Твої думки знову твої', 'День 3: Кінотеатр розуму', 'День 4: Перша ніч без сліз', 'День 5: Якір', 'День 6: Ти бачиш себе без нього', 'День 7: Фінальний розрив'],
+            daysText: ['Ти отримаєш техніку, яка відключає фізичну реакцію тіла прямо в момент гострого болю. Спазм у грудях, паніка, бажання написати йому - все це керовано. Вже з першого дня.', 'Румінація - це петля. Сьогодні ти її розірвеш. Конкретна техніка НЛП зупиняє нав\'язливий діалог. Ти перестаєш шукати в собі причини його відходу.', 'Головна техніка курсу. Ти змінюєш «налаштування» найболючішого спогаду. Він залишається - але перестає різати. Більшість учасниць називають цей день переломним.', 'Нав\'язливі сценарії «а раптом» і «якби я...» - це автоматичні патерни. Сьогодні ти їх вимикаєш. Засинаєш без таблеток і без нього в голові.', 'Ти створюєш особистий «перемикач» - стан впевненості і спокою, який можна увімкнути в будь-який момент. Накочує - натискаєш. Працює.', 'Страх «я залишусь одна» - це не правда, це травмований мозок. Сьогодні ти побачиш себе вільною, живою, впевненою. Без нього.', 'Остання техніка перерізає емоційний зв\'язок. Не «забудь його» - а знімає залишковий заряд. Ти виходиш з цього тижня іншою людиною.'],
+            finalCta: { h2: 'Годі чекати що само пройде', p: '130+ жінок вже пройшли цей шлях. Твоя черга.', btn: 'Обрати тариф', guarantee: 'Миттєвий доступ • Безпечна оплата • Підтримка 24/7' },
             footer: { support: 'Служба підтримки', offer: 'Публічна оферта', privacy: 'Політика конфіденційності', copy: '© 2026 7 днів без болю. Всі права захищені.' },
             securityText: 'Оплата здійснюється через сертифіковану платіжну систему WayForPay. Всі дані шифруються за стандартом AES-256. Ми отримаємо лише повідомлення про успішну оплату, щоб миттєво надіслати вам матеріали.',
             securityText2: 'Ваші дані захищені за міжнародним стандартом безпеки банківських операцій. Ми не зберігаємо дані ваших карток.',
             authorH3: 'Роман: Я пройшов через це пекло і знайшов вихід',
-            authorP1: '«17 років шлюбу закінчились в один день. Я знаю, що таке прокинутися у порожній квартирі і відчувати, як у грудях випалена земля. Я знаю, що таке «режим Хатіко» і нескінченні спроби повернути те, чого вже нема.',
-            authorP2: 'Я не спився і не здався. Натомість я схуд на 40 кг, перебудував своє життя з нуля і вивчив біохімію мозку, щоб зрозуміти: як вимкнути цей нестерпний біль?',
-            authorP3: '<strong>Протокол «7 днів без болю»</strong> — це система, яку я створив спочатку для себе, щоб просто вижити. Вона спрацювала на мені, знайшла відгук у 130+ моїх учнів і допоможе тобі.',
-            authorP4: 'Я не буду тебе жаліти — я дам тобі інструменти, щоб ти знову почала дихати».',
+            authorP1: '«17 років шлюбу закінчились в один день. Я знаю, що таке прокинутися у порожній квартирі і відчувати, як у грудях випалена земля. Я знаю, що таке режим «вона повернеться» і нескінченні спроби повернути те, чого вже нема.',
+            authorP2: 'Я не спився і не здався. Натомість я перебудував своє життя з нуля і вивчив біохімію мозку, щоб зрозуміти: як вимкнути цей нестерпний біль?',
+            authorP3: '<strong>Протокол «7 днів без болю»</strong> - це система, яку я створив спочатку для себе, щоб просто вижити. Вона спрацювала на мені, знайшла відгук у 130+ моїх учнів і допоможе тобі.',
+            authorP4: 'Я не буду тебе жаліти - я дам тобі інструменти, щоб ти знову почала дихати».',
             authorStats: '130+ людей пройшли курс з результатом 70% полегшення до 3-го дня',
             inactionBlock: 'Що ти втрачаєш за місяць бездіяльності?',
-            supportModal: { title: '💬 Служба підтримки', p: 'Напишіть нам у зручному для вас месенджері — ми відповімо протягом 24 годин:', time: '⏰ Відповімо протягом 24 годин у робочі дні', footer: '<strong>back4heart</strong> — підтримка на шляху до зцілення' },
-            offerModal: { title: 'Публічна оферта', p1_h: '1. Загальні положення', p1: 'Цей документ є офіційною пропозицією (публічною офертою) на придбання цифрового продукту «7 днів без болю» (далі — Курс).', p2: 'Акцепт оферти здійснюється шляхом оплати продукту. З моменту оплати договір вважається укладеним.', h2: '2. Предмет договору', p3: 'Виконавець зобов\'язується надати Замовнику доступ до цифрового продукту — PDF-курсу з техніками НЛП і КПТ для емоційного відновлення після розставання.', h3_t: '3. Вартість та оплата', p4: 'Вартість Курсу: <strong>390 ₴</strong> (акційна ціна). Доступні пакети «З підтримкою» (790 ₴) та «Особистий» (2490 ₴).', guarantee_h: '4. Гарантія повернення', guarantee_p: 'Якщо протягом 7 днів після покупки ви не відчуєте покращення, ви маєте право запросити повне повернення коштів.', rights_h: '5. Права та обов\'язки', executor: '<strong>Виконавець зобов\'язується:</strong> надати доступ до продукту протягом 5 хвилин після оплати; забезпечити технічну підтримку.', customer: '<strong>Замовник зобов\'язується:</strong> використовувати продукт в особистих цілях; не передавати, не копіювати і не поширювати матеріали Курсу.', footer: 'Остання зміна: <strong>Березень 2026</strong>' },
-            privacyModal: { title: 'Політика конфіденційності', p1: '<strong>1. Збір даних</strong>', p2: 'Ми збираємо тільки ті дані, які необхідні для надання послуги:', li1: 'Email — для надсилання доступу до Курсу та підтримки;', li2: 'Ім\'я (опціонально) — для персоналізації;', li3: 'Дані оплати — обробляються платіжними системами (ми не зберігаємо дані карток).', h2: '2. Використання даних', p3: 'Ваші дані використовуються виключно для надання доступу до продукту, технічної підтримки та надсилання важливої інформації про замовлення.', p4: 'Ми НЕ передаємо ваші дані третім особам, НЕ використовуємо для реклами без вашої згоди.', h3_t: '3. Захист даних', p5: 'Ми застосовуємо технічні заходи захисту: SSL-шифрування, безпечне зберігання, обмеження доступу до персональних даних.', footer: 'Остання зміна: <strong>Березень 2026</strong>' },
+            supportModal: { title: '💬 Служба підтримки', p: 'Напишіть нам у зручному для вас месенджері - ми відповімо протягом 24 годин:', time: '⏰ Відповімо протягом 24 годин у робочі дні', footer: '<strong>back4heart</strong> - підтримка на шляху до зцілення' },
+            offerModal: { title: 'Публічна оферта', p1_h: '1. Загальні положення', p1: 'Цей документ є офіційною пропозицією (публічною офертою) на придбання цифрового продукту «7 днів без болю» (далі - Курс).', p2: 'Акцепт оферти здійснюється шляхом оплати продукту. З моменту оплати договір вважається укладеним.', h2: '2. Предмет договору', p3: 'Виконавець зобов\'язується надати Замовнику доступ до цифрового продукту - PDF-курсу з техніками НЛП і КПТ для емоційного відновлення після розставання.', h3_t: '3. Вартість та оплата', p4: 'Вартість Курсу: <strong>390 ₴</strong> (акційна ціна). Доступні пакети «З підтримкою» (790 ₴) та «Особистий» (2490 ₴).', guarantee_h: '4. Гарантія повернення', guarantee_p: 'Якщо протягом 7 днів після покупки ви не відчуєте покращення, ви маєте право запросити повне повернення коштів.', rights_h: '5. Права та обов\'язки', executor: '<strong>Виконавець зобов\'язується:</strong> надати доступ до продукту протягом 5 хвилин після оплати; забезпечити технічну підтримку.', customer: '<strong>Замовник зобов\'язується:</strong> використовувати продукт в особистих цілях; не передавати, не копіювати і не поширювати матеріали Курсу.', footer: 'Остання зміна: <strong>Березень 2026</strong>' },
+            privacyModal: { title: 'Політика конфіденційності', p1: '<strong>1. Збір даних</strong>', p2: 'Ми збираємо тільки ті дані, які необхідні для надання послуги:', li1: 'Email - для надсилання доступу до Курсу та підтримки;', li2: 'Ім\'я (опціонально) - для персоналізації;', li3: 'Дані оплати - обробляються платіжними системами (ми не зберігаємо дані карток).', h2: '2. Використання даних', p3: 'Ваші дані використовуються виключно для надання доступу до продукту, технічної підтримки та надсилання важливої інформації про замовлення.', p4: 'Ми НЕ передаємо ваші дані третім особам, НЕ використовуємо для реклами без вашої згоди.', h3_t: '3. Захист даних', p5: 'Ми застосовуємо технічні заходи захисту: SSL-шифрування, безпечне зберігання, обмеження доступу до персональних даних.', footer: 'Остання зміна: <strong>Березень 2026</strong>' },
             socialProof: [
                 { name: 'Аня', city: 'Кракова', avatar: 'А', tariff: 'пакет «З підтримкою»', timeAgo: '12 хвилин тому' },
                 { name: 'Марина', city: 'Києва', avatar: 'М', tariff: 'пакет «Самостійний»', timeAgo: '5 хвилин тому' },
@@ -1549,27 +2514,27 @@
             ],
             popupText: (name, city, tariff) => `<strong>${name}</strong> з <strong>${city}</strong> оформила ${tariff}`,
         },
-        PL: { // Poland — UAH prices (same region), Russian language
+        PL: { // Poland - UAH prices (same region), Russian language
             lang: 'ru',
             currency: '₴',
             prices: { solo: '390', support: '790', personal: '2490' },
         },
-        EU: { // Europe — EUR
+        EU: { // Europe - EUR
             lang: 'ru',
             currency: '€',
             prices: { solo: '9.90', support: '18.90', personal: '59.00' },
         },
-        IL: { // Israel — ILS
+        IL: { // Israel - ILS
             lang: 'ru',
             currency: '₪',
             prices: { solo: '39', support: '79', personal: '249' },
         },
-        KZ: { // Kazakhstan — KZT
+        KZ: { // Kazakhstan - KZT
             lang: 'ru',
             currency: '₸',
             prices: { solo: '4900', support: '9900', personal: '29000' },
         },
-        DEFAULT: { // USA + World — USD
+        DEFAULT: { // USA + World - USD
             lang: 'ru',
             currency: '$',
             prices: { solo: '9.99', support: '19.99', personal: '59.00' },
@@ -1611,8 +2576,9 @@
 
     function applyUkrainian() {
         const t = REGIONS.UA;
+        const isMale = sessionStorage.getItem('userGender') === 'male';
         document.documentElement.lang = 'uk';
-        document.title = '7 днів без болю — Протокол відновлення після розставання';
+        document.title = '7 днів без болю - Протокол відновлення після розставання';
 
         // Urgency bar
         const urgEl = document.querySelector('.urgency-bar');
@@ -1620,13 +2586,13 @@
 
         // Hero
         const badgeEl = document.querySelector('.hero-badge');
-        if (badgeEl) badgeEl.textContent = t.badge;
+        if (badgeEl) badgeEl.textContent = isMale ? t.badgeMale : t.badge;
         const h1El = document.querySelector('.hero h1');
-        if (h1El) h1El.textContent = t.h1;
+        if (h1El) h1El.innerHTML = isMale ? t.h1Male : t.h1;
         const subEl = document.querySelector('.hero-subtitle');
-        if (subEl) subEl.textContent = t.heroSubtitle;
+        if (subEl) subEl.textContent = isMale ? t.heroSubtitleMale : t.heroSubtitle;
         const hlEl = document.querySelector('.hero-highlight');
-        if (hlEl) hlEl.innerHTML = t.heroHighlight;
+        if (hlEl) hlEl.innerHTML = isMale ? t.heroHighlightMale : t.heroHighlight;
         const quickBtn = document.querySelector('.quick-cta-btn span');
         if (quickBtn) quickBtn.textContent = t.quickCta;
         const sLabel = document.querySelector('.section-label');
@@ -1644,9 +2610,9 @@
         const whoTitle = document.querySelector('.who-needs-section .section-title');
         if (whoTitle) whoTitle.textContent = t.sectionTitleWho;
         const whoPs = document.querySelectorAll('.who-needs-content p');
-        if (whoPs[0]) whoPs[0].innerHTML = t.whoP1;
-        if (whoPs[1]) whoPs[1].textContent = t.whoP2;
-        if (whoPs[2]) whoPs[2].textContent = t.whoP3;
+        if (whoPs[0]) whoPs[0].innerHTML = isMale ? t.whoP1Male : t.whoP1;
+        if (whoPs[1]) whoPs[1].textContent = isMale ? t.whoP2Male : t.whoP2;
+        if (whoPs[2]) whoPs[2].textContent = isMale ? t.whoP3Male : t.whoP3;
 
         // Compact pricing title
         const cpTitle = document.querySelector('.compact-pricing-title');
@@ -1656,7 +2622,7 @@
         const cCards = document.querySelectorAll('.compact-card');
         if (cCards[0]) {
             cCards[0].querySelector('h3').textContent = t.card1Name;
-            cCards[0].querySelector('.subtitle').textContent = t.card1Sub;
+            cCards[0].querySelector('.subtitle').textContent = isMale ? t.card1SubMale : t.card1Sub;
             const btn = cCards[0].querySelector('.cta-button');
             if (btn) btn.textContent = t.card1Btn;
             const note = cCards[0].querySelector('.compact-note');
@@ -1694,7 +2660,7 @@
         if (authPs[0]) authPs[0].textContent = '«' + t.authorP1;
         if (authPs[1]) authPs[1].textContent = t.authorP2;
         if (authPs[2]) authPs[2].innerHTML = t.authorP3;
-        if (authPs[3]) authPs[3].textContent = t.authorP4 + '»';
+        if (authPs[3]) authPs[3].textContent = (isMale ? t.authorP4Male : t.authorP4) + '»';
         const authStats = document.querySelector('.author-stats');
         if (authStats) {
             const svg = authStats.querySelector('svg');
@@ -1707,8 +2673,12 @@
         const painTitle = document.querySelector('.pain-section .section-title');
         if (painTitle) painTitle.textContent = t.painTitle;
         const painCards = document.querySelectorAll('.pain-card');
-        const pTitles = [t.pain1title, t.pain2title, t.pain3title, t.pain4title, t.pain5title];
-        const pTexts = [t.pain1text, t.pain2text, t.pain3text, t.pain4text, t.pain5text];
+        const pTitles = isMale
+            ? [t.pain1titleMale, t.pain2titleMale, t.pain3titleMale, t.pain4titleMale, t.pain5titleMale]
+            : [t.pain1title, t.pain2title, t.pain3title, t.pain4title, t.pain5title];
+        const pTexts = isMale
+            ? [t.pain1textMale, t.pain2textMale, t.pain3textMale, t.pain4textMale, t.pain5textMale]
+            : [t.pain1text, t.pain2text, t.pain3text, t.pain4text, t.pain5text];
         painCards.forEach((card, i) => {
             const pt = card.querySelector('.pain-title');
             const px = card.querySelector('.pain-text');
@@ -1722,13 +2692,14 @@
 
         // Inaction block
         const inEl = document.querySelector('.inaction-block');
+        const inn = isMale ? t.inactionMale : t.inaction;
         if (inEl) {
-            const ih3 = inEl.querySelector('h3'); if (ih3) ih3.textContent = t.inaction.h3;
+            const ih3 = inEl.querySelector('h3'); if (ih3) ih3.textContent = inn.h3;
             const lis = inEl.querySelectorAll('li');
-            if (lis[0]) lis[0].textContent = t.inaction.li1;
-            if (lis[1]) lis[1].textContent = t.inaction.li2;
-            if (lis[2]) lis[2].textContent = t.inaction.li3;
-            const ip = inEl.querySelector('p'); if (ip) ip.textContent = t.inaction.p;
+            if (lis[0]) lis[0].textContent = inn.li1;
+            if (lis[1]) lis[1].textContent = inn.li2;
+            if (lis[2]) lis[2].textContent = inn.li3;
+            const ip = inEl.querySelector('p'); if (ip) ip.textContent = inn.p;
         }
 
         // Killer feature
@@ -1756,7 +2727,7 @@
         const pCards = document.querySelectorAll('.pricing-card');
         if (pCards[0]) {
             pCards[0].querySelector('h3').textContent = t.card1Name;
-            pCards[0].querySelector('.subtitle').textContent = t.card1Sub;
+            pCards[0].querySelector('.subtitle').textContent = isMale ? t.card1SubMale : t.card1Sub;
             const btn = pCards[0].querySelector('.cta-button');
             if (btn) btn.textContent = t.card1Btn;
             const note = pCards[0].querySelector('.pricing-note');
@@ -1796,23 +2767,25 @@
         // Content section
         const ctTitle = document.querySelector('.content-section .section-title');
         if (ctTitle) ctTitle.textContent = t.contentTitle;
-        const dayCards = document.querySelectorAll('.day-card');
-        dayCards.forEach((card, i) => {
+        const dayCardsUA = document.querySelectorAll('.day-card');
+        const activeDaysText = isMale ? t.daysTextMale : t.daysText;
+        dayCardsUA.forEach((card, i) => {
             const dh = card.querySelector('h3');
             const dr = card.querySelector('.result');
             if (dh && t.days[i]) dh.textContent = t.days[i];
-            if (dr && t.daysText[i]) dr.textContent = t.daysText[i];
+            if (dr && activeDaysText[i]) dr.textContent = activeDaysText[i];
         });
 
         // Final CTA
+        const fcta = isMale ? t.finalCtaMale : t.finalCta;
         const fcH2 = document.querySelector('.final-cta h2');
-        if (fcH2) fcH2.textContent = t.finalCta.h2;
+        if (fcH2) fcH2.textContent = fcta.h2;
         const fcP = document.querySelector('.final-cta p');
-        if (fcP) fcP.textContent = t.finalCta.p;
+        if (fcP) fcP.textContent = fcta.p;
         const fcBtn = document.querySelector('.final-cta .cta-button span');
-        if (fcBtn) fcBtn.textContent = t.finalCta.btn;
+        if (fcBtn) fcBtn.textContent = fcta.btn;
         const fcGuarantee = document.querySelector('.guarantee-text span');
-        if (fcGuarantee) fcGuarantee.textContent = t.finalCta.guarantee;
+        if (fcGuarantee) fcGuarantee.textContent = fcta.guarantee;
 
         // Footer
         const footerLinks = document.querySelectorAll('footer a');
@@ -1871,7 +2844,7 @@
             support:  'https://secure.wayforpay.com/button/ba2f6df74cbd2',
             personal: 'https://secure.wayforpay.com/button/bb4ddab210aff'
         },
-        PL: { // Poland — same UAH prices as Ukraine
+        PL: { // Poland - same UAH prices as Ukraine
             solo:     'https://secure.wayforpay.com/button/b55a645d1bf91',
             support:  'https://secure.wayforpay.com/button/ba2f6df74cbd2',
             personal: 'https://secure.wayforpay.com/button/bb4ddab210aff'
@@ -1891,7 +2864,7 @@
             support:  'https://secure.wayforpay.com/button/bf110ce86427e',
             personal: 'https://secure.wayforpay.com/button/bdf2493661a7b'
         },
-        DEFAULT: { // USA + World — USD
+        DEFAULT: { // USA + World - USD
             solo:     'https://secure.wayforpay.com/button/bc555d8cad235',
             support:  'https://secure.wayforpay.com/button/b3330b596ef07',
             personal: 'https://secure.wayforpay.com/button/bc8aa27e6e382'
@@ -1973,7 +2946,7 @@
         }
 
         const region = getRegion(countryCode);
-        
+
         // Apply Ukrainian translation if UA
         if (region === 'UA') {
             applyUkrainian();
@@ -1984,12 +2957,35 @@
 
         // Update social proof data for Ukrainian
         if (region === 'UA') {
-            window._socialProofData = REGIONS.UA.socialProof;
-            window._popupTextFn = REGIONS.UA.popupText;
+            const isMaleUA = sessionStorage.getItem('userGender') === 'male';
+            window._socialProofData = isMaleUA
+                ? [
+                    { name: 'Андрій', city: 'Києва', avatar: 'А', tariff: 'пакет «З підтримкою»', timeAgo: '9 хвилин тому', gender: 'm' },
+                    { name: 'Максим', city: 'Варшави', avatar: 'М', tariff: 'пакет «Самостійний»', timeAgo: '22 хвилини тому', gender: 'm' },
+                    { name: 'Дмитро', city: 'Харкова', avatar: 'Д', tariff: 'пакет «Особистий»', timeAgo: '34 хвилини тому', gender: 'm' },
+                    { name: 'Сергій', city: 'Кракова', avatar: 'С', tariff: 'пакет «З підтримкою»', timeAgo: '5 хвилин тому', gender: 'm' },
+                    { name: 'Олексій', city: 'Берліна', avatar: 'О', tariff: 'пакет «Самостійний»', timeAgo: '17 хвилин тому', gender: 'm' },
+                  ]
+                : REGIONS.UA.socialProof;
+            window._popupTextFn = isMaleUA ? REGIONS.UA.popupTextMale : REGIONS.UA.popupText;
         }
     }
 
     detectAndApply();
+
+        // ── Animate progress bars when visible ──
+        const barObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.stat-bar-fill').forEach(bar => {
+                        const w = bar.getAttribute('data-width');
+                        setTimeout(() => { bar.style.width = w + '%'; }, 200);
+                    });
+                    barObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        document.querySelectorAll('.stats-grid').forEach(el => barObserver.observe(el));
 
         // Fade in animation
         const observer = new IntersectionObserver((entries) => {
@@ -2086,6 +3082,8 @@
                 document.getElementById('popupName').textContent = data.name;
                 document.getElementById('popupCity').textContent = data.city;
                 document.getElementById('popupTariff').textContent = data.tariff;
+                const verbEl = document.getElementById('popupVerb');
+                if (verbEl) verbEl.textContent = data.gender === 'm' ? 'оформил' : 'оформила';
             }
             popup.classList.add('active'); popupVisible = true;
             setTimeout(() => { closeSocialPopup(); }, 8000);
@@ -2114,3 +3112,5 @@
     </script>
 </body>
 </html>
+
+
