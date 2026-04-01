@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Квиз: Вернуть ли бывшего?</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="welcome-screen" class="screen active">
+            <div class="logo">💔️❤️</div>
+            <h1>Квиз: Вернёт ли вас бывший?</h1>
+            <p class="subtitle">Профессиональный анализ ваших шансов на восстановление отношений</p>
+            <div class="features">
+                <div class="feature">🔍 Анализ по 18 параметрам</div>
+                <div class="feature">📊 Персональный отчёт</div>
+                <div class="feature">💡 Индивидуальные рекомендации</div>
+            </div>
+            <button class="btn-primary" onclick="startQuiz()">Начать анализ</button>
+        </div>
+
+        <div id="quiz-screen" class="screen">
+            <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+            <div class="question-number">Вопрос <span id="current-question">1</span> из <span id="total-questions">18</span></div>
+            <h2 id="question-text" class="question-text"></h2>
+            <div id="options-container" class="options-container"></div>
+        </div>
+
+        <div id="loading-screen" class="screen">
+            <div class="loading-animation">
+                <div class="spinner"></div>
+                <div class="loading-text" id="loading-text">Анализ ответов...</div>
+                <div class="loading-progress"><div class="loading-bar" id="loading-bar"></div></div>
+                <div class="loading-steps" id="loading-steps"></div>
+            </div>
+        </div>
+
+        <div id="result-screen" class="screen">
+            <div class="result-header">
+                <div class="score-circle" id="score-circle">
+                    <span id="score-value">0</span>
+                    <span class="score-label">из 100</span>
+                </div>
+            </div>
+            <h2 id="result-title" class="result-title"></h2>
+            <p id="result-description" class="result-description"></p>
+            <div class="analysis-block">
+                <h3>🔍 Что мы проанализировали:</h3>
+                <ul id="analysis-list"></ul>
+            </div>
+            <button class="btn-primary" onclick="sendResults()">Получить персональный отчёт</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
