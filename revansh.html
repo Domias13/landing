@@ -191,7 +191,25 @@ h2.section-title span { color: var(--red); }
 footer { background: #0a0a0a; border-top: 1px solid #1e1e1e; padding: 30px 20px; text-align: center; color: #444; font-size: 0.8rem; }
 footer a { color: #555; text-decoration: none; }
 
-/* LANG SYSTEM */
+/* PAYMENT MODAL */
+.pay-modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9999; align-items: center; justify-content: center; padding: 20px; }
+.pay-modal-overlay.active { display: flex; }
+.pay-modal { background: #1a1a1a; border: 1px solid #333; max-width: 420px; width: 100%; padding: 32px 24px; position: relative; animation: modalIn 0.25s ease; }
+@keyframes modalIn { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+.pay-modal-close { position: absolute; top: 14px; right: 18px; background: none; border: none; color: #666; font-size: 1.5rem; cursor: pointer; line-height: 1; }
+.pay-modal-close:hover { color: #fff; }
+.pay-modal h3 { font-family: 'Oswald', sans-serif; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+.pay-modal .pay-modal-price { color: var(--red); font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; }
+.pay-modal-label { font-size: 0.75rem; color: #666; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; }
+.pay-btn { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 14px 18px; margin-bottom: 10px; border: 1px solid #333; background: #252525; color: #fff; cursor: pointer; text-decoration: none; font-family: 'Oswald', sans-serif; font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase; transition: border-color 0.2s, background 0.2s; }
+.pay-btn:hover { border-color: var(--red); background: #2e1a1c; }
+.pay-btn.wayforpay { border-left: 3px solid #4caf50; }
+.pay-btn.stripe { border-left: 3px solid #635bff; }
+.pay-btn.paypal { border-left: 3px solid #003087; }
+.pay-btn .pay-btn-logo { font-weight: 700; font-size: 1rem; }
+.pay-btn .pay-btn-sub { font-size: 0.65rem; color: #888; text-transform: none; letter-spacing: 0; font-family: 'Roboto', sans-serif; }
+.pay-btn-info { display: flex; flex-direction: column; align-items: flex-end; text-align: right; }
+
 .l-ru { display: none; }
 .l-ua { display: none; }
 .l-ru-i { display: none; }
@@ -462,8 +480,8 @@ body.is-ru .price-world { display: inline; }
           <li><span class="l-ru-i">PDF-гайд по управлению образом (цифровой профиль)</span><span class="l-ua-i">PDF-гайд по управлінню образом (цифровий профіль)</span></li>
           <li><span class="l-ru-i">Доступ к материалам на 14 дней</span><span class="l-ua-i">Доступ до матеріалів на 14 днів</span></li>
         </ul>
-        <a href="#" class="plan-cta"><span class="l-ru-i">КУПИТЬ СЕЙЧАС</span><span class="l-ua-i">КУПИТИ ЗАРАЗ</span></a>
-        <div class="pay-icons"><span class="pay-icon">PayPal</span><span class="pay-icon">Stripe</span></div>
+        <button class="plan-cta" onclick="openPayModal('core')"><span class="l-ru-i">КУПИТЬ СЕЙЧАС</span><span class="l-ua-i">КУПИТИ ЗАРАЗ</span></button>
+        <div class="pay-icons"><span class="pay-icon">💳 Card</span><span class="pay-icon">Google Pay</span><span class="pay-icon">Apple Pay</span><span class="pay-icon">PayPal</span></div>
       </div>
 
       <!-- STRATEGIST -->
@@ -482,8 +500,8 @@ body.is-ru .price-world { display: inline; }
           <li><span class="l-ru-i">Закрытый чат участников — разбор ситуаций и поддержка</span><span class="l-ua-i">Закритий чат учасників — розбір ситуацій і підтримка</span></li>
           <li><span class="l-ru-i">Пожизненный доступ ко всем материалам</span><span class="l-ua-i">Довічний доступ до всіх матеріалів</span></li>
         </ul>
-        <a href="#" class="plan-cta"><span class="l-ru-i">КУПИТЬ СЕЙЧАС</span><span class="l-ua-i">КУПИТИ ЗАРАЗ</span></a>
-        <div class="pay-icons"><span class="pay-icon">PayPal</span><span class="pay-icon">Stripe</span></div>
+        <button class="plan-cta" onclick="openPayModal('strategist')"><span class="l-ru-i">КУПИТЬ СЕЙЧАС</span><span class="l-ua-i">КУПИТИ ЗАРАЗ</span></button>
+        <div class="pay-icons"><span class="pay-icon">💳 Card</span><span class="pay-icon">Google Pay</span><span class="pay-icon">Apple Pay</span><span class="pay-icon">PayPal</span></div>
       </div>
 
       <!-- DOMINANT -->
@@ -502,9 +520,9 @@ body.is-ru .price-world { display: inline; }
           <li><span class="l-ru-i">Прямой чат с автором на протяжении курса</span><span class="l-ua-i">Прямий чат з автором протягом курсу</span></li>
           <li><span class="l-ru-i">Индивидуальный план действий на 30 дней после курса</span><span class="l-ua-i">Індивідуальний план дій на 30 днів після курсу</span></li>
         </ul>
-        <a href="#" class="plan-cta"><span class="l-ru-i">КУПИТЬ СЕЙЧАС</span><span class="l-ua-i">КУПИТИ ЗАРАЗ</span></a>
+        <button class="plan-cta" onclick="openPayModal('dominant')"><span class="l-ru-i">КУПИТЬ СЕЙЧАС</span><span class="l-ua-i">КУПИТИ ЗАРАЗ</span></button>
         <a href="#" class="plan-cta outline"><span class="l-ru-i">Узнать подробнее</span><span class="l-ua-i">Дізнатись більше</span></a>
-        <div class="pay-icons"><span class="pay-icon">PayPal</span><span class="pay-icon">Stripe</span></div>
+        <div class="pay-icons"><span class="pay-icon">💳 Card</span><span class="pay-icon">Google Pay</span><span class="pay-icon">Apple Pay</span><span class="pay-icon">PayPal</span></div>
       </div>
     </div>
     <div class="scarcity-bar"><p>⚠️ <span class="l-ru-i">Количество мест с личным сопровождением ограничено — осталось <strong id="seats-left">7</strong> мест</span><span class="l-ua-i">Кількість місць з особистим супроводом обмежена — залишилось <strong id="seats-left-ua">7</strong> місць</span></p></div>
@@ -586,6 +604,37 @@ body.is-ru .price-world { display: inline; }
 <!-- STICKY -->
 <div class="sticky-bar" id="sticky-bar">
   <a href="#pricing"><span class="pulse-dot"></span><span class="l-ru-i">ХОЧУ ВЕРНУТЬ ЕГО → Выбрать тариф</span><span class="l-ua-i">ХОЧУ ПОВЕРНУТИ ЙОГО → Вибрати тариф</span></a>
+</div>
+
+<!-- PAYMENT MODAL -->
+<div class="pay-modal-overlay" id="pay-modal-overlay" onclick="if(event.target===this)closePayModal()">
+  <div class="pay-modal">
+    <button class="pay-modal-close" onclick="closePayModal()">×</button>
+    <h3 id="modal-plan-name">CORE</h3>
+    <div class="pay-modal-price" id="modal-plan-price"></div>
+    <div class="pay-modal-label"><span class="l-ru-i">Выберите способ оплаты</span><span class="l-ua-i">Оберіть спосіб оплати</span></div>
+    <a id="btn-wayforpay" href="#" target="_blank" class="pay-btn wayforpay">
+      <div>
+        <div class="pay-btn-logo">WayForPay</div>
+        <div class="pay-btn-sub"><span class="l-ru-i">Карта · Google Pay · Apple Pay</span><span class="l-ua-i">Картка · Google Pay · Apple Pay</span></div>
+      </div>
+      <span>→</span>
+    </a>
+    <a id="btn-stripe" href="#" target="_blank" class="pay-btn stripe">
+      <div>
+        <div class="pay-btn-logo">Stripe</div>
+        <div class="pay-btn-sub"><span class="l-ru-i">Карта · Google Pay · Apple Pay</span><span class="l-ua-i">Картка · Google Pay · Apple Pay</span></div>
+      </div>
+      <span>→</span>
+    </a>
+    <a id="btn-paypal" href="#" target="_blank" class="pay-btn paypal">
+      <div>
+        <div class="pay-btn-logo">PayPal</div>
+        <div class="pay-btn-sub"><span class="l-ru-i">PayPal аккаунт или карта</span><span class="l-ua-i">PayPal акаунт або картка</span></div>
+      </div>
+      <span>→</span>
+    </a>
+  </div>
 </div>
 
 <footer>
@@ -672,7 +721,47 @@ window.addEventListener('scroll', () => {
   document.getElementById('sticky-bar').style.opacity = window.scrollY > 400 ? '1' : '0';
 });
 
-// ===== FADE IN =====
+// ===== PAYMENT MODAL =====
+const payLinks = {
+  core: {
+    wayforpay: 'https://secure.wayforpay.com/button/bd538249a8b16',
+    stripe: 'https://buy.stripe.com/00w28t42u5hD4Fkdx63ZK06',
+    paypal: 'https://www.paypal.com/ncp/payment/E8ZA26WUU8F7C',
+    nameRu: 'CORE', nameUa: 'CORE',
+    priceWorld: '$14.99', priceUa: '₴601'
+  },
+  strategist: {
+    wayforpay: 'https://secure.wayforpay.com/button/bf7aecc6734c4',
+    stripe: 'https://buy.stripe.com/3cI3cxdD46lH7Rw64E3ZK08',
+    paypal: 'https://www.paypal.com/ncp/payment/QRFQ272GAF7C6',
+    nameRu: 'STRATEGIST', nameUa: 'STRATEGIST',
+    priceWorld: '$36.99', priceUa: '₴1 528'
+  },
+  dominant: {
+    wayforpay: 'https://secure.wayforpay.com/button/ba35e8ae2587d',
+    stripe: 'https://buy.stripe.com/5kQ6oJbuWcK54Fk3Ww3ZK09',
+    paypal: 'https://www.paypal.com/ncp/payment/DP7XEVV993DQG',
+    nameRu: 'DOMINANT', nameUa: 'DOMINANT',
+    priceWorld: '$96.99', priceUa: '₴4 001'
+  }
+};
+function openPayModal(plan) {
+  const d = payLinks[plan];
+  const isUa = document.body.classList.contains('is-ua');
+  document.getElementById('modal-plan-name').textContent = isUa ? d.nameUa : d.nameRu;
+  document.getElementById('modal-plan-price').textContent = isUa ? d.priceUa : d.priceWorld;
+  document.getElementById('btn-wayforpay').href = d.wayforpay;
+  document.getElementById('btn-stripe').href = d.stripe;
+  document.getElementById('btn-paypal').href = d.paypal;
+  document.getElementById('pay-modal-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closePayModal() {
+  document.getElementById('pay-modal-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closePayModal(); });
+
 const obs = new IntersectionObserver(entries => { entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.08 });
 document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 </script>
