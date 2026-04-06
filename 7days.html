@@ -113,70 +113,7 @@
 
         .payment-note { text-align: center; font-size: 13px; color: var(--gray); margin-top: 8px; }
 
-        /* ── ЛИДМАГНИТ ── */
-        .leadmagnet-section {
-            padding: 50px 0;
-            background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(40,167,69,0.08));
-            border-top: 1px solid rgba(255,255,255,0.06);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-        .leadmagnet-inner {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .leadmagnet-label {
-            font-size: 13px; color: #C4B5FD; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;
-        }
-        .leadmagnet-inner h2 {
-            font-size: 26px; font-weight: 900; margin-bottom: 12px; line-height: 1.3;
-        }
-        .leadmagnet-inner > p {
-            color: #9CA3AF; font-size: 16px; margin-bottom: 24px; line-height: 1.6;
-        }
-        .leadmagnet-bullets {
-            display: flex; flex-direction: column; gap: 10px;
-            text-align: left;
-            background: rgba(255,255,255,0.04);
-            border-radius: 14px; padding: 20px; margin-bottom: 24px;
-        }
-        .leadmagnet-bullets .item {
-            display: flex; gap: 10px; align-items: flex-start;
-            font-size: 14px; color: #E5E7EB;
-        }
-        .leadmagnet-bullets .item .check {
-            color: #28a745; font-weight: 800; flex-shrink: 0;
-        }
-        .leadmagnet-form {
-            display: flex; gap: 10px; max-width: 440px;
-            margin: 0 auto; flex-wrap: wrap;
-        }
-        .leadmagnet-form input[type="email"] {
-            flex: 1; min-width: 200px; padding: 14px 18px;
-            border-radius: 12px; border: 1px solid rgba(255,255,255,0.15);
-            background: rgba(255,255,255,0.07); color: #fff;
-            font-size: 15px; outline: none; font-family: 'Inter', sans-serif;
-            transition: border-color 0.3s;
-        }
-        .leadmagnet-form input[type="email"]:focus { border-color: rgba(40,167,69,0.5); }
-        .leadmagnet-form button {
-            background: linear-gradient(135deg, #28a745, #059669);
-            color: #fff; padding: 14px 22px; border: none;
-            border-radius: 12px; font-size: 15px; font-weight: 700;
-            cursor: pointer; font-family: 'Inter', sans-serif;
-            white-space: nowrap; box-shadow: 0 8px 24px rgba(40,167,69,0.35);
-            transition: transform 0.2s;
-        }
-        .leadmagnet-form button:hover { transform: translateY(-2px); }
-        .leadmagnet-spam { font-size: 12px; color: #4B5563; margin-top: 10px; }
-        .leadmagnet-success {
-            display: none; margin-top: 16px;
-            background: rgba(40,167,69,0.15);
-            border: 1px solid rgba(40,167,69,0.4);
-            border-radius: 12px; padding: 14px;
-            color: #86EFAC; font-size: 14px; font-weight: 600;
-        }
+
 
         /* ── PRODUCT SHOWCASE ── */
         .product-showcase { margin: 50px 0; text-align: center; }
@@ -916,28 +853,6 @@
 <!-- ═══════════════════════════════════════════════════ -->
 <!-- ЛИДМАГНИТ -->
 <!-- ═══════════════════════════════════════════════════ -->
-<section class="leadmagnet-section">
-    <div class="container">
-        <div class="leadmagnet-inner">
-            <div class="leadmagnet-label">🎁 Бесплатно - прямо сейчас</div>
-            <h2>Если тебе сейчас тяжело - начни с этого</h2>
-            <p>Скачай технику «Стоп-импульс» - она снижает желание написать бывшему за 5 минут. Без медитаций. Без «дыши глубже».</p>
-            <div class="leadmagnet-bullets">
-                <div class="item"><span class="check">✓</span><span>Одна техника - работает в момент острого импульса «написать ему»</span></div>
-                <div class="item"><span class="check">✓</span><span>5 минут - и желание проходит. Не подавляешь - буквально выключаешь</span></div>
-                <div class="item"><span class="check">✓</span><span>Это часть системы «7 дней без боли» - но этот шаг получишь бесплатно</span></div>
-            </div>
-            <div class="leadmagnet-form">
-                <input type="email" placeholder="Твой email" id="leadEmail">
-                <button onclick="submitLead()">Получить →</button>
-            </div>
-            <p class="leadmagnet-spam">Без спама. Только техника - и один раз напомним про курс.</p>
-            <div class="leadmagnet-success" id="leadSuccess">
-                ✅ Отправили на твой email. Проверь папку «Промоакции» если не видишь.
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- ═══════════════════════════════════════════════════ -->
 <!-- STATS SECTION -->
@@ -1810,27 +1725,7 @@
 <!-- ═══════════════════════════════════════════════════ -->
 <script>
 // ═══════════════════════════════════════════════════
-// ЛИДМАГНИТ
-// ═══════════════════════════════════════════════════
-function submitLead() {
-    const emailInput = document.getElementById('leadEmail');
-    const email = emailInput.value.trim();
-    if (!email || !email.includes('@') || !email.includes('.')) {
-        emailInput.style.borderColor = '#DC2626';
-        emailInput.focus();
-        return;
-    }
-    emailInput.style.borderColor = 'rgba(40,167,69,0.5)';
-    document.getElementById('leadSuccess').style.display = 'block';
-    // Подключи сюда свой email-сервис:
-    // MailerLite API / ConvertKit / Telegram webhook
-    console.log('Lead captured:', email);
-    // Пример: отправить в Telegram-бот
-    // fetch(`https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={CHAT_ID}&text=Лид: ${email}`)
-}
-document.getElementById('leadEmail').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') submitLead();
-});
+
 
 // ═══════════════════════════════════════════════════
 // GENDER SYSTEM
