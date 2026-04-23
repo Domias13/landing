@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Как отпустить бывшего — практический курс</title>
+    <style>
+        :root {
+            --primary: #2c1810;
+            --accent: #c0392b;
+            --accent-light: #e74c3c;
+            --bg: #faf8f5;
+            --text: #2c1810;
+            --muted: #7f8c8d;
+            --card-bg: #ffffff;
+            --border: #e8e0d8;
+            --gradient-start: #2c1810;
+            --gradient-end: #5d3a2a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Language indicator */
+        .lang-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.95);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            border: 1px solid var(--border);
+            display: none;
+        }
+
+        .lang-indicator.visible {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero h1 {
+            font-size: clamp(28px, 5vw, 52px);
+            color: #fff;
+            margin-bottom: 24px;
+            line-height: 1.2;
+            font-weight: 700;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(16px, 2.5vw, 22px);
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-price {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 400px;
+        }
+
+        .price-old {
+            font-size: 24px;
+            color: rgba(255,255,255,0.5);
+            text-decoration: line-through;
+            margin-bottom: 8px;
+        }
+
+        .price-current {
+            font-size: 48px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .price-current .currency {
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .price-note {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding: 18px 48px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(192, 57, 43, 0.4);
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(192, 57, 43, 0.5);
+            background: var(--accent-light);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background: transparent;
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        /* Pain Section */
+        .pain-section {
+            padding: 100px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-label {
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .pain-section h2 {
+            font-size: clamp(24px, 4vw, 40px);
+            margin-bottom: 50px;
+            color: var(--primary);
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .pain-card {
+            background: var(--card-bg);
+            padding: 35px 30px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            text-align: left;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pain-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .pain-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .pain-card:hover::before {
+            opacity: 1;
+        }
+
+        .pain-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .pain-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+
+        .pain-card p {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* Solution Section */
+        .solution-section {
+            background: linear-gradient(to bottom, var(--bg), #fff);
+            padding: 100px 20px;
+        }
+
+        .solution-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .solution-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .solution-header h2 {
+            font-size: clamp(24px, 4vw, 40px);
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .solution-header p {
+            font-size: 18px;
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .feature {
+            display: flex;
+            gap: 20px;
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            border-color: var(--accent);
+        }
+
+        .feature-number {
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .feature-content h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        .feature-content p {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 20px;
+            background: var(--primary);
+            color: #fff;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: clamp(24px, 4vw, 40px);
+            margin-bottom: 60px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background: rgba(255,255,255,0.05);
+            padding: 35px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: left;
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .testimonial-meta {
+            font-size: 13px;
+            opacity: 0.6;
+            margin-top: 4px;
+        }
+
+        /* Guarantee Section */
+        .guarantee {
+            padding: 80px 20px;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .guarantee-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .guarantee h2 {
+            font-size: clamp(22px, 3vw, 32px);
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .guarantee p {
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            padding: 100px 20px;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.5;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(26px, 4vw, 42px);
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .cta-price {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 35px;
+            margin: 30px auto;
+            max-width: 380px;
+        }
+
+        .timer {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 15px;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 100px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq h2 {
+            text-align: center;
+            font-size: clamp(24px, 4vw, 36px);
+            margin-bottom: 50px;
+            color: var(--primary);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 25px 0;
+        }
+
+        .faq-question {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.3s;
+        }
+
+        .faq-question:hover {
+            color: var(--accent);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-top: 15px;
+        }
+
+        .faq-toggle {
+            font-size: 24px;
+            transition: transform 0.3s;
+            color: var(--accent);
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 14px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+                padding: 60px 20px;
+            }
+            
+            .pain-grid,
+            .features,
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .feature-number {
+                margin: 0 auto;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--muted);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Language Indicator -->
+    <div class="lang-indicator" id="langIndicator"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge" data-i18n="badge">Практический курс от психолога</div>
+            <h1 data-i18n="heroTitle">Как избавиться от мыслей о бывшем партнёре, даже если не можешь отпустить</h1>
+            <p class="hero-subtitle" data-i18n="heroSubtitle">Пошаговая методика, которая поможет остановить навязчивые мысли, вернуть покой и начать жить снова — без боли, таблеток и долгой терапии</p>
+            
+            <div class="hero-price">
+                <div class="price-old" data-i18n="priceOld">$49.99</div>
+                <div class="price-current">
+                    <span class="currency" id="priceCurrency">$</span>
+                    <span id="priceValue">17.99</span>
+                </div>
+                <div class="price-note" id="priceNote" data-i18n="priceNote">Для всех стран</div>
+            </div>
+            
+            <a href="#buy" class="btn-primary" data-i18n="ctaMain">Получить доступ сейчас</a>
+            <br>
+            <a href="#program" class="btn-secondary" data-i18n="ctaSecondary">Смотреть программу</a>
+        </div>
+    </section>
+
+    <!-- Pain Section -->
+    <section class="pain-section">
+        <div class="section-label" data-i18n="painLabel">Вы узнаете себя?</div>
+        <h2 data-i18n="painTitle">Каждое утро начинается с боли. Каждый вечер заканчивается слезами.</h2>
+        
+        <div class="pain-grid">
+            <div class="pain-card animate">
+                <span class="pain-icon">😢</span>
+                <h3 data-i18n="pain1Title">Навязчивые мысли 24/7</h3>
+                <p data-i18n="pain1Text">Вы постоянно прокручиваете в голове разговоры, ищете причины расставания, не можете сосредоточиться на работе и теряете аппетит. Сон превратился в мучение.</p>
+            </div>
+            
+            <div class="pain-card animate">
+                <span class="pain-icon">📱</span>
+                <h3 data-i18n="pain2Title">Сталкерство в соцсетях</h3>
+                <p data-i18n="pain2Text">Раз за разом заходите на его/её страницу, проверяете Stories, анализируете каждый пост. Знаете, что это больно, но не можете остановиться.</p>
+            </div>
+            
+            <div class="pain-card animate">
+                <span class="pain-icon">💔</span>
+                <h3 data-i18n="pain3Title">Физическая боль от расставания</h3>
+                <p data-i18n="pain3Text">Сжимание в груди, ком в горле, тяжесть в теле. Вы чувствуете, будто потеряли часть себя, и не представляете, как жить дальше.</p>
+            </div>
+            
+            <div class="pain-card animate">
+                <span class="pain-icon">🔄</span>
+                <h3 data-i18n="pain4Title">Попытки вернуть всё назад</h3>
+                <p data-i18n="pain4Text">Пишете сообщения, звоните, просите о встрече. Каждый раз получаете отказ — и погружаетесь в отчаяние ещё глубже.</p>
+            </div>
+            
+            <div class="pain-card animate">
+                <span class="pain-icon">😶</span>
+                <h3 data-i18n="pain5Title">Пустота и потеря смысла</h3>
+                <p data-i18n="pain5Text">Ничего не радует. Друзья устали слушать. Вы чувствуете себя одиноко, ненужно и боитесь, что никогда больше не сможете любить.</p>
+            </div>
+            
+            <div class="pain-card animate">
+                <span class="pain-icon">⏰</span>
+                <h3 data-i18n="pain6Title">Прошло месяцы, а боль не уходит</h3>
+                <p data-i18n="pain6Text">Все говорят «время лечит», но вы уже ждали достаточно. Каждый день — это борьба, от которой вы устали.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution-section" id="program">
+        <div class="solution-container">
+            <div class="solution-header">
+                <div class="section-label" data-i18n="solutionLabel">Методика, которая работает</div>
+                <h2 data-i18n="solutionTitle">Почему этот курс поможет именно вам</h2>
+                <p data-i18n="solutionSubtitle">Без воды, без теории «для красоты». Только проверенные техники, которые применяются здесь и сейчас.</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature animate">
+                    <div class="feature-number">1</div>
+                    <div class="feature-content">
+                        <h3 data-i18n="feat1Title">Техника «Эмоциональный сейф»</h3>
+                        <p data-i18n="feat1Text">Упражнение, которое останавливает навязчивые мысли за 7 минут. Работает даже ночью, когда нет сил бороться.</p>
+                    </div>
+                </div>
+                
+                <div class="feature animate">
+                    <div class="feature-number">2</div>
+                    <div class="feature-content">
+                        <h3 data-i18n="feat2Title">Протокол «Чистый разрыв»</h3>
+                        <p data-i18n="feat2Text">Пошаговый план отвязки от бывшего: от блокировки в соцсетях до освобождения от физической тяги. Без срывов.</p>
+                    </div>
+                </div>
+                
+                <div class="feature animate">
+                    <div class="feature-number">3</div>
+                    <div class="feature-content">
+                        <h3 data-i18n="feat3Title">Восстановление самооценки</h3>
+                        <p data-i18n="feat3Text">Практики, которые вернут уверенность в себе. Вы перестанете чувствовать себя «брошенным» и начнёте ценить себя.</p>
+                    </div>
+                </div>
+                
+                <div class="feature animate">
+                    <div class="feature-number">4</div>
+                    <div class="feature-content">
+                        <h3 data-i18n="feat4Title">Работа с триггерами</h3>
+                        <p data-i18n="feat4Text">Конкретные инструкции: что делать, когда услышали «вашу» песню, прошли мимо «вашего» кафе, получили сообщение.</p>
+                    </div>
+                </div>
+                
+                <div class="feature animate">
+                    <div class="feature-number">5</div>
+                    <div class="feature-content">
+                        <h3 data-i18n="feat5Title">План на 21 день</h3>
+                        <p data-i18n="feat5Text">Не нужно думать, что делать. Каждый день — конкретное задание. Через 3 недели вы не узнаете себя.</p>
+                    </div>
+                </div>
+                
+                <div class="feature animate">
+                    <div class="feature-number">6</div>
+                    <div class="feature-content">
+                        <h3 data-i18n="feat6Title">Аудио-медитации</h3>
+                        <p data-i18n="feat6Text">5 записей для моментов слабости. Включили наушники — и через 10 минут вернули себе контроль над эмоциями.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2 data-i18n="testimonialsTitle">Истории тех, кто уже прошёл через это</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial animate">
+                <p class="testimonial-text" data-i18n="test1">«Я три месяца не могла есть нормально. Постоянно плакала на работе. После курса поняла, что держалась не за человека, а за иллюзию. Через две недели впервые за долгое время посмеялась от души.»</p>
+                <div class="testimonial-author">Анна, 34 года</div>
+                <div class="testimonial-meta" data-i18n="test1Meta">Прошла курс 3 месяца назад</div>
+            </div>
+            
+            <div class="testimonial animate">
+                <p class="testimonial-text" data-i18n="test2">«Мне 41, развёлся после 12 лет брака. Думал, что жизнь кончена. Методика «Эмоциональный сейф» спасла меня от бездны. Теперь сплю нормально и даже начал бегать по утрам.»</p>
+                <div class="testimonial-author">Михаил, 41 год</div>
+                <div class="testimonial-meta" data-i18n="test2Meta">Прошёл курс 5 месяцев назад</div>
+            </div>
+            
+            <div class="testimonial animate">
+                <p class="testimonial-text" data-i18n="test3">«Переживала расставание полгода. Друзья отвернулись, потому что устали от моих историй. Этот курс дал мне руку помощи, когда некому было протянуть. Теперь я свободна.»</p>
+                <div class="testimonial-author">Елена, 29 лет</div>
+                <div class="testimonial-meta" data-i18n="test3Meta">Прошла курс 2 месяца назад</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee -->
+    <section class="guarantee">
+        <span class="guarantee-icon">🛡️</span>
+        <h2 data-i18n="guaranteeTitle">Гарантия возврата денег</h2>
+        <p data-i18n="guaranteeText">Если в течение 14 дней вы поймёте, что курс вам не подходит — вернём полную стоимость без вопросов. Мы уверены в методике настолько, что готовы взять риск на себя. Ваша задача — просто попробовать.</p>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="buy">
+        <div class="cta-content">
+            <h2 data-i18n="ctaTitle">Вы заслуживаете покоя</h2>
+            <p data-i18n="ctaSubtitle">Каждый день мучений — это день вашей жизни, который вы не вернёте. Сделайте выбор в пользу себя прямо сейчас.</p>
+            
+            <div class="cta-price">
+                <div class="price-old" data-i18n="priceOld2">$49.99</div>
+                <div class="price-current">
+                    <span class="currency" id="priceCurrency2">$</span>
+                    <span id="priceValue2">17.99</span>
+                </div>
+                <div class="price-note" id="priceNote2" data-i18n="priceNote2">Для всех стран</div>
+                <div class="timer" id="timer" data-i18n="timer">Предложение действует ещё: 04:59:59</div>
+            </div>
+            
+            <a href="#" class="btn-primary" data-i18n="ctaFinal">Купить и начать исцеление</a>
+            <br>
+            <a href="#" class="btn-secondary" style="margin-top: 20px; font-size: 14px; opacity: 0.8;" data-i18n="paymentMethods">💳 Оплата картой, Apple Pay, Google Pay</a>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <h2 data-i18n="faqTitle">Частые вопросы</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span data-i18n="faq1Q">Сколько длится курс?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer" data-i18n="faq1A">Основная программа рассчитана на 21 день. Но материалы остаются у вас навсегда, и вы можете возвращаться к ним в любой момент.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span data-i18n="faq2Q">Это замена терапии?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer" data-i18n="faq2A">Курс — это практическая самопомощь. При тяжёлой депрессии или суицидальных мыслях обязательно обратитесь к специалисту. Курс помогает в ситуациях, когда вы готовы работать над собой самостоятельно.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span data-i18n="faq3Q">Что если я не справлюсь?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer" data-i18n="faq3A">Методика разбита на микро-шаги. Каждый день — одно небольшое задание, которое занимает 10-15 минут. Не нужно «справляться» — просто следуйте инструкциям.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span data-i18n="faq4Q">Как получить доступ после оплаты?</span>
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer" data-i18n="faq4A">Сразу после оплаты на вашу почту придёт персональная ссылка с доступом к закрытой платформе. Все материалы доступны 24/7 с любого устройства.</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p data-i18n="footer">© 2026. Все права защищены. Этот курс создан практикующим психологом с 10-летним опытом работы с кризисами отношений.</p>
+    </footer>
+
+    <script>
+        // ============================================
+        // GEOLOCATION & LANGUAGE LOGIC
+        // ============================================
+        
+        const translations = {
+            ru: {
+                badge: "Практический курс от психолога",
+                heroTitle: "Как избавиться от мыслей о бывшем партнёре, даже если не можешь отпустить",
+                heroSubtitle: "Пошаговая методика, которая поможет остановить навязчивые мысли, вернуть покой и начать жить снова — без боли, таблеток и долгой терапии",
+                priceOld: "$49.99",
+                priceNote: "Для всех стран",
+                ctaMain: "Получить доступ сейчас",
+                ctaSecondary: "Смотреть программу",
+                painLabel: "Вы узнаете себя?",
+                painTitle: "Каждое утро начинается с боли. Каждый вечер заканчивается слезами.",
+                pain1Title: "Навязчивые мысли 24/7",
+                pain1Text: "Вы постоянно прокручиваете в голове разговоры, ищете причины расставания, не можете сосредоточиться на работе и теряете аппетит. Сон превратился в мучение.",
+                pain2Title: "Сталкерство в соцсетях",
+                pain2Text: "Раз за разом заходите на его/её страницу, проверяете Stories, анализируете каждый пост. Знаете, что это больно, но не можете остановиться.",
+                pain3Title: "Физическая боль от расставания",
+                pain3Text: "Сжимание в груди, ком в горле, тяжесть в теле. Вы чувствуете, будто потеряли часть себя, и не представляете, как жить дальше.",
+                pain4Title: "Попытки вернуть всё назад",
+                pain4Text: "Пишете сообщения, звоните, просите о встрече. Каждый раз получаете отказ — и погружаетесь в отчаяние ещё глубже.",
+                pain5Title: "Пустота и потеря смысла",
+                pain5Text: "Ничего не радует. Друзья устали слушать. Вы чувствуете себя одиноко, ненужно и боитесь, что никогда больше не сможете любить.",
+                pain6Title: "Прошло месяцы, а боль не уходит",
+                pain6Text: "Все говорят «время лечит», но вы уже ждали достаточно. Каждый день — это борьба, от которой вы устали.",
+                solutionLabel: "Методика, которая работает",
+                solutionTitle: "Почему этот курс поможет именно вам",
+                solutionSubtitle: "Без воды, без теории «для красоты». Только проверенные техники, которые применяются здесь и сейчас.",
+                feat1Title: "Техника «Эмоциональный сейф»",
+                feat1Text: "Упражнение, которое останавливает навязчивые мысли за 7 минут. Работает даже ночью, когда нет сил бороться.",
+                feat2Title: "Протокол «Чистый разрыв»",
+                feat2Text: "Пошаговый план отвязки от бывшего: от блокировки в соцсетях до освобождения от физической тяги. Без срывов.",
+                feat3Title: "Восстановление самооценки",
+                feat3Text: "Практики, которые вернут уверенность в себе. Вы перестанете чувствовать себя «брошенным» и начнёте ценить себя.",
+                feat4Title: "Работа с триггерами",
+                feat4Text: "Конкретные инструкции: что делать, когда услышали «вашу» песню, прошли мимо «вашего» кафе, получили сообщение.",
+                feat5Title: "План на 21 день",
+                feat5Text: "Не нужно думать, что делать. Каждый день — конкретное задание. Через 3 недели вы не узнаете себя.",
+                feat6Title: "Аудио-медитации",
+                feat6Text: "5 записей для моментов слабости. Включили наушники — и через 10 минут вернули себе контроль над эмоциями.",
+                testimonialsTitle: "Истории тех, кто уже прошёл через это",
+                test1: "«Я три месяца не могла есть нормально. Постоянно плакала на работе. После курса поняла, что держалась не за человека, а за иллюзию. Через две недели впервые за долгое время посмеялась от души.»",
+                test1Meta: "Прошла курс 3 месяца назад",
+                test2: "«Мне 41, развёлся после 12 лет брака. Думал, что жизнь кончена. Методика «Эмоциональный сейф» спасла меня от бездны. Теперь сплю нормально и даже начал бегать по утрам.»",
+                test2Meta: "Прошёл курс 5 месяцев назад",
+                test3: "«Переживала расставание полгода. Друзья отвернулись, потому что устали от моих историй. Этот курс дал мне руку помощи, когда некому было протянуть. Теперь я свободна.»",
+                test3Meta: "Прошла курс 2 месяца назад",
+                guaranteeTitle: "Гарантия возврата денег",
+                guaranteeText: "Если в течение 14 дней вы поймёте, что курс вам не подходит — вернём полную стоимость без вопросов. Мы уверены в методике настолько, что готовы взять риск на себя. Ваша задача — просто попробовать.",
+                ctaTitle: "Вы заслуживаете покоя",
+                ctaSubtitle: "Каждый день мучений — это день вашей жизни, который вы не вернёте. Сделайте выбор в пользу себя прямо сейчас.",
+                priceOld2: "$49.99",
+                priceNote2: "Для всех стран",
+                timer: "Предложение действует ещё: ",
+                ctaFinal: "Купить и начать исцеление",
+                paymentMethods: "💳 Оплата картой, Apple Pay, Google Pay",
+                faqTitle: "Частые вопросы",
+                faq1Q: "Сколько длится курс?",
+                faq1A: "Основная программа рассчитана на 21 день. Но материалы остаются у вас навсегда, и вы можете возвращаться к ним в любой момент.",
+                faq2Q: "Это замена терапии?",
+                faq2A: "Курс — это практическая самопомощь. При тяжёлой депрессии или суицидальных мыслях обязательно обратитесь к специалисту. Курс помогает в ситуациях, когда вы готовы работать над собой самостоятельно.",
+                faq3Q: "Что если я не справлюсь?",
+                faq3A: "Методика разбита на микро-шаги. Каждый день — одно небольшое задание, которое занимает 10-15 минут. Не нужно «справляться» — просто следуйте инструкциям.",
+                faq4Q: "Как получить доступ после оплаты?",
+                faq4A: "Сразу после оплаты на вашу почту придёт персональная ссылка с доступом к закрытой платформе. Все материалы доступны 24/7 с любого устройства.",
+                footer: "© 2026. Все права защищены. Этот курс создан практикующим психологом с 10-летним опытом работы с кризисами отношений."
+            },
+            uk: {
+                badge: "Практичний курс від психолога",
+                heroTitle: "Як позбутися думок про колишнього партнера, навіть якщо не можеш відпустити",
+                heroSubtitle: "Покрокова методика, яка допоможе зупинити нав'язливі думки, повернути спокій і почати жити знову — без болю, таблеток і довгої терапії",
+                priceOld: "1499 ₴",
+                priceNote: "Для України",
+                ctaMain: "Отримати доступ зараз",
+                ctaSecondary: "Дивитися програму",
+                painLabel: "Ви впізнаєте себе?",
+                painTitle: "Кожен ранок починається з болю. Кожен вечір закінчується сльозами.",
+                pain1Title: "Нав'язливі думки 24/7",
+                pain1Text: "Ви постійно прокручуєте в голові розмови, шукаєте причини розставання, не можете зосередитися на роботі і втрачаєте апетит. Сон перетворився на муку.",
+                pain2Title: "Сталкінг в соцмережах",
+                pain2Text: "Раз за разом заходите на його/її сторінку, перевіряєте Stories, аналізуєте кожен пост. Знаєте, що це боляче, але не можете зупинитися.",
+                pain3Title: "Фізичний біль від розставання",
+                pain3Text: "Стискання в грудях, ком у горлі, важкість у тілі. Ви відчуваєте, ніби втратили частину себе, і не уявляєте, як жити далі.",
+                pain4Title: "Спроби повернути все назад",
+                pain4Text: "Пишете повідомлення, телефонуєте, просите про зустріч. Щоразу отримуєте відмову — і занурюєтеся у відчай ще глибше.",
+                pain5Title: "Порожнеча і втрата сенсу",
+                pain5Text: "Ніщо не радує. Друзі втомилися слухати. Ви відчуваєте себе самотньо, непотрібно і боїтеся, що ніколи більше не зможете кохати.",
+                pain6Title: "Минули місяці, а біль не йде",
+                pain6Text: "Усі кажуть «час лікує», але ви вже чекали достатньо. Кожен день — це боротьба, від якої ви втомилися.",
+                solutionLabel: "Методика, яка працює",
+                solutionTitle: "Чому цей курс допоможе саме вам",
+                solutionSubtitle: "Без води, без теорії «для краси». Лише перевірені техніки, які застосовуються тут і зараз.",
+                feat1Title: "Техніка «Емоційний сейф»",
+                feat1Text: "Вправа, яка зупиняє нав'язливі думки за 7 хвилин. Працює навіть вночі, коли немає сил боротися.",
+                feat2Title: "Протокол «Чистий розрив»",
+                feat2Text: "Покроковий план відв'язки від колишнього: від блокування в соцмережах до звільнення від фізичної тяги. Без зривів.",
+                feat3Title: "Відновлення самооцінки",
+                feat3Text: "Практики, які повернуть впевненість у собі. Ви перестанете відчувати себе «кинутим» і почнете цінувати себе.",
+                feat4Title: "Робота з тригерами",
+                feat4Text: "Конкретні інструкції: що робити, коли почули «вашу» пісню, пройшли повз «ваше» кафе, отримали повідомлення.",
+                feat5Title: "План на 21 день",
+                feat5Text: "Не потрібно думати, що робити. Кожен день — конкретне завдання. Через 3 тижні ви не впізнаєте себе.",
+                feat6Title: "Аудіо-медитації",
+                feat6Text: "5 записів для моментів слабкості. Включили навушники — і через 10 хвилин повернули собі контроль над емоціями.",
+                testimonialsTitle: "Історії тих, хто вже пройшов через це",
+                test1: "«Я три місяці не могла нормально їсти. Постійно плакала на роботі. Після курсу зрозуміла, що трималася не за людину, а за ілюзію. Через два тижні вперше за довгий час посміялася від душі.»",
+                test1Meta: "Пройшла курс 3 місяці тому",
+                test2: "«Мені 41, розлучився після 12 років шлюбу. Думав, що життя скінчено. Методика «Емоційний сейф» врятувала мене від безодні. Тепер сплю нормально і навіть почав бігати вранці.»",
+                test2Meta: "Пройшов курс 5 місяців тому",
+                test3: "«Переживала розставання пів року. Друзі відвернулися, бо втомилися від моїх історій. Цей курс дав мені руку допомоги, коли нікому було протягнути. Тепер я вільна.»",
+                test3Meta: "Пройшла курс 2 місяці тому",
+                guaranteeTitle: "Гарантія повернення грошей",
+                guaranteeText: "Якщо протягом 14 днів ви зрозумієте, що курс вам не підходить — повернемо повну вартість без запитань. Ми впевнені в методиці настільки, що готові взяти ризик на себе. Ваше завдання — просто спробувати.",
+                ctaTitle: "Ви заслуговуєте на спокій",
+                ctaSubtitle: "Кожен день мук — це день вашого життя, який ви не повернете. Зробіть вибір на свою користь прямо зараз.",
+                priceOld2: "1499 ₴",
+                priceNote2: "Для України",
+                timer: "Пропозиція діє ще: ",
+                ctaFinal: "Купити і почати зцілення",
+                paymentMethods: "💳 Оплата карткою, Apple Pay, Google Pay",
+                faqTitle: "Часті питання",
+                faq1Q: "Скільки триває курс?",
+                faq1A: "Основна програма розрахована на 21 день. Але матеріали залишаються у вас назавжди, і ви можете повертатися до них у будь-який момент.",
+                faq2Q: "Це заміна терапії?",
+                faq2A: "Курс — це практична самодопомога. При важкій депресії або суїцидальних думках обов'язково зверніться до спеціаліста. Курс допомагає в ситуаціях, коли ви готові працювати над собою самостійно.",
+                faq3Q: "А якщо я не впораюся?",
+                faq3A: "Методика розбита на мікро-кроки. Кожен день — одне невелике завдання, яке займає 10-15 хвилин. Не потрібно «впоратися» — просто слідуйте інструкціям.",
+                faq4Q: "Як отримати доступ після оплати?",
+                faq4A: "Одразу після оплати на вашу пошту прийде персональне посилання з доступом до закритої платформи. Усі матеріали доступні 24/7 з будь-якого пристрою.",
+                footer: "© 2026. Усі права захищені. Цей курс створений практикуючим психологом із 10-річним досвідом роботи з кризами стосунків."
+            }
+        };
+
+        // Price configuration
+        const pricing = {
+            UA: { value: "790", currency: "₴", note: "Для України", noteUk: "Для України", old: "1499 ₴" },
+            DEFAULT: { value: "17.99", currency: "$", note: "Для всех стран", noteUk: "Для всіх країн", old: "$49.99" }
+        };
+
+        let currentLang = 'ru';
+
+        async function detectLocationAndSetLanguage() {
+            const browserLang = navigator.language || navigator.userLanguage || '';
+            const isUkrainianBrowser = browserLang.toLowerCase().startsWith('uk');
+            
+            try {
+                // Try to detect country by IP using free API
+                const response = await fetch('https://ipwho.is/');
+                const data = await response.json();
+                const countryCode = data.country_code || '';
+                
+                const isUkraine = countryCode === 'UA';
+                
+                // Logic: Ukraine = Ukrainian, Others with Ukrainian browser = Ukrainian, Others = Russian
+                if (isUkraine || isUkrainianBrowser) {
+                    currentLang = 'uk';
+                    applyLanguage('uk');
+                    updatePrice('UA');
+                    showLangIndicator('🇺🇦 Українська');
+                } else {
+                    currentLang = 'ru';
+                    applyLanguage('ru');
+                    updatePrice('DEFAULT');
+                }
+            } catch (error) {
+                // Fallback: use browser language
+                if (isUkrainianBrowser) {
+                    currentLang = 'uk';
+                    applyLanguage('uk');
+                    updatePrice('UA');
+                    showLangIndicator('🇺🇦 Українська');
+                } else {
+                    currentLang = 'ru';
+                    applyLanguage('ru');
+                    updatePrice('DEFAULT');
+                }
+            }
+        }
+
+        function applyLanguage(lang) {
+            document.documentElement.lang = lang === 'uk' ? 'uk' : 'ru';
+            const texts = translations[lang];
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (texts[key]) {
+                    el.textContent = texts[key];
+                }
+            });
+        }
+
+        function updatePrice(region) {
+            const config = pricing[region];
+            const priceValueEls = [document.getElementById('priceValue'), document.getElementById('priceValue2')];
+            const priceCurrencyEls = [document.getElementById('priceCurrency'), document.getElementById('priceCurrency2')];
+            const priceNoteEls = [document.getElementById('priceNote'), document.getElementById('priceNote2')];
+            const oldPriceEls = document.querySelectorAll('.price-old');
+            
+            priceValueEls.forEach(el => el.textContent = config.value);
+            priceCurrencyEls.forEach(el => el.textContent = config.currency);
+            
+            const noteText = currentLang === 'uk' ? config.noteUk : config.note;
+            priceNoteEls.forEach(el => el.textContent = noteText);
+            
+            oldPriceEls.forEach(el => el.textContent = config.old);
+        }
+
+        function showLangIndicator(text) {
+            const indicator = document.getElementById('langIndicator');
+            indicator.textContent = text;
+            indicator.classList.add('visible');
+        }
+
+        // ============================================
+        // UI INTERACTIONS
+        // ============================================
+
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.classList.remove('active');
+            });
+            
+            // Open clicked if wasn't active
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // Timer countdown
+        function startTimer() {
+            const timerEl = document.getElementById('timer');
+            let hours = 4, minutes = 59, seconds = 59;
+            
+            setInterval(() => {
+                seconds--;
+                if (seconds < 0) {
+                    seconds = 59;
+                    minutes--;
+                    if (minutes < 0) {
+                        minutes = 59;
+                        hours--;
+                        if (hours < 0) hours = 4;
+                    }
+                }
+                
+                const prefix = currentLang === 'uk' ? 'Пропозиція діє ще: ' : 'Предложение действует ещё: ';
+                timerEl.textContent = prefix + 
+                    String(hours).padStart(2, '0') + ':' + 
+                    String(minutes).padStart(2, '0') + ':' + 
+                    String(seconds).padStart(2, '0');
+            }, 1000);
+        }
+
+        // Scroll animations
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationDelay = Math.random() * 0.3 + 's';
+                        entry.target.classList.add('animate');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.pain-card, .feature, .testimonial').forEach(el => {
+                el.style.opacity = '0';
+                observer.observe(el);
+            });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            detectLocationAndSetLanguage();
+            startTimer();
+            initScrollAnimations();
+        });
+    </script>
+</body>
+</html>
