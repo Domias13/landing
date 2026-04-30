@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title data-i18n="meta_title">Мужское молчание: 30 дней его мыслей — PDF-гайд</title>
+<meta name="description" data-i18n="meta_desc" content="Что на самом деле происходит в его голове после расставания — день за днём. PDF-гайд от эксперта по отношениям." />
+<link rel="icon" href="/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F1E8;
+    --bg-2:#EFE6D6;
+    --ink:#2A1A14;
+    --ink-soft:#5A4438;
+    --burgundy:#6B1F2A;
+    --burgundy-dark:#4E1620;
+    --gold:#C9A96E;
+    --gold-soft:#E4CFA1;
+    --white:#FFFDF9;
+    --shadow:0 20px 60px -20px rgba(42,26,20,.25);
+    --shadow-sm:0 6px 20px -10px rgba(42,26,20,.2);
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;font-weight:700;line-height:1.2;color:var(--ink)}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .container{max-width:1140px;margin:0 auto;padding:0 20px}
+  .gold{color:var(--gold)}
+  .burgundy{color:var(--burgundy)}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(247,241,232,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(107,31,42,.08);
+  }
+  .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:1140px;margin:0 auto}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--burgundy)}
+  .logo-mark{
+    width:36px;height:36px;border-radius:50%;
+    background:linear-gradient(135deg,var(--burgundy),var(--burgundy-dark));
+    color:var(--gold);display:flex;align-items:center;justify-content:center;
+    font-family:'Playfair Display',serif;font-weight:900;font-size:18px;
+    box-shadow:var(--shadow-sm);
+  }
+  .lang-switch{display:flex;gap:4px;background:var(--bg-2);padding:4px;border-radius:999px;font-size:13px;font-weight:600}
+  .lang-switch button{
+    border:none;background:transparent;padding:6px 14px;border-radius:999px;cursor:pointer;
+    color:var(--ink-soft);font-weight:600;font-family:inherit;transition:all .2s;
+  }
+  .lang-switch button.active{background:var(--burgundy);color:var(--gold-soft)}
+
+  /* Hero */
+  .hero{padding:48px 0 60px;position:relative;overflow:hidden}
+  .hero::before{
+    content:"";position:absolute;top:-100px;right:-100px;width:400px;height:400px;
+    background:radial-gradient(circle,rgba(201,169,110,.18),transparent 70%);
+    border-radius:50%;pointer-events:none;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:48px;align-items:center;position:relative}
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--white);border:1px solid var(--gold-soft);
+    padding:8px 16px;border-radius:999px;font-size:13px;font-weight:600;color:var(--burgundy);
+    box-shadow:var(--shadow-sm);margin-bottom:20px;
+  }
+  .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(201,169,110,.25)}
+  .hero h1{font-size:clamp(32px,5vw,56px);margin-bottom:20px;letter-spacing:-.5px}
+  .hero h1 .accent{color:var(--burgundy);font-style:italic}
+  .hero-sub{font-size:clamp(16px,1.6vw,19px);color:var(--ink-soft);margin-bottom:28px;max-width:520px}
+  .price-row{display:flex;align-items:flex-end;gap:14px;margin-bottom:8px;flex-wrap:wrap}
+  .price-old{font-size:22px;color:var(--ink-soft);text-decoration:line-through;text-decoration-color:var(--burgundy);text-decoration-thickness:2px}
+  .price-new{font-family:'Playfair Display',serif;font-size:48px;font-weight:900;color:var(--burgundy);line-height:1}
+  .price-discount{
+    background:var(--burgundy);color:var(--gold-soft);
+    padding:5px 12px;border-radius:8px;font-weight:700;font-size:13px;letter-spacing:.5px;
+    transform:rotate(-3deg);box-shadow:var(--shadow-sm);
+  }
+  .price-note{font-size:13px;color:var(--ink-soft);margin-bottom:22px}
+
+  /* Timer */
+  .timer-box{
+    background:linear-gradient(135deg,var(--white),var(--bg-2));
+    border:1px solid var(--gold-soft);
+    border-radius:var(--radius);padding:16px 20px;margin-bottom:24px;
+    box-shadow:var(--shadow-sm);max-width:480px;
+  }
+  .timer-label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--burgundy);font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .timer{display:flex;gap:10px;justify-content:flex-start}
+  .timer-cell{
+    background:var(--burgundy);color:var(--gold-soft);
+    border-radius:10px;padding:10px 14px;min-width:64px;text-align:center;
+    font-family:'Playfair Display',serif;
+  }
+  .timer-cell .num{font-size:26px;font-weight:900;line-height:1;display:block}
+  .timer-cell .lbl{font-size:10px;text-transform:uppercase;letter-spacing:1px;font-family:'Inter',sans-serif;font-weight:600;opacity:.85;margin-top:4px;display:block}
+
+  /* CTA Button */
+  .btn-cta{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    background:linear-gradient(135deg,var(--burgundy),var(--burgundy-dark));
+    color:var(--gold-soft);
+    padding:18px 32px;border-radius:999px;font-size:17px;font-weight:700;
+    border:none;cursor:pointer;font-family:inherit;
+    box-shadow:0 14px 30px -10px rgba(107,31,42,.5);
+    transition:transform .2s,box-shadow .2s;
+    width:auto;max-width:100%;
+  }
+  .btn-cta:hover{transform:translateY(-2px);box-shadow:0 18px 36px -12px rgba(107,31,42,.6)}
+  .btn-cta .arrow{transition:transform .2s}
+  .btn-cta:hover .arrow{transform:translateX(4px)}
+  .btn-cta-wide{width:100%;max-width:480px}
+
+  .pay-icons{display:flex;align-items:center;gap:10px;margin-top:14px;flex-wrap:wrap;color:var(--ink-soft);font-size:12px}
+  .pay-icons .icons{display:flex;gap:6px;align-items:center}
+  .pay-icon{
+    background:var(--white);border:1px solid rgba(42,26,20,.08);
+    border-radius:6px;padding:5px 8px;height:26px;display:flex;align-items:center;justify-content:center;
+    font-size:11px;font-weight:700;color:var(--ink);
+  }
+  .pay-icon svg{height:14px;width:auto;display:block}
+
+  /* Hero cover */
+  .cover-wrap{position:relative;display:flex;justify-content:center;align-items:center;min-height:420px}
+  .cover{
+    width:300px;aspect-ratio:2/3;
+    background:linear-gradient(160deg,var(--burgundy) 0%,var(--burgundy-dark) 100%);
+    border-radius:6px 12px 12px 6px;
+    box-shadow:
+      -8px 0 0 -2px rgba(0,0,0,.15) inset,
+      30px 30px 80px -20px rgba(42,26,20,.5),
+      0 0 0 1px rgba(201,169,110,.3) inset;
+    position:relative;overflow:hidden;
+    display:flex;flex-direction:column;justify-content:space-between;
+    padding:30px 28px;color:var(--gold-soft);
+    transform:rotate(-4deg);
+    transition:transform .4s ease;
+  }
+  .cover:hover{transform:rotate(-2deg) translateY(-6px)}
+  .cover::after{
+    content:"";position:absolute;inset:14px;border:1px solid rgba(201,169,110,.35);border-radius:4px;pointer-events:none;
+  }
+  .cover-top{font-size:11px;text-transform:uppercase;letter-spacing:3px;color:var(--gold);font-weight:600;text-align:center}
+  .cover-title{font-family:'Playfair Display',serif;font-size:30px;line-height:1.1;font-weight:700;text-align:center;margin-top:auto}
+  .cover-title em{display:block;font-style:italic;color:var(--gold);font-size:24px;margin-top:8px;font-weight:400}
+  .cover-divider{width:50px;height:2px;background:var(--gold);margin:18px auto}
+  .cover-bottom{font-size:12px;text-align:center;letter-spacing:1px;color:var(--gold-soft);opacity:.85;margin-top:auto}
+  .cover-deco{
+    position:absolute;width:100%;height:100%;top:0;left:0;
+    background:radial-gradient(circle at 30% 20%,rgba(201,169,110,.18),transparent 50%);
+    pointer-events:none;
+  }
+  .cover-glow{
+    position:absolute;width:340px;height:340px;border-radius:50%;
+    background:radial-gradient(circle,rgba(201,169,110,.35),transparent 70%);
+    z-index:-1;filter:blur(10px);
+  }
+
+  /* Sections */
+  section{padding:70px 0}
+  .section-head{text-align:center;max-width:720px;margin:0 auto 48px}
+  .section-eyebrow{
+    display:inline-block;font-size:12px;text-transform:uppercase;letter-spacing:3px;
+    color:var(--burgundy);font-weight:700;margin-bottom:14px;
+  }
+  .section-eyebrow::before,.section-eyebrow::after{content:"—";margin:0 10px;color:var(--gold)}
+  .section-head h2{font-size:clamp(28px,3.5vw,42px);margin-bottom:14px}
+  .section-head p{color:var(--ink-soft);font-size:17px}
+
+  /* Pain block */
+  .pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .pain-card{
+    background:var(--white);border-radius:var(--radius);padding:28px;
+    border:1px solid rgba(201,169,110,.3);
+    box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s;
+  }
+  .pain-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .pain-icon{
+    width:54px;height:54px;border-radius:14px;
+    background:linear-gradient(135deg,var(--gold),var(--gold-soft));
+    display:flex;align-items:center;justify-content:center;color:var(--burgundy-dark);
+    margin-bottom:18px;
+  }
+  .pain-card h3{font-size:20px;margin-bottom:10px;color:var(--burgundy)}
+  .pain-card p{color:var(--ink-soft);font-size:15px}
+
+  /* Days */
+  .days-section{background:var(--bg-2)}
+  .days-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;max-width:980px;margin:0 auto}
+  .day-card{
+    background:var(--white);border-radius:var(--radius);padding:28px;
+    border-left:4px solid var(--gold);
+    box-shadow:var(--shadow-sm);
+    display:flex;gap:20px;align-items:flex-start;
+    transition:transform .3s,box-shadow .3s;
+  }
+  .day-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .day-num{
+    flex-shrink:0;
+    background:linear-gradient(135deg,var(--burgundy),var(--burgundy-dark));
+    color:var(--gold-soft);
+    border-radius:12px;padding:10px 14px;text-align:center;min-width:80px;
+    font-family:'Playfair Display',serif;
+  }
+  .day-num .label{font-size:10px;letter-spacing:2px;text-transform:uppercase;font-family:'Inter',sans-serif;font-weight:600;opacity:.8;display:block;margin-bottom:2px}
+  .day-num .range{font-size:22px;font-weight:900;line-height:1}
+  .day-content h3{font-size:20px;margin-bottom:8px;color:var(--ink)}
+  .day-content p{color:var(--ink-soft);font-size:15px}
+  .day-card.bonus{
+    border-left-color:var(--burgundy);
+    background:linear-gradient(135deg,var(--white),#FFF7E8);
+    grid-column:1/-1;
+  }
+  .day-card.bonus .day-num{background:linear-gradient(135deg,var(--gold),#B8924E);color:var(--burgundy-dark)}
+
+  /* Author */
+  .author-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:center;max-width:980px;margin:0 auto}
+  .author-photo{
+    position:relative;
+    border-radius:var(--radius);overflow:hidden;
+    box-shadow:var(--shadow);
+    aspect-ratio:1;
+  }
+  .author-photo img{width:100%;height:100%;object-fit:cover}
+  .author-photo::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 60%,rgba(107,31,42,.15));
+    pointer-events:none;
+  }
+  .author-name{font-size:30px;color:var(--burgundy);margin-bottom:6px}
+  .author-role{font-size:14px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:2px;margin-bottom:20px;font-weight:600}
+  .author-text{color:var(--ink-soft);margin-bottom:22px;font-size:16px}
+  .author-badges{display:flex;gap:12px;flex-wrap:wrap}
+  .author-badge{
+    background:var(--white);border:1px solid var(--gold-soft);
+    padding:10px 16px;border-radius:10px;font-size:13px;
+    display:flex;align-items:center;gap:8px;font-weight:600;color:var(--burgundy);
+    box-shadow:var(--shadow-sm);
+  }
+
+  /* Reviews */
+  .reviews-section{background:var(--bg-2)}
+  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .review-card{
+    background:var(--white);border-radius:var(--radius);padding:24px;
+    box-shadow:var(--shadow-sm);
+    display:flex;flex-direction:column;
+  }
+  .review-stars{color:var(--gold);font-size:16px;margin-bottom:12px;letter-spacing:2px}
+  .review-text{color:var(--ink-soft);font-size:15px;font-style:italic;margin-bottom:18px;flex:1}
+  .review-author{display:flex;align-items:center;gap:12px}
+  .review-avatar{
+    width:46px;height:46px;border-radius:50%;
+    background:linear-gradient(135deg,var(--burgundy),var(--burgundy-dark));
+    color:var(--gold-soft);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Playfair Display',serif;font-weight:700;font-size:18px;
+    box-shadow:0 0 0 2px var(--gold-soft),0 0 0 3px var(--gold);
+  }
+  .review-name{font-weight:700;color:var(--ink);font-size:15px}
+  .review-meta{font-size:12px;color:var(--ink-soft)}
+
+  /* Security */
+  .security{
+    background:linear-gradient(135deg,var(--burgundy),var(--burgundy-dark));
+    color:var(--gold-soft);
+  }
+  .security .container{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;max-width:900px}
+  .security-icon{
+    width:80px;height:80px;border-radius:20px;
+    background:rgba(201,169,110,.15);border:1px solid rgba(201,169,110,.4);
+    display:flex;align-items:center;justify-content:center;color:var(--gold);
+    flex-shrink:0;
+  }
+  .security h3{font-family:'Playfair Display',serif;font-size:26px;color:var(--gold);margin-bottom:8px}
+  .security p{color:var(--gold-soft);opacity:.9;margin-bottom:14px;font-size:15px}
+  .security-icons{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .security-icons .pay-icon{background:rgba(255,253,249,.95)}
+
+  /* FAQ */
+  .faq-list{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+  .faq-item{
+    background:var(--white);border:1px solid rgba(201,169,110,.3);
+    border-radius:var(--radius);overflow:hidden;
+    box-shadow:var(--shadow-sm);
+  }
+  .faq-q{
+    padding:20px 24px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+    font-weight:600;font-size:16px;color:var(--ink);user-select:none;gap:16px;
+  }
+  .faq-q .chev{
+    width:28px;height:28px;border-radius:50%;
+    background:var(--bg-2);color:var(--burgundy);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    transition:transform .3s;font-size:18px;font-weight:700;
+  }
+  .faq-item.open .faq-q .chev{transform:rotate(45deg);background:var(--burgundy);color:var(--gold-soft)}
+  .faq-a{
+    max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;
+    padding:0 24px;color:var(--ink-soft);font-size:15px;
+  }
+  .faq-item.open .faq-a{max-height:300px;padding:0 24px 22px}
+
+  /* Final CTA */
+  .final-cta{text-align:center;background:var(--bg-2)}
+  .final-cta .price-row{justify-content:center}
+  .final-cta-inner{max-width:620px;margin:0 auto;background:var(--white);padding:40px 32px;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--gold-soft)}
+  .final-cta h2{font-size:clamp(26px,3vw,36px);margin-bottom:14px;color:var(--burgundy)}
+  .final-cta p{color:var(--ink-soft);margin-bottom:24px}
+
+  /* Footer */
+  footer{padding:36px 0;background:var(--ink);color:rgba(255,253,249,.7);font-size:13px}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+  footer a:hover{color:var(--gold)}
+  .footer-links{display:flex;gap:20px}
+
+  /* Modal */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(42,26,20,.6);backdrop-filter:blur(4px);
+    z-index:100;display:none;align-items:center;justify-content:center;padding:20px;
+    opacity:0;transition:opacity .25s;
+  }
+  .modal-overlay.show{display:flex;opacity:1}
+  .modal{
+    background:var(--white);border-radius:var(--radius);
+    max-width:460px;width:100%;padding:36px 28px;position:relative;
+    box-shadow:0 30px 80px -20px rgba(0,0,0,.5);
+    transform:scale(.95);transition:transform .25s;
+  }
+  .modal-overlay.show .modal{transform:scale(1)}
+  .modal-close{
+    position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;
+    background:var(--bg-2);border:none;cursor:pointer;color:var(--ink);
+    font-size:20px;display:flex;align-items:center;justify-content:center;
+  }
+  .modal h3{text-align:center;font-size:24px;color:var(--burgundy);margin-bottom:6px}
+  .modal-price{text-align:center;color:var(--ink-soft);margin-bottom:24px;font-size:15px}
+  .modal-price strong{color:var(--burgundy);font-size:18px}
+  .pay-method{
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    padding:16px 20px;border:2px solid var(--bg-2);border-radius:12px;
+    margin-bottom:12px;cursor:pointer;transition:all .2s;
+    background:var(--white);text-decoration:none;color:var(--ink);
+  }
+  .pay-method:hover{border-color:var(--gold);background:var(--bg);transform:translateY(-1px)}
+  .pay-method-left{display:flex;align-items:center;gap:12px;font-weight:600}
+  .pay-method-icons{display:flex;gap:5px;align-items:center}
+  .pay-method-arrow{color:var(--burgundy);font-size:20px}
+  .modal-secure{text-align:center;font-size:12px;color:var(--ink-soft);margin-top:18px;display:flex;align-items:center;justify-content:center;gap:6px}
+
+  /* Animation */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
+  .reveal.in{opacity:1;transform:none}
+
+  /* Responsive */
+  @media (max-width: 880px){
+    .hero-grid{grid-template-columns:1fr;gap:32px;text-align:center}
+    .hero-sub{margin-left:auto;margin-right:auto}
+    .price-row{justify-content:center}
+    .timer-box{margin-left:auto;margin-right:auto}
+    .pay-icons{justify-content:center}
+    .hero-badge{margin-inline:auto}
+    .pain-grid{grid-template-columns:1fr}
+    .days-grid{grid-template-columns:1fr}
+    .author-grid{grid-template-columns:1fr;text-align:center}
+    .author-badges{justify-content:center}
+    .reviews-grid{grid-template-columns:1fr}
+    .security .container{grid-template-columns:1fr;text-align:center}
+    .security-icon{margin:0 auto}
+    .security-icons{justify-content:center}
+  }
+  @media (max-width: 480px){
+    section{padding:50px 0}
+    .hero{padding:32px 0 50px}
+    .price-new{font-size:38px}
+    .timer-cell{min-width:54px;padding:8px 10px}
+    .timer-cell .num{font-size:22px}
+    .btn-cta{padding:16px 24px;font-size:15px;width:100%}
+    .day-card{flex-direction:column;gap:14px;padding:22px}
+    .day-num{align-self:flex-start}
+    .cover{width:240px}
+    .final-cta-inner{padding:30px 20px}
+    .footer-inner{flex-direction:column;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">М</span>
+      <span data-i18n="brand">Молчание мужчин</span>
+    </a>
+    <div class="lang-switch" role="tablist">
+      <button id="lang-ru" class="active" onclick="setLang('ru',true)">RU</button>
+      <button id="lang-uk" onclick="setLang('uk',true)">UA</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="reveal">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        <span data-i18n="hero_badge">PDF-гайд • 60+ страниц • мгновенно на email</span>
+      </div>
+      <h1 data-i18n="hero_title">Мужское молчание: <span class="accent">30 дней</span> его мыслей</h1>
+      <p class="hero-sub" data-i18n="hero_sub">Что на самом деле происходит в его голове после расставания — день за днём. Психология, проверенная на 1000+ историях.</p>
+
+      <div class="price-row">
+        <span class="price-old" id="price-old">$19.99</span>
+        <span class="price-new" id="price-new">$9.99</span>
+        <span class="price-discount" data-i18n="discount">−50% сегодня</span>
+      </div>
+      <div class="price-note" data-i18n="price_note">Единоразовая оплата. Без подписок.</div>
+
+      <div class="timer-box">
+        <div class="timer-label">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span data-i18n="timer_label">Цена со скидкой действует:</span>
+        </div>
+        <div class="timer">
+          <div class="timer-cell"><span class="num" id="t-h">23</span><span class="lbl" data-i18n="t_h">часа</span></div>
+          <div class="timer-cell"><span class="num" id="t-m">59</span><span class="lbl" data-i18n="t_m">мин</span></div>
+          <div class="timer-cell"><span class="num" id="t-s">59</span><span class="lbl" data-i18n="t_s">сек</span></div>
+        </div>
+      </div>
+
+      <button class="btn-cta btn-cta-wide" onclick="onPay()">
+        <span id="cta-text">Получить гайд за $9.99</span>
+        <span class="arrow">→</span>
+      </button>
+
+      <div class="pay-icons">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span data-i18n="pay_safe">Безопасная оплата</span>
+        <div class="icons">
+          <span class="pay-icon" title="Visa">VISA</span>
+          <span class="pay-icon" title="Mastercard">MC</span>
+          <span class="pay-icon" title="Apple Pay">Pay</span>
+          <span class="pay-icon" title="Google Pay">G Pay</span>
+          <span class="pay-icon" title="PayPal">PayPal</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover-wrap reveal">
+      <div class="cover-glow"></div>
+      <div class="cover">
+        <div class="cover-deco"></div>
+        <div class="cover-top" data-i18n="cover_top">Психология отношений</div>
+        <div>
+          <div class="cover-title" data-i18n="cover_title_main">Мужское молчание</div>
+          <div class="cover-divider"></div>
+          <div class="cover-title"><em data-i18n="cover_title_sub">30 дней его мыслей</em></div>
+        </div>
+        <div class="cover-bottom" data-i18n="cover_bottom">PDF • Гайд для женщин</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow" data-i18n="pain_eyebrow">Знакомо?</span>
+      <h2 data-i18n="pain_title">Ты теряешься в догадках, а он молчит</h2>
+      <p data-i18n="pain_sub">Каждый день ты задаёшь себе одни и те же вопросы — а ответы, оказывается, лежат в его голове по чёткой схеме.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card reveal">
+        <div class="pain-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M22 2 12 12"/></svg></div>
+        <h3 data-i18n="pain1_t">Он замолчал — и пропал</h3>
+        <p data-i18n="pain1_d">Ты ловишь себя на том, что проверяешь его страницу 20 раз в день. Что он чувствует на самом деле?</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <h3 data-i18n="pain2_t">Лайки чужим фото</h3>
+        <p data-i18n="pain2_d">Кажется, что он уже забыл. На самом деле — это самая громкая форма мужской тоски.</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+        <h3 data-i18n="pain3_t">Стоит ли ждать</h3>
+        <p data-i18n="pain3_d">Каждое его действие можно расшифровать. После прочтения ты будешь знать, чего ждать дальше.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAYS -->
+<section class="days-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow" data-i18n="days_eyebrow">Что внутри</span>
+      <h2 data-i18n="days_title">30 дней его молчания — расшифровка по этапам</h2>
+      <p data-i18n="days_sub">Подробный разбор каждой фазы: что он чувствует, что делает и почему — час за часом, неделя за неделей.</p>
+    </div>
+    <div class="days-grid">
+      <div class="day-card reveal">
+        <div class="day-num"><span class="label" data-i18n="day_lbl">Дни</span><span class="range">1–3</span></div>
+        <div class="day-content">
+          <h3 data-i18n="d1_t">Облегчение и свобода</h3>
+          <p data-i18n="d1_d">Почему он не страдает сразу — биология мужского мозга и эффект «выдоха» в первые 72 часа.</p>
+        </div>
+      </div>
+      <div class="day-card reveal">
+        <div class="day-num"><span class="label" data-i18n="day_lbl">Дни</span><span class="range">4–7</span></div>
+        <div class="day-content">
+          <h3 data-i18n="d2_t">Первая трещина</h3>
+          <p data-i18n="d2_d">Момент, когда он впервые замечает её отсутствие — в мелочах, в утренней тишине, в пустой переписке.</p>
+        </div>
+      </div>
+      <div class="day-card reveal">
+        <div class="day-num"><span class="label" data-i18n="day_lbl">Дни</span><span class="range">8–14</span></div>
+        <div class="day-content">
+          <h3 data-i18n="d3_t">Мужская гордость vs тоска</h3>
+          <p data-i18n="d3_d">Внутренняя борьба: он хочет написать, но эго не пускает. Что побеждает чаще — и почему.</p>
+        </div>
+      </div>
+      <div class="day-card reveal">
+        <div class="day-num"><span class="label" data-i18n="day_lbl">Дни</span><span class="range">15–21</span></div>
+        <div class="day-content">
+          <h3 data-i18n="d4_t">Попытки отвлечься</h3>
+          <p data-i18n="d4_d">Что на самом деле означают его лайки другим, новые подписки и неожиданная активность в соцсетях.</p>
+        </div>
+      </div>
+      <div class="day-card reveal">
+        <div class="day-num"><span class="label" data-i18n="day_lbl">Дни</span><span class="range">22–30</span></div>
+        <div class="day-content">
+          <h3 data-i18n="d5_t">Момент истины</h3>
+          <p data-i18n="d5_d">Когда он принимает окончательное решение — вернуться или закрыть главу. И как ты это поймёшь.</p>
+        </div>
+      </div>
+      <div class="day-card bonus reveal">
+        <div class="day-num"><span class="label" data-i18n="bonus_lbl">Бонус</span><span class="range">🎁</span></div>
+        <div class="day-content">
+          <h3 data-i18n="bonus_t">5 признаков, что он пишет ТЕБЕ мысленно каждый день</h3>
+          <p data-i18n="bonus_d">Скрытые сигналы, которые мужчина подаёт, даже когда продолжает молчать. Ты увидишь их сразу.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHOR -->
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow" data-i18n="author_eyebrow">Об авторе</span>
+      <h2 data-i18n="author_title">Взгляд изнутри мужской психологии</h2>
+    </div>
+    <div class="author-grid">
+      <div class="author-photo reveal"><img src="/author.jpg" alt="Автор" loading="lazy" width="600" height="600"/></div>
+      <div class="reveal">
+        <h3 class="author-name" data-i18n="author_name">Эксперт по отношениям</h3>
+        <div class="author-role" data-i18n="author_role">Психолог • НЛП • КПТ • Нейропсихология</div>
+        <p class="author-text" data-i18n="author_bio">Пережил развод после 17 лет брака. Изучал психологию, нейропсихологию, работу мозга, КПТ и НЛП. Помог уже более 1000 женщинам и мужчинам понять друг друга — без иллюзий и без обвинений.</p>
+        <p class="author-text" data-i18n="author_bio2">«Я знаю, как мужчина переживает расставание изнутри. И знаю, что чувствует женщина, которая ждёт хоть какого-то знака. Этот гайд — мост между двумя мирами, которые перестали разговаривать».</p>
+        <div class="author-badges">
+          <div class="author-badge">⭐ <span data-i18n="badge1">10+ лет практики</span></div>
+          <div class="author-badge">👥 <span data-i18n="badge2">1000+ клиентов</span></div>
+          <div class="author-badge">📚 <span data-i18n="badge3">Автор гайдов</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow" data-i18n="rev_eyebrow">Отзывы</span>
+      <h2 data-i18n="rev_title">Что говорят те, кто уже прочитал</h2>
+      <p data-i18n="rev_sub">Более 1200 женщин получили этот гайд за последний месяц.</p>
+    </div>
+    <div class="reviews-grid" id="reviews">
+      <!-- filled by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- SECURITY -->
+<section class="security">
+  <div class="container">
+    <div class="security-icon">
+      <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+    </div>
+    <div>
+      <h3 data-i18n="sec_title">Платежи защищены на банковском уровне</h3>
+      <p data-i18n="sec_text">SSL-шифрование, стандарт PCI DSS. Мы не храним и не видим данные ваших карт — обработка проходит через сертифицированных провайдеров WayForPay и PayPal. Ваша конфиденциальность гарантирована.</p>
+      <div class="security-icons">
+        <span class="pay-icon">VISA</span>
+        <span class="pay-icon">Mastercard</span>
+        <span class="pay-icon">Apple Pay</span>
+        <span class="pay-icon">Google Pay</span>
+        <span class="pay-icon">PayPal</span>
+        <span class="pay-icon">SSL</span>
+        <span class="pay-icon">PCI DSS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-eyebrow" data-i18n="faq_eyebrow">Вопросы</span>
+      <h2 data-i18n="faq_title">Часто спрашивают</h2>
+    </div>
+    <div class="faq-list" id="faq"></div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <div class="final-cta-inner reveal">
+      <h2 data-i18n="final_t">Понять его — за один вечер</h2>
+      <p data-i18n="final_p">Скачайте PDF и узнайте, что происходит в его голове прямо сейчас. Без догадок, без бессонных ночей.</p>
+      <div class="price-row" style="justify-content:center;margin-bottom:6px">
+        <span class="price-old" id="price-old-2">$19.99</span>
+        <span class="price-new" id="price-new-2">$9.99</span>
+        <span class="price-discount" data-i18n="discount2">−50%</span>
+      </div>
+      <div class="price-note" style="margin-bottom:24px" data-i18n="price_note2">Единоразовая оплата • Гарантия безопасной оплаты</div>
+      <button class="btn-cta btn-cta-wide" onclick="onPay()">
+        <span id="cta-text-2">Получить гайд за $9.99</span>
+        <span class="arrow">→</span>
+      </button>
+      <div class="pay-icons" style="justify-content:center;margin-top:18px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span data-i18n="pay_safe2">SSL • PCI DSS • Гарантия конфиденциальности</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <div>© 2026 <span data-i18n="brand">Молчание мужчин</span></div>
+    <div class="footer-links">
+      <a href="#" data-i18n="f_offer">Оферта</a>
+      <a href="#" data-i18n="f_priv">Политика конфиденциальности</a>
+      <a href="mailto:support@example.com">support@example.com</a>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="payModal" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
+    <h3 data-i18n="modal_title">Выберите способ оплаты</h3>
+    <div class="modal-price"><span data-i18n="modal_price_lbl">Сумма к оплате:</span> <strong id="modal-price">$9.99</strong></div>
+
+    <a class="pay-method" href="https://secure.wayforpay.com/button/bc96b346c0b29" target="_blank" rel="noopener">
+      <div class="pay-method-left">
+        <span data-i18n="pay_card">Оплатить картой</span>
+      </div>
+      <div class="pay-method-icons">
+        <span class="pay-icon">VISA</span>
+        <span class="pay-icon">MC</span>
+        <span class="pay-icon">Pay</span>
+        <span class="pay-icon">G Pay</span>
+        <span class="pay-method-arrow">→</span>
+      </div>
+    </a>
+
+    <a class="pay-method" href="https://www.paypal.com/ncp/payment/LBZDF3ZMVSRJE" target="_blank" rel="noopener">
+      <div class="pay-method-left">
+        <span style="color:#003087;font-weight:800">PayPal</span>
+      </div>
+      <div class="pay-method-icons">
+        <span class="pay-method-arrow">→</span>
+      </div>
+    </a>
+
+    <div class="modal-secure">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span data-i18n="modal_secure">SSL • PCI DSS • Безопасная оплата</span>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---------- i18n ---------- */
+const i18n = {
+  ru: {
+    meta_title:"Мужское молчание: 30 дней его мыслей — PDF-гайд",
+    meta_desc:"Что на самом деле происходит в его голове после расставания — день за днём.",
+    brand:"Молчание мужчин",
+    hero_badge:"PDF-гайд • 60+ страниц • мгновенно на email",
+    hero_title:'Мужское молчание: <span class="accent">30 дней</span> его мыслей',
+    hero_sub:"Что на самом деле происходит в его голове после расставания — день за днём. Психология, проверенная на 1000+ историях.",
+    discount:"−50% сегодня",
+    price_note:"Единоразовая оплата. Без подписок.",
+    timer_label:"Цена со скидкой действует:",
+    t_h:"часов", t_m:"мин", t_s:"сек",
+    cta:"Получить гайд за $9.99",
+    pay_safe:"Безопасная оплата",
+    cover_top:"Психология отношений",
+    cover_title_main:"Мужское молчание",
+    cover_title_sub:"30 дней его мыслей",
+    cover_bottom:"PDF • Гайд для женщин",
+    pain_eyebrow:"Знакомо?",
+    pain_title:"Ты теряешься в догадках, а он молчит",
+    pain_sub:"Каждый день ты задаёшь себе одни и те же вопросы — а ответы, оказывается, лежат в его голове по чёткой схеме.",
+    pain1_t:"Он замолчал — и пропал",
+    pain1_d:"Ты ловишь себя на том, что проверяешь его страницу 20 раз в день. Что он чувствует на самом деле?",
+    pain2_t:"Лайки чужим фото",
+    pain2_d:"Кажется, что он уже забыл. На самом деле — это самая громкая форма мужской тоски.",
+    pain3_t:"Стоит ли ждать",
+    pain3_d:"Каждое его действие можно расшифровать. После прочтения ты будешь знать, чего ждать дальше.",
+    days_eyebrow:"Что внутри",
+    days_title:"30 дней его молчания — расшифровка по этапам",
+    days_sub:"Подробный разбор каждой фазы: что он чувствует, что делает и почему — час за часом, неделя за неделей.",
+    day_lbl:"Дни",
+    d1_t:"Облегчение и свобода",
+    d1_d:"Почему он не страдает сразу — биология мужского мозга и эффект «выдоха» в первые 72 часа.",
+    d2_t:"Первая трещина",
+    d2_d:"Момент, когда он впервые замечает её отсутствие — в мелочах, в утренней тишине, в пустой переписке.",
+    d3_t:"Мужская гордость vs тоска",
+    d3_d:"Внутренняя борьба: он хочет написать, но эго не пускает. Что побеждает чаще — и почему.",
+    d4_t:"Попытки отвлечься",
+    d4_d:"Что на самом деле означают его лайки другим, новые подписки и неожиданная активность в соцсетях.",
+    d5_t:"Момент истины",
+    d5_d:"Когда он принимает окончательное решение — вернуться или закрыть главу. И как ты это поймёшь.",
+    bonus_lbl:"Бонус",
+    bonus_t:"5 признаков, что он пишет ТЕБЕ мысленно каждый день",
+    bonus_d:"Скрытые сигналы, которые мужчина подаёт, даже когда продолжает молчать. Ты увидишь их сразу.",
+    author_eyebrow:"Об авторе",
+    author_title:"Взгляд изнутри мужской психологии",
+    author_name:"Эксперт по отношениям",
+    author_role:"Психолог • НЛП • КПТ • Нейропсихология",
+    author_bio:"Пережил развод после 17 лет брака. Изучал психологию, нейропсихологию, работу мозга, КПТ и НЛП. Помог уже более 1000 женщинам и мужчинам понять друг друга — без иллюзий и без обвинений.",
+    author_bio2:"«Я знаю, как мужчина переживает расставание изнутри. И знаю, что чувствует женщина, которая ждёт хоть какого-то знака. Этот гайд — мост между двумя мирами, которые перестали разговаривать».",
+    badge1:"10+ лет практики", badge2:"1000+ клиентов", badge3:"Автор гайдов",
+    rev_eyebrow:"Отзывы",
+    rev_title:"Что говорят те, кто уже прочитал",
+    rev_sub:"Более 1200 женщин получили этот гайд за последний месяц.",
+    sec_title:"Платежи защищены на банковском уровне",
+    sec_text:"SSL-шифрование, стандарт PCI DSS. Мы не храним и не видим данные ваших карт — обработка проходит через сертифицированных провайдеров WayForPay и PayPal. Ваша конфиденциальность гарантирована.",
+    faq_eyebrow:"Вопросы", faq_title:"Часто спрашивают",
+    final_t:"Понять его — за один вечер",
+    final_p:"Скачайте PDF и узнайте, что происходит в его голове прямо сейчас. Без догадок, без бессонных ночей.",
+    discount2:"−50%",
+    price_note2:"Единоразовая оплата • Гарантия безопасной оплаты",
+    pay_safe2:"SSL • PCI DSS • Гарантия конфиденциальности",
+    f_offer:"Оферта", f_priv:"Политика конфиденциальности",
+    modal_title:"Выберите способ оплаты",
+    modal_price_lbl:"Сумма к оплате:",
+    pay_card:"Оплатить картой",
+    modal_secure:"SSL • PCI DSS • Безопасная оплата",
+    reviews:[
+      {n:"Ирина",a:42,t:"Прочитала за вечер. Всё встало на места — он действительно прошёл первые три фазы ровно как описано. Перестала сходить с ума."},
+      {n:"Светлана",a:47,t:"Я три месяца не могла понять его поведение. Этот гайд — как инструкция к мужскому мозгу. Спасибо."},
+      {n:"Марина",a:39,t:"Особенно зацепил блок про лайки. Думала — изменяет с кем-то. Оказалось всё гораздо глубже."},
+      {n:"Елена",a:51,t:"Купила скептически. Получила понимание, которого не дала ни одна психологиня за полгода консультаций."},
+      {n:"Ольга",a:44,t:"Бонус про «5 признаков» — отдельная ценность. Он действительно подавал эти сигналы, я просто не видела."},
+      {n:"Татьяна",a:49,t:"Прочитала, выдохнула, перестала писать ему первой. Через две недели он написал сам. Магии нет — просто понимание."}
+    ],
+    faqs:[
+      {q:"В каком формате я получу гайд?",a:"Это PDF-документ объёмом 60+ страниц. Откроется на любом устройстве — телефоне, планшете, ноутбуке."},
+      {q:"Как быстро придёт после оплаты?",a:"Сразу после оплаты на ваш email придёт письмо со ссылкой для скачивания. Обычно в течение 1–3 минут."},
+      {q:"Безопасна ли оплата?",a:"Да, все платежи защищены SSL-шифрованием. Мы не видим и не храним данные ваших карт — обработка идёт через WayForPay и PayPal по стандарту PCI DSS."},
+      {q:"Подойдёт ли мне, если расставание было давно?",a:"Да. Гайд описывает универсальные психологические этапы. Многие читательницы говорят: «Теперь я понимаю, что было два года назад»."},
+      {q:"Возможен ли возврат?",a:"Если файл не открылся или возникли технические проблемы — напишите нам, мы вернём оплату или вышлем гайд повторно."}
+    ]
+  },
+  uk: {
+    meta_title:"Чоловіче мовчання: 30 днів його думок — PDF-гайд",
+    meta_desc:"Що насправді відбувається в його голові після розставання — день за днем.",
+    brand:"Мовчання чоловіків",
+    hero_badge:"PDF-гайд • 60+ сторінок • миттєво на email",
+    hero_title:'Чоловіче мовчання: <span class="accent">30 днів</span> його думок',
+    hero_sub:"Що насправді відбувається в його голові після розставання — день за днем. Психологія, перевірена на 1000+ історій.",
+    discount:"−50% сьогодні",
+    price_note:"Одноразова оплата. Без підписок.",
+    timer_label:"Ціна зі знижкою діє:",
+    t_h:"годин", t_m:"хв", t_s:"сек",
+    cta:"Отримати гайд за 370 ₴",
+    pay_safe:"Безпечна оплата",
+    cover_top:"Психологія стосунків",
+    cover_title_main:"Чоловіче мовчання",
+    cover_title_sub:"30 днів його думок",
+    cover_bottom:"PDF • Гайд для жінок",
+    pain_eyebrow:"Знайомо?",
+    pain_title:"Ти губишся в здогадках, а він мовчить",
+    pain_sub:"Щодня ти ставиш собі ті самі питання — а відповіді, виявляється, лежать у його голові за чіткою схемою.",
+    pain1_t:"Він замовк — і зник",
+    pain1_d:"Ти ловиш себе на тому, що перевіряєш його сторінку 20 разів на день. Що він відчуває насправді?",
+    pain2_t:"Лайки чужим фото",
+    pain2_d:"Здається, що він уже забув. Насправді — це найголосніша форма чоловічої туги.",
+    pain3_t:"Чи варто чекати",
+    pain3_d:"Кожну його дію можна розшифрувати. Після прочитання ти знатимеш, чого чекати далі.",
+    days_eyebrow:"Що всередині",
+    days_title:"30 днів його мовчання — розшифровка за етапами",
+    days_sub:"Детальний розбір кожної фази: що він відчуває, що робить і чому — година за годиною, тиждень за тижнем.",
+    day_lbl:"Дні",
+    d1_t:"Полегшення і свобода",
+    d1_d:"Чому він не страждає одразу — біологія чоловічого мозку та ефект «видиху» в перші 72 години.",
+    d2_t:"Перша тріщина",
+    d2_d:"Момент, коли він уперше помічає її відсутність — у дрібницях, у ранковій тиші, у порожньому листуванні.",
+    d3_t:"Чоловіча гордість vs туга",
+    d3_d:"Внутрішня боротьба: він хоче написати, але его не пускає. Що перемагає частіше — і чому.",
+    d4_t:"Спроби відволіктися",
+    d4_d:"Що насправді означають його лайки іншим, нові підписки і несподівана активність у соцмережах.",
+    d5_t:"Момент істини",
+    d5_d:"Коли він приймає остаточне рішення — повернутися чи закрити розділ. І як ти це зрозумієш.",
+    bonus_lbl:"Бонус",
+    bonus_t:"5 ознак, що він пише ТОБІ подумки щодня",
+    bonus_d:"Приховані сигнали, які чоловік подає, навіть коли продовжує мовчати. Ти побачиш їх одразу.",
+    author_eyebrow:"Про автора",
+    author_title:"Погляд зсередини чоловічої психології",
+    author_name:"Експерт зі стосунків",
+    author_role:"Психолог • НЛП • КПТ • Нейропсихологія",
+    author_bio:"Пережив розлучення після 17 років шлюбу. Вивчав психологію, нейропсихологію, роботу мозку, КПТ і НЛП. Допоміг уже понад 1000 жінкам і чоловікам зрозуміти одне одного — без ілюзій і без звинувачень.",
+    author_bio2:"«Я знаю, як чоловік переживає розставання зсередини. І знаю, що відчуває жінка, яка чекає хоч якогось знаку. Цей гайд — міст між двома світами, які перестали розмовляти».",
+    badge1:"10+ років практики", badge2:"1000+ клієнтів", badge3:"Автор гайдів",
+    rev_eyebrow:"Відгуки",
+    rev_title:"Що кажуть ті, хто вже прочитав",
+    rev_sub:"Понад 1200 жінок отримали цей гайд за останній місяць.",
+    sec_title:"Платежі захищені на банківському рівні",
+    sec_text:"SSL-шифрування, стандарт PCI DSS. Ми не зберігаємо і не бачимо дані ваших карток — обробка проходить через сертифікованих провайдерів WayForPay і PayPal. Вашу конфіденційність гарантовано.",
+    faq_eyebrow:"Питання", faq_title:"Часто запитують",
+    final_t:"Зрозуміти його — за один вечір",
+    final_p:"Завантажте PDF і дізнайтеся, що відбувається в його голові прямо зараз. Без здогадок, без безсонних ночей.",
+    discount2:"−50%",
+    price_note2:"Одноразова оплата • Гарантія безпечної оплати",
+    pay_safe2:"SSL • PCI DSS • Гарантія конфіденційності",
+    f_offer:"Оферта", f_priv:"Політика конфіденційності",
+    modal_title:"Оберіть спосіб оплати",
+    modal_price_lbl:"Сума до сплати:",
+    pay_card:"Оплатити карткою",
+    modal_secure:"SSL • PCI DSS • Безпечна оплата",
+    reviews:[
+      {n:"Ірина",a:42,t:"Прочитала за вечір. Все стало на свої місця — він дійсно пройшов перші три фази саме як описано. Перестала сходити з розуму."},
+      {n:"Світлана",a:47,t:"Я три місяці не могла зрозуміти його поведінку. Цей гайд — як інструкція до чоловічого мозку. Дякую."},
+      {n:"Марина",a:39,t:"Особливо зачепив блок про лайки. Думала — зраджує з кимось. Виявилося все набагато глибше."},
+      {n:"Олена",a:51,t:"Купила скептично. Отримала розуміння, якого не дав жоден психолог за пів року консультацій."},
+      {n:"Ольга",a:44,t:"Бонус про «5 ознак» — окрема цінність. Він дійсно подавав ці сигнали, я просто не бачила."},
+      {n:"Тетяна",a:49,t:"Прочитала, видихнула, перестала писати йому перша. Через два тижні він написав сам. Магії немає — просто розуміння."}
+    ],
+    faqs:[
+      {q:"У якому форматі я отримаю гайд?",a:"Це PDF-документ обсягом 60+ сторінок. Відкриється на будь-якому пристрої — телефоні, планшеті, ноутбуці."},
+      {q:"Як швидко прийде після оплати?",a:"Одразу після оплати на ваш email прийде лист із посиланням для завантаження. Зазвичай протягом 1–3 хвилин."},
+      {q:"Чи безпечна оплата?",a:"Так, усі платежі захищені SSL-шифруванням. Ми не бачимо і не зберігаємо дані ваших карток — обробка йде через WayForPay за стандартом PCI DSS."},
+      {q:"Чи підійде мені, якщо розставання було давно?",a:"Так. Гайд описує універсальні психологічні етапи. Багато читачок кажуть: «Тепер я розумію, що було два роки тому»."},
+      {q:"Чи можливе повернення?",a:"Якщо файл не відкрився або виникли технічні проблеми — напишіть нам, ми повернемо оплату або надішлемо гайд повторно."}
+    ]
+  }
+};
+
+/* ---------- State ---------- */
+let currentLang = 'ru';
+let isUA = false;
+
+const PRICES = {
+  ru: { old:"$19.99", new:"$9.99", cta:"Получить гайд за $9.99" },
+  uk: { old:"740 ₴",  new:"370 ₴",  cta:"Отримати гайд за 370 ₴" }
+};
+const UA_PAY_URL = "https://secure.wayforpay.com/button/bfddc3aa65e5b";
+
+/* ---------- Lang switching ---------- */
+function setLang(lang, manual){
+  currentLang = lang;
+  if(manual) localStorage.setItem('lang_manual', lang);
+  document.documentElement.lang = lang === 'uk' ? 'uk' : 'ru';
+
+  // Buttons
+  document.getElementById('lang-ru').classList.toggle('active', lang==='ru');
+  document.getElementById('lang-uk').classList.toggle('active', lang==='uk');
+
+  // Texts via data-i18n
+  const dict = i18n[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    if(dict[key]!==undefined){
+      if(el.tagName==='TITLE') el.textContent = dict[key];
+      else if(el.tagName==='META') el.setAttribute('content', dict[key]);
+      else el.innerHTML = dict[key];
+    }
+  });
+
+  // Prices
+  const useUA = lang === 'uk';
+  const p = PRICES[lang];
+  document.getElementById('price-old').textContent = p.old;
+  document.getElementById('price-new').textContent = p.new;
+  document.getElementById('price-old-2').textContent = p.old;
+  document.getElementById('price-new-2').textContent = p.new;
+  document.getElementById('cta-text').textContent = p.cta;
+  document.getElementById('cta-text-2').textContent = p.cta;
+  document.getElementById('modal-price').textContent = p.new;
+
+  // Reviews + FAQ rebuild
+  renderReviews();
+  renderFaq();
+}
+
+/* ---------- Geo detect ---------- */
+async function detectGeo(){
+  const manual = localStorage.getItem('lang_manual');
+  if(manual){ setLang(manual,false); isUA = manual==='uk'; return; }
+  try{
+    const ctrl = new AbortController();
+    setTimeout(()=>ctrl.abort(), 3500);
+    const r = await fetch('https://ipapi.co/json/', {signal:ctrl.signal});
+    const j = await r.json();
+    if(j && (j.country_code==='UA' || j.country==='UA')){ isUA=true; setLang('uk',false); return; }
+  }catch(e){}
+  try{
+    const r2 = await fetch('https://ipwho.is/');
+    const j2 = await r2.json();
+    if(j2 && j2.country_code==='UA'){ isUA=true; setLang('uk',false); return; }
+  }catch(e){}
+  isUA=false; setLang('ru',false);
+}
+
+/* ---------- Pay ---------- */
+function onPay(){
+  if(currentLang==='uk' || isUA){
+    window.open(UA_PAY_URL, '_blank', 'noopener');
+  }else{
+    openModal();
+  }
+}
+function openModal(){ document.getElementById('payModal').classList.add('show'); document.body.style.overflow='hidden'; }
+function closeModal(){ document.getElementById('payModal').classList.remove('show'); document.body.style.overflow=''; }
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+
+/* ---------- Timer ---------- */
+function initTimer(){
+  let end = parseInt(localStorage.getItem('promo_end')||'0',10);
+  const now = Date.now();
+  if(!end || end < now){
+    end = now + 24*60*60*1000;
+    localStorage.setItem('promo_end', end);
+  }
+  function tick(){
+    let diff = Math.max(0, end - Date.now());
+    if(diff===0){
+      end = Date.now() + 24*60*60*1000;
+      localStorage.setItem('promo_end', end);
+      diff = end - Date.now();
+    }
+    const h = Math.floor(diff/3600000);
+    const m = Math.floor((diff%3600000)/60000);
+    const s = Math.floor((diff%60000)/1000);
+    document.getElementById('t-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('t-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('t-s').textContent = String(s).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick, 1000);
+}
+
+/* ---------- Reviews ---------- */
+function renderReviews(){
+  const wrap = document.getElementById('reviews');
+  const list = i18n[currentLang].reviews;
+  wrap.innerHTML = list.map(r=>`
+    <div class="review-card reveal in">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-text">«${r.t}»</div>
+      <div class="review-author">
+        <div class="review-avatar">${r.n[0]}</div>
+        <div>
+          <div class="review-name">${r.n}</div>
+          <div class="review-meta">${r.a} ${currentLang==='uk'?'років':'года'}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ---------- FAQ ---------- */
+function renderFaq(){
+  const wrap = document.getElementById('faq');
+  const list = i18n[currentLang].faqs;
+  wrap.innerHTML = list.map((f,i)=>`
+    <div class="faq-item reveal in" data-idx="${i}">
+      <div class="faq-q">
+        <span>${f.q}</span>
+        <span class="chev">+</span>
+      </div>
+      <div class="faq-a"><div style="padding-top:4px">${f.a}</div></div>
+    </div>
+  `).join('');
+  wrap.querySelectorAll('.faq-q').forEach(q=>{
+    q.addEventListener('click', ()=>{
+      q.parentElement.classList.toggle('open');
+    });
+  });
+}
+
+/* ---------- Reveal on scroll ---------- */
+function initReveal(){
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}
+
+/* ---------- Init ---------- */
+detectGeo();
+initTimer();
+initReveal();
+</script>
+
+</body>
+</html>
