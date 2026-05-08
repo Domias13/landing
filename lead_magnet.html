@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5 фраз-ловушек — Практикум Романа</title>
+  <meta name="description" content="Мужской взгляд на манипуляции бывших. 5 фраз, которые он скажет, чтобы вернуть тебя на крючок. И как на них реагировать." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0613;
+      --bg-2: #11091f;
+      --surface: #170c2b;
+      --surface-2: #1f1138;
+      --line: rgba(255, 255, 255, .08);
+      --text: #ece8f5;
+      --muted: #9b94b3;
+      --accent: #a855f7;
+      --accent-2: #7c3aed;
+      --gold: #f5d4a3;
+      --danger: #ff6b6b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background-image: radial-gradient(circle at 20% 10%, rgba(124, 58, 237, .15), transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(168, 85, 247, .10), transparent 55%);
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 8vw, 4.5rem);
+      font-weight: 900;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 5.5vw, 2.8rem);
+      margin-bottom: 1.2rem;
+    }
+
+    h3 {
+      font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+    }
+
+    p {
+      color: var(--muted);
+      font-size: clamp(.95rem, 2.5vw, 1.05rem);
+    }
+
+    .accent {
+      color: var(--accent);
+    }
+
+    .gold {
+      color: var(--gold);
+    }
+
+    /* CONTAINER */
+    .container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 0;
+    }
+
+    /* SLIDE */
+    .slide {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      width: 100%;
+      animation: fadeIn 0.5s ease-in-out forwards;
+    }
+
+    .slide.active {
+      display: block;
+      opacity: 1;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* COVER SLIDE */
+    .slide-cover {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .slide-cover h1 {
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #a855f7 0%, #f5d4a3 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .slide-cover .subtitle {
+      font-size: clamp(1.1rem, 3vw, 1.3rem);
+      color: #d4cfe5;
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .slide-cover .author {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .slide-cover .role {
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    /* INTRO SLIDE */
+    .slide-intro {
+      padding: 60px 20px;
+    }
+
+    .slide-intro h2 {
+      color: var(--text);
+      margin-bottom: 30px;
+    }
+
+    .slide-intro p {
+      font-size: 1.05rem;
+      color: #d4cfe5;
+      margin-bottom: 20px;
+      line-height: 1.8;
+      max-width: 700px;
+    }
+
+    /* TRAP SLIDE */
+    .slide-trap {
+      padding: 60px 20px;
+    }
+
+    .trap-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .trap-content h2 {
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+
+    .trap-number {
+      display: inline-block;
+      font-family: 'Unbounded', sans-serif;
+      font-size: 3rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #a855f7 0%, rgba(168, 85, 247, .3) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .trap-phrase {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+      font-family: 'Unbounded', sans-serif;
+      font-size: 1.1rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .trap-description {
+      color: #d4cfe5;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .trap-reaction {
+      background: linear-gradient(135deg, rgba(168, 85, 247, .15), rgba(124, 58, 237, .05));
+      border: 1px solid rgba(168, 85, 247, .3);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .trap-reaction-title {
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 10px;
+      font-family: 'Unbounded', sans-serif;
+    }
+
+    .trap-reaction-text {
+      color: #d4cfe5;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* CONCLUSION SLIDE */
+    .slide-conclusion {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .slide-conclusion h2 {
+      color: var(--text);
+      margin-bottom: 30px;
+    }
+
+    .slide-conclusion p {
+      font-size: 1.05rem;
+      color: #d4cfe5;
+      margin-bottom: 20px;
+      line-height: 1.8;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* NAVIGATION */
+    .nav-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+      color: #fff;
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 16px 28px;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 10px 40px -10px rgba(168, 85, 247, .6), inset 0 1px 0 rgba(255, 255, 255, .2);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 50px -10px rgba(168, 85, 247, .8);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      color: var(--text);
+      box-shadow: none;
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(168, 85, 247, .4);
+      box-shadow: 0 5px 20px -5px rgba(168, 85, 247, .3);
+    }
+
+    .btn-primary {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    /* PROGRESS */
+    .progress-bar {
+      width: 100%;
+      height: 4px;
+      background: var(--surface);
+      border-radius: 2px;
+      margin-bottom: 40px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #a855f7 0%, #7c3aed 100%);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer a:hover {
+      color: var(--gold);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .slide-cover,
+      .slide-intro,
+      .slide-trap,
+      .slide-conclusion {
+        padding: 40px 20px;
+      }
+
+      .nav-buttons {
+        gap: 10px;
+      }
+
+      .btn {
+        font-size: 0.9rem;
+        padding: 14px 24px;
+      }
+
+      .btn-primary {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="wrap">
+      <!-- PROGRESS BAR -->
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <!-- SLIDE 1: COVER -->
+      <div class="slide active" id="slide-1">
+        <div class="slide-cover">
+          <h1>5 фраз-ловушек, которые он скажет, чтобы вернуть тебя на крючок</h1>
+          <p class="subtitle">(и как на них реагировать)</p>
+          <p class="subtitle" style="font-size: 1rem; color: var(--muted); margin-top: 30px;">Мужской взгляд на манипуляции бывших. Без жалости. Прямо.</p>
+          <div style="margin-top: 40px;">
+            <div class="author">Роман</div>
+            <div class="role">Автор практикума</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 2: INTRO -->
+      <div class="slide" id="slide-2">
+        <div class="slide-intro">
+          <h2>Ты думаешь, он скучает? Он играет.</h2>
+          <p>Если ты открыла этот файл, значит, в твоей жизни есть человек, который ушел физически, но остался мысленно и эмоционально с тобой.</p>
+          <p>Внутри — ощущение, что часть тебя осталась где-то там. И ты не знаешь, как вернуть ее обратно.</p>
+          <p style="margin-top: 30px; font-weight: 600; color: #d4cfe5;">Вот что происходит на самом деле: когда он пишет, звонит или «случайно» появляется в твоей ленте — это не проявление любви. Это игра. Проверка. Попытка восстановить контроль.</p>
+          <p style="margin-top: 20px;">Не обманывай себя. Если бы хотел быть с тобой, был бы. Остальное — игры. И дальше ты узнаешь, как они устроены.</p>
+        </div>
+      </div>
+
+      <!-- SLIDE 3: TRAP 1 -->
+      <div class="slide" id="slide-3">
+        <div class="slide-trap">
+          <div class="trap-content">
+            <div class="trap-number">1</div>
+            <h2>«Привет, как ты?» (или «Как дела?»)</h2>
+            <div class="trap-phrase">Проверка пульса</div>
+            <div class="trap-description">
+              Это не проявление заботы. Это тест. Он проверяет, насколько быстро ты ответишь. Все ли еще ты доступна. Это заброс удочки для оценки текущего состояния.
+            </div>
+            <div class="trap-reaction">
+              <div class="trap-reaction-title">Как реагировать:</div>
+              <div class="trap-reaction-text">
+                <strong>Игнор. Полный.</strong> Или сухое, нейтральное «Нормально». Без вопросов в ответ.
+              </div>
+              <div class="trap-reaction-text" style="margin-top: 12px;">
+                Почему? Потому что любая эмоциональная реакция — это проигрыш. Ты даешь ему то, что ему нужно: подтверждение, что ты еще думаешь о нем, что ты все еще его жертва.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4: TRAP 2 -->
+      <div class="slide" id="slide-4">
+        <div class="slide-trap">
+          <div class="trap-content">
+            <div class="trap-number">2</div>
+            <h2>«Я видел тебя во сне» (или «Ты мне приснилась»)</h2>
+            <div class="trap-phrase">Эмоциональный шантаж</div>
+            <div class="trap-description">
+              Это попытка вызвать ностальгию. Чувство вины. Ложную надежду. Это дешевый прием для восстановления эмоциональной связи, когда других аргументов нет.
+            </div>
+            <div class="trap-reaction">
+              <div class="trap-reaction-title">Как реагировать:</div>
+              <div class="trap-reaction-text">
+                <strong>«Понятно». Игнор.</strong> Или «Надеюсь, сон был хороший». Без продолжения диалога.
+              </div>
+              <div class="trap-reaction-text" style="margin-top: 12px;">
+                Не давай эмоциональную подпитку. Он ждет, что ты скажешь что-то теплое в ответ. Не скажи. Останься холодной и отстраненной.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 5: TRAP 3 -->
+      <div class="slide" id="slide-5">
+        <div class="slide-trap">
+          <div class="trap-content">
+            <div class="trap-number">3</div>
+            <h2>«Мне тебя не хватает» (или «Я скучаю»)</h2>
+            <div class="trap-phrase">Тест на твою слабость</div>
+            <div class="trap-description">
+              Это не искреннее признание в любви. Это проверка твоей эмоциональной устойчивости. Он скучает не по тебе. Он скучает по комфорту, который ты ему давала. Или по контролю над тобой.
+            </div>
+            <div class="trap-reaction">
+              <div class="trap-reaction-title">Как реагировать:</div>
+              <div class="trap-reaction-text">
+                <strong>«Бывает».</strong> Или «Я тоже скучаю по себе прежней». Перевод фокуса на себя.
+              </div>
+              <div class="trap-reaction-text" style="margin-top: 12px;">
+                Не давай ему почувствовать, что он важен. Не подтверждай, что ты тоже скучаешь. Это сигнал, что ты готова вернуться.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 6: TRAP 4 -->
+      <div class="slide" id="slide-6">
+        <div class="slide-trap">
+          <div class="trap-content">
+            <div class="trap-number">4</div>
+            <h2>«Я изменился» (или «Давай попробуем снова»)</h2>
+            <div class="trap-phrase">Последний рывок</div>
+            <div class="trap-description">
+              Это попытка вернуть тебя, когда у него ничего не получилось с другими. Или когда ему стало одиноко. Изменения должны быть доказаны делами, а не пустыми словами.
+            </div>
+            <div class="trap-reaction">
+              <div class="trap-reaction-title">Как реагировать:</div>
+              <div class="trap-reaction-text">
+                <strong>«Удачи».</strong> Или «Я верю в тебя. Но без меня». Не давай второго шанса на словах.
+              </div>
+              <div class="trap-reaction-text" style="margin-top: 12px;">
+                Только на действиях, которых не будет. Потому что действительно изменившийся человек не будет писать бывшей. Он будет работать над собой.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 7: TRAP 5 -->
+      <div class="slide" id="slide-7">
+        <div class="slide-trap">
+          <div class="trap-content">
+            <div class="trap-number">5</div>
+            <h2>«Я всегда буду рядом» (или «Мы же друзья?»)</h2>
+            <div class="trap-phrase">Запасной аэродром</div>
+            <div class="trap-description">
+              Это попытка оставить тебя в зоне досягаемости. Чтобы использовать в своих целях, когда ему будет удобно. Это не дружба. Это манипуляция.
+            </div>
+            <div class="trap-reaction">
+              <div class="trap-reaction-title">Как реагировать:</div>
+              <div class="trap-reaction-text">
+                <strong>«Нет».</strong> Или «У меня нет друзей, которые причиняют мне боль». Четко обозначь границы.
+              </div>
+              <div class="trap-reaction-text" style="margin-top: 12px;">
+                Дружбы не будет. Потому что дружба — это когда оба человека уважают друг друга. А здесь уважения нет. Есть только его желание держать тебя на крючке.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 8: CONCLUSION -->
+      <div class="slide" id="slide-8">
+        <div class="slide-conclusion">
+          <h2>Это был лишь первый удар. Хочешь выбить его из своей жизни навсегда?</h2>
+          <p>Знание этих фраз — это только начало. Для полного «отключения» нужна система. Конкретные действия. Пошаговый план.</p>
+          <p style="margin-top: 20px;">Практикум Романа дает тебе именно это:</p>
+          <p style="margin-top: 20px; color: var(--accent); font-weight: 600;">8 видео-уроков + упражнения к каждому. Как остановить навязчивые мысли. Как перестать мониторить его соцсети. Как пережить вечер и ночь. Как вернуть фокус на свою жизнь.</p>
+          <p style="margin-top: 30px; font-size: 1.1rem; color: #d4cfe5; font-weight: 600;">Хватит быть жертвой. Если ты готова действовать, а не жалеть себя, то практикум Романа — твой следующий шаг.</p>
+          <div class="nav-buttons" style="margin-top: 40px;">
+            <a href="https://back4heart.site/" class="btn btn-primary" target="_blank" rel="noopener">
+              Получить доступ к практикуму
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- NAVIGATION BUTTONS -->
+      <div class="nav-buttons" style="margin-top: 40px;">
+        <button class="btn btn-secondary" id="prevBtn" onclick="changeSlide(-1)">← Назад</button>
+        <span id="slideCounter" style="align-self: center; color: var(--muted); font-weight: 600;">1 / 8</span>
+        <button class="btn btn-secondary" id="nextBtn" onclick="changeSlide(1)">Далее →</button>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="footer">
+        <p>© 2026 Практикум Романа «Отключись от него»</p>
+        <p style="margin-top: 10px;">Лид-магнит для женщин, которые готовы выбить его из своей жизни</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 8;
+
+    function showSlide(n) {
+      const slides = document.querySelectorAll('.slide');
+      
+      if (n > totalSlides) {
+        currentSlide = totalSlides;
+      }
+      if (n < 1) {
+        currentSlide = 1;
+      }
+
+      slides.forEach(slide => slide.classList.remove('active'));
+      document.getElementById(`slide-${currentSlide}`).classList.add('active');
+
+      // Update progress bar
+      const progress = (currentSlide / totalSlides) * 100;
+      document.getElementById('progressFill').style.width = progress + '%';
+
+      // Update counter
+      document.getElementById('slideCounter').textContent = `${currentSlide} / ${totalSlides}`;
+
+      // Update button states
+      document.getElementById('prevBtn').disabled = currentSlide === 1;
+      document.getElementById('nextBtn').disabled = currentSlide === totalSlides;
+
+      // Scroll to top
+      window.scrollTo(0, 0);
+    }
+
+    function changeSlide(n) {
+      currentSlide += n;
+      showSlide(currentSlide);
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') changeSlide(-1);
+      if (e.key === 'ArrowRight') changeSlide(1);
+    });
+
+    // Initialize
+    showSlide(currentSlide);
+  </script>
+</body>
+</html>
