@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тихая провокация — Роман | back4heart</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0c;
+    --bg2: #0f0f13;
+    --bg3: #14141a;
+    --crimson: #c0392b;
+    --crimson-dark: #922b21;
+    --crimson-glow: rgba(192, 57, 43, 0.15);
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --text: #e8e4de;
+    --text-muted: #8a847a;
+    --text-faint: #4a4640;
+    --border: rgba(201, 168, 76, 0.18);
+    --border-red: rgba(192, 57, 43, 0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 0 60px;
+    position: relative;
+    border-bottom: 1px solid var(--border-red);
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -24px; right: -24px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--crimson), transparent);
+  }
+
+  .cover-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cover-tag::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--crimson);
+  }
+
+  .cover-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .cover-title {
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+  }
+
+  .cover-title .accent { color: var(--crimson); }
+  .cover-title .quiet { color: var(--text-muted); font-weight: 400; }
+
+  .cover-sub {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 520px;
+    margin-bottom: 48px;
+    line-height: 1.8;
+  }
+
+  .cover-divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--crimson), transparent);
+    margin-bottom: 36px;
+  }
+
+  .cover-promise {
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 64px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .section-label {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    color: var(--text);
+    margin-bottom: 18px;
+    font-size: 15px;
+    line-height: 1.85;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  em {
+    color: var(--gold);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  strong {
+    color: #fff;
+    font-weight: 700;
+  }
+
+  /* ── PAIN BLOCK ── */
+  .pain-block {
+    background: linear-gradient(135deg, var(--bg2), var(--bg3));
+    border: 1px solid var(--border-red);
+    border-left: 3px solid var(--crimson);
+    padding: 32px;
+    margin: 32px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pain-block::before {
+    content: '"';
+    position: absolute;
+    top: -10px; right: 20px;
+    font-size: 120px;
+    color: var(--crimson);
+    opacity: 0.07;
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1;
+  }
+
+  .pain-block p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.7;
+    color: var(--text);
+    font-style: italic;
+    margin-bottom: 0;
+  }
+
+  /* ── SYMPTOM LIST ── */
+  .symptom-list {
+    list-style: none;
+    margin: 28px 0;
+  }
+
+  .symptom-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .symptom-list li::before {
+    content: '—';
+    color: var(--crimson);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── EXPERT BLOCK ── */
+  .expert-block {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 40px;
+    margin: 32px 0;
+    position: relative;
+  }
+
+  .expert-name {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+
+  .expert-name span { color: var(--crimson); }
+
+  .expert-role {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    font-weight: 600;
+  }
+
+  .expert-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin: 28px 0;
+  }
+
+  .stat {
+    background: var(--bg2);
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  /* ── ANATOMY BLOCK ── */
+  .anatomy-box {
+    background: rgba(192, 57, 43, 0.06);
+    border: 1px solid var(--border-red);
+    padding: 32px;
+    margin: 32px 0;
+  }
+
+  .anatomy-title {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 16px;
+  }
+
+  /* ── SCENARIOS ── */
+  .scenario {
+    margin: 40px 0;
+    padding: 0 0 40px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .scenario:last-child { border-bottom: none; }
+
+  .scenario-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .scenario-num {
+    width: 40px;
+    height: 40px;
+    background: var(--crimson-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 900;
+    flex-shrink: 0;
+    color: #fff;
+  }
+
+  .scenario-name {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  /* ── CASE BLOCK ── */
+  .case-block {
+    background: var(--bg3);
+    border-left: 2px solid var(--gold);
+    padding: 24px 28px;
+    margin: 28px 0;
+  }
+
+  .case-tag {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .case-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--text);
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+
+  .case-result {
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .case-result::before {
+    content: '→';
+  }
+
+  /* ── TRUTH BLOCK ── */
+  .truth-block {
+    border: 1px solid var(--border-red);
+    padding: 28px;
+    margin: 24px 0;
+    position: relative;
+  }
+
+  .truth-label {
+    position: absolute;
+    top: -1px; left: 24px;
+    transform: translateY(-50%);
+    background: var(--bg);
+    padding: 2px 10px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--crimson);
+  }
+
+  /* ── ACTION PLAN ── */
+  .action-list {
+    list-style: none;
+    counter-reset: actions;
+    margin: 28px 0;
+  }
+
+  .action-list li {
+    counter-increment: actions;
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    align-items: flex-start;
+  }
+
+  .action-list li::before {
+    content: counter(actions, decimal-leading-zero);
+    font-size: 28px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    color: var(--text-faint);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 40px;
+  }
+
+  .action-content strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #fff;
+  }
+
+  .action-content p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* ── OFFER BLOCK ── */
+  .offer-section {
+    padding: 64px 0 80px;
+    position: relative;
+  }
+
+  .offer-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -24px; right: -24px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .offer-box {
+    background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(192,57,43,0.06));
+    border: 1px solid var(--border);
+    padding: 48px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .offer-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.08), transparent 70%);
+    pointer-events: none;
+  }
+
+  .offer-kicker {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .offer-title {
+    font-size: clamp(26px, 5vw, 40px);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+
+  .offer-title .red { color: var(--crimson); }
+
+  .offer-desc {
+    font-size: 15px;
+    color: var(--text-muted);
+    max-width: 480px;
+    margin: 0 auto 32px;
+    line-height: 1.8;
+  }
+
+  .offer-price {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  .price-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  .price-value {
+    font-size: 48px;
+    font-weight: 900;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .price-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--crimson);
+    color: #fff;
+    text-decoration: none;
+    padding: 18px 48px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.15s;
+    position: relative;
+    border: none;
+    cursor: pointer;
+  }
+
+  .cta-btn:hover {
+    background: #a93226;
+    transform: translateY(-2px);
+  }
+
+  .cta-note {
+    font-size: 11px;
+    color: var(--text-faint);
+    margin-top: 16px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── WHAT INSIDE LIST ── */
+  .inside-list {
+    list-style: none;
+    margin: 20px 0;
+    display: grid;
+    gap: 10px;
+  }
+
+  .inside-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .inside-list li::before {
+    content: '✓';
+    color: var(--gold);
+    font-weight: 900;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── BLOCKQUOTE ── */
+  blockquote {
+    border-left: 2px solid var(--crimson);
+    padding: 12px 20px;
+    margin: 24px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 40px 0;
+    font-size: 11px;
+    color: var(--text-faint);
+    letter-spacing: 0.08em;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+
+  footer a { color: var(--text-faint); text-decoration: none; }
+
+  /* ── FADE IN ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .cover > * {
+    animation: fadeUp 0.7s ease backwards;
+  }
+  .cover > *:nth-child(1) { animation-delay: 0.1s; }
+  .cover > *:nth-child(2) { animation-delay: 0.2s; }
+  .cover > *:nth-child(3) { animation-delay: 0.3s; }
+  .cover > *:nth-child(4) { animation-delay: 0.4s; }
+  .cover > *:nth-child(5) { animation-delay: 0.5s; }
+  .cover > *:nth-child(6) { animation-delay: 0.55s; }
+  .cover > *:nth-child(7) { animation-delay: 0.6s; }
+
+  @media (max-width: 480px) {
+    .expert-stats { grid-template-columns: 1fr 1fr; }
+    .offer-box { padding: 36px 24px; }
+    .expert-block { padding: 28px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- ══ COVER ══ -->
+  <section class="cover">
+    <div class="cover-tag">back4heart · бесплатный разбор</div>
+    <div class="cover-eyebrow">Когда он «случайно» напоминает о себе</div>
+    <h1 class="cover-title">
+      Тихая<br>
+      <span class="accent">провокация</span>
+    </h1>
+    <div class="cover-divider"></div>
+    <p class="cover-sub">
+      Что делать, когда бывший лайкает фото, постит «грусть» или смотрит ваши сторис с фейка. Разбор механики — без иллюзий.
+    </p>
+    <div class="cover-promise">Читать 7–9 минут · Прочитать один раз и больше не гадать</div>
+  </section>
+
+
+  <!-- ══ ТОЧКА БОЛИ ══ -->
+  <section class="section">
+    <div class="section-label">Симптомы</div>
+    <h2 class="section-title">Три часа ночи. Он поставил лайк.</h2>
+
+    <div class="pain-block">
+      <p>Вы лежите в темноте. Телефон тихий. И вдруг — уведомление. Маленький красный кружок. Лайк. От него. На фото трёхмесячной давности.</p>
+    </div>
+
+    <p>За следующие двенадцать секунд в голове проносится: <em>зачем он это сделал, он скучает, он хочет вернуться, он специально, это случайно, нет — не случайно, надо ответить, нет нельзя, а вдруг?</em></p>
+    <p>Сон исчезает. Запускается конвейер версий. Вы начинаете листать его страницу. Потом его подписчиков. Потом обратно. Потом снова смотрите на тот лайк.</p>
+
+    <p>Узнаёте?</p>
+
+    <ul class="symptom-list">
+      <li>Проверяете его страницу по 20–30 раз в день, хотя уже дали себе слово остановиться</li>
+      <li>Грустная цитата в его ленте — и вы часами думаете: «это про меня?»</li>
+      <li>Он посмотрел сторис — и руки тянутся написать первой</li>
+      <li>Один его лайк перечёркивает три дня работы над собой</li>
+      <li>Вы ловите себя на том, что публикуете фото «для него» — в надежде, что он заметит</li>
+    </ul>
+
+    <p>Это не слабость характера. Это — крючок. И он работает именно так, как задуман.</p>
+  </section>
+
+
+  <!-- ══ ЗНАКОМСТВО ══ -->
+  <section class="section">
+    <div class="section-label">Кто это пишет</div>
+
+    <div class="expert-block">
+      <div class="expert-name">Роман <span>back4heart</span></div>
+      <div class="expert-role">Практик восстановления после разрыва</div>
+
+      <p>Здравствуйте. Давайте честно.</p>
+      <p>Если вы сейчас читаете это — вам очень больно. Внутри пустота и одно желание: чтобы это поскорее закончилось. Я не буду говорить, что «время лечит» или что «нужно просто отпустить». Знаю, как эти слова злят. Кажется: <em>«откуда ты знаешь, у нас всё было иначе»</em>.</p>
+      <p>Но я знаю. Потому что был там сам.</p>
+      <p>Мой брак длился 17 лет. Я знаю, каково это — возвращаться в дом, где тебя раньше ждали. Слышать внутри: <em>«а давай ещё раз проверим её сторис»</em>. Отслеживать, на сколько человек выросла подписка. Прокручивать одни и те же мысли по кругу — сутками.</p>
+      <p>В какой-то момент я понял: разговоры о чувствах мне не помогут. Нужно было решение. Я начал изучать, как устроена привязанность и почему разрыв ощущается как физическая ломка. Нашёл инструменты — не для того, чтобы «отпустить», а чтобы <strong>перестать страдать прямо сейчас</strong>.</p>
+      <p>Результат: минус 40 кг, новый бизнес, и — главное — я вернул себе себя. Я знаю, что этот путь открыт и для вас.</p>
+
+      <div class="expert-stats">
+        <div class="stat">
+          <div class="stat-num">7/10</div>
+          <div class="stat-label">женщин чувствуют облегчение уже через неделю</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">17</div>
+          <div class="stat-label">лет брака — личный опыт, не теория</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">−40</div>
+          <div class="stat-label">кг и новая жизнь после точки ноль</div>
+        </div>
+      </div>
+
+      <p style="margin-bottom:0; color: var(--text-muted); font-size: 14px;">Я не даю пустых советов. Я даю понимание того, что с вами происходит — и простые действия, которые возвращают контроль.</p>
+    </div>
+  </section>
+
+
+  <!-- ══ АНАТОМИЯ ══ -->
+  <section class="section">
+    <div class="section-label">Суть</div>
+    <h2 class="section-title">Почему он это делает</h2>
+
+    <p>Забудьте про «он скучает» и «может, хочет вернуться». Это удобные истории, которые мы рассказываем себе, когда хотим надежды. Давайте по-другому.</p>
+
+    <div class="anatomy-box">
+      <div class="anatomy-title">Техническая механика</div>
+      <p style="margin-bottom: 12px;">Мужчина после расставания находится в состоянии неопределённости. Одна из главных вещей, которую он хочет знать: <strong>«она всё ещё на крючке?»</strong></p>
+      <p style="margin-bottom: 0;">Лайк на старое фото, грустная песня, просмотр сторис с фейка — это не романтика. Это <em>пинг</em>. Как нажать кнопку и посмотреть, горит ли лампочка. Если вы реагируете — лампочка горит. Вы подтвердили: привязь держит.</p>
+    </div>
+
+    <p>Это не значит, что он плохой человек. Это значит, что он действует по той же программе, по которой действуют все. <strong>Неосознанно. Рефлекторно. Без злого умысла — но и без любви.</strong></p>
+
+    <div class="truth-block">
+      <div class="truth-label">важно понять</div>
+      <p style="margin-bottom:0;">Когда вы реагируете на провокацию — не важно, пишете ли в ответ или просто три часа думаете об этом — вы даёте ему именно то, что он проверял. Он получил подтверждение. Провокация сработала. И она повторится.</p>
+    </div>
+
+    <p>Теперь — три конкретных сценария. И что за каждым из них на самом деле стоит.</p>
+  </section>
+
+
+  <!-- ══ СЦЕНАРИИ ══ -->
+  <section class="section">
+    <div class="section-label">Разбор</div>
+    <h2 class="section-title">3 главных сценария</h2>
+
+    <!-- Сценарий 1 -->
+    <div class="scenario">
+      <div class="scenario-header">
+        <div class="scenario-num">1</div>
+        <div class="scenario-name">Поставил лайк на старое фото</div>
+      </div>
+
+      <p>Это самый частый сигнал. Особенно — лайк не на свежее фото, а на то, что лежит в архиве. Случайно не листают архивы.</p>
+
+      <blockquote>Значит ли это, что он хочет вернуться? Нет. Значит ли это, что он скучает? Может быть. Но скучает — не то же самое, что готов что-то менять.</blockquote>
+
+      <p>Он проверяет уровень вашей привязанности. Если вы лайкнёте в ответ, напишете или просто начнёте активнее постить — он получил ответ. <em>«Всё ещё думает обо мне. Можно не торопиться.»</em></p>
+
+      <p>Что происходит в вашей голове в этот момент — он не видит. Он видит только то, что вы делаете.</p>
+
+      <div class="case-block">
+        <div class="case-tag">Кейс · Ирина, 32 года</div>
+        <div class="case-text">Бывший муж стабильно, раз в неделю, лайкал её фото в архивных постах. Каждый раз она переставала нормально спать и начинала ждать шага с его стороны. Мы внедрили простое действие по блокировке этого триггера.</div>
+        <div class="case-result">Через 4 дня мысли о нём перестали занимать 24 часа в сутки. Ира впервые за месяц выспалась и начала замечать других мужчин.</div>
+      </div>
+    </div>
+
+    <!-- Сценарий 2 -->
+    <div class="scenario">
+      <div class="scenario-header">
+        <div class="scenario-num">2</div>
+        <div class="scenario-name">Выложил грустную песню или цитату</div>
+      </div>
+
+      <p>«Он страдает так же, как я». Это то, что хочет думать часть вас. Та часть, которой нужна надежда.</p>
+
+      <p>Но посмотрите на это без фильтра: грустный трек или цитата про «потерянное» — это публичный контент. Он знает, что вы можете это увидеть. <strong>Он рассчитывает на то, что вы увидите.</strong></p>
+
+      <p>Это не признание. Это витрина. Ему нужно, чтобы вы почувствовали себя виноватой или — ещё лучше — написали первой.</p>
+
+      <div class="truth-block">
+        <div class="truth-label">механика</div>
+        <p style="margin-bottom:0;">Грустный пост — это приглашение вам первой нарушить молчание. Если вы пишете: «всё хорошо?» — вы взяли инициативу на себя. Теперь он в сильной позиции.</p>
+      </div>
+
+      <div class="case-block">
+        <div class="case-tag">Кейс · Ольга, 27 лет</div>
+        <div class="case-text">Следила за тем, что он лайкает — грустные цитаты, страдальческие посты. Думала, что он страдает так же, как она, и хотела написать первой. Я показал ей, как эта манипуляция работает на самом деле, и дал чёткую инструкцию, как переключить внимание.</div>
+        <div class="case-result">Ольга не сорвалась, не написала. Через неделю осознала, что этот крючок больше не вызывает паники.</div>
+      </div>
+    </div>
+
+    <!-- Сценарий 3 -->
+    <div class="scenario">
+      <div class="scenario-header">
+        <div class="scenario-num">3</div>
+        <div class="scenario-name">Посмотрел сторис с фейка</div>
+      </div>
+
+      <p>Это — самый откровенный сигнал из трёх. Потому что здесь уже есть усилие: зарегистрировать аккаунт, подписаться, смотреть. Случайностью это не назовёшь.</p>
+
+      <p>Что это значит? Он хочет знать, что происходит в вашей жизни — но не хочет, чтобы вы знали, что он смотрит. Он хочет информацию без обязательств и без контакта.</p>
+
+      <blockquote>Это не интерес к вам. Это интерес к тому, насколько вы ещё «его».</blockquote>
+
+      <p>Самая частая реакция: выложить что-то красивое специально для него. Дать ему понять, что вы живёте хорошо. Или — написать напрямую: «я знаю, что это ты».</p>
+
+      <p>Оба варианта — проигрыш. В первом случае вы живёте для аудитории из одного человека. Во втором — даёте ему знать, что он занимает ваши мысли.</p>
+
+      <div class="truth-block">
+        <div class="truth-label">правило</div>
+        <p style="margin-bottom:0;">Пока вы реагируете — хоть как-то, хоть внутри — крючок в вас. Цель — не перестать замечать. Цель — перестать реагировать.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══ ПЛАН ДЕЙСТВИЙ ══ -->
+  <section class="section">
+    <div class="section-label">Инструкция</div>
+    <h2 class="section-title">Что делать, когда это случилось</h2>
+
+    <p>Точнее — чего не делать. Потому что именно бездействие в эту минуту и есть правильное действие.</p>
+
+    <ol class="action-list">
+      <li>
+        <div class="action-content">
+          <strong>Не реагируйте первые 24 часа</strong>
+          <p>Не лайкайте в ответ, не смотрите его профиль, не постите ничего «для него». Дайте импульсу угаснуть. Реакция, принятая в состоянии триггера, всегда работает против вас.</p>
+        </div>
+      </li>
+      <li>
+        <div class="action-content">
+          <strong>Назовите то, что происходит</strong>
+          <p>Скажите себе вслух или запишите: <em>«Он проверяет, держит ли крючок. Это не любовь. Это пинг.»</em> Называние механики снижает её эмоциональный заряд.</p>
+        </div>
+      </li>
+      <li>
+        <div class="action-content">
+          <strong>Переключите физически</strong>
+          <p>Встаньте. Выйдите из комнаты. Смените положение тела. Мозг в состоянии триггера застрял в петле — физическое движение разрывает её быстрее, чем любые мысли.</p>
+        </div>
+      </li>
+      <li>
+        <div class="action-content">
+          <strong>Не обсуждайте это с подругами этой же ночью</strong>
+          <p>Пересказывая — вы снова и снова проигрываете сцену. Каждый раз усиливая её. Это не обработка боли, это её культивация.</p>
+        </div>
+      </li>
+      <li>
+        <div class="action-content">
+          <strong>Зафиксируйте своё состояние до и после</strong>
+          <p>Запишите: «Сейчас 3:14. Я увидела лайк. Я чувствую...». Это заземление. Наблюдатель внутри вас — не та же самая часть, что паникует. Включайте наблюдателя.</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="anatomy-box" style="margin-top: 32px;">
+      <div class="anatomy-title">Главная мысль этого разбора</div>
+      <p style="margin-bottom:0;">Тихая провокация работает только тогда, когда вы её замечаете и реагируете. Цель не в том, чтобы не замечать. Цель — чтобы ваш внутренний отклик перестал запускать цепочку. Это навык. Он тренируется.</p>
+    </div>
+  </section>
+
+
+  <!-- ══ ОФФЕР ══ -->
+  <section class="offer-section">
+    <div class="section-label" style="margin-bottom:32px;">Следующий шаг</div>
+
+    <div class="offer-box">
+      <div class="offer-kicker">Практикум · Платный мини-продукт</div>
+      <h2 class="offer-title">
+        Отпусти его<br>
+        <span class="red">навсегда</span>
+      </h2>
+
+      <p class="offer-desc">
+        Разбор, который вы только что прочитали — это 10% от того, что нужно сделать, чтобы вас отпустило. Понять головой — мало. Когда рука сама тянется к телефону, логика отключается.
+      </p>
+
+      <p class="offer-desc" style="margin-bottom: 32px;">
+        Специально для таких моментов, когда внутри всё разрывает, я создал <strong>Практикум «Отпусти его»</strong>. После прохождения проходит тревога, возвращается сон и способность трезво мыслить.
+      </p>
+
+      <ul class="inside-list" style="text-align: left; max-width: 400px; margin: 0 auto 36px;">
+        <li>Конкретные техники на момент срыва — не теория</li>
+        <li>Протокол отключения триггеров за 3 дня</li>
+        <li>Инструменты, которые работают в 3 часа ночи</li>
+        <li>Без терминологии, без нотаций, без «просто отпусти»</li>
+      </ul>
+
+      <div class="offer-price">
+        <div class="price-label">Цена спокойствия</div>
+        <div class="price-value">790 ₴</div>
+        <div class="price-sub">или $19 · разовый платёж</div>
+      </div>
+
+      <a href="https://back4heart.site/" class="cta-btn">Забрать Практикум</a>
+
+      <div class="cta-note">back4heart.site · Мгновенный доступ после оплаты</div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="page-wrap">
+    © back4heart · Роман · <a href="https://back4heart.site/">back4heart.site</a>
+  </div>
+</footer>
+
+</body>
+</html>
