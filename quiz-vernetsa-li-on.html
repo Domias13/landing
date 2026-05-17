@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Вернётся ли он? — Честный ответ эксперта</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0b;
+    --surface: #111114;
+    --surface2: #17171b;
+    --border: rgba(255,255,255,0.07);
+    --crimson: #c0392b;
+    --crimson-dim: rgba(192,57,43,0.15);
+    --gold: #b8953a;
+    --gold-dim: rgba(184,149,58,0.12);
+    --text: #e8e6e1;
+    --text-muted: #7a7870;
+    --text-dim: #4a4845;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Noise overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    padding: 60px 0 50px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.1s;
+  }
+
+  .header-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 6vw, 52px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 18px;
+  }
+
+  .header h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .header-sub {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 460px;
+    margin: 0 auto;
+  }
+
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--crimson);
+    margin: 28px auto;
+    opacity: 0.6;
+  }
+
+  /* PROGRESS BAR */
+  .progress-wrap {
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.3s;
+  }
+
+  .progress-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .progress-track {
+    height: 2px;
+    background: var(--surface2);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--crimson), var(--gold));
+    border-radius: 2px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 0%;
+  }
+
+  /* QUESTION CARD */
+  .question-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 40px 36px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.4s;
+  }
+
+  .q-number {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .q-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 3.5vw, 26px);
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--text);
+    margin-bottom: 32px;
+  }
+
+  /* OPTIONS */
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .option {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 20px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: left;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .option:hover {
+    border-color: rgba(192,57,43,0.4);
+    background: var(--crimson-dim);
+  }
+
+  .option.selected {
+    border-color: var(--crimson);
+    background: var(--crimson-dim);
+  }
+
+  .option-letter {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border: 1px solid var(--text-dim);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    letter-spacing: 0;
+    color: var(--text-dim);
+    transition: all 0.25s ease;
+    margin-top: 1px;
+  }
+
+  .option.selected .option-letter {
+    background: var(--crimson);
+    border-color: var(--crimson);
+    color: #fff;
+  }
+
+  /* NAV */
+  .nav {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+    gap: 12px;
+  }
+
+  .btn {
+    padding: 14px 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border-radius: 2px;
+  }
+
+  .btn-primary {
+    background: var(--crimson);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    background: #a93226;
+    transform: translateY(-1px);
+  }
+
+  .btn-primary:disabled {
+    background: var(--surface2);
+    color: var(--text-dim);
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--text-muted);
+    color: var(--text);
+  }
+
+  /* RESULT PAGE */
+  .result-page {
+    display: none;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  .result-page.show {
+    display: block;
+  }
+
+  .result-hero {
+    text-align: center;
+    padding: 50px 0 40px;
+  }
+
+  .result-score-ring {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 28px;
+    position: relative;
+  }
+
+  .result-score-ring svg {
+    transform: rotate(-90deg);
+    width: 120px;
+    height: 120px;
+  }
+
+  .ring-bg {
+    fill: none;
+    stroke: var(--surface2);
+    stroke-width: 4;
+  }
+
+  .ring-fill {
+    fill: none;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 339.3;
+    stroke-dashoffset: 339.3;
+    transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+  }
+
+  .ring-score-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .ring-score-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1;
+  }
+
+  .ring-score-max {
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+  }
+
+  .result-category {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .result-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .result-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .result-summary {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* INSIGHT BLOCKS */
+  .insights {
+    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .insight-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--crimson);
+    padding: 22px 24px;
+    border-radius: 0 2px 2px 0;
+  }
+
+  .insight-block.gold-accent {
+    border-left-color: var(--gold);
+  }
+
+  .insight-label {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 10px;
+  }
+
+  .insight-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  /* EXPERT BIO */
+  .expert-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px;
+    margin: 40px 0;
+    border-radius: 2px;
+  }
+
+  .expert-avatar {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--crimson), var(--gold));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: #fff;
+    font-style: italic;
+  }
+
+  .expert-info {
+    flex: 1;
+  }
+
+  .expert-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+
+  .expert-role {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .expert-bio {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  /* OFFER BLOCK */
+  .offer-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 40px 36px;
+    border-radius: 2px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .offer-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--crimson), var(--gold));
+  }
+
+  .offer-tag {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--crimson);
+    border: 1px solid rgba(192,57,43,0.3);
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+
+  .offer-hook {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 300;
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+
+  .offer-hook em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .offer-connection {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: var(--crimson-dim);
+    border-radius: 2px;
+    border: 1px solid rgba(192,57,43,0.2);
+    text-align: left;
+  }
+
+  .offer-connection strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .offer-what {
+    margin-bottom: 28px;
+  }
+
+  .offer-items {
+    list-style: none;
+    text-align: left;
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .offer-items li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .offer-items li::before {
+    content: '—';
+    color: var(--gold);
+    min-width: 14px;
+  }
+
+  .offer-price-block {
+    margin: 28px 0;
+  }
+
+  .offer-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .offer-price-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    margin-top: 6px;
+  }
+
+  .btn-offer {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    background: var(--crimson);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    margin-bottom: 12px;
+  }
+
+  .btn-offer:hover {
+    background: #a93226;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(192,57,43,0.25);
+  }
+
+  .offer-fine {
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
+  .free-download-wrap {
+    margin-top: 24px;
+    text-align: center;
+  }
+
+  .free-download-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    color: var(--text-dim);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  .free-download-divider::before,
+  .free-download-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .btn-free-download {
+    display: block;
+    width: 100%;
+    padding: 16px 20px;
+    background: transparent;
+    border: 1px solid rgba(184,149,58,0.35);
+    color: var(--gold);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+    line-height: 1.5;
+  }
+
+  .btn-free-download:hover {
+    background: var(--gold-dim);
+    border-color: var(--gold);
+  }
+
+  .free-download-note {
+    font-size: 11px;
+    color: var(--text-dim);
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .expert-eyebrow {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+
+  .expert-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--gold);
+    line-height: 1.4;
+    margin: 10px 0 18px;
+    border-left: 2px solid var(--gold);
+    padding-left: 14px;
+  }
+
+  .expert-bio-long {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .expert-bio-long p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.85;
+  }
+
+  .expert-stat {
+    font-size: 13px !important;
+    color: var(--text) !important;
+    font-weight: 500 !important;
+    padding: 14px 16px;
+    background: var(--gold-dim);
+    border: 1px solid rgba(184,149,58,0.2);
+    border-radius: 2px;
+  }
+
+  .skip-offer {
+    text-align: center;
+    padding: 30px 0;
+  }
+
+  .skip-offer p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    padding: 14px 32px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+    text-decoration: none;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--text-muted);
+    color: var(--text);
+  }
+
+  /* LOADER */
+  .loader {
+    display: none;
+    text-align: center;
+    padding: 60px 0;
+  }
+
+  .loader.show { display: block; }
+
+  .loader-text {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 24px;
+  }
+
+  .loader-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .loader-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--crimson);
+    border-radius: 50%;
+    animation: pulse 1.2s ease-in-out infinite;
+  }
+
+  .loader-dot:nth-child(2) { animation-delay: 0.2s; }
+  .loader-dot:nth-child(3) { animation-delay: 0.4s; }
+
+  /* INTRO */
+  .intro-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 40px 36px;
+    text-align: center;
+    border-radius: 2px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.5s;
+  }
+
+  .intro-card h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 300;
+    margin-bottom: 18px;
+    line-height: 1.3;
+  }
+
+  .intro-card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .intro-warn {
+    font-size: 12px;
+    color: var(--crimson);
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+    font-style: italic;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1); }
+  }
+
+  .slide-in {
+    animation: fadeUp 0.5s ease forwards;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 480px) {
+    .question-card { padding: 28px 22px; }
+    .offer-block { padding: 28px 22px; }
+    .expert-block { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header" id="header">
+    <span class="header-label">Диагностика эксперта · back4heart</span>
+    <h1>Вернётся ли он?<br><em>Честный ответ</em></h1>
+    <div class="divider"></div>
+    <p class="header-sub">Не гадание. Не утешение. Оценка реальных факторов, которые определяют, есть ли у вас рычаги влияния — или их уже нет.</p>
+  </div>
+
+  <!-- INTRO SCREEN -->
+  <div id="intro-screen">
+    <div class="intro-card">
+      <h2>8 вопросов. Без воды.<br>Результат — через 2 минуты.</h2>
+      <p>Тест анализирует поведенческие маркеры: кто инициирует контакт, как давно был последний шаг с его стороны, что происходило в конце отношений.</p>
+      <p>Каждый ответ взвешивается. Итог — не прогноз по знаку зодиака, а оценка вероятности функционального восстановления отношений.</p>
+      <p class="intro-warn">⚠ Некоторые результаты будут неудобными.</p>
+      <button class="btn btn-primary" onclick="startQuiz()">Начать диагностику</button>
+    </div>
+  </div>
+
+  <!-- QUIZ SCREEN -->
+  <div id="quiz-screen" style="display:none;">
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span id="progress-text">Вопрос 1 из 8</span>
+        <span id="progress-pct">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <div class="question-card" id="question-card">
+      <span class="q-number" id="q-number">01 / 08</span>
+      <p class="q-text" id="q-text"></p>
+      <div class="options" id="options-list"></div>
+      <div class="nav">
+        <button class="btn btn-ghost" id="back-btn" onclick="prevQuestion()" style="display:none">← Назад</button>
+        <button class="btn btn-primary" id="next-btn" disabled onclick="nextQuestion()">Далее →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <p class="loader-text">Анализируем ваши ответы</p>
+    <div class="loader-dots">
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+    </div>
+  </div>
+
+  <!-- RESULT PAGE -->
+  <div class="result-page" id="result-page">
+    <!-- dynamically filled -->
+  </div>
+
+</div>
+
+<script>
+// ─── QUIZ DATA ───────────────────────────────────────────────────
+const questions = [
+  {
+    text: "Кто сделал последний шаг к общению после расставания?",
+    options: [
+      { text: "Он написал первым или позвонил", points: 3 },
+      { text: "Мы оба пытались наладить контакт", points: 2 },
+      { text: "Я писала первой — он отвечал", points: 1 },
+      { text: "Я писала — он игнорировал или отвечал формально", points: 0 }
+    ]
+  },
+  {
+    text: "Как долго прошло с момента последнего реального общения?",
+    options: [
+      { text: "Меньше 2 недель", points: 3 },
+      { text: "2–6 недель", points: 2 },
+      { text: "2–4 месяца", points: 1 },
+      { text: "Больше 4 месяцев или он заблокировал меня", points: 0 }
+    ]
+  },
+  {
+    text: "Как закончились отношения?",
+    options: [
+      { text: "Ситуационный кризис, внешние обстоятельства — не ценностный конфликт", points: 3 },
+      { text: "Накопившееся напряжение, мы оба устали", points: 2 },
+      { text: "Он сказал, что больше не чувствует того, что раньше", points: 1 },
+      { text: "Измена, предательство или токсичный цикл", points: 0 }
+    ]
+  },
+  {
+    text: "Как он ведёт себя при случайных контактах (в соцсетях, общих знакомых)?",
+    options: [
+      { text: "Первым ставит лайки, смотрит сторис, реагирует", points: 3 },
+      { text: "Нейтрально — не игнорирует, но и не инициирует", points: 2 },
+      { text: "Избегает любого взаимодействия со мной", points: 1 },
+      { text: "Я его заблокировала или не знаю, что происходит", points: 0 }
+    ]
+  },
+  {
+    text: "Есть ли у вас общее незакрытое — дети, жильё, совместный бизнес?",
+    options: [
+      { text: "Да, и мы вынуждены общаться по этому поводу", points: 3 },
+      { text: "Есть общие знакомые и мы пересекаемся", points: 2 },
+      { text: "Ничего общего, но мы живём в одном городе", points: 1 },
+      { text: "Никаких точек пересечения", points: 0 }
+    ]
+  },
+  {
+    text: "Были ли у него после расставания другие отношения или явный интерес к кому-то?",
+    options: [
+      { text: "Нет — насколько я знаю, он один", points: 3 },
+      { text: "Были попытки, но ничего серьёзного", points: 2 },
+      { text: "Он сразу начал встречаться с кем-то", points: 1 },
+      { text: "Он в новых отношениях уже несколько месяцев", points: 0 }
+    ]
+  },
+  {
+    text: "Как вы ведёте себя с момента расставания?",
+    options: [
+      { text: "Держу дистанцию, не пишу первой, занята собой", points: 3 },
+      { text: "Стараюсь держаться, но срывалась пару раз", points: 2 },
+      { text: "Регулярно пишу, звоню, пытаюсь объяснить", points: 1 },
+      { text: "Были скандалы, слёзы, просьбы вернуться", points: 0 }
+    ]
+  },
+  {
+    text: "Что вы чувствуете прямо сейчас, думая о нём?",
+    options: [
+      { text: "Есть боль, но я понимаю, что жизнь продолжается", points: 3 },
+      { text: "Жду — может, он одумается", points: 2 },
+      { text: "Не могу думать ни о чём другом", points: 1 },
+      { text: "Я проверяю его соцсети по несколько раз в день", points: 0 }
+    ]
+  }
+];
+
+// ─── STATE ───────────────────────────────────────────────────────
+let current = 0;
+let score = 0;
+let selected = null;
+let answers = []; // stores {index, points} per question
+let userCurrency = { code: 'USD', symbol: '$', price: '19.99', link: 'https://back4heart.site/' };
+
+// ─── GEO PRICING ─────────────────────────────────────────────────
+async function detectCurrency() {
+  try {
+    const res = await fetch('https://ipapi.co/json/');
+    const data = await res.json();
+    if (data.country_code === 'UA') {
+      userCurrency = { code: 'UAH', symbol: '₴', price: '790', link: 'https://back4heart.site/' };
+    } else {
+      userCurrency = { code: 'USD', symbol: '$', price: '19.99', link: 'https://back4heart.site/' };
+    }
+  } catch(e) {
+    // default USD
+  }
+}
+
+detectCurrency();
+
+// ─── QUIZ LOGIC ───────────────────────────────────────────────────
+function startQuiz() {
+  document.getElementById('intro-screen').style.display = 'none';
+  document.getElementById('quiz-screen').style.display = 'block';
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = questions[current];
+  const savedAnswer = answers[current];
+  selected = savedAnswer !== undefined ? savedAnswer.points : null;
+
+  document.getElementById('q-number').textContent = String(current + 1).padStart(2,'0') + ' / ' + String(questions.length).padStart(2,'0');
+  document.getElementById('q-text').textContent = q.text;
+  document.getElementById('progress-text').textContent = `Вопрос ${current + 1} из ${questions.length}`;
+  const pct = Math.round((current / questions.length) * 100);
+  document.getElementById('progress-pct').textContent = pct + '%';
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('next-btn').disabled = selected === null;
+  document.getElementById('back-btn').style.display = current > 0 ? 'inline-flex' : 'none';
+
+  const list = document.getElementById('options-list');
+  list.innerHTML = '';
+  const letters = ['А','Б','В','Г'];
+
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option' + (savedAnswer && savedAnswer.index === i ? ' selected' : '');
+    btn.innerHTML = `<span class="option-letter">${letters[i]}</span><span>${opt.text}</span>`;
+    btn.onclick = () => selectOption(i, opt.points);
+    list.appendChild(btn);
+  });
+
+  const card = document.getElementById('question-card');
+  card.style.animation = 'none';
+  card.offsetHeight;
+  card.style.animation = 'fadeUp 0.4s ease forwards';
+}
+
+function selectOption(index, points) {
+  selected = points;
+  answers[current] = { index, points };
+  const opts = document.querySelectorAll('.option');
+  opts.forEach((o, i) => {
+    o.classList.toggle('selected', i === index);
+  });
+  document.getElementById('next-btn').disabled = false;
+}
+
+function nextQuestion() {
+  if (selected === null) return;
+
+  if (current < questions.length - 1) {
+    current++;
+    renderQuestion();
+  } else {
+    // compute score from answers array
+    score = answers.reduce((sum, a) => sum + (a ? a.points : 0), 0);
+    showLoader();
+  }
+}
+
+function prevQuestion() {
+  if (current > 0) {
+    current--;
+    renderQuestion();
+  }
+}
+
+function showLoader() {
+  document.getElementById('quiz-screen').style.display = 'none';
+  document.getElementById('loader').classList.add('show');
+  setTimeout(showResult, 2800);
+}
+
+// ─── RESULT LOGIC ─────────────────────────────────────────────────
+function showResult() {
+  document.getElementById('loader').classList.remove('show');
+
+  const maxScore = questions.length * 3; // 24
+  const pct = Math.round((score / maxScore) * 100);
+
+  let category, color, ringColor, title, summary, insights, offerHTML;
+
+  if (pct >= 70) {
+    // HIGH
+    category = 'Высокая вероятность';
+    color = '#b8953a';
+    ringColor = '#b8953a';
+    title = 'Шансы есть. Но <em>вы их тратите</em> неправильно.';
+    summary = 'Факторы говорят в вашу пользу: он не исчез, точки пересечения существуют, вы не обесценили себя серией срывов. Проблема в другом — вы всё ещё ждёте его шага вместо того, чтобы управлять ситуацией. Ожидание — это не стратегия. Это медленная утрата позиции.';
+    insights = [
+      { label: 'Что работает против вас', text: 'Пассивное ожидание снижает вашу ценность в его восприятии. Каждый день без движения — не нейтральная позиция. Это минус в счёт привлекательности.', gold: false },
+      { label: 'Что нужно сделать', text: 'Переключить режим: от «жду его решения» к «я управляю дистанцией». Это не игры. Это понимание того, как работает желание у мужчин.', gold: true }
+    ];
+    offerHTML = buildHighOffer(pct);
+  } else if (pct >= 40) {
+    // MEDIUM
+    category = 'Средняя вероятность';
+    color = '#c8782a';
+    ringColor = '#c8782a';
+    title = 'Шансы <em>ещё есть</em> — но окно закрывается.';
+    summary = 'Несколько факторов работают против вас. Паттерн поведения — вы преследуете, он дистанцируется — уже запущен. Это автоматически переводит вас в роль «нуждающейся», что обратно пропорционально влечению. Ситуацию можно изменить, но только если немедленно остановить этот паттерн.';
+    insights = [
+      { label: 'Иллюзия, которую надо разрушить', text: 'Вы думаете, что если объяснить ему всё правильно — он поймёт. Это не работает. Решение вернуться принимается не умом.', gold: false },
+      { label: 'Реальный рычаг', text: 'Ваша значимость в его глазах определяется не тем, что вы говорите, а тем, насколько вы нужны. Сейчас вы доступны — значит, не нужны. Это нужно срочно менять.', gold: true }
+    ];
+    offerHTML = buildLowMedOffer(pct, 'medium');
+  } else {
+    // LOW
+    category = 'Низкая вероятность';
+    color = '#c0392b';
+    ringColor = '#c0392b';
+    title = 'Иллюзии дороже,<br><em>чем кажутся.</em>';
+    summary = 'Данные говорят о том, что отношения функционально завершены. Это не приговор вам — это трезвая оценка ситуации. Продолжать ждать означает оплачивать его безразличие своим временем, здоровьем и самооценкой. У вас есть выбор: продолжать или взять управление обратно.';
+    insights = [
+      { label: 'Что происходит на самом деле', text: 'Зависимость от человека, который уже ушёл — это нейрохимический процесс, а не любовь. Дофаминовая петля удерживает вас в режиме ожидания. Это лечится, но не словами поддержки.', gold: false },
+      { label: 'Единственный рычаг, который у вас есть', text: 'Разорвать зависимость быстро и технично. Не «отпустить» в смысле смириться, а купировать химическую привязанность. После этого — ясность. И, как ни странно, именно тогда ситуация может перевернуться.', gold: true }
+    ];
+    offerHTML = buildLowMedOffer(pct, 'low');
+  }
+
+  const expertHTML = `
+    <div class="expert-block">
+      <div style="flex-shrink:0">
+        <div class="expert-avatar">R</div>
+      </div>
+      <div class="expert-info">
+        <div class="expert-eyebrow">Слово эксперта</div>
+        <div class="expert-name">Роман · back4heart</div>
+        <div class="expert-role">Эксперт по восстановлению после расставания</div>
+        <p class="expert-quote">«Я знаю, как это — когда мир рушится. И я знаю, как собрать его заново»</p>
+        <div class="expert-bio-long">
+          <p>Здравствуйте. Я — Роман. Давай честно. Если ты это читаешь сейчас, значит, сейчас тебе очень больно, а внутри — только пустота и желание, чтобы это поскорее закончилось. Я не буду говорить про то, что «время лечит» или что «нужно просто отпустить». Я знаю, в такие моменты эти слова только злят и кажется: «откуда ты знаешь, у нас всё было по-другому, у нас всё совсем не так».</p>
+          <p>Но знаешь что? Я прошёл этот путь сам. Знаю, потому что был там. Мой брак длился 17 лет. Я не понаслышке знаю, что такое возвращаться в дом, где раньше тебя ждали и радовались, что поделиться «папа, а у нас сегодня в школе…» — и как это сутками прокручивать одни и те же мысли о том, кто ушёл. Я знаю, как это — когда твой внутренний мазохист говорит: «а давай проверим её сторис, или вон у неё в подписчиках стало на 1 больше». Я нашёл способы, как убрать эту невыносимую бесконечную тягу, эту мысленную жвачку. Это изматывает и лишает сил — и моральных, и физических.</p>
+          <p>Я искал способ выжить. В какой-то момент я понял: мне недостаточно просто «разговаривать» о своих чувствах. Мне нужно было решение — чтобы перестать чувствовать эту невыносимую тяжесть прямо сейчас. Я начал изучать, как устроена наша привязанность и почему разрыв ощущается как физическая ломка. Как работает наш мозг и психика. Я нашёл способы не застрять в этом состоянии на месяцы и годы, а по-настоящему освободиться.</p>
+          <p>В самый сложный период я не просто справился — я полностью изменился. Я привёл в порядок своё тело, сбросил 40 кг, запустил новый бизнес и, самое главное, вернул себе себя. Я стал счастливым человеком, и я точно знаю, что этот путь открыт и для вас.</p>
+          <p>Я не даю пустых советов. Я даю понимание того, что происходит с вами, и простые действия, которые помогут вернуть контроль над своим состоянием. Чтобы вы снова начали спать, чтобы мысли о нём перестали занимать 24 часа в сутки, и чтобы вы снова почувствовали себя самой важной ценностью в этой жизни.</p>
+          <p class="expert-stat">7 из 10 женщин, с которыми мы работаем, уже через неделю чувствуют долгожданное облегчение. Мы не будем копаться в прошлом — мы будем строить ваше спокойное и счастливое завтра.</p>
+        </div>
+      </div>
+    </div>
+  `;
+
+  const insightsHTML = insights.map(i => `
+    <div class="insight-block ${i.gold ? 'gold-accent' : ''}">
+      <div class="insight-label">${i.label}</div>
+      <p class="insight-text">${i.text}</p>
+    </div>
+  `).join('');
+
+  const circumference = 2 * Math.PI * 54; // r=54
+  const offset = circumference - (pct / 100) * circumference;
+
+  const resultPage = document.getElementById('result-page');
+  resultPage.innerHTML = `
+    <div class="result-hero">
+      <div class="result-score-ring">
+        <svg viewBox="0 0 120 120">
+          <circle class="ring-bg" cx="60" cy="60" r="54"/>
+          <circle class="ring-fill" id="ring-fill" cx="60" cy="60" r="54"
+            style="stroke:${ringColor}; stroke-dasharray:${circumference}; stroke-dashoffset:${circumference}"/>
+        </svg>
+        <div class="ring-score-label">
+          <div class="ring-score-num" style="color:${ringColor}">${pct}<span style="font-size:16px">%</span></div>
+          <div class="ring-score-max">шанс</div>
+        </div>
+      </div>
+      <div class="result-category" style="color:${color}">${category}</div>
+      <h2 class="result-title">${title}</h2>
+      <p class="result-summary">${summary}</p>
+    </div>
+
+    <div class="insights">${insightsHTML}</div>
+
+    ${expertHTML}
+
+    ${offerHTML}
+  `;
+
+  resultPage.classList.add('show');
+
+  setTimeout(() => {
+    const ring = document.getElementById('ring-fill');
+    if (ring) ring.style.strokeDashoffset = offset;
+  }, 200);
+}
+
+function buildLowMedOffer(pct, level) {
+  return `
+    <div class="offer-block">
+      <span class="offer-tag">Следующий шаг</span>
+      <h3 class="offer-hook">Тест показал <em>общую картину.</em></h3>
+
+      <div class="offer-connection">
+        Но чтобы понять, <strong>почему он молчит или лайкает твои фото прямо сейчас</strong> — читай честный разбор от мужчины.
+      </div>
+
+      <a href="https://back4heart.site/" id="offer-btn" class="btn-offer">
+        Читать разбор →
+      </a>
+
+      <div class="free-download-wrap">
+        <div class="free-download-divider"><span>или</span></div>
+        <a href="https://back4heart.site/3-errors.html" class="btn-free-download">
+          ↓ Скачать разбор: 3 критические ошибки в первый месяц после разрыва
+        </a>
+        <p class="free-download-note">Бесплатно · без регистрации</p>
+      </div>
+    </div>
+  `;
+}
+
+function buildHighOffer(pct) {
+  return `
+    <div class="offer-block">
+      <span class="offer-tag">Следующий шаг</span>
+      <h3 class="offer-hook">Тест показал <em>общую картину.</em></h3>
+
+      <div class="offer-connection">
+        Но чтобы понять, <strong>почему он молчит или лайкает твои фото прямо сейчас</strong> — читай честный разбор от мужчины.
+      </div>
+
+      <a href="https://back4heart.site/" id="offer-btn" class="btn-offer">
+        Читать разбор →
+      </a>
+
+      <div class="free-download-wrap">
+        <div class="free-download-divider"><span>или</span></div>
+        <a href="https://back4heart.site/3-errors.html" class="btn-free-download">
+          ↓ Скачать разбор: 3 критические ошибки в первый месяц после разрыва
+        </a>
+        <p class="free-download-note">Бесплатно · без регистрации</p>
+      </div>
+    </div>
+  `;
+}
+
+
+
+</script>
+</body>
+</html>
