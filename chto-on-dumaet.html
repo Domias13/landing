@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Что он думает на самом деле — Роман</title>
+<meta name="description" content="Честно. От мужчины. Почему молчит, почему лайкает, почему написал через месяц. PDF который останавливает фантазии."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0f0d0a;
+  --paper: #f5f0e8;
+  --paper-2: #ede7d9;
+  --paper-dark: #1a1610;
+  --rust: #c0392b;
+  --rust-dim: rgba(192,57,43,.15);
+  --amber: #d4830a;
+  --muted: #6b6055;
+  --muted-light: #9c9082;
+  --line: rgba(15,13,10,.12);
+  --line-light: rgba(255,255,255,.08);
+  --serif: 'Playfair Display', Georgia, serif;
+  --body: 'Lora', Georgia, serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NOISE TEXTURE */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  opacity: .025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px;
+}
+
+/* TYPOGRAPHY */
+h1, h2, h3 { font-family: var(--serif); font-weight: 700; line-height: 1.15; letter-spacing: -.01em; }
+h1 { font-size: clamp(2.4rem, 7vw, 4.2rem); }
+h2 { font-size: clamp(1.8rem, 5vw, 2.8rem); }
+h3 { font-size: clamp(1.1rem, 3vw, 1.35rem); font-weight: 400; }
+p { color: var(--muted); }
+em { font-style: italic; color: var(--ink); }
+strong { font-weight: 500; color: var(--ink); }
+
+.wrap { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+.wrap-wide { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+section { padding: 90px 0; }
+
+/* EYEBROW */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 20px;
+  display: block;
+}
+
+/* ============ HERO ============ */
+.hero {
+  background: var(--paper-dark);
+  color: #e8e0d0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0 80px;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(192,57,43,.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(0deg, var(--paper) 0%, transparent 100%);
+}
+
+.hero-inner { position: relative; z-index: 2; }
+
+.hero-stamp {
+  display: inline-block;
+  border: 1px solid rgba(192,57,43,.4);
+  color: #c0392b;
+  font-family: var(--mono);
+  font-size: .7rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border-radius: 2px;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp .6s ease .1s forwards;
+}
+
+.hero h1 {
+  color: #f0e8d8;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeUp .7s ease .25s forwards;
+}
+
+.hero h1 em {
+  color: #c0392b;
+  font-style: italic;
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 2.8vw, 1.15rem);
+  color: #9c9082;
+  max-width: 580px;
+  margin-bottom: 44px;
+  line-height: 1.75;
+  opacity: 0;
+  animation: fadeUp .7s ease .4s forwards;
+}
+
+.hero-sub strong { color: #e8e0d0; font-weight: 500; }
+
+.hero-divider {
+  width: 48px;
+  height: 1px;
+  background: rgba(192,57,43,.5);
+  margin: 32px 0;
+  opacity: 0;
+  animation: fadeUp .6s ease .3s forwards;
+}
+
+.hero-note {
+  font-family: var(--mono);
+  font-size: .8rem;
+  color: #6b6055;
+  margin-top: 16px;
+  opacity: 0;
+  animation: fadeUp .6s ease .65s forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* HERO QUOTE */
+.hero-quote {
+  margin: 48px 0 0;
+  padding: 28px 32px;
+  border-left: 2px solid rgba(192,57,43,.4);
+  background: rgba(255,255,255,.04);
+  border-radius: 0 8px 8px 0;
+  opacity: 0;
+  animation: fadeUp .7s ease .55s forwards;
+}
+
+.hero-quote p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #b8a898;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.hero-quote cite {
+  display: block;
+  margin-top: 12px;
+  font-style: normal;
+  font-family: var(--mono);
+  font-size: .72rem;
+  color: #6b6055;
+  letter-spacing: .1em;
+}
+
+/* CTA BUTTON */
+.cta {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--rust);
+  color: #fff;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 20px 40px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .2s, transform .15s, box-shadow .2s;
+  box-shadow: 0 8px 32px -8px rgba(192,57,43,.5);
+  letter-spacing: .01em;
+}
+
+.cta:hover { background: #a93226; transform: translateY(-2px); box-shadow: 0 14px 40px -8px rgba(192,57,43,.6); }
+.cta:active { transform: translateY(0); }
+
+.cta-sub {
+  font-family: var(--mono);
+  font-size: .68rem;
+  font-weight: 400;
+  opacity: .7;
+  margin-top: 5px;
+  letter-spacing: .06em;
+}
+
+.cta-wrap {
+  opacity: 0;
+  animation: fadeUp .7s ease .6s forwards;
+}
+
+/* ============ PAIN ============ */
+.pain { background: var(--paper); }
+
+.pain-intro {
+  font-size: clamp(1.1rem, 3vw, 1.25rem);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-style: italic;
+  line-height: 1.7;
+  max-width: 640px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+
+.thoughts-list {
+  display: grid;
+  gap: 0;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.thought {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.thought:first-child { border-top: 1px solid var(--line); }
+
+.thought-num {
+  font-family: var(--mono);
+  font-size: .7rem;
+  color: var(--rust);
+  flex: 0 0 24px;
+  padding-top: 3px;
+  letter-spacing: .05em;
+}
+
+.thought p {
+  color: var(--ink);
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.thought p em { color: var(--rust); font-style: italic; }
+
+/* ============ AUTHOR ============ */
+.author { background: var(--paper-2); }
+
+.author-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.author-text .eyebrow { margin-bottom: 16px; }
+
+.author-text h2 { margin-bottom: 24px; }
+
+.author-text p {
+  color: var(--muted);
+  margin-bottom: 18px;
+  font-size: 1rem;
+}
+
+.author-text p:last-child { margin-bottom: 0; }
+
+.author-text strong { color: var(--ink); }
+
+.author-fact {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 20px;
+  background: var(--paper);
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  margin-top: 28px;
+}
+
+.author-fact-icon {
+  font-size: 1.2rem;
+  flex: 0 0 24px;
+  line-height: 1.5;
+}
+
+.author-fact p {
+  margin: 0;
+  font-size: .95rem;
+  color: var(--muted);
+}
+
+.author-fact strong { color: var(--ink); }
+
+/* ============ WHAT INSIDE ============ */
+.inside { background: var(--paper); }
+
+.inside h2 { margin-bottom: 12px; }
+.inside > .wrap > p { margin-bottom: 48px; font-size: 1rem; }
+
+.chapters {
+  display: grid;
+  gap: 2px;
+  margin-top: 40px;
+}
+
+.chapter {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 28px 28px 28px 24px;
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 20px;
+  align-items: start;
+  transition: border-color .2s, background .2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.chapter::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--rust);
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+.chapter:hover { border-color: rgba(192,57,43,.3); background: #faf6ee; }
+.chapter:hover::before { opacity: 1; }
+
+.chapter-num {
+  font-family: var(--mono);
+  font-size: .75rem;
+  color: var(--rust);
+  padding-top: 4px;
+  letter-spacing: .05em;
+}
+
+.chapter h3 {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--ink);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.chapter p {
+  font-size: .93rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ============ HONEST BLOCK ============ */
+.honest {
+  background: var(--paper-dark);
+  color: #e8e0d0;
+  position: relative;
+  overflow: hidden;
+}
+
+.honest::before {
+  content: "«";
+  position: absolute;
+  top: -60px; left: -20px;
+  font-family: var(--serif);
+  font-size: 400px;
+  color: rgba(255,255,255,.02);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.honest h2 { color: #f0e8d8; margin-bottom: 32px; }
+
+.honest-quotes { display: grid; gap: 24px; margin-top: 40px; }
+
+.honest-quote {
+  padding: 28px 32px;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 6px;
+  background: rgba(255,255,255,.03);
+  position: relative;
+}
+
+.honest-quote::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 32px; right: 32px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(192,57,43,.4), transparent);
+}
+
+.honest-quote p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: #b8a898;
+  line-height: 1.7;
+  margin: 0 0 12px;
+}
+
+.honest-quote .context {
+  font-family: var(--mono);
+  font-size: .72rem;
+  color: #6b6055;
+  font-style: normal;
+  letter-spacing: .08em;
+}
+
+/* ============ OFFER ============ */
+.offer {
+  background: var(--paper-2);
+  position: relative;
+}
+
+.offer-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 48px 40px;
+  max-width: 580px;
+  margin: 40px auto 0;
+  text-align: center;
+  box-shadow: 0 20px 60px -20px rgba(15,13,10,.15);
+}
+
+.offer-title {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--ink);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.offer-subtitle {
+  font-size: .95rem;
+  color: var(--muted-light);
+  margin-bottom: 32px;
+}
+
+.offer-list {
+  text-align: left;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 36px;
+  display: grid;
+  gap: 14px;
+}
+
+.offer-list li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  font-size: .97rem;
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+.offer-list li::before {
+  content: "—";
+  color: var(--rust);
+  font-family: var(--mono);
+  flex: 0 0 16px;
+  padding-top: 1px;
+}
+
+.price-block { margin-bottom: 28px; }
+
+.price-old {
+  font-family: var(--mono);
+  font-size: .9rem;
+  color: var(--muted-light);
+  text-decoration: line-through;
+  margin-bottom: 6px;
+}
+
+.price {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 3.2rem;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.price-currency {
+  font-size: 1.4rem;
+  vertical-align: super;
+  margin-right: 4px;
+}
+
+.price-note {
+  font-family: var(--mono);
+  font-size: .75rem;
+  color: var(--muted-light);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.offer-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--line);
+  margin: 28px auto;
+}
+
+.offer-guarantee {
+  font-size: .88rem;
+  color: var(--muted-light);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* ============ FAQ ============ */
+.faq { background: var(--paper); }
+
+.faq-list { margin-top: 40px; display: grid; gap: 2px; }
+
+.faq-item {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color .2s;
+}
+
+.faq-item.open { border-color: rgba(192,57,43,.3); }
+
+.faq-q {
+  padding: 22px 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--ink);
+  user-select: none;
+  background: var(--paper);
+  transition: background .2s;
+}
+
+.faq-item.open .faq-q { background: #faf6ee; }
+
+.faq-toggle {
+  flex: 0 0 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--rust);
+  font-size: 1.1rem;
+  font-weight: 300;
+  transition: transform .3s, background .2s;
+  line-height: 1;
+  font-family: var(--mono);
+}
+
+.faq-item.open .faq-toggle {
+  transform: rotate(45deg);
+  background: var(--rust);
+  color: #fff;
+  border-color: var(--rust);
+}
+
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+
+.faq-a-inner {
+  padding: 0 24px 22px;
+  color: var(--muted);
+  font-size: .95rem;
+  line-height: 1.7;
+}
+
+/* ============ FINAL ============ */
+.final {
+  background: var(--paper-dark);
+  text-align: center;
+  padding: 110px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.final::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(192,57,43,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.final h2 { color: #f0e8d8; margin-bottom: 20px; position: relative; z-index: 2; }
+
+.final p { color: #9c9082; max-width: 480px; margin: 0 auto 40px; font-size: 1.05rem; position: relative; z-index: 2; }
+
+.final .cta-wrap { position: relative; z-index: 2; }
+
+/* ============ FOOTER ============ */
+footer {
+  background: #0a0806;
+  padding: 32px 0;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,.04);
+}
+
+footer p {
+  font-family: var(--mono);
+  font-size: .72rem;
+  color: #4a4035;
+  letter-spacing: .08em;
+}
+
+/* ============ STICKY MOBILE ============ */
+.sticky {
+  position: fixed;
+  left: 12px; right: 12px; bottom: 12px;
+  z-index: 100;
+  transform: translateY(120%);
+  transition: transform .35s ease;
+  background: rgba(15,13,10,.92);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(192,57,43,.3);
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 20px 50px -10px rgba(0,0,0,.7);
+}
+
+.sticky.visible { transform: translateY(0); }
+.sticky-info { flex: 1; }
+.sticky-title { font-family: var(--serif); font-size: .85rem; color: #e8e0d0; font-weight: 700; margin-bottom: 2px; }
+.sticky-price { font-family: var(--mono); font-size: .72rem; color: var(--rust); }
+.sticky .cta { padding: 12px 22px; font-size: .9rem; flex-shrink: 0; }
+.sticky .cta-sub { display: none; }
+
+@media (min-width: 768px) {
+  .sticky { display: none; }
+  .author-card { grid-template-columns: 1fr 1fr; gap: 64px; }
+  .honest-quotes { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  .offer-card { padding: 32px 24px; }
+  .chapter { grid-template-columns: 36px 1fr; gap: 14px; }
+}
+
+/* SCROLL REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <span class="hero-stamp">PDF · Мужской взгляд изнутри</span>
+      <h1>Что он думает<br/>на самом <em>деле</em></h1>
+      <div class="hero-divider"></div>
+      <p class="hero-sub">
+        Почему молчит. Почему лайкнул в 23:00. Почему написал через месяц.<br/>
+        <strong>Честно. От мужчины. Без того чтобы его оправдывать.</strong>
+      </p>
+      <div class="hero-quote">
+        <p>«Я три месяца придумывала что он чувствует. Оказалось - я была не права почти во всём. Это было больно читать. И одновременно - первый раз за три месяца мне стало легче.»</p>
+        <cite>— из отзыва, имя скрыто</cite>
+      </div>
+      <div style="height:36px"></div>
+      <div class="cta-wrap">
+        <a href="#offer" class="cta">
+          Читать сейчас
+          <span class="cta-sub">300 грн · мгновенный доступ к PDF</span>
+        </a>
+        <p class="hero-note">↓ Прокрути — там объяснение что внутри</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain">
+  <div class="wrap">
+    <span class="eyebrow reveal">Почему это важно прямо сейчас</span>
+    <p class="pain-intro reveal reveal-delay-1">
+      Прямо сейчас у тебя в голове крутятся вопросы.<br/>
+      Один за другим. По кругу. Каждый день.
+    </p>
+    <div class="thoughts-list">
+      <div class="thought reveal">
+        <span class="thought-num">01</span>
+        <p>Он думает обо мне? Или <em>уже нет</em>?</p>
+      </div>
+      <div class="thought reveal reveal-delay-1">
+        <span class="thought-num">02</span>
+        <p>Почему он лайкнул мою фотку - но не написал?</p>
+      </div>
+      <div class="thought reveal reveal-delay-2">
+        <span class="thought-num">03</span>
+        <p>Та пауза в переписке - это случайно или <em>специально</em>?</p>
+      </div>
+      <div class="thought reveal">
+        <span class="thought-num">04</span>
+        <p>Почему он написал именно через месяц? Что это значит?</p>
+      </div>
+      <div class="thought reveal reveal-delay-1">
+        <span class="thought-num">05</span>
+        <p>Ему сейчас лучше? Или он тоже <em>не спит</em>?</p>
+      </div>
+      <div class="thought reveal reveal-delay-2">
+        <span class="thought-num">06</span>
+        <p>Если бы я написала первой - он бы ответил?</p>
+      </div>
+    </div>
+    <div style="height:48px"></div>
+    <div class="reveal" style="max-width:560px;margin:0 auto;text-align:center;padding:32px;background:var(--paper-2);border-radius:6px;border:1px solid var(--line)">
+      <p style="font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--ink);margin:0;line-height:1.65">
+        Эти вопросы не дают покоя не потому что ты слабая.<br/>
+        А потому что у тебя <strong>нет ответов</strong>.<br/>
+        Фантазия заполняет пустоту.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHOR -->
+<section class="author">
+  <div class="wrap">
+    <div class="author-card">
+      <div class="author-text">
+        <span class="eyebrow reveal">Кто это написал</span>
+        <h2 class="reveal reveal-delay-1">Меня зовут Роман.</h2>
+        <p class="reveal reveal-delay-2">
+          Я прошёл через развод после 17 лет брака. Жена ушла. Я остался с пустой квартирой, с детьми через выходные и с головой полной вопросов на которые никто не давал прямых ответов.
+        </p>
+        <p class="reveal">
+          Я не психолог с дипломом на стене. Я мужчина который разобрал это изнутри - и знает как мы думаем после разрыва. Что говорим и что имеем в виду. Где молчим и почему. Когда возвращаемся и что за этим стоит.
+        </p>
+        <p class="reveal reveal-delay-1">
+          Этот PDF я написал потому что устал смотреть как женщины придумывают объяснения которые делают им больнее чем реальность.
+        </p>
+        <div class="author-fact reveal reveal-delay-2">
+          <span class="author-fact-icon">—</span>
+          <p><strong>Это не оправдание мужчин.</strong> Это честный разбор того что происходит. Некоторые вещи будет больно читать. Но после - станет легче. Потому что правда лучше фантазии.</p>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div style="background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:36px 28px;">
+          <p style="font-family:var(--mono);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--rust);margin-bottom:20px">Что меня заставило написать это</p>
+          <p style="font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--ink);line-height:1.7;margin-bottom:20px">
+            «После развода я видел как моя подруга часами объясняла себе каждое действие своего бывшего. Она придумала целый роман. В котором он скучает, страдает, вот-вот напишет.»
+          </p>
+          <p style="font-size:.93rem;color:var(--muted)">
+            Он не страдал. Он просто жил дальше. А она потеряла год в ожидании.
+          </p>
+          <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--line);">
+            <p style="font-family:var(--mono);font-size:.72rem;color:var(--muted-light);letter-spacing:.08em">Через мою работу прошли <strong style="color:var(--ink)">400+ женщин</strong>.<br/>Это первый раз когда я написал всё в одном месте.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT INSIDE -->
+<section class="inside">
+  <div class="wrap">
+    <span class="eyebrow reveal">Что внутри PDF</span>
+    <h2 class="reveal reveal-delay-1">Три сценария.<br/>Честные ответы.</h2>
+    <p class="reveal reveal-delay-2">Я разобрал три ситуации которые чаще всего сводят с ума. Для каждой - что реально происходит у него в голове. Без домыслов.</p>
+
+    <div class="chapters">
+      <div class="chapter reveal">
+        <span class="chapter-num">01</span>
+        <div>
+          <h3>Почему он молчит</h3>
+          <p>Молчание мужчины после разрыва - это не то что ты думаешь. Я объясняю три самые частые причины. Одна из них тебя удивит. Другая - успокоит. Третья - поможет наконец перестать ждать.</p>
+        </div>
+      </div>
+      <div class="chapter reveal reveal-delay-1">
+        <span class="chapter-num">02</span>
+        <div>
+          <h3>Почему лайкает и не пишет</h3>
+          <p>Это не сигнал. Не игра. Не «он думает о тебе». Я пишу что это на самом деле - и почему каждый раз когда ты проверяешь кто смотрел твои сторис ты делаешь себе хуже.</p>
+        </div>
+      </div>
+      <div class="chapter reveal reveal-delay-2">
+        <span class="chapter-num">03</span>
+        <div>
+          <h3>Почему написал через месяц</h3>
+          <p>Четыре реальные причины почему мужчина выходит на связь после долгого молчания. Какая из них про тебя. И что делать с каждой - чтобы не разрушить то что ты уже выстроила.</p>
+        </div>
+      </div>
+      <div class="chapter reveal" style="border-color:rgba(192,57,43,.2);background:#fdf8f2">
+        <span class="chapter-num" style="color:var(--amber)">+</span>
+        <div>
+          <h3>Бонус: что делать с этим знанием</h3>
+          <p>Одна страница. Конкретно. Как остановить фантазии когда они снова начинаются. Инструкция на случай если ты читаешь это в 22:00 и уже тянешься к телефону.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HONEST -->
+<section class="honest">
+  <div class="wrap">
+    <span class="eyebrow reveal" style="color:rgba(192,57,43,.7)">Что говорят после прочтения</span>
+    <h2 class="reveal reveal-delay-1">Больно читать.<br/>Легче после.</h2>
+    <div class="honest-quotes">
+      <div class="honest-quote reveal">
+        <p>«Я была уверена что он страдает и просто не показывает. Роман объяснил почему мужчины так не работают. Я злилась пока читала. А потом выдохнула первый раз за два месяца.»</p>
+        <span class="context">— читательница, 31 год</span>
+      </div>
+      <div class="honest-quote reveal reveal-delay-1">
+        <p>«Тот лайк в 23:00 который я обсуждала с подругой три часа. После этого PDF я поняла что думала о нём не то. Стало обидно. Но хотя бы понятно.»</p>
+        <span class="context">— читательница, 28 год</span>
+      </div>
+      <div class="honest-quote reveal reveal-delay-2">
+        <p>«Я купила чтобы понять можно ли ещё что-то исправить. Поняла - нет. Это было жестоко. И именно это мне было нужно чтобы наконец начать двигаться.»</p>
+        <span class="context">— читательница, 35 лет</span>
+      </div>
+      <div class="honest-quote reveal">
+        <p>«Он написал после 40 дней молчания. Я не знала что ответить. Прочитала за 20 минут до того как написать ему. Не написала.»</p>
+        <span class="context">— читательница, 26 лет</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="offer" id="offer">
+  <div class="wrap">
+    <span class="eyebrow reveal" style="text-align:center;display:block">Получить PDF</span>
+    <h2 class="reveal reveal-delay-1" style="text-align:center">Один раз.<br/>Читать сегодня вечером.</h2>
+    <div class="offer-card reveal reveal-delay-2">
+      <div class="offer-title">«Что он думает на самом деле»</div>
+      <p class="offer-subtitle">PDF · 20-25 страниц · мгновенный доступ</p>
+      <ul class="offer-list">
+        <li>Почему молчит - три реальные причины</li>
+        <li>Что значат лайки и просмотры сторис</li>
+        <li>Почему написал через месяц - четыре сценария</li>
+        <li>Бонус: инструкция на вечер когда снова накрывает</li>
+        <li>Читать с телефона · без регистраций</li>
+      </ul>
+      <div class="price-block">
+        <div class="price-old">600 грн</div>
+        <div class="price"><span class="price-currency">₴</span>300</div>
+        <div class="price-note">разовая оплата · без подписки</div>
+      </div>
+      <a href="https://t.me/back4heart" class="cta" style="width:100%;justify-content:center">
+        Получить PDF сейчас
+        <span class="cta-sub">написать в Telegram · доступ за 5 минут</span>
+      </a>
+      <div class="offer-divider"></div>
+      <p class="offer-guarantee">Если после прочтения ты почувствуешь что это было не то что тебе нужно - напиши мне. Верну деньги без вопросов.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="wrap">
+    <span class="eyebrow reveal">Вопросы</span>
+    <h2 class="reveal reveal-delay-1">Что обычно<br/>спрашивают</h2>
+    <div class="faq-list reveal reveal-delay-2">
+
+      <div class="faq-item">
+        <div class="faq-q">Это поможет мне его вернуть? <span class="faq-toggle">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Нет. И это написано честно. PDF не про то как вернуть. Он про то как перестать жить в фантазиях о том что он думает. Это разные задачи. Если ты хочешь его вернуть - это не тот продукт.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Я уже читала много всего. Чем это отличается? <span class="faq-toggle">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Большинство текстов написаны женщинами для женщин - или психологами которые объясняют теорию. Это написано мужчиной который прошёл через это сам. И который говорит не «вот как нужно думать» а «вот что реально происходит у него в голове». Это другое.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Мы расстались давно. Мне всё равно подойдёт? <span class="faq-toggle">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Да. Фантазии о том что он думает не зависят от того как давно это было. Иногда они сильнее через год чем через неделю. PDF работает для любого момента когда голова снова начинает придумывать его внутренний мир.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Как я получу PDF? <span class="faq-toggle">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Напишешь мне в Telegram - @back4heart. Я отвечаю лично. После оплаты пришлю ссылку на скачивание в течение нескольких минут. Читать можно сразу с телефона.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">А если мне будет больно это читать? <span class="faq-toggle">+</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Скорее всего будет. Некоторые вещи проще фантазировать чем знать правду. Но из опыта - именно эта боль от понимания отличается от боли от неизвестности. Она конечная. Её можно пройти. Неизвестность - бесконечная.</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <div class="wrap">
+    <h2 class="reveal">Фантазии занимают<br/>место которое нужно тебе.</h2>
+    <p class="reveal reveal-delay-1">Ты можешь снова провести вечер придумывая что он думает. Или прочитать - и наконец знать.</p>
+    <div class="cta-wrap reveal reveal-delay-2">
+      <a href="#offer" class="cta">
+        Читать сейчас
+        <span class="cta-sub">300 грн · PDF · мгновенный доступ</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 · «Что он думает на самом деле» · Роман · @back4heart</p>
+  </div>
+</footer>
+
+<!-- STICKY -->
+<div class="sticky" id="sticky">
+  <div class="sticky-info">
+    <div class="sticky-title">Что он думает на самом деле</div>
+    <div class="sticky-price">300 грн · PDF</div>
+  </div>
+  <a href="#offer" class="cta">Получить</a>
+</div>
+
+<script>
+// FAQ
+document.querySelectorAll('.faq-item').forEach(item => {
+  const q = item.querySelector('.faq-q');
+  const a = item.querySelector('.faq-a');
+  q.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(other => {
+      if (other !== item) {
+        other.classList.remove('open');
+        other.querySelector('.faq-a').style.maxHeight = '0px';
+      }
+    });
+    if (isOpen) {
+      item.classList.remove('open');
+      a.style.maxHeight = '0px';
+    } else {
+      item.classList.add('open');
+      a.style.maxHeight = a.scrollHeight + 'px';
+    }
+  });
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.12 });
+reveals.forEach(r => observer.observe(r));
+
+// Sticky
+const sticky = document.getElementById('sticky');
+const hero = document.querySelector('.hero');
+const offerSection = document.getElementById('offer');
+const finalSection = document.querySelector('.final');
+
+function checkSticky() {
+  if (window.innerWidth >= 768) { sticky.classList.remove('visible'); return; }
+  const heroBottom = hero.getBoundingClientRect().bottom;
+  const offerVisible = offerSection.getBoundingClientRect().top < window.innerHeight;
+  const finalVisible = finalSection.getBoundingClientRect().top < window.innerHeight;
+  if (heroBottom < 100 && !offerVisible && !finalVisible) {
+    sticky.classList.add('visible');
+  } else {
+    sticky.classList.remove('visible');
+  }
+}
+window.addEventListener('scroll', checkSticky, { passive: true });
+window.addEventListener('resize', checkSticky);
+checkSticky();
+</script>
+</body>
+</html>
