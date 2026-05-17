@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>21 день відновлення | 21 день восстановления</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #C4776A;
+    --rose-light: #E8A99E;
+    --rose-pale: #F5DDD9;
+    --cream: #FAF6F1;
+    --warm-white: #FFFDF9;
+    --bark: #4A3728;
+    --bark-mid: #7A5C48;
+    --bark-light: #B08A72;
+    --sage: #8A9E8C;
+    --gold: #C9A96E;
+    --gold-light: #E8D4A8;
+    --text-main: #2D1F14;
+    --text-mid: #5C4035;
+    --text-soft: #9A7A6A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--warm-white);
+    color: var(--text-main);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    background: var(--cream);
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 55%;
+    height: 120%;
+    background: radial-gradient(ellipse at 60% 40%, #E8D4C8 0%, #F5DDD9 40%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--rose-light), transparent);
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--rose-pale);
+    color: var(--rose);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 5vw, 58px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--bark);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    color: var(--text-mid);
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 440px;
+  }
+
+  .hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .circle-bg {
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #E8D4C8 0%, #F5DDD9 50%, #EAD5CC 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .circle-inner {
+    text-align: center;
+    padding: 40px;
+  }
+
+  .days-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 90px;
+    font-weight: 300;
+    color: var(--rose);
+    line-height: 1;
+    display: block;
+  }
+
+  .days-label {
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bark-mid);
+    font-weight: 500;
+  }
+
+  .circle-ornament {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid var(--rose-light);
+    opacity: 0.4;
+  }
+
+  .circle-ornament:nth-child(1) {
+    width: 420px; height: 420px;
+    animation: rotate 20s linear infinite;
+  }
+
+  .circle-ornament:nth-child(2) {
+    width: 460px; height: 460px;
+    animation: rotate 30s linear infinite reverse;
+    border-style: dashed;
+  }
+
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* ─── PAIN SECTION ─── */
+  .pain {
+    background: var(--bark);
+    padding: 80px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pain::before {
+    content: '"';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 400px;
+    color: rgba(255,255,255,0.03);
+    position: absolute;
+    top: -60px;
+    left: -20px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .pain-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .pain-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rose-light);
+    font-weight: 600;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .pain-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .pain-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px;
+  }
+
+  .pain-item {
+    background: rgba(255,255,255,0.04);
+    padding: 32px 28px;
+    border-left: 2px solid var(--rose);
+    transition: background 0.3s;
+  }
+
+  .pain-item:hover {
+    background: rgba(255,255,255,0.07);
+  }
+
+  .pain-item-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .pain-item p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* ─── ABOUT EXPERT ─── */
+  .expert {
+    padding: 100px 40px;
+    background: var(--warm-white);
+  }
+
+  .expert-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 70px;
+    align-items: start;
+  }
+
+  .expert-card {
+    background: var(--cream);
+    border-radius: 4px;
+    overflow: hidden;
+    position: sticky;
+    top: 40px;
+  }
+
+  .expert-photo-placeholder {
+    width: 100%;
+    height: 320px;
+    background: linear-gradient(160deg, #C4776A 0%, #8A5040 60%, #4A2E20 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .expert-photo-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    border: 3px solid rgba(255,255,255,0.3);
+  }
+
+  .expert-photo-placeholder::after {
+    content: '👤';
+    position: absolute;
+    top: calc(20% + 20px);
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 60px;
+    opacity: 0.6;
+  }
+
+  .expert-name-tag {
+    position: relative;
+    z-index: 1;
+  }
+
+  .expert-name-tag strong {
+    display: block;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .expert-name-tag span {
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  .expert-stats {
+    padding: 20px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .stat {
+    text-align: center;
+    padding: 12px;
+    background: white;
+    border-radius: 4px;
+  }
+
+  .stat-num {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: var(--rose);
+    font-weight: 600;
+  }
+
+  .stat-text {
+    font-size: 11px;
+    color: var(--text-soft);
+    letter-spacing: 0.05em;
+  }
+
+  .expert-content h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 3.5vw, 44px);
+    font-weight: 300;
+    color: var(--bark);
+    line-height: 1.2;
+    margin-bottom: 28px;
+  }
+
+  .expert-content h2 em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .expert-content p {
+    font-size: 15px;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 16px;
+    font-weight: 300;
+  }
+
+  .expert-quote {
+    border-left: 3px solid var(--gold);
+    padding: 16px 20px;
+    background: var(--gold-light);
+    border-radius: 0 4px 4px 0;
+    margin: 24px 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--bark);
+    line-height: 1.6;
+  }
+
+  /* ─── WHAT'S INSIDE ─── */
+  .inside {
+    padding: 100px 40px;
+    background: var(--cream);
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rose);
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .section-title h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 300;
+    color: var(--bark);
+    line-height: 1.2;
+  }
+
+  .inside-inner { max-width: 1000px; margin: 0 auto; }
+
+  .weeks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 50px;
+  }
+
+  .week {
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(74,55,40,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .week:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(74,55,40,0.12);
+  }
+
+  .week-header {
+    padding: 24px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .week:nth-child(1) .week-header { background: linear-gradient(135deg, #C4776A, #9A5548); }
+  .week:nth-child(2) .week-header { background: linear-gradient(135deg, #8A9E8C, #5E7862); }
+  .week:nth-child(3) .week-header { background: linear-gradient(135deg, #C9A96E, #9A7A42); }
+
+  .week-num {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .week-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .week-body {
+    padding: 24px;
+  }
+
+  .week-body ul {
+    list-style: none;
+  }
+
+  .week-body li {
+    font-size: 14px;
+    color: var(--text-mid);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--cream);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-weight: 300;
+  }
+
+  .week-body li::before {
+    content: '→';
+    color: var(--rose);
+    flex-shrink: 0;
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  .inside-formats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .format-item {
+    text-align: center;
+    padding: 28px 20px;
+    background: white;
+    border-radius: 4px;
+    border-top: 3px solid var(--rose-light);
+  }
+
+  .format-icon { font-size: 32px; margin-bottom: 10px; display: block; }
+
+  .format-item h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--bark);
+    margin-bottom: 6px;
+    font-weight: 400;
+  }
+
+  .format-item p { font-size: 13px; color: var(--text-soft); font-weight: 300; }
+
+  /* ─── TESTIMONIALS ─── */
+  .reviews {
+    padding: 100px 40px;
+    background: white;
+  }
+
+  .reviews-inner { max-width: 1000px; margin: 0 auto; }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 50px;
+  }
+
+  .review-card {
+    background: var(--cream);
+    border-radius: 4px;
+    padding: 28px;
+    position: relative;
+  }
+
+  .review-card::before {
+    content: '❝';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    color: var(--rose-light);
+    line-height: 1;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .review-text {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .review-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--rose-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .review-name { font-size: 13px; font-weight: 600; color: var(--bark); display: block; }
+  .review-meta { font-size: 11px; color: var(--text-soft); }
+
+  /* ─── PRICING ─── */
+  .pricing {
+    padding: 100px 40px;
+    background: var(--cream);
+  }
+
+  .pricing-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .pricing-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 50px;
+  }
+
+  .price-card {
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(74,55,40,0.08);
+    transition: transform 0.3s;
+  }
+
+  .price-card:hover { transform: translateY(-4px); }
+
+  .price-card.featured {
+    box-shadow: 0 4px 40px rgba(196,119,106,0.2);
+    border: 2px solid var(--rose);
+  }
+
+  .price-header {
+    padding: 30px 28px 24px;
+    border-bottom: 1px solid var(--cream);
+  }
+
+  .price-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .price-card.featured .price-label { color: var(--rose); }
+
+  .price-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: var(--bark);
+    font-weight: 400;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .price-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    color: var(--bark);
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .price-currency {
+    font-size: 20px;
+    vertical-align: super;
+    font-weight: 300;
+  }
+
+  .price-period {
+    font-size: 13px;
+    color: var(--text-soft);
+    margin-top: 4px;
+    display: block;
+  }
+
+  .price-body { padding: 24px 28px 28px; }
+
+  .price-features { list-style: none; margin-bottom: 28px; }
+
+  .price-features li {
+    font-size: 14px;
+    color: var(--text-mid);
+    padding: 9px 0;
+    border-bottom: 1px dashed var(--cream);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-weight: 300;
+  }
+
+  .price-features li .check {
+    color: var(--sage);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .price-features li.highlight-feature {
+    color: var(--bark);
+    font-weight: 500;
+  }
+
+  .price-features li.highlight-feature .check { color: var(--rose); }
+
+  .btn-buy {
+    display: block;
+    width: 100%;
+    padding: 16px 24px;
+    background: var(--bark);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    border-radius: 2px;
+    transition: background 0.25s, transform 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-buy:hover {
+    background: var(--rose);
+    transform: translateY(-2px);
+  }
+
+  .price-card.featured .btn-buy {
+    background: var(--rose);
+  }
+
+  .price-card.featured .btn-buy:hover {
+    background: var(--bark);
+  }
+
+  .price-badge {
+    display: inline-block;
+    background: var(--rose);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  /* ─── FAQ ─── */
+  .faq {
+    padding: 80px 40px;
+    background: white;
+  }
+
+  .faq-inner { max-width: 720px; margin: 0 auto; }
+
+  .faq-list { margin-top: 50px; }
+
+  .faq-item {
+    border-bottom: 1px solid var(--cream);
+    overflow: hidden;
+  }
+
+  .faq-question {
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--bark);
+    user-select: none;
+    gap: 16px;
+  }
+
+  .faq-toggle {
+    font-size: 20px;
+    color: var(--rose);
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+
+  .faq-item.open .faq-toggle { transform: rotate(45deg); }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .faq-answer-inner { padding-bottom: 20px; }
+
+  .faq-item.open .faq-answer { max-height: 300px; }
+
+  /* ─── FINAL CTA ─── */
+  .final-cta {
+    padding: 120px 40px;
+    background: linear-gradient(160deg, var(--bark) 0%, #2A1A10 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,119,106,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .final-cta-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+
+  .final-cta h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(30px, 4.5vw, 52px);
+    font-weight: 300;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .final-cta h2 em { font-style: italic; color: var(--rose-light); }
+
+  .final-cta p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    margin-bottom: 50px;
+    line-height: 1.7;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-cta-main {
+    display: inline-block;
+    padding: 16px 36px;
+    background: var(--rose);
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    border-radius: 2px;
+    transition: background 0.25s, transform 0.2s;
+  }
+
+  .btn-cta-main:hover {
+    background: #B5665A;
+    transform: translateY(-2px);
+  }
+
+  .btn-cta-alt {
+    display: inline-block;
+    padding: 16px 36px;
+    background: transparent;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 2px;
+    transition: all 0.25s;
+  }
+
+  .btn-cta-alt:hover {
+    border-color: var(--rose-light);
+    color: var(--rose-light);
+  }
+
+  /* ─── GUARANTEE ─── */
+  .guarantee {
+    background: var(--cream);
+    padding: 60px 40px;
+    text-align: center;
+  }
+
+  .guarantee-inner {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .guarantee-icon { font-size: 48px; }
+
+  .guarantee h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    color: var(--bark);
+    font-weight: 400;
+  }
+
+  .guarantee p {
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 30px 40px;
+    background: var(--bark);
+    text-align: center;
+  }
+
+  footer p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ─── STICKY CTA BAR ─── */
+  .sticky-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(42, 26, 16, 0.97);
+    backdrop-filter: blur(10px);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 1000;
+    transform: translateY(100%);
+    transition: transform 0.4s;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .sticky-bar.visible { transform: translateY(0); }
+
+  .sticky-bar-text {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    font-weight: 300;
+  }
+
+  .sticky-bar-text strong { color: white; font-weight: 600; }
+
+  .sticky-btn {
+    display: inline-block;
+    padding: 10px 24px;
+    background: var(--rose);
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 2px;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+
+  .sticky-btn:hover { background: #B5665A; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
+    .circle-bg { width: 260px; height: 260px; }
+    .circle-ornament:nth-child(1) { width: 300px; height: 300px; }
+    .circle-ornament:nth-child(2) { width: 340px; height: 340px; }
+    .days-num { font-size: 70px; }
+    .expert-inner { grid-template-columns: 1fr; gap: 40px; }
+    .expert-card { position: static; }
+    .weeks { grid-template-columns: 1fr; }
+    .inside-formats { grid-template-columns: 1fr; }
+    .pricing-cards { grid-template-columns: 1fr; }
+    .pain { padding: 60px 24px; }
+    .expert, .inside, .reviews, .pricing, .faq { padding: 60px 24px; }
+    .sticky-bar { flex-direction: column; padding: 12px; gap: 10px; }
+    .cta-buttons { flex-direction: column; align-items: center; }
+  }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text fade-in">
+      <div class="hero-badge" data-ua="📍 Ти тут після TikTok — не випадково" data-ru="📍 Ты здесь после TikTok — не случайно">📍 Ти тут після TikTok — не випадково</div>
+      <h1 data-ua="Ти не зламана.<br><em>Ти просто ще не знаєш,<br>що робити далі.</em>" data-ru="Ты не сломана.<br><em>Ты просто ещё не знаешь,<br>что делать дальше.</em>">Ти не зламана.<br><em>Ти просто ще не знаєш,<br>що робити далі.</em></h1>
+      <p class="hero-sub" data-ua="21 день. Щоденні завдання. Голосові повідомлення. Чек-листи. Усе, що потрібно, щоб вийти з емоційної залежності — і нарешті почати дихати." data-ru="21 день. Ежедневные задания. Голосовые сообщения. Чек-листы. Всё, что нужно, чтобы выйти из эмоциональной зависимости — и наконец начать дышать.">21 день. Щоденні завдання. Голосові повідомлення. Чек-листи. Усе, що потрібно, щоб вийти з емоційної залежності — і нарешті почати дихати.</p>
+      <a href="#pricing" class="btn-buy" style="display:inline-block;text-decoration:none;padding:16px 36px;width:auto;" data-ua="Хочу почати сьогодні →" data-ru="Хочу начать сегодня →">Хочу почати сьогодні →</a>
+    </div>
+    <div class="hero-visual fade-in" style="transition-delay:0.2s">
+      <div style="position:relative;display:flex;align-items:center;justify-content:center;">
+        <div class="circle-ornament"></div>
+        <div class="circle-ornament"></div>
+        <div class="circle-bg">
+          <div class="circle-inner">
+            <span class="days-num">21</span>
+            <span class="days-label" data-ua="день відновлення" data-ru="день восстановления">день відновлення</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN POINTS -->
+<section class="pain">
+  <div class="pain-inner">
+    <div class="pain-label" data-ua="Ти впізнаєш себе?" data-ru="Ты узнаёшь себя?">Ти впізнаєш себе?</div>
+    <div class="pain-items">
+      <div class="pain-item fade-in">
+        <span class="pain-item-icon">🔄</span>
+        <p data-ua="Прокидаєшся — і перша думка про нього. Засинаєш — і знову він. Коло замкнулося." data-ru="Просыпаешься — и первая мысль о нём. Засыпаешь — и снова он. Круг замкнулся.">Прокидаєшся — і перша думка про нього. Засинаєш — і знову він. Коло замкнулося.</p>
+      </div>
+      <div class="pain-item fade-in" style="transition-delay:0.1s">
+        <span class="pain-item-icon">📱</span>
+        <p data-ua="Перевіряєш його сторінку 20 разів на день. Аналізуєш кожне слово. Чекаєш повідомлення, яке не прийде." data-ru="Проверяешь его страницу 20 раз в день. Анализируешь каждое слово. Ждёшь сообщение, которое не придёт.">Перевіряєш його сторінку 20 разів на день. Аналізуєш кожне слово. Чекаєш повідомлення, яке не прийде.</p>
+      </div>
+      <div class="pain-item fade-in" style="transition-delay:0.2s">
+        <span class="pain-item-icon">💬</span>
+        <p data-ua="Подруги кажуть «забудь». Ти киваєш. Але не знаєш — як. Ніхто не дає конкретних інструкцій." data-ru="Подруги говорят «забудь». Ты киваешь. Но не знаешь — как. Никто не даёт конкретных инструкций.">Подруги кажуть «забудь». Ти киваєш. Але не знаєш — як. Ніхто не дає конкретних інструкцій.</p>
+      </div>
+      <div class="pain-item fade-in" style="transition-delay:0.3s">
+        <span class="pain-item-icon">🌪️</span>
+        <p data-ua="Один день — сила. Наступний — провал у дно. Ти не розумієш, що відбувається з тобою." data-ru="Один день — сила. Следующий — провал на дно. Ты не понимаешь, что происходит с тобой.">Один день — сила. Наступний — провал у дно. Ти не розумієш, що відбувається з тобою.</p>
+      </div>
+      <div class="pain-item fade-in" style="transition-delay:0.4s">
+        <span class="pain-item-icon">⏳</span>
+        <p data-ua="Всі кажуть «час лікує». Але ти хочеш жити зараз. Не через рік — зараз." data-ru="Все говорят «время лечит». Но ты хочешь жить сейчас. Не через год — сейчас.">Всі кажуть «час лікує». Але ти хочеш жити зараз. Не через рік — зараз.</p>
+      </div>
+      <div class="pain-item fade-in" style="transition-delay:0.5s">
+        <span class="pain-item-icon">🧩</span>
+        <p data-ua="Ти хочеш, щоб хтось сказав тобі — що робити сьогодні. Чітко. По кроках. Без зайвих слів." data-ru="Ты хочешь, чтобы кто-то сказал тебе — что делать сегодня. Чётко. По шагам. Без лишних слов.">Ти хочеш, щоб хтось сказав тобі — що робити сьогодні. Чітко. По кроках. Без зайвих слів.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERT -->
+<section class="expert">
+  <div class="expert-inner">
+    <div class="expert-card fade-in">
+      <div class="expert-photo-placeholder">
+        <div class="expert-name-tag">
+          <strong>Роман</strong>
+          <span data-ua="Психологія відносин · НЛП" data-ru="Психология отношений · НЛП">Психологія відносин · НЛП</span>
+        </div>
+      </div>
+      <div class="expert-stats">
+        <div class="stat">
+          <span class="stat-num">6+</span>
+          <span class="stat-text" data-ua="років практики" data-ru="лет практики">років практики</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">2400+</span>
+          <span class="stat-text" data-ua="жінок пройшли" data-ru="женщин прошли">жінок пройшли</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">TikTok</span>
+          <span class="stat-text" data-ua="сотні тисяч переглядів" data-ru="сотни тысяч просмотров">сотні тисяч переглядів</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">НЛП</span>
+          <span class="stat-text" data-ua="сертифікований фахівець" data-ru="сертифицированный специалист">сертифікований фахівець</span>
+        </div>
+      </div>
+    </div>
+    <div class="expert-content fade-in" style="transition-delay:0.2s">
+      <h2 data-ua="Чому чоловік розуміє твій біль <em>краще, ніж подруга</em>" data-ru="Почему мужчина понимает твою боль <em>лучше, чем подруга</em>">Чому чоловік розуміє твій біль <em>краще, ніж подруга</em></h2>
+      <p data-ua="Мене звуть Роман. Я займаюся психологією відносин і НЛП понад шість років. Але почалося це не з книжок." data-ru="Меня зовут Роман. Я занимаюсь психологией отношений и НЛП более шести лет. Но началось это не с книг.">Мене звуть Роман. Я займаюся психологією відносин і НЛП понад шість років. Але почалося це не з книжок.</p>
+      <p data-ua="Я бачив зблизька, як руйнується людина після зради. Як жінка, яку я любив, стала тінню себе. Я не міг дати їй те, що вона потребувала — тоді. Але це змусило мене шукати відповіді. Роками. Методично. Без ілюзій." data-ru="Я видел вблизи, как разрушается человек после предательства. Как женщина, которую я любил, стала тенью себя. Я не мог дать ей то, что ей было нужно — тогда. Но это заставило меня искать ответы. Годами. Методично. Без иллюзий.">Я бачив зблизька, як руйнується людина після зради. Як жінка, яку я любив, стала тінню себе. Я не міг дати їй те, що вона потребувала — тоді. Але це змусило мене шукати відповіді. Роками. Методично. Без ілюзій.</p>
+      <div class="expert-quote" data-ua="&laquo;Я вивчив механізм болю зсередини — щоб навчити тебе виходити з нього назовні.&raquo;" data-ru="&laquo;Я изучил механизм боли изнутри — чтобы научить тебя выходить из него наружу.&raquo;">«Я вивчив механізм болю зсередини — щоб навчити тебе виходити з нього назовні.»</div>
+      <p data-ua="Я чоловік. Я думаю інакше. І саме тому я бачу те, що ти не помічаєш у собі. Не для того, щоб засудити. Для того, щоб показати вихід." data-ru="Я мужчина. Я думаю иначе. И именно поэтому я вижу то, чего ты не замечаешь в себе. Не для того, чтобы осудить. Для того, чтобы показать выход.">Я чоловік. Я думаю інакше. І саме тому я бачу те, що ти не помічаєш у собі. Не для того, щоб засудити. Для того, щоб показати вихід.</p>
+      <p data-ua="За ці роки через мої програми пройшли понад 2400 жінок. Кожна приходила зламаною. Більшість пішла — зібраною." data-ru="За эти годы через мои программы прошли более 2400 женщин. Каждая приходила сломленной. Большинство ушло — собранной.">За ці роки через мої програми пройшли понад 2400 жінок. Кожна приходила зламаною. Більшість пішла — зібраною.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INSIDE -->
+<section class="inside">
+  <div class="inside-inner">
+    <div class="section-title fade-in">
+      <span class="section-label" data-ua="Програма" data-ru="Программа">Програма</span>
+      <h2 data-ua="Що тебе чекає всередині" data-ru="Что тебя ждёт внутри">Що тебе чекає всередині</h2>
+    </div>
+
+    <div class="weeks">
+      <div class="week fade-in">
+        <div class="week-header">
+          <span class="week-num" data-ua="Тиждень 1 · Дні 1–7" data-ru="Неделя 1 · Дни 1–7">Тиждень 1 · Дні 1–7</span>
+          <div class="week-title" data-ua="Стабілізація. Зупинити кровотечу" data-ru="Стабилизация. Остановить кровотечение">Стабілізація. Зупинити кровотечу</div>
+        </div>
+        <div class="week-body">
+          <ul>
+            <li data-ua="Техніки швидкого заземлення при панічних думках" data-ru="Техники быстрого заземления при панических мыслях">Техніки швидкого заземлення при панічних думках</li>
+            <li data-ua="Чому мозок «зациклюється» — і як його перемкнути" data-ru="Почему мозг «зацикливается» — и как его переключить">Чому мозок «зациклюється» — і як його перемкнути</li>
+            <li data-ua="Правило 72 годин: найважливіший крок першого тижня" data-ru="Правило 72 часов: важнейший шаг первой недели">Правило 72 годин: найважливіший крок першого тижня</li>
+            <li data-ua="Щоденні ритуали, які повертають тілу відчуття безпеки" data-ru="Ежедневные ритуалы, возвращающие телу ощущение безопасности">Щоденні ритуали, які повертають тілу відчуття безпеки</li>
+            <li data-ua="Голосові інструкції на кожен день тижня" data-ru="Голосовые инструкции на каждый день недели">Голосові інструкції на кожен день тижня</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="week fade-in" style="transition-delay:0.15s">
+        <div class="week-header">
+          <span class="week-num" data-ua="Тиждень 2 · Дні 8–14" data-ru="Неделя 2 · Дни 8–14">Тиждень 2 · Дні 8–14</span>
+          <div class="week-title" data-ua="Розрив залежності. Він більше не центр" data-ru="Разрыв зависимости. Он больше не центр">Розрив залежності. Він більше не центр</div>
+        </div>
+        <div class="week-body">
+          <ul>
+            <li data-ua="Нейрохімія прив'язаності: чому «любов» — це хімія, і як її переписати" data-ru="Нейрохимия привязанности: почему «любовь» — это химия, и как её переписать">Нейрохімія прив'язаності: чому «любов» — це хімія</li>
+            <li data-ua="Практики виходу з нав'язливих думок (НЛП-методи)" data-ru="Практики выхода из навязчивых мыслей (НЛП-методы)">Практики виходу з нав'язливих думок (НЛП)</li>
+            <li data-ua="Як правильно обробити зраду — не витісняючи, а відпускаючи" data-ru="Как правильно обработать предательство — не вытесняя, а отпуская">Як правильно обробити зраду — відпускаючи</li>
+            <li data-ua="Чек-лист «Я вільна від нього сьогодні»: щоденна практика" data-ru="Чек-лист «Я свободна от него сегодня»: ежедневная практика">Чек-лист «Я вільна від нього сьогодні»</li>
+            <li data-ua="Ідентифікація патернів — щоб наступного разу їх не повторити" data-ru="Идентификация паттернов — чтобы в следующий раз их не повторить">Ідентифікація патернів у стосунках</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="week fade-in" style="transition-delay:0.3s">
+        <div class="week-header">
+          <span class="week-num" data-ua="Тиждень 3 · Дні 15–21" data-ru="Неделя 3 · Дни 15–21">Тиждень 3 · Дні 15–21</span>
+          <div class="week-title" data-ua="Повернення себе. Жінка без нього" data-ru="Возвращение себя. Женщина без него">Повернення себе. Жінка без нього</div>
+        </div>
+        <div class="week-body">
+          <ul>
+            <li data-ua="Побудова нової ідентичності: хто ти — поза парою" data-ru="Построение новой идентичности: кто ты — вне пары">Побудова нової ідентичності поза парою</li>
+            <li data-ua="Відновлення самооцінки: конкретні вправи, не слова" data-ru="Восстановление самооценки: конкретные упражнения, не слова">Відновлення самооцінки: конкретні вправи</li>
+            <li data-ua="Правила нового старту без страху повторення" data-ru="Правила нового старта без страха повторения">Правила нового старту без страху</li>
+            <li data-ua="Фінальний чек-лист: 21 маркер, що ти пройшла шлях" data-ru="Финальный чек-лист: 21 маркер, что ты прошла путь">Фінальний чек-лист: 21 маркер виходу</li>
+            <li data-ua="Голосовий підсумок від мене особисто" data-ru="Голосовой итог от меня лично">Голосовий підсумок від мене особисто</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="inside-formats">
+      <div class="format-item fade-in">
+        <span class="format-icon">📄</span>
+        <h4 data-ua="PDF-програма" data-ru="PDF-программа">PDF-програма</h4>
+        <p data-ua="Повний план на 21 день. Завдання, вправи, чек-листи." data-ru="Полный план на 21 день. Задания, упражнения, чек-листы.">Повний план на 21 день. Завдання, вправи, чек-листи.</p>
+      </div>
+      <div class="format-item fade-in" style="transition-delay:0.1s">
+        <span class="format-icon">🎙️</span>
+        <h4 data-ua="Голосові повідомлення" data-ru="Голосовые сообщения">Голосові повідомлення</h4>
+        <p data-ua="Щоденний голосовий супровід від Романа. Як розмова — не лекція." data-ru="Ежедневное голосовое сопровождение от Романа. Как разговор — не лекция.">Щоденний голосовий супровід. Як розмова — не лекція.</p>
+      </div>
+      <div class="format-item fade-in" style="transition-delay:0.2s">
+        <span class="format-icon">✅</span>
+        <h4 data-ua="Чек-листи" data-ru="Чек-листы">Чек-листи</h4>
+        <p data-ua="Щоденний контроль прогресу. Ти точно знаєш — рухаєшся чи ні." data-ru="Ежедневный контроль прогресса. Ты точно знаешь — движешься или нет.">Щоденний контроль прогресу. Точно знаєш — рухаєшся.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="reviews">
+  <div class="reviews-inner">
+    <div class="section-title fade-in">
+      <span class="section-label" data-ua="Відгуки" data-ru="Отзывы">Відгуки</span>
+      <h2 data-ua="Вони вже пройшли цей шлях" data-ru="Они уже прошли этот путь">Вони вже пройшли цей шлях</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card fade-in">
+        <div class="review-text" data-ua="«На першому тижні я думала, що нічого не вийде. На сьомий день зрозуміла, що вперше за місяць не перевіряла його сторінку. Це здалося мені маленьким дивом.»" data-ru="«На первой неделе я думала, что ничего не выйдет. На седьмой день поняла, что впервые за месяц не проверяла его страницу. Это казалось мне маленьким чудом.»">«На першому тижні я думала, що нічого не вийде. На сьомий день зрозуміла, що вперше за місяць не перевіряла його сторінку. Це здалося мені маленьким дивом.»</div>
+        <div class="review-author">
+          <div class="review-avatar">🌸</div>
+          <div>
+            <span class="review-name">Олена, 38</span>
+            <span class="review-meta" data-ua="Київ · розлучення після 9 років" data-ru="Киев · развод после 9 лет">Київ · розлучення після 9 років</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card fade-in" style="transition-delay:0.15s">
+        <div class="review-text" data-ua="«Мені потрібен був хтось, хто скаже: роби це сьогодні. Не «попрацюй над собою» — а конкретно. Роман дав саме це. Після 21 дня я не впізнаю себе — в хорошому сенсі.»" data-ru="«Мне нужен был кто-то, кто скажет: делай это сегодня. Не «поработай над собой» — а конкретно. Роман дал именно это. После 21 дня я не узнаю себя — в хорошем смысле.»">«Мені потрібен був хтось, хто скаже: роби це сьогодні. Не «попрацюй над собою» — а конкретно. Роман дав саме це. Після 21 дня я не впізнаю себе.»</div>
+        <div class="review-author">
+          <div class="review-avatar">🌿</div>
+          <div>
+            <span class="review-name">Марина, 34</span>
+            <span class="review-meta" data-ua="Харків · зрада і розрив" data-ru="Харьков · измена и разрыв">Харків · зрада і розрив</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card fade-in" style="transition-delay:0.3s">
+        <div class="review-text" data-ua="«Я купила багато курсів. Цей — єдиний, де я дійшла до кінця. Бо щоранку знала — що робити. Голоси Романа стали ритуалом. До 21-го дня я вже не плакала щодня.»" data-ru="«Я купила много курсов. Этот — единственный, где я дошла до конца. Потому что каждое утро знала — что делать. Голоса Романа стали ритуалом. К 21-му дню я уже не плакала каждый день.»">«Я купила багато курсів. Цей — єдиний, де я дійшла до кінця. Бо щоранку знала — що робити. До 21-го дня я вже не плакала щодня.»</div>
+        <div class="review-author">
+          <div class="review-avatar">🍂</div>
+          <div>
+            <span class="review-name">Тетяна, 41</span>
+            <span class="review-meta" data-ua="Одеса · після 12 років разом" data-ru="Одесса · после 12 лет вместе">Одеса · після 12 років разом</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="pricing-inner">
+    <div class="section-title fade-in">
+      <span class="section-label" data-ua="Вибери свій формат" data-ru="Выбери свой формат">Вибери свій формат</span>
+      <h2 data-ua="Почати можна вже сьогодні" data-ru="Начать можно уже сегодня">Почати можна вже сьогодні</h2>
+    </div>
+
+    <div class="pricing-cards">
+      <!-- CARD 1 -->
+      <div class="price-card fade-in">
+        <div class="price-header">
+          <span class="price-label" data-ua="Базовий доступ" data-ru="Базовый доступ">Базовий доступ</span>
+          <div class="price-title" data-ua="21 день відновлення" data-ru="21 день восстановления">21 день відновлення</div>
+          <div class="price-amount">
+            <span class="price-currency" id="currency1">₴</span><span id="amount1">499</span>
+          </div>
+          <span class="price-period" data-ua="одноразово · миттєвий доступ" data-ru="единоразово · мгновенный доступ">одноразово · миттєвий доступ</span>
+        </div>
+        <div class="price-body">
+          <ul class="price-features">
+            <li><span class="check">✓</span><span data-ua="PDF-програма на 21 день" data-ru="PDF-программа на 21 день">PDF-програма на 21 день</span></li>
+            <li><span class="check">✓</span><span data-ua="Голосові повідомлення щодня" data-ru="Голосовые сообщения ежедневно">Голосові повідомлення щодня</span></li>
+            <li><span class="check">✓</span><span data-ua="Чек-листи і щоденні завдання" data-ru="Чек-листы и ежедневные задания">Чек-листи і щоденні завдання</span></li>
+            <li><span class="check">✓</span><span data-ua="НЛП-техніки і практики" data-ru="НЛП-техники и практики">НЛП-техніки і практики</span></li>
+            <li><span class="check">✓</span><span data-ua="Доступ в Telegram-канал" data-ru="Доступ в Telegram-канал">Доступ в Telegram-канал</span></li>
+          </ul>
+          <a href="https://secure.wayforpay.com/button/bccff1ee1a525" class="btn-buy" id="btn1" data-ua="Отримати доступ →" data-ru="Получить доступ →">Отримати доступ →</a>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="price-card featured fade-in" style="transition-delay:0.15s">
+        <div class="price-header">
+          <span class="price-label" data-ua="Максимальна підтримка" data-ru="Максимальная поддержка">Максимальна підтримка <span class="price-badge" data-ua="Популярний" data-ru="Популярный">Популярний</span></span>
+          <div class="price-title" data-ua="21 день + Закрита група" data-ru="21 день + Закрытая группа">21 день + Закрита група</div>
+          <div class="price-amount">
+            <span class="price-currency" id="currency2">₴</span><span id="amount2">790</span>
+          </div>
+          <span class="price-period" data-ua="одноразово · миттєвий доступ" data-ru="единоразово · мгновенный доступ">одноразово · миттєвий доступ</span>
+        </div>
+        <div class="price-body">
+          <ul class="price-features">
+            <li><span class="check">✓</span><span data-ua="Все з базового пакету" data-ru="Всё из базового пакета">Все з базового пакету</span></li>
+            <li class="highlight-feature"><span class="check">✓</span><span data-ua="Закрита Telegram-група з Романом" data-ru="Закрытая Telegram-группа с Романом">Закрита Telegram-група з Романом</span></li>
+            <li class="highlight-feature"><span class="check">✓</span><span data-ua="Живі відповіді на запитання у групі" data-ru="Живые ответы на вопросы в группе">Живі відповіді на запитання у групі</span></li>
+            <li class="highlight-feature"><span class="check">✓</span><span data-ua="Підтримка жінок, які йдуть поруч" data-ru="Поддержка женщин, идущих рядом">Підтримка жінок, які йдуть поруч</span></li>
+            <li><span class="check">✓</span><span data-ua="Пріоритетна увага від куратора" data-ru="Приоритетное внимание от куратора">Пріоритетна увага від куратора</span></li>
+          </ul>
+          <a href="https://secure.wayforpay.com/button/b075f8b189069" class="btn-buy" id="btn2" data-ua="Отримати максимум →" data-ru="Получить максимум →">Отримати максимум →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guarantee">
+  <div class="guarantee-inner fade-in">
+    <div class="guarantee-icon">🛡️</div>
+    <h3 data-ua="Гарантія 7 днів" data-ru="Гарантия 7 дней">Гарантія 7 днів</h3>
+    <p data-ua="Якщо за перших 7 днів ти відчуєш, що це не для тебе — повернемо гроші. Без зайвих запитань. Ми впевнені в результаті, тому ризик — тільки наш." data-ru="Если в первые 7 дней ты почувствуешь, что это не для тебя — вернём деньги. Без лишних вопросов. Мы уверены в результате, поэтому риск — только наш.">Якщо за перших 7 днів ти відчуєш, що це не для тебе — повернемо гроші. Без зайвих запитань. Ми впевнені в результаті, тому ризик — тільки наш.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-inner">
+    <div class="section-title fade-in">
+      <span class="section-label">FAQ</span>
+      <h2 data-ua="Часті запитання" data-ru="Частые вопросы">Часті запитання</h2>
+    </div>
+    <div class="faq-list fade-in">
+      <div class="faq-item">
+        <div class="faq-question">
+          <span data-ua="Як я отримаю доступ після оплати?" data-ru="Как я получу доступ после оплаты?">Як я отримаю доступ після оплати?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner" data-ua="Одразу після оплати ти отримаєш посилання на Telegram. PDF та голосові — там само. Все автоматично, без очікування." data-ru="Сразу после оплаты ты получишь ссылку на Telegram. PDF и голосовые — там же. Всё автоматически, без ожидания.">Одразу після оплати ти отримаєш посилання на Telegram. PDF та голосові — там само. Все автоматично, без очікування.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span data-ua="Скільки часу потрібно щодня?" data-ru="Сколько времени нужно каждый день?">Скільки часу потрібно щодня?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner" data-ua="Від 20 до 40 хвилин. Голосове — 5–10 хвилин. Вправа — 10–20 хвилин. Чек-лист — 5 хвилин. Все розроблено для реального ритму реального дня." data-ru="От 20 до 40 минут. Голосовое — 5–10 минут. Упражнение — 10–20 минут. Чек-лист — 5 минут. Всё разработано для реального ритма реального дня.">Від 20 до 40 хвилин. Голосове — 5–10 хвилин. Вправа — 10–20 хвилин. Чек-лист — 5 хвилин. Все розроблено для реального ритму реального дня.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span data-ua="Це підходить, якщо розрив був давно — рік чи більше?" data-ru="Это подходит, если разрыв был давно — год или больше?">Це підходить, якщо розрив був давно — рік чи більше?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner" data-ua="Так. Залежність не прив'язана до часу — вона прив'язана до нейронних патернів. Програма працює незалежно від того, коли це сталося." data-ru="Да. Зависимость не привязана ко времени — она привязана к нейронным паттернам. Программа работает независимо от того, когда это произошло.">Так. Залежність не прив'язана до часу — вона прив'язана до нейронних патернів. Програма працює незалежно від того, коли це сталося.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span data-ua="Що якщо я пропущу день?" data-ru="Что если я пропущу день?">Що якщо я пропущу день?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner" data-ua="Нічого страшного. Доступ до матеріалів — постійний. Повернись і продовж. Пропущений день — не провал, це частина процесу." data-ru="Ничего страшного. Доступ к материалам — постоянный. Вернись и продолжи. Пропущенный день — не провал, это часть процесса.">Нічого страшного. Доступ до матеріалів — постійний. Повернись і продовж. Пропущений день — не провал, це частина процесу.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span data-ua="Чому чоловік навчає жінок відновленню?" data-ru="Почему мужчина учит женщин восстановлению?">Чому чоловік навчає жінок відновленню?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner" data-ua="Бо я бачу механізм зсередини — як він влаштований у чоловіка, і як він руйнує жінку. Я не говорю «ти все витримаєш». Я кажу: ось де у тебе злам, ось як його виправити. Результат важливіший за стать консультанта." data-ru="Потому что я вижу механизм изнутри — как он устроен у мужчины, и как он разрушает женщину. Я не говорю «ты всё вытерпишь». Я говорю: вот где у тебя слом, вот как его исправить. Результат важнее пола консультанта.">Бо я бачу механізм зсередини. Я не говорю «ти все витримаєш». Я кажу: ось де у тебе злам, ось як його виправити. Результат важливіший за стать консультанта.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="final-cta-inner fade-in">
+    <h2 data-ua="Ти вже досить довго <em>чекала</em>, що стане краще" data-ru="Ты уже достаточно долго <em>ждала</em>, что станет лучше">Ти вже досить довго <em>чекала</em>, що стане краще</h2>
+    <p data-ua="Воно не стає краще саме по собі. Воно стає краще, коли ти знаєш — що робити сьогодні. Саме це і є програма «21 день відновлення»." data-ru="Оно не становится лучше само по себе. Оно становится лучше, когда ты знаешь — что делать сегодня. Именно это и есть программа «21 день восстановления».">Воно не стає краще саме по собі. Воно стає краще, коли ти знаєш — що робити сьогодні. Саме це і є програма «21 день відновлення».</p>
+    <div class="cta-buttons">
+      <a href="https://secure.wayforpay.com/button/bccff1ee1a525" class="btn-cta-main" id="cta-main" data-ua="Почати за ₴499 →" data-ru="Начать за $12 →">Почати за ₴499 →</a>
+      <a href="https://secure.wayforpay.com/button/b075f8b189069" class="btn-cta-alt" id="cta-alt" data-ua="З групою підтримки — ₴790" data-ru="С группой поддержки — $19">З групою підтримки — ₴790</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p data-ua="© 2024 back4heart · Роман · Усі права захищено" data-ru="© 2024 back4heart · Роман · Все права защищены">© 2024 back4heart · Роман · Усі права захищено</p>
+</footer>
+
+<!-- STICKY BAR -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="sticky-bar-text">
+    <span data-ua="<strong>21 день відновлення</strong> — починай сьогодні" data-ru="<strong>21 день восстановления</strong> — начинай сегодня"><strong>21 день відновлення</strong> — починай сьогодні</span>
+  </div>
+  <a href="#pricing" class="sticky-btn" data-ua="Обрати тариф →" data-ru="Выбрать тариф →">Обрати тариф →</a>
+</div>
+
+<script>
+// ─── GEO + LANG LOGIC ───
+const UA_PRICE_1 = { sym: '₴', amount: '499', url1: 'https://secure.wayforpay.com/button/bccff1ee1a525', url2: 'https://secure.wayforpay.com/button/b075f8b189069', a1: '499', a2: '790', cta1: 'Почати за ₴499 →', cta2: 'З групою — ₴790' };
+const RU_PRICE   = { sym: '$', amount: '12',  url1: 'https://secure.wayforpay.com/button/b73b65cf24310', url2: 'https://secure.wayforpay.com/button/b9aa1d4a946eb', a1: '12',  a2: '19',  cta1: 'Начать за $12 →',  cta2: 'С группой — $19' };
+
+let isUA = false;
+
+function applyLang(ua) {
+  isUA = ua;
+  document.documentElement.lang = ua ? 'uk' : 'ru';
+  const attr = ua ? 'data-ua' : 'data-ru';
+
+  document.querySelectorAll('[data-ua]').forEach(el => {
+    const val = el.getAttribute(attr);
+    if (val) el.innerHTML = val;
+  });
+
+  const p = ua ? UA_PRICE_1 : RU_PRICE;
+
+  document.getElementById('currency1').textContent = p.sym;
+  document.getElementById('amount1').textContent   = p.a1;
+  document.getElementById('currency2').textContent = p.sym;
+  document.getElementById('amount2').textContent   = p.a2;
+  document.getElementById('btn1').href = p.url1;
+  document.getElementById('btn2').href = p.url2;
+
+  const ctaMain = document.getElementById('cta-main');
+  const ctaAlt  = document.getElementById('cta-alt');
+  if (ctaMain) { ctaMain.textContent = p.cta1; ctaMain.href = p.url1; }
+  if (ctaAlt)  { ctaAlt.textContent  = p.cta2; ctaAlt.href  = p.url2; }
+}
+
+async function detectCountry() {
+  try {
+    const r = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(4000) });
+    const d = await r.json();
+    return d.country_code === 'UA';
+  } catch {
+    // fallback: check browser language
+    return navigator.language?.toLowerCase().startsWith('uk');
+  }
+}
+
+detectCountry().then(ua => applyLang(ua));
+
+// ─── FAQ ACCORDION ───
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+// ─── STICKY BAR ───
+const stickyBar = document.getElementById('stickyBar');
+let heroHeight = 0;
+window.addEventListener('scroll', () => {
+  heroHeight = document.querySelector('.hero').offsetHeight;
+  stickyBar.classList.toggle('visible', window.scrollY > heroHeight * 0.6);
+});
+
+// ─── FADE IN ON SCROLL ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
