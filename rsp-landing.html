@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>РСП — Курс для женщин с детьми</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #100c0c;
+    --cream: #f5ede3;
+    --rose: #b83228;
+    --gold: #c9a84c;
+    --muted: #7a6a62;
+    --surface: #1a1212;
+  }
+
+  html, body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'Manrope', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 20px 30px;
+    background:
+      radial-gradient(ellipse at 80% 0%, #2e1010 0%, transparent 60%),
+      var(--ink);
+  }
+
+  /* ── ШАПКА ── */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.45);
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 18px;
+    width: fit-content;
+    animation: fadeUp 0.45s ease both 0.05s;
+  }
+
+  /* ── ЗАГОЛОВОК ── */
+  .title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(27px, 8vw, 36px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 4px;
+    animation: fadeUp 0.45s ease both 0.15s;
+  }
+  .title em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  /* ── MOCKUP IMAGE ── */
+  .mockup-wrap {
+    margin: 18px auto 16px;
+    width: 100%;
+    max-width: 320px;
+    position: relative;
+    animation: fadeUp 0.5s ease both 0.25s;
+  }
+
+  .mockup-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 12px 10px -10px;
+    background: rgba(184,50,40,0.25);
+    filter: blur(22px);
+    border-radius: 12px;
+    z-index: 0;
+  }
+
+  .mockup-img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    transform: perspective(600px) rotateY(-4deg) rotateX(2deg);
+    box-shadow:
+      0 4px 8px rgba(0,0,0,0.5),
+      0 16px 40px rgba(0,0,0,0.6),
+      inset 0 1px 0 rgba(255,255,255,0.07);
+  }
+
+  /* ── ТЕКСТ ── */
+  .subtitle {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(245,237,227,0.7);
+    line-height: 1.55;
+    margin-bottom: 12px;
+    animation: fadeUp 0.45s ease both 0.32s;
+  }
+
+  .divider {
+    width: 36px;
+    height: 2px;
+    background: var(--gold);
+    margin-bottom: 12px;
+    animation: fadeUp 0.45s ease both 0.36s;
+  }
+
+  .body-copy {
+    font-size: 13.5px;
+    line-height: 1.68;
+    color: #cdbfb5;
+    margin-bottom: 20px;
+    animation: fadeUp 0.45s ease both 0.42s;
+  }
+  .body-copy strong { color: var(--cream); font-weight: 600; }
+
+  /* ── ЦЕНА ── */
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 16px;
+    animation: fadeUp 0.45s ease both 0.48s;
+  }
+  .price-tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .price-sep { color: var(--muted); font-size: 13px; }
+  .price-format {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 2px 6px;
+    border: 1px solid rgba(122,106,98,0.4);
+    border-radius: 2px;
+  }
+
+  /* ── КНОПКИ ── */
+  .btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    animation: fadeUp 0.45s ease both 0.54s;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 5px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 14px 20px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.12s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn:active { transform: scale(0.97); opacity: 0.82; }
+
+  .btn-primary {
+    background: var(--rose);
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 18px rgba(184,50,40,0.4);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(245,237,227,0.22);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="badge">✦ PDF-курс · Психология</div>
+
+  <h1 class="title">
+    Что делать,<br>если ты <em>РСП</em>
+  </h1>
+
+  <div class="mockup-wrap">
+    <img class="mockup-img"
+         src="https://i.ibb.co/WWCC8fLF/1779312842445.png"
+         alt="Обложка курса РСП">
+  </div>
+
+  <p class="subtitle">
+    Как женщине с детьми пережить расставание, поставить на ноги себя и детей — и покорить этот Мир!
+  </p>
+
+  <div class="divider"></div>
+
+  <p class="body-copy">
+    Это очень сильная и важная тема. И знаешь что — здесь не будет пустых <strong>«держись»</strong> и <strong>«всё будет хорошо»</strong>. Здесь будет <strong>опора. Система. Психология.</strong> Жизнь, как она есть. И выход из неё — <strong>наверх</strong>.
+  </p>
+
+  <div class="price-row">
+    <span class="price-tag">1149 грн</span>
+    <span class="price-sep">/</span>
+    <span class="price-tag">$26</span>
+    <span class="price-format">PDF</span>
+  </div>
+
+  <div class="btn-group">
+    <a class="btn btn-primary"
+       href="https://secure.wayforpay.com/button/ba0c3d51d7063"
+       target="_blank" rel="noopener">
+      💳 Оплатить картой (Украина)
+    </a>
+    <a class="btn btn-secondary"
+       href="https://www.paypal.com/ncp/payment/X4NBPLQLQVA26"
+       target="_blank" rel="noopener">
+      🌍 Оплатить через PayPal
+    </a>
+  </div>
+
+</div>
+</body>
+</html>
