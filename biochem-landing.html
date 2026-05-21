@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Полная пересборка. Курс восстановления биохимии</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0d0a0a;
+    --cream: #f5ede3;
+    --rose: #b83228;
+    --rose-dim: rgba(184,50,40,0.12);
+    --gold: #c9a84c;
+    --gold-dim: rgba(201,168,76,0.12);
+    --muted: #7a6a62;
+    --surface: #181212;
+    --border: rgba(245,237,227,0.09);
+  }
+
+  html, body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'Manrope', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 28px 20px 40px;
+    background:
+      radial-gradient(ellipse at 75% 0%, #2a0e0e 0%, transparent 55%),
+      radial-gradient(ellipse at 20% 80%, #1a1008 0%, transparent 50%),
+      var(--ink);
+  }
+
+  /* ── BADGE ── */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.45);
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+    width: fit-content;
+  }
+
+  /* ── TITLE ── */
+  .title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 7.5vw, 34px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .title em { font-style: italic; color: var(--rose); }
+
+  /* ── MOCKUP ── */
+  .mockup-wrap {
+    margin: 0 auto 22px;
+    width: 100%;
+    max-width: 290px;
+    position: relative;
+  }
+  .mockup-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 14px 10px -10px;
+    background: rgba(184,50,40,0.25);
+    filter: blur(22px);
+    border-radius: 12px;
+    z-index: 0;
+  }
+  .mockup-img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.55), 0 18px 44px rgba(0,0,0,0.65);
+  }
+
+  /* ── INTRO TEXT ── */
+  .subtitle {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: rgba(245,237,227,0.78);
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .divider {
+    width: 36px; height: 2px;
+    background: var(--gold);
+    margin-bottom: 12px;
+  }
+  .body-copy {
+    font-size: 13.5px;
+    line-height: 1.68;
+    color: #cdbfb5;
+    margin-bottom: 28px;
+  }
+  .body-copy strong { color: var(--cream); font-weight: 600; }
+
+  /* ── SECTION HEADER ── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  /* ── ДИАГНОСТИКА ── */
+  .diag-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--rose);
+    border-radius: 6px;
+    padding: 16px;
+    margin-bottom: 28px;
+  }
+  .diag-block .diag-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--cream);
+  }
+  .diag-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #d4c4ba;
+  }
+  .diag-item:last-child { margin-bottom: 0; }
+  .diag-dot {
+    flex-shrink: 0;
+    width: 6px; height: 6px;
+    background: var(--rose);
+    border-radius: 50%;
+    margin-top: 7px;
+  }
+  .diag-block .diag-footer {
+    margin-top: 14px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--gold);
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+
+  /* ── РЕЗУЛЬТАТЫ ── */
+  .results-block {
+    margin-bottom: 28px;
+  }
+  .result-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 8px;
+  }
+  .result-icon {
+    font-size: 18px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .result-text {
+    font-size: 13px;
+    line-height: 1.55;
+    color: #d4c4ba;
+  }
+  .result-text strong { color: var(--cream); display: block; font-size: 13.5px; margin-bottom: 2px; }
+
+  /* ── ОТЗЫВЫ ── */
+  .reviews-block {
+    margin-bottom: 28px;
+  }
+  .review-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 8px;
+  }
+  .review-text {
+    font-size: 13px;
+    line-height: 1.62;
+    color: #cdbfb5;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .review-avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--rose-dim);
+    border: 1px solid rgba(184,50,40,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .review-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--cream);
+  }
+  .review-meta {
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .stars { color: var(--gold); font-size: 11px; letter-spacing: 1px; margin-bottom: 6px; }
+
+  /* ── ЦЕНА ── */
+  .price-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 16px 16px;
+    margin-bottom: 14px;
+  }
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .price-tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .price-sep { color: var(--muted); font-size: 13px; }
+  .price-format {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 2px 6px;
+    border: 1px solid rgba(122,106,98,0.4);
+    border-radius: 2px;
+  }
+  .price-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── КНОПКИ ── */
+  .btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 5px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 15px 20px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.12s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn:active { transform: scale(0.97); opacity: 0.82; }
+  .btn-primary {
+    background: var(--rose);
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 20px rgba(184,50,40,0.45);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(245,237,227,0.22);
+  }
+
+  /* ── FOOTER NOTE ── */
+  .footer-note {
+    text-align: center;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <div class="badge">✦ PDF-курс · Нейрохимия расставания</div>
+
+  <h1 class="title">
+    Полная <em>пересборка.</em><br>Восстановление биохимии
+  </h1>
+
+  <div class="mockup-wrap">
+    <img class="mockup-img"
+         src="https://i.ibb.co/Q3mQpmWn/1779340460023.png"
+         alt="Обложка курса — Полная пересборка">
+  </div>
+
+  <p class="subtitle">
+    Хватит терпеть, плакать в подушку и надеяться, что время лечит. Оно не лечит — оно просто идёт.
+  </p>
+
+  <div class="divider"></div>
+
+  <p class="body-copy">
+    Боль после расставания — это не слабость характера. Это <strong>нейрохимия</strong>. Дофамин, кортизол, окситоцин — они буквально держат тебя в петле. И пока ты не перезапустишь систему на уровне биохимии, <strong>ничего не изменится</strong>. Этот курс — не про «принять и отпустить». Это <strong>практический протокол пересборки</strong> с нуля.
+  </p>
+
+  <!-- ДИАГНОСТИКА -->
+  <div class="section-label">Узнай себя</div>
+  <div class="diag-block">
+    <div class="diag-title">Это про тебя?</div>
+    <div class="diag-item">
+      <div class="diag-dot"></div>
+      <span>Ты просыпаешься — и первая мысль снова о нём?</span>
+    </div>
+    <div class="diag-item">
+      <div class="diag-dot"></div>
+      <span>Ты снова и снова прокручиваешь одни и те же сцены — и не можешь остановить?</span>
+    </div>
+    <div class="diag-item">
+      <div class="diag-dot"></div>
+      <span>Ты уже «работала над собой», но облегчение не приходит?</span>
+    </div>
+    <div class="diag-item">
+      <div class="diag-dot"></div>
+      <span>Ты чувствуешь, что застряла — и время идёт, а внутри ничего не меняется?</span>
+    </div>
+    <div class="diag-footer">
+      Если хотя бы один пункт — про тебя, этот материал написан именно для тебя.
+    </div>
+  </div>
+
+  <!-- ЧТО ИЗМЕНИТСЯ -->
+  <div class="section-label">Что ты получишь</div>
+  <div class="results-block">
+    <div class="result-item">
+      <div class="result-icon">🧬</div>
+      <div class="result-text">
+        <strong>Поймёшь, что с тобой происходит на уровне химии</strong>
+        Почему мозг держит тебя в зависимости — и как именно это работает.
+      </div>
+    </div>
+    <div class="result-item">
+      <div class="result-icon">🔧</div>
+      <div class="result-text">
+        <strong>Получишь конкретный набор инструментов</strong>
+        Не советы «займись собой». Техники, которые работают с нервной системой напрямую.
+      </div>
+    </div>
+    <div class="result-item">
+      <div class="result-icon">🧠</div>
+      <div class="result-text">
+        <strong>Перезапустишь нейрохимию</strong>
+        Восстановишь дофаминовый фон без него — и без срывов назад.
+      </div>
+    </div>
+    <div class="result-item">
+      <div class="result-icon">⚡</div>
+      <div class="result-text">
+        <strong>Выйдешь из петли навсегда</strong>
+        Не «стало чуть легче». А — вышла. Закрыла. Пошла дальше.
+      </div>
+    </div>
+  </div>
+
+  <!-- ОТЗЫВЫ -->
+  <div class="section-label">Отзывы</div>
+  <div class="reviews-block">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">«Я читала много всего. Но здесь первый раз объяснили — почему именно я не могу "просто перестать думать". Всё встало на место. За неделю стало реально легче.»</p>
+      <div class="review-author">
+        <div class="review-avatar">А</div>
+        <div>
+          <div class="review-name">Алина, 32 года</div>
+          <div class="review-meta">Киев</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">«Думала, что это очередная психология. Оказалось — инструкция. Конкретная. Без воды. Я прошла раздел про дофамин и поняла, что три года делала всё наоборот.»</p>
+      <div class="review-author">
+        <div class="review-avatar">К</div>
+        <div>
+          <div class="review-name">Катерина, 37 лет</div>
+          <div class="review-meta">Харьков</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">«Подруга скинула ссылку. Скачала без особых ожиданий. Прочитала за вечер. Через два дня поняла — что-то реально сдвинулось. Перестала проверять его страницы.»</p>
+      <div class="review-author">
+        <div class="review-avatar">Н</div>
+        <div>
+          <div class="review-name">Наталья, 41 год</div>
+          <div class="review-meta">Одесса</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ЦЕНА + КНОПКИ -->
+  <div class="price-block">
+    <div class="price-row">
+      <span class="price-tag">1499 грн</span>
+      <span class="price-sep">/</span>
+      <span class="price-tag">$34</span>
+      <span class="price-format">PDF</span>
+    </div>
+    <div class="price-desc">Мгновенный доступ после оплаты. Читать можно сразу.</div>
+  </div>
+
+  <div class="btn-group">
+    <a class="btn btn-primary"
+       href="https://secure.wayforpay.com/button/bf7aa3d1836b8"
+       target="_blank" rel="noopener">
+      💳 Оплатить картой (Украина)
+    </a>
+    <a class="btn btn-secondary"
+       href="https://www.paypal.com/ncp/payment/ASS47GAXNDR7J"
+       target="_blank" rel="noopener">
+      🌍 Оплатить через PayPal
+    </a>
+  </div>
+
+  <p class="footer-note">Безопасная оплата · Мгновенная доставка на email</p>
+
+</div>
+</body>
+</html>
