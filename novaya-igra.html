@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>НОВАЯ ИГРА — гайд по свиданиям</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #100c0c;
+    --cream: #f5ede3;
+    --rose: #b83228;
+    --rose-dim: rgba(184,50,40,0.12);
+    --gold: #c9a84c;
+    --gold-dim: rgba(201,168,76,0.12);
+    --muted: #7a6a62;
+    --surface: #1c1515;
+    --border: rgba(245,237,227,0.1);
+  }
+
+  html, body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'Manrope', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 28px 20px 40px;
+    background:
+      radial-gradient(ellipse at 80% 0%, #1a1020 0%, transparent 55%),
+      var(--ink);
+  }
+
+  /* ── BADGE ── */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.45);
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+    width: fit-content;
+  }
+
+  /* ── TITLE ── */
+  .title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 8vw, 36px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .title em { font-style: italic; color: var(--gold); }
+
+  /* ── MOCKUP ── */
+  .mockup-wrap {
+    margin: 0 auto 22px;
+    width: 100%;
+    max-width: 300px;
+    position: relative;
+  }
+  .mockup-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 10px 8px -8px;
+    background: rgba(100,30,100,0.28);
+    filter: blur(22px);
+    border-radius: 12px;
+    z-index: 0;
+  }
+  .mockup-img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5), 0 16px 40px rgba(0,0,0,0.6);
+  }
+
+  /* ── INTRO TEXT ── */
+  .subtitle {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: rgba(245,237,227,0.75);
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .divider {
+    width: 36px; height: 2px;
+    background: var(--gold);
+    margin-bottom: 12px;
+  }
+  .body-copy {
+    font-size: 13.5px;
+    line-height: 1.68;
+    color: #cdbfb5;
+    margin-bottom: 28px;
+  }
+  .body-copy strong { color: var(--cream); font-weight: 600; }
+
+  /* ── SECTION HEADER ── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  /* ── ДИАГНОСТИКА ── */
+  .diag-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--gold);
+    border-radius: 6px;
+    padding: 16px;
+    margin-bottom: 28px;
+  }
+  .diag-block .diag-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--cream);
+  }
+  .diag-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #d4c4ba;
+  }
+  .diag-item:last-child { margin-bottom: 0; }
+  .diag-dot {
+    flex-shrink: 0;
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    margin-top: 7px;
+  }
+  .diag-block .diag-footer {
+    margin-top: 14px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--gold);
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+
+  /* ── РЕЗУЛЬТАТЫ ── */
+  .results-block {
+    margin-bottom: 28px;
+  }
+  .result-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 8px;
+  }
+  .result-icon {
+    font-size: 18px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .result-text {
+    font-size: 13px;
+    line-height: 1.55;
+    color: #d4c4ba;
+  }
+  .result-text strong { color: var(--cream); display: block; font-size: 13.5px; margin-bottom: 2px; }
+
+  /* ── ОТЗЫВЫ ── */
+  .reviews-block {
+    margin-bottom: 28px;
+  }
+  .review-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 8px;
+  }
+  .review-text {
+    font-size: 13px;
+    line-height: 1.62;
+    color: #cdbfb5;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .review-avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--gold-dim);
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .review-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--cream);
+  }
+  .review-meta {
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .stars { color: var(--gold); font-size: 11px; letter-spacing: 1px; }
+
+  /* ── ЦЕНА ── */
+  .price-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 16px 16px;
+    margin-bottom: 14px;
+  }
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .price-tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .price-sep { color: var(--muted); font-size: 13px; }
+  .price-format {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 2px 6px;
+    border: 1px solid rgba(122,106,98,0.4);
+    border-radius: 2px;
+  }
+  .price-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── КНОПКИ ── */
+  .btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 5px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 15px 20px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.12s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn:active { transform: scale(0.97); opacity: 0.82; }
+  .btn-primary {
+    background: linear-gradient(135deg, #b8922a 0%, #d4a93a 50%, #b8922a 100%);
+    color: #0a0808;
+    border: none;
+    box-shadow: 0 4px 20px rgba(201,168,76,0.4);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(245,237,227,0.22);
+  }
+
+  /* ── FOOTER NOTE ── */
+  .footer-note {
+    text-align: center;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <div class="badge">✦ PDF-гайд · Свидания и соблазнение</div>
+
+  <h1 class="title">
+    <em>Новая игра:</em><br>инструкция по свиданиям после долгой паузы
+  </h1>
+
+  <div class="mockup-wrap">
+    <img class="mockup-img"
+         src="https://i.ibb.co/xKYfdG9V/1779341019953.png"
+         alt="Обложка гайда НОВАЯ ИГРА">
+  </div>
+
+  <p class="subtitle">
+    Полный путеводитель по мужской психологии, флирту, оформлению анкет в приложениях и правилам безопасных знакомств.
+  </p>
+
+  <div class="divider"></div>
+
+  <p class="body-copy">
+    Ты давно не была в игре. И это <strong>не проблема</strong> — это точка старта. Не будет советов в стиле <strong>«просто люби себя»</strong> или <strong>«он сам найдётся»</strong>. Здесь — <strong>механика, психология, конкретные инструменты.</strong> То, что реально работает — без ощущения, что ты наступаешь на грабли снова и снова.
+  </p>
+
+  <!-- ДИАГНОСТИКА -->
+  <div class="section-label">Узнай себя</div>
+  <div class="diag-block">
+    <div class="diag-title">Это про тебя?</div>
+    <div class="diag-item">
+      <div class="diag-dot"></div>
+      <span>Ты не понимаешь, как вести себя с мужчинами — правила изменились, а ты пропустила обновление?</span>
+    </div>
+    <div class="diag-item">
+      <div class="diag-dot"></div>
+      <span>Приложения для знакомств вызывают тревогу: непонятно, что писать, что ставить на фото, как не выглядеть отчаянной?</span>
+    </div>
+    <div class="diag-item">
+      <div class="diag-dot"></div>
+      <span>Ты флиртуешь — и тут же одёргиваешь себя, потому что «а вдруг неправильно поймёт»?</span>
+    </div>
+    <div class="diag-item">
+      <div class="diag-dot"></div>
+      <span>Первые свидания пугают: не знаешь, где граница между открытостью и безопасностью?</span>
+    </div>
+    <div class="diag-footer">
+      Если хотя бы один пункт — про тебя, этот гайд написан именно для тебя.
+    </div>
+  </div>
+
+  <!-- ЧТО ИЗМЕНИТСЯ -->
+  <div class="section-label">Что изменится после прочтения</div>
+  <div class="results-block">
+    <div class="result-item">
+      <div class="result-icon">🧠</div>
+      <div class="result-text">
+        <strong>Ты поймёшь, как думает мужчина</strong>
+        Не «все мужики одинаковые» — а реальная механика: что притягивает, что отталкивает, как читать сигналы без самообмана.
+      </div>
+    </div>
+    <div class="result-item">
+      <div class="result-icon">💬</div>
+      <div class="result-text">
+        <strong>Ты научишься флиртовать — легко и без стыда</strong>
+        Конкретные фразы, жесты, паузы. Флирт — это навык, а не черта характера. Его можно прокачать.
+      </div>
+    </div>
+    <div class="result-item">
+      <div class="result-icon">📱</div>
+      <div class="result-text">
+        <strong>Твоя анкета начнёт работать на тебя</strong>
+        Фото, биография, первое сообщение — разбор по деталям. Никаких шаблонов «напиши что-нибудь живое».
+      </div>
+    </div>
+    <div class="result-item">
+      <div class="result-icon">🛡️</div>
+      <div class="result-text">
+        <strong>Ты будешь защищена — без паранойи</strong>
+        12 правил безопасности на первых свиданиях, которые дают свободу, а не страх.
+      </div>
+    </div>
+  </div>
+
+  <!-- ОТЗЫВЫ -->
+  <div class="section-label">Отзывы</div>
+  <div class="reviews-block">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">«Три года не ходила на свидания после развода. Прочитала гайд — и пошла. Раздел про анкеты изменил всё: за неделю три адекватных знакомства. Раньше было ноль за месяц.»</p>
+      <div class="review-author">
+        <div class="review-avatar">И</div>
+        <div>
+          <div class="review-name">Ирина, 36 лет</div>
+          <div class="review-meta">Киев</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">«Думала, что флирт — это либо есть, либо нет. Оказалось, это просто техника. Часть про мужскую психологию перечитывала дважды. Наконец-то понятно, почему они так себя ведут.»</p>
+      <div class="review-author">
+        <div class="review-avatar">Н</div>
+        <div>
+          <div class="review-name">Наталья, 39 лет</div>
+          <div class="review-meta">Львов</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">«Подруга скинула ссылку. Ожидала банальщину — получила конкретику. Правила безопасности на первом свидании — это вообще отдельная золотая глава. Почему никто не говорит об этом вслух?»</p>
+      <div class="review-author">
+        <div class="review-avatar">А</div>
+        <div>
+          <div class="review-name">Алина, 33 года</div>
+          <div class="review-meta">Варшава</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ЦЕНА + КНОПКИ -->
+  <div class="price-block">
+    <div class="price-row">
+      <span class="price-tag">1499 грн</span>
+      <span class="price-sep">/</span>
+      <span class="price-tag">$34</span>
+      <span class="price-format">PDF</span>
+    </div>
+    <div class="price-desc">Мгновенный доступ после оплаты. Читать можно сразу.</div>
+  </div>
+
+  <div class="btn-group">
+    <a class="btn btn-primary"
+       href="https://secure.wayforpay.com/button/b1d29b1b90a61"
+       target="_blank" rel="noopener">
+      💳 Оплатить картой (Украина)
+    </a>
+    <a class="btn btn-secondary"
+       href="https://www.paypal.com/ncp/payment/PGNUCC4AB34C8"
+       target="_blank" rel="noopener">
+      🌍 Оплатить через PayPal
+    </a>
+  </div>
+
+  <p class="footer-note">Безопасная оплата · Мгновенная доставка на email</p>
+
+</div>
+</body>
+</html>
