@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Кодекс Ценности — PDF для сильных женщин</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #100c0c;
+    --cream: #f5ede3;
+    --rose: #b83228;
+    --rose-dim: rgba(184,50,40,0.12);
+    --gold: #c9a84c;
+    --gold-dim: rgba(201,168,76,0.12);
+    --muted: #7a6a62;
+    --surface: #1c1515;
+    --border: rgba(245,237,227,0.1);
+  }
+
+  html, body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'Manrope', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 28px 20px 40px;
+    background:
+      radial-gradient(ellipse at 80% 0%, #2a0e1a 0%, transparent 55%),
+      var(--ink);
+  }
+
+  /* ── BADGE ── */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.45);
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+    width: fit-content;
+  }
+
+  /* ── TITLE ── */
+  .title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 8vw, 34px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+  .title em { font-style: italic; color: var(--rose); }
+
+  .title-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(13px, 3.5vw, 15px);
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(245,237,227,0.5);
+    margin-bottom: 20px;
+    line-height: 1.4;
+  }
+
+  /* ── MOCKUP ── */
+  .mockup-wrap {
+    margin: 0 auto 22px;
+    width: 100%;
+    max-width: 280px;
+    position: relative;
+  }
+  .mockup-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 10px 8px -8px;
+    background: rgba(184,50,40,0.22);
+    filter: blur(22px);
+    border-radius: 12px;
+    z-index: 0;
+  }
+  .mockup-img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5), 0 16px 40px rgba(0,0,0,0.6);
+  }
+
+  /* ── INTRO ── */
+  .subtitle {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: rgba(245,237,227,0.75);
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .divider {
+    width: 36px; height: 2px;
+    background: var(--gold);
+    margin-bottom: 12px;
+  }
+  .body-copy {
+    font-size: 13.5px;
+    line-height: 1.68;
+    color: #cdbfb5;
+    margin-bottom: 28px;
+  }
+  .body-copy strong { color: var(--cream); font-weight: 600; }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  /* ── ДИАГНОСТИКА ── */
+  .diag-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--rose);
+    border-radius: 6px;
+    padding: 16px;
+    margin-bottom: 28px;
+  }
+  .diag-block .diag-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--cream);
+  }
+  .diag-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #d4c4ba;
+  }
+  .diag-item:last-child { margin-bottom: 0; }
+  .diag-dot {
+    flex-shrink: 0;
+    width: 6px; height: 6px;
+    background: var(--rose);
+    border-radius: 50%;
+    margin-top: 7px;
+  }
+  .diag-block .diag-footer {
+    margin-top: 14px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--gold);
+    border-top: 1px solid var(--border);
+    padding-top: 12px;
+  }
+
+  /* ── РЕЗУЛЬТАТЫ ── */
+  .results-block { margin-bottom: 28px; }
+  .result-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 8px;
+  }
+  .result-icon { font-size: 18px; line-height: 1; flex-shrink: 0; margin-top: 1px; }
+  .result-text { font-size: 13px; line-height: 1.55; color: #d4c4ba; }
+  .result-text strong { color: var(--cream); display: block; font-size: 13.5px; margin-bottom: 2px; }
+
+  /* ── ИСТИНЫ (10 правил) ── */
+  .truths-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px;
+    margin-bottom: 28px;
+  }
+  .truth-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    line-height: 1.5;
+    color: #d4c4ba;
+  }
+  .truth-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .truth-num {
+    flex-shrink: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--rose);
+    width: 22px;
+    text-align: right;
+  }
+
+  /* ── ОТЗЫВЫ ── */
+  .reviews-block { margin-bottom: 28px; }
+  .review-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 8px;
+  }
+  .review-text {
+    font-size: 13px;
+    line-height: 1.62;
+    color: #cdbfb5;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  .review-author { display: flex; align-items: center; gap: 8px; }
+  .review-avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--rose-dim);
+    border: 1px solid rgba(184,50,40,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; flex-shrink: 0;
+  }
+  .review-name { font-size: 12px; font-weight: 700; color: var(--cream); }
+  .review-meta { font-size: 11px; color: var(--muted); }
+  .stars { color: var(--gold); font-size: 11px; letter-spacing: 1px; margin-bottom: 6px; }
+
+  /* ── ЦЕНА ── */
+  .price-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 16px 16px;
+    margin-bottom: 14px;
+  }
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .price-tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .price-sep { color: var(--muted); font-size: 13px; }
+  .price-format {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 2px 6px;
+    border: 1px solid rgba(122,106,98,0.4);
+    border-radius: 2px;
+  }
+  .price-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* ── КНОПКИ ── */
+  .btn-group { display: flex; flex-direction: column; gap: 9px; }
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 5px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 15px 20px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.12s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn:active { transform: scale(0.97); opacity: 0.82; }
+  .btn-primary {
+    background: var(--rose);
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 20px rgba(184,50,40,0.45);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(245,237,227,0.22);
+  }
+
+  /* ── FOOTER ── */
+  .footer-note {
+    text-align: center;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <div class="badge">✦ PDF · Психология достоинства</div>
+
+  <h1 class="title">
+    <em>Кодекс</em><br>Ценности
+  </h1>
+  <p class="title-sub">10 истин женщины, которую невозможно предать</p>
+
+  <div class="mockup-wrap">
+    <img class="mockup-img"
+         src="https://i.ibb.co/8DydvhYb/1779341585536.png"
+         alt="Кодекс Ценности — PDF">
+  </div>
+
+  <p class="subtitle">
+    Свод ментальных правил сильной личности — для тех, кто возвращает себе растоптанное достоинство.
+  </p>
+
+  <div class="divider"></div>
+
+  <p class="body-copy">
+    Это не про прощение. Не про «отпусти и живи дальше». Это про <strong>архитектуру внутри</strong> — ту, которую невозможно сломать ни изменой, ни предательством, ни молчанием там, где должны были сказать правду. <strong>10 истин.</strong> Каждая — как позвонок в хребте, которого вам не хватало.
+  </p>
+
+  <!-- ДИАГНОСТИКА -->
+  <div class="section-label">Узнай себя</div>
+  <div class="diag-block">
+    <div class="diag-title">Это про вас?</div>
+    <div class="diag-item">
+      <div class="diag-dot"></div>
+      <span>Вы снова и снова оправдываете того, кто не заслуживает ни слова защиты?</span>
+    </div>
+    <div class="diag-item">
+      <div class="diag-dot"></div>
+      <span>Вы чувствуете, что потеряли себя — и не знаете, с чего начать возвращение?</span>
+    </div>
+    <div class="diag-item">
+      <div class="diag-dot"></div>
+      <span>Чужие слова до сих пор живут в вашей голове и определяют вашу ценность?</span>
+    </div>
+    <div class="diag-item">
+      <div class="diag-dot"></div>
+      <span>Вы даёте другим право решать, сколько вы стоите?</span>
+    </div>
+    <div class="diag-footer">
+      Если хотя бы один пункт — про вас, этот материал создан именно для вас.
+    </div>
+  </div>
+
+  <!-- ЧТО ВНУТРИ -->
+  <div class="section-label">10 истин Кодекса</div>
+  <div class="truths-block">
+    <div class="truth-item">
+      <span class="truth-num">I</span>
+      <span>Ваша ценность не определяется тем, кто вас выбрал или бросил</span>
+    </div>
+    <div class="truth-item">
+      <span class="truth-num">II</span>
+      <span>Боль — это сигнал, а не приговор</span>
+    </div>
+    <div class="truth-item">
+      <span class="truth-num">III</span>
+      <span>Прощение — для вас, не для него</span>
+    </div>
+    <div class="truth-item">
+      <span class="truth-num">IV</span>
+      <span>Граница — это не стена. Это фундамент</span>
+    </div>
+    <div class="truth-item">
+      <span class="truth-num">V</span>
+      <span>Достоинство не восстанавливают — его вспоминают</span>
+    </div>
+    <div class="truth-item">
+      <span class="truth-num">VI</span>
+      <span>Молчание о своей боли — не сила. Это медленное самоуничтожение</span>
+    </div>
+    <div class="truth-item">
+      <span class="truth-num">VII</span>
+      <span>Сравнение с другими — это всегда ложь</span>
+    </div>
+    <div class="truth-item">
+      <span class="truth-num">VIII</span>
+      <span>Вы имеете право злиться. И право не объяснять это никому</span>
+    </div>
+    <div class="truth-item">
+      <span class="truth-num">IX</span>
+      <span>Любовь к себе — не эгоизм. Это единственная честная точка отсчёта</span>
+    </div>
+    <div class="truth-item">
+      <span class="truth-num">X</span>
+      <span>Женщину, знающую свою цену, невозможно предать дважды</span>
+    </div>
+  </div>
+
+  <!-- ЧТО ИЗМЕНИТСЯ -->
+  <div class="section-label">После прочтения</div>
+  <div class="results-block">
+    <div class="result-item">
+      <div class="result-icon">🧠</div>
+      <div class="result-text">
+        <strong>Вы поймёте, откуда берётся самопредательство</strong>
+        Не через годы терапии — через конкретную механику мышления.
+      </div>
+    </div>
+    <div class="result-item">
+      <div class="result-icon">🗡️</div>
+      <div class="result-text">
+        <strong>Вы перестанете нуждаться в его оценке</strong>
+        Внутренняя точка опоры не зависит от того, что он думает или делает.
+      </div>
+    </div>
+    <div class="result-item">
+      <div class="result-icon">🔐</div>
+      <div class="result-text">
+        <strong>Вы выстроите ментальную защиту</strong>
+        Такую, которую не пробить манипуляцией, виной или жалостью.
+      </div>
+    </div>
+    <div class="result-item">
+      <div class="result-icon">👁️</div>
+      <div class="result-text">
+        <strong>Вы увидите себя иначе</strong>
+        Не через чужой взгляд. Через собственный — трезвый и безжалостно честный.
+      </div>
+    </div>
+  </div>
+
+  <!-- ОТЗЫВЫ -->
+  <div class="section-label">Отзывы</div>
+  <div class="reviews-block">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">«Я думала, что мне нужна очередная книга про любовь к себе. Но это другое. Здесь — точность. Каждая истина — как укол иглой в точно нужное место. Перечитала три раза.»</p>
+      <div class="review-author">
+        <div class="review-avatar">А</div>
+        <div>
+          <div class="review-name">Анна, 36 лет</div>
+          <div class="review-meta">Киев</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">«После двух лет отношений, которые меня уничтожали, я наконец поняла — проблема была не в нём. Проблема была в том, что у меня не было этого кодекса внутри.»</p>
+      <div class="review-author">
+        <div class="review-avatar">В</div>
+        <div>
+          <div class="review-name">Виктория, 31 год</div>
+          <div class="review-meta">Львов</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">«Никакой воды. Никаких "ты сильная, ты справишься". Только правда — неудобная, точная и именно та, которая нужна была мне уже давно.»</p>
+      <div class="review-author">
+        <div class="review-avatar">Н</div>
+        <div>
+          <div class="review-name">Наталья, 43 года</div>
+          <div class="review-meta">Одесса</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ЦЕНА + КНОПКИ -->
+  <div class="price-block">
+    <div class="price-row">
+      <span class="price-tag">449 грн</span>
+      <span class="price-sep">/</span>
+      <span class="price-tag">$10</span>
+      <span class="price-format">PDF</span>
+    </div>
+    <div class="price-desc">Мгновенный доступ после оплаты. Читать можно сразу.</div>
+  </div>
+
+  <div class="btn-group">
+    <a class="btn btn-primary"
+       href="https://secure.wayforpay.com/button/b7672626b65c2"
+       target="_blank" rel="noopener">
+      💳 Оплатить картой (Украина)
+    </a>
+    <a class="btn btn-secondary"
+       href="https://www.paypal.com/ncp/payment/TPUDJ4F9BPMNU"
+       target="_blank" rel="noopener">
+      🌍 Оплатить через PayPal
+    </a>
+  </div>
+
+  <p class="footer-note">Безопасная оплата · Мгновенная доставка на email</p>
+
+</div>
+</body>
+</html>
