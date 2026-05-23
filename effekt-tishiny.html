@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Эффект тишины — back4heart</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0c;
+    --surface: #111116;
+    --surface2: #16161d;
+    --border: rgba(255,255,255,0.07);
+    --crimson: #c0392b;
+    --crimson-soft: rgba(192,57,43,0.15);
+    --gold: #c9a84c;
+    --gold-soft: rgba(201,168,76,0.12);
+    --text: #e8e4dc;
+    --text-muted: #8a8580;
+    --text-dim: #5a5550;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    font-size: 17px;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  /* ── LAYOUT ── */
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 0 60px;
+    position: relative;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--gold));
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 8vw, 72px);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+    color: var(--text-muted);
+    max-width: 480px;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+    margin-bottom: 48px;
+  }
+
+  .hero-rule {
+    width: 48px;
+    height: 1px;
+    background: var(--crimson);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.5s forwards;
+  }
+
+  /* ── PULL QUOTE OPENING ── */
+  .pull-quote {
+    border-left: 2px solid var(--crimson);
+    padding: 20px 28px;
+    margin: 60px 0;
+    background: var(--crimson-soft);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #d4cfc7;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 80px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 32px;
+  }
+
+  .section-heading .accent {
+    color: var(--gold);
+  }
+
+  p {
+    margin-bottom: 20px;
+    color: #ccc8c0;
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  /* ── CASE CARD ── */
+  .case-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 36px;
+    margin: 48px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .case-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--crimson), transparent);
+  }
+
+  .case-card .case-name {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 16px;
+  }
+
+  .case-card blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #d8d4cc;
+  }
+
+  /* ── ABOUT ── */
+  .about-block {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 48px 40px;
+    margin: 48px 0;
+    position: relative;
+  }
+
+  .about-block::after {
+    content: 'ROMAN';
+    position: absolute;
+    top: -1px; right: 32px;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    background: var(--gold);
+    color: var(--bg);
+    padding: 4px 12px;
+    font-weight: 600;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    margin: 56px 0;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--crimson), var(--gold), transparent);
+  }
+
+  .timeline-item {
+    padding: 0 0 48px 60px;
+    position: relative;
+  }
+
+  .timeline-item:last-child { padding-bottom: 0; }
+
+  .timeline-dot {
+    position: absolute;
+    left: 12px;
+    top: 4px;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    border: 2px solid var(--crimson);
+    background: var(--bg);
+    z-index: 1;
+  }
+
+  .timeline-item:nth-child(2) .timeline-dot { border-color: #b5833a; }
+  .timeline-item:nth-child(3) .timeline-dot { border-color: var(--gold); }
+
+  .timeline-period {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .timeline-item:nth-child(2) .timeline-period { color: #b5833a; }
+  .timeline-item:nth-child(3) .timeline-period { color: var(--gold); }
+
+  .timeline-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .timeline-result {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 6px 16px;
+    border: 1px solid var(--gold-soft);
+    background: var(--gold-soft);
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── MILESTONE QUOTE ── */
+  .milestone-quote {
+    background: transparent;
+    border: 1px solid var(--gold);
+    padding: 28px 32px;
+    margin: 40px 0;
+    position: relative;
+  }
+
+  .milestone-quote::before {
+    content: '"';
+    position: absolute;
+    top: -20px; left: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    color: var(--gold);
+    line-height: 1;
+    opacity: 0.4;
+  }
+
+  .milestone-quote p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  /* ── PRICING CTA ── */
+  .cta-section {
+    padding: 80px 0 100px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .price-compare {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+  }
+
+  .price-item {
+    text-align: center;
+  }
+
+  .price-item .label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .price-item .amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+
+  .price-item.main .amount {
+    font-size: 48px;
+    color: var(--gold);
+  }
+
+  .price-divider {
+    color: var(--border);
+    font-size: 28px;
+    font-weight: 100;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 18px 52px;
+    background: var(--crimson);
+    color: #fff;
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.08);
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+  }
+
+  .cta-btn:hover { background: #a93226; transform: translateY(-1px); }
+  .cta-btn:hover::before { transform: translateX(0); }
+
+  .cta-subtext {
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--text-dim);
+  }
+
+  /* ── STAT BAR ── */
+  .stat-bar {
+    display: flex;
+    gap: 2px;
+    margin: 48px 0 32px;
+  }
+
+  .stat {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .stat .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--crimson);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat .desc {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.4;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+    text-align: center;
+  }
+
+  .footer a {
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 48px 0;
+    color: var(--text-dim);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+  }
+
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .about-block { padding: 36px 24px; }
+    .case-card { padding: 28px 24px; }
+    .stat-bar { flex-direction: column; gap: 2px; }
+    .timeline-item { padding-left: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">back4heart · разбор кейса</p>
+    <div class="hero-rule"></div>
+    <h1 class="hero-title">Эффект<br><em>тишины</em></h1>
+    <p class="hero-subtitle">Как Алина остановила боль после расставания — и почему это работает для каждой, кто готова сделать первый шаг.</p>
+  </div>
+</div>
+
+<!-- SECTION 1: ТОЧКА А -->
+<div class="section fade-in">
+  <div class="wrap">
+    <p class="section-label">Точка А</p>
+    <h2 class="section-heading">Вы знаете это <span class="accent">состояние</span></h2>
+
+    <p>Утро начинается не с кофе — с проверки его страницы. Даже не осознанно. Просто рука сама тянется к телефону.</p>
+    <p>Фоновый шум в голове, который не выключается. Ком в горле, который появляется без повода — в магазине, в транспорте, посреди рабочего дня. Бесконечный внутренний разбор полётов: что было не так, что можно было сказать иначе, почему именно так вышло.</p>
+    <p>Это не слабость. Это нейробиология. Ваш мозг переживает настоящую ломку — и не знает, как из неё выйти.</p>
+
+    <div class="case-card fade-in">
+      <p class="case-name">Кейс · Алина, 38 лет</p>
+      <blockquote>
+        «Когда Алина пришла ко мне, у неё было ощущение, что жизнь закончилась. Четыре месяца после расставания, а легче не становилось. Каждое утро — проверка его профиля. Каждый вечер — вопрос "почему так вышло?". Она просто хотела, чтобы эти танцы в голове наконец-то прекратились».
+      </blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: ЗНАКОМСТВО -->
+<div class="section fade-in">
+  <div class="wrap">
+    <p class="section-label">Кто помог Алине</p>
+    <h2 class="section-heading">Почему я понимаю <span class="accent">это изнутри</span></h2>
+
+    <div class="about-block fade-in">
+      <p>Здравствуйте. Я — Роман.</p>
+      <p>Если вы это читаете — значит, сейчас вам очень больно. Внутри только пустота и желание, чтобы это поскорее прекратилось.</p>
+      <p>Я не буду говорить, что «время лечит» или что «нужно просто отпустить». В такие моменты эти слова только злят. Потому что кажется: «Откуда ты знаешь — у нас всё было по-другому».</p>
+      <p>Но знаете что? Я прошёл этот путь сам.</p>
+      <p>Мой брак длился 17 лет. Я знаю, как это — возвращаться в дом, где раньше тебя ждали. Я знаю, как сутками прокручивать мысли о том, кто ушёл. Я знаю, как внутренний мазохист говорит: «А давай проверим её сторис» — и ты проверяешь. И становится только хуже.</p>
+      <p>Это изматывает — морально и физически. Я искал выход. И в какой-то момент понял: мне недостаточно просто «говорить о чувствах». Мне нужно было решение, которое снимает эту тяжесть прямо сейчас.</p>
+      <p>Я начал изучать, как устроена привязанность, почему разрыв ощущается как физическая боль, как работают триггеры — и как их убрать. Я нашёл способы не застрять в этом состоянии на месяцы, а по-настоящему освободиться.</p>
+      <p>В самый сложный период своей жизни я не просто справился — я полностью изменился. Привёл в порядок тело, сбросил 40 кг, запустил новый бизнес и, главное, вернул себе себя. Я стал счастливым человеком. И я точно знаю: этот путь открыт для вас.</p>
+    </div>
+
+    <div class="stat-bar fade-in">
+      <div class="stat">
+        <span class="num">7/10</span>
+        <span class="desc">женщин чувствуют облегчение уже через неделю работы</span>
+      </div>
+      <div class="stat">
+        <span class="num">17</span>
+        <span class="desc">лет брака — я знаю эту боль не из книг</span>
+      </div>
+      <div class="stat">
+        <span class="num">21</span>
+        <span class="desc">день до точки полного равнодушия по протоколу</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: ТЕХНОЛОГИЯ -->
+<div class="section fade-in">
+  <div class="wrap">
+    <p class="section-label">Технология · Эффект тишины</p>
+    <h2 class="section-heading">Трансформация Алины: <span class="accent">три этапа</span></h2>
+
+    <p>Это не случайные события. Это предсказуемая последовательность. Вот как это происходило.</p>
+
+    <div class="timeline fade-in">
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="timeline-period">Дни 1–7 · Острая фаза</p>
+        <h3 class="timeline-title">Остановить цифровой мазохизм</h3>
+        <p>Первое, что разрушает Алину каждый день — это бесконечные проверки. Его страница. Онлайн-статус. Новые подписчики. Каждая проверка — это укол, который поддерживает боль в живом состоянии.</p>
+        <p>На этом этапе — блокировка этого цикла. Не силой воли. Конкретными действиями, которые меняют нейронный паттерн.</p>
+        <span class="timeline-result">→ Первый нормальный сон за долгое время</span>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="timeline-period">Дни 8–14 · Физиология привязанности</p>
+        <h3 class="timeline-title">Убрать ментальные триггеры</h3>
+        <p>Запах его духов. Песня из плейлиста. Место, мимо которого ходили вместе. Всё это — якоря, которые снова и снова возвращают в боль.</p>
+        <p>На этом этапе — работа с физиологией. Не с воспоминаниями, а с тем, как они записаны в теле. Это убирает эмоциональный заряд — не стирая память, а снимая с неё напряжение.</p>
+        <span class="timeline-result">→ Мысли о нём больше не вызывают слёз и боли в груди</span>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="timeline-period">Дни 15–21 · Фиксация равнодушия</p>
+        <h3 class="timeline-title">Точка тишины</h3>
+        <p>Это тот момент, ради которого всё делалось. Не ненависть — это тоже зависимость. Именно равнодушие. Спокойная, устойчивая тишина внутри.</p>
+        <p>Она видит его фотографию — и ничего не происходит. Не сжимается грудь. Не накатывает волна. Просто — ничего. Это и есть эффект тишины.</p>
+        <span class="timeline-result">→ Свобода. Не как цель — как факт</span>
+      </div>
+
+    </div>
+
+    <div class="milestone-quote fade-in">
+      <p>«На 12-й день Алина по привычке открыла мессенджер, увидела его "онлайн" — и поймала себя на мысли, что ей… всё равно. В груди больше не сжалось. Это и есть эффект тишины».</p>
+    </div>
+
+    <p class="fade-in" style="margin-top: 28px;">Почему у неё получилось? Потому что Алина сделала главное — она перестала круглосуточно угадывать, что происходит в его голове. Как только вы выключаете этот тумблер догадок, мозг наконец-то получает долгожданную тишину.</p>
+
+  </div>
+</div>
+
+<!-- SECTION 4: CTA -->
+<div class="cta-section fade-in">
+  <div class="wrap">
+    <p class="section-label">Следующий шаг</p>
+    <h2 class="section-heading" style="text-align:center">Перестаньте угадывать его мотивы.<br><span class="accent">Пора узнать правду</span></h2>
+
+    <p style="text-align:center; max-width:520px; margin: 0 auto 24px;">Что на самом деле значит его глухое молчание? Зачем он внезапно лайкает старые фото или заходит на вашу страницу посреди ночи?</p>
+
+    <p style="text-align:center; max-width:520px; margin: 0 auto 24px;">Женский разум устроен так, что в моменты боли он начинает дорисовывать скрытый смысл там, где его нет. Вы тратите недели жизни на то, чтобы расшифровать его действия.</p>
+
+    <p style="text-align:center; max-width:520px; margin: 0 auto 0; color: var(--text-muted);">Перестаньте искать скрытые смыслы в его действиях. Я написал этот закрытый PDF-разбор, чтобы вы увидели реальную картину его мыслей без жалости и пустых утешений.</p>
+
+    <div style="text-align:center; margin-top: 48px;">
+      <a class="cta-btn" href="https://back4heart.site/byvshiy-v-util.html" target="_blank">Бывший — в утиль. Читать разбор →</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="wrap">
+    <p class="footer-logo">back4heart</p>
+    <a href="https://back4heart.site/" target="_blank">back4heart.site</a>
+  </div>
+</div>
+
+<script>
+  // Scroll-triggered fade-ins
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
