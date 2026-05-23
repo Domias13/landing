@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Алгоритм возврата лидерской позиции — back4heart</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0e0a0a;
+  --cream: #f5ede3;
+  --rose: #b83228;
+  --rose-dim: rgba(184,50,40,0.12);
+  --rose-glow: rgba(184,50,40,0.22);
+  --gold: #c9a84c;
+  --gold-dim: rgba(201,168,76,0.10);
+  --muted: #7a6a62;
+  --surface: #181010;
+  --surface2: #1e1414;
+  --border: rgba(245,237,227,0.09);
+}
+
+html, body {
+  background: var(--ink);
+  color: var(--cream);
+  font-family: 'Manrope', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 32px 20px 60px;
+  background:
+    radial-gradient(ellipse at 85% 0%, #2e0e0e 0%, transparent 52%),
+    radial-gradient(ellipse at 10% 90%, #1a1008 0%, transparent 45%),
+    var(--ink);
+}
+
+/* ── TOP BADGE ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.4);
+  padding: 4px 11px;
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+
+/* ── HERO ── */
+.hero-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(27px, 7.5vw, 35px);
+  font-weight: 900;
+  line-height: 1.10;
+  margin-bottom: 18px;
+}
+.title em { font-style: italic; color: var(--rose); }
+
+.subtitle {
+  font-size: 14.5px;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 28px;
+  border-left: 2px solid var(--rose);
+  padding-left: 14px;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 28px 0;
+}
+
+/* ── INTRO BLOCK ── */
+.intro-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 18px 16px;
+  margin-bottom: 28px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.intro-block p + p { margin-top: 10px; }
+.intro-block strong { color: var(--cream); font-weight: 700; }
+.intro-block em { color: var(--gold); font-style: normal; font-weight: 600; }
+
+/* ── SECTION TITLE ── */
+.section-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+/* ── DIAGNOSIS BLOCK ── */
+.diagnosis {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 18px 16px 14px;
+  margin-bottom: 28px;
+}
+.diagnosis-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+.diag-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: rgba(245,237,227,0.85);
+}
+.diag-item:last-child { border-bottom: none; }
+.diag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--rose);
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+.diag-note {
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+/* ── WHAT'S HAPPENING ── */
+.mechanism-block {
+  margin-bottom: 28px;
+}
+.mechanism-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 10px;
+}
+.mechanism-card-title {
+  font-weight: 700;
+  font-size: 13.5px;
+  color: var(--cream);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mechanism-card-title span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--rose);
+  text-transform: uppercase;
+  background: var(--rose-dim);
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+.mechanism-card p {
+  font-size: 13px;
+  color: rgba(245,237,227,0.75);
+  line-height: 1.6;
+}
+
+/* ── ALGORITHM ── */
+.algo-block {
+  margin-bottom: 28px;
+}
+.algo-step {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 16px;
+  align-items: flex-start;
+}
+.algo-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--rose);
+  line-height: 1;
+  min-width: 32px;
+  opacity: 0.7;
+}
+.algo-content {
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+  flex: 1;
+}
+.algo-step-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--cream);
+  margin-bottom: 5px;
+  line-height: 1.3;
+}
+.algo-step-body {
+  font-size: 13px;
+  color: rgba(245,237,227,0.72);
+  line-height: 1.65;
+}
+.algo-step-body strong {
+  color: var(--cream);
+  font-weight: 600;
+}
+.algo-step-body em {
+  color: var(--gold);
+  font-style: normal;
+}
+
+/* ── TECHNIQUE ── */
+.technique-block {
+  background: linear-gradient(135deg, #1e0f0f 0%, #140e08 100%);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 4px;
+  padding: 20px 16px;
+  margin-bottom: 28px;
+}
+.technique-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.technique-tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.35);
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+.technique-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.technique-body {
+  font-size: 13px;
+  color: rgba(245,237,227,0.78);
+  line-height: 1.7;
+}
+.technique-body p + p { margin-top: 10px; }
+.technique-body strong { color: var(--cream); font-weight: 700; }
+.technique-steps {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.technique-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: rgba(245,237,227,0.78);
+  line-height: 1.55;
+}
+.technique-step-num {
+  font-weight: 700;
+  color: var(--gold);
+  min-width: 18px;
+  font-size: 12px;
+}
+
+/* ── WALL ── */
+.wall-block {
+  background: var(--surface2);
+  border: 1px solid rgba(184,50,40,0.25);
+  border-radius: 4px;
+  padding: 20px 16px;
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.wall-block::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--rose), transparent);
+}
+.wall-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+.wall-title em { color: var(--rose); font-style: italic; }
+.wall-body {
+  font-size: 13.5px;
+  color: rgba(245,237,227,0.78);
+  line-height: 1.7;
+}
+.wall-body p + p { margin-top: 10px; }
+.wall-body strong { color: var(--cream); font-weight: 700; }
+.wall-list {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.wall-list-item {
+  display: flex;
+  gap: 9px;
+  font-size: 13px;
+  color: rgba(245,237,227,0.72);
+  line-height: 1.55;
+}
+.wall-list-item::before {
+  content: '×';
+  color: var(--rose);
+  font-weight: 700;
+  font-size: 14px;
+  min-width: 14px;
+  margin-top: 1px;
+}
+
+/* ── PRODUCT CTA ── */
+.product-card {
+  background: var(--surface);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 4px;
+  padding: 22px 18px;
+  margin-bottom: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.product-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.4;
+}
+.product-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.35);
+  padding: 3px 8px;
+  border-radius: 2px;
+  margin-bottom: 12px;
+}
+.product-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 5.5vw, 24px);
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+.product-title em { font-style: italic; color: var(--rose); }
+.product-subtitle {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 16px;
+  line-height: 1.55;
+}
+.product-features {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-bottom: 20px;
+}
+.product-feature {
+  display: flex;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(245,237,227,0.8);
+}
+.pf-icon {
+  font-size: 15px;
+  min-width: 20px;
+  margin-top: 1px;
+}
+.cta-btn {
+  display: block;
+  width: 100%;
+  background: var(--rose);
+  color: #fff;
+  text-align: center;
+  padding: 14px 20px;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  cursor: pointer;
+  border: none;
+  margin-bottom: 10px;
+}
+.cta-btn:active { background: #9a2820; transform: scale(0.99); }
+.cta-sub {
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ── QUOTE ── */
+.quote-block {
+  border-left: 2px solid var(--rose);
+  padding: 12px 14px;
+  margin-bottom: 28px;
+  background: var(--rose-dim);
+  border-radius: 0 3px 3px 0;
+}
+.quote-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.6;
+  color: rgba(245,237,227,0.88);
+  margin-bottom: 8px;
+}
+.quote-author {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  font-size: 11px;
+  color: var(--muted);
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  line-height: 1.7;
+}
+.footer a { color: var(--gold); text-decoration: none; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page > * {
+  animation: fadeUp 0.5s ease both;
+}
+.badge                { animation-delay: 0.05s; }
+.hero-label           { animation-delay: 0.10s; }
+.title                { animation-delay: 0.15s; }
+.subtitle             { animation-delay: 0.20s; }
+.intro-block          { animation-delay: 0.25s; }
+.divider              { animation-delay: 0.28s; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="badge">✦ back4heart · алгоритм</div>
+
+  <div class="hero-label">Практический протокол</div>
+
+  <h1 class="title">
+    Как остановить <em>бред в голове</em><br>
+    и вернуть себе лидерскую позицию
+  </h1>
+
+  <p class="subtitle">
+    Не про «отпусти и живи дальше».<br>
+    Про то, как именно работает эта петля — и как из неё выйти.
+  </p>
+
+  <!-- INTRO -->
+  <div class="intro-block">
+    <p>Ты не слабая. Ты не зациклилась. У тебя нет проблем с силой воли.</p>
+    <p>У тебя <em>биохимическая привязанность</em> — и она устроена так, что логика против неё бессильна. Именно поэтому ты знаешь, что надо перестать думать о нём — <strong>и не можешь.</strong></p>
+    <p>Это не про него. Это про то, что происходит внутри твоей нервной системы. И с этим можно работать — <strong>технически, пошагово, без терапевтических клише.</strong></p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- DIAGNOSIS -->
+  <div class="diagnosis">
+    <div class="section-title">Диагностика</div>
+    <div class="diagnosis-title">Узнай, в какой фазе ты сейчас</div>
+    <div class="diag-item"><div class="diag-dot"></div><div>Ты анализируешь, что пошло не так — снова и снова, как будто найдёшь ответ, который что-то изменит</div></div>
+    <div class="diag-item"><div class="diag-dot"></div><div>Ты мониторишь его жизнь — соцсети, общих знакомых, любые сигналы — и каждый раз жалеешь об этом</div></div>
+    <div class="diag-item"><div class="diag-dot"></div><div>Ты знаешь, что надо двигаться дальше — но «внутри что-то держит», и ты не понимаешь что именно</div></div>
+    <div class="diag-item"><div class="diag-dot"></div><div>Ты уже «работала над собой» — читала, медитировала, разговаривала с подругами — но облегчение временное</div></div>
+    <div class="diag-item"><div class="diag-dot"></div><div>Мысли о нём врываются в неподходящий момент: на работе, ночью, в середине разговора</div></div>
+    <div class="diag-note">Если хотя бы два пункта — про тебя, ты находишься в петле биохимической зависимости. Это не слабость. Это механика. И у неё есть выход.</div>
+  </div>
+
+  <!-- MECHANISM -->
+  <div class="mechanism-block">
+    <div class="section-title">Что происходит внутри</div>
+
+    <div class="mechanism-card">
+      <div class="mechanism-card-title">
+        Дофаминовая ловушка
+        <span>Фаза 1</span>
+      </div>
+      <p>Отношения создали устойчивый дофаминовый контур. После разрыва мозг продолжает ждать «награды» — и генерирует навязчивые мысли как попытку вернуть её. Ты думаешь о нём не потому что любишь — а потому что мозг ищет дофамин.</p>
+    </div>
+
+    <div class="mechanism-card">
+      <div class="mechanism-card-title">
+        Кортизол и тревога
+        <span>Фаза 2</span>
+      </div>
+      <p>Разрыв — это стресс-событие. Кортизол повышен. Нервная система в режиме угрозы. Именно поэтому тело не расслабляется, мысли не останавливаются, и даже приятные вещи не приносят удовольствия — система занята «опасностью».</p>
+    </div>
+
+    <div class="mechanism-card">
+      <div class="mechanism-card-title">
+        Утрата идентичности
+        <span>Фаза 3</span>
+      </div>
+      <p>Часть «я» была определена через отношения. После разрыва — вакуум. Мозг возвращается к нему снова и снова не из любви, а потому что там была <strong>точка опоры</strong>. Лидерская позиция — это вернуть эту точку внутрь себя.</p>
+    </div>
+  </div>
+
+  <!-- ALGORITHM -->
+  <div class="algo-block">
+    <div class="section-title">Алгоритм · 5 шагов</div>
+
+    <div class="algo-step">
+      <div class="algo-num">01</div>
+      <div class="algo-content">
+        <div class="algo-step-title">Признать механику — не характер</div>
+        <div class="algo-step-body">Первый шаг — перестать объяснять своё состояние слабостью, любовью или «я такая». Это <em>нейрохимия</em>. Кортизол, окситоцин, дофамин держат тебя в петле так же надёжно, как физическая зависимость. <strong>Когда ты перестаёшь бороться с «собой» и начинаешь работать с механикой — сдвиг происходит быстро.</strong></div>
+      </div>
+    </div>
+
+    <div class="algo-step">
+      <div class="algo-num">02</div>
+      <div class="algo-content">
+        <div class="algo-step-title">Прервать цикл мониторинга</div>
+        <div class="algo-step-body">Каждая проверка его страницы, каждый «просто гляну» — это доза. Она не уменьшает боль. Она <em>перезаряжает зависимость</em>. Мозг получает сигнал: объект важен, следить. Прерывание этого цикла — не про силу воли. Это про <strong>удаление триггера из среды.</strong> Конкретный протокол — ниже.</div>
+      </div>
+    </div>
+
+    <div class="algo-step">
+      <div class="algo-num">03</div>
+      <div class="algo-content">
+        <div class="algo-step-title">Перехватить навязчивую мысль в точке входа</div>
+        <div class="algo-step-body">Мысль о нём — это не проблема. Это <em>сигнал нервной системы</em>. Задача — не блокировать её (это создаёт рикошет), а переключить нейронную активацию в другое место <strong>в течение 3 секунд после появления.</strong> Техника переключения — в следующем блоке.</div>
+      </div>
+    </div>
+
+    <div class="algo-step">
+      <div class="algo-num">04</div>
+      <div class="algo-content">
+        <div class="algo-step-title">Восстановить дофаминовый фон без него</div>
+        <div class="algo-step-body">Пока дофаминовый фон в нуле — мозг будет тянуться к единственному известному источнику. Задача этого шага — создать <em>альтернативные точки активации</em>. Не «займись собой». <strong>Конкретный протокол замены нейрохимических источников</strong> — с пониманием, что именно активирует систему и почему это работает.</div>
+      </div>
+    </div>
+
+    <div class="algo-step">
+      <div class="algo-num">05</div>
+      <div class="algo-content">
+        <div class="algo-step-title">Вернуть точку опоры внутрь</div>
+        <div class="algo-step-body">Лидерская позиция — это не «я сильная». Это когда твои решения исходят <em>изнутри</em>, а не из реакции на него. Когда его жизнь становится нейтральной информацией — не болью, не злостью, не интересом. <strong>Сепарация завершена, когда он перестаёт быть системой координат.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TECHNIQUE -->
+  <div class="technique-block">
+    <div class="technique-header">
+      <div class="technique-tag">Техника</div>
+    </div>
+    <div class="technique-name">Переключение мысли за 3 секунды</div>
+    <div class="technique-body">
+      <p>Когда мысль о нём появляется — у тебя есть узкое окно, чтобы не дать ей развернуться в сценарий. Вот что работает с нервной системой напрямую:</p>
+      <div class="technique-steps">
+        <div class="technique-step"><div class="technique-step-num">1</div><div>Заметь мысль — буквально скажи себе внутри: «вот она». Не борись. Просто зафиксируй.</div></div>
+        <div class="technique-step"><div class="technique-step-num">2</div><div>Немедленно переключи сенсорный канал — прикоснись к чему-то холодному, сожми ладонь, встань. Тело перебивает мысль физически.</div></div>
+        <div class="technique-step"><div class="technique-step-num">3</div><div>Назови вслух или в голове любые 5 предметов, которые видишь прямо сейчас. Это принудительно переключает кору в «здесь и сейчас» — мысль теряет энергию.</div></div>
+      </div>
+      <p style="margin-top:14px; color: rgba(245,237,227,0.55); font-size:12px; font-style:italic;">Это работает. Но это — только один инструмент из протокола полной сепарации. Дальше — про то, где взять остальные.</p>
+    </div>
+  </div>
+
+  <!-- WALL - transition to product -->
+  <div class="wall-block">
+    <div class="wall-title">Почему этого <em>недостаточно</em></div>
+    <div class="wall-body">
+      <p>Техники работают. Алгоритм работает. Но есть уровень, до которого алгоритм не достаёт.</p>
+      <p>Потому что дело не только в мыслях — дело в <strong>структуре привязанности</strong>, которая сидит глубже. И пока её не разобрать по шагам — мониторинг вернётся. Мысли вернутся. В 2 часа ночи, через месяц, после случайного фото.</p>
+      <p>Вот что остаётся закрыть:</p>
+      <div class="wall-list">
+        <div class="wall-list-item">Нейрохимические крючки, которые держат привязанность даже когда ты «всё понимаешь»</div>
+        <div class="wall-list-item">Пошаговый протокол сепарации — не советы, а последовательность действий для мозга</div>
+        <div class="wall-list-item">Как сделать так, чтобы он перестал быть интересен — не потому что ты заставила себя, а по-настоящему</div>
+        <div class="wall-list-item">Как вернуть всю энергию, которая уходила на него — мысли, тревогу, ожидание</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="quote-block">
+    <div class="quote-text">«Полтора года таскала в голове одного человека. После этой инструкции — первый раз за долгое время не думала о нём целый день.»</div>
+    <div class="quote-author">Алина, 32 года · Киев</div>
+  </div>
+
+  <!-- PRODUCT CARD -->
+  <div class="product-card">
+    <div class="product-tag">✦ PDF-инструкция · back4heart</div>
+    <div class="product-title">Бывший — <em>в утиль</em></div>
+    <div class="product-subtitle">Пошаговая инструкция по тотальной сепарации. Перерезаем пуповину эмоциональной зависимости раз и навсегда.</div>
+
+    <div class="product-features">
+      <div class="product-feature">
+        <div class="pf-icon">✂️</div>
+        <div>Поймёшь, чем именно держит зависимость — не «любовью», а конкретными нейрохимическими крючками</div>
+      </div>
+      <div class="product-feature">
+        <div class="pf-icon">🧠</div>
+        <div>Получишь полный пошаговый протокол сепарации — переключение мозга из режима боли в режим движения</div>
+      </div>
+      <div class="product-feature">
+        <div class="pf-icon">🚫</div>
+        <div>Перестанешь мониторить его жизнь — не потому что заставила себя, а потому что он перестанет быть интересен</div>
+      </div>
+      <div class="product-feature">
+        <div class="pf-icon">⚡</div>
+        <div>Вернёшь себе всю энергию, которая уходила на него — и выйдешь с лидерской позиции, а не из боли</div>
+      </div>
+    </div>
+
+    <a class="cta-btn" href="#">→ Получить инструкцию</a>
+    <div class="cta-sub">Мгновенный доступ · PDF · Читать можно сразу</div>
+  </div>
+
+  <div class="footer">
+    back4heart &nbsp;·&nbsp; психология расставания<br>
+    Материал носит информационный характер и не заменяет работу с психологом.
+  </div>
+
+</div>
+</body>
+</html>
