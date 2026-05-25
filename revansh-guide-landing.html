@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9 психологических трюков — вернуть контроль за 14 дней</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crimson: #C0392B;
+    --crimson-dark: #922B21;
+    --crimson-glow: rgba(192,57,43,0.18);
+    --gold: #D4A84B;
+    --gold-light: #F0C97A;
+    --bg: #0A0A0C;
+    --surface: #111114;
+    --surface2: #18181D;
+    --text: #E8E6E0;
+    --muted: #888680;
+    --border: rgba(212,168,75,0.18);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* GRAIN OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.6;
+  }
+
+  /* TOP URGENCY BAR */
+  .urgency-bar {
+    background: var(--crimson);
+    text-align: center;
+    padding: 10px 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .urgency-bar::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+    animation: shimmer 3s infinite;
+  }
+  @keyframes shimmer { to { left: 200%; } }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(ellipse, var(--crimson-glow) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-image-col {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .hero-image-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(20%) contrast(1.05);
+    display: block;
+  }
+
+  .hero-image-col::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, transparent 50%, var(--bg) 100%),
+                linear-gradient(to top, var(--bg) 0%, transparent 30%);
+  }
+
+  .hero-content {
+    padding: 80px 60px 80px 40px;
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 1s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 5px 14px;
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 24px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--crimson);
+  }
+
+  .hero-title .gold { color: var(--gold); }
+
+  .hero-sub {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 420px;
+    margin-bottom: 36px;
+    line-height: 1.8;
+  }
+
+  .hero-sub strong { color: var(--text); font-weight: 600; }
+
+  .cta-group { display: flex; flex-direction: column; gap: 12px; max-width: 380px; }
+
+  .btn-primary {
+    display: block;
+    text-align: center;
+    padding: 18px 32px;
+    background: var(--crimson);
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--crimson-dark); transform: translateY(-2px); }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.06), transparent);
+  }
+
+  .btn-secondary {
+    display: block;
+    text-align: center;
+    padding: 16px 32px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: background 0.3s, color 0.3s;
+  }
+  .btn-secondary:hover { background: var(--gold); color: var(--bg); }
+
+  .price-note {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .price-note strong { color: var(--gold); font-size: 16px; }
+
+  /* SOCIAL PROOF STRIP */
+  .proof-strip {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .proof-item {
+    text-align: center;
+  }
+
+  .proof-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--gold);
+    display: block;
+  }
+
+  .proof-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .proof-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--border);
+  }
+
+  /* SECTION COMMON */
+  section { padding: 90px 40px; }
+
+  .container { max-width: 960px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 24px;
+    line-height: 1.15;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  /* PAIN SECTION */
+  .pain-section {
+    background: var(--surface);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pain-section::before {
+    content: '';
+    position: absolute;
+    left: -200px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(192,57,43,0.1) 0%, transparent 70%);
+  }
+
+  .pain-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .pain-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 24px 28px;
+    position: relative;
+    transition: border-color 0.3s;
+  }
+  .pain-card:hover { border-color: var(--crimson); }
+
+  .pain-card::before {
+    content: '✓';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    background: var(--crimson);
+    color: #fff;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .pain-card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .pain-card p strong { color: var(--text); }
+
+  .pain-cta {
+    margin-top: 40px;
+    padding: 28px 32px;
+    border: 1px solid var(--crimson);
+    background: var(--crimson-glow);
+  }
+
+  .pain-cta p {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: #fff;
+    line-height: 1.5;
+  }
+
+  .pain-cta span { color: var(--gold); }
+
+  /* WHAT IS SECTION */
+  .what-section { background: var(--bg); }
+
+  .what-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    margin-top: 48px;
+  }
+
+  .what-text p {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 20px;
+    line-height: 1.9;
+  }
+
+  .what-text p strong { color: var(--text); }
+
+  .what-text p em { color: var(--crimson); font-style: normal; font-weight: 600; }
+
+  .what-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .what-list li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    font-size: 14px;
+    color: var(--muted);
+    padding: 14px 20px;
+    border-left: 2px solid var(--border);
+    background: var(--surface2);
+    transition: border-color 0.3s;
+  }
+
+  .what-list li:hover { border-color: var(--gold); }
+
+  .what-list li .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 32px;
+  }
+
+  .what-list li .txt strong { color: var(--text); display: block; margin-bottom: 4px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* TRICKS SECTION */
+  .tricks-section {
+    background: var(--surface);
+    position: relative;
+  }
+
+  .tricks-section::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background: linear-gradient(to left, rgba(192,57,43,0.06) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .tricks-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 48px;
+    border: 1px solid var(--border);
+  }
+
+  .trick-item {
+    background: var(--surface);
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+
+  .trick-item:hover { background: var(--surface2); }
+
+  .trick-item::before {
+    content: attr(data-num);
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 60px;
+    font-weight: 900;
+    color: rgba(192,57,43,0.08);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .trick-icon {
+    font-size: 22px;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .trick-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .trick-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* FOR WHOM */
+  .for-section { background: var(--bg); }
+
+  .for-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .for-col h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .for-col.yes h3 { color: var(--gold); border-color: var(--gold); }
+  .for-col.no h3 { color: var(--crimson); border-color: var(--crimson); }
+
+  .for-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
+  .for-list li {
+    font-size: 14px;
+    color: var(--muted);
+    padding-left: 24px;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .for-list li::before {
+    content: attr(data-icon);
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  /* RESULT SECTION */
+  .result-section {
+    background: var(--surface);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .result-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(ellipse, rgba(212,168,75,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .result-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-style: italic;
+    color: #fff;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    line-height: 1.5;
+    position: relative;
+  }
+
+  .result-quote::before {
+    content: '"';
+    font-size: 80px;
+    color: var(--crimson);
+    line-height: 0;
+    position: absolute;
+    top: 20px;
+    left: -20px;
+    opacity: 0.4;
+  }
+
+  .result-items {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+
+  .result-item {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 24px 28px;
+    max-width: 200px;
+    text-align: center;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .result-item:hover { border-color: var(--gold); transform: translateY(-4px); }
+
+  .result-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+
+  .result-text {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .result-text strong { color: var(--text); display: block; font-size: 14px; margin-bottom: 4px; }
+
+  /* PRICING */
+  .pricing-section {
+    background: var(--bg);
+    text-align: center;
+  }
+
+  .price-card {
+    max-width: 500px;
+    margin: 48px auto 0;
+    background: var(--surface);
+    border: 1px solid var(--gold);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .price-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--crimson), var(--gold), var(--crimson));
+  }
+
+  .price-badge {
+    position: absolute;
+    top: 24px;
+    right: -28px;
+    background: var(--crimson);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 36px;
+    transform: rotate(45deg);
+    width: 130px;
+    text-align: center;
+  }
+
+  .price-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .price-desc {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+
+  .price-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .price-currency {
+    font-size: 28px;
+    vertical-align: super;
+  }
+
+  .price-alt {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+
+  .price-includes {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .price-includes li {
+    font-size: 14px;
+    color: var(--muted);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .price-includes li::before {
+    content: '→';
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .price-includes li strong { color: var(--text); }
+
+  .payment-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .payment-buttons { display: flex; flex-direction: column; gap: 12px; }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    margin-top: 20px;
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.6;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* FAQ */
+  .faq-section { background: var(--surface); }
+
+  .faq-list { margin-top: 40px; display: flex; flex-direction: column; gap: 2px; }
+
+  .faq-item {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .faq-q {
+    padding: 20px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.2s;
+    user-select: none;
+  }
+
+  .faq-q:hover { color: var(--gold); }
+
+  .faq-q::after {
+    content: '+';
+    font-size: 22px;
+    color: var(--gold);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+
+  .faq-item.open .faq-q::after { transform: rotate(45deg); }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s;
+    padding: 0 24px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .faq-item.open .faq-a {
+    max-height: 200px;
+    padding: 0 24px 20px;
+  }
+
+  /* FINAL CTA */
+  .final-cta {
+    background: var(--bg);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 40px;
+  }
+
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(192,57,43,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .final-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    position: relative;
+  }
+
+  .final-title span { color: var(--crimson); }
+
+  .final-sub {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+    position: relative;
+  }
+
+  .final-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .final-buttons .btn-primary { min-width: 260px; }
+  .final-buttons .btn-secondary { min-width: 220px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 32px 40px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--gold); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    .hero-image-col {
+      height: 55vw;
+      min-height: 260px;
+    }
+    .hero-image-col::after {
+      background: linear-gradient(to bottom, transparent 40%, var(--bg) 100%);
+    }
+    .hero-content { padding: 40px 24px 60px; }
+    .pain-grid, .what-grid, .for-grid { grid-template-columns: 1fr; }
+    .tricks-grid { grid-template-columns: 1fr 1fr; }
+    section { padding: 60px 20px; }
+    .proof-strip { gap: 24px; padding: 20px; }
+    .proof-divider { display: none; }
+    .result-items { gap: 16px; }
+    .price-card { padding: 36px 24px; }
+    .price-amount { font-size: 48px; }
+  }
+
+  @media (max-width: 480px) {
+    .tricks-grid { grid-template-columns: 1fr; }
+    .final-buttons { flex-direction: column; align-items: center; }
+  }
+
+  /* ANIMATE ON SCROLL (simple) */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  [data-reveal].visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- URGENCY BAR -->
+<div class="urgency-bar">
+  Цена $7 · Только цифровой гайд · Доступ мгновенно
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-image-col">
+    <img src="https://i.ibb.co/bMSnQmJq/1779362649399.png" alt="Психологический гайд для женщин" loading="eager">
+  </div>
+  <div class="hero-content">
+    <div class="tag">Новый гайд</div>
+    <p class="hero-eyebrow">Психологическая реанимация · 14 дней</p>
+    <h1 class="hero-title">
+      9 психологических<br>
+      <em>трюков,</em> чтобы<br>
+      перевернуть<br>
+      <span class="gold">баланс значимости</span>
+    </h1>
+    <p class="hero-sub">
+      Вы думаете о нём утром, днём и ночью. Он — нет.<br>
+      <strong>Пора это исправить.</strong> Без терапевта, без слёз над его фото и без фразы «время лечит».
+    </p>
+    <div class="cta-group">
+      <a href="https://secure.wayforpay.com/button/bca9d197905fc" class="btn-primary">
+        Получить гайд за $7 →
+      </a>
+      <a href="https://www.paypal.com/ncp/payment/GGBSPG9CJR7S4" class="btn-secondary">
+        Оплатить через PayPal
+      </a>
+      <p class="price-note">Цена: <strong>$7</strong> · 280 грн · Мгновенный доступ</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF STRIP -->
+<div class="proof-strip">
+  <div class="proof-item">
+    <span class="proof-num">14</span>
+    <span class="proof-label">Дней на перезагрузку</span>
+  </div>
+  <div class="proof-divider"></div>
+  <div class="proof-item">
+    <span class="proof-num">9</span>
+    <span class="proof-label">Психологических инструментов</span>
+  </div>
+  <div class="proof-divider"></div>
+  <div class="proof-item">
+    <span class="proof-num">PDF</span>
+    <span class="proof-label">Мгновенный доступ</span>
+  </div>
+  <div class="proof-divider"></div>
+  <div class="proof-item">
+    <span class="proof-num">$7</span>
+    <span class="proof-label">Цена гайда</span>
+  </div>
+</div>
+
+<!-- PAIN SECTION -->
+<section class="pain-section">
+  <div class="container">
+    <p class="section-label" data-reveal>Узнаёте себя?</p>
+    <h2 class="section-title" data-reveal>
+      Он ушёл. Но живёт<br>
+      <em>у вас в голове</em> бесплатно.
+    </h2>
+    <p style="font-size:15px; color:var(--muted); max-width:600px; margin-bottom:8px;" data-reveal>
+      Это не слабость. Это химия мозга. Но химию можно перепрограммировать — и вот как именно это делается.
+    </p>
+
+    <div class="pain-grid">
+      <div class="pain-card" data-reveal>
+        <p><strong>Вы проверяете его страницу</strong> «последний раз» уже тридцать первый раз за этот день.</p>
+      </div>
+      <div class="pain-card" data-reveal>
+        <p><strong>Вы прокручиваете переписку</strong>, ищете момент, где всё пошло не так — и не можете остановиться.</p>
+      </div>
+      <div class="pain-card" data-reveal>
+        <p><strong>Он изменил или ушёл,</strong> но вы всё равно надеетесь, что он одумается. И вам стыдно за эту надежду.</p>
+      </div>
+      <div class="pain-card" data-reveal>
+        <p><strong>Подруги говорят «забудь»,</strong> а вы улыбаетесь и киваете — и вечером плачете в подушку снова.</p>
+      </div>
+      <div class="pain-card" data-reveal>
+        <p><strong>Вы выглядите нормально снаружи,</strong> но внутри — как после взрыва. И не понимаете, когда это кончится.</p>
+      </div>
+      <div class="pain-card" data-reveal>
+        <p><strong>Вы боитесь,</strong> что больше никто не полюбит так, как он. Даже если «он» вёл себя ужасно.</p>
+      </div>
+    </div>
+
+    <div class="pain-cta" data-reveal>
+      <p>Проблема не в том, что вы <span>слишком любите</span>. Проблема в том, что он занял <span>слишком много места</span> — и теперь нужно его выселить. Аккуратно, но окончательно.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS SECTION -->
+<section class="what-section">
+  <div class="container">
+    <div class="what-grid">
+      <div class="what-text" data-reveal>
+        <p class="section-label">Что это такое</p>
+        <h2 class="section-title">Гайд, который не<br><em>жалеет вас</em></h2>
+        <p>Это не терапия, не медитации и не «полюби себя». Это <strong>рабочий набор инструментов</strong> из тёмной и реверсивной психологии — адаптированных под ситуацию расставания.</p>
+        <p>Без «розовой психологии». С юмором, с разбором реальных эмоций и с упражнениями, которые <em>действительно работают</em>. Потому что когда больно — вам нужен инструмент, а не сочувствие.</p>
+        <p>Цель одна: через 14 дней вы думаете о нём в разы меньше. А о себе — в разы больше.</p>
+      </div>
+      <div data-reveal>
+        <ul class="what-list">
+          <li>
+            <span class="num">1</span>
+            <span class="txt"><strong>Техника «обнуления»</strong>Как мозг удерживает привязанность — и как его обмануть за 72 часа</span>
+          </li>
+          <li>
+            <span class="num">2</span>
+            <span class="txt"><strong>Реверс значимости</strong>Почему вы его идеализируете — и как развернуть этот процесс против него</span>
+          </li>
+          <li>
+            <span class="num">3</span>
+            <span class="txt"><strong>Дофаминовый детокс</strong>Прекратить проверять его соцсети без силы воли — через перепрошивку триггеров</span>
+          </li>
+          <li>
+            <span class="num">4</span>
+            <span class="txt"><strong>Ресурс из боли</strong>Как превратить злость и обиду в топливо — а не в яд для себя</span>
+          </li>
+          <li>
+            <span class="num">5</span>
+            <span class="txt"><strong>Финальный протокол</strong>Состояние «спасибо, следующий» — и как в него войти за 14 дней</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRICKS SECTION -->
+<section class="tricks-section">
+  <div class="container">
+    <p class="section-label" data-reveal>Содержание гайда</p>
+    <h2 class="section-title" data-reveal>9 трюков, которые<br><em>меняют расстановку сил</em></h2>
+    <div class="tricks-grid">
+
+      <div class="trick-item" data-num="01" data-reveal>
+        <span class="trick-icon">🧠</span>
+        <h3 class="trick-title">Анатомия привязанности</h3>
+        <p class="trick-desc">Почему мозг реагирует на расставание как на наркотическую ломку — и что с этим делать прямо сейчас.</p>
+      </div>
+
+      <div class="trick-item" data-num="02" data-reveal>
+        <span class="trick-icon">🔄</span>
+        <h3 class="trick-title">Техника «стирания»</h3>
+        <p class="trick-desc">Упражнение, которое переписывает эмоциональный «файл» о нём в вашей памяти. Без вычёркивания и без насилия над собой.</p>
+      </div>
+
+      <div class="trick-item" data-num="03" data-reveal>
+        <span class="trick-icon">🎭</span>
+        <h3 class="trick-title">Деидеализация</h3>
+        <p class="trick-desc">Он не принц на белом коне. Он — человек с недостатками, которые вы решили не замечать. Пора замечать.</p>
+      </div>
+
+      <div class="trick-item" data-num="04" data-reveal>
+        <span class="trick-icon">⚡</span>
+        <h3 class="trick-title">Разрыв петли прокрутки</h3>
+        <p class="trick-desc">Как остановить бесконечный мысленный диалог с ним — с помощью одного конкретного приёма.</p>
+      </div>
+
+      <div class="trick-item" data-num="05" data-reveal>
+        <span class="trick-icon">🔥</span>
+        <h3 class="trick-title">Злость как ресурс</h3>
+        <p class="trick-desc">Злиться — нормально. Важно направить этот огонь в правильную сторону: на рост, а не на самосожжение.</p>
+      </div>
+
+      <div class="trick-item" data-num="06" data-reveal>
+        <span class="trick-icon">🪞</span>
+        <h3 class="trick-title">Реанимация самооценки</h3>
+        <p class="trick-desc">Протокол возврата самоуважения. Без аффирмаций перед зеркалом. С реальными действиями и результатами.</p>
+      </div>
+
+      <div class="trick-item" data-num="07" data-reveal>
+        <span class="trick-icon">🚪</span>
+        <h3 class="trick-title">Психологическое «выселение»</h3>
+        <p class="trick-desc">Финальный ритуал, после которого он больше не живёт у вас в голове бесплатно. Работает даже если вы всё ещё его любите.</p>
+      </div>
+
+      <div class="trick-item" data-num="08" data-reveal>
+        <span class="trick-icon">💎</span>
+        <h3 class="trick-title">Новая идентичность</h3>
+        <p class="trick-desc">Кто вы без него — и почему эта версия вас гораздо интереснее той, что была «при нём».</p>
+      </div>
+
+      <div class="trick-item" data-num="09" data-reveal>
+        <span class="trick-icon">✨</span>
+        <h3 class="trick-title">Состояние «следующий»</h3>
+        <p class="trick-desc">Как выйти в режим, когда вы не ждёте его возвращения — потому что вам уже не нужно его возвращение.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHOM -->
+<section class="for-section">
+  <div class="container">
+    <p class="section-label" data-reveal>Для кого это</p>
+    <h2 class="section-title" data-reveal>Это ваш гайд, если…</h2>
+    <div class="for-grid">
+      <div class="for-col yes" data-reveal>
+        <h3>✓ Вам подойдёт</h3>
+        <ul class="for-list">
+          <li data-icon="→">Вы не можете перестать думать о нём, хотя очень хотите</li>
+          <li data-icon="→">Он изменил, ушёл или просто исчез — и вы до сих пор не можете отпустить</li>
+          <li data-icon="→">Вы хотите конкретные инструменты, а не «всё будет хорошо»</li>
+          <li data-icon="→">Вам 30–54 года и вы устали объяснять подругам, почему вам до сих пор больно</li>
+          <li data-icon="→">Вы готовы работать 14 дней — и хотите видеть результат</li>
+        </ul>
+      </div>
+      <div class="for-col no" data-reveal>
+        <h3>✗ Не для вас, если</h3>
+        <ul class="for-list">
+          <li data-icon="→">Вы ищете способ вернуть его любой ценой</li>
+          <li data-icon="→">Вы хотите «розовую психологию» и тёплые объятия</li>
+          <li data-icon="→">Вы не готовы честно смотреть на ситуацию</li>
+          <li data-icon="→">Вы ожидаете результат без каких-либо действий с вашей стороны</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULT -->
+<section class="result-section">
+  <div class="container">
+    <p class="section-label" data-reveal>Через 14 дней</p>
+    <blockquote class="result-quote" data-reveal>
+      Вы не забудете его за две недели. Но вы перестанете быть его заложником — и начнёте быть собой.
+    </blockquote>
+    <div class="result-items">
+      <div class="result-item" data-reveal>
+        <span class="result-icon">🧘</span>
+        <div class="result-text">
+          <strong>Голова свободна</strong>
+          Мысли о нём — фоновый шум, а не главная программа
+        </div>
+      </div>
+      <div class="result-item" data-reveal>
+        <span class="result-icon">💪</span>
+        <div class="result-text">
+          <strong>Самооценка на месте</strong>
+          Вы не ищете его одобрения — у вас своё
+        </div>
+      </div>
+      <div class="result-item" data-reveal>
+        <span class="result-icon">🔥</span>
+        <div class="result-text">
+          <strong>Энергия вернулась</strong>
+          Та, что шла на «а вдруг он напишет»
+        </div>
+      </div>
+      <div class="result-item" data-reveal>
+        <span class="result-icon">💎</span>
+        <div class="result-text">
+          <strong>Вы — приоритет</strong>
+          Наконец-то
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section">
+  <div class="container">
+    <p class="section-label" data-reveal>Получить гайд</p>
+    <h2 class="section-title" data-reveal>Одно решение.<br><em>Мгновенный доступ.</em></h2>
+    <div class="price-card" data-reveal>
+      <div class="price-badge">Гайд</div>
+      <h3 class="price-title">9 психологических трюков</h3>
+      <p class="price-desc">Чтобы перевернуть баланс значимости за 14 дней</p>
+      <div class="price-amount"><span class="price-currency">$</span>7</div>
+      <p class="price-alt">или 280 грн</p>
+      <ul class="price-includes">
+        <li><strong>PDF-гайд</strong> с 9 инструментами тёмной и реверсивной психологии</li>
+        <li><strong>14-дневный протокол</strong> с конкретными упражнениями на каждый день</li>
+        <li><strong>Разбор реальных эмоций:</strong> ревность, злость, надежда, стыд — без осуждения</li>
+        <li><strong>Мгновенный доступ</strong> сразу после оплаты</li>
+      </ul>
+      <p class="payment-label">Выберите способ оплаты</p>
+      <div class="payment-buttons">
+        <a href="https://secure.wayforpay.com/button/bca9d197905fc" class="btn-primary">
+          Оплатить WayForPay (карта / Украина) →
+        </a>
+        <a href="https://www.paypal.com/ncp/payment/GGBSPG9CJR7S4" class="btn-secondary">
+          Оплатить через PayPal
+        </a>
+      </div>
+      <p class="disclaimer">После оплаты вы сразу получаете ссылку на скачивание PDF. Никаких подписок, никаких скрытых платежей.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <p class="section-label" data-reveal>Вопросы</p>
+    <h2 class="section-title" data-reveal>Часто спрашивают</h2>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q">Это поможет, если я всё ещё его люблю?</div>
+        <div class="faq-a">Да. Гайд не требует от вас немедленно «разлюбить» — он работает именно с тем состоянием, когда чувства ещё есть, но ситуация уже ясна. Инструменты помогают освободить пространство в голове, даже если эмоции пока не отпускают.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">За 14 дней — это реально?</div>
+        <div class="faq-a">Реально — почувствовать значительный сдвиг. Не «как будто ничего не было», но «я контролирую ситуацию, а не она меня» — это достижимо при ежедневной работе с материалом. У каждого свой темп, но инструменты дают результат при регулярном применении.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Как я получу гайд после оплаты?</div>
+        <div class="faq-a">Мгновенно — ссылка на скачивание придёт сразу после завершения оплаты. PDF открывается на любом устройстве: телефон, планшет, компьютер.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Это безопасно — оплата картой?</div>
+        <div class="faq-a">WayForPay — лицензированный украинский платёжный сервис с шифрованием данных. PayPal — международная платёжная система с защитой покупателя. Оба варианта полностью безопасны.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Что если мне не подойдёт?</div>
+        <div class="faq-a">Гайд создан для конкретной ситуации и подробно описан на этой странице. Прочитайте содержание внимательно перед покупкой — и вы точно поймёте, ваш это инструмент или нет.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2 class="final-title" data-reveal>
+      Он живёт своей жизнью.<br>
+      <span>Живите своей.</span>
+    </h2>
+    <p class="final-sub" data-reveal>
+      У вас уже есть всё, что нужно. Не хватает только правильного инструмента.
+      За $7 вы получаете его прямо сейчас.
+    </p>
+    <div class="final-buttons" data-reveal>
+      <a href="https://secure.wayforpay.com/button/bca9d197905fc" class="btn-primary">
+        Получить гайд за $7 →
+      </a>
+      <a href="https://www.paypal.com/ncp/payment/GGBSPG9CJR7S4" class="btn-secondary">
+        Оплатить через PayPal
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 back4heart · Все права защищены · <a href="mailto:back4heart@example.com">Контакт</a></p>
+  <p style="margin-top:8px; font-size:11px;">Цифровой продукт. Все продажи окончательны. Гайд является авторским материалом и не подлежит перепродаже.</p>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('[data-reveal]');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
