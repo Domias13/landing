@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Противоядие: 3 шага — убрать руки от телефона</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crimson: #C0392B;
+    --crimson-dark: #922B21;
+    --crimson-glow: rgba(192,57,43,0.15);
+    --gold: #D4A84B;
+    --gold-light: #F0C97A;
+    --bg: #0A0A0C;
+    --surface: #111114;
+    --surface2: #18181D;
+    --text: #E8E6E0;
+    --muted: #888680;
+    --border: rgba(212,168,75,0.18);
+    --border-red: rgba(192,57,43,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* GRAIN */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.5;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 24px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(ellipse, var(--crimson-glow) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--border);
+    padding: 7px 20px;
+    margin-bottom: 32px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    font-weight: 900;
+    line-height: 1.08;
+    color: #fff;
+    max-width: 820px;
+    margin-bottom: 28px;
+    animation: fadeUp 0.7s ease 0.1s both;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--crimson);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(15px, 2vw, 18px);
+    color: var(--muted);
+    max-width: 560px;
+    margin-bottom: 48px;
+    animation: fadeUp 0.7s ease 0.2s both;
+    line-height: 1.8;
+  }
+
+  .hero-subtitle strong { color: var(--text); }
+
+  .scroll-hint {
+    animation: fadeUp 0.7s ease 0.4s both;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .scroll-hint::before, .scroll-hint::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* SECTION */
+  section { padding: 80px 24px; max-width: 760px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+
+  /* PAIN BLOCK */
+  .pain-block {
+    background: var(--surface);
+    border-left: 3px solid var(--crimson);
+    padding: 32px 36px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pain-block::after {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    color: var(--crimson);
+    opacity: 0.08;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .pain-block p {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.85;
+    font-style: italic;
+  }
+
+  /* EXPLANATION BOX */
+  .explanation {
+    background: var(--surface2);
+    border: 1px solid var(--border-red);
+    padding: 32px 36px;
+    margin: 32px 0;
+  }
+
+  .explanation-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 16px;
+  }
+
+  .explanation p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.85;
+  }
+
+  .explanation p + p { margin-top: 12px; }
+
+  .explanation strong { color: var(--text); }
+
+  /* STEPS */
+  .steps-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  .steps-wrapper::before {
+    content: '';
+    position: absolute;
+    left: 32px;
+    top: 56px;
+    bottom: 56px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--crimson), var(--gold), transparent);
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 28px;
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    position: relative;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .step.visible { opacity: 1; transform: translateY(0); }
+
+  .step:last-child { border-bottom: none; }
+
+  .step-num {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--border-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--crimson);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-content { padding-top: 8px; }
+
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 14px;
+    line-height: 1.25;
+  }
+
+  .step-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .step-body {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+
+  .step-body strong { color: var(--text); }
+
+  .step-body p + p { margin-top: 12px; }
+
+  .step-instruction {
+    margin-top: 20px;
+    background: var(--surface);
+    border-left: 2px solid var(--gold);
+    padding: 18px 22px;
+  }
+
+  .step-instruction-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .step-instruction p {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.75;
+  }
+
+  /* WARNING CALLOUT */
+  .warning {
+    background: rgba(192,57,43,0.08);
+    border: 1px solid rgba(192,57,43,0.3);
+    padding: 28px 32px;
+    margin: 40px 0;
+    position: relative;
+  }
+
+  .warning::before {
+    content: '⚠';
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg);
+    padding: 0 12px;
+    font-size: 18px;
+  }
+
+  .warning p {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.85;
+    text-align: center;
+  }
+
+  .warning strong { color: var(--crimson); }
+
+  /* TRANSITION */
+  .transition-section {
+    padding: 80px 24px;
+    background: var(--surface);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .transition-section::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 300px;
+    background: radial-gradient(ellipse, rgba(212,168,75,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .transition-inner { max-width: 760px; margin: 0 auto; }
+
+  .transition-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    border: 1px solid var(--border-red);
+    padding: 7px 18px;
+    margin-bottom: 28px;
+  }
+
+  .gap-reveal {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 32px 0;
+  }
+
+  .gap-item {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .gap-icon {
+    width: 24px;
+    height: 24px;
+    background: var(--crimson);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .gap-text {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .gap-text strong { color: var(--text); }
+
+  /* PRODUCT CTA */
+  .product-cta {
+    padding: 100px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(192,57,43,0.1) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .product-card {
+    max-width: 580px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--gold);
+    padding: 52px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--crimson), var(--gold), var(--crimson));
+  }
+
+  .product-card-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .product-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  .product-card-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .product-divider {
+    width: 48px;
+    height: 2px;
+    background: var(--crimson);
+    margin: 0 auto 28px;
+  }
+
+  .product-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 32px;
+  }
+
+  .product-desc strong { color: var(--text); }
+
+  .product-promises {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .product-promises li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  .product-promises li::before {
+    content: '→';
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .product-promises li strong { color: var(--text); }
+
+  /* CTA BUTTON */
+  .btn-primary {
+    display: inline-block;
+    background: var(--crimson);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 18px 44px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.25s ease;
+    width: 100%;
+    text-align: center;
+  }
+
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+    animation: shimmer 3s infinite;
+  }
+
+  .btn-primary:hover { background: var(--crimson-dark); }
+
+  @keyframes shimmer { to { left: 200%; } }
+
+  .btn-subtext {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 14px;
+    letter-spacing: 0.06em;
+  }
+
+  /* FINAL NOTE */
+  .final-note {
+    padding: 60px 24px;
+    max-width: 580px;
+    margin: 0 auto;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .final-note p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+
+  .final-note strong { color: var(--text); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    section { padding: 60px 20px; }
+    .step { grid-template-columns: 48px 1fr; gap: 18px; }
+    .step-num { width: 48px; height: 48px; font-size: 18px; }
+    .steps-wrapper::before { left: 24px; }
+    .product-card { padding: 36px 24px; }
+    .pain-block { padding: 24px 22px; }
+    .explanation { padding: 24px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Бесплатное руководство · back4heart</div>
+  <h1 class="hero-title">
+    Противоядие:<br>
+    <em>3 шага, чтобы заблокировать<br>желание проверять его «был в сети»</em>
+  </h1>
+  <p class="hero-subtitle">
+    Простая механика, которая <strong>разрывает петлю мониторинга</strong> —
+    без силы воли, без запретов и без объяснения себе, зачем это делать.
+  </p>
+  <div class="scroll-hint">читайте ниже</div>
+</div>
+
+<!-- PAIN -->
+<section>
+  <div class="section-label">Вы узнаёте себя?</div>
+  <h2 class="section-title">Это не слабость.<br>Это химия.</h2>
+
+  <div class="pain-block fade-in">
+    <p>
+      Телефон в руке. Снова его страница. Минуту назад вы твёрдо решили не заходить —
+      и уже здесь. Проверяете время онлайн. Смотрите, кто лайкнул его фото.
+      Листаете переписку, которую уже знаете наизусть.
+      А потом ненавидите себя за это.
+    </p>
+  </div>
+
+  <div class="explanation fade-in">
+    <div class="explanation-title">Почему это происходит</div>
+    <p>
+      Разрыв активирует в мозге те же зоны, что и <strong>физическая зависимость</strong>.
+      Нейробиологи Университета Рутгерса сканировали мозг людей, которые смотрели на фото бывших партнёров —
+      и видели активацию тех же участков, что при употреблении кокаина.
+    </p>
+    <p>
+      Проверка его онлайн-статуса — это <strong>доза</strong>. Каждый раз, когда вы заходите и не видите ничего нового, мозг требует следующей попытки.
+      Непредсказуемое вознаграждение создаёт самую прочную зависимость из известных нейронауке.
+    </p>
+    <p>
+      <strong>Это не про силу воли. Вы не сломаны. Это протокол атаки.</strong>
+    </p>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section>
+  <div class="section-label">Три шага · Противоядие</div>
+  <h2 class="section-title">Механика, которая<br>работает немедленно</h2>
+
+  <div class="steps-wrapper">
+
+    <!-- STEP 1 -->
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3 class="step-title">Переименуйте<br><em>действие</em></h3>
+        <div class="step-body">
+          <p>
+            Когда рука тянется к телефону — не запрещайте. Запрет создаёт давление, давление усиливает импульс.
+            Вместо этого <strong>назовите то, что происходит, вслух или мысленно</strong>, используя точный нейрологический термин.
+          </p>
+          <p>
+            Не «я хочу проверить» — а: <strong>«мой дофаминовый контур требует дозу».</strong>
+          </p>
+        </div>
+        <div class="step-instruction">
+          <div class="step-instruction-label">Делайте так</div>
+          <p>
+            Скажите: «Это не я хочу. Это мозг имитирует голод.»
+            Пауза 4 секунды. Телефон положите экраном вниз.
+            Переименование разрывает автоматизм — потому что задействует префронтальную кору вместо лимбической.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3 class="step-title">Введите<br><em>стоимость</em></h3>
+        <div class="step-body">
+          <p>
+            Мозг, который привык получать дозу бесплатно, прекращает искать её, когда за неё нужно платить.
+            Не деньгами — <strong>усилием</strong>.
+          </p>
+          <p>
+            Правило: прежде чем открыть его страницу, вы обязаны выполнить одно конкретное действие.
+            Не «подумать», не «поговорить с собой» — а <strong>физическое микродействие, которое длится ровно 90 секунд</strong>.
+          </p>
+        </div>
+        <div class="step-instruction">
+          <div class="step-instruction-label">Делайте так</div>
+          <p>
+            Выберите своё «платное действие» сейчас: 20 приседаний, стакан воды стоя у окна,
+            написать в заметки одно предложение о том, что вы хотите через год.
+            Если после этого рука всё равно тянется к телефону — откройте. Но обычно не тянется.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3 class="step-title">Переключите<br><em>объект наблюдения</em></h3>
+        <div class="step-body">
+          <p>
+            Мозг не может прекратить отслеживать — он может только <strong>переключить цель</strong>.
+            Вместо того, чтобы наблюдать за ним, дайте ему другой объект того же типа.
+          </p>
+          <p>
+            Это не про «займись собой» — это про <strong>биологическую замену цели мониторинга</strong>.
+            Ваш мозг хочет отслеживать изменения в ком-то важном. Дайте ему кого-то важного — себя.
+          </p>
+        </div>
+        <div class="step-instruction">
+          <div class="step-instruction-label">Делайте так</div>
+          <p>
+            Откройте заметки и создайте «свой трекер». Одна строка в день:
+            что изменилось в вас. Самочувствие, мысль, решение, контакт.
+            Мозг начнёт ждать этого обновления — вместо его статуса в сети.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="warning fade-in">
+    <p>
+      Эти три шага уберут острый импульс на <strong>день-два</strong>.
+      Они не изменят баланс ситуации — они дают передышку.
+      Потому что настоящий вопрос не «как не смотреть его страницу»,
+      а <strong>«как сделать так, чтобы его страница перестала иметь значение».</strong>
+    </p>
+  </div>
+</section>
+
+<!-- TRANSITION -->
+<div class="transition-section">
+  <div class="transition-inner fade-in">
+    <div class="transition-label">Что происходит дальше</div>
+    <h2 class="section-title" style="margin-bottom: 20px;">Противоядие работает.<br>Но это — только купирование.</h2>
+    <p style="font-size:15px; color: var(--muted); line-height: 1.9; margin-bottom: 32px;">
+      Три шага выше останавливают импульс. Но каждое утро он возвращается.
+      Потому что <strong style="color: var(--text);">пока баланс значимости не изменился</strong> —
+      вы по-прежнему в той позиции, где он важнее.
+    </p>
+
+    <div class="gap-reveal">
+      <div class="gap-item">
+        <div class="gap-icon">✗</div>
+        <div class="gap-text"><strong>Не смотреть страницу</strong> — это не цель. Это симптом. Пока он занимает больше пространства в вашей голове, чем вы — в его, ничего не изменится.</div>
+      </div>
+      <div class="gap-item">
+        <div class="gap-icon">✗</div>
+        <div class="gap-text"><strong>Ждать, когда «отпустит само»</strong> — это стратегия, которая работает в среднем за 18 месяцев. Если вообще работает.</div>
+      </div>
+      <div class="gap-item">
+        <div class="gap-icon">✗</div>
+        <div class="gap-text"><strong>Разговоры с подругами, психолог, медитации</strong> — всё это про то, как чувствовать себя лучше. Ни одно из этих действий не меняет реальный расклад между вами.</div>
+      </div>
+    </div>
+
+    <p style="font-size:15px; color: var(--text); line-height: 1.9; margin-top: 8px;">
+      Есть только один способ остановить мониторинг навсегда:
+      <strong style="color: var(--gold);">когда вы станете тем, за кем следит он.</strong>
+    </p>
+  </div>
+</div>
+
+<!-- PRODUCT CTA -->
+<div class="product-cta">
+  <div class="product-card fade-in">
+    <div class="product-card-eyebrow">Следующий уровень</div>
+    <h2 class="product-card-title">
+      9 психологических трюков,<br>
+      чтобы <em>перевернуть баланс<br>значимости</em> за 14 дней
+    </h2>
+    <div class="product-divider"></div>
+    <p class="product-desc">
+      Не про то, как «отпустить» или «принять ситуацию».
+      Про то, как <strong>методично изменить расклад</strong> — используя механики обратной психологии,
+      которые работают на нейрологическом уровне, независимо от того, общаетесь вы или нет.
+    </p>
+    <ul class="product-promises">
+      <li><strong>Трюк №2 («Эффект дефицита»)</strong> — почему любой ваш контакт с ним сейчас работает против вас, и как развернуть это на 180°</li>
+      <li><strong>Трюк №5 («Переоценка актива»)</strong> — как заставить его мозг переоценить вашу ценность без единого слова в его сторону</li>
+      <li><strong>Трюк №7 («Зеркало угрозы»)</strong> — самый нелогичный инструмент, который запускает в нём тревогу потери, пока вы просто живёте свою жизнь</li>
+      <li>Полный 14-дневный протокол — что делать, что <em>не</em> делать, и в какой последовательности</li>
+    </ul>
+    <a href="https://back4heart.site/psych-reanimation.html" class="btn-primary">
+      Хочу перевернуть ситуацию →
+    </a>
+    <div class="btn-subtext">Гайд · Мгновенный доступ · back4heart.site</div>
+  </div>
+</div>
+
+<!-- FINAL NOTE -->
+<div class="final-note">
+  <p>
+    <strong>Это руководство создано как первый шаг.</strong>
+    Оно даёт вам инструмент, чтобы выйти из острой петли.
+    Что происходит после — зависит от того, какую стратегию вы выберете дальше.
+    Правильная стратегия меняет не то, как вы себя чувствуете —
+    а то, <strong>как он воспринимает вас</strong>.
+  </p>
+</div>
+
+<script>
+  // Intersection Observer for fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in, .step').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
