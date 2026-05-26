@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Сканер: Бэушный или нет?</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --surface2: #161616;
+    --border: #2a2a2a;
+    --accent: #c8102e;
+    --accent2: #ff3355;
+    --gold: #b8960c;
+    --text: #e8e8e8;
+    --muted: #666;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+    --display: 'Bebas Neue', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+  }
+
+  /* HEADER */
+  .header {
+    padding: 40px 20px 0;
+    text-align: center;
+    position: relative;
+  }
+
+  .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 4px 12px;
+    margin-bottom: 20px;
+    animation: pulse-border 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-border {
+    0%, 100% { border-color: var(--accent); box-shadow: 0 0 0 rgba(200,16,46,0); }
+    50% { border-color: var(--accent2); box-shadow: 0 0 12px rgba(200,16,46,0.3); }
+  }
+
+  .hero-title {
+    font-family: var(--display);
+    font-size: clamp(52px, 10vw, 88px);
+    line-height: 0.92;
+    letter-spacing: 1px;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .hero-title span {
+    color: var(--accent);
+    display: block;
+  }
+
+  .hero-sub {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    margin-top: 12px;
+  }
+
+  .hero-desc {
+    font-family: var(--sans);
+    font-size: 15px;
+    color: #999;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+    max-width: 480px;
+    margin: 0 auto 36px;
+    border-left: 2px solid var(--accent);
+    padding-left: 16px;
+    text-align: left;
+  }
+
+  .scan-line {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    margin: 0 0 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scan-line::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -30%;
+    width: 30%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    animation: scan 3s ease-in-out infinite;
+  }
+
+  @keyframes scan {
+    0% { left: -30%; }
+    100% { left: 130%; }
+  }
+
+  /* PROGRESS */
+  .progress-wrap {
+    margin-bottom: 32px;
+    display: none;
+  }
+
+  .progress-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .progress-bar {
+    height: 2px;
+    background: var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    width: 0%;
+    transition: width 0.5s ease;
+  }
+
+  /* QUESTIONS */
+  .quiz-screen { display: none; }
+  .quiz-screen.active { display: block; }
+
+  .start-screen { display: block; }
+
+  .question-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 32px;
+    margin-bottom: 20px;
+    position: relative;
+    animation: fadeSlide 0.4s ease;
+  }
+
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .question-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent);
+  }
+
+  .q-number {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+  }
+
+  .q-text {
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .option {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 18px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    font-size: 14px;
+    line-height: 1.45;
+    color: #bbb;
+    font-family: var(--sans);
+    font-weight: 300;
+  }
+
+  .option:hover {
+    border-color: var(--accent);
+    color: var(--text);
+    background: #1a1010;
+  }
+
+  .option.selected {
+    border-color: var(--accent);
+    background: #1d0a0f;
+    color: var(--text);
+  }
+
+  .option.selected::after {
+    content: '✓';
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+
+  .option-letter {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 600;
+    min-width: 18px;
+    padding-top: 1px;
+  }
+
+  /* BUTTONS */
+  .btn-next {
+    display: block;
+    width: 100%;
+    padding: 18px;
+    background: var(--accent);
+    color: white;
+    font-family: var(--display);
+    font-size: 22px;
+    letter-spacing: 2px;
+    border: none;
+    cursor: pointer;
+    margin-top: 16px;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-next:hover {
+    background: var(--accent2);
+    transform: translateY(-1px);
+  }
+
+  .btn-next:disabled {
+    background: var(--border);
+    color: var(--muted);
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .btn-next::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.4s ease;
+  }
+
+  .btn-next:hover::after {
+    left: 100%;
+  }
+
+  .btn-start {
+    display: block;
+    width: 100%;
+    padding: 22px;
+    background: var(--accent);
+    color: white;
+    font-family: var(--display);
+    font-size: 26px;
+    letter-spacing: 3px;
+    border: none;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-start:hover {
+    background: var(--accent2);
+    box-shadow: 0 8px 32px rgba(200,16,46,0.4);
+    transform: translateY(-2px);
+  }
+
+  /* RESULT SCREEN */
+  .result-screen { display: none; }
+
+  .result-header {
+    text-align: center;
+    padding: 40px 0 32px;
+  }
+
+  .result-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .result-title {
+    font-family: var(--display);
+    font-size: clamp(44px, 9vw, 72px);
+    line-height: 0.95;
+    margin-bottom: 16px;
+  }
+
+  .result-score {
+    font-family: var(--mono);
+    font-size: 72px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .result-score-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 2px;
+  }
+
+  .verdict-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    padding: 28px 32px;
+    margin: 28px 0;
+    animation: fadeSlide 0.5s ease;
+  }
+
+  .verdict-type {
+    font-family: var(--display);
+    font-size: 32px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .verdict-text {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #bbb;
+  }
+
+  .verdict-text strong {
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  /* DIAGNOSTICS */
+  .diagnostics {
+    margin: 24px 0;
+  }
+
+  .diag-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+
+  .diag-label {
+    font-family: var(--mono);
+    color: var(--muted);
+    letter-spacing: 1px;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+
+  .diag-val {
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+
+  .diag-val.red { color: var(--accent2); }
+  .diag-val.yellow { color: var(--gold); }
+  .diag-val.green { color: #4caf88; }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 36px 32px;
+    margin-top: 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--gold), var(--accent));
+  }
+
+  .cta-eyebrow {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .cta-title {
+    font-family: var(--display);
+    font-size: clamp(28px, 6vw, 44px);
+    line-height: 1;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+
+  .cta-desc {
+    font-size: 14px;
+    color: #999;
+    font-weight: 300;
+    line-height: 1.65;
+    margin-bottom: 28px;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .price-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .price-current {
+    font-family: var(--display);
+    font-size: 52px;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .price-desc {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-align: left;
+    line-height: 1.6;
+    letter-spacing: 1px;
+  }
+
+  .cta-btn {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 20px 32px;
+    background: var(--accent);
+    color: white;
+    font-family: var(--display);
+    font-size: 22px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-btn:hover {
+    background: var(--accent2);
+    box-shadow: 0 8px 40px rgba(200,16,46,0.5);
+    transform: translateY(-2px);
+  }
+
+  .cta-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 20px 0;
+  }
+
+  .feature-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    text-transform: uppercase;
+  }
+
+  .guarantee {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 16px;
+    letter-spacing: 1px;
+  }
+
+  /* FOOTER INFO */
+  .footer-note {
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: #333;
+    letter-spacing: 2px;
+    padding-top: 40px;
+    text-transform: uppercase;
+  }
+
+  /* SCANNING ANIMATION */
+  .scanning {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  .scan-spinner {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 20px;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .scan-text {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    animation: blink 1s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 480px) {
+    .question-block { padding: 22px 18px; }
+    .cta-section { padding: 28px 20px; }
+    .verdict-box { padding: 22px 20px; }
+    .option { padding: 12px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- START SCREEN -->
+  <div id="startScreen" class="start-screen">
+    <div class="header">
+      <div class="badge">back4heart · диагностика</div>
+      <h1 class="hero-title">СКАНЕР<span>БЭУШНОГО</span></h1>
+      <p class="hero-sub">версия 2.0 · клиническая точность</p>
+      <p class="hero-desc">Тест, который не будет тебя жалеть. 8 вопросов — и ты узнаешь, есть ли у него реальный шанс вернуться, или ты уже давно живёшь в собственной голове.</p>
+    </div>
+    <div class="scan-line"></div>
+
+    <div class="question-block">
+      <div class="q-number">// ПЕРЕД ЗАПУСКОМ</div>
+      <div class="q-text" style="font-size:15px; color:#999; font-weight:300;">Этот тест не скажет тебе то, что ты хочешь услышать.<br>Он скажет то, <strong style="color:var(--text);">что есть на самом деле</strong>.<br><br>Если ты готова — нажми кнопку.</div>
+    </div>
+
+    <button class="btn-start" onclick="startQuiz()">ЗАПУСТИТЬ СКАНИРОВАНИЕ</button>
+    <p style="text-align:center; font-family:var(--mono); font-size:10px; color:#333; letter-spacing:2px; margin-top:14px; text-transform:uppercase;">займёт 3 минуты · бесплатно</p>
+  </div>
+
+  <!-- QUIZ SCREEN -->
+  <div id="quizScreen" class="quiz-screen">
+    <div class="header" style="padding-top:28px; padding-bottom:0;">
+      <div class="badge">сканирование...</div>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap" style="display:block; padding-top:20px;">
+      <div class="progress-label">
+        <span>АНАЛИЗ ДАННЫХ</span>
+        <span id="progressText">0 / 8</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+
+    <div id="questionContainer"></div>
+
+    <button class="btn-next" id="nextBtn" onclick="nextQuestion()" disabled>СЛЕДУЮЩИЙ ПАРАМЕТР →</button>
+  </div>
+
+  <!-- SCANNING ANIMATION -->
+  <div id="scanningScreen" class="scanning">
+    <div class="scan-spinner"></div>
+    <div class="scan-text">обработка данных...</div>
+  </div>
+
+  <!-- RESULT SCREEN -->
+  <div id="resultScreen" class="result-screen">
+    <div class="result-header">
+      <div class="result-label">// результат сканирования</div>
+      <div class="result-score" id="resultScore">0</div>
+      <div class="result-score-label">ИНДЕКС ИЛЛЮЗИИ</div>
+    </div>
+
+    <div class="scan-line"></div>
+
+    <div class="verdict-box" id="verdictBox">
+      <div class="verdict-type" id="verdictType"></div>
+      <div class="verdict-text" id="verdictText"></div>
+    </div>
+
+    <div class="diagnostics" id="diagnostics"></div>
+
+    <div class="cta-section">
+      <div class="cta-eyebrow">// рекомендованный протокол</div>
+      <h2 class="cta-title">КАК ЗА 7 ДНЕЙ ЗАБЫТЬ БЭУШНОГО<br>И ВСПОМНИТЬ СЕБЯ</h2>
+      <p class="cta-desc">Пошаговый гайд: что делать с головой, когда она застряла в том, кого уже нет. Без «отпусти и живи» — только конкретные инструменты.</p>
+
+      <div class="cta-features">
+        <span class="feature-tag">7 дней</span>
+        <span class="feature-tag">пошагово</span>
+        <span class="feature-tag">без психологии</span>
+        <span class="feature-tag">скачать сейчас</span>
+      </div>
+
+      <div class="price-row">
+        <div class="price-current">$19</div>
+        <div class="price-desc">мгновенный<br>доступ</div>
+      </div>
+
+      <a href="https://back4heart.site/byvshiy-v-util.html" class="cta-btn">ЗАБРАТЬ ГАЙД →</a>
+
+      <p class="guarantee">// 100% цифровой продукт · немедленная доставка</p>
+    </div>
+
+    <button onclick="restartQuiz()" style="display:block; width:100%; padding:14px; background:transparent; border:1px solid var(--border); color:var(--muted); font-family:var(--mono); font-size:11px; letter-spacing:2px; cursor:pointer; margin-top:16px; text-transform:uppercase; transition:all 0.2s;" onmouseover="this.style.borderColor='var(--accent)'; this.style.color='var(--text)'" onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--muted)'">пройти тест заново</button>
+  </div>
+
+  <div class="footer-note">back4heart · © 2025 · диагностика · не терапия</div>
+</div>
+
+<script>
+const questions = [
+  {
+    text: "Когда он написал тебе последний раз — что ты сделала?",
+    options: [
+      { text: "Перечитала несколько раз и проанализировала каждое слово", score: 4 },
+      { text: "Ответила сразу, потом пожалела об этом", score: 3 },
+      { text: "Ответила спокойно, без паники", score: 1 },
+      { text: "Давно уже не пишет. Но я всё равно проверяю телефон", score: 5 }
+    ]
+  },
+  {
+    text: "Как часто ты заходишь на его страницу в соцсетях?",
+    options: [
+      { text: "Несколько раз в день. Иногда с чужого аккаунта", score: 5 },
+      { text: "Раз в неделю. Просто чтобы \"быть в курсе\"", score: 3 },
+      { text: "Заблокировала. Но иногда разблокирую посмотреть", score: 4 },
+      { text: "Не хожу. Мне не интересно", score: 0 }
+    ]
+  },
+  {
+    text: "Он изменил или ушёл. Что тебе говорит внутренний голос о причине?",
+    options: [
+      { text: "Он просто испугался наших отношений — глубина его пугала", score: 5 },
+      { text: "Он дурак, который не понял, что потерял", score: 3 },
+      { text: "Там было что-то с моей стороны, но и с его тоже", score: 2 },
+      { text: "Мы просто не подходили друг другу", score: 0 }
+    ]
+  },
+  {
+    text: "Если бы он позвонил прямо сейчас и сказал «прости, хочу попробовать снова» — что бы ты сделала?",
+    options: [
+      { text: "Согласилась бы немедленно. Это же то, чего я жду", score: 5 },
+      { text: "Попросила бы объяснений, но в итоге согласилась бы", score: 4 },
+      { text: "Подумала бы несколько дней", score: 2 },
+      { text: "Отказала. Я уже знаю, чем это заканчивается", score: 0 }
+    ]
+  },
+  {
+    text: "Твои подруги говорят тебе «забудь его». Что ты чувствуешь?",
+    options: [
+      { text: "Злюсь — они не понимают, что у нас было особенное", score: 5 },
+      { text: "Слушаю, соглашаюсь, а потом всё равно думаю о нём", score: 4 },
+      { text: "Понимаю, что правы, но не могу переключиться", score: 3 },
+      { text: "Они правы, и я работаю над этим", score: 1 }
+    ]
+  },
+  {
+    text: "Ты встретила привлекательного мужчину. Твоя первая мысль?",
+    options: [
+      { text: "Сравниваю его с бывшим. Бывший лучше", score: 5 },
+      { text: "Интересно, но какой смысл — всё равно не то", score: 4 },
+      { text: "Замечаю его, но не цепляюсь", score: 1 },
+      { text: "Прохожу мимо — голова занята другим", score: 3 }
+    ]
+  },
+  {
+    text: "Сколько времени в день ты думаешь о нём?",
+    options: [
+      { text: "Почти постоянно — он фоном в голове всегда", score: 5 },
+      { text: "Несколько раз в день, особенно вечером", score: 4 },
+      { text: "Когда что-то напоминает — песня, место, запах", score: 2 },
+      { text: "Редко. Уже отпускает", score: 1 }
+    ]
+  },
+  {
+    text: "Что ты реально думаешь о его шансах вернуться?",
+    options: [
+      { text: "Верю, что он вернётся. Чувствую это", score: 5 },
+      { text: "Скорее нет, но вдруг...", score: 4 },
+      { text: "Нет. Но от этого не легче", score: 2 },
+      { text: "Не вернётся, и мне это уже почти нормально", score: 0 }
+    ]
+  }
+];
+
+let currentQ = 0;
+let answers = [];
+let selectedOption = null;
+
+function startQuiz() {
+  document.getElementById('startScreen').style.display = 'none';
+  document.getElementById('quizScreen').style.display = 'block';
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = questions[currentQ];
+  selectedOption = null;
+  document.getElementById('nextBtn').disabled = true;
+
+  const fill = ((currentQ) / questions.length) * 100;
+  document.getElementById('progressFill').style.width = fill + '%';
+  document.getElementById('progressText').textContent = currentQ + ' / ' + questions.length;
+
+  const letters = ['A', 'B', 'C', 'D'];
+  const html = `
+    <div class="question-block">
+      <div class="q-number">// ПАРАМЕТР ${String(currentQ+1).padStart(2,'0')} / 08</div>
+      <div class="q-text">${q.text}</div>
+      <div class="options" id="optionsContainer">
+        ${q.options.map((opt, i) => `
+          <div class="option" onclick="selectOption(this, ${i})" data-index="${i}">
+            <span class="option-letter">${letters[i]}</span>
+            <span>${opt.text}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+  document.getElementById('questionContainer').innerHTML = html;
+  
+  const nextBtn = document.getElementById('nextBtn');
+  nextBtn.textContent = currentQ < questions.length - 1 ? 'СЛЕДУЮЩИЙ ПАРАМЕТР →' : 'ПОЛУЧИТЬ РЕЗУЛЬТАТ →';
+}
+
+function selectOption(el, idx) {
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedOption = idx;
+  document.getElementById('nextBtn').disabled = false;
+}
+
+function nextQuestion() {
+  if (selectedOption === null) return;
+  answers.push(questions[currentQ].options[selectedOption].score);
+  currentQ++;
+
+  if (currentQ >= questions.length) {
+    showScanning();
+  } else {
+    renderQuestion();
+  }
+}
+
+function showScanning() {
+  document.getElementById('quizScreen').style.display = 'none';
+  document.getElementById('scanningScreen').style.display = 'block';
+  setTimeout(showResult, 2200);
+}
+
+function showResult() {
+  document.getElementById('scanningScreen').style.display = 'none';
+  document.getElementById('resultScreen').style.display = 'block';
+
+  const total = answers.reduce((a, b) => a + b, 0);
+  const max = questions.length * 5;
+  const percent = Math.round((total / max) * 100);
+
+  // Animate score
+  let count = 0;
+  const scoreEl = document.getElementById('resultScore');
+  const interval = setInterval(() => {
+    count += 3;
+    if (count >= percent) { count = percent; clearInterval(interval); }
+    scoreEl.textContent = count + '%';
+  }, 18);
+
+  // Verdict
+  let type, text, diagData;
+
+  if (percent >= 75) {
+    type = "ГЛУБОКАЯ ИЛЛЮЗИЯ";
+    text = `Ты не переживаешь расставание — ты живёшь в параллельной реальности, где вы ещё вместе. <strong>Он давно ушёл. Ты — нет.</strong><br><br>Это не любовь. Это нейрохимия: твой мозг держится за привычный источник дофамина и отказывается переключаться. Чем дольше ты ждёшь — тем сильнее затягивает. <strong>У него нет «шанса вернуться». Есть только твоя готовность ждать вечно.</strong>`;
+    diagData = [
+      { label: "Уровень иллюзии", val: "КРИТИЧЕСКИЙ", cls: "red" },
+      { label: "Шанс его возврата", val: "ПЕРЕОЦЕНЁН", cls: "red" },
+      { label: "Твоё реальное состояние", val: "ЗАВИСИМОСТЬ", cls: "red" },
+      { label: "Прогноз без действий", val: "ЕЩЁ 6–18 МЕС.", cls: "yellow" }
+    ];
+  } else if (percent >= 50) {
+    type = "УМЕРЕННАЯ ЗАЦЕПКА";
+    text = `Ты понимаешь умом, что надо двигаться дальше. Но тело и голова всё ещё проверяют его страницу, сравнивают других мужчин с ним и прокручивают сценарии возврата. <strong>Одной ногой ты уже вышла. Другой — держишься за дверной косяк.</strong><br><br>Хорошая новость: ты в точке, где изменения реально работают. Плохая: без конкретного протокола ты будешь стоять в этой двери ещё очень долго.`;
+    diagData = [
+      { label: "Уровень иллюзии", val: "СРЕДНИЙ", cls: "yellow" },
+      { label: "Шанс его возврата", val: "ЗАВЫШЕН", cls: "yellow" },
+      { label: "Твоё реальное состояние", val: "ПЕРЕХОДНЫЙ", cls: "yellow" },
+      { label: "Прогноз без действий", val: "3–9 МЕС.", cls: "yellow" }
+    ];
+  } else {
+    type = "ПРОЦЕСС ИДЁТ";
+    text = `Ты уже на пути. Иллюзий меньше, трезвости больше. Но «идёт» — не значит «завершён». <strong>Пока нет чёткого алгоритма, голова будет периодически возвращаться к нему.</strong> Особенно ночью, в выходные, после хорошего или плохого дня.<br><br>Тебе не нужен психолог — тебе нужен конкретный инструмент, чтобы дожать то, что уже начала.`;
+    diagData = [
+      { label: "Уровень иллюзии", val: "НИЗКИЙ", cls: "green" },
+      { label: "Шанс его возврата", val: "РЕАЛЬНО ОЦЕНЁН", cls: "green" },
+      { label: "Твоё реальное состояние", val: "ВОССТАНОВЛЕНИЕ", cls: "yellow" },
+      { label: "Прогноз без действий", val: "1–4 МЕС.", cls: "green" }
+    ];
+  }
+
+  document.getElementById('verdictType').textContent = type;
+  document.getElementById('verdictText').innerHTML = text;
+
+  const diagHTML = diagData.map(d => `
+    <div class="diag-item">
+      <span class="diag-label">${d.label}</span>
+      <span class="diag-val ${d.cls}">${d.val}</span>
+    </div>
+  `).join('');
+  document.getElementById('diagnostics').innerHTML = diagHTML;
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function restartQuiz() {
+  currentQ = 0;
+  answers = [];
+  selectedOption = null;
+  document.getElementById('resultScreen').style.display = 'none';
+  document.getElementById('startScreen').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
