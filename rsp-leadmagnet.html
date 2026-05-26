@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Главная ловушка бывших мужей — Разбор-освобождение</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --deep: #111118;
+    --card: #16161e;
+    --crimson: #c0152a;
+    --crimson-bright: #e8172f;
+    --gold: #c9a84c;
+    --gold-light: #e8c96a;
+    --white: #f5f0eb;
+    --muted: #9a9080;
+    --border: rgba(201,168,76,0.18);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content:'';
+    position:fixed;
+    inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events:none;
+    z-index:9999;
+    opacity:0.4;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 60px 24px 80px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero::before {
+    content:'';
+    position:absolute;
+    top:-10%; left:50%;
+    transform:translateX(-50%);
+    width:800px; height:800px;
+    background: radial-gradient(ellipse, rgba(192,21,42,0.14) 0%, transparent 65%);
+    pointer-events:none;
+  }
+
+  .hero-warning {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--crimson-bright);
+    border: 1px solid rgba(232,23,47,0.4);
+    padding: 7px 20px;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-warning::before { content:'▲'; font-size: 8px; }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 7.5vw, 82px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    max-width: 820px;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.55s forwards;
+  }
+  .hero-title .r { color: var(--crimson); }
+  .hero-title .i { color: var(--crimson); font-style: italic; }
+
+  .hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(15px, 2.5vw, 20px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto 52px;
+    line-height: 1.6;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.7s forwards;
+  }
+
+  .hook-line {
+    display: block;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    color: rgba(245,240,235,0.55);
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeUp 0.9s 1.1s forwards;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex; align-items: center; gap: 16px;
+    max-width: 340px; margin: 0 auto 52px;
+    opacity: 0; animation: fadeUp 0.9s 0.85s forwards;
+  }
+  .divider-line { flex:1; height:1px; background: var(--border); }
+  .divider-sym { color: var(--gold); font-size: 13px; letter-spacing: 0.1em; }
+
+  /* ── CTA ── */
+  .cta-group {
+    display: flex; flex-direction: column; align-items: center; gap: 14px;
+    opacity: 0; animation: fadeUp 0.9s 1s forwards;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--crimson); color: #fff;
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    text-decoration: none;
+    padding: 18px 48px;
+    border: none; cursor: pointer;
+    transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+    box-shadow: 0 4px 40px rgba(192,21,42,0.4);
+    position: relative; overflow: hidden;
+  }
+  .btn-primary::before {
+    content:''; position:absolute; top:0; left:-100%;
+    width:100%; height:100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s;
+  }
+  .btn-primary:hover::before { left:100%; }
+  .btn-primary:hover { background: var(--crimson-bright); transform: translateY(-2px); box-shadow: 0 8px 50px rgba(232,23,47,0.5); }
+
+  .micro-note { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; margin-top: 4px; }
+
+  /* ── SECTIONS ── */
+  .section { padding: 88px 24px; }
+  .container { max-width: 760px; margin: 0 auto; }
+  .container-wide { max-width: 980px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--crimson); margin-bottom: 24px; display: block;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4.5vw, 44px);
+    font-weight: 700; line-height: 1.2; margin-bottom: 32px;
+  }
+  .section-title em { color: var(--gold); font-style: italic; }
+  .section-title .r { color: var(--crimson); }
+
+  .body-text {
+    font-size: 15px; color: rgba(245,240,235,0.75);
+    line-height: 1.9; margin-bottom: 20px;
+  }
+  .body-text strong { color: var(--white); }
+
+  /* ── PAIN BLOCK ── */
+  .pain-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--crimson);
+    padding: 26px 30px; margin-bottom: 14px;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .pain-block:hover { border-color: var(--gold); border-left-color: var(--gold); transform: translateX(4px); }
+  .pain-block p { font-size: 15px; color: rgba(245,240,235,0.82); line-height: 1.7; }
+  .pain-block p strong { color: var(--white); }
+
+  /* ── MANIPULATION CARDS ── */
+  .manip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 44px;
+  }
+  .manip-item {
+    background: var(--deep); padding: 36px 30px;
+    transition: background 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .manip-item::before {
+    content:''; position:absolute;
+    top:0; left:0; right:0; height:2px;
+    background: linear-gradient(90deg, var(--crimson), transparent);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .manip-item:hover { background: var(--card); }
+  .manip-item:hover::before { opacity: 1; }
+  .manip-num { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 900; color: rgba(192,21,42,0.12); line-height: 1; margin-bottom: 14px; }
+  .manip-item h3 { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; color: var(--gold); }
+  .manip-item p { font-size: 13px; color: rgba(245,240,235,0.65); line-height: 1.75; }
+  .manip-item .tag {
+    display: inline-block; margin-top: 14px;
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--crimson); border: 1px solid rgba(192,21,42,0.3);
+    padding: 3px 10px;
+  }
+
+  /* ── QUOTE ── */
+  .quote-wrap {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 52px 44px;
+    position: relative; margin: 56px 0;
+  }
+  .quote-wrap::before {
+    content:'"'; position:absolute;
+    top:-14px; left:36px;
+    font-family: 'Playfair Display', serif;
+    font-size: 130px; color: var(--crimson);
+    opacity: 0.25; line-height: 1;
+  }
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(17px, 2.8vw, 24px);
+    font-style: italic; line-height: 1.55;
+    color: var(--white); margin-bottom: 22px;
+  }
+  .quote-source { font-size: 11px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; }
+
+  /* ── TRUTH REVEAL ── */
+  .truth-section {
+    padding: 88px 24px;
+    background: linear-gradient(180deg, var(--black) 0%, var(--deep) 50%, var(--black) 100%);
+    position: relative;
+  }
+  .truth-section::before {
+    content:''; position:absolute; inset:0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(192,21,42,0.07) 0%, transparent 65%);
+  }
+
+  .reveal-list { margin-top: 40px; }
+  .reveal-item {
+    display: flex; gap: 24px; align-items: flex-start;
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: padding-left 0.3s;
+  }
+  .reveal-item:hover { padding-left: 8px; }
+  .reveal-item:last-child { border-bottom: none; }
+  .reveal-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px; color: var(--crimson);
+    font-weight: 700; flex-shrink:0; padding-top: 3px;
+    letter-spacing: 0.1em;
+  }
+  .reveal-text { font-size: 15px; color: rgba(245,240,235,0.8); line-height: 1.75; }
+  .reveal-text strong { color: var(--white); }
+  .reveal-text em { color: var(--gold); font-style: italic; }
+
+  /* ── WHAT REALLY HAPPENS ── */
+  .collapse-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    margin-bottom: 10px; overflow: hidden;
+  }
+  .collapse-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 22px 28px; cursor: pointer;
+    transition: background 0.25s;
+    user-select: none;
+  }
+  .collapse-header:hover { background: rgba(255,255,255,0.03); }
+  .collapse-header h3 { font-size: 14px; font-weight: 600; letter-spacing: 0.04em; color: var(--white); }
+  .collapse-icon { color: var(--gold); font-size: 18px; transition: transform 0.3s; flex-shrink:0; }
+  .collapse-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
+  .collapse-body.open { max-height: 400px; }
+  .collapse-body-inner { padding: 0 28px 28px; }
+  .collapse-body p { font-size: 14px; color: rgba(245,240,235,0.72); line-height: 1.8; margin-bottom: 10px; }
+  .collapse-body p:last-child { margin-bottom: 0; }
+  .collapse-icon.open { transform: rotate(45deg); }
+
+  /* ── OFFER BRIDGE ── */
+  .offer-section {
+    padding: 88px 24px;
+    background: var(--deep); position: relative;
+  }
+  .offer-section::before {
+    content:''; position:absolute; inset:0;
+    background: radial-gradient(ellipse at center, rgba(192,21,42,0.07) 0%, transparent 70%);
+  }
+
+  .offer-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    max-width: 660px; margin: 0 auto;
+    padding: 60px 52px;
+    text-align: center; position: relative;
+    box-shadow: 0 0 100px rgba(0,0,0,0.5), 0 0 120px rgba(192,21,42,0.06);
+  }
+  .offer-card::before {
+    content:''; position:absolute;
+    top:0; left:0; right:0; height:2px;
+    background: linear-gradient(90deg, transparent, var(--crimson), transparent);
+  }
+
+  .offer-tag { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); margin-bottom: 22px; display: block; }
+  .offer-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3.8vw, 36px);
+    font-weight: 700; line-height: 1.25; margin-bottom: 20px;
+  }
+  .offer-title em { color: var(--crimson); font-style: italic; }
+  .offer-desc { font-size: 14px; color: rgba(245,240,235,0.65); line-height: 1.85; margin-bottom: 36px; }
+
+  .offer-features { list-style: none; text-align: left; margin-bottom: 40px; border-top: 1px solid var(--border); padding-top: 28px; }
+  .offer-features li {
+    font-size: 13px; color: rgba(245,240,235,0.78);
+    padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex; align-items: flex-start; gap: 14px; line-height: 1.55;
+  }
+  .offer-features li::before { content:'—'; color: var(--gold); flex-shrink:0; margin-top: 2px; }
+
+  /* ── FINAL ── */
+  .final-section {
+    padding: 110px 24px;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .final-section::before {
+    content:''; position:absolute;
+    bottom:-25%; left:50%; transform:translateX(-50%);
+    width:900px; height:900px;
+    background: radial-gradient(ellipse, rgba(192,21,42,0.1) 0%, transparent 60%);
+    pointer-events:none;
+  }
+  .final-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 6vw, 62px);
+    font-weight: 900; line-height: 1.1; margin-bottom: 24px;
+  }
+  .final-title em { color: var(--crimson); }
+  .final-text { font-size: 15px; color: rgba(245,240,235,0.7); max-width: 540px; margin: 0 auto 48px; line-height: 1.85; }
+
+  /* ── FOOTER ── */
+  footer { padding: 32px 24px; text-align: center; border-top: 1px solid var(--border); }
+  footer p { font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+
+  .hr { border:none; border-top: 1px solid var(--border); margin: 0 24px; }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity:0; transform:translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 600px) {
+    .offer-card { padding: 36px 22px; }
+    .quote-wrap { padding: 40px 22px; }
+    .manip-item { padding: 28px 22px; }
+    .section { padding: 64px 20px; }
+    .truth-section, .offer-section, .final-section { padding: 64px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <span class="hero-warning">Осторожно: это может быть неприятно читать</span>
+  <span class="hero-eyebrow">Разбор-освобождение · back4heart</span>
+  <h1 class="hero-title">
+    Главная ловушка<br>
+    <span class="i">бывших мужей:</span><br>
+    <span class="r">как он использует детей,</span><br>
+    чтобы продолжать<br>пить твою кровь
+  </h1>
+  <p class="hero-sub">
+    Он не возвращается ради ребёнка.<br>Он возвращается ради тебя — потому что ты ещё не закрыта.
+  </p>
+  <div class="divider">
+    <span class="divider-line"></span>
+    <span class="divider-sym">◆</span>
+    <span class="divider-line"></span>
+  </div>
+  <div class="cta-group">
+    <a href="https://back4heart.site/rsp-landing.html" class="btn-primary">Хочу полное руководство →</a>
+    <span class="micro-note">Гайд «РСП — Разошлась с придурком»</span>
+  </div>
+  <span class="hook-line">Читай дальше — имя этой манипуляции тебе нужно знать.</span>
+</section>
+
+<hr class="hr">
+
+<!-- ══════════ УЗНАЁШЬ СЕБЯ? ══════════ -->
+<section class="section">
+  <div class="container">
+    <span class="section-label reveal">Диагностика</span>
+    <h2 class="section-title reveal">
+      Ты думала, что он изменился.<br>
+      <em>Ты ошибалась.</em>
+    </h2>
+
+    <div class="pain-block reveal">
+      <p>Он пишет: <strong>«Как там Маша? Я беспокоюсь.»</strong> — в 22:47. Не утром. Не в воскресенье на прогулке. Именно тогда, когда ты наконец выдохнула.</p>
+    </div>
+    <div class="pain-block reveal">
+      <p>Он звонит по поводу «школьного врача» — и разговор незаметно перетекает в обсуждение твоей жизни. <strong>Твоих планов. Твоих решений.</strong> Его мнения о них.</p>
+    </div>
+    <div class="pain-block reveal">
+      <p>Он не платит алименты вовремя, зато <strong>появляется «для ребёнка»</strong> именно в тот момент, когда ты выглядишь уставшей и одинокой.</p>
+    </div>
+    <div class="pain-block reveal">
+      <p>После каждого контакта с ним ты чувствуешь одно и то же: <strong>опустошение, злость и почему-то вину</strong>. Хотя ты вроде ничего не сделала.</p>
+    </div>
+
+    <div class="quote-wrap reveal">
+      <p class="quote-text">«Он не пытается вернуть семью. Он пытается сохранить доступ к источнику питания. А ребёнок — это ключ от двери.»</p>
+      <span class="quote-source">Психология нарциссических паттернов после развода</span>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- ══════════ 7 МАНИПУЛЯЦИЙ ══════════ -->
+<section class="truth-section">
+  <div class="container">
+    <span class="section-label reveal">Вскрытие</span>
+    <h2 class="section-title reveal">
+      7 способов, которыми он использует ребёнка,<br>
+      <span class="r">чтобы продолжать контролировать тебя</span>
+    </h2>
+    <p class="body-text reveal">Каждый из этих сценариев выглядит как «забота об общем ребёнке». Ни один из них ею не является. Разберём по одному — без эмоций, только механика.</p>
+
+    <div class="reveal-list reveal">
+
+      <div class="reveal-item">
+        <span class="reveal-num">01.</span>
+        <div class="reveal-text"><strong>«Тревожный звонок» не о ребёнке.</strong> Он сообщает тебе что-то «важное» про ребёнка — но выбирает момент, когда знает, что ты одна, усталая или эмоционально открыта. Сам контакт — это и есть цель. Ребёнок — только <em>повод зайти внутрь.</em></div>
+      </div>
+
+      <div class="reveal-item">
+        <span class="reveal-num">02.</span>
+        <div class="reveal-text"><strong>Отец года на публике.</strong> Появляется на утренниках, выкладывает фото с ребёнком. Тебе — ни копейки алиментов вовремя. Этот театр работает на двух зрителей: <em>окружение</em> (чтобы ты выглядела «мешающей матерью») и тебя (чтобы ты сомневалась в своём восприятии).</div>
+      </div>
+
+      <div class="reveal-item">
+        <span class="reveal-num">03.</span>
+        <div class="reveal-text"><strong>Финансовый кран.</strong> <em>«Я дам денег — но поговорим.»</em> Деньги не приходят автоматически. Каждый раз нужно контактировать. Это не безответственность — это архитектура зависимости. Ты вынуждена выходить на связь снова и снова.</div>
+      </div>
+
+      <div class="reveal-item">
+        <span class="reveal-num">04.</span>
+        <div class="reveal-text"><strong>«Ребёнок скучает по папе» — в твои уши.</strong> Он говорит это не ребёнку. Он говорит это тебе. Потому что его задача — вызвать у тебя <em>вину</em>. Виноватая мать — управляемая мать.</div>
+      </div>
+
+      <div class="reveal-item">
+        <span class="reveal-num">05.</span>
+        <div class="reveal-text"><strong>Информационный шпион.</strong> Через ребёнка он узнаёт всё: ты встречаешься с кем-то? Куда ездила? Кто бывает дома? <strong>Ребёнок не виноват</strong> — он не понимает, что выступает в роли разведчика. Но механизм работает именно так.</div>
+      </div>
+
+      <div class="reveal-item">
+        <span class="reveal-num">06.</span>
+        <div class="reveal-text"><strong>Угроза через ребёнка.</strong> <em>«Я пойду в суд за опеку»</em> — это не про ребёнка. Это рычаг давления. <em>«Ты плохая мать»</em> — это не диагноз. Это инструмент деморализации. Он ищет точку, где ты сломаешься и станешь снова <em>удобной.</em></div>
+      </div>
+
+      <div class="reveal-item">
+        <span class="reveal-num">07.</span>
+        <div class="reveal-text"><strong>Эмоциональный возврат через усталость.</strong> Ты одна тянешь всё. Он появляется с «помощью» — именно тогда, когда ты на нуле. Это не сочувствие. Это охота. <em>Измотанная женщина — уязвимая женщина.</em> Он это знает.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- ══════════ МЕХАНИКИ ГЛУБЖЕ ══════════ -->
+<section class="section">
+  <div class="container">
+    <span class="section-label reveal">Глубже</span>
+    <h2 class="section-title reveal">
+      Почему это работает<br>
+      <em>именно на тебя</em>
+    </h2>
+    <p class="body-text reveal">Не потому что ты слабая. Потому что ты мать. Материнский инстинкт защиты ребёнка — самый мощный эмоциональный триггер, который существует. Умный манипулятор это знает и использует с хирургической точностью.</p>
+
+    <div class="manip-grid reveal">
+      <div class="manip-item">
+        <div class="manip-num">I</div>
+        <h3>Вина как оружие</h3>
+        <p>Ты боишься травмировать ребёнка разводом — он усиливает этот страх. Ты соглашаешься на контакты, которые не нужны ребёнку. Они нужны ему.</p>
+        <span class="tag">Триггер: материнский страх</span>
+      </div>
+      <div class="manip-item">
+        <div class="manip-num">II</div>
+        <h3>Газлайтинг через ребёнка</h3>
+        <p>«Ты лишаешь его отца» — пока он сам не приходит месяцами. Реальность переворачивается. Ты начинаешь сомневаться в своём восприятии.</p>
+        <span class="tag">Триггер: сомнение в себе</span>
+      </div>
+      <div class="manip-item">
+        <div class="manip-num">III</div>
+        <h3>Эффект прерывистого подкрепления</h3>
+        <p>Иногда хорош. Иногда ужасен. Непредсказуемость держит нервную систему в постоянном ожидании. Это биохимия зависимости — не любовь.</p>
+        <span class="tag">Триггер: нейрохимия</span>
+      </div>
+      <div class="manip-item">
+        <div class="manip-num">IV</div>
+        <h3>Незакрытый гештальт</h3>
+        <p>Пока он имеет доступ к тебе через ребёнка — твой мозг не регистрирует разрыв как окончательный. Ты технически разведена. Психологически — нет.</p>
+        <span class="tag">Триггер: незавершённость</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- ══════════ ЧТО ДАЛЬШЕ ══════════ -->
+<section class="section">
+  <div class="container">
+    <span class="section-label reveal">Честный разговор</span>
+    <h2 class="section-title reveal">
+      Это не закончится само.<br>
+      <span class="r">Пока ты не закроешь дверь изнутри.</span>
+    </h2>
+    <p class="body-text reveal">Понимание манипуляций — это первый шаг. Но знание не равно защите. Ты можешь назвать все семь паттернов по именам — и всё равно почувствовать, как сжимается грудь, когда он пишет.</p>
+    <p class="body-text reveal"><strong>Потому что логика и нейрохимия — это разные системы.</strong> Одна понимает. Другая реагирует. И именно вторую нужно перепрограммировать.</p>
+
+    <div class="quote-wrap reveal">
+      <p class="quote-text">«Свобода от бывшего — это не когда ты его ненавидишь. Это когда его сообщение вызывает у тебя примерно то же, что сообщение от менеджера из банка: ничего.»</p>
+      <span class="quote-source">back4heart · концепция эмоциональной нейтральности</span>
+    </div>
+
+    <p class="body-text reveal">Именно об этом — пошагово, без лирики, без «отпусти и прости» — написан гайд ниже. Он создан специально для женщин с детьми. Потому что ваша ситуация технически сложнее. И именно поэтому вам нужен отдельный инструмент.</p>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- ══════════ FAQ COLLAPSE ══════════ -->
+<section class="section" style="padding-top: 48px; padding-bottom: 80px;">
+  <div class="container">
+    <span class="section-label reveal">Возражения</span>
+    <h2 class="section-title reveal" style="font-size: clamp(22px, 3.5vw, 34px);">
+      «Но может, он <em>правда</em> заботится о ребёнке?»
+    </h2>
+
+    <div class="collapse-block reveal">
+      <div class="collapse-header" onclick="toggleCollapse(this)">
+        <h3>Как отличить заботу от манипуляции?</h3>
+        <span class="collapse-icon">+</span>
+      </div>
+      <div class="collapse-body">
+        <div class="collapse-body-inner">
+          <p>Настоящая забота о ребёнке — последовательна, предсказуема и не требует твоего эмоционального участия. Он забирает ребёнка, проводит время, возвращает. Без разговоров о тебе, о вас, о прошлом.</p>
+          <p>Манипуляция — всегда вовлекает тебя. Всегда требует твоей реакции. Если каждый «разговор о ребёнке» заканчивается тем, что ты думаешь о нём следующие два часа — это не о ребёнке.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapse-block reveal">
+      <div class="collapse-header" onclick="toggleCollapse(this)">
+        <h3>Я не хочу лишать ребёнка отца. Что делать?</h3>
+        <span class="collapse-icon">+</span>
+      </div>
+      <div class="collapse-body">
+        <div class="collapse-body-inner">
+          <p>Ты не лишаешь. Ты устанавливаешь границы. Разница принципиальная. Отец может быть частью жизни ребёнка без того, чтобы иметь постоянный доступ к тебе как к эмоциональному ресурсу.</p>
+          <p>Здоровый ребёнок нуждается в спокойной, устойчивой маме — больше, чем в «мире» между родителями, который покупается ценой её нервной системы.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapse-block reveal">
+      <div class="collapse-header" onclick="toggleCollapse(this)">
+        <h3>А вдруг я сама придумываю манипуляции?</h3>
+        <span class="collapse-icon">+</span>
+      </div>
+      <div class="collapse-body">
+        <div class="collapse-body-inner">
+          <p>Это именно то, что он хочет, чтобы ты думала. Сомнение в своём восприятии — классический результат газлайтинга.</p>
+          <p>Простой тест: после общения с ним тебе лучше или хуже? Если регулярно хуже — это данные. Данным можно доверять.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- ══════════ OFFER BRIDGE ══════════ -->
+<section class="offer-section">
+  <div class="container reveal" style="position:relative;">
+    <div class="offer-card">
+      <span class="offer-tag">Полное руководство · back4heart</span>
+      <h2 class="offer-title">
+        РСП — <em>Разошлась с придурком.</em><br>
+        Инструкция для женщин с детьми
+      </h2>
+      <p class="offer-desc">
+        Ты только что прочитала разбор одной ловушки из десятков. Гайд — это полная операционная система выхода: от блокировки манипуляций через ребёнка до восстановления нейрохимии привязанности. Без «отпусти», без медитаций, без советов подруг.
+      </p>
+      <ul class="offer-features">
+        <li>Как выстроить коммуникацию с бывшим через ребёнка без потерь для себя</li>
+        <li>Протокол остановки навязчивых мыслей — нейро-механика, не аффирмации</li>
+        <li>Разбор 12 манипулятивных сценариев и точные ответы на каждый</li>
+        <li>Как перестать ждать его раскаяния — и почему ты до сих пор ждёшь</li>
+        <li>Финансовая и юридическая карта защиты для матери-одиночки</li>
+        <li>Скрипты границ: что говорить, когда он снова «про ребёнка»</li>
+      </ul>
+      <div style="display:flex; flex-direction:column; gap:12px; align-items:center;">
+        <a href="https://back4heart.site/rsp-landing.html" class="btn-primary" style="width:100%; max-width:360px; text-align:center;">Хочу полное руководство →</a>
+        <span class="micro-note">Мгновенный доступ · Читать с любого устройства</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- ══════════ FINAL ══════════ -->
+<section class="final-section">
+  <div class="container">
+    <h2 class="final-title reveal">
+      Он рассчитывает,<br>что ты снова<br>
+      <em>промолчишь.</em>
+    </h2>
+    <p class="final-text reveal">
+      Каждый раз, когда ты реагируешь — он получает подтверждение: дверь ещё открыта. Единственное, что он не ожидает — это когда ты становишься абсолютно нечитаемой. Не злой. Не холодной. Просто — <strong>закрытой.</strong>
+    </p>
+    <div class="reveal">
+      <a href="https://back4heart.site/rsp-landing.html" class="btn-primary">Стать закрытой — читать РСП →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© back4heart · Все права защищены · <a href="https://back4heart.site/rsp-landing.html" style="color:var(--gold); text-decoration:none;">back4heart.site</a></p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Collapse accordion
+  function toggleCollapse(header) {
+    const body = header.nextElementSibling;
+    const icon = header.querySelector('.collapse-icon');
+    const isOpen = body.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.collapse-body').forEach(b => b.classList.remove('open'));
+    document.querySelectorAll('.collapse-icon').forEach(i => i.classList.remove('open'));
+
+    if (!isOpen) {
+      body.classList.add('open');
+      icon.classList.add('open');
+    }
+  }
+</script>
+
+</body>
+</html>
