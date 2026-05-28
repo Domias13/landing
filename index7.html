@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Клуб «Ты не одна» — как пережить измену</title>
+<meta name="description" content="Закрытый клуб для женщин. Поддержка психотерапевта каждый день. Как пережить измену и вернуть себя." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#d6b894;
+    --card:#fbf6e9;
+    --ink:#2a2522;
+    --muted:#6b5e54;
+    --accent:#a87a73;        /* mauve button */
+    --accent-ink:#fff;
+    --tag:#9caa8e;           /* sage tag */
+    --tag-ink:#fff;
+    --divider:#e7ddc7;
+    --soft:#f3ebd6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.55}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:500;letter-spacing:-.01em;line-height:1.05}
+  .wrap{max-width:1240px;margin:0 auto;padding:32px 24px}
+
+  /* ===== Hero ===== */
+  .hero{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch;position:relative;padding-top:24px}
+  .tag-ribbon{
+    position:absolute;top:18px;left:50%;transform:translateX(-50%) rotate(-3deg);
+    background:var(--tag);color:var(--tag-ink);padding:12px 28px;border-radius:6px;
+    font-size:15px;font-weight:500;z-index:5;white-space:nowrap;
+    box-shadow:0 8px 24px rgba(0,0,0,.08)
+  }
+  .card{background:var(--card);border-radius:28px;padding:56px 48px;display:flex;flex-direction:column;justify-content:center}
+  .eyebrow{font-size:15px;font-weight:600;margin-bottom:28px}
+  .hero h1{font-size:88px;margin-bottom:36px}
+  .hero h1 em{font-style:italic;color:#7a5a55}
+  .lead{font-weight:600;font-size:17px;margin-bottom:18px}
+  .body p{margin-bottom:14px;font-size:16px;color:#3a312c}
+  .cta{margin-top:36px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    background:var(--accent);color:var(--accent-ink);text-decoration:none;
+    padding:22px 40px;border-radius:60px;font-size:18px;font-weight:500;
+    border:0;cursor:pointer;width:100%;max-width:520px;transition:transform .2s, background .2s
+  }
+  .btn:hover{background:#946761;transform:translateY(-1px)}
+  .scroll-link{display:inline-flex;align-items:center;gap:10px;color:#7a8f73;font-weight:500;margin-top:22px;text-decoration:none;font-size:16px}
+  .scroll-link .mouse{width:22px;height:22px;border:1.5px solid #7a8f73;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px}
+
+  .hero-img{border-radius:28px;overflow:hidden;background:#c9a98a;min-height:560px}
+  .hero-img img{width:100%;height:100%;object-fit:cover;min-height:560px}
+
+  /* ===== Section ===== */
+  section{padding:80px 0}
+  .section-eyebrow{font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#7a5a55;margin-bottom:14px}
+  .section-title{font-size:64px;margin-bottom:44px}
+  .section-title em{font-style:italic;color:#7a5a55}
+
+  .panel{background:var(--card);border-radius:28px;padding:64px 56px}
+
+  /* ===== Thoughts list ===== */
+  .thoughts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
+  .thought{background:var(--soft);border-radius:18px;padding:28px;font-family:'Cormorant Garamond',serif;font-size:24px;line-height:1.25;color:#3a312c}
+
+  .intro{font-size:18px;max-width:780px;margin-bottom:18px}
+  .small-note{font-size:16px;color:var(--muted);margin-top:24px}
+
+  /* ===== Bullets ===== */
+  .bullets{list-style:none;display:grid;gap:18px;margin-top:30px}
+  .bullets li{display:flex;gap:14px;font-size:17px;align-items:flex-start}
+  .bullets li::before{content:"";flex:0 0 10px;height:10px;border-radius:50%;background:var(--accent);margin-top:10px}
+
+  /* ===== Quotes ===== */
+  .quotes{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:36px}
+  .quote{background:var(--soft);border-radius:18px;padding:28px}
+  .quote p{font-family:'Cormorant Garamond',serif;font-size:22px;line-height:1.35;margin-bottom:14px}
+  .quote .who{font-size:14px;color:var(--muted)}
+
+  /* ===== Features ===== */
+  .features{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:36px}
+  .feature{background:var(--soft);border-radius:20px;padding:32px}
+  .feature h3{font-size:26px;margin-bottom:12px;color:#3a312c}
+  .feature p{font-size:15px;color:#4a4039}
+
+  /* ===== Result ===== */
+  .results{display:grid;gap:18px;margin-top:30px}
+  .results .r{background:var(--soft);border-radius:16px;padding:24px 28px;font-size:18px;font-family:'Cormorant Garamond',serif;line-height:1.35}
+
+  /* ===== Reviews ===== */
+  .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
+  .review{background:var(--soft);border-radius:18px;padding:28px}
+  .review p{font-family:'Cormorant Garamond',serif;font-size:20px;line-height:1.35;margin-bottom:14px;color:#3a312c}
+  .review .who{font-size:13px;color:var(--muted)}
+
+  /* ===== About expert ===== */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch}
+  .about-img{border-radius:28px;overflow:hidden;background:#c9a98a;min-height:560px}
+  .about-img img{width:100%;height:100%;object-fit:cover;min-height:560px}
+  .about h2{font-size:56px;margin-bottom:24px}
+  .badge-male{display:inline-block;background:var(--tag);color:#fff;padding:8px 16px;border-radius:6px;font-size:13px;font-weight:600;margin-bottom:20px;letter-spacing:.04em;text-transform:uppercase}
+
+  /* ===== Compare ===== */
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:36px}
+  .col{background:var(--soft);border-radius:20px;padding:36px}
+  .col h3{font-family:'Cormorant Garamond',serif;font-size:34px;margin-bottom:16px}
+  .col.club{background:#3a312c;color:#f3ebd6}
+  .col.club h3{color:#f3ebd6}
+  .col.club .bullets li::before{background:#d8b099}
+
+  /* ===== FAQ ===== */
+  .faq{display:grid;gap:14px;margin-top:36px}
+  details{background:var(--soft);border-radius:16px;padding:24px 28px;cursor:pointer}
+  details[open]{background:#ecdfc4}
+  summary{font-family:'Cormorant Garamond',serif;font-size:24px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:28px;color:#7a5a55;transition:transform .2s}
+  details[open] summary::after{content:"–"}
+  details p{margin-top:14px;font-size:16px;color:#3a312c;line-height:1.55}
+
+  /* ===== Final ===== */
+  .final{padding:32px 0 80px}
+  .final .panel{text-align:center}
+  .price{font-family:'Cormorant Garamond',serif;font-size:64px;color:#3a312c;margin:8px 0 12px}
+  .final .bullets{max-width:640px;margin:30px auto 30px;text-align:left}
+  .final .note{color:var(--muted);max-width:640px;margin:0 auto 24px;font-size:15px}
+
+  /* ===== Cookie ===== */
+  .cookie{position:fixed;left:16px;right:16px;bottom:16px;background:#2a2522;color:#f3ebd6;padding:18px 22px;border-radius:14px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;z-index:50;font-size:14px;box-shadow:0 12px 40px rgba(0,0,0,.25)}
+  .cookie a{color:#d8b099;text-decoration:underline}
+  .cookie button{background:transparent;color:#f3ebd6;border:1px solid #6b5e54;padding:10px 18px;border-radius:8px;cursor:pointer;font-size:14px}
+  .cookie button:hover{background:#3a312c}
+
+  /* ===== Responsive ===== */
+  @media (max-width: 900px){
+    .wrap{padding:20px 14px}
+    .hero{grid-template-columns:1fr;gap:18px;padding-top:48px}
+    .tag-ribbon{top:8px;font-size:13px;padding:10px 18px}
+    .card{padding:32px 24px;border-radius:22px}
+    .hero h1{font-size:52px;margin-bottom:24px}
+    .hero-img,.hero-img img{min-height:420px}
+    .hero-img{border-radius:22px}
+    section{padding:48px 0}
+    .panel{padding:36px 22px;border-radius:22px}
+    .section-title{font-size:40px;margin-bottom:28px}
+    .thoughts{grid-template-columns:1fr}
+    .thought{font-size:20px;padding:22px}
+    .quotes,.features,.compare,.reviews,.about{grid-template-columns:1fr}
+    .about-img,.about-img img{min-height:420px}
+    .about h2{font-size:40px}
+    .col h3{font-size:26px}
+    .feature h3{font-size:22px}
+    .review p,.quote p{font-size:18px}
+    .btn{padding:18px 24px;font-size:16px}
+    .price{font-size:44px}
+    summary{font-size:19px}
+    .cookie{flex-direction:column;align-items:stretch;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <section class="hero" style="padding:0">
+    <div class="tag-ribbon">👨‍⚕️ Закрытый клуб для женщин</div>
+    <div class="card">
+      <div class="eyebrow">Клуб «Ты не одна»</div>
+      <h1>Как пережить <em>измену</em></h1>
+      <p class="lead">«Время лечит» — в случае с изменой и разводом эта фраза не работает.</p>
+      <div class="body">
+        <p>Это не слабость и не каприз.</p>
+        <p>Это психологическая травма — с реальными последствиями для здоровья и психики. Без проработки время работает только против вас: незакрытая рана отношений уходит вглубь и начинает разрушать изнутри.</p>
+        <p><strong>Именно поэтому ждать — это не рабочая стратегия.</strong></p>
+      </div>
+      <div class="cta">
+        <a class="btn" href="#join">Вступить в клуб → $15/мес</a>
+        <a class="scroll-link" href="#about-club">Узнать о клубе <span class="mouse">↓</span></a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://sofisedova.ru/img/51523043_563_q70.webp" alt="Главное фото" />
+    </div>
+  </section>
+
+  <!-- THOUGHTS -->
+  <section id="about-club">
+    <div class="panel">
+      <div class="section-eyebrow">То, о чём не говорят вслух</div>
+      <h2 class="section-title">Мысли, которых вы <em>стыдитесь</em></h2>
+      <p class="intro">Есть вещи, которые сложно признать даже себе. Но они есть — и они нормальны для того, через что вы проходите.</p>
+      <div class="thoughts">
+        <div class="thought">Не сплю уже третью неделю. Засыпаю под утро, просыпаюсь с теми же мыслями.</div>
+        <div class="thought">Держусь на работе — но внутри руины.</div>
+        <div class="thought">Срываюсь на детях и ненавижу себя за это.</div>
+        <div class="thought">Не могу уйти. Но и простить не получается.</div>
+        <div class="thought">Слежу за его страницей каждый день. Хочу, чтобы ему было так же больно.</div>
+        <div class="thought">Время идёт. Легче не становится.</div>
+      </div>
+      <p class="small-note">Если хотя бы одно из этого — про вас, вы пришли туда, куда нужно.</p>
+
+      <ul class="bullets" style="margin-top:36px">
+        <li>Сделаете первые шаги, которые помогут справиться с шоком и болью</li>
+        <li>Научитесь управлять эмоциями, чтобы они не разрушали вашу жизнь</li>
+        <li>Поймёте, как прожить боль, не игнорируя её — и какими безопасными способами выражать злость и обиду</li>
+        <li>Разберёте причины: что пошло не так, какова роль каждого — и как перестать бояться повторения</li>
+        <li>Научитесь принимать решение «остаться или уйти» — не из страха одиночества, а из понимания себя</li>
+        <li>Перейдёте из состояния «ничего не хочу» в состояние «хочется жить»</li>
+      </ul>
+
+      <div class="quotes">
+        <div class="quote">
+          <p>«Я думала, что никогда уже не буду счастлива. А сейчас мурашки по всему телу — это моё первое счастливое состояние после разрыва.»</p>
+          <div class="who">— Марина, участница клуба</div>
+        </div>
+        <div class="quote">
+          <p>«Осознания за осознаниями каждый день. Пятый день на позитиве — просыпаюсь с мыслями: какие ещё чудеса принесёт мне сегодняшний день?»</p>
+          <div class="who">— Ольга, участница клуба</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INSIDE -->
+  <section>
+    <div class="panel">
+      <div class="section-eyebrow">Содержание</div>
+      <h2 class="section-title">Что <em>внутри клуба</em></h2>
+      <div class="features">
+        <div class="feature">
+          <h3>Ежедневные разборы голосом — лично от меня</h3>
+          <p>Вы пишете в клуб — что происходит, что не даёт спать, что непонятно. Я отвечаю голосом: объясняю, что именно с вами происходит, почему и что делать. Не куратор по методичке — я. Каждый день.</p>
+        </div>
+        <div class="feature">
+          <h3>Курс «Как пережить предательство» — 28 уроков</h3>
+          <p>Пошаговый терапевтический процесс: от острого шока — через проживание боли и разбор причин — до возвращения к себе. Конкретные практики и задания на каждом шаге. Не теория — работа.</p>
+        </div>
+        <div class="feature">
+          <h3>Программа по работе с эмоциональной зависимостью</h3>
+          <p>Почему так тяжело отпустить — даже когда всё понимаешь? Разбираем корни эмоциональной зависимости, освобождаемся от разрушительных паттернов и учимся строить опору внутри себя.</p>
+        </div>
+        <div class="feature">
+          <h3>Курс «Ты и Я» — от знакомства до отношений, 18 уроков</h3>
+          <p>Чёткие алгоритмы, практики и упражнения — как знакомиться с ресурсными мужчинами, как себя вести на первых этапах, как не повторить старых ошибок и прийти к отношениям, в которых вам хорошо.</p>
+        </div>
+        <div class="feature">
+          <h3>Расстановочные упражнения</h3>
+          <p>Работа с системными паттернами — семейными сценариями, которые мешают строить здоровые отношения. Глубокий формат, который даёт результат там, где обычные техники не достают.</p>
+        </div>
+        <div class="feature">
+          <h3>Гипнотерапии для острых состояний</h3>
+          <p>Аудио-практики при мыслях по кругу, невротической вине, бессоннице. Можно слушать ночью — именно тогда, когда накрывает больше всего.</p>
+        </div>
+        <div class="feature">
+          <h3>Подкасты и дополнительные курсы</h3>
+          <p>Самооценка, как общаться с бывшим, если есть дети, как не дать манипулировать собой. Материалы, которые работают в реальной жизни.</p>
+        </div>
+        <div class="feature">
+          <h3>Сообщество участниц</h3>
+          <p>Можно молча читать других — и вдруг обнаружить: умная, красивая, сильная женщина — и с ней то же самое. Стыд живёт в изоляции. Здесь он начинает отпускать. Вы поймёте на практике, что значит название клуба «Ты не одна».</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIFE -->
+  <section>
+    <div class="panel">
+      <h2 class="section-title">Какой станет <em>ваша жизнь</em></h2>
+      <div class="results">
+        <div class="r">Вы проснётесь утром — и первая мысль будет не о нём.</div>
+        <div class="r">Вы заметите, что несколько дней не заходили на его страницу. И не захотите.</div>
+        <div class="r">Внутри появится что-то твёрдое — опора, которая не зависит от того, любит он вас или нет.</div>
+        <div class="r">Вы перестанете объяснять детям, почему мама плачет. Потому что мама больше не плачет.</div>
+        <div class="r">Вы почувствуете, чего хотите — не «лишь бы не было больно», а именно чего хотите вы. Для себя. Для своей жизни.</div>
+        <div class="r">Вы встретите мужчину — и не будете судорожно думать «а вдруг снова». Вы будете просто собой. Спокойной. Знающей себе цену.</div>
+      </div>
+      <p class="small-note">Из «ничего не хочу» — в «хочется жить». Это не обещание. Это то, что говорят женщины, которые прошли этот путь в клубе.</p>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section>
+    <div class="panel">
+      <div class="section-eyebrow">Отзывы</div>
+      <h2 class="section-title">Что говорят <em>участницы</em></h2>
+      <div class="reviews">
+        <div class="review"><p>«Ваши советы отрезвляют, помогают и, главное, Вы даёте понимание — как быть и что делать дальше!»</p><div class="who">— Татьяна</div></div>
+        <div class="review"><p>«Проснулась с мыслью о Вас. С благодарностью и восхищением. Спасибо за то, что так глубоко и бережно работаете с нашими ранами.»</p><div class="who">— Светлана</div></div>
+        <div class="review"><p>«После двух дней курса вижу, как начинаю оживать. Столько вопросов появилось к самой себе: почему я это терпела?»</p><div class="who">— Виктория</div></div>
+        <div class="review"><p>«Засыпаю с практикой „Вернуть себе силу“ четыре дня подряд. Режет внутри — отрезвление.»</p><div class="who">— Юлия</div></div>
+        <div class="review"><p>«Слушаю Вас и понемногу начинаю приходить в себя после всего, что случилось. Рекомендую всем подругам.»</p><div class="who">— Диана</div></div>
+        <div class="review"><p>«Так благодарна Вам за этот месяц! Вы наш ангел-хранитель.»</p><div class="who">— Наталья</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT EXPERT (MALE) -->
+  <section>
+    <div class="about">
+      <div class="about-img">
+        <img src="https://sofisedova.ru/img/51577041.jpg" alt="Эксперт" />
+      </div>
+      <div class="panel" style="padding:48px">
+        <div class="section-eyebrow">Об эксперте</div>
+        <span class="badge-male">Ведёт мужчина — психотерапевт</span>
+        <h2>Меня зовут <em>Александр</em></h2>
+        <p style="margin-bottom:16px;font-size:17px"><strong>Интегральный психотерапевт с 15-летним опытом работы.</strong> Специализируюсь на темах измен, эмоциональной зависимости и построения здоровых отношений. Работаю в направлениях гештальт- и системной терапии, EMDR, КПТ, гипноз.</p>
+
+        <p style="margin-bottom:16px;font-size:17px;color:#3a312c">Почему то, что клуб ведёт мужчина — это <strong>плюс именно для вас</strong>:</p>
+
+        <ul class="bullets" style="margin-top:8px">
+          <li>Вы получаете честный взгляд «с той стороны» — как мужчина на самом деле думает, что чувствует и почему поступает так, как поступает. Без догадок и домыслов.</li>
+          <li>Я помогаю отделить ваши реальные ошибки от того, в чём вы себя зря вините. Со стороны это видно яснее.</li>
+          <li>Рядом со мной возвращается ощущение безопасности и спокойной мужской опоры — того, что было сломано предательством.</li>
+          <li>Никакой «женской солидарности по умолчанию» — только трезвый разбор и конкретные шаги.</li>
+          <li>Я знаю, как разговаривать с бывшим, чтобы не дать собой манипулировать — и научу этому вас.</li>
+        </ul>
+
+        <p style="margin-top:22px;font-size:17px">Главное — не дипломы. Я много лет работаю с женщинами в самой острой точке: когда внутри всё рушится, а снаружи нужно держаться. Я знаю эту дорогу — и пройду её рядом с вами.</p>
+
+        <ul class="bullets" style="margin-top:22px">
+          <li>Работаю лично — без кураторов и помощников. Никаких советов в духе «капитан очевидность».</li>
+          <li>Отвечаю голосом на ваши конкретные вопросы и ситуации.</li>
+          <li>Не раз в неделю на сессии — а каждый день.</li>
+          <li>Разбираю скриншоты переписок и конкретные ситуации — не даю общих советов.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARE -->
+  <section>
+    <div class="panel">
+      <h2 class="section-title">Зачем клуб, если Telegram-канал <em>бесплатный?</em></h2>
+      <p class="intro">Почти все задают этот вопрос. Отвечу честно.</p>
+      <div class="compare">
+        <div class="col">
+          <h3>Канал</h3>
+          <p>Вы читаете, узнаёте себя, понимаете, что происходит. Становится чуть легче — на час, на день. Это важно. Но это временный эффект.</p>
+        </div>
+        <div class="col club">
+          <h3>Клуб</h3>
+          <p>Вы не просто понимаете — вы проходите через это. Шаг за шагом, в моём личном ежедневном сопровождении, с психологом, который точно знает дорогу.</p>
+          <ul class="bullets" style="margin-top:18px">
+            <li>Чёткий план действий: что делать прямо сейчас, в первые дни</li>
+            <li>Разбор вашей конкретной ситуации — голосом лично от меня</li>
+            <li>Понимание того, чего делать не стоит</li>
+            <li>Работа с острыми состояниями: мысли по кругу, бессонница, желание мести</li>
+            <li>Поддержка каждый день — когда накрывает, а не раз в неделю</li>
+            <li>Путь от «как мне жить дальше» до «я знаю, чего хочу»</li>
+          </ul>
+        </div>
+      </div>
+      <div class="quote" style="margin-top:30px">
+        <p>«Я не знаю, как это работает, но как только напишу сюда — так отпускает и становится легче.»</p>
+        <div class="who">— Евгения, участница клуба</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOT FOR YOU -->
+  <section>
+    <div class="panel">
+      <div class="section-eyebrow">Честность</div>
+      <h2 class="section-title">Кому клуб <em>не подходит</em></h2>
+      <ul class="bullets">
+        <li>Если вы ищете, где «просто поплакать вместе» — здесь мы работаем.</li>
+        <li>Если вы не готовы слушать честный разбор своей ситуации — даже когда он неудобный.</li>
+        <li>Если вы хотите, чтобы кто-то всё решил за вас, и ищете волшебную таблетку «забыть за месяц». Я даю инструменты и конкретные рекомендации — но внедрять их в свою жизнь нужно самой.</li>
+        <li>Если вы готовы работать над собой — клуб даст вам всё необходимое. Вы пришли туда, куда нужно.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="panel">
+      <div class="section-eyebrow">Часто спрашивают</div>
+      <h2 class="section-title">Вопросы и <em>ответы</em></h2>
+      <div class="faq">
+        <details open>
+          <summary>Мне сейчас очень плохо. Клуб поможет в остром состоянии?</summary>
+          <p>Именно для этого состояния клуб и создан. Не «когда успокоитесь», а прямо сейчас, в шоке — здесь есть конкретные шаги на первые дни. Гипнотерапии, которые можно слушать ночью. И я рядом каждый день.</p>
+        </details>
+        <details>
+          <summary>Нужно ли уже решить «уходить или оставаться» перед вступлением?</summary>
+          <p>Нет — и это важно. В остром состоянии невозможно принимать взвешенные решения. Сначала — выйти из шока и вернуть себя. Потом — решать. Клуб помогает именно с первым.</p>
+        </details>
+        <details>
+          <summary>Нужно ли рассказывать о своей ситуации чужим людям?</summary>
+          <p>В клубе вы не обязаны ничего рассказывать в общем чате. Многие начинают молча — просто читают, слушают, наблюдают. Когда будете готовы — пишете свой вопрос в клуб, и я разбираю его голосом. Всё в закрытом пространстве. Конфиденциальность — основа.</p>
+        </details>
+        <details>
+          <summary>Не странно ли, что женский клуб ведёт мужчина?</summary>
+          <p>Многим участницам это, наоборот, помогает быстрее. Вы получаете честный взгляд с «той стороны» и спокойную мужскую опору — то, что было сломано предательством. В клубе мы работаем профессионально, бережно и по делу.</p>
+        </details>
+        <details>
+          <summary>Как долго нужно быть в клубе, чтобы почувствовать результат?</summary>
+          <p>Первое облегчение многие чувствуют уже в первые дни — когда получают разбор своей ситуации и понимают, что делать. Устойчивые изменения — за 2–3 месяца регулярной работы. Подписку можно отменить в любой момент.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final" id="join">
+    <div class="panel">
+      <div class="section-eyebrow" style="text-align:center">Вступить в клуб</div>
+      <div class="price">$15 / мес</div>
+      <p class="note">Меньше одного часа с психологом. И это не один час — это живая поддержка каждый день.</p>
+      <ul class="bullets">
+        <li>Курс «Как пережить предательство» — 28 уроков</li>
+        <li>Курс по работе с травматической и деструктивной привязанностью</li>
+        <li>Курс «Ты и Я» — от знакомства до отношений, 18 уроков</li>
+        <li>Расстановочные упражнения</li>
+        <li>Ежедневные разборы голосом лично от Александра</li>
+        <li>Гипнотерапии для острых состояний</li>
+        <li>Подкасты и дополнительные курсы</li>
+        <li>Сообщество участниц</li>
+      </ul>
+      <p class="note">Я веду каждую участницу лично — без кураторов и помощников. Это значит, что клуб не может быть безразмерным. Если вы читаете эту страницу — набор открыт прямо сейчас.</p>
+      <div style="display:flex;justify-content:center;margin-top:24px">
+        <a class="btn" href="#">Вступить в клуб → $15/мес</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- COOKIE -->
+<div class="cookie" id="cookie">
+  <div>Мы используем файлы cookie, чтобы улучшить работу сайта. Продолжая использовать этот сайт, вы соглашаетесь с использованием cookie-файлов. <a href="#">Подробнее</a></div>
+  <button onclick="document.getElementById('cookie').style.display='none'">Отказаться</button>
+</div>
+
+<script>
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const id=a.getAttribute('href');
+      if(id.length>1){
+        const el=document.querySelector(id);
+        if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});}
+      }
+    });
+  });
+</script>
+</body>
+</html>
