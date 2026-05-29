@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'Vetrino';
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url('./vetrino.otf') format('opentype');
+}
