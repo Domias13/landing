@@ -36,6 +36,35 @@
       var(--ink);
   }
 
+  /* ── URGENCY BANNER ── */
+  .urgency-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    background: linear-gradient(90deg, #8b1e18, #b83228, #8b1e18);
+    border-radius: 5px;
+    padding: 9px 14px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.02em;
+    text-align: center;
+    line-height: 1.4;
+  }
+  .urgency-bar .pulse {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #fff;
+    flex-shrink: 0;
+    animation: pulse 1.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
+
   /* ── BADGE ── */
   .badge {
     display: inline-flex;
@@ -162,9 +191,7 @@
   }
 
   /* ── РЕЗУЛЬТАТЫ ── */
-  .results-block {
-    margin-bottom: 28px;
-  }
+  .results-block { margin-bottom: 28px; }
   .result-item {
     display: flex;
     align-items: flex-start;
@@ -189,9 +216,7 @@
   .result-text strong { color: var(--cream); display: block; font-size: 13.5px; margin-bottom: 2px; }
 
   /* ── ОТЗЫВЫ ── */
-  .reviews-block {
-    margin-bottom: 28px;
-  }
+  .reviews-block { margin-bottom: 28px; }
   .review-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -222,16 +247,24 @@
     font-size: 13px;
     flex-shrink: 0;
   }
-  .review-name {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--cream);
-  }
-  .review-meta {
-    font-size: 11px;
-    color: var(--muted);
-  }
+  .review-name { font-size: 12px; font-weight: 700; color: var(--cream); }
+  .review-meta { font-size: 11px; color: var(--muted); }
   .stars { color: var(--gold); font-size: 11px; letter-spacing: 1px; }
+
+  /* ── ГАРАНТИЯ ── */
+  .guarantee-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--gold-dim);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 28px;
+  }
+  .guarantee-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+  .guarantee-text { font-size: 12.5px; line-height: 1.58; color: #cdbfb5; }
+  .guarantee-text strong { color: var(--gold); display: block; font-size: 13px; margin-bottom: 3px; }
 
   /* ── ЦЕНА ── */
   .price-block {
@@ -264,11 +297,7 @@
     border: 1px solid rgba(122,106,98,0.4);
     border-radius: 2px;
   }
-  .price-desc {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.5;
-  }
+  .price-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
 
   /* ── КНОПКИ ── */
   .btn-group {
@@ -305,6 +334,9 @@
     border: 1px solid rgba(245,237,227,0.22);
   }
 
+  /* ── PAYMENT LOADING STATE ── */
+  .btn-group.loading { opacity: 0.5; pointer-events: none; }
+
   /* ── FOOTER NOTE ── */
   .footer-note {
     text-align: center;
@@ -313,10 +345,30 @@
     margin-top: 16px;
     line-height: 1.5;
   }
+  .trust-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 12px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
 </style>
 </head>
 <body>
 <div class="page">
+
+  <!-- URGENCY BANNER -->
+  <div class="urgency-bar">
+    <span class="pulse"></span>
+    Читают прямо сейчас: более 1 200 женщин уже изменили правила игры
+  </div>
 
   <!-- HERO -->
   <div class="badge">✦ Практический гайд · PDF</div>
@@ -338,7 +390,7 @@
   <div class="divider"></div>
 
   <p class="body-copy">
-    Тебя никогда не учили, что <strong>«нет» — это полное предложение</strong>. Тебя учили быть удобной. Понимающей. Гибкой. И ты стала мастером в одном: <strong>жертвовать собой</strong> ради чужого комфорта. Этот гайд — не про то, как стать «жёсткой». Это про то, как <strong>перестать предавать себя</strong> — тихо, каждый день.
+    После разрыва многие женщины делают одно и то же: <strong>начинают ещё больше угождать</strong>. Бывшему — «может, я была недостаточно хорошей». Родственникам — терпят советы и осуждение. Коллегам — берут на себя лишнее, лишь бы не думать. Это гайд о том, как <strong>остановить этот цикл</strong>. Перестать быть удобной — и начать быть собой.
   </p>
 
   <!-- ДИАГНОСТИКА -->
@@ -347,22 +399,22 @@
     <div class="diag-title">Это про тебя?</div>
     <div class="diag-item">
       <div class="diag-dot"></div>
-      <span>Ты говоришь «да», когда внутри кричит «нет» — и потом ненавидишь себя за это?</span>
+      <span>После расставания ты стала ещё «мягче» — боишься, что снова потеряешь человека, если скажешь «нет»?</span>
     </div>
     <div class="diag-item">
       <div class="diag-dot"></div>
-      <span>Тебе проще взять на себя лишнее, чем объяснять, почему ты отказываешь?</span>
+      <span>Родственники давят советами и мнениями, а ты молчишь — не хочешь конфликта в и без того тяжёлый период?</span>
     </div>
     <div class="diag-item">
       <div class="diag-dot"></div>
-      <span>После общения с определёнными людьми ты чувствуешь себя опустошённой — будто тебя выжали?</span>
+      <span>Ты чувствуешь себя виноватой, когда думаешь о своих потребностях — как будто сначала нужно заслужить право на них?</span>
     </div>
     <div class="diag-item">
       <div class="diag-dot"></div>
-      <span>Ты боишься, что если откажешь — тебя перестанут любить, оценят или посчитают эгоисткой?</span>
+      <span>Ты боишься, что если станешь «жёсткой» — останешься одна. Снова.</span>
     </div>
     <div class="diag-footer">
-      Если хотя бы один пункт — про тебя, ты держишь в руках нужный материал.
+      Если хотя бы один пункт — про тебя, этот гайд написан именно сейчас и именно для тебя.
     </div>
   </div>
 
@@ -372,29 +424,29 @@
     <div class="result-item">
       <div class="result-icon">🔒</div>
       <div class="result-text">
-        <strong>Ты поймёшь, почему границы не держатся</strong>
-        Не потому что ты слабая. Потому что никто не объяснил, как они устроены изнутри.
+        <strong>Ты поймёшь, почему границы рушатся именно сейчас</strong>
+        После разрыва защита падает. Ты узнаешь, как работает этот механизм — и как его перезапустить.
       </div>
     </div>
     <div class="result-item">
       <div class="result-icon">🗣️</div>
       <div class="result-text">
         <strong>Ты научишься говорить «нет» без вины и объяснений</strong>
-        Конкретные формулировки для мужчин, родственников и коллег — под каждую ситуацию.
+        Конкретные фразы под каждую ситуацию: бывший, мама, подруга, начальник.
       </div>
     </div>
     <div class="result-item">
       <div class="result-icon">⚡</div>
       <div class="result-text">
         <strong>Ты распознаешь манипуляции в реальном времени</strong>
-        Давление, обиды, молчание, вина — ты увидишь механику и перестанешь реагировать автоматически.
+        Жалость, молчание, обиды, «я же хочу как лучше» — ты увидишь схему и перестанешь вестись.
       </div>
     </div>
     <div class="result-item">
       <div class="result-icon">🧱</div>
       <div class="result-text">
-        <strong>Ты выстроишь границы, которые держатся</strong>
-        Не агрессия. Не скандал. Спокойная, твёрдая позиция — которую уважают.
+        <strong>Ты выстроишь правила, которые держатся</strong>
+        Не агрессия и не холодность. Спокойная позиция, которую принимают — даже если не сразу.
       </div>
     </div>
   </div>
@@ -404,29 +456,29 @@
   <div class="reviews-block">
     <div class="review-card">
       <div class="stars">★★★★★</div>
-      <p class="review-text">«Я всю жизнь думала, что "нет" — это грубо. После этого гайда я поняла: это единственный способ оставаться собой. Уже через неделю мама перестала диктовать мне, как жить.»</p>
+      <p class="review-text">«После развода я стала ещё более "удобной" — боялась снова потерять всех. Этот гайд буквально вернул меня к себе. Прочитала за один вечер и расплакалась — от узнавания, не от жалости.»</p>
       <div class="review-author">
         <div class="review-avatar">Н</div>
         <div>
           <div class="review-name">Наталья, 36 лет</div>
-          <div class="review-meta">менеджер, Киев</div>
+          <div class="review-meta">разведена 8 месяцев · Киев</div>
         </div>
       </div>
     </div>
     <div class="review-card">
       <div class="stars">★★★★★</div>
-      <p class="review-text">«Раздел про коллег — это был шок. Я поняла, что меня годами использовали, а я называла это "командной работой". Теперь у меня есть слова и уверенность, чтобы это остановить.»</p>
+      <p class="review-text">«Мама давила на меня всё время после разрыва. Я не знала, как остановить это без скандала. Теперь знаю. Фразы из гайда работают — проверила лично.»</p>
       <div class="review-author">
         <div class="review-avatar">А</div>
         <div>
           <div class="review-name">Алина, 29 лет</div>
-          <div class="review-meta">аналитик, Харьков</div>
+          <div class="review-meta">3 месяца после расставания · Харьков</div>
         </div>
       </div>
     </div>
     <div class="review-card">
       <div class="stars">★★★★★</div>
-      <p class="review-text">«С мужчинами я вечно "понимала" и "прощала". Этот гайд дал мне структуру, которой мне не хватало. Впервые за долгое время я чувствую, что у меня есть право на своё пространство.»</p>
+      <p class="review-text">«Я всегда думала, что границы — это эгоизм. Теперь понимаю: это уважение к себе. Жалею только, что не прочитала это три года назад.»</p>
       <div class="review-author">
         <div class="review-avatar">В</div>
         <div>
@@ -437,9 +489,19 @@
     </div>
   </div>
 
+  <!-- ГАРАНТИЯ -->
+  <div class="section-label">Гарантия</div>
+  <div class="guarantee-block">
+    <div class="guarantee-icon">🛡️</div>
+    <div class="guarantee-text">
+      <strong>7 дней — и ты решаешь</strong>
+      Если после прочтения ты почувствуешь, что материал тебе не подошёл — напиши нам. Вернём деньги без вопросов и объяснений. Потому что мы уверены: этот гайд работает.
+    </div>
+  </div>
+
   <!-- ЦЕНА + КНОПКИ -->
   <div class="price-block">
-    <div class="price-row">
+    <div class="price-row" id="price-display">
       <span class="price-tag">950 грн</span>
       <span class="price-sep">/</span>
       <span class="price-tag">$21</span>
@@ -448,38 +510,73 @@
     <div class="price-desc">Мгновенный доступ после оплаты. Читать можно сразу.</div>
   </div>
 
-  <div class="btn-group">
-    <a class="btn btn-primary"
-       href="https://secure.wayforpay.com/button/b0188920766e2"
-       target="_blank" rel="noopener">
-      💳 Оплатить картой (Украина)
-    </a>
-    <a class="btn btn-secondary"
-       href="https://www.paypal.com/ncp/payment/75W7JLJFHH7E4"
-       target="_blank" rel="noopener">
-      🌍 Оплатить через PayPal
+  <div class="btn-group" id="payment-buttons">
+    <!-- Кнопки рендерятся через JS после определения геолокации -->
+    <a class="btn btn-primary" href="#" style="opacity:0.5;pointer-events:none;">
+      ⏳ Определяем способ оплаты...
     </a>
   </div>
 
-  <p class="footer-note">Безопасная оплата · Мгновенная доставка на email</p>
+  <div class="trust-icons">
+    <span class="trust-item">🔐 Безопасная оплата</span>
+    <span class="trust-item">📧 Доставка на email</span>
+    <span class="trust-item">⚡ Сразу после оплаты</span>
+  </div>
+
+  <p class="footer-note">© back4heart · Психология отношений и восстановления</p>
 
 </div>
- 
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
 
-    ym(90131660, 'init', {webvisor:true, clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+<script>
+(async function() {
+  const UA_WAYFORPAY = 'https://secure.wayforpay.com/button/b0188920766e2';
+  const INT_STRIPE   = 'https://buy.stripe.com/28E5kF0Qi25r1t8dx63ZK0b';
+  const INT_PAYPAL   = 'https://www.paypal.com/ncp/payment/75W7JLJFHH7E4';
+
+  const container = document.getElementById('payment-buttons');
+  const priceDisplay = document.getElementById('price-display');
+
+  function renderUA() {
+    priceDisplay.innerHTML = `
+      <span class="price-tag">950 грн</span>
+      <span class="price-sep">/</span>
+      <span class="price-tag">$21</span>
+      <span class="price-format">PDF</span>`;
+    container.innerHTML = `
+      <a class="btn btn-primary" href="${UA_WAYFORPAY}" target="_blank" rel="noopener">
+        💳 Оплатить картой (Украина)
+      </a>`;
+  }
+
+  function renderINT() {
+    priceDisplay.innerHTML = `
+      <span class="price-tag">$21</span>
+      <span class="price-format">PDF</span>`;
+    container.innerHTML = `
+      <a class="btn btn-primary" href="${INT_STRIPE}" target="_blank" rel="noopener">
+        💳 Оплатить картой (Stripe)
+      </a>
+      <a class="btn btn-secondary" href="${INT_PAYPAL}" target="_blank" rel="noopener">
+        🌍 Оплатить через PayPal
+      </a>
+      <a class="btn btn-secondary" href="${UA_WAYFORPAY}" target="_blank" rel="noopener">
+        🇺🇦 Оплатить WayForPay
+      </a>`;
+  }
+
+  try {
+    const res = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(4000) });
+    const data = await res.json();
+    if (data && data.country_code === 'UA') {
+      renderUA();
+    } else {
+      renderINT();
+    }
+  } catch (e) {
+    // fallback: показать все способы оплаты
+    renderINT();
+  }
+})();
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/90131660" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
-
-
 </body>
 </html>
