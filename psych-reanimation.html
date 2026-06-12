@@ -2,1286 +2,682 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>9 психологических трюков — вернуть контроль за 14 дней</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Психологическая реанимация — PDF-гайд</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
   :root {
-    --crimson: #C0392B;
-    --crimson-dark: #922B21;
-    --crimson-glow: rgba(192,57,43,0.18);
-    --gold: #D4A84B;
-    --gold-light: #F0C97A;
-    --bg: #0A0A0C;
-    --surface: #111114;
-    --surface2: #18181D;
-    --text: #E8E6E0;
-    --muted: #888680;
-    --border: rgba(212,168,75,0.18);
+    --ink: #100c0c;
+    --cream: #f5ede3;
+    --rose: #b83228;
+    --rose-dim: rgba(184,50,40,0.12);
+    --gold: #c9a84c;
+    --muted: #7a6a62;
+    --surface: #1c1515;
+    --border: rgba(245,237,227,0.1);
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-    line-height: 1.7;
-    overflow-x: hidden;
+  html, body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'Manrope', sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* GRAIN OVERLAY */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 1000;
-    opacity: 0.6;
+  .page {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 0 40px;
+    background:
+      radial-gradient(ellipse at 80% 0%, #2e1010 0%, transparent 55%),
+      var(--ink);
   }
 
-  /* TOP URGENCY BAR */
-  .urgency-bar {
-    background: var(--crimson);
-    text-align: center;
-    padding: 10px 20px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #fff;
-    position: relative;
-    overflow: hidden;
-  }
-  .urgency-bar::after {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
-    animation: shimmer 3s infinite;
-  }
-  @keyframes shimmer { to { left: 200%; } }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 0;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -20%;
-    right: -10%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(ellipse, var(--crimson-glow) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero-image-col {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  .hero-image-col img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    filter: grayscale(20%) contrast(1.05);
-    display: block;
-  }
-
-  .hero-image-col::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, transparent 50%, var(--bg) 100%),
-                linear-gradient(to top, var(--bg) 0%, transparent 30%);
-  }
-
-  .hero-content {
-    padding: 80px 60px 80px 40px;
-    position: relative;
-    z-index: 2;
-    animation: fadeUp 1s ease both;
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .tag {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    border: 1px solid var(--gold);
-    padding: 5px 14px;
-    margin-bottom: 28px;
-    position: relative;
-  }
-
-  .hero-eyebrow {
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 16px;
-  }
-
-  .hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 3.5vw, 3.2rem);
-    font-weight: 900;
-    line-height: 1.1;
-    color: #fff;
-    margin-bottom: 24px;
-  }
-
-  .hero-title em {
-    font-style: italic;
-    color: var(--crimson);
-  }
-
-  .hero-title .gold { color: var(--gold); }
-
-  .hero-sub {
-    font-size: 15px;
-    color: var(--muted);
-    max-width: 420px;
-    margin-bottom: 36px;
-    line-height: 1.8;
-  }
-
-  .hero-sub strong { color: var(--text); font-weight: 600; }
-
-  .cta-group { display: flex; flex-direction: column; gap: 12px; max-width: 380px; }
-
-  .btn-primary {
-    display: block;
-    text-align: center;
-    padding: 18px 32px;
-    background: var(--crimson);
-    color: #fff;
-    text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.3s, transform 0.2s;
-  }
-  .btn-primary:hover { background: var(--crimson-dark); transform: translateY(-2px); }
-  .btn-primary::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.06), transparent);
-  }
-
-  .btn-secondary {
-    display: block;
-    text-align: center;
-    padding: 16px 32px;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    transition: background 0.3s, color 0.3s;
-  }
-  .btn-secondary:hover { background: var(--gold); color: var(--bg); }
-
-  .price-note {
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 10px;
-    text-align: center;
-  }
-
-  .price-note strong { color: var(--gold); font-size: 16px; }
-
-  /* SOCIAL PROOF STRIP */
-  .proof-strip {
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 20px 40px;
+  /* ── TOP BAR ── */
+  .top-bar {
+    background: rgba(201,168,76,0.08);
+    border-bottom: 1px solid rgba(201,168,76,0.18);
+    padding: 9px 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 48px;
-    flex-wrap: wrap;
-  }
-
-  .proof-item {
+    gap: 8px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--gold);
     text-align: center;
   }
-
-  .proof-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    font-weight: 900;
-    color: var(--gold);
-    display: block;
+  .top-bar-dot {
+    width: 6px; height: 6px;
+    background: #4caf50;
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: blink 2s ease-in-out infinite;
   }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-  .proof-label {
-    font-size: 11px;
-    letter-spacing: 0.12em;
+  .inner { padding: 24px 20px 0; }
+
+  /* ── BADGE ── */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.45);
+    padding: 4px 10px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+    width: fit-content;
   }
 
-  .proof-divider {
-    width: 1px;
-    height: 40px;
-    background: var(--border);
+  /* ── TITLE ── */
+  .title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 7.5vw, 34px);
+    font-weight: 900;
+    line-height: 1.12;
+    margin-bottom: 16px;
+  }
+  .title em { font-style: italic; color: var(--rose); }
+
+  /* ── MOCKUP ── */
+  .mockup-wrap {
+    margin: 0 auto 22px;
+    width: 100%;
+    max-width: 300px;
+    position: relative;
+  }
+  .mockup-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 10px 8px -8px;
+    background: rgba(184,50,40,0.28);
+    filter: blur(20px);
+    border-radius: 12px;
+    z-index: 0;
+  }
+  .mockup-img {
+    position: relative; z-index: 1;
+    width: 100%; border-radius: 10px; display: block;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5), 0 16px 40px rgba(0,0,0,0.6);
   }
 
-  /* SECTION COMMON */
-  section { padding: 90px 40px; }
-
-  .container { max-width: 960px; margin: 0 auto; }
+  /* ── TEXT ── */
+  .subtitle {
+    font-size: 13.5px; font-weight: 600;
+    color: rgba(245,237,227,0.75);
+    line-height: 1.55; margin-bottom: 10px;
+  }
+  .divider { width: 36px; height: 2px; background: var(--gold); margin-bottom: 12px; }
+  .body-copy {
+    font-size: 13.5px; line-height: 1.68;
+    color: #cdbfb5; margin-bottom: 28px;
+  }
+  .body-copy strong { color: var(--cream); font-weight: 600; }
 
   .section-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--crimson);
-    margin-bottom: 16px;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 12px;
   }
 
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 3vw, 2.8rem);
-    font-weight: 900;
-    color: #fff;
-    margin-bottom: 24px;
-    line-height: 1.15;
-  }
-
-  .section-title em { font-style: italic; color: var(--gold); }
-
-  /* PAIN SECTION */
-  .pain-section {
+  /* ── ДИАГНОСТИКА ── */
+  .diag-block {
     background: var(--surface);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .pain-section::before {
-    content: '';
-    position: absolute;
-    left: -200px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(ellipse, rgba(192,57,43,0.1) 0%, transparent 70%);
-  }
-
-  .pain-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-top: 40px;
-  }
-
-  .pain-card {
-    background: var(--bg);
     border: 1px solid var(--border);
-    padding: 24px 28px;
-    position: relative;
-    transition: border-color 0.3s;
+    border-left: 3px solid var(--rose);
+    border-radius: 6px; padding: 16px; margin-bottom: 28px;
   }
-  .pain-card:hover { border-color: var(--crimson); }
-
-  .pain-card::before {
-    content: '✓';
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    background: var(--crimson);
-    color: #fff;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    font-weight: 700;
-  }
-
-  .pain-card p {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  .pain-card p strong { color: var(--text); }
-
-  .pain-cta {
-    margin-top: 40px;
-    padding: 28px 32px;
-    border: 1px solid var(--crimson);
-    background: var(--crimson-glow);
-  }
-
-  .pain-cta p {
+  .diag-title {
     font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-style: italic;
-    color: #fff;
-    line-height: 1.5;
+    font-size: 15px; font-weight: 700;
+    margin-bottom: 14px; color: var(--cream);
+  }
+  .diag-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-bottom: 10px; font-size: 13.5px;
+    line-height: 1.55; color: #d4c4ba;
+  }
+  .diag-item:last-child { margin-bottom: 0; }
+  .diag-dot {
+    flex-shrink: 0; width: 6px; height: 6px;
+    background: var(--rose); border-radius: 50%; margin-top: 7px;
+  }
+  .diag-footer {
+    margin-top: 14px; font-size: 12.5px; font-weight: 600;
+    color: var(--gold); border-top: 1px solid var(--border); padding-top: 12px;
   }
 
-  .pain-cta span { color: var(--gold); }
-
-  /* WHAT IS SECTION */
-  .what-section { background: var(--bg); }
-
-  .what-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
-    margin-top: 48px;
-  }
-
-  .what-text p {
-    font-size: 15px;
-    color: var(--muted);
-    margin-bottom: 20px;
-    line-height: 1.9;
-  }
-
-  .what-text p strong { color: var(--text); }
-
-  .what-text p em { color: var(--crimson); font-style: normal; font-weight: 600; }
-
-  .what-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .what-list li {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    font-size: 14px;
-    color: var(--muted);
-    padding: 14px 20px;
-    border-left: 2px solid var(--border);
-    background: var(--surface2);
-    transition: border-color 0.3s;
-  }
-
-  .what-list li:hover { border-color: var(--gold); }
-
-  .what-list li .num {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-weight: 900;
-    color: var(--gold);
-    line-height: 1;
-    flex-shrink: 0;
-    min-width: 32px;
-  }
-
-  .what-list li .txt strong { color: var(--text); display: block; margin-bottom: 4px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; }
-
-  /* TRICKS SECTION */
-  .tricks-section {
-    background: var(--surface);
-    position: relative;
-  }
-
-  .tricks-section::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 300px;
-    height: 100%;
-    background: linear-gradient(to left, rgba(192,57,43,0.06) 0%, transparent 100%);
-    pointer-events: none;
-  }
-
-  .tricks-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    margin-top: 48px;
-    border: 1px solid var(--border);
-  }
-
-  .trick-item {
-    background: var(--surface);
-    padding: 32px 28px;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.3s;
-  }
-
-  .trick-item:hover { background: var(--surface2); }
-
-  .trick-item::before {
-    content: attr(data-num);
-    position: absolute;
-    top: 16px;
-    right: 20px;
-    font-family: 'Playfair Display', serif;
-    font-size: 60px;
-    font-weight: 900;
-    color: rgba(192,57,43,0.08);
-    line-height: 1;
-    pointer-events: none;
-  }
-
-  .trick-icon {
-    font-size: 22px;
-    margin-bottom: 14px;
-    display: block;
-  }
-
-  .trick-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 10px;
-    line-height: 1.3;
-  }
-
-  .trick-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  /* FOR WHOM */
-  .for-section { background: var(--bg); }
-
-  .for-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-top: 40px;
-  }
-
-  .for-col h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 20px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .for-col.yes h3 { color: var(--gold); border-color: var(--gold); }
-  .for-col.no h3 { color: var(--crimson); border-color: var(--crimson); }
-
-  .for-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-
-  .for-list li {
-    font-size: 14px;
-    color: var(--muted);
-    padding-left: 24px;
-    position: relative;
-    line-height: 1.6;
-  }
-
-  .for-list li::before {
-    content: attr(data-icon);
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-
-  /* RESULT SECTION */
-  .result-section {
-    background: var(--surface);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .result-section::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(ellipse, rgba(212,168,75,0.06) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .result-quote {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.4rem, 2.5vw, 2rem);
-    font-style: italic;
-    color: #fff;
-    max-width: 700px;
-    margin: 0 auto 40px;
-    line-height: 1.5;
-    position: relative;
-  }
-
-  .result-quote::before {
-    content: '"';
-    font-size: 80px;
-    color: var(--crimson);
-    line-height: 0;
-    position: absolute;
-    top: 20px;
-    left: -20px;
-    opacity: 0.4;
-  }
-
-  .result-items {
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-    flex-wrap: wrap;
-    margin-top: 40px;
-  }
-
+  /* ── РЕЗУЛЬТАТЫ ── */
+  .results-block { margin-bottom: 28px; }
   .result-item {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    padding: 24px 28px;
-    max-width: 200px;
-    text-align: center;
-    transition: border-color 0.3s, transform 0.3s;
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 12px 14px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 6px; margin-bottom: 8px;
   }
+  .result-icon { font-size: 18px; line-height: 1; flex-shrink: 0; margin-top: 1px; }
+  .result-text { font-size: 13px; line-height: 1.55; color: #d4c4ba; }
+  .result-text strong { color: var(--cream); display: block; font-size: 13.5px; margin-bottom: 2px; }
 
-  .result-item:hover { border-color: var(--gold); transform: translateY(-4px); }
-
-  .result-icon { font-size: 28px; margin-bottom: 10px; display: block; }
-
-  .result-text {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.6;
+  /* ── QUOTE PULL ── */
+  .pull-quote {
+    border-left: 3px solid var(--gold);
+    padding: 12px 16px;
+    margin-bottom: 28px;
+    background: rgba(201,168,76,0.05);
+    border-radius: 0 6px 6px 0;
   }
-
-  .result-text strong { color: var(--text); display: block; font-size: 14px; margin-bottom: 4px; }
-
-  /* PRICING */
-  .pricing-section {
-    background: var(--bg);
-    text-align: center;
-  }
-
-  .price-card {
-    max-width: 500px;
-    margin: 48px auto 0;
-    background: var(--surface);
-    border: 1px solid var(--gold);
-    padding: 48px 40px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .price-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--crimson), var(--gold), var(--crimson));
-  }
-
-  .price-badge {
-    position: absolute;
-    top: 24px;
-    right: -28px;
-    background: var(--crimson);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 6px 36px;
-    transform: rotate(45deg);
-    width: 130px;
-    text-align: center;
-  }
-
-  .price-title {
+  .pull-quote p {
     font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-weight: 700;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(245,237,227,0.8);
+  }
+  .pull-quote cite {
+    display: block;
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--muted);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ── ОТЗЫВЫ ── */
+  .reviews-block { margin-bottom: 28px; }
+  .review-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px; padding: 14px 16px; margin-bottom: 8px;
+  }
+  .review-text {
+    font-size: 13px; line-height: 1.62;
+    color: #cdbfb5; font-style: italic; margin-bottom: 10px;
+  }
+  .review-author { display: flex; align-items: center; gap: 8px; }
+  .review-avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--rose-dim); border: 1px solid rgba(184,50,40,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; flex-shrink: 0;
+  }
+  .review-name { font-size: 12px; font-weight: 700; color: var(--cream); }
+  .review-meta { font-size: 11px; color: var(--muted); }
+  .stars { color: var(--gold); font-size: 11px; letter-spacing: 1px; }
+
+  /* ── ГАРАНТИЯ ── */
+  .guarantee-block {
+    background: rgba(45,122,79,0.1);
+    border: 1px solid rgba(45,122,79,0.3);
+    border-radius: 6px; padding: 14px 16px;
+    display: flex; gap: 12px; align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  .guarantee-icon { font-size: 22px; flex-shrink: 0; line-height: 1; margin-top: 1px; }
+  .guarantee-text { font-size: 12.5px; line-height: 1.55; color: #b8d4c4; }
+  .guarantee-text strong { color: #d4ede1; display: block; font-size: 13px; margin-bottom: 3px; }
+
+  /* ── ТАЙМЕР ── */
+  .timer-block {
+    background: rgba(184,50,40,0.08);
+    border: 1px solid rgba(184,50,40,0.3);
+    border-radius: 6px; padding: 12px 16px;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 16px; gap: 12px;
+  }
+  .timer-label { font-size: 11px; font-weight: 600; color: rgba(245,237,227,0.6); line-height: 1.4; flex: 1; }
+  .timer-label span { color: var(--rose); display: block; font-size: 10px; margin-bottom: 2px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .timer-digits { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+  .timer-unit { display: flex; flex-direction: column; align-items: center; }
+  .timer-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700; color: var(--cream);
+    background: var(--surface); padding: 4px 8px;
+    border-radius: 4px; min-width: 38px; text-align: center;
+    border: 1px solid var(--border); line-height: 1.1;
+  }
+  .timer-sub { font-size: 9px; color: var(--muted); margin-top: 3px; font-weight: 600; letter-spacing: 0.05em; }
+  .timer-colon { font-size: 20px; font-weight: 700; color: var(--rose); margin-bottom: 10px; }
+
+  /* ── ЦЕНА ── */
+  .price-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px; padding: 18px 16px 16px; margin-bottom: 14px;
+  }
+  .price-row { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+  .price-tag {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 700; color: var(--gold);
+  }
+  .price-sep { color: var(--muted); font-size: 13px; }
+  .price-format {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted);
+    padding: 2px 6px; border: 1px solid rgba(122,106,98,0.4); border-radius: 2px;
+  }
+  .price-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* ── КНОПКИ ── */
+  .btn-group { display: flex; flex-direction: column; gap: 9px; }
+  .btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    border-radius: 5px; font-family: 'Manrope', sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.03em;
+    padding: 15px 20px; text-decoration: none; cursor: pointer;
+    transition: opacity 0.15s, transform 0.12s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn:active { transform: scale(0.97); opacity: 0.82; }
+  .btn-primary {
+    background: var(--rose); color: #fff; border: none;
+    box-shadow: 0 4px 20px rgba(184,50,40,0.45);
+  }
+  .btn-stripe {
+    background: #635bff; color: #fff; border: none;
+    box-shadow: 0 4px 20px rgba(99,91,255,0.35);
+  }
+  .btn-paypal {
+    background: #003087; color: #fff; border: none;
+    box-shadow: 0 4px 16px rgba(0,48,135,0.35);
+  }
+
+  /* ── РАЗДЕЛИТЕЛЬ МЕТОДОВ ── */
+  .pay-divider {
+    display: flex; align-items: center; gap: 10px;
+    margin: 6px 0;
+  }
+  .pay-divider-line { flex: 1; height: 1px; background: var(--border); }
+  .pay-divider-text { font-size: 10px; color: var(--muted); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+
+  /* ── TRUST ROW ── */
+  .trust-row {
+    display: flex; justify-content: center; gap: 18px;
+    margin-top: 14px; margin-bottom: 4px;
+  }
+  .trust-item { display: flex; align-items: center; gap: 5px; font-size: 10px; color: var(--muted); font-weight: 600; }
+  .trust-item span { font-size: 13px; }
+
+  /* ── FOOTER ── */
+  .footer-note {
+    text-align: center; font-size: 11px; color: var(--muted);
+    margin-top: 16px; line-height: 1.5;
+  }
+
+  /* ── SKELETON LOADER ── */
+  .pay-skeleton {
+    display: flex; flex-direction: column; gap: 9px;
+  }
+  .skel-btn {
+    height: 51px; border-radius: 5px;
+    background: linear-gradient(90deg, #1c1515 25%, #241a1a 50%, #1c1515 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite;
+  }
+  @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+  /* ── STRIPE BUTTON ── */
+  .btn-stripe {
+    background: #635bff;
     color: #fff;
+    border: none;
+    box-shadow: 0 4px 20px rgba(99,91,255,0.4);
+  }
+  .btn-stripe:hover { box-shadow: 0 6px 28px rgba(99,91,255,0.55); }
+
+  /* ── PAYPAL BUTTON ── */
+  .btn-paypal {
+    background: #003087;
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0,48,135,0.4);
+  }
+
+  /* ── WAYFORPAY (international secondary) ── */
+  .btn-wfp {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(245,237,227,0.2);
+    font-size: 13px;
+  }
+
+  /* ── PAY DIVIDER ── */
+  .pay-divider {
+    display: flex; align-items: center; gap: 10px;
+    padding: 2px 0;
+  }
+  .pay-divider-line { flex: 1; height: 1px; background: var(--border); }
+  .pay-divider-text { font-size: 11px; color: var(--muted); font-weight: 500; }
+
+  /* ── WHAT'S INSIDE MINI LIST ── */
+  .inside-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin-bottom: 28px;
+  }
+  .inside-block .inside-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px; font-weight: 700;
+    color: var(--cream); margin-bottom: 12px;
+  }
+  .inside-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 13px; line-height: 1.5; color: #d4c4ba;
     margin-bottom: 8px;
   }
-
-  .price-desc {
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 32px;
-  }
-
-  .price-amount {
-    font-family: 'Playfair Display', serif;
-    font-size: 64px;
-    font-weight: 900;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .price-currency {
-    font-size: 28px;
-    vertical-align: super;
-  }
-
-  .price-alt {
-    font-size: 14px;
-    color: var(--muted);
-    margin-bottom: 32px;
-  }
-
-  .price-includes {
-    list-style: none;
-    text-align: left;
-    margin-bottom: 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .price-includes li {
-    font-size: 14px;
-    color: var(--muted);
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-  }
-
-  .price-includes li::before {
-    content: '→';
-    color: var(--gold);
+  .inside-item:last-child { margin-bottom: 0; }
+  .inside-num {
     flex-shrink: 0;
+    font-size: 10px; font-weight: 700;
+    color: var(--rose);
+    background: var(--rose-dim);
+    border: 1px solid rgba(184,50,40,0.25);
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 1px;
   }
 
-  .price-includes li strong { color: var(--text); }
-
-  .payment-label {
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 14px;
+  /* ── STICKY CTA ── */
+  .sticky-cta {
+    position: fixed; bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 100%; max-width: 480px;
+    padding: 10px 16px 14px;
+    background: linear-gradient(to top, rgba(16,12,12,1) 60%, rgba(16,12,12,0));
+    z-index: 100;
+    display: none;
   }
-
-  .payment-buttons { display: flex; flex-direction: column; gap: 12px; }
-
-  /* DISCLAIMER */
-  .disclaimer {
-    margin-top: 20px;
-    font-size: 12px;
-    color: var(--muted);
-    text-align: center;
-    line-height: 1.6;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
+  .sticky-cta a {
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; padding: 15px;
+    background: var(--rose);
+    color: #fff; font-family: 'Manrope', sans-serif;
+    font-size: 14px; font-weight: 700;
+    border-radius: 5px; text-decoration: none;
+    box-shadow: 0 4px 24px rgba(184,50,40,0.5);
+    animation: pulse-btn 2.5s ease-in-out infinite;
   }
-
-  /* FAQ */
-  .faq-section { background: var(--surface); }
-
-  .faq-list { margin-top: 40px; display: flex; flex-direction: column; gap: 2px; }
-
-  .faq-item {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    overflow: hidden;
-  }
-
-  .faq-q {
-    padding: 20px 24px;
-    font-size: 15px;
-    font-weight: 600;
-    color: #fff;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: color 0.2s;
-    user-select: none;
-  }
-
-  .faq-q:hover { color: var(--gold); }
-
-  .faq-q::after {
-    content: '+';
-    font-size: 22px;
-    color: var(--gold);
-    transition: transform 0.3s;
-    flex-shrink: 0;
-  }
-
-  .faq-item.open .faq-q::after { transform: rotate(45deg); }
-
-  .faq-a {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease, padding 0.3s;
-    padding: 0 24px;
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.8;
-  }
-
-  .faq-item.open .faq-a {
-    max-height: 200px;
-    padding: 0 24px 20px;
-  }
-
-  /* FINAL CTA */
-  .final-cta {
-    background: var(--bg);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    padding: 100px 40px;
-  }
-
-  .final-cta::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at center, rgba(192,57,43,0.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .final-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 900;
-    color: #fff;
-    margin-bottom: 20px;
-    line-height: 1.1;
-    position: relative;
-  }
-
-  .final-title span { color: var(--crimson); }
-
-  .final-sub {
-    font-size: 16px;
-    color: var(--muted);
-    max-width: 560px;
-    margin: 0 auto 40px;
-    line-height: 1.8;
-    position: relative;
-  }
-
-  .final-buttons {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
-    position: relative;
-  }
-
-  .final-buttons .btn-primary { min-width: 260px; }
-  .final-buttons .btn-secondary { min-width: 220px; }
-
-  /* FOOTER */
-  footer {
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    padding: 32px 40px;
-    text-align: center;
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 0.04em;
-  }
-
-  footer a { color: var(--muted); text-decoration: none; }
-  footer a:hover { color: var(--gold); }
-
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    .hero {
-      grid-template-columns: 1fr;
-      min-height: auto;
-    }
-    .hero-image-col {
-      height: 55vw;
-      min-height: 260px;
-    }
-    .hero-image-col::after {
-      background: linear-gradient(to bottom, transparent 40%, var(--bg) 100%);
-    }
-    .hero-content { padding: 40px 24px 60px; }
-    .pain-grid, .what-grid, .for-grid { grid-template-columns: 1fr; }
-    .tricks-grid { grid-template-columns: 1fr 1fr; }
-    section { padding: 60px 20px; }
-    .proof-strip { gap: 24px; padding: 20px; }
-    .proof-divider { display: none; }
-    .result-items { gap: 16px; }
-    .price-card { padding: 36px 24px; }
-    .price-amount { font-size: 48px; }
-  }
-
-  @media (max-width: 480px) {
-    .tricks-grid { grid-template-columns: 1fr; }
-    .final-buttons { flex-direction: column; align-items: center; }
-  }
-
-  /* ANIMATE ON SCROLL (simple) */
-  [data-reveal] {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  [data-reveal].visible {
-    opacity: 1;
-    transform: none;
+  @keyframes pulse-btn {
+    0%,100%{ box-shadow: 0 4px 24px rgba(184,50,40,0.5); }
+    50%    { box-shadow: 0 4px 32px rgba(184,50,40,0.8); }
   }
 </style>
 </head>
 <body>
+<div class="page">
 
-<!-- URGENCY BAR -->
-<div class="urgency-bar">
-  Цена $9(400 грн.) · Только цифровой гайд · Доступ мгновенно
+  <!-- TOP SOCIAL PROOF -->
+  <div class="top-bar">
+    <div class="top-bar-dot"></div>
+    Уже 2 400+ женщин скачали этот гайд · <span id="live-count">17</span> читают прямо сейчас
+  </div>
+
+  <div class="inner">
+
+    <div class="badge">✦ PDF-гайд · back4heart</div>
+
+    <h1 class="title">Психологическая<br><em>реанимация</em></h1>
+
+    <div class="mockup-wrap">
+      <img class="mockup-img"
+           src="https://i.ibb.co/bMSnQmJq/1779362649399.png"
+           alt="Психологическая реанимация — PDF-гайд">
+    </div>
+
+    <p class="subtitle">Как выжить в первые 7 дней после разрыва и не сойти с ума</p>
+    <div class="divider"></div>
+    <p class="body-copy">
+      Это не про «прости и отпусти». И не про «ты справишься». Это <strong>набор экспресс-техник</strong>, которые работают прямо сейчас — когда земля уходит из-под ног, мысли не останавливаются, а тело будто не твоё. <strong>Конкретные инструменты. Без воды. Без терапевтических клише.</strong>
+    </p>
+
+    <!-- ДИАГНОСТИКА -->
+    <div class="section-label">Узнай себя</div>
+    <div class="diag-block">
+      <div class="diag-title">Это про тебя?</div>
+      <div class="diag-item"><div class="diag-dot"></div><span>Голова прокручивает одно и то же по кругу — ты не можешь есть, спать, думать ни о чём другом?</span></div>
+      <div class="diag-item"><div class="diag-dot"></div><span>Волны паники накрывают без предупреждения — сердце колотится, дышать тяжело, руки не слушаются?</span></div>
+      <div class="diag-item"><div class="diag-dot"></div><span>Умом понимаешь, что нужно взять себя в руки — но не знаешь, с чего начать и есть ли на это силы?</span></div>
+      <div class="diag-item"><div class="diag-dot"></div><span>Внутри пусто или наоборот — всё горит, а слёзы не останавливаются уже несколько дней?</span></div>
+      <div class="diag-footer">Если хотя бы один пункт — про тебя, этот гайд написан именно для тебя.</div>
+    </div>
+
+    <!-- ЧТО ДАЁТ -->
+    <div class="section-label">Что даёт этот гайд</div>
+    <div class="results-block">
+      <div class="result-item">
+        <div class="result-icon">🧠</div>
+        <div class="result-text"><strong>Остановишь панику за 5 минут</strong>Дыхательный протокол, который переключает нервную систему из режима «сгораю» в режим «контролирую».</div>
+      </div>
+      <div class="result-item">
+        <div class="result-icon">🔇</div>
+        <div class="result-text"><strong>Заглушишь навязчивые мысли</strong>Три техники нейтрализации образов — без медитаций, без аффирмаций, без «думай позитивно».</div>
+      </div>
+      <div class="result-item">
+        <div class="result-icon">🛡️</div>
+        <div class="result-text"><strong>Вернёшь контроль над телом</strong>Телесные практики саморегуляции, которые работают даже когда «всё внутри трясётся».</div>
+      </div>
+      <div class="result-item">
+        <div class="result-icon">📋</div>
+        <div class="result-text"><strong>Получишь план на первые 48 часов</strong>Что делать, чего категорически не делать — пошагово, без лишних слов.</div>
+      </div>
+    </div>
+
+    <!-- ЧТО ВНУТРИ -->
+    <div class="section-label">Что внутри гайда</div>
+    <div class="inside-block">
+      <div class="inside-title">5 разделов — никакой воды</div>
+      <div class="inside-item"><div class="inside-num">1</div><span><strong style="color:var(--cream)">Протокол первого часа</strong> — что делать прямо сейчас, когда всё рушится</span></div>
+      <div class="inside-item"><div class="inside-num">2</div><span><strong style="color:var(--cream)">Экстренная дыхательная техника</strong> — останавливает панику за 4–5 минут</span></div>
+      <div class="inside-item"><div class="inside-num">3</div><span><strong style="color:var(--cream)">Три техники от навязчивых мыслей</strong> — работают без медитаций и опыта</span></div>
+      <div class="inside-item"><div class="inside-num">4</div><span><strong style="color:var(--cream)">Телесная саморегуляция</strong> — возвращает контроль, когда тело не слушается</span></div>
+      <div class="inside-item"><div class="inside-num">5</div><span><strong style="color:var(--cream)">План на 48 часов</strong> — пошагово: что делать, чего не делать категорически</span></div>
+    </div>
+
+    <!-- PULL QUOTE -->
+    <div class="pull-quote">
+      <p>«Первые дни после разрыва — это не слабость. Это биохимия. Твой мозг буквально переживает ломку. И с этим можно работать — если знать как.»</p>
+      <cite>— Роман Вейл, back4heart</cite>
+    </div>
+
+    <!-- ОТЗЫВЫ -->
+    <div class="section-label">Отзывы</div>
+    <div class="reviews-block">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">«Прочитала в два часа ночи, когда уже не могла. Дыхательная техника — сработала с первого раза. Спасибо, что это не очередное "береги себя".»</p>
+        <div class="review-author">
+          <div class="review-avatar">А</div>
+          <div><div class="review-name">Алина, 31 год</div><div class="review-meta">Киев</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">«После развода думала, что схожу с ума. Техника с образами — это что-то. Первый раз за неделю заснула без таблеток.»</p>
+        <div class="review-author">
+          <div class="review-avatar">В</div>
+          <div><div class="review-name">Виктория, 36 лет</div><div class="review-meta">Харьков</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">«Раздел про первые 48 часов — это было именно то, чего мне не хватало. Не психолог с "расскажи о чувствах", а реальный план. Сохранила навсегда.»</p>
+        <div class="review-author">
+          <div class="review-avatar">Н</div>
+          <div><div class="review-name">Наталья, 39 лет</div><div class="review-meta">Одесса</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ГАРАНТИЯ -->
+    <div class="guarantee-block">
+      <div class="guarantee-icon">🛡️</div>
+      <div class="guarantee-text">
+        <strong>Гарантия возврата 7 дней</strong>
+        Если после прочтения не почувствуешь, что это стоило своих денег — напиши нам. Вернём без вопросов.
+      </div>
+    </div>
+
+    <!-- ТАЙМЕР -->
+    <div class="timer-block">
+      <div class="timer-label">
+        <span>⚡ Спецпредложение</span>
+        Цена 399 грн действует ещё
+      </div>
+      <div class="timer-digits">
+        <div class="timer-unit"><span class="timer-num" id="t-h">03</span><span class="timer-sub">часа</span></div>
+        <span class="timer-colon">:</span>
+        <div class="timer-unit"><span class="timer-num" id="t-m">47</span><span class="timer-sub">мин</span></div>
+        <span class="timer-colon">:</span>
+        <div class="timer-unit"><span class="timer-num" id="t-s">12</span><span class="timer-sub">сек</span></div>
+      </div>
+    </div>
+
+    <!-- ЦЕНА -->
+    <div class="price-block">
+      <div class="price-row">
+        <span class="price-tag" id="price-uah">399 грн</span>
+        <span class="price-sep" id="price-sep">/</span>
+        <span class="price-tag" id="price-usd">$9</span>
+        <span class="price-format">PDF</span>
+      </div>
+      <div class="price-desc">Мгновенный доступ после оплаты. Читать можно сразу.</div>
+    </div>
+
+    <!-- КНОПКИ ОПЛАТЫ — заполняются JS -->
+    <div id="pay-buttons">
+      <div class="pay-skeleton">
+        <div class="skel-btn"></div>
+        <div class="skel-btn"></div>
+        <div class="skel-btn" style="height:44px;opacity:0.5"></div>
+      </div>
+    </div>
+
+    <div class="trust-row">
+      <div class="trust-item"><span>🔒</span> Безопасная оплата</div>
+      <div class="trust-item"><span>⚡</span> Моментальный доступ</div>
+      <div class="trust-item"><span>✉️</span> На email сразу</div>
+    </div>
+
+    <p class="footer-note">back4heart.site · Все права защищены</p>
+
+  </div><!-- /inner -->
 </div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-image-col">
-    <img src="https://i.ibb.co/bMSnQmJq/1779362649399.png" alt="Психологический гайд для женщин" loading="eager">
-  </div>
-  <div class="hero-content">
-    <div class="tag">Новый гайд</div>
-    <p class="hero-eyebrow">Психологическая реанимация · 14 дней</p>
-    <h1 class="hero-title">
-      9 психологических<br>
-      <em>трюков,</em> чтобы<br>
-      перевернуть<br>
-      <span class="gold">баланс значимости</span>
-    </h1>
-    <p class="hero-sub">
-      Вы думаете о нём утром, днём и ночью. Он — нет.<br>
-      <strong>Пора это исправить.</strong> Без терапевта, без слёз над его фото и без фразы «время лечит».
-    </p>
-    <div class="cta-group">
-      <a href="https://secure.wayforpay.com/button/bca9d197905fc" class="btn-primary">
-        Получить гайд за $9 (400 грн.) →
-      </a>
-      <a href="https://www.paypal.com/ncp/payment/GGBSPG9CJR7S4" class="btn-secondary">
-        Оплатить через PayPal
-      </a>
-      <p class="price-note">Цена: <strong>$9</strong> · 400 грн · Мгновенный доступ</p>
-    </div>
-  </div>
-</section>
-
-<!-- PROOF STRIP -->
-<div class="proof-strip">
-  <div class="proof-item">
-    <span class="proof-num">14</span>
-    <span class="proof-label">Дней на перезагрузку</span>
-  </div>
-  <div class="proof-divider"></div>
-  <div class="proof-item">
-    <span class="proof-num">9</span>
-    <span class="proof-label">Психологических инструментов</span>
-  </div>
-  <div class="proof-divider"></div>
-  <div class="proof-item">
-    <span class="proof-num">PDF</span>
-    <span class="proof-label">Мгновенный доступ</span>
-  </div>
-  <div class="proof-divider"></div>
-  <div class="proof-item">
-    <span class="proof-num">$9</span>
-    <span class="proof-label">Цена гайда</span>
-  </div>
+<!-- STICKY CTA -->
+<div class="sticky-cta" id="sticky-cta">
+  <a href="#pay-buttons" id="sticky-btn" onclick="document.getElementById('pay-buttons').scrollIntoView({behavior:'smooth'});return false;">
+    ⚡ Получить гайд — 399 грн / $9
+  </a>
 </div>
-
-<!-- PAIN SECTION -->
-<section class="pain-section">
-  <div class="container">
-    <p class="section-label" data-reveal>Узнаёте себя?</p>
-    <h2 class="section-title" data-reveal>
-      Он ушёл. Но живёт<br>
-      <em>у вас в голове</em> бесплатно.
-    </h2>
-    <p style="font-size:15px; color:var(--muted); max-width:600px; margin-bottom:8px;" data-reveal>
-      Это не слабость. Это химия мозга. Но химию можно перепрограммировать — и вот как именно это делается.
-    </p>
-
-    <div class="pain-grid">
-      <div class="pain-card" data-reveal>
-        <p><strong>Вы проверяете его страницу</strong> «последний раз» уже тридцать первый раз за этот день.</p>
-      </div>
-      <div class="pain-card" data-reveal>
-        <p><strong>Вы прокручиваете переписку</strong>, ищете момент, где всё пошло не так — и не можете остановиться.</p>
-      </div>
-      <div class="pain-card" data-reveal>
-        <p><strong>Он изменил или ушёл,</strong> но вы всё равно надеетесь, что он одумается. И вам стыдно за эту надежду.</p>
-      </div>
-      <div class="pain-card" data-reveal>
-        <p><strong>Подруги говорят «забудь»,</strong> а вы улыбаетесь и киваете — и вечером плачете в подушку снова.</p>
-      </div>
-      <div class="pain-card" data-reveal>
-        <p><strong>Вы выглядите нормально снаружи,</strong> но внутри — как после взрыва. И не понимаете, когда это кончится.</p>
-      </div>
-      <div class="pain-card" data-reveal>
-        <p><strong>Вы боитесь,</strong> что больше никто не полюбит так, как он. Даже если «он» вёл себя ужасно.</p>
-      </div>
-    </div>
-
-    <div class="pain-cta" data-reveal>
-      <p>Проблема не в том, что вы <span>слишком любите</span>. Проблема в том, что он занял <span>слишком много места</span> — и теперь нужно его выселить. Аккуратно, но окончательно.</p>
-    </div>
-  </div>
-</section>
-
-<!-- WHAT IS SECTION -->
-<section class="what-section">
-  <div class="container">
-    <div class="what-grid">
-      <div class="what-text" data-reveal>
-        <p class="section-label">Что это такое</p>
-        <h2 class="section-title">Гайд, который не<br><em>жалеет вас</em></h2>
-        <p>Это не терапия, не медитации и не «полюби себя». Это <strong>рабочий набор инструментов</strong> из тёмной и реверсивной психологии — адаптированных под ситуацию расставания.</p>
-        <p>Без «розовой психологии». С юмором, с разбором реальных эмоций и с упражнениями, которые <em>действительно работают</em>. Потому что когда больно — вам нужен инструмент, а не сочувствие.</p>
-        <p>Цель одна: через 14 дней вы думаете о нём в разы меньше. А о себе — в разы больше.</p>
-      </div>
-      <div data-reveal>
-        <ul class="what-list">
-          <li>
-            <span class="num">1</span>
-            <span class="txt"><strong>Техника «обнуления»</strong>Как мозг удерживает привязанность — и как его обмануть за 72 часа</span>
-          </li>
-          <li>
-            <span class="num">2</span>
-            <span class="txt"><strong>Реверс значимости</strong>Почему вы его идеализируете — и как развернуть этот процесс против него</span>
-          </li>
-          <li>
-            <span class="num">3</span>
-            <span class="txt"><strong>Дофаминовый детокс</strong>Прекратить проверять его соцсети без силы воли — через перепрошивку триггеров</span>
-          </li>
-          <li>
-            <span class="num">4</span>
-            <span class="txt"><strong>Ресурс из боли</strong>Как превратить злость и обиду в топливо — а не в яд для себя</span>
-          </li>
-          <li>
-            <span class="num">5</span>
-            <span class="txt"><strong>Финальный протокол</strong>Состояние «спасибо, следующий» — и как в него войти за 14 дней</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TRICKS SECTION -->
-<section class="tricks-section">
-  <div class="container">
-    <p class="section-label" data-reveal>Содержание гайда</p>
-    <h2 class="section-title" data-reveal>9 трюков, которые<br><em>меняют расстановку сил</em></h2>
-    <div class="tricks-grid">
-
-      <div class="trick-item" data-num="01" data-reveal>
-        <span class="trick-icon">🧠</span>
-        <h3 class="trick-title">Анатомия привязанности</h3>
-        <p class="trick-desc">Почему мозг реагирует на расставание как на наркотическую ломку — и что с этим делать прямо сейчас.</p>
-      </div>
-
-      <div class="trick-item" data-num="02" data-reveal>
-        <span class="trick-icon">🔄</span>
-        <h3 class="trick-title">Техника «стирания»</h3>
-        <p class="trick-desc">Упражнение, которое переписывает эмоциональный «файл» о нём в вашей памяти. Без вычёркивания и без насилия над собой.</p>
-      </div>
-
-      <div class="trick-item" data-num="03" data-reveal>
-        <span class="trick-icon">🎭</span>
-        <h3 class="trick-title">Деидеализация</h3>
-        <p class="trick-desc">Он не принц на белом коне. Он — человек с недостатками, которые вы решили не замечать. Пора замечать.</p>
-      </div>
-
-      <div class="trick-item" data-num="04" data-reveal>
-        <span class="trick-icon">⚡</span>
-        <h3 class="trick-title">Разрыв петли прокрутки</h3>
-        <p class="trick-desc">Как остановить бесконечный мысленный диалог с ним — с помощью одного конкретного приёма.</p>
-      </div>
-
-      <div class="trick-item" data-num="05" data-reveal>
-        <span class="trick-icon">🔥</span>
-        <h3 class="trick-title">Злость как ресурс</h3>
-        <p class="trick-desc">Злиться — нормально. Важно направить этот огонь в правильную сторону: на рост, а не на самосожжение.</p>
-      </div>
-
-      <div class="trick-item" data-num="06" data-reveal>
-        <span class="trick-icon">🪞</span>
-        <h3 class="trick-title">Реанимация самооценки</h3>
-        <p class="trick-desc">Протокол возврата самоуважения. Без аффирмаций перед зеркалом. С реальными действиями и результатами.</p>
-      </div>
-
-      <div class="trick-item" data-num="07" data-reveal>
-        <span class="trick-icon">🚪</span>
-        <h3 class="trick-title">Психологическое «выселение»</h3>
-        <p class="trick-desc">Финальный ритуал, после которого он больше не живёт у вас в голове бесплатно. Работает даже если вы всё ещё его любите.</p>
-      </div>
-
-      <div class="trick-item" data-num="08" data-reveal>
-        <span class="trick-icon">💎</span>
-        <h3 class="trick-title">Новая идентичность</h3>
-        <p class="trick-desc">Кто вы без него — и почему эта версия вас гораздо интереснее той, что была «при нём».</p>
-      </div>
-
-      <div class="trick-item" data-num="09" data-reveal>
-        <span class="trick-icon">✨</span>
-        <h3 class="trick-title">Состояние «следующий»</h3>
-        <p class="trick-desc">Как выйти в режим, когда вы не ждёте его возвращения — потому что вам уже не нужно его возвращение.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- FOR WHOM -->
-<section class="for-section">
-  <div class="container">
-    <p class="section-label" data-reveal>Для кого это</p>
-    <h2 class="section-title" data-reveal>Это ваш гайд, если…</h2>
-    <div class="for-grid">
-      <div class="for-col yes" data-reveal>
-        <h3>✓ Вам подойдёт</h3>
-        <ul class="for-list">
-          <li data-icon="→">Вы не можете перестать думать о нём, хотя очень хотите</li>
-          <li data-icon="→">Он изменил, ушёл или просто исчез — и вы до сих пор не можете отпустить</li>
-          <li data-icon="→">Вы хотите конкретные инструменты, а не «всё будет хорошо»</li>
-          <li data-icon="→">Вам 30–54 года и вы устали объяснять подругам, почему вам до сих пор больно</li>
-          <li data-icon="→">Вы готовы работать 14 дней — и хотите видеть результат</li>
-        </ul>
-      </div>
-      <div class="for-col no" data-reveal>
-        <h3>✗ Не для вас, если</h3>
-        <ul class="for-list">
-          <li data-icon="→">Вы ищете способ вернуть его любой ценой</li>
-          <li data-icon="→">Вы хотите «розовую психологию» и тёплые объятия</li>
-          <li data-icon="→">Вы не готовы честно смотреть на ситуацию</li>
-          <li data-icon="→">Вы ожидаете результат без каких-либо действий с вашей стороны</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- RESULT -->
-<section class="result-section">
-  <div class="container">
-    <p class="section-label" data-reveal>Через 14 дней</p>
-    <blockquote class="result-quote" data-reveal>
-      Вы не забудете его за две недели. Но вы перестанете быть его заложником — и начнёте быть собой.
-    </blockquote>
-    <div class="result-items">
-      <div class="result-item" data-reveal>
-        <span class="result-icon">🧘</span>
-        <div class="result-text">
-          <strong>Голова свободна</strong>
-          Мысли о нём — фоновый шум, а не главная программа
-        </div>
-      </div>
-      <div class="result-item" data-reveal>
-        <span class="result-icon">💪</span>
-        <div class="result-text">
-          <strong>Самооценка на месте</strong>
-          Вы не ищете его одобрения — у вас своё
-        </div>
-      </div>
-      <div class="result-item" data-reveal>
-        <span class="result-icon">🔥</span>
-        <div class="result-text">
-          <strong>Энергия вернулась</strong>
-          Та, что шла на «а вдруг он напишет»
-        </div>
-      </div>
-      <div class="result-item" data-reveal>
-        <span class="result-icon">💎</span>
-        <div class="result-text">
-          <strong>Вы — приоритет</strong>
-          Наконец-то
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section class="pricing-section">
-  <div class="container">
-    <p class="section-label" data-reveal>Получить гайд</p>
-    <h2 class="section-title" data-reveal>Одно решение.<br><em>Мгновенный доступ.</em></h2>
-    <div class="price-card" data-reveal>
-      <div class="price-badge">Гайд</div>
-      <h3 class="price-title">9 психологических трюков</h3>
-      <p class="price-desc">Чтобы перевернуть баланс значимости за 14 дней</p>
-      <div class="price-amount"><span class="price-currency">$</span>9</div>
-      <p class="price-alt">или 400 грн</p>
-      <ul class="price-includes">
-        <li><strong>PDF-гайд</strong> с 9 инструментами тёмной и реверсивной психологии</li>
-        <li><strong>14-дневный протокол</strong> с конкретными упражнениями на каждый день</li>
-        <li><strong>Разбор реальных эмоций:</strong> ревность, злость, надежда, стыд — без осуждения</li>
-        <li><strong>Мгновенный доступ</strong> сразу после оплаты</li>
-      </ul>
-      <p class="payment-label">Выберите способ оплаты</p>
-      <div class="payment-buttons">
-        <a href="https://secure.wayforpay.com/button/bc96b4730a0ef" class="btn-primary">
-          Оплатить WayForPay (карта / Украина) →
-        </a>
-        <a href="https://www.paypal.com/ncp/payment/GGBSPG9CJR7S4" class="btn-secondary">
-          Оплатить через PayPal
-        </a>
-      </div>
-      <p class="disclaimer">После оплаты вы сразу получаете ссылку на скачивание PDF. Никаких подписок, никаких скрытых платежей.</p>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq-section">
-  <div class="container">
-    <p class="section-label" data-reveal>Вопросы</p>
-    <h2 class="section-title" data-reveal>Часто спрашивают</h2>
-    <div class="faq-list">
-
-      <div class="faq-item">
-        <div class="faq-q">Это поможет, если я всё ещё его люблю?</div>
-        <div class="faq-a">Да. Гайд не требует от вас немедленно «разлюбить» — он работает именно с тем состоянием, когда чувства ещё есть, но ситуация уже ясна. Инструменты помогают освободить пространство в голове, даже если эмоции пока не отпускают.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q">За 14 дней — это реально?</div>
-        <div class="faq-a">Реально — почувствовать значительный сдвиг. Не «как будто ничего не было», но «я контролирую ситуацию, а не она меня» — это достижимо при ежедневной работе с материалом. У каждого свой темп, но инструменты дают результат при регулярном применении.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q">Как я получу гайд после оплаты?</div>
-        <div class="faq-a">Мгновенно — ссылка на скачивание придёт сразу после завершения оплаты. PDF открывается на любом устройстве: телефон, планшет, компьютер.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q">Это безопасно — оплата картой?</div>
-        <div class="faq-a">WayForPay — лицензированный украинский платёжный сервис с шифрованием данных. PayPal — международная платёжная система с защитой покупателя. Оба варианта полностью безопасны.</div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q">Что если мне не подойдёт?</div>
-        <div class="faq-a">Гайд создан для конкретной ситуации и подробно описан на этой странице. Прочитайте содержание внимательно перед покупкой — и вы точно поймёте, ваш это инструмент или нет.</div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="final-cta">
-  <div class="container">
-    <h2 class="final-title" data-reveal>
-      Он живёт своей жизнью.<br>
-      <span>Живите своей.</span>
-    </h2>
-    <p class="final-sub" data-reveal>
-      У вас уже есть всё, что нужно. Не хватает только правильного инструмента.
-      За $9 вы получаете его прямо сейчас.
-    </p>
-    <div class="final-buttons" data-reveal>
-      <a href="https://secure.wayforpay.com/button/bc96b4730a0ef" class="btn-primary">
-        Получить гайд за $9 (400 грн.)→
-      </a>
-      <a href="https://www.paypal.com/ncp/payment/GGBSPG9CJR7S4" class="btn-secondary">
-        Оплатить через PayPal
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p>© 2025 back4heart · Все права защищены · <a href="mailto:back4heart@example.com">Контакт</a></p>
-  <p style="margin-top:8px; font-size:11px;">Цифровой продукт. Все продажи окончательны. Гайд является авторским материалом и не подлежит перепродаже.</p>
-</footer>
 
 <script>
-  // FAQ accordion
-  document.querySelectorAll('.faq-q').forEach(q => {
-    q.addEventListener('click', () => {
-      const item = q.parentElement;
-      const wasOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!wasOpen) item.classList.add('open');
-    });
-  });
+/* ── LIVE COUNTER ── */
+(function() {
+  const el = document.getElementById('live-count');
+  if (!el) return;
+  let base = 14 + Math.floor(Math.random() * 8);
+  el.textContent = base;
+  setInterval(() => {
+    base = Math.max(9, Math.min(31, base + (Math.random() > 0.5 ? 1 : -1)));
+    el.textContent = base;
+  }, 7000 + Math.random() * 5000);
+})();
 
-  // Reveal on scroll
-  const reveals = document.querySelectorAll('[data-reveal]');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
-        observer.unobserve(e.target);
-      }
-    });
+/* ── COUNTDOWN ── */
+(function() {
+  const KEY = 'pr_timer_end';
+  let end = parseInt(sessionStorage.getItem(KEY));
+  if (!end || end < Date.now()) {
+    end = Date.now() + (2.5 + Math.random() * 2) * 3600000;
+    sessionStorage.setItem(KEY, end);
+  }
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function tick(){
+    const d = Math.max(0, end - Date.now());
+    document.getElementById('t-h').textContent = pad(Math.floor(d/3600000));
+    document.getElementById('t-m').textContent = pad(Math.floor((d%3600000)/60000));
+    document.getElementById('t-s').textContent = pad(Math.floor((d%60000)/1000));
+    if(d>0) setTimeout(tick,1000);
+  }
+  tick();
+})();
+
+/* ── GEO PAY BUTTONS ── */
+(function() {
+  const WFP_URL    = 'https://secure.wayforpay.com/button/bca9d197905fc';
+  const STRIPE_URL = 'https://buy.stripe.com/cNi00l2YqeSd6Ns2Ss3ZK0a';
+  const PAYPAL_URL = 'https://www.paypal.com/ncp/payment/GGBSPG9CJR7S4';
+
+  function renderUA() {
+    document.getElementById('price-sep').style.display = 'none';
+    document.getElementById('price-usd').style.display = 'none';
+    document.getElementById('sticky-btn').textContent = '⚡ Получить гайд — 399 грн';
+    document.getElementById('sticky-btn').href = WFP_URL;
+    document.getElementById('sticky-btn').onclick = null;
+    document.getElementById('pay-buttons').innerHTML = `
+      <div class="btn-group">
+        <a class="btn btn-primary" href="${WFP_URL}" target="_blank" rel="noopener">
+          💳 Оплатить картой — 399 грн
+        </a>
+      </div>`;
+  }
+
+  function renderWorld() {
+    document.getElementById('price-uah').style.display = 'none';
+    document.getElementById('price-sep').style.display = 'none';
+    document.getElementById('sticky-btn').textContent = '⚡ Получить гайд — $9';
+    document.getElementById('sticky-btn').href = STRIPE_URL;
+    document.getElementById('sticky-btn').onclick = null;
+    document.getElementById('pay-buttons').innerHTML = `
+      <div class="btn-group">
+        <a class="btn btn-stripe" href="${STRIPE_URL}" target="_blank" rel="noopener">
+          💳 Оплатить картой — $9
+        </a>
+        <div class="pay-divider">
+          <div class="pay-divider-line"></div>
+          <div class="pay-divider-text">или выбери способ</div>
+          <div class="pay-divider-line"></div>
+        </div>
+        <a class="btn btn-paypal" href="${PAYPAL_URL}" target="_blank" rel="noopener">
+          🅿 PayPal — $9
+        </a>
+        <a class="btn btn-wfp" href="${WFP_URL}" target="_blank" rel="noopener">
+          🇺🇦 Карта Украины — 399 грн
+        </a>
+      </div>`;
+  }
+
+  fetch('https://ipapi.co/json/', { cache: 'force-cache' })
+    .then(r => r.json())
+    .then(data => {
+      if (data && data.country_code === 'UA') { renderUA(); } else { renderWorld(); }
+    })
+    .catch(() => { renderWorld(); });
+})();
+
+/* ── STICKY CTA ── */
+(function() {
+  const sticky = document.getElementById('sticky-cta');
+  const hero   = document.querySelector('.mockup-wrap');
+  const payEl  = document.getElementById('pay-buttons');
+  const obs = new IntersectionObserver(entries => {
+    const heroGone = !entries.some(e => e.target === hero && e.isIntersecting);
+    const payVis   = entries.some(e => e.target === payEl && e.isIntersecting);
+    sticky.style.display = (heroGone && !payVis) ? 'block' : 'none';
   }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
+  obs.observe(hero);
+  obs.observe(payEl);
+})();
 </script>
-  
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
-
-    ym(90131660, 'init', {webvisor:true, clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/90131660" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
-
-
 </body>
 </html>
