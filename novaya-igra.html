@@ -36,6 +36,23 @@
       var(--ink);
   }
 
+  /* ── URGENCY BANNER ── */
+  .urgency-bar {
+    background: linear-gradient(90deg, rgba(184,50,40,0.18), rgba(184,50,40,0.08));
+    border: 1px solid rgba(184,50,40,0.35);
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #e8a090;
+    line-height: 1.4;
+  }
+  .urgency-bar .ub-icon { font-size: 14px; flex-shrink: 0; }
+
   /* ── BADGE ── */
   .badge {
     display: inline-flex;
@@ -86,6 +103,43 @@
     border-radius: 10px;
     display: block;
     box-shadow: 0 4px 8px rgba(0,0,0,0.5), 0 16px 40px rgba(0,0,0,0.6);
+  }
+
+  /* ── SOCIAL PROOF STRIP ── */
+  .social-strip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding: 10px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  .ss-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .ss-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .ss-label {
+    font-size: 9.5px;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.3;
+  }
+  .ss-sep {
+    width: 1px;
+    height: 28px;
+    background: var(--border);
   }
 
   /* ── INTRO TEXT ── */
@@ -162,9 +216,7 @@
   }
 
   /* ── РЕЗУЛЬТАТЫ ── */
-  .results-block {
-    margin-bottom: 28px;
-  }
+  .results-block { margin-bottom: 28px; }
   .result-item {
     display: flex;
     align-items: flex-start;
@@ -175,23 +227,27 @@
     border-radius: 6px;
     margin-bottom: 8px;
   }
-  .result-icon {
-    font-size: 18px;
-    line-height: 1;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-  .result-text {
-    font-size: 13px;
-    line-height: 1.55;
-    color: #d4c4ba;
-  }
+  .result-icon { font-size: 18px; line-height: 1; flex-shrink: 0; margin-top: 1px; }
+  .result-text { font-size: 13px; line-height: 1.55; color: #d4c4ba; }
   .result-text strong { color: var(--cream); display: block; font-size: 13.5px; margin-bottom: 2px; }
 
-  /* ── ОТЗЫВЫ ── */
-  .reviews-block {
+  /* ── ГАРАНТИЯ ── */
+  .guarantee-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 6px;
+    padding: 14px;
     margin-bottom: 28px;
   }
+  .guarantee-icon { font-size: 22px; flex-shrink: 0; line-height: 1; margin-top: 2px; }
+  .guarantee-text { font-size: 12.5px; line-height: 1.6; color: #cdbfb5; }
+  .guarantee-text strong { color: var(--gold); font-size: 13px; display: block; margin-bottom: 3px; }
+
+  /* ── ОТЗЫВЫ ── */
+  .reviews-block { margin-bottom: 28px; }
   .review-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -206,11 +262,7 @@
     font-style: italic;
     margin-bottom: 10px;
   }
-  .review-author {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+  .review-author { display: flex; align-items: center; gap: 8px; }
   .review-avatar {
     width: 28px; height: 28px;
     border-radius: 50%;
@@ -222,15 +274,8 @@
     font-size: 13px;
     flex-shrink: 0;
   }
-  .review-name {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--cream);
-  }
-  .review-meta {
-    font-size: 11px;
-    color: var(--muted);
-  }
+  .review-name { font-size: 12px; font-weight: 700; color: var(--cream); }
+  .review-meta { font-size: 11px; color: var(--muted); }
   .stars { color: var(--gold); font-size: 11px; letter-spacing: 1px; }
 
   /* ── ЦЕНА ── */
@@ -240,6 +285,7 @@
     border-radius: 8px;
     padding: 18px 16px 16px;
     margin-bottom: 14px;
+    position: relative;
   }
   .price-row {
     display: flex;
@@ -264,18 +310,10 @@
     border: 1px solid rgba(122,106,98,0.4);
     border-radius: 2px;
   }
-  .price-desc {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.5;
-  }
+  .price-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
 
   /* ── КНОПКИ ── */
-  .btn-group {
-    display: flex;
-    flex-direction: column;
-    gap: 9px;
-  }
+  .btn-group { display: flex; flex-direction: column; gap: 9px; }
   .btn {
     display: flex;
     align-items: center;
@@ -298,11 +336,31 @@
     color: #0a0808;
     border: none;
     box-shadow: 0 4px 20px rgba(201,168,76,0.4);
+    animation: pulse-btn 2.8s ease-in-out infinite;
+  }
+  @keyframes pulse-btn {
+    0%, 100% { box-shadow: 0 4px 20px rgba(201,168,76,0.4), 0 0 0 0 rgba(201,168,76,0); }
+    55%       { box-shadow: 0 4px 20px rgba(201,168,76,0.4), 0 0 0 7px rgba(201,168,76,0); }
   }
   .btn-secondary {
     background: transparent;
     color: var(--cream);
     border: 1px solid rgba(245,237,227,0.22);
+  }
+  .btn-stripe {
+    background: #5469d4;
+    color: #fff;
+    border: none;
+    box-shadow: 0 2px 12px rgba(84,105,212,0.35);
+  }
+
+  /* ── PAYMENT LOADING ── */
+  .pay-loading {
+    text-align: center;
+    font-size: 11px;
+    color: var(--muted);
+    padding: 18px 0 4px;
+    letter-spacing: 0.06em;
   }
 
   /* ── FOOTER NOTE ── */
@@ -313,10 +371,37 @@
     margin-top: 16px;
     line-height: 1.5;
   }
+
+  /* ── TRUST ICONS ── */
+  .trust-row {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+  .trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 9.5px;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.3;
+  }
+  .trust-item span { font-size: 16px; }
 </style>
 </head>
 <body>
 <div class="page">
+
+  <!-- URGENCY -->
+  <div class="urgency-bar">
+    <span class="ub-icon">🔥</span>
+    <span>Уже <strong>847 женщин</strong> сделали первый шаг после разрыва — с этим гайдом</span>
+  </div>
 
   <!-- HERO -->
   <div class="badge">✦ PDF-гайд · Свидания и соблазнение</div>
@@ -328,7 +413,26 @@
   <div class="mockup-wrap">
     <img class="mockup-img"
          src="https://i.ibb.co/xKYfdG9V/1779341019953.png"
-         alt="Обложка гайда НОВАЯ ИГРА">
+         alt="Обложка гайда НОВАЯ ИГРА"
+         loading="eager">
+  </div>
+
+  <!-- SOCIAL PROOF NUMBERS -->
+  <div class="social-strip">
+    <div class="ss-item">
+      <div class="ss-num">847+</div>
+      <div class="ss-label">читательниц</div>
+    </div>
+    <div class="ss-sep"></div>
+    <div class="ss-item">
+      <div class="ss-num">★ 4.9</div>
+      <div class="ss-label">средняя оценка</div>
+    </div>
+    <div class="ss-sep"></div>
+    <div class="ss-item">
+      <div class="ss-num">PDF</div>
+      <div class="ss-label">сразу<br>на email</div>
+    </div>
   </div>
 
   <p class="subtitle">
@@ -338,7 +442,7 @@
   <div class="divider"></div>
 
   <p class="body-copy">
-    Ты давно не была в игре. И это <strong>не проблема</strong> — это точка старта. Не будет советов в стиле <strong>«просто люби себя»</strong> или <strong>«он сам найдётся»</strong>. Здесь — <strong>механика, психология, конкретные инструменты.</strong> То, что реально работает — без ощущения, что ты наступаешь на грабли снова и снова.
+    Ты давно не была в игре. После разрыва кажется, что ты выпала из мира — и непонятно, как вернуться обратно. Не будет советов в стиле <strong>«просто люби себя»</strong> или <strong>«он сам найдётся»</strong>. Здесь — <strong>механика, психология, конкретные инструменты.</strong> То, что реально работает — без ощущения, что ты наступаешь на грабли снова и снова.
   </p>
 
   <!-- ДИАГНОСТИКА -->
@@ -399,6 +503,15 @@
     </div>
   </div>
 
+  <!-- ГАРАНТИЯ -->
+  <div class="guarantee-block">
+    <div class="guarantee-icon">💎</div>
+    <div class="guarantee-text">
+      <strong>Гарантия результата</strong>
+      Если после прочтения ты не получишь ни одного полезного инструмента — напиши нам. Вернём деньги без вопросов в течение 7 дней.
+    </div>
+  </div>
+
   <!-- ОТЗЫВЫ -->
   <div class="section-label">Отзывы</div>
   <div class="reviews-block">
@@ -437,9 +550,9 @@
     </div>
   </div>
 
-  <!-- ЦЕНА + КНОПКИ -->
+  <!-- ЦЕНА + КНОПКИ (geo-based) -->
   <div class="price-block">
-    <div class="price-row">
+    <div class="price-row" id="price-display">
       <span class="price-tag">1499 грн</span>
       <span class="price-sep">/</span>
       <span class="price-tag">$34</span>
@@ -448,38 +561,76 @@
     <div class="price-desc">Мгновенный доступ после оплаты. Читать можно сразу.</div>
   </div>
 
-  <div class="btn-group">
+  <div class="btn-group" id="payment-buttons">
+    <div class="pay-loading">Определяем доступные способы оплаты…</div>
+  </div>
+
+  <div class="trust-row">
+    <div class="trust-item"><span>🔒</span>Безопасная<br>оплата</div>
+    <div class="trust-item"><span>⚡</span>Мгновенно<br>на email</div>
+    <div class="trust-item"><span>♾️</span>Доступ<br>навсегда</div>
+    <div class="trust-item"><span>💎</span>Гарантия<br>7 дней</div>
+  </div>
+
+  <p class="footer-note">© back4heart · Все права защищены</p>
+
+</div>
+
+<script>
+(async () => {
+  const container = document.getElementById('payment-buttons');
+  const priceDisplay = document.getElementById('price-display');
+
+  const UA_BTN = `
     <a class="btn btn-primary"
        href="https://secure.wayforpay.com/button/b1d29b1b90a61"
        target="_blank" rel="noopener">
       💳 Оплатить картой (Украина)
-    </a>
+    </a>`;
+
+  const STRIPE_BTN = `
+    <a class="btn btn-stripe"
+       href="https://buy.stripe.com/8x2dRbaqScK5go20Kk3ZK0d"
+       target="_blank" rel="noopener">
+      💳 Оплатить картой (Stripe)
+    </a>`;
+
+  const PAYPAL_BTN = `
     <a class="btn btn-secondary"
        href="https://www.paypal.com/ncp/payment/PGNUCC4AB34C8"
        target="_blank" rel="noopener">
       🌍 Оплатить через PayPal
-    </a>
-  </div>
+    </a>`;
 
-  <p class="footer-note">Безопасная оплата · Мгновенная доставка на email</p>
+  const UA_PRICE = `
+    <span class="price-tag">1499 грн</span>
+    <span class="price-sep">/</span>
+    <span class="price-tag">$34</span>
+    <span class="price-format">PDF</span>`;
 
-</div>
- 
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+  const INT_PRICE = `
+    <span class="price-tag">$34</span>
+    <span class="price-format">PDF</span>`;
 
-    ym(90131660, 'init', {webvisor:true, clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  let isUkraine = false;
+
+  try {
+    const res = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(4000) });
+    const data = await res.json();
+    isUkraine = (data.country_code === 'UA');
+  } catch (e) {
+    // fallback: show all options
+    isUkraine = false;
+  }
+
+  if (isUkraine) {
+    priceDisplay.innerHTML = UA_PRICE;
+    container.innerHTML = UA_BTN;
+  } else {
+    priceDisplay.innerHTML = INT_PRICE;
+    container.innerHTML = STRIPE_BTN + PAYPAL_BTN + UA_BTN;
+  }
+})();
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/90131660" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
-
-
 </body>
 </html>
