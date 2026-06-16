@@ -1,1289 +1,1080 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Что он думает на самом деле — Роман</title>
-<meta name="description" content="Честно. От мужчины. Почему молчит, почему лайкает, почему написал через месяц. PDF который останавливает фантазии."/>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root {
-  --ink: #0f0d0a;
-  --paper: #f5f0e8;
-  --paper-2: #ede7d9;
-  --paper-dark: #1a1610;
-  --rust: #c0392b;
-  --rust-dim: rgba(192,57,43,.15);
-  --amber: #d4830a;
-  --muted: #6b6055;
-  --muted-light: #9c9082;
-  --line: rgba(15,13,10,.12);
-  --line-light: rgba(255,255,255,.08);
-  --serif: 'Playfair Display', Georgia, serif;
-  --body: 'Lora', Georgia, serif;
-  --mono: 'JetBrains Mono', monospace;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--body);
-  font-size: 17px;
-  line-height: 1.7;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* NOISE TEXTURE */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 999;
-  opacity: .025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-size: 200px;
-}
-
-/* TYPOGRAPHY */
-h1, h2, h3 { font-family: var(--serif); font-weight: 700; line-height: 1.15; letter-spacing: -.01em; }
-h1 { font-size: clamp(2.4rem, 7vw, 4.2rem); }
-h2 { font-size: clamp(1.8rem, 5vw, 2.8rem); }
-h3 { font-size: clamp(1.1rem, 3vw, 1.35rem); font-weight: 400; }
-p { color: var(--muted); }
-em { font-style: italic; color: var(--ink); }
-strong { font-weight: 500; color: var(--ink); }
-
-.wrap { max-width: 780px; margin: 0 auto; padding: 0 24px; }
-.wrap-wide { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
-
-section { padding: 90px 0; }
-
-/* EYEBROW */
-.eyebrow {
-  font-family: var(--mono);
-  font-size: .72rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--rust);
-  margin-bottom: 20px;
-  display: block;
-}
-
-/* ============ HERO ============ */
-.hero {
-  background: var(--paper-dark);
-  color: #e8e0d0;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  padding: 100px 0 80px;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  top: -200px; right: -200px;
-  width: 700px; height: 700px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(192,57,43,.12) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 120px;
-  background: linear-gradient(0deg, var(--paper) 0%, transparent 100%);
-}
-
-.hero-inner { position: relative; z-index: 2; }
-
-.hero-stamp {
-  display: inline-block;
-  border: 1px solid rgba(192,57,43,.4);
-  color: #c0392b;
-  font-family: var(--mono);
-  font-size: .7rem;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  padding: 7px 14px;
-  border-radius: 2px;
-  margin-bottom: 32px;
-  opacity: 0;
-  animation: fadeUp .6s ease .1s forwards;
-}
-
-.hero h1 {
-  color: #f0e8d8;
-  margin-bottom: 28px;
-  opacity: 0;
-  animation: fadeUp .7s ease .25s forwards;
-}
-
-.hero h1 em {
-  color: #c0392b;
-  font-style: italic;
-}
-
-.hero-sub {
-  font-size: clamp(1rem, 2.8vw, 1.15rem);
-  color: #9c9082;
-  max-width: 580px;
-  margin-bottom: 44px;
-  line-height: 1.75;
-  opacity: 0;
-  animation: fadeUp .7s ease .4s forwards;
-}
-
-.hero-sub strong { color: #e8e0d0; font-weight: 500; }
-
-.hero-divider {
-  width: 48px;
-  height: 1px;
-  background: rgba(192,57,43,.5);
-  margin: 32px 0;
-  opacity: 0;
-  animation: fadeUp .6s ease .3s forwards;
-}
-
-.hero-note {
-  font-family: var(--mono);
-  font-size: .8rem;
-  color: #6b6055;
-  margin-top: 16px;
-  opacity: 0;
-  animation: fadeUp .6s ease .65s forwards;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* HERO QUOTE */
-.hero-quote {
-  margin: 48px 0 0;
-  padding: 28px 32px;
-  border-left: 2px solid rgba(192,57,43,.4);
-  background: rgba(255,255,255,.04);
-  border-radius: 0 8px 8px 0;
-  opacity: 0;
-  animation: fadeUp .7s ease .55s forwards;
-}
-
-.hero-quote p {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.1rem;
-  color: #b8a898;
-  line-height: 1.65;
-  margin: 0;
-}
-
-.hero-quote cite {
-  display: block;
-  margin-top: 12px;
-  font-style: normal;
-  font-family: var(--mono);
-  font-size: .72rem;
-  color: #6b6055;
-  letter-spacing: .1em;
-}
-
-/* CTA BUTTON */
-.cta {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: var(--rust);
-  color: #fff;
-  font-family: var(--serif);
-  font-weight: 700;
-  font-size: 1.05rem;
-  padding: 20px 40px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background .2s, transform .15s, box-shadow .2s;
-  box-shadow: 0 8px 32px -8px rgba(192,57,43,.5);
-  letter-spacing: .01em;
-}
-
-.cta:hover { background: #a93226; transform: translateY(-2px); box-shadow: 0 14px 40px -8px rgba(192,57,43,.6); }
-.cta:active { transform: translateY(0); }
-
-.cta-sub {
-  font-family: var(--mono);
-  font-size: .68rem;
-  font-weight: 400;
-  opacity: .7;
-  margin-top: 5px;
-  letter-spacing: .06em;
-}
-
-.cta-wrap {
-  opacity: 0;
-  animation: fadeUp .7s ease .6s forwards;
-}
-
-/* ============ PAIN ============ */
-.pain { background: var(--paper); }
-
-.pain-intro {
-  font-size: clamp(1.1rem, 3vw, 1.25rem);
-  color: var(--ink);
-  font-family: var(--serif);
-  font-style: italic;
-  line-height: 1.7;
-  max-width: 640px;
-  margin: 0 auto 56px;
-  text-align: center;
-}
-
-.thoughts-list {
-  display: grid;
-  gap: 0;
-  max-width: 640px;
-  margin: 0 auto;
-}
-
-.thought {
-  padding: 22px 0;
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-}
-
-.thought:first-child { border-top: 1px solid var(--line); }
-
-.thought-num {
-  font-family: var(--mono);
-  font-size: .7rem;
-  color: var(--rust);
-  flex: 0 0 24px;
-  padding-top: 3px;
-  letter-spacing: .05em;
-}
-
-.thought p {
-  color: var(--ink);
-  font-size: 1rem;
-  margin: 0;
-  line-height: 1.6;
-}
-
-.thought p em { color: var(--rust); font-style: italic; }
-
-/* ============ AUTHOR ============ */
-.author { background: var(--paper-2); }
-
-.author-card {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 48px;
-  align-items: start;
-}
-
-.author-text .eyebrow { margin-bottom: 16px; }
-
-.author-text h2 { margin-bottom: 24px; }
-
-.author-text p {
-  color: var(--muted);
-  margin-bottom: 18px;
-  font-size: 1rem;
-}
-
-.author-text p:last-child { margin-bottom: 0; }
-
-.author-text strong { color: var(--ink); }
-
-.author-fact {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 18px 20px;
-  background: var(--paper);
-  border-radius: 6px;
-  border: 1px solid var(--line);
-  margin-top: 28px;
-}
-
-.author-fact-icon {
-  font-size: 1.2rem;
-  flex: 0 0 24px;
-  line-height: 1.5;
-}
-
-.author-fact p {
-  margin: 0;
-  font-size: .95rem;
-  color: var(--muted);
-}
-
-.author-fact strong { color: var(--ink); }
-
-/* ============ WHAT INSIDE ============ */
-.inside { background: var(--paper); }
-
-.inside h2 { margin-bottom: 12px; }
-.inside > .wrap > p { margin-bottom: 48px; font-size: 1rem; }
-
-.chapters {
-  display: grid;
-  gap: 2px;
-  margin-top: 40px;
-}
-
-.chapter {
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 28px 28px 28px 24px;
-  display: grid;
-  grid-template-columns: 48px 1fr;
-  gap: 20px;
-  align-items: start;
-  transition: border-color .2s, background .2s;
-  position: relative;
-  overflow: hidden;
-}
-
-.chapter::before {
-  content: "";
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 3px;
-  background: var(--rust);
-  opacity: 0;
-  transition: opacity .2s;
-}
-
-.chapter:hover { border-color: rgba(192,57,43,.3); background: #faf6ee; }
-.chapter:hover::before { opacity: 1; }
-
-.chapter-num {
-  font-family: var(--mono);
-  font-size: .75rem;
-  color: var(--rust);
-  padding-top: 4px;
-  letter-spacing: .05em;
-}
-
-.chapter h3 {
-  font-family: var(--serif);
-  font-size: 1.1rem;
-  color: var(--ink);
-  margin-bottom: 8px;
-  font-weight: 700;
-}
-
-.chapter p {
-  font-size: .93rem;
-  color: var(--muted);
-  margin: 0;
-  line-height: 1.6;
-}
-
-/* ============ HONEST BLOCK ============ */
-.honest {
-  background: var(--paper-dark);
-  color: #e8e0d0;
-  position: relative;
-  overflow: hidden;
-}
-
-.honest::before {
-  content: "«";
-  position: absolute;
-  top: -60px; left: -20px;
-  font-family: var(--serif);
-  font-size: 400px;
-  color: rgba(255,255,255,.02);
-  line-height: 1;
-  pointer-events: none;
-}
-
-.honest h2 { color: #f0e8d8; margin-bottom: 32px; }
-
-.honest-quotes { display: grid; gap: 24px; margin-top: 40px; }
-
-.honest-quote {
-  padding: 28px 32px;
-  border: 1px solid rgba(255,255,255,.07);
-  border-radius: 6px;
-  background: rgba(255,255,255,.03);
-  position: relative;
-}
-
-.honest-quote::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 32px; right: 32px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(192,57,43,.4), transparent);
-}
-
-.honest-quote p {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.05rem;
-  color: #b8a898;
-  line-height: 1.7;
-  margin: 0 0 12px;
-}
-
-.honest-quote .context {
-  font-family: var(--mono);
-  font-size: .72rem;
-  color: #6b6055;
-  font-style: normal;
-  letter-spacing: .08em;
-}
-
-/* ============ OFFER ============ */
-.offer {
-  background: var(--paper-2);
-  position: relative;
-}
-
-.offer-card {
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 48px 40px;
-  max-width: 580px;
-  margin: 40px auto 0;
-  text-align: center;
-  box-shadow: 0 20px 60px -20px rgba(15,13,10,.15);
-}
-
-.offer-title {
-  font-family: var(--serif);
-  font-size: 1.5rem;
-  color: var(--ink);
-  margin-bottom: 8px;
-  font-weight: 700;
-}
-
-.offer-subtitle {
-  font-size: .95rem;
-  color: var(--muted-light);
-  margin-bottom: 32px;
-}
-
-.offer-list {
-  text-align: left;
-  list-style: none;
-  padding: 0;
-  margin: 0 0 36px;
-  display: grid;
-  gap: 14px;
-}
-
-.offer-list li {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  font-size: .97rem;
-  color: var(--ink);
-  line-height: 1.55;
-}
-
-.offer-list li::before {
-  content: "—";
-  color: var(--rust);
-  font-family: var(--mono);
-  flex: 0 0 16px;
-  padding-top: 1px;
-}
-
-.price-block { margin-bottom: 28px; }
-
-.price-old {
-  font-family: var(--mono);
-  font-size: .9rem;
-  color: var(--muted-light);
-  text-decoration: line-through;
-  margin-bottom: 6px;
-}
-
-.price {
-  font-family: var(--serif);
-  font-weight: 700;
-  font-size: 3.2rem;
-  color: var(--ink);
-  line-height: 1;
-  margin-bottom: 6px;
-}
-
-.price-currency {
-  font-size: 1.4rem;
-  vertical-align: super;
-  margin-right: 4px;
-}
-
-.price-note {
-  font-family: var(--mono);
-  font-size: .75rem;
-  color: var(--muted-light);
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-
-.offer-divider {
-  width: 40px;
-  height: 1px;
-  background: var(--line);
-  margin: 28px auto;
-}
-
-.offer-guarantee {
-  font-size: .88rem;
-  color: var(--muted-light);
-  font-style: italic;
-  line-height: 1.6;
-}
-
-/* ============ FAQ ============ */
-.faq { background: var(--paper); }
-
-.faq-list { margin-top: 40px; display: grid; gap: 2px; }
-
-.faq-item {
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  overflow: hidden;
-  transition: border-color .2s;
-}
-
-.faq-item.open { border-color: rgba(192,57,43,.3); }
-
-.faq-q {
-  padding: 22px 24px;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  font-family: var(--serif);
-  font-size: 1rem;
-  color: var(--ink);
-  user-select: none;
-  background: var(--paper);
-  transition: background .2s;
-}
-
-.faq-item.open .faq-q { background: #faf6ee; }
-
-.faq-toggle {
-  flex: 0 0 22px;
-  height: 22px;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--rust);
-  font-size: 1.1rem;
-  font-weight: 300;
-  transition: transform .3s, background .2s;
-  line-height: 1;
-  font-family: var(--mono);
-}
-
-.faq-item.open .faq-toggle {
-  transform: rotate(45deg);
-  background: var(--rust);
-  color: #fff;
-  border-color: var(--rust);
-}
-
-.faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
-
-.faq-a-inner {
-  padding: 0 24px 22px;
-  color: var(--muted);
-  font-size: .95rem;
-  line-height: 1.7;
-}
-
-/* ============ FINAL ============ */
-.final {
-  background: var(--paper-dark);
-  text-align: center;
-  padding: 110px 0;
-  position: relative;
-  overflow: hidden;
-}
-
-.final::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at center, rgba(192,57,43,.08) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.final h2 { color: #f0e8d8; margin-bottom: 20px; position: relative; z-index: 2; }
-
-.final p { color: #9c9082; max-width: 480px; margin: 0 auto 40px; font-size: 1.05rem; position: relative; z-index: 2; }
-
-.final .cta-wrap { position: relative; z-index: 2; }
-
-/* ============ FOOTER ============ */
-footer {
-  background: #0a0806;
-  padding: 32px 0;
-  text-align: center;
-  border-top: 1px solid rgba(255,255,255,.04);
-}
-
-footer p {
-  font-family: var(--mono);
-  font-size: .72rem;
-  color: #4a4035;
-  letter-spacing: .08em;
-}
-
-/* ============ STICKY MOBILE ============ */
-.sticky {
-  position: fixed;
-  left: 12px; right: 12px; bottom: 12px;
-  z-index: 100;
-  transform: translateY(120%);
-  transition: transform .35s ease;
-  background: rgba(15,13,10,.92);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(192,57,43,.3);
-  border-radius: 10px;
-  padding: 12px 14px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 0 20px 50px -10px rgba(0,0,0,.7);
-}
-
-.sticky.visible { transform: translateY(0); }
-.sticky-info { flex: 1; }
-.sticky-title { font-family: var(--serif); font-size: .85rem; color: #e8e0d0; font-weight: 700; margin-bottom: 2px; }
-.sticky-price { font-family: var(--mono); font-size: .72rem; color: var(--rust); }
-.sticky .cta { padding: 12px 22px; font-size: .9rem; flex-shrink: 0; }
-.sticky .cta-sub { display: none; }
-
-/* ============ PAYMENT METHODS ============ */
-.pay-methods {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin: 20px 0 4px;
-}
-
-.pay-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px 10px;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  background: #fff;
-  height: 34px;
-  min-width: 52px;
-}
-
-.pay-badge svg { display: block; }
-
-/* ============ SECURITY BLOCK ============ */
-.security-block {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  background: #f8f4ec;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 16px 18px;
-  margin: 22px 0 0;
-}
-
-.security-icon {
-  flex: 0 0 20px;
-  color: #2e7d32;
-  margin-top: 2px;
-}
-
-.security-title {
-  font-family: var(--mono);
-  font-size: .73rem;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: #2e7d32;
-  font-weight: 500;
-  margin-bottom: 5px;
-}
-
-.security-desc {
-  font-size: .88rem;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-/* PayPal button color */
-.pay-btn-paypal { background: #003087 !important; box-shadow: 0 8px 32px -8px rgba(0,48,135,.45) !important; }
-.pay-btn-paypal:hover { background: #002570 !important; }
-
-@media (min-width: 768px) {
-  .sticky { display: none; }
-  .author-card { grid-template-columns: 1fr 1fr; gap: 64px; }
-  .honest-quotes { grid-template-columns: 1fr 1fr; }
-}
-
-@media (max-width: 480px) {
-  .offer-card { padding: 32px 24px; }
-  .chapter { grid-template-columns: 36px 1fr; gap: 14px; }
-}
-
-/* SCROLL REVEAL */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .6s ease, transform .6s ease;
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-delay-1 { transition-delay: .1s; }
-.reveal-delay-2 { transition-delay: .2s; }
-.reveal-delay-3 { transition-delay: .3s; }
-
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Психологическая реанимация: 7 дней до свободы</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #F5F3F0;
+            --text-color: #3D3D3D;
+            --accent-color: #C67B5C;
+            --accent-hover: #A86547;
+            --urgent-color: #C64632;
+            --secondary-bg: #FFFFFF;
+            --border-color: #E5E0DB;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            font-size: 17px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0 40px;
+            background: var(--secondary-bg);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(198, 123, 92, 0.1);
+            color: var(--accent-color);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        h1 {
+            font-size: 32px;
+            line-height: 1.25;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1A1A1A;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        .pain-points {
+            background: rgba(198, 123, 92, 0.08);
+            border-left: 3px solid var(--accent-color);
+            padding: 20px;
+            margin-bottom: 32px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .pain-points p {
+            font-size: 15px;
+            color: var(--text-color);
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .pain-points p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Усиленный блок срочности */
+        .urgency {
+            background: rgba(198, 70, 50, 0.06);
+            border: 2px solid rgba(198, 70, 50, 0.25);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .urgency-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .urgency-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1A1A1A;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .urgency-subtext {
+            font-size: 14px;
+            font-weight: 400;
+            color: #666;
+            margin-top: 6px;
+            display: block;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            padding: 20px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 14px rgba(198, 123, 92, 0.3);
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(198, 123, 92, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-arrow {
+            margin-left: 8px;
+            font-size: 20px;
+        }
+
+        /* Payment Methods */
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .payment-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: 2px solid;
+        }
+
+        .payment-btn-paypal {
+            background: #FFC439;
+            color: #003087;
+            border-color: #FFC439;
+        }
+
+        .payment-btn-paypal:hover {
+            background: #F0B830;
+            border-color: #F0B830;
+        }
+
+        .payment-btn-stripe {
+            background: #635BFF;
+            color: white;
+            border-color: #635BFF;
+        }
+
+        .payment-btn-stripe:hover {
+            background: #5249FF;
+            border-color: #5249FF;
+        }
+
+        .payment-btn-wayforpay {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        .payment-btn-wayforpay:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+
+        .payment-icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .payment-icon {
+            height: 28px;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .payment-icon:hover {
+            opacity: 1;
+        }
+
+        /* Video Section */
+        .video-section {
+            padding: 40px 0;
+            background: var(--secondary-bg);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #000;
+            margin-bottom: 20px;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .play-button {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .play-icon {
+            width: 0;
+            height: 0;
+            border-left: 24px solid var(--accent-color);
+            border-top: 14px solid transparent;
+            border-bottom: 14px solid transparent;
+            margin-left: 6px;
+        }
+
+        .video-text {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 60px 0;
+            background: var(--bg-color);
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #1A1A1A;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .format-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(198, 123, 92, 0.1);
+            color: var(--accent-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .feature-item {
+            background: var(--secondary-bg);
+            padding: 24px;
+            border-radius: 12px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .feature-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            background: rgba(198, 123, 92, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .feature-content h3 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1A1A1A;
+            line-height: 1.3;
+        }
+
+        .feature-content p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Result Section */
+        .result {
+            padding: 60px 0;
+            background: var(--secondary-bg);
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, #F5F3F0 0%, #FFFFFF 100%);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+        }
+
+        .result-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .result h2 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: #1A1A1A;
+        }
+
+        .result p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .result-list {
+            text-align: left;
+            max-width: 400px;
+            margin: 0 auto 24px;
+        }
+
+        .result-list li {
+            list-style: none;
+            padding: 8px 0;
+            font-size: 16px;
+            color: var(--text-color);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .result-list li:before {
+            content: "✓";
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        /* Testimonial */
+        .testimonial {
+            padding: 60px 0;
+            background: var(--bg-color);
+        }
+
+        .testimonial-card {
+            background: var(--secondary-bg);
+            padding: 32px 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .quote-icon {
+            font-size: 32px;
+            color: var(--accent-color);
+            opacity: 0.3;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-text {
+            font-size: 17px;
+            line-height: 1.6;
+            color: var(--text-color);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .author-info h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1A1A1A;
+        }
+
+        .author-info p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Guarantee */
+        .guarantee {
+            padding: 40px 0;
+            background: var(--secondary-bg);
+        }
+
+        .guarantee-box {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(198, 123, 92, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px dashed var(--accent-color);
+        }
+
+        .guarantee-icon {
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+
+        .guarantee-text {
+            font-size: 15px;
+            color: var(--text-color);
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 60px 0;
+            background: var(--bg-color);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 24px 0;
+        }
+
+        .faq-item:first-child {
+            padding-top: 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .faq-question {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1A1A1A;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .faq-question-icon {
+            color: var(--accent-color);
+            flex-shrink: 0;
+            font-size: 20px;
+            margin-top: 2px;
+        }
+
+        .faq-answer {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.5;
+            padding-left: 30px;
+        }
+
+        /* Price Section */
+        .price-section {
+            padding: 60px 0 40px;
+            background: var(--bg-color);
+            text-align: center;
+        }
+
+        .price-label {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .price {
+            font-size: 48px;
+            font-weight: 700;
+            color: #1A1A1A;
+            margin-bottom: 8px;
+        }
+
+        .price-old {
+            font-size: 20px;
+            color: #999;
+            text-decoration: line-through;
+            margin-bottom: 24px;
+        }
+
+        .price-note {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 32px;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px 0;
+            background: var(--secondary-bg);
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .footer-links {
+            font-size: 13px;
+            color: #999;
+        }
+
+        .footer-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        /* Sticky CTA for mobile */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 16px 20px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            z-index: 100;
+            display: none;
+        }
+
+        .sticky-cta.visible {
+            display: block;
+        }
+
+        /* Loading */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .price {
+                font-size: 40px;
+            }
+
+            body {
+                padding-bottom: 80px;
+            }
+
+            .sticky-cta {
+                display: block;
+            }
+
+            .payment-icons {
+                gap: 12px;
+            }
+
+            .payment-icon {
+                height: 24px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .feature-item, .testimonial-card, .faq-item {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+    </style>
 </head>
 <body>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="wrap">
-    <div class="hero-inner">
-      <span class="hero-stamp">PDF · Мужской взгляд изнутри</span>
-      <h1>Что он думает<br/>на самом <em>деле</em></h1>
-      <div class="hero-divider"></div>
-      <p class="hero-sub">
-        Почему молчит. Почему лайкнул в 23:00. Почему написал через месяц.<br/>
-        <strong>Честно. От мужчины. Без того чтобы его оправдывать.</strong>
-      </p>
-      <div class="hero-quote">
-        <p>«Я три месяца придумывала что он чувствует. Оказалось - я была не права почти во всём. Это было больно читать. И одновременно - первый раз за три месяца мне стало легче.»</p>
-        <cite>— из отзыва, имя скрыто</cite>
-      </div>
-      <div style="height:36px"></div>
-      <div class="cta-wrap">
-        <a href="#offer" class="cta">
-          Читать сейчас
-          <span class="cta-sub">300 грн · мгновенный доступ к PDF</span>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <span class="badge">⚡ Аудио-интенсив 7 дней</span>
+            <h1>Психологическая реанимация: Перестаньте думать о нём уже через 7 дней</h1>
+            <p class="subtitle">Неважно, когда произошел разрыв — вчера, месяц назад или 10 лет. Этот аудио-интенсив вернёт вам свободу мыслей и спокойный сон.</p>
+            
+            <div class="pain-points">
+                <p>💔 Вы не можете перестать думать о нём, даже если прошло много лет?</p>
+                <p>💔 Мучаетесь вопросами «с кем он сейчас», «почему она лучше меня»?</p>
+                <p>💔 Прокручиваете в голове прошлое и не можете отпустить?</p>
+                <p>💔 Чувствуете, что застряли и живёте не своей жизнью?</p>
+            </div>
+
+            <div class="urgency">
+                <div class="urgency-icon">⏳</div>
+                <div>
+                    <p class="urgency-text">Каждый день без работы над собой закрепляет боль.</p>
+                    <span class="urgency-subtext">Но 7 дней осознанной работы по этому протоколу — и вы почувствуете реальное облегчение.</span>
+                </div>
+            </div>
+
+            <a href="#order" class="btn">
+                Начать интенсив
+                <span class="btn-arrow">→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="container">
+            <div class="video-container">
+                <div class="video-placeholder">
+                    <div style="text-align: center;">
+                        <div class="play-button">
+                            <div class="play-icon"></div>
+                        </div>
+                        <div class="video-text">Смотреть видео (0:38)</div>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center; font-size: 15px; color: #666; margin-top: 12px;">
+                Почему время не лечит само по себе — и что действительно работает
+            </p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Что внутри аудио-интенсива</h2>
+            <div class="format-badge">
+                🎧 7 эпизодов • Формат подкаста • Слушайте в наушниках
+            </div>
+            <p class="section-subtitle">Конкретные упражнения и техники, которые избавят вас от боли — неважно, сколько времени прошло</p>
+
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-icon">🧠</div>
+                    <div class="feature-content">
+                        <h3>Эпизод 1. Почему вы чувствуете физическую боль и не можете «просто взять себя в руки»</h3>
+                        <p>Нейробиология разрыва и дофаминовая ломка. Снимаем самообвинение: вы не сломаны, ваша психика реагирует нормально на ненормальные обстоятельства.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">🌙</div>
+                    <div class="feature-content">
+                        <h3>Эпизод 2. Протокол выживания: как уснуть, когда в 3 часа ночи накрывает паника</h3>
+                        <p>Конкретные дыхательные техники и методы переключения внимания, чтобы остановить круговорот мыслей и вернуть сон.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">🛑</div>
+                    <div class="feature-content">
+                        <h3>Эпизод 3. Как остановить навязчивые мысли о нём и его новой жизни за 5 минут</h3>
+                        <p>Техника «стоп-кадр», метод переключения якоря и работа с образом. Вы научитесь прерывать мысленную жвачку по команде.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">💥</div>
+                    <div class="feature-content">
+                        <h3>Эпизод 4. Как перестать винить себя и безопасно выплеснуть разрушительную злость</h3>
+                        <p>Практики для работы с тремя самыми токсичными состояниями: злостью, невротической виной и стыдом, который живёт в изоляции.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">🍽️</div>
+                    <div class="feature-content">
+                        <h3>Эпизод 5. Что делать, когда кусок в горло не лезет или вы «заедаете» боль</h3>
+                        <p>Простые физические ритуалы, которые возвращают ощущение контроля над телом. Восстановление начинается именно отсюда.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">👥</div>
+                    <div class="feature-content">
+                        <h3>Эпизод 6. Как отвечать на бестактные советы «забудь и живи дальше»</h3>
+                        <p>Фильтр ближнего круга: как объяснять ситуацию детям, как не слить всю боль на первого встречного и не закрыться полностью.</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">🦋</div>
+                    <div class="feature-content">
+                        <h3>Эпизод 7. Как перестать жить прошлым и вернуть контроль над своей жизнью</h3>
+                        <p>Не мотивационная пустота, а конкретный переход. Что значит «стало легче» изнутри и минимальные действия на следующую неделю.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Result Section -->
+    <section class="result">
+        <div class="container">
+            <div class="result-box">
+                <div class="result-icon">🦋</div>
+                <h2>Через 7 дней прохождения интенсива вы:</h2>
+                
+                <ul class="result-list">
+                    <li>Перестанете думать о нём каждую минуту</li>
+                    <li>Перестанете мучиться вопросами «с кем он сейчас»</li>
+                    <li>Сможете есть и спать без таблеток</li>
+                    <li>Перестанете проверять его соцсети</li>
+                    <li>Перестанете прокручивать прошлое в голове</li>
+                    <li>Почувствуете, что худшее уже позади</li>
+                    <li>Вернёте контроль над своей жизнью</li>
+                    <li>Начнёте жить своей жизнью, а не воспоминаниями</li>
+                </ul>
+                
+                <a href="#order" class="btn">
+                    Начать восстановление
+                    <span class="btn-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonial">
+        <div class="container">
+            <div class="testimonial-card">
+                <div class="quote-icon">"</div>
+                <p class="testimonial-text">
+                    После развода прошло 5 лет, но я всё ещё думала о бывшем муже каждый день. Представляла его с другой, гадала, счастлив ли он без меня, не могла отпустить. 
+                    Я думала, что со мной что-то не так — ведь «время лечит», а мне не помогало. 
+                    Аудио-интенсив стал поворотной точкой. Техника «стоп-кадр» из третьего эпизода реально работает — я перестала залипать в мыслях о нём. 
+                    Через 7 дней я впервые за годы проснулась и не подумала о нём. Это ощущение свободы невозможно описать. 
+                    Спасибо, что дали конкретные инструменты, а не пустые слова «забудь и живи дальше».
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">МК</div>
+                    <div class="author-info">
+                        <h4>Марина К., 42 года</h4>
+                        <p>Развод 5 лет назад</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee -->
+    <section class="guarantee">
+        <div class="container">
+            <div class="guarantee-box">
+                <div class="guarantee-icon">🛡️</div>
+                <p class="guarantee-text">
+                    <strong>Гарантия возврата:</strong> Если через 7 дней применения методов 
+                    вы не почувствуете облегчения — верну деньги без вопросов. Мне важно, 
+                    чтобы вы действительно справились.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center; margin-bottom: 32px;">Частые вопросы</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span class="faq-question-icon">❓</span>
+                    Я в шоке, смогу ли я вообще это слушать?
+                </div>
+                <div class="faq-answer">
+                    Да. Этот материал создан специально для состояния «тумана боли». Это аудио-формат (подкаст), который легко воспринимать на слух, даже когда нет сил читать или концентрироваться. Просто наденьте наушники и следуйте инструкциям.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span class="faq-question-icon">❓</span>
+                    Сколько времени нужно в день?
+                </div>
+                <div class="faq-answer">
+                    Всего 15–20 минут. Один эпизод длится около 15 минут. Вы можете слушать его по дороге на работу, во время прогулки или перед сном. Никаких сложных домашних заданий, только практические техники.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span class="faq-question-icon">❓</span>
+                    Что делать, если мне не поможет?
+                </div>
+                <div class="faq-answer">
+                    У нас есть гарантия возврата. Если вы пройдете все 7 эпизодов, примените техники и не почувствуете облегчения — просто напишите нам, и мы вернем деньги без лишних вопросов и попыток переубедить вас.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price Section -->
+    <section class="price-section" id="order">
+        <div class="container">
+            <p class="price-label">Инвестиция в вашу свободу</p>
+            <div class="price" id="price-display">9 USD</div>
+            <div class="price-old" id="price-old-display">27 USD</div>
+            <p class="price-note">Доступ навсегда • Мгновенная доставка на email</p>
+            
+            <div id="payment-container">
+                <div class="btn" style="opacity: 0.7; cursor: not-allowed;">
+                    <span class="loading"></span>
+                    <span style="margin-left: 12px;">Определение региона...</span>
+                </div>
+            </div>
+            
+            <p style="margin-top: 20px; font-size: 13px; color: #999;">
+                🔒 Безопасная оплата • Моментальный доступ
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">© 2026 Психологическая реанимация</p>
+            <p class="footer-links">
+                <a href="#">Политика конфиденциальности</a> • 
+                <a href="#">Оферта</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Sticky CTA -->
+    <div class="sticky-cta" id="stickyCta">
+        <a href="#order" class="btn" style="padding: 16px 24px; font-size: 16px;" id="sticky-price-btn">
+            Вернуть спокойствие за 9 USD →
         </a>
-        <p class="hero-note">↓ Прокрути — там объяснение что внутри</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PAIN -->
-<section class="pain">
-  <div class="wrap">
-    <span class="eyebrow reveal">Почему это важно прямо сейчас</span>
-    <p class="pain-intro reveal reveal-delay-1">
-      Прямо сейчас у тебя в голове крутятся вопросы.<br/>
-      Один за другим. По кругу. Каждый день.
-    </p>
-    <div class="thoughts-list">
-      <div class="thought reveal">
-        <span class="thought-num">01</span>
-        <p>Он думает обо мне? Или <em>уже нет</em>?</p>
-      </div>
-      <div class="thought reveal reveal-delay-1">
-        <span class="thought-num">02</span>
-        <p>Почему он лайкнул мою фотку - но не написал?</p>
-      </div>
-      <div class="thought reveal reveal-delay-2">
-        <span class="thought-num">03</span>
-        <p>Та пауза в переписке - это случайно или <em>специально</em>?</p>
-      </div>
-      <div class="thought reveal">
-        <span class="thought-num">04</span>
-        <p>Почему он написал именно через месяц? Что это значит?</p>
-      </div>
-      <div class="thought reveal reveal-delay-1">
-        <span class="thought-num">05</span>
-        <p>Ему сейчас лучше? Или он тоже <em>не спит</em>?</p>
-      </div>
-      <div class="thought reveal reveal-delay-2">
-        <span class="thought-num">06</span>
-        <p>Если бы я написала первой - он бы ответил?</p>
-      </div>
-    </div>
-    <div style="height:48px"></div>
-    <div class="reveal" style="max-width:560px;margin:0 auto;text-align:center;padding:32px;background:var(--paper-2);border-radius:6px;border:1px solid var(--line)">
-      <p style="font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--ink);margin:0;line-height:1.65">
-        Эти вопросы не дают покоя не потому что ты слабая.<br/>
-        А потому что у тебя <strong>нет ответов</strong>.<br/>
-        Фантазия заполняет пустоту.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- AUTHOR -->
-<section class="author">
-  <div class="wrap">
-    <div class="author-card">
-      <div class="author-text">
-        <span class="eyebrow reveal">Кто это написал</span>
-        <h2 class="reveal reveal-delay-1">Меня зовут Роман.</h2>
-        <p class="reveal reveal-delay-2">
-          Я прошёл через развод после 17 лет брака. Жена ушла. Я остался с пустой квартирой, с детьми через выходные и с головой полной вопросов на которые никто не давал прямых ответов.
-        </p>
-        <p class="reveal">
-          Я не психолог с дипломом на стене. Я мужчина который разобрал это изнутри - и знает как мы думаем после разрыва. Что говорим и что имеем в виду. Где молчим и почему. Когда возвращаемся и что за этим стоит.
-        </p>
-        <p class="reveal reveal-delay-1">
-          Этот PDF я написал потому что устал смотреть как женщины придумывают объяснения которые делают им больнее чем реальность.
-        </p>
-        <div class="author-fact reveal reveal-delay-2">
-          <span class="author-fact-icon">—</span>
-          <p><strong>Это не оправдание мужчин.</strong> Это честный разбор того что происходит. Некоторые вещи будет больно читать. Но после - станет легче. Потому что правда лучше фантазии.</p>
-        </div>
-      </div>
-      <div class="reveal reveal-delay-1">
-        <div style="background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:36px 28px;">
-          <p style="font-family:var(--mono);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--rust);margin-bottom:20px">Что меня заставило написать это</p>
-          <p style="font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--ink);line-height:1.7;margin-bottom:20px">
-            «После развода я видел как моя подруга часами объясняла себе каждое действие своего бывшего. Она придумала целый роман. В котором он скучает, страдает, вот-вот напишет.»
-          </p>
-          <p style="font-size:.93rem;color:var(--muted)">
-            Он не страдал. Он просто жил дальше. А она потеряла год в ожидании.
-          </p>
-          <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--line);">
-            <p style="font-family:var(--mono);font-size:.72rem;color:var(--muted-light);letter-spacing:.08em">Через мою работу прошли <strong style="color:var(--ink)">400+ женщин</strong>.<br/>Это первый раз когда я написал всё в одном месте.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHAT INSIDE -->
-<section class="inside">
-  <div class="wrap">
-    <span class="eyebrow reveal">Что внутри PDF</span>
-    <h2 class="reveal reveal-delay-1">Три сценария.<br/>Честные ответы.</h2>
-    <p class="reveal reveal-delay-2">Я разобрал три ситуации которые чаще всего сводят с ума. Для каждой - что реально происходит у него в голове. Без домыслов.</p>
-
-    <div class="chapters">
-      <div class="chapter reveal">
-        <span class="chapter-num">01</span>
-        <div>
-          <h3>Почему он молчит</h3>
-          <p>Молчание мужчины после разрыва - это не то что ты думаешь. Я объясняю три самые частые причины. Одна из них тебя удивит. Другая - успокоит. Третья - поможет наконец перестать ждать.</p>
-        </div>
-      </div>
-      <div class="chapter reveal reveal-delay-1">
-        <span class="chapter-num">02</span>
-        <div>
-          <h3>Почему лайкает и не пишет</h3>
-          <p>Это не сигнал. Не игра. Не «он думает о тебе». Я пишу что это на самом деле - и почему каждый раз когда ты проверяешь кто смотрел твои сторис ты делаешь себе хуже.</p>
-        </div>
-      </div>
-      <div class="chapter reveal reveal-delay-2">
-        <span class="chapter-num">03</span>
-        <div>
-          <h3>Почему написал через месяц</h3>
-          <p>Четыре реальные причины почему мужчина выходит на связь после долгого молчания. Какая из них про тебя. И что делать с каждой - чтобы не разрушить то что ты уже выстроила.</p>
-        </div>
-      </div>
-      <div class="chapter reveal" style="border-color:rgba(192,57,43,.2);background:#fdf8f2">
-        <span class="chapter-num" style="color:var(--amber)">+</span>
-        <div>
-          <h3>Бонус: что делать с этим знанием</h3>
-          <p>Одна страница. Конкретно. Как остановить фантазии когда они снова начинаются. Инструкция на случай если ты читаешь это в 22:00 и уже тянешься к телефону.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HONEST -->
-<section class="honest">
-  <div class="wrap">
-    <span class="eyebrow reveal" style="color:rgba(192,57,43,.7)">Что говорят после прочтения</span>
-    <h2 class="reveal reveal-delay-1">Больно читать.<br/>Легче после.</h2>
-    <div class="honest-quotes">
-      <div class="honest-quote reveal">
-        <p>«Я была уверена что он страдает и просто не показывает. Роман объяснил почему мужчины так не работают. Я злилась пока читала. А потом выдохнула первый раз за два месяца.»</p>
-        <span class="context">— читательница, 31 год</span>
-      </div>
-      <div class="honest-quote reveal reveal-delay-1">
-        <p>«Тот лайк в 23:00 который я обсуждала с подругой три часа. После этого PDF я поняла что думала о нём не то. Стало обидно. Но хотя бы понятно.»</p>
-        <span class="context">— читательница, 28 год</span>
-      </div>
-      <div class="honest-quote reveal reveal-delay-2">
-        <p>«Я купила чтобы понять можно ли ещё что-то исправить. Поняла - нет. Это было жестоко. И именно это мне было нужно чтобы наконец начать двигаться.»</p>
-        <span class="context">— читательница, 35 лет</span>
-      </div>
-      <div class="honest-quote reveal">
-        <p>«Он написал после 40 дней молчания. Я не знала что ответить. Прочитала за 20 минут до того как написать ему. Не написала.»</p>
-        <span class="context">— читательница, 26 лет</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- OFFER -->
-<section class="offer" id="offer">
-  <div class="wrap">
-    <span class="eyebrow reveal" style="text-align:center;display:block">Получить PDF</span>
-    <h2 class="reveal reveal-delay-1" style="text-align:center">Один раз.<br/>Читать сегодня вечером.</h2>
-
-    <!-- UKRAINE -->
-    <div class="offer-card reveal reveal-delay-2" id="offer-ua">
-      <div class="offer-title">«Что он думает на самом деле»</div>
-      <p class="offer-subtitle">PDF · 20-25 страниц · мгновенный доступ</p>
-      <ul class="offer-list">
-        <li>Почему молчит - три реальные причины</li>
-        <li>Что значат лайки и просмотры сторис</li>
-        <li>Почему написал через месяц - четыре сценария</li>
-        <li>Бонус: инструкция на вечер когда снова накрывает</li>
-        <li>Читать с телефона - без регистраций</li>
-      </ul>
-      <div class="price-block">
-        <div class="price-old">600 грн</div>
-        <div class="price"><span class="price-currency">₴</span>300</div>
-        <div class="price-note">разовая оплата - без подписки</div>
-      </div>
-
-      <!-- UA payment button -->
-      <a href="https://secure.wayforpay.com/button/b78579b8abd85" class="cta" style="width:100%;justify-content:center" target="_blank" rel="noopener">
-        Оплатить сейчас
-        <span class="cta-sub">Мгновенный доступ после оплаты</span>
-      </a>
-
-      <!-- UA payment methods icons -->
-      <div class="pay-methods">
-        <span class="pay-badge pay-visa">
-          <svg viewBox="0 0 48 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="38" height="13"><path d="M18.4 1.2l-3.6 13.6h-3.2L15.2 1.2h3.2zm13.5 8.8l1.7-4.7.97 4.7h-2.67zm3.6 4.8h3l-2.6-13.6h-2.8c-.63 0-1.16.37-1.4.93L27.4 14.8h3.2l.63-1.75h3.9l.37 1.75zm-7.9-4.44c.01-3.1-4.28-3.27-4.25-4.65.01-.42.41-.87 1.28-.98.43-.06 1.63-.1 2.98.52l.53-2.47A8.1 8.1 0 0024.2 2.4c-3 0-5.12 1.6-5.14 3.88-.02 1.69 1.51 2.63 2.66 3.19 1.18.57 1.58.94 1.57 1.45-.01.78-.94 1.13-1.81 1.14-1.52.02-2.4-.41-3.1-.74l-.55 2.56c.71.32 2.01.6 3.36.62 3.18 0 5.26-1.57 5.27-4.01zM14.1 1.2L8.97 14.8H5.74L3.18 3.6C3.03 3 2.75 2.78 2.3 2.54A12.9 12.9 0 000 1.72l.08-.52h5.17c.66 0 1.25.44 1.4 1.2l1.28 6.8 3.17-8h3.2z" fill="#1A1F71"/></svg>
-        </span>
-        <span class="pay-badge pay-mc">
-          <svg viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="22">
-            <rect width="38" height="24" rx="4" fill="#fff"/>
-            <circle cx="15" cy="12" r="7" fill="#EB001B"/>
-            <circle cx="23" cy="12" r="7" fill="#F79E1B"/>
-            <path d="M19 6.8a7 7 0 010 10.4A7 7 0 0119 6.8z" fill="#FF5F00"/>
-          </svg>
-        </span>
-        <span class="pay-badge pay-apple">
-          <svg viewBox="0 0 32 20" fill="none" xmlns="http://www.w3.org/2000/svg" width="42" height="20">
-            <rect width="32" height="20" rx="3" fill="#000"/>
-            <text x="16" y="14" font-family="system-ui,-apple-system,sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="500"> Pay</text>
-            <path d="M6 7.5c.4-.5.67-1.1.6-1.75-.6.04-1.3.4-1.72.9-.37.44-.7 1.1-.6 1.73.62.04 1.3-.3 1.72-.88z" fill="white"/>
-            <path d="M6.58 8.4c-.95-.05-1.76.54-2.2.54-.47 0-1.17-.51-1.93-.5-1 .01-1.9.58-2.42 1.48-1.03 1.79-.27 4.44.74 5.9.49.72 1.08 1.52 1.85 1.49.73-.03 1.02-.47 1.9-.47.9 0 1.15.47 1.93.45.8-.01 1.3-.72 1.8-1.44.56-.82.79-1.62.8-1.66-.02 0-1.54-.59-1.55-2.36-.02-1.48 1.2-2.18 1.26-2.23-.7-1.02-1.77-1.14-2.18-1.2z" fill="white"/>
-            <text x="21" y="13.5" font-family="system-ui,-apple-system,sans-serif" font-size="7.5" fill="white" text-anchor="middle" font-weight="400">Pay</text>
-          </svg>
-        </span>
-        <span class="pay-badge pay-gpay">
-          <svg viewBox="0 0 50 20" fill="none" xmlns="http://www.w3.org/2000/svg" width="48" height="20">
-            <rect width="50" height="20" rx="3" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
-            <text x="25" y="13.5" font-family="'Google Sans',Roboto,sans-serif" font-size="8.5" fill="#3c4043" text-anchor="middle" font-weight="500">G Pay</text>
-          </svg>
-        </span>
-      </div>
-
-      <!-- UA security block -->
-      <div class="security-block">
-        <div class="security-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6l-8-4z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="security-text">
-          <div class="security-title">Безопасная оплата</div>
-          <div class="security-desc">Данные карты защищены шифрованием SSL. Роман не видит реквизиты карты - оплата проходит через сертифицированную платёжную систему. Доступ к PDF - сразу после оплаты.</div>
-        </div>
-      </div>
-
-      <div class="offer-divider"></div>
-      <p class="offer-guarantee">Если после прочтения почувствуешь что это было не то что нужно - напиши мне. Верну деньги без вопросов.</p>
     </div>
 
-    <!-- INTERNATIONAL -->
-    <div class="offer-card reveal reveal-delay-2" id="offer-intl" style="display:none">
-      <div class="offer-title">«Что он думает на самом деле»</div>
-      <p class="offer-subtitle">PDF · 20-25 страниц · мгновенный доступ</p>
-      <ul class="offer-list">
-        <li>Почему молчит - три реальные причины</li>
-        <li>Что значат лайки и просмотры сторис</li>
-        <li>Почему написал через месяц - четыре сценария</li>
-        <li>Бонус: инструкция на вечер когда снова накрывает</li>
-        <li>Читать с телефона - без регистраций</li>
-      </ul>
-      <div class="price-block">
-        <div class="price-old">$29.99</div>
-        <div class="price"><span class="price-currency">$</span>14.99</div>
-        <div class="price-note">разовая оплата - без подписки</div>
-      </div>
+    <script>
+        // SVG Icons for payment methods
+        const paymentIcons = {
+            applePay: `<svg class="payment-icon" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+                <rect width="120" height="40" rx="6" fill="#000"/>
+                <path d="M28.5 20.5c0-2.5 2-3.7 2.1-3.8-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.1-.8-1.6 0-3.1.9-3.9 2.4-1.7 2.9-.4 7.2 1.2 9.5.8 1.1 1.7 2.4 2.9 2.3 1.2-.1 1.6-.8 3.1-.8 1.5 0 1.9.8 3.1.7 1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.5-1-2.5-3.5zM26.3 12.9c.7-.8 1.1-1.9 1-3-.9 0-2.1.6-2.8 1.4-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3z" fill="#fff"/>
+                <text x="42" y="26" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#fff">Pay</text>
+            </svg>`,
+            googlePay: `<svg class="payment-icon" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+                <rect width="120" height="40" rx="6" fill="#fff" stroke="#ddd"/>
+                <path d="M25.5 20.5c0-.7-.1-1.4-.2-2h-9.3v3.8h5.3c-.2 1.2-.9 2.2-2 2.9v2.4h3.2c1.9-1.7 3-4.3 3-7.1z" fill="#4285F4"/>
+                <path d="M16 28c2.7 0 4.9-.9 6.5-2.4l-3.2-2.4c-.9.6-2 1-3.3 1-2.5 0-4.7-1.7-5.5-4H7.2v2.5c1.7 3.3 5 5.3 8.8 5.3z" fill="#34A853"/>
+                <path d="M10.5 20.2c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2v-2.5H7.2c-.7 1.3-1 2.8-1 4.5s.4 3.2 1 4.5l3.3-2.5z" fill="#FBBC05"/>
+                <path d="M16 12.4c1.4 0 2.7.5 3.7 1.5l2.8-2.8c-1.7-1.6-3.9-2.5-6.5-2.5-3.8 0-7.1 2-8.8 5.3l3.3 2.5c.8-2.3 3-4 5.5-4z" fill="#EA4335"/>
+                <text x="42" y="26" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#5f6368">Pay</text>
+            </svg>`,
+            visa: `<svg class="payment-icon" viewBox="0 0 80 50" xmlns="http://www.w3.org/2000/svg">
+                <rect width="80" height="50" rx="6" fill="#fff" stroke="#ddd"/>
+                <path d="M33.5 33.5h-4.2l2.6-16h4.2l-2.6 16zm18.3-15.6c-.8-.3-2.1-.6-3.7-.6-4.1 0-7 2.1-7 5.1 0 2.2 2 3.4 3.6 4.1 1.6.8 2.1 1.3 2.1 2 0 1.1-1.4 1.6-2.6 1.6-1.7 0-2.7-.2-4.1-.9l-.6-.3-.6 3.7c1.1.5 3 .9 5 .9 4.4 0 7.2-2 7.2-5.2 0-1.7-1.1-3.1-3.4-4.1-1.4-.7-2.3-1.2-2.3-1.9 0-.7.8-1.4 2.5-1.4 1.4 0 2.4.3 3.2.6l.4.2.7-3.8zm12.4-.4h-3.3c-1 0-1.8.3-2.2 1.4l-6.3 14.6h4.4l.9-2.4h5.4l.5 2.4h3.9l-3.3-16zm-5.3 10.1c.4-.9 1.8-4.7 1.8-4.7s.4-1 .6-1.5l.3 1.4 1 4.8h-3.7zM30.2 17.5l-3.9 10.8-.4-2c-.7-2.4-3-5-5.5-6.3l3.6 13.5h4.4l6.3-16h-4.5z" fill="#1A1F71"/>
+                <path d="M22.3 17.5h-6.8l-.1.3c5.2 1.3 8.7 4.4 10.1 8.1l-1.4-7.1c-.2-1-.9-1.3-1.8-1.3z" fill="#F7B600"/>
+            </svg>`,
+            mastercard: `<svg class="payment-icon" viewBox="0 0 80 50" xmlns="http://www.w3.org/2000/svg">
+                <rect width="80" height="50" rx="6" fill="#fff" stroke="#ddd"/>
+                <circle cx="32" cy="25" r="12" fill="#EB001B"/>
+                <circle cx="48" cy="25" r="12" fill="#F79E1B"/>
+                <path d="M40 16.3c2.3 2.3 3.7 5.4 3.7 8.7s-1.4 6.4-3.7 8.7c-2.3-2.3-3.7-5.4-3.7-8.7s1.4-6.4 3.7-8.7z" fill="#FF5F00"/>
+            </svg>`
+        };
 
-      <!-- PayPal -->
-      <a href="https://www.paypal.com/ncp/payment/Z5QCU278QH4XW" class="cta pay-btn-paypal" style="width:100%;justify-content:center;margin-bottom:12px;" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="margin-right:8px;flex-shrink:0"><path d="M19.5 6.5c.2 1.6-.4 3-1.4 4-1.1 1.1-2.8 1.7-4.8 1.7H12l-.8 5H8.5L10 5h5c2 0 3.6.5 4.5 1.5z" fill="white" opacity=".8"/><path d="M17 4c.2 1.6-.4 3-1.4 4-1 1-2.7 1.6-4.6 1.6H9.7L8.8 15H6l1.6-11H13c1.9 0 3.2.5 4 1z" fill="white"/></svg>
-        Оплатить через PayPal
-        <span class="cta-sub">Мгновенный доступ после оплаты</span>
-      </a>
+        // Detect country by IP
+        async function detectCountry() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+                return data.country_code;
+            } catch (error) {
+                console.error('Error detecting country:', error);
+                return null;
+            }
+        }
 
-      <!-- OR divider -->
-      <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px;">
-        <div style="flex:1;height:1px;background:var(--line)"></div>
-        <span style="font-family:var(--mono);font-size:.7rem;color:var(--muted-light);letter-spacing:.12em">или</span>
-        <div style="flex:1;height:1px;background:var(--line)"></div>
-      </div>
+        // Render payment buttons based on country
+        function renderPaymentButtons(countryCode) {
+            const container = document.getElementById('payment-container');
+            const priceDisplay = document.getElementById('price-display');
+            const priceOldDisplay = document.getElementById('price-old-display');
+            const stickyPriceBtn = document.getElementById('sticky-price-btn');
+            
+            if (countryCode === 'UA') {
+                // Ukraine - single WayForPay button and UAH price
+                priceDisplay.textContent = '399 грн';
+                priceOldDisplay.textContent = '1 197 грн';
+                stickyPriceBtn.textContent = 'Вернуть спокойствие за 399 грн →';
+                
+                container.innerHTML = `
+                    <a href="https://secure.wayforpay.com/button/bca9d197905fc" class="btn" target="_blank" rel="noopener">
+                        Оплатить
+                        <span class="btn-arrow">→</span>
+                    </a>
+                    <div class="payment-icons">
+                        ${paymentIcons.applePay}
+                        ${paymentIcons.googlePay}
+                        ${paymentIcons.visa}
+                        ${paymentIcons.mastercard}
+                    </div>
+                `;
+            } else {
+                // Rest of the world - 3 payment methods and USD price
+                priceDisplay.textContent = '9 USD';
+                priceOldDisplay.textContent = '27 USD';
+                stickyPriceBtn.textContent = 'Вернуть спокойствие за 9 USD →';
+                
+                container.innerHTML = `
+                    <div class="payment-methods">
+                        <a href="https://www.paypal.com/ncp/payment/GGBSPG9CJR7S4" class="payment-btn payment-btn-paypal" target="_blank" rel="noopener">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.079-.026.175-.041.254-.93 4.783-4.13 6.44-8.216 6.44h-2.19a.563.563 0 0 0-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 0 0 .554.647h3.882c.46 0 .85-.334.922-.788.018-.109.714-4.612.714-4.612.072-.454.462-.788.923-.788h.58c3.76 0 6.705-1.528 7.565-5.946.36-1.847.174-3.388-.777-4.468z"/>
+                            </svg>
+                            PayPal
+                        </a>
+                        <a href="https://buy.stripe.com/cNi00l2YqeSd6Ns2Ss3ZK0a" class="payment-btn payment-btn-stripe" target="_blank" rel="noopener">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-7.076-2.146l-.891 5.573C5.043 22.902 7.633 24 11.297 24c2.581 0 4.726-.647 6.254-1.828 1.636-1.239 2.465-3.068 2.465-5.576 0-4.108-2.545-5.81-6.04-7.446z"/>
+                            </svg>
+                            Stripe
+                        </a>
+                        <a href="https://secure.wayforpay.com/button/bca9d197905fc" class="payment-btn payment-btn-wayforpay" target="_blank" rel="noopener">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.5 4.5l-8.5 8.5-8.5-8.5-3 3 11.5 11.5 11.5-11.5z"/>
+                            </svg>
+                            Банковская карта
+                        </a>
+                    </div>
+                    <div class="payment-icons">
+                        ${paymentIcons.applePay}
+                        ${paymentIcons.googlePay}
+                        ${paymentIcons.visa}
+                        ${paymentIcons.mastercard}
+                    </div>
+                `;
+            }
+        }
 
-      <!-- Card payment -->
-      <a href="https://secure.wayforpay.com/button/b78579b8abd85" class="cta" style="width:100%;justify-content:center;background:#1a1610;color:#e8e0d0;box-shadow:0 8px 32px -8px rgba(0,0,0,.4);" target="_blank" rel="noopener">
-        Оплатить картой
-        <span class="cta-sub">Мгновенный доступ после оплаты</span>
-      </a>
+        // Initialize payment on page load
+        document.addEventListener('DOMContentLoaded', async function() {
+            const countryCode = await detectCountry();
+            renderPaymentButtons(countryCode);
+        });
 
-      <!-- INTL payment methods icons -->
-      <div class="pay-methods">
-        <span class="pay-badge pay-visa">
-          <svg viewBox="0 0 48 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="38" height="13"><path d="M18.4 1.2l-3.6 13.6h-3.2L15.2 1.2h3.2zm13.5 8.8l1.7-4.7.97 4.7h-2.67zm3.6 4.8h3l-2.6-13.6h-2.8c-.63 0-1.16.37-1.4.93L27.4 14.8h3.2l.63-1.75h3.9l.37 1.75zm-7.9-4.44c.01-3.1-4.28-3.27-4.25-4.65.01-.42.41-.87 1.28-.98.43-.06 1.63-.1 2.98.52l.53-2.47A8.1 8.1 0 0024.2 2.4c-3 0-5.12 1.6-5.14 3.88-.02 1.69 1.51 2.63 2.66 3.19 1.18.57 1.58.94 1.57 1.45-.01.78-.94 1.13-1.81 1.14-1.52.02-2.4-.41-3.1-.74l-.55 2.56c.71.32 2.01.6 3.36.62 3.18 0 5.26-1.57 5.27-4.01zM14.1 1.2L8.97 14.8H5.74L3.18 3.6C3.03 3 2.75 2.78 2.3 2.54A12.9 12.9 0 000 1.72l.08-.52h5.17c.66 0 1.25.44 1.4 1.2l1.28 6.8 3.17-8h3.2z" fill="#1A1F71"/></svg>
-        </span>
-        <span class="pay-badge pay-mc">
-          <svg viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="22">
-            <rect width="38" height="24" rx="4" fill="#fff"/>
-            <circle cx="15" cy="12" r="7" fill="#EB001B"/>
-            <circle cx="23" cy="12" r="7" fill="#F79E1B"/>
-            <path d="M19 6.8a7 7 0 010 10.4A7 7 0 0119 6.8z" fill="#FF5F00"/>
-          </svg>
-        </span>
-        <span class="pay-badge pay-apple">
-          <svg viewBox="0 0 42 20" fill="none" xmlns="http://www.w3.org/2000/svg" width="48" height="22">
-            <rect width="42" height="20" rx="3" fill="#000"/>
-            <path d="M10 7.5c.4-.5.67-1.1.6-1.75-.6.04-1.3.4-1.72.9-.37.44-.7 1.1-.6 1.73.62.04 1.3-.3 1.72-.88z" fill="white"/>
-            <path d="M10.58 8.4c-.95-.05-1.76.54-2.2.54-.47 0-1.17-.51-1.93-.5-1 .01-1.9.58-2.42 1.48-1.03 1.79-.27 4.44.74 5.9.49.72 1.08 1.52 1.85 1.49.73-.03 1.02-.47 1.9-.47.9 0 1.15.47 1.93.45.8-.01 1.3-.72 1.8-1.44.56-.82.79-1.62.8-1.66-.02 0-1.54-.59-1.55-2.36-.02-1.48 1.2-2.18 1.26-2.23-.7-1.02-1.77-1.14-2.18-1.2z" fill="white"/>
-            <text x="28" y="13.5" font-family="system-ui,-apple-system,sans-serif" font-size="7.5" fill="white" text-anchor="middle" font-weight="400">Pay</text>
-          </svg>
-        </span>
-        <span class="pay-badge pay-gpay">
-          <svg viewBox="0 0 50 20" fill="none" xmlns="http://www.w3.org/2000/svg" width="52" height="22">
-            <rect width="50" height="20" rx="3" fill="#fff" stroke="#e0e0e0" stroke-width="1"/>
-            <text x="25" y="13.5" font-family="'Google Sans',Roboto,sans-serif" font-size="8.5" fill="#3c4043" text-anchor="middle" font-weight="500">G Pay</text>
-          </svg>
-        </span>
-        <span class="pay-badge pay-pp">
-          <svg viewBox="0 0 50 20" fill="none" xmlns="http://www.w3.org/2000/svg" width="52" height="22">
-            <rect width="50" height="20" rx="3" fill="#003087"/>
-            <text x="25" y="13.5" font-family="system-ui,sans-serif" font-size="7.5" fill="white" text-anchor="middle" font-weight="600">PayPal</text>
-          </svg>
-        </span>
-      </div>
+        // Show/hide sticky CTA on scroll
+        window.addEventListener('scroll', function() {
+            const stickyCta = document.getElementById('stickyCta');
+            if (window.scrollY > 600) {
+                stickyCta.classList.add('visible');
+            } else {
+                stickyCta.classList.remove('visible');
+            }
+        });
 
-      <!-- INTL security block -->
-      <div class="security-block">
-        <div class="security-icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20"><path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6l-8-4z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <div class="security-text">
-          <div class="security-title">Безопасная оплата</div>
-          <div class="security-desc">Данные карты защищены шифрованием SSL. Роман не видит реквизиты карты - оплата проходит через сертифицированную платёжную систему. Доступ к PDF - сразу после оплаты.</div>
-        </div>
-      </div>
-
-      <div class="offer-divider"></div>
-      <p class="offer-guarantee">Если после прочтения почувствуешь что это было не то что нужно - напиши мне. Верну деньги без вопросов.</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq">
-  <div class="wrap">
-    <span class="eyebrow reveal">Вопросы</span>
-    <h2 class="reveal reveal-delay-1">Что обычно<br/>спрашивают</h2>
-    <div class="faq-list reveal reveal-delay-2">
-
-      <div class="faq-item">
-        <div class="faq-q">Это поможет мне его вернуть? <span class="faq-toggle">+</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Нет. И это написано честно. PDF не про то как вернуть. Он про то как перестать жить в фантазиях о том что он думает. Это разные задачи. Если ты хочешь его вернуть - это не тот продукт.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q">Я уже читала много всего. Чем это отличается? <span class="faq-toggle">+</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Большинство текстов написаны женщинами для женщин - или психологами которые объясняют теорию. Это написано мужчиной который прошёл через это сам. И который говорит не «вот как нужно думать» а «вот что реально происходит у него в голове». Это другое.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q">Мы расстались давно. Мне всё равно подойдёт? <span class="faq-toggle">+</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Да. Фантазии о том что он думает не зависят от того как давно это было. Иногда они сильнее через год чем через неделю. PDF работает для любого момента когда голова снова начинает придумывать его внутренний мир.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q">Как я получу PDF? <span class="faq-toggle">+</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Напишешь мне в Telegram - @back4heart. Я отвечаю лично. После оплаты пришлю ссылку на скачивание в течение нескольких минут. Читать можно сразу с телефона.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q">А если мне будет больно это читать? <span class="faq-toggle">+</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Скорее всего будет. Некоторые вещи проще фантазировать чем знать правду. Но из опыта - именно эта боль от понимания отличается от боли от неизвестности. Она конечная. Её можно пройти. Неизвестность - бесконечная.</div></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- FINAL -->
-<section class="final">
-  <div class="wrap">
-    <h2 class="reveal">Фантазии занимают<br/>место которое нужно тебе.</h2>
-    <p class="reveal reveal-delay-1">Ты можешь снова провести вечер придумывая что он думает. Или прочитать - и наконец знать.</p>
-    <div class="cta-wrap reveal reveal-delay-2">
-      <a href="#offer" class="cta" id="final-cta">
-        Читать сейчас
-        <span class="cta-sub" id="final-cta-sub">PDF · мгновенный доступ</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <p>© 2026 · «Что он думает на самом деле» · Роман · @back4heart</p>
-  </div>
-</footer>
-
-<!-- STICKY -->
-<div class="sticky" id="sticky">
-  <div class="sticky-info">
-    <div class="sticky-title">Что он думает на самом деле</div>
-    <div class="sticky-price" id="sticky-price">PDF</div>
-  </div>
-  <a href="#offer" class="cta">Получить</a>
-</div>
-
-<script>
-// ============ GEO DETECTION ============
-(function() {
-  var offerUA   = document.getElementById('offer-ua');
-  var offerIntl = document.getElementById('offer-intl');
-  var stickyPrice = document.getElementById('sticky-price');
-  var finalSub    = document.getElementById('final-cta-sub');
-
-  function showUA() {
-    offerUA.style.display   = 'block';
-    offerIntl.style.display = 'none';
-    if (stickyPrice) stickyPrice.textContent = '300 грн · PDF';
-    if (finalSub)    finalSub.textContent     = '300 грн · PDF · мгновенный доступ';
-  }
-
-  function showIntl() {
-    offerUA.style.display   = 'none';
-    offerIntl.style.display = 'block';
-    if (stickyPrice) stickyPrice.textContent = '$14.99 · PDF';
-    if (finalSub)    finalSub.textContent     = '$14.99 · PDF · мгновенный доступ';
-  }
-
-  // Default: show UA until geo resolves
-  showUA();
-
-  // Detect country via free API (no key needed, CORS-friendly)
-  fetch('https://ipapi.co/json/')
-    .then(function(r){ return r.json(); })
-    .then(function(d){
-      if (d && d.country_code && d.country_code.toUpperCase() !== 'UA') {
-        showIntl();
-      }
-    })
-    .catch(function(){
-      // On error - keep UA version as default
-    });
-})();
-
-// ============ FAQ ============
-document.querySelectorAll('.faq-item').forEach(function(item) {
-  var q = item.querySelector('.faq-q');
-  var a = item.querySelector('.faq-a');
-  q.addEventListener('click', function() {
-    var isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(function(other) {
-      if (other !== item) {
-        other.classList.remove('open');
-        other.querySelector('.faq-a').style.maxHeight = '0px';
-      }
-    });
-    if (isOpen) {
-      item.classList.remove('open');
-      a.style.maxHeight = '0px';
-    } else {
-      item.classList.add('open');
-      a.style.maxHeight = a.scrollHeight + 'px';
-    }
-  });
-});
-
-// ============ SCROLL REVEAL ============
-var reveals = document.querySelectorAll('.reveal');
-var observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) {
-    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-  });
-}, { threshold: 0.12 });
-reveals.forEach(function(r) { observer.observe(r); });
-
-// ============ STICKY ============
-var sticky      = document.getElementById('sticky');
-var hero        = document.querySelector('.hero');
-var offerSection = document.getElementById('offer');
-var finalSection = document.querySelector('.final');
-
-function checkSticky() {
-  if (window.innerWidth >= 768) { sticky.classList.remove('visible'); return; }
-  var heroBottom   = hero.getBoundingClientRect().bottom;
-  var offerVisible = offerSection.getBoundingClientRect().top < window.innerHeight;
-  var finalVisible = finalSection.getBoundingClientRect().top < window.innerHeight;
-  if (heroBottom < 100 && !offerVisible && !finalVisible) {
-    sticky.classList.add('visible');
-  } else {
-    sticky.classList.remove('visible');
-  }
-}
-window.addEventListener('scroll', checkSticky, { passive: true });
-window.addEventListener('resize', checkSticky);
-checkSticky();
-</script>
-
-  
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
-
-    ym(90131660, 'init', {webvisor:true, clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/90131660" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
-
-  
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
+
