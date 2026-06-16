@@ -1,1080 +1,1108 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Психологическая реанимация: 7 дней до свободы</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg-color: #F5F3F0;
-            --text-color: #3D3D3D;
-            --accent-color: #C67B5C;
-            --accent-hover: #A86547;
-            --urgent-color: #C64632;
-            --secondary-bg: #FFFFFF;
-            --border-color: #E5E0DB;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            font-size: 17px;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .container {
-            max-width: 640px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 60px 0 40px;
-            background: var(--secondary-bg);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .badge {
-            display: inline-block;
-            background: rgba(198, 123, 92, 0.1);
-            color: var(--accent-color);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 24px;
-            letter-spacing: 0.5px;
-        }
-
-        h1 {
-            font-size: 32px;
-            line-height: 1.25;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #1A1A1A;
-        }
-
-        .subtitle {
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 32px;
-            line-height: 1.5;
-        }
-
-        .pain-points {
-            background: rgba(198, 123, 92, 0.08);
-            border-left: 3px solid var(--accent-color);
-            padding: 20px;
-            margin-bottom: 32px;
-            border-radius: 0 8px 8px 0;
-        }
-
-        .pain-points p {
-            font-size: 15px;
-            color: var(--text-color);
-            margin-bottom: 8px;
-            line-height: 1.5;
-        }
-
-        .pain-points p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Усиленный блок срочности */
-        .urgency {
-            background: rgba(198, 70, 50, 0.06);
-            border: 2px solid rgba(198, 70, 50, 0.25);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 32px;
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-        }
-
-        .urgency-icon {
-            font-size: 24px;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .urgency-text {
-            font-size: 16px;
-            font-weight: 600;
-            color: #1A1A1A;
-            margin: 0;
-            line-height: 1.4;
-        }
-
-        .urgency-subtext {
-            font-size: 14px;
-            font-weight: 400;
-            color: #666;
-            margin-top: 6px;
-            display: block;
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            background: var(--accent-color);
-            color: white;
-            text-decoration: none;
-            padding: 20px 32px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 17px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 14px rgba(198, 123, 92, 0.3);
-        }
-
-        .btn:hover {
-            background: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(198, 123, 92, 0.4);
-        }
-
-        .btn:active {
-            transform: translateY(0);
-        }
-
-        .btn-arrow {
-            margin-left: 8px;
-            font-size: 20px;
-        }
-
-        /* Payment Methods */
-        .payment-methods {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 16px;
-        }
-
-        .payment-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            width: 100%;
-            padding: 16px 24px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 16px;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            border: 2px solid;
-        }
-
-        .payment-btn-paypal {
-            background: #FFC439;
-            color: #003087;
-            border-color: #FFC439;
-        }
-
-        .payment-btn-paypal:hover {
-            background: #F0B830;
-            border-color: #F0B830;
-        }
-
-        .payment-btn-stripe {
-            background: #635BFF;
-            color: white;
-            border-color: #635BFF;
-        }
-
-        .payment-btn-stripe:hover {
-            background: #5249FF;
-            border-color: #5249FF;
-        }
-
-        .payment-btn-wayforpay {
-            background: var(--accent-color);
-            color: white;
-            border-color: var(--accent-color);
-        }
-
-        .payment-btn-wayforpay:hover {
-            background: var(--accent-hover);
-            border-color: var(--accent-hover);
-        }
-
-        .payment-icons {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        .payment-icon {
-            height: 28px;
-            opacity: 0.7;
-            transition: opacity 0.2s;
-        }
-
-        .payment-icon:hover {
-            opacity: 1;
-        }
-
-        /* Video Section */
-        .video-section {
-            padding: 40px 0;
-            background: var(--secondary-bg);
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 12px;
-            background: #000;
-            margin-bottom: 20px;
-        }
-
-        .video-placeholder {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .play-button {
-            width: 70px;
-            height: 70px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .play-icon {
-            width: 0;
-            height: 0;
-            border-left: 24px solid var(--accent-color);
-            border-top: 14px solid transparent;
-            border-bottom: 14px solid transparent;
-            margin-left: 6px;
-        }
-
-        .video-text {
-            text-align: center;
-            font-size: 14px;
-            color: #666;
-        }
-
-        /* Features Section */
-        .features {
-            padding: 60px 0;
-            background: var(--bg-color);
-        }
-
-        .section-title {
-            font-size: 26px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: #1A1A1A;
-        }
-
-        .section-subtitle {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 40px;
-        }
-
-        .format-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(198, 123, 92, 0.1);
-            color: var(--accent-color);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 24px;
-        }
-
-        .feature-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .feature-item {
-            background: var(--secondary-bg);
-            padding: 24px;
-            border-radius: 12px;
-            display: flex;
-            gap: 16px;
-            align-items: flex-start;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-
-        .feature-icon {
-            flex-shrink: 0;
-            width: 48px;
-            height: 48px;
-            background: rgba(198, 123, 92, 0.1);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
-
-        .feature-content h3 {
-            font-size: 17px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #1A1A1A;
-            line-height: 1.3;
-        }
-
-        .feature-content p {
-            font-size: 15px;
-            color: #666;
-            line-height: 1.5;
-        }
-
-        /* Result Section */
-        .result {
-            padding: 60px 0;
-            background: var(--secondary-bg);
-        }
-
-        .result-box {
-            background: linear-gradient(135deg, #F5F3F0 0%, #FFFFFF 100%);
-            border: 2px solid var(--border-color);
-            border-radius: 16px;
-            padding: 32px 24px;
-            text-align: center;
-        }
-
-        .result-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .result h2 {
-            font-size: 24px;
-            margin-bottom: 16px;
-            color: #1A1A1A;
-        }
-
-        .result p {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 24px;
-            line-height: 1.6;
-        }
-
-        .result-list {
-            text-align: left;
-            max-width: 400px;
-            margin: 0 auto 24px;
-        }
-
-        .result-list li {
-            list-style: none;
-            padding: 8px 0;
-            font-size: 16px;
-            color: var(--text-color);
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .result-list li:before {
-            content: "✓";
-            color: var(--accent-color);
-            font-weight: bold;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-
-        /* Testimonial */
-        .testimonial {
-            padding: 60px 0;
-            background: var(--bg-color);
-        }
-
-        .testimonial-card {
-            background: var(--secondary-bg);
-            padding: 32px 24px;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-
-        .quote-icon {
-            font-size: 32px;
-            color: var(--accent-color);
-            opacity: 0.3;
-            margin-bottom: 16px;
-        }
-
-        .testimonial-text {
-            font-size: 17px;
-            line-height: 1.6;
-            color: var(--text-color);
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .author-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 18px;
-        }
-
-        .author-info h4 {
-            font-size: 16px;
-            font-weight: 600;
-            color: #1A1A1A;
-        }
-
-        .author-info p {
-            font-size: 14px;
-            color: #666;
-        }
-
-        /* Guarantee */
-        .guarantee {
-            padding: 40px 0;
-            background: var(--secondary-bg);
-        }
-
-        .guarantee-box {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            background: rgba(198, 123, 92, 0.05);
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px dashed var(--accent-color);
-        }
-
-        .guarantee-icon {
-            font-size: 32px;
-            flex-shrink: 0;
-        }
-
-        .guarantee-text {
-            font-size: 15px;
-            color: var(--text-color);
-        }
-
-        /* FAQ Section */
-        .faq {
-            padding: 60px 0;
-            background: var(--bg-color);
-        }
-
-        .faq-item {
-            border-bottom: 1px solid var(--border-color);
-            padding: 24px 0;
-        }
-
-        .faq-item:first-child {
-            padding-top: 0;
-        }
-
-        .faq-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .faq-question {
-            font-size: 17px;
-            font-weight: 600;
-            color: #1A1A1A;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .faq-question-icon {
-            color: var(--accent-color);
-            flex-shrink: 0;
-            font-size: 20px;
-            margin-top: 2px;
-        }
-
-        .faq-answer {
-            font-size: 16px;
-            color: #666;
-            line-height: 1.5;
-            padding-left: 30px;
-        }
-
-        /* Price Section */
-        .price-section {
-            padding: 60px 0 40px;
-            background: var(--bg-color);
-            text-align: center;
-        }
-
-        .price-label {
-            font-size: 15px;
-            color: #666;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .price {
-            font-size: 48px;
-            font-weight: 700;
-            color: #1A1A1A;
-            margin-bottom: 8px;
-        }
-
-        .price-old {
-            font-size: 20px;
-            color: #999;
-            text-decoration: line-through;
-            margin-bottom: 24px;
-        }
-
-        .price-note {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 32px;
-        }
-
-        /* Footer */
-        .footer {
-            padding: 40px 0;
-            background: var(--secondary-bg);
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .footer-text {
-            font-size: 14px;
-            color: #999;
-            margin-bottom: 8px;
-        }
-
-        .footer-links {
-            font-size: 13px;
-            color: #999;
-        }
-
-        .footer-links a {
-            color: var(--accent-color);
-            text-decoration: none;
-        }
-
-        /* Sticky CTA for mobile */
-        .sticky-cta {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            padding: 16px 20px;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
-            z-index: 100;
-            display: none;
-        }
-
-        .sticky-cta.visible {
-            display: block;
-        }
-
-        /* Loading */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255,255,255,.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Responsive */
-        @media (max-width: 640px) {
-            h1 {
-                font-size: 28px;
-            }
-
-            .section-title {
-                font-size: 24px;
-            }
-
-            .price {
-                font-size: 40px;
-            }
-
-            body {
-                padding-bottom: 80px;
-            }
-
-            .sticky-cta {
-                display: block;
-            }
-
-            .payment-icons {
-                gap: 12px;
-            }
-
-            .payment-icon {
-                height: 24px;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .feature-item, .testimonial-card, .faq-item {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Психологическая реанимация — аудио-интенсив 7 дней</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #faf8f5;
+  --bg2:      #f3efe8;
+  --bg3:      #ede8df;
+  --line:     #e0d9ce;
+  --text:     #2a2118;
+  --muted:    #7a6b5a;
+  --light:    #b8a898;
+  --crimson:  #c0392b;
+  --crimson2: #a93226;
+  --gold:     #b8860b;
+  --gold2:    #c9a84c;
+  --rose:     #c0756e;
+  --cream:    #f9f5ee;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 480px; margin: 0 auto; padding: 0 22px; }
+
+/* ── HERO ── */
+.hero {
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+  padding: 48px 0 44px;
+  text-align: center;
+}
+
+.social-proof-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.sp-dot { width: 7px; height: 7px; border-radius: 50%; background: #27ae60; flex-shrink: 0; }
+.sp-num { color: var(--text); font-weight: 700; }
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(27px, 7.5vw, 38px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 18px;
+}
+
+.hero-title em { font-style: italic; color: var(--crimson); }
+
+/* FOR-WHO block */
+.for-who {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0 auto 22px;
+  max-width: 400px;
+  text-align: left;
+}
+
+.for-who-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.for-who-check { color: var(--crimson); flex-shrink: 0; font-size: 15px; margin-top: 1px; }
+
+.not-for {
+  font-size: 12.5px;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 22px;
+  font-style: italic;
+}
+
+.not-for span { text-decoration: line-through; opacity: 0.7; }
+
+/* Format badges */
+.format-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  justify-content: center;
+  margin-bottom: 26px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* Price */
+.price-block {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.price-old { font-size: 14px; color: var(--light); text-decoration: line-through; }
+
+.price-new {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+
+.price-curr { font-size: 20px; font-weight: 600; color: var(--muted); }
+
+/* Timer */
+.timer-bar {
+  background: rgba(192,57,43,0.07);
+  border: 1px solid rgba(192,57,43,0.22);
+  border-radius: 3px;
+  padding: 9px 14px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.timer-label { font-size: 12px; color: var(--crimson); font-weight: 600; }
+.timer-count { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: var(--crimson); letter-spacing: 0.04em; }
+
+/* CTA */
+.btn-cta {
+  display: block;
+  width: 100%;
+  padding: 17px 24px;
+  background: var(--crimson);
+  color: #fff;
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-cta:hover  { background: var(--crimson2); transform: translateY(-1px); }
+.btn-cta:active { transform: translateY(0); }
+
+.btn-note { font-size: 12px; color: var(--light); text-align: center; margin-top: 10px; }
+
+/* ── DIVIDER ── */
+.divider { height: 1px; background: var(--line); margin: 40px 0; }
+
+/* ── SECTION LABELS ── */
+.section-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 5.5vw, 28px);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.section-title em { font-style: italic; color: var(--crimson); }
+
+/* ── PAIN ── */
+.pain-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+.pain-list li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--rose);
+  padding: 13px 15px;
+  border-radius: 3px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.pain-dash { color: var(--rose); font-size: 18px; line-height: 1.4; flex-shrink: 0; }
+
+/* ── RESULT PROMISE ── */
+.result-promise {
+  background: rgba(192,57,43,0.05);
+  border: 1.5px solid rgba(192,57,43,0.2);
+  border-left: 4px solid var(--crimson);
+  border-radius: 4px;
+  padding: 18px 16px;
+  margin-bottom: 24px;
+}
+
+.result-promise-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--crimson);
+  margin-bottom: 12px;
+}
+
+.result-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+.result-list li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.result-check { color: var(--crimson); font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+/* ── EPISODES ── */
+.episodes { display: flex; flex-direction: column; gap: 10px; }
+
+.episode {
+  display: flex;
+  gap: 0;
+  align-items: stretch;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.episode.visible { opacity: 1; transform: translateY(0); }
+
+.episode-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  background: var(--bg2);
+  border-right: 1px solid var(--line);
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gold2);
+  flex-shrink: 0;
+  padding: 14px 0;
+}
+
+.episode-body { padding: 14px 15px; }
+
+.episode-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--light);
+  margin-bottom: 4px;
+}
+
+.episode-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 5px;
+  line-height: 1.35;
+}
+
+.episode-desc { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+
+/* ── PROOF ── */
+.proof-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--rose);
+  padding: 20px 18px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.proof-card.visible { opacity: 1; transform: translateY(0); }
+
+.proof-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 14px;
+  font-style: italic;
+}
+
+.proof-author { display: flex; align-items: center; gap: 10px; }
+
+.proof-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--rose), var(--crimson));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; color: #fff; flex-shrink: 0;
+}
+
+.proof-name { font-size: 12px; font-weight: 700; color: var(--text); }
+.proof-meta { font-size: 11px; color: var(--light); margin-top: 1px; }
+
+/* ── EXPERT ── */
+.expert-block { display: flex; gap: 18px; align-items: flex-start; }
+
+.expert-photo {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: var(--bg3);
+  border: 2px solid var(--gold2);
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+}
+
+.expert-name { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.expert-role { font-size: 11px; color: var(--gold); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+
+.expert-stats {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.expert-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+
+.expert-stat-label {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.4;
+  margin-top: 2px;
+}
+
+.expert-text { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+
+/* ── GUARANTEE ── */
+.guarantee {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: #fffdf7;
+  border: 1.5px solid rgba(184,134,11,0.3);
+  border-left: 4px solid var(--gold2);
+  padding: 18px 16px;
+  border-radius: 4px;
+}
+
+.guarantee-icon { font-size: 26px; flex-shrink: 0; margin-top: 2px; }
+.guarantee-title { font-size: 14px; font-weight: 700; color: var(--gold); margin-bottom: 5px; }
+.guarantee-text { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* ── FAQ ── */
+.faq { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+.faq-item { border-bottom: 1px solid var(--line); background: #fff; }
+.faq-item:last-child { border-bottom: none; }
+
+.faq-q {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 16px;
+  background: none; border: none;
+  cursor: pointer; text-align: left;
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px; font-weight: 700;
+  color: var(--text); line-height: 1.4;
+}
+
+.faq-arrow { font-size: 16px; color: var(--light); flex-shrink: 0; margin-top: 1px; transition: transform 0.25s ease; }
+.faq-item.open .faq-arrow { transform: rotate(180deg); color: var(--crimson); }
+
+.faq-a {
+  font-size: 13.5px; color: var(--muted); line-height: 1.65;
+  padding: 0 16px;
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-item.open .faq-a { max-height: 200px; padding: 0 16px 15px; }
+
+/* ── FINAL ── */
+.final-section {
+  background: var(--bg2);
+  border-top: 1px solid var(--line);
+  text-align: center;
+  padding: 52px 0 72px;
+}
+
+.final-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 5.5vw, 28px);
+  font-weight: 700;
+  line-height: 1.22;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.final-title em { font-style: italic; color: var(--crimson); }
+.final-sub { font-size: 14px; color: var(--muted); margin-bottom: 28px; line-height: 1.65; }
+
+/* ── STICKY CTA ── */
+.sticky-cta {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 100;
+  background: linear-gradient(to top, rgba(250,248,245,1) 65%, rgba(250,248,245,0));
+  padding: 10px 22px 20px;
+  max-width: 480px;
+  margin: 0 auto;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+.sticky-cta.show { transform: translateY(0); }
+
+/* ── SECTION PAD ── */
+.section { padding: 44px 0; }
+
+/* ── PAYMENT POPUP ── */
+#pay-popup-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(42,33,24,0.72);
+  z-index: 99999;
+  align-items: center; justify-content: center;
+  padding: 16px;
+}
+
+#pay-popup-overlay.active { display: flex; }
+
+#pay-popup {
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 30px 26px 26px;
+  max-width: 400px; width: 100%;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.16);
+  font-family: 'Manrope', sans-serif;
+}
+
+#pay-popup-close {
+  position: absolute; top: 12px; right: 16px;
+  background: none; border: none;
+  color: var(--light); font-size: 24px;
+  cursor: pointer; padding: 4px 8px;
+  transition: color 0.2s; line-height: 1;
+}
+
+#pay-popup-close:hover { color: var(--text); }
+
+#pay-popup-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px; font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+  line-height: 1.3; padding-right: 30px;
+}
+
+#pay-popup-price { font-size: 14px; color: var(--muted); margin-bottom: 16px; }
+
+#pay-popup-tagline {
+  font-size: 13px; color: var(--muted);
+  margin-bottom: 20px;
+  font-style: italic; line-height: 1.5;
+}
+
+.pay-methods-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--light); margin-bottom: 10px;
+}
+
+.pay-btn {
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; width: 100%;
+  padding: 14px 20px;
+  border-radius: 6px; border: none;
+  font-size: 14px; font-weight: 700;
+  cursor: pointer; text-decoration: none; text-align: center;
+  margin-bottom: 10px;
+  transition: opacity 0.2s, transform 0.1s;
+  line-height: 1.4;
+  background: var(--crimson); color: #fff;
+}
+
+.pay-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+.pay-btn:active { transform: translateY(0); }
+
+.pay-btn.secondary {
+  background: transparent;
+  border: 1.5px solid var(--line);
+  color: var(--text);
+}
+
+.pay-btn.secondary:hover { border-color: var(--muted); }
+
+.pay-icons {
+  display: flex; align-items: center; gap: 5px;
+  margin-top: 14px; padding-top: 14px;
+  border-top: 1px solid var(--line);
+  justify-content: center; flex-wrap: wrap;
+}
+
+.pay-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 22px; padding: 0 7px;
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 4px; font-size: 10px; font-weight: 700;
+  color: var(--muted); white-space: nowrap;
+}
+
+.pay-icon.apple  { background: #000; color: #fff; border-color: #000; }
+.pay-icon.google { background: #fff; color: #4285f4; border-color: #e8e8e8; }
+.pay-icon.visa   { background: #1a1f71; color: #fff; border-color: #1a1f71; font-style: italic; }
+.pay-icon.mc     { background: #eb001b; color: #fff; border-color: #eb001b; }
+
+.pay-security {
+  margin-top: 16px; font-size: 11px;
+  color: var(--light); text-align: center; line-height: 1.5;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.social-proof-bar { animation: fadeUp 0.45s ease both; }
+.hero-title        { animation: fadeUp 0.5s 0.05s ease both; }
+.for-who           { animation: fadeUp 0.5s 0.1s ease both; }
+.not-for           { animation: fadeUp 0.5s 0.13s ease both; }
+.format-badges     { animation: fadeUp 0.5s 0.16s ease both; }
+.price-block       { animation: fadeUp 0.5s 0.2s ease both; }
+.timer-bar         { animation: fadeUp 0.5s 0.23s ease both; }
+.hero .btn-cta     { animation: fadeUp 0.5s 0.27s ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .episode, .proof-card { opacity: 1; transform: none; }
+}
+</style>
 </head>
 <body>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <span class="badge">⚡ Аудио-интенсив 7 дней</span>
-            <h1>Психологическая реанимация: Перестаньте думать о нём уже через 7 дней</h1>
-            <p class="subtitle">Неважно, когда произошел разрыв — вчера, месяц назад или 10 лет. Этот аудио-интенсив вернёт вам свободу мыслей и спокойный сон.</p>
-            
-            <div class="pain-points">
-                <p>💔 Вы не можете перестать думать о нём, даже если прошло много лет?</p>
-                <p>💔 Мучаетесь вопросами «с кем он сейчас», «почему она лучше меня»?</p>
-                <p>💔 Прокручиваете в голове прошлое и не можете отпустить?</p>
-                <p>💔 Чувствуете, что застряли и живёте не своей жизнью?</p>
-            </div>
+<!-- ══════ HERO ══════ -->
+<section class="hero">
+  <div class="wrap">
 
-            <div class="urgency">
-                <div class="urgency-icon">⏳</div>
-                <div>
-                    <p class="urgency-text">Каждый день без работы над собой закрепляет боль.</p>
-                    <span class="urgency-subtext">Но 7 дней осознанной работы по этому протоколу — и вы почувствуете реальное облегчение.</span>
-                </div>
-            </div>
-
-            <a href="#order" class="btn">
-                Начать интенсив
-                <span class="btn-arrow">→</span>
-            </a>
-        </div>
-    </section>
-
-    <!-- Video Section -->
-    <section class="video-section">
-        <div class="container">
-            <div class="video-container">
-                <div class="video-placeholder">
-                    <div style="text-align: center;">
-                        <div class="play-button">
-                            <div class="play-icon"></div>
-                        </div>
-                        <div class="video-text">Смотреть видео (0:38)</div>
-                    </div>
-                </div>
-            </div>
-            <p style="text-align: center; font-size: 15px; color: #666; margin-top: 12px;">
-                Почему время не лечит само по себе — и что действительно работает
-            </p>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">Что внутри аудио-интенсива</h2>
-            <div class="format-badge">
-                🎧 7 эпизодов • Формат подкаста • Слушайте в наушниках
-            </div>
-            <p class="section-subtitle">Конкретные упражнения и техники, которые избавят вас от боли — неважно, сколько времени прошло</p>
-
-            <div class="feature-list">
-                <div class="feature-item">
-                    <div class="feature-icon">🧠</div>
-                    <div class="feature-content">
-                        <h3>Эпизод 1. Почему вы чувствуете физическую боль и не можете «просто взять себя в руки»</h3>
-                        <p>Нейробиология разрыва и дофаминовая ломка. Снимаем самообвинение: вы не сломаны, ваша психика реагирует нормально на ненормальные обстоятельства.</p>
-                    </div>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">🌙</div>
-                    <div class="feature-content">
-                        <h3>Эпизод 2. Протокол выживания: как уснуть, когда в 3 часа ночи накрывает паника</h3>
-                        <p>Конкретные дыхательные техники и методы переключения внимания, чтобы остановить круговорот мыслей и вернуть сон.</p>
-                    </div>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">🛑</div>
-                    <div class="feature-content">
-                        <h3>Эпизод 3. Как остановить навязчивые мысли о нём и его новой жизни за 5 минут</h3>
-                        <p>Техника «стоп-кадр», метод переключения якоря и работа с образом. Вы научитесь прерывать мысленную жвачку по команде.</p>
-                    </div>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">💥</div>
-                    <div class="feature-content">
-                        <h3>Эпизод 4. Как перестать винить себя и безопасно выплеснуть разрушительную злость</h3>
-                        <p>Практики для работы с тремя самыми токсичными состояниями: злостью, невротической виной и стыдом, который живёт в изоляции.</p>
-                    </div>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">🍽️</div>
-                    <div class="feature-content">
-                        <h3>Эпизод 5. Что делать, когда кусок в горло не лезет или вы «заедаете» боль</h3>
-                        <p>Простые физические ритуалы, которые возвращают ощущение контроля над телом. Восстановление начинается именно отсюда.</p>
-                    </div>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">👥</div>
-                    <div class="feature-content">
-                        <h3>Эпизод 6. Как отвечать на бестактные советы «забудь и живи дальше»</h3>
-                        <p>Фильтр ближнего круга: как объяснять ситуацию детям, как не слить всю боль на первого встречного и не закрыться полностью.</p>
-                    </div>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">🦋</div>
-                    <div class="feature-content">
-                        <h3>Эпизод 7. Как перестать жить прошлым и вернуть контроль над своей жизнью</h3>
-                        <p>Не мотивационная пустота, а конкретный переход. Что значит «стало легче» изнутри и минимальные действия на следующую неделю.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Result Section -->
-    <section class="result">
-        <div class="container">
-            <div class="result-box">
-                <div class="result-icon">🦋</div>
-                <h2>Через 7 дней прохождения интенсива вы:</h2>
-                
-                <ul class="result-list">
-                    <li>Перестанете думать о нём каждую минуту</li>
-                    <li>Перестанете мучиться вопросами «с кем он сейчас»</li>
-                    <li>Сможете есть и спать без таблеток</li>
-                    <li>Перестанете проверять его соцсети</li>
-                    <li>Перестанете прокручивать прошлое в голове</li>
-                    <li>Почувствуете, что худшее уже позади</li>
-                    <li>Вернёте контроль над своей жизнью</li>
-                    <li>Начнёте жить своей жизнью, а не воспоминаниями</li>
-                </ul>
-                
-                <a href="#order" class="btn">
-                    Начать восстановление
-                    <span class="btn-arrow">→</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonial -->
-    <section class="testimonial">
-        <div class="container">
-            <div class="testimonial-card">
-                <div class="quote-icon">"</div>
-                <p class="testimonial-text">
-                    После развода прошло 5 лет, но я всё ещё думала о бывшем муже каждый день. Представляла его с другой, гадала, счастлив ли он без меня, не могла отпустить. 
-                    Я думала, что со мной что-то не так — ведь «время лечит», а мне не помогало. 
-                    Аудио-интенсив стал поворотной точкой. Техника «стоп-кадр» из третьего эпизода реально работает — я перестала залипать в мыслях о нём. 
-                    Через 7 дней я впервые за годы проснулась и не подумала о нём. Это ощущение свободы невозможно описать. 
-                    Спасибо, что дали конкретные инструменты, а не пустые слова «забудь и живи дальше».
-                </p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">МК</div>
-                    <div class="author-info">
-                        <h4>Марина К., 42 года</h4>
-                        <p>Развод 5 лет назад</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Guarantee -->
-    <section class="guarantee">
-        <div class="container">
-            <div class="guarantee-box">
-                <div class="guarantee-icon">🛡️</div>
-                <p class="guarantee-text">
-                    <strong>Гарантия возврата:</strong> Если через 7 дней применения методов 
-                    вы не почувствуете облегчения — верну деньги без вопросов. Мне важно, 
-                    чтобы вы действительно справились.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq">
-        <div class="container">
-            <h2 class="section-title" style="text-align: center; margin-bottom: 32px;">Частые вопросы</h2>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span class="faq-question-icon">❓</span>
-                    Я в шоке, смогу ли я вообще это слушать?
-                </div>
-                <div class="faq-answer">
-                    Да. Этот материал создан специально для состояния «тумана боли». Это аудио-формат (подкаст), который легко воспринимать на слух, даже когда нет сил читать или концентрироваться. Просто наденьте наушники и следуйте инструкциям.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span class="faq-question-icon">❓</span>
-                    Сколько времени нужно в день?
-                </div>
-                <div class="faq-answer">
-                    Всего 15–20 минут. Один эпизод длится около 15 минут. Вы можете слушать его по дороге на работу, во время прогулки или перед сном. Никаких сложных домашних заданий, только практические техники.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span class="faq-question-icon">❓</span>
-                    Что делать, если мне не поможет?
-                </div>
-                <div class="faq-answer">
-                    У нас есть гарантия возврата. Если вы пройдете все 7 эпизодов, примените техники и не почувствуете облегчения — просто напишите нам, и мы вернем деньги без лишних вопросов и попыток переубедить вас.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Price Section -->
-    <section class="price-section" id="order">
-        <div class="container">
-            <p class="price-label">Инвестиция в вашу свободу</p>
-            <div class="price" id="price-display">9 USD</div>
-            <div class="price-old" id="price-old-display">27 USD</div>
-            <p class="price-note">Доступ навсегда • Мгновенная доставка на email</p>
-            
-            <div id="payment-container">
-                <div class="btn" style="opacity: 0.7; cursor: not-allowed;">
-                    <span class="loading"></span>
-                    <span style="margin-left: 12px;">Определение региона...</span>
-                </div>
-            </div>
-            
-            <p style="margin-top: 20px; font-size: 13px; color: #999;">
-                🔒 Безопасная оплата • Моментальный доступ
-            </p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p class="footer-text">© 2026 Психологическая реанимация</p>
-            <p class="footer-links">
-                <a href="#">Политика конфиденциальности</a> • 
-                <a href="#">Оферта</a>
-            </p>
-        </div>
-    </footer>
-
-    <!-- Sticky CTA -->
-    <div class="sticky-cta" id="stickyCta">
-        <a href="#order" class="btn" style="padding: 16px 24px; font-size: 16px;" id="sticky-price-btn">
-            Вернуть спокойствие за 9 USD →
-        </a>
+    <div class="social-proof-bar">
+      <span class="sp-dot"></span>
+      <span>Уже <span class="sp-num">800+</span> женщин прошли интенсив</span>
     </div>
 
-    <script>
-        // SVG Icons for payment methods
-        const paymentIcons = {
-            applePay: `<svg class="payment-icon" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
-                <rect width="120" height="40" rx="6" fill="#000"/>
-                <path d="M28.5 20.5c0-2.5 2-3.7 2.1-3.8-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.1-.8-1.6 0-3.1.9-3.9 2.4-1.7 2.9-.4 7.2 1.2 9.5.8 1.1 1.7 2.4 2.9 2.3 1.2-.1 1.6-.8 3.1-.8 1.5 0 1.9.8 3.1.7 1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.7-.1 0-2.5-1-2.5-3.5zM26.3 12.9c.7-.8 1.1-1.9 1-3-.9 0-2.1.6-2.8 1.4-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3z" fill="#fff"/>
-                <text x="42" y="26" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#fff">Pay</text>
-            </svg>`,
-            googlePay: `<svg class="payment-icon" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
-                <rect width="120" height="40" rx="6" fill="#fff" stroke="#ddd"/>
-                <path d="M25.5 20.5c0-.7-.1-1.4-.2-2h-9.3v3.8h5.3c-.2 1.2-.9 2.2-2 2.9v2.4h3.2c1.9-1.7 3-4.3 3-7.1z" fill="#4285F4"/>
-                <path d="M16 28c2.7 0 4.9-.9 6.5-2.4l-3.2-2.4c-.9.6-2 1-3.3 1-2.5 0-4.7-1.7-5.5-4H7.2v2.5c1.7 3.3 5 5.3 8.8 5.3z" fill="#34A853"/>
-                <path d="M10.5 20.2c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2v-2.5H7.2c-.7 1.3-1 2.8-1 4.5s.4 3.2 1 4.5l3.3-2.5z" fill="#FBBC05"/>
-                <path d="M16 12.4c1.4 0 2.7.5 3.7 1.5l2.8-2.8c-1.7-1.6-3.9-2.5-6.5-2.5-3.8 0-7.1 2-8.8 5.3l3.3 2.5c.8-2.3 3-4 5.5-4z" fill="#EA4335"/>
-                <text x="42" y="26" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#5f6368">Pay</text>
-            </svg>`,
-            visa: `<svg class="payment-icon" viewBox="0 0 80 50" xmlns="http://www.w3.org/2000/svg">
-                <rect width="80" height="50" rx="6" fill="#fff" stroke="#ddd"/>
-                <path d="M33.5 33.5h-4.2l2.6-16h4.2l-2.6 16zm18.3-15.6c-.8-.3-2.1-.6-3.7-.6-4.1 0-7 2.1-7 5.1 0 2.2 2 3.4 3.6 4.1 1.6.8 2.1 1.3 2.1 2 0 1.1-1.4 1.6-2.6 1.6-1.7 0-2.7-.2-4.1-.9l-.6-.3-.6 3.7c1.1.5 3 .9 5 .9 4.4 0 7.2-2 7.2-5.2 0-1.7-1.1-3.1-3.4-4.1-1.4-.7-2.3-1.2-2.3-1.9 0-.7.8-1.4 2.5-1.4 1.4 0 2.4.3 3.2.6l.4.2.7-3.8zm12.4-.4h-3.3c-1 0-1.8.3-2.2 1.4l-6.3 14.6h4.4l.9-2.4h5.4l.5 2.4h3.9l-3.3-16zm-5.3 10.1c.4-.9 1.8-4.7 1.8-4.7s.4-1 .6-1.5l.3 1.4 1 4.8h-3.7zM30.2 17.5l-3.9 10.8-.4-2c-.7-2.4-3-5-5.5-6.3l3.6 13.5h4.4l6.3-16h-4.5z" fill="#1A1F71"/>
-                <path d="M22.3 17.5h-6.8l-.1.3c5.2 1.3 8.7 4.4 10.1 8.1l-1.4-7.1c-.2-1-.9-1.3-1.8-1.3z" fill="#F7B600"/>
-            </svg>`,
-            mastercard: `<svg class="payment-icon" viewBox="0 0 80 50" xmlns="http://www.w3.org/2000/svg">
-                <rect width="80" height="50" rx="6" fill="#fff" stroke="#ddd"/>
-                <circle cx="32" cy="25" r="12" fill="#EB001B"/>
-                <circle cx="48" cy="25" r="12" fill="#F79E1B"/>
-                <path d="M40 16.3c2.3 2.3 3.7 5.4 3.7 8.7s-1.4 6.4-3.7 8.7c-2.3-2.3-3.7-5.4-3.7-8.7s1.4-6.4 3.7-8.7z" fill="#FF5F00"/>
-            </svg>`
-        };
+    <h1 class="hero-title">
+      За 7 дней ты<br>
+      <em>перестанешь думать о нём</em><br>
+      — и о том, с кем он сейчас
+    </h1>
 
-        // Detect country by IP
-        async function detectCountry() {
-            try {
-                const response = await fetch('https://ipapi.co/json/');
-                const data = await response.json();
-                return data.country_code;
-            } catch (error) {
-                console.error('Error detecting country:', error);
-                return null;
-            }
-        }
+    <div class="for-who">
+      <div class="for-who-item"><span class="for-who-check">✓</span><span>Больше не прокручивать одни и те же мысли по кругу</span></div>
+      <div class="for-who-item"><span class="for-who-check">✓</span><span>Выйти из боли предательства — не «принять», а именно выйти</span></div>
+      <div class="for-who-item"><span class="for-who-check">✓</span><span>Вернуть себя — хоть разрыв был вчера, хоть три года назад</span></div>
+    </div>
 
-        // Render payment buttons based on country
-        function renderPaymentButtons(countryCode) {
-            const container = document.getElementById('payment-container');
-            const priceDisplay = document.getElementById('price-display');
-            const priceOldDisplay = document.getElementById('price-old-display');
-            const stickyPriceBtn = document.getElementById('sticky-price-btn');
-            
-            if (countryCode === 'UA') {
-                // Ukraine - single WayForPay button and UAH price
-                priceDisplay.textContent = '399 грн';
-                priceOldDisplay.textContent = '1 197 грн';
-                stickyPriceBtn.textContent = 'Вернуть спокойствие за 399 грн →';
-                
-                container.innerHTML = `
-                    <a href="https://secure.wayforpay.com/button/bca9d197905fc" class="btn" target="_blank" rel="noopener">
-                        Оплатить
-                        <span class="btn-arrow">→</span>
-                    </a>
-                    <div class="payment-icons">
-                        ${paymentIcons.applePay}
-                        ${paymentIcons.googlePay}
-                        ${paymentIcons.visa}
-                        ${paymentIcons.mastercard}
-                    </div>
-                `;
-            } else {
-                // Rest of the world - 3 payment methods and USD price
-                priceDisplay.textContent = '9 USD';
-                priceOldDisplay.textContent = '27 USD';
-                stickyPriceBtn.textContent = 'Вернуть спокойствие за 9 USD →';
-                
-                container.innerHTML = `
-                    <div class="payment-methods">
-                        <a href="https://www.paypal.com/ncp/payment/GGBSPG9CJR7S4" class="payment-btn payment-btn-paypal" target="_blank" rel="noopener">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.079-.026.175-.041.254-.93 4.783-4.13 6.44-8.216 6.44h-2.19a.563.563 0 0 0-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 0 0 .554.647h3.882c.46 0 .85-.334.922-.788.018-.109.714-4.612.714-4.612.072-.454.462-.788.923-.788h.58c3.76 0 6.705-1.528 7.565-5.946.36-1.847.174-3.388-.777-4.468z"/>
-                            </svg>
-                            PayPal
-                        </a>
-                        <a href="https://buy.stripe.com/cNi00l2YqeSd6Ns2Ss3ZK0a" class="payment-btn payment-btn-stripe" target="_blank" rel="noopener">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-7.076-2.146l-.891 5.573C5.043 22.902 7.633 24 11.297 24c2.581 0 4.726-.647 6.254-1.828 1.636-1.239 2.465-3.068 2.465-5.576 0-4.108-2.545-5.81-6.04-7.446z"/>
-                            </svg>
-                            Stripe
-                        </a>
-                        <a href="https://secure.wayforpay.com/button/bca9d197905fc" class="payment-btn payment-btn-wayforpay" target="_blank" rel="noopener">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M20.5 4.5l-8.5 8.5-8.5-8.5-3 3 11.5 11.5 11.5-11.5z"/>
-                            </svg>
-                            Банковская карта
-                        </a>
-                    </div>
-                    <div class="payment-icons">
-                        ${paymentIcons.applePay}
-                        ${paymentIcons.googlePay}
-                        ${paymentIcons.visa}
-                        ${paymentIcons.mastercard}
-                    </div>
-                `;
-            }
-        }
+    <p class="not-for">Не для тех, кто хочет <span>вернуть его</span>. Для тех, кто хочет вернуть себя.</p>
 
-        // Initialize payment on page load
-        document.addEventListener('DOMContentLoaded', async function() {
-            const countryCode = await detectCountry();
-            renderPaymentButtons(countryCode);
-        });
+    <div class="format-badges">
+      <span class="badge">🎧 Аудио-интенсив</span>
+      <span class="badge">⏱ 15–20 мин в день</span>
+      <span class="badge">📱 В наушниках, в любое время</span>
+    </div>
 
-        // Show/hide sticky CTA on scroll
-        window.addEventListener('scroll', function() {
-            const stickyCta = document.getElementById('stickyCta');
-            if (window.scrollY > 600) {
-                stickyCta.classList.add('visible');
-            } else {
-                stickyCta.classList.remove('visible');
-            }
-        });
+    <div class="price-block">
+      <span class="price-old" id="price-old">990 ₴</span>
+      <span class="price-new" id="price-new">399</span>
+      <span class="price-curr" id="price-curr">₴</span>
+    </div>
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+    <div class="timer-bar">
+      <span class="timer-label">Цена действует:</span>
+      <span class="timer-count" id="countdown">23:59:59</span>
+    </div>
+
+    <a href="#" class="btn-cta js-open-pay">Начать восстановление →</a>
+    <p class="btn-note" id="hero-note">Аудио · Мгновенный доступ · WayForPay</p>
+
+  </div>
+</section>
+
+<!-- ══════ PAIN ══════ -->
+<section class="section">
+  <div class="wrap">
+    <p class="section-label">Ты сейчас здесь</p>
+    <h2 class="section-title">Это не слабость.<br><em>Это боль, которую можно остановить.</em></h2>
+
+    <ul class="pain-list">
+      <li><span class="pain-dash">—</span><span>Мысль «с кем он сейчас» приходит сама — и ты не можешь её остановить</span></li>
+      <li><span class="pain-dash">—</span><span>Ночью накрывает особенно — прокручиваешь одни и те же сцены по кругу</span></li>
+      <li><span class="pain-dash">—</span><span>Злость, вина, стыд — всё сразу, и не знаешь, за что хвататься первым</span></li>
+      <li><span class="pain-dash">—</span><span>Тело не слушается: не можешь есть, спать, сосредоточиться на работе</span></li>
+      <li><span class="pain-dash">—</span><span>«Отпустить» звучит как предательство себя. Но держаться — тоже невыносимо</span></li>
+    </ul>
+
+    <div style="height:24px"></div>
+
+    <div class="result-promise">
+      <div class="result-promise-title">После 7 дней интенсива</div>
+      <ul class="result-list">
+        <li><span class="result-check">✓</span><span>Перестанешь думать о нём и о том, с кем он теперь</span></li>
+        <li><span class="result-check">✓</span><span>Выйдешь из петли навязчивых мыслей и ночного ужаса</span></li>
+        <li><span class="result-check">✓</span><span>Освободишься от боли предательства — не вытеснишь, а именно разрядишь</span></li>
+        <li><span class="result-check">✓</span><span>Вернёшь ощущение почвы под ногами — без него</span></li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+  </div>
+</section>
+
+<!-- ══════ VIDEO ══════ -->
+<section>
+  <div class="wrap">
+    <p class="section-label">Послушай прежде чем решить</p>
+    <h2 class="section-title" style="margin-bottom:16px;">Роман Вейл<br><em>о том, что происходит с тобой</em></h2>
+    <div style="position:relative; width:100%; max-width:320px; margin:0 auto 8px; border-radius:10px; overflow:hidden; box-shadow:0 8px 32px rgba(42,33,24,0.13);">
+      <div style="position:relative; padding-bottom:177.77%; height:0;">
+        <iframe
+          src="https://www.youtube.com/embed/fuCPedKd1Ms?rel=0&modestbranding=1&playsinline=1"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+          title="Роман Вейл — о боли после разрыва">
+        </iframe>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--light); text-align:center; margin-bottom:0;">2 минуты — и ты поймёшь, твоё ли это</p>
+    <div class="divider"></div>
+  </div>
+</section>
+
+<!-- ══════ EPISODES ══════ -->
+<section>
+  <div class="wrap">
+    <p class="section-label">Программа · 7 эпизодов</p>
+    <h2 class="section-title">Каждый день —<br><em>конкретный инструмент.</em></h2>
+    <p style="font-size:13.5px; color:var(--muted); margin-bottom:20px; line-height:1.6;">Не мотивация. Не «верь в себя». Упражнения и техники, которые работают прямо во время прослушивания — в наушниках, лёжа, в транспорте, в любом состоянии.</p>
+
+    <div class="episodes">
+      <div class="episode">
+        <div class="episode-num">1</div>
+        <div class="episode-body">
+          <div class="episode-label">День 1</div>
+          <div class="episode-title">Почему тебе так больно — и это не слабость</div>
+          <div class="episode-desc">Нейробиология разрыва: мозг реагирует как на физическую боль. Снимаем самообвинение — ты не сломана, ты в шоке.</div>
+        </div>
+      </div>
+      <div class="episode">
+        <div class="episode-num">2</div>
+        <div class="episode-body">
+          <div class="episode-label">День 2</div>
+          <div class="episode-title">Что делать, когда накрывает в 3 ночи</div>
+          <div class="episode-desc">Конкретный протокол для ночного состояния. Дыхание, переключение, что говорить себе — без воды и без общих слов.</div>
+        </div>
+      </div>
+      <div class="episode">
+        <div class="episode-num">3</div>
+        <div class="episode-body">
+          <div class="episode-label">День 3</div>
+          <div class="episode-title">Как остановить мысли о нём за 5 минут</div>
+          <div class="episode-desc">Механизм навязчивых мыслей. Техника «стоп-кадр» и метод переключения якоря. Не «не думай» — а инструменты, которые реально работают.</div>
+        </div>
+      </div>
+      <div class="episode">
+        <div class="episode-num">4</div>
+        <div class="episode-body">
+          <div class="episode-label">День 4</div>
+          <div class="episode-title">Злость, вина, стыд — что с ними делать</div>
+          <div class="episode-desc">Три самых разрушительных состояния. Практика на каждое: как разрядить безопасно — без ущерба для себя.</div>
+        </div>
+      </div>
+      <div class="episode">
+        <div class="episode-num">5</div>
+        <div class="episode-body">
+          <div class="episode-label">День 5</div>
+          <div class="episode-title">Возвращаем тело. Сон, еда, контроль</div>
+          <div class="episode-desc">Простые физические ритуалы, возвращающие ощущение контроля. Тело — первое, с чего начинается выход из боли.</div>
+        </div>
+      </div>
+      <div class="episode">
+        <div class="episode-num">6</div>
+        <div class="episode-body">
+          <div class="episode-label">День 6</div>
+          <div class="episode-title">Кому говорить, а кому — нет</div>
+          <div class="episode-desc">Как не слить боль на первого встречного и не закрыться полностью. Фильтр ближнего круга. Что отвечать на «забудь и живи».</div>
+        </div>
+      </div>
+      <div class="episode">
+        <div class="episode-num">7</div>
+        <div class="episode-body">
+          <div class="episode-label">День 7</div>
+          <div class="episode-title">Первый шаг — не «отпустить», а ожить</div>
+          <div class="episode-desc">Как изнутри ощущается «стало легче». Минимальные действия на следующие 7 дней. Точка опоры — внутри, а не снаружи.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+  </div>
+</section>
+
+<!-- ══════ SOCIAL PROOF ══════ -->
+<section>
+  <div class="wrap">
+    <p class="section-label">Отзывы</p>
+    <h2 class="section-title">Они уже<br><em>вышли из этого</em></h2>
+
+    <div class="proof-card">
+      <p class="proof-text">«Слушала в наушниках в метро — и впервые за неделю не думала о том, с кем он сейчас. Третий эпизод — это что-то. Мысль пришла, я сделала технику, и она просто... ушла.»</p>
+      <div class="proof-author">
+        <div class="proof-avatar">А</div>
+        <div>
+          <div class="proof-name">Анна, 31 год · Киев</div>
+          <div class="proof-meta">разрыв 2 недели назад</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proof-card">
+      <p class="proof-text">«Думала, что уже поздно — прошло 8 месяцев, а боль никуда не делась. После 7 дней всё по-другому. Впервые не просыпаюсь с его именем в голове.»</p>
+      <div class="proof-author">
+        <div class="proof-avatar">М</div>
+        <div>
+          <div class="proof-name">Марина, 34 года · Харьков</div>
+          <div class="proof-meta">разрыв 8 месяцев назад</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="proof-card">
+      <p class="proof-text">«Роман говорит без жалости и без сюсюканья. Именно это мне и было нужно. На четвёртый день поняла, что злость на него — это не про него. Это было открытием.»</p>
+      <div class="proof-author">
+        <div class="proof-avatar">О</div>
+        <div>
+          <div class="proof-name">Оксана, 28 лет · Одесса</div>
+          <div class="proof-meta">разрыв месяц назад</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+  </div>
+</section>
+
+<!-- ══════ EXPERT ══════ -->
+<section>
+  <div class="wrap">
+    <p class="section-label">Кто создал интенсив</p>
+
+    <div class="expert-block">
+      <div class="expert-photo" style="background:none; border:2px solid var(--gold2); overflow:hidden; padding:0;">
+        <img src="https://i.ibb.co/S73W4nYt/IMG-20250711-200928-458.webp" alt="Роман Вейл" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;">
+      </div>
+      <div>
+        <div class="expert-name">Роман Вейл</div>
+        <div class="expert-role">Психолог · back4heart</div>
+        <div class="expert-stats">
+          <div>
+            <div class="expert-stat-num">7 лет</div>
+            <div class="expert-stat-label">практики<br>в теме разрывов</div>
+          </div>
+          <div>
+            <div class="expert-stat-num">800+</div>
+            <div class="expert-stat-label">женщин вышли<br>из боли</div>
+          </div>
+        </div>
+        <div class="expert-text">
+          Я понимаю это состояние изнутри — не из учебников. Я создал этот интенсив потому, что сам искал такой инструмент в момент, когда было плохо — и не нашёл. Только общие слова и советы «займись собой».<br><br>
+          Здесь другое. Каждый эпизод — конкретная техника. Ты слушаешь и делаешь. Боль начинает разряжаться прямо в процессе.
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+  </div>
+</section>
+
+<!-- ══════ GUARANTEE ══════ -->
+<section>
+  <div class="wrap">
+    <div class="guarantee">
+      <div class="guarantee-icon">🔒</div>
+      <div>
+        <div class="guarantee-title">Гарантия возврата — 72 часа</div>
+        <div class="guarantee-text">Если в первые 72 часа ты напишешь мне, что интенсив не дал тебе ничего нового — я верну деньги полностью. Без вопросов, без условий. Мне не нужны деньги человека, которому я не помог.</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+  </div>
+</section>
+
+<!-- ══════ FAQ ══════ -->
+<section>
+  <div class="wrap">
+    <p class="section-label">Частые вопросы</p>
+    <h2 class="section-title" style="margin-bottom:18px;">Ответы<br><em>без воды</em></h2>
+
+    <div class="faq">
+      <div class="faq-item">
+        <button class="faq-q"><span>Я сейчас в шоке. Смогу ли я слушать?</span><span class="faq-arrow">▾</span></button>
+        <div class="faq-a">Да. Аудио-формат создан именно для этого состояния. Не нужно читать и концентрироваться — просто слушай в наушниках. Лёжа, в транспорте, в любом месте и в любом состоянии.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Сколько времени нужно в день?</span><span class="faq-arrow">▾</span></button>
+        <div class="faq-a">Всего 15–20 минут. Один эпизод — один день. Можно слушать утром, днём или перед сном — когда удобно.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Разрыв был давно. Мне тоже подойдёт?</span><span class="faq-arrow">▾</span></button>
+        <div class="faq-a">Да. Интенсив работает с болью, а не с датой разрыва. Если ты всё ещё думаешь о нём — боль активна. И с ней можно работать прямо сейчас, хоть прошёл год, хоть три.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>Это лекции или реальные упражнения?</span><span class="faq-arrow">▾</span></button>
+        <div class="faq-a">Только техники и упражнения. Никакой мотивации, никаких «ты справишься». Каждый эпизод — конкретные инструменты с пошаговым выполнением прямо во время прослушивания.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span>А если мне не поможет?</span><span class="faq-arrow">▾</span></button>
+        <div class="faq-a">Гарантия возврата в первые 72 часа — без вопросов и без условий. Просто напиши, и я верну деньги полностью.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+  </div>
+</section>
+
+<!-- ══════ FINAL CTA ══════ -->
+<section class="final-section" id="payment">
+  <div class="wrap">
+    <h2 class="final-title">Боль не пройдёт сама.<br>Но её можно<br><em>остановить за 7 дней.</em></h2>
+
+    <p class="final-sub">
+      <span id="final-price-text">399 ₴</span> и через неделю ты перестанешь<br>
+      думать о нём. Это не обещание — это план.
+    </p>
+
+    <div class="timer-bar" style="margin-bottom:16px;">
+      <span class="timer-label">До конца акции:</span>
+      <span class="timer-count" id="countdown2">23:59:59</span>
+    </div>
+
+    <a href="#" class="btn-cta js-open-pay">Начать восстановление прямо сейчас →</a>
+    <p class="btn-note" id="final-note">Аудио · Мгновенный доступ · WayForPay</p>
+  </div>
+</section>
+
+<!-- ══════ STICKY CTA ══════ -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="#" class="btn-cta js-open-pay">Вернуть спокойствие — <span id="sticky-price">399 ₴</span> →</a>
+</div>
+
+<!-- ══════ PAYMENT POPUP ══════ -->
+<div id="pay-popup-overlay">
+  <div id="pay-popup">
+    <button id="pay-popup-close" onclick="closePayPopup()">×</button>
+    <div id="pay-popup-title">Психологическая реанимация</div>
+    <div id="pay-popup-price"></div>
+    <div id="pay-popup-tagline"></div>
+    <div id="pay-popup-buttons"></div>
+    <div class="pay-security">🔒 Все платежи защищены SSL. Данные не передаются третьим лицам.</div>
+  </div>
+</div>
+
+<script>
+// ── PAYMENT LINKS ──
+var LINKS = {
+  wayforpay_ua:    'https://secure.wayforpay.com/button/bca9d197905fc',
+  wayforpay_world: 'https://secure.wayforpay.com/button/bca9d197905fc',
+  stripe:          'https://buy.stripe.com/cNi00l2YqeSd6Ns2Ss3ZK0a',
+  paypal:          'https://www.paypal.com/ncp/payment/GGBSPG9CJR7S4'
+};
+
+var ICONS_HTML =
+  '<div class="pay-icons">' +
+    '<span class="pay-icon apple"> Apple Pay</span>' +
+    '<span class="pay-icon google">G Pay</span>' +
+    '<span class="pay-icon visa">VISA</span>' +
+    '<span class="pay-icon mc">MC</span>' +
+  '</div>';
+
+// ── GEO ──
+var userCountry = null;
+
+function detectCountry(cb) {
+  if (userCountry) { cb(userCountry); return; }
+  fetch('https://ipapi.co/json/')
+    .then(function(r){ return r.json(); })
+    .then(function(d){ userCountry = (d.country_code || 'WORLD').toUpperCase(); cb(userCountry); })
+    .catch(function(){ userCountry = 'WORLD'; cb('WORLD'); });
+}
+
+function updatePagePrices(country) {
+  var pn = document.getElementById('price-new');
+  var pc = document.getElementById('price-curr');
+  var po = document.getElementById('price-old');
+  var ft = document.getElementById('final-price-text');
+  var sp = document.getElementById('sticky-price');
+  var notes = document.querySelectorAll('.btn-note');
+
+  if (country === 'UA') {
+    if (pn) pn.textContent = '399';
+    if (pc) pc.textContent = '₴';
+    if (po) po.textContent = '990 ₴';
+    if (ft) ft.textContent = '399 ₴';
+    if (sp) sp.textContent = '399 ₴';
+    notes.forEach(function(n){ n.textContent = 'Аудіо · Миттєвий доступ · WayForPay'; });
+  } else {
+    if (pn) pn.textContent = '9';
+    if (pc) pc.textContent = '$';
+    if (po) po.textContent = '$29';
+    if (ft) ft.textContent = '$9';
+    if (sp) sp.textContent = '$9';
+    notes.forEach(function(n){ n.textContent = 'Audio · Instant access · PayPal / Stripe / WayForPay'; });
+  }
+}
+
+function renderPopup(country) {
+  var priceEl   = document.getElementById('pay-popup-price');
+  var taglineEl = document.getElementById('pay-popup-tagline');
+  var btnsEl    = document.getElementById('pay-popup-buttons');
+
+  if (country === 'UA') {
+    priceEl.textContent   = '399 ₴';
+    taglineEl.textContent = 'Ціна одного кофе — і 7 днів без думок про нього.';
+    btnsEl.innerHTML =
+      '<div class="pay-methods-label">Оплата</div>' +
+      '<a class="pay-btn" href="' + LINKS.wayforpay_ua + '" target="_blank">💳 Оплатити — WayForPay</a>' +
+      ICONS_HTML;
+  } else {
+    priceEl.textContent   = '$9';
+    taglineEl.textContent = 'The price of a coffee — 7 days without thinking about him.';
+    btnsEl.innerHTML =
+      '<div class="pay-methods-label">Choose payment method</div>' +
+      '<a class="pay-btn" href="' + LINKS.paypal + '" target="_blank">🅿️ PayPal</a>' +
+      '<a class="pay-btn secondary" href="' + LINKS.stripe + '" target="_blank">💳 Card — Stripe</a>' +
+      '<a class="pay-btn secondary" href="' + LINKS.wayforpay_world + '" target="_blank">💳 WayForPay</a>' +
+      ICONS_HTML;
+  }
+}
+
+// ── POPUP ──
+window.openPayPopup = function() {
+  document.getElementById('pay-popup-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  detectCountry(function(c){ renderPopup(c); });
+};
+
+window.closePayPopup = function() {
+  document.getElementById('pay-popup-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+};
+
+document.addEventListener('click', function(e) {
+  if (e.target === document.getElementById('pay-popup-overlay')) closePayPopup();
+});
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePayPopup(); });
+
+// ── COUNTDOWN TIMER ──
+function startCountdown() {
+  var key = 'promo_end';
+  var stored = localStorage ? localStorage.getItem(key) : null;
+  var end;
+
+  if (stored) {
+    end = parseInt(stored, 10);
+  } else {
+    end = Date.now() + 24 * 60 * 60 * 1000;
+    try { localStorage.setItem(key, end); } catch(e){}
+  }
+
+  function format(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function tick() {
+    var diff = end - Date.now();
+    if (diff < 0) diff = 0;
+    var h = Math.floor(diff / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    var str = format(h) + ':' + format(m) + ':' + format(s);
+    var c1 = document.getElementById('countdown');
+    var c2 = document.getElementById('countdown2');
+    if (c1) c1.textContent = str;
+    if (c2) c2.textContent = str;
+    if (diff > 0) setTimeout(tick, 1000);
+  }
+  tick();
+}
+
+// ── INIT ──
+document.addEventListener('DOMContentLoaded', function() {
+  // CTA buttons
+  document.querySelectorAll('.js-open-pay').forEach(function(btn) {
+    btn.addEventListener('click', function(e){ e.preventDefault(); openPayPopup(); });
+  });
+
+  // Scroll reveal
+  var revealEls = document.querySelectorAll('.episode, .proof-card');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry, i) {
+      if (entry.isIntersecting) {
+        setTimeout(function(){ entry.target.classList.add('visible'); }, i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  revealEls.forEach(function(el){ observer.observe(el); });
+
+  // Sticky CTA
+  var stickyCta = document.getElementById('stickyCta');
+  var heroCta   = document.querySelector('.hero .btn-cta');
+  if (heroCta) {
+    new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) stickyCta.classList.add('show');
+        else stickyCta.classList.remove('show');
+      });
+    }, { threshold: 0 }).observe(heroCta);
+  }
+
+  // FAQ
+  document.querySelectorAll('.faq-q').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Geo + timer
+  detectCountry(function(c){ updatePagePrices(c); });
+  startCountdown();
+});
+</script>
 </body>
 </html>
-
