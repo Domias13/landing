@@ -1012,16 +1012,16 @@ function renderPopup(country) {
     taglineEl.textContent = 'Ціна одного кофе — і 7 днів без думок про нього.';
     btnsEl.innerHTML =
       '<div class="pay-methods-label">Оплата</div>' +
-      '<a class="pay-btn" href="' + LINKS.wayforpay_ua + '" target="_blank">💳 Оплатити — WayForPay</a>' +
+      '<a class="pay-btn" href="' + LINKS.wayforpay_ua + '" target="_blank" data-method="wayforpay">💳 Оплатити — WayForPay</a>' +
       ICONS_HTML;
   } else {
     priceEl.textContent   = '$9';
     taglineEl.textContent = 'The price of a coffee — 7 days without thinking about him.';
     btnsEl.innerHTML =
       '<div class="pay-methods-label">Choose payment method</div>' +
-      '<a class="pay-btn" href="' + LINKS.paypal + '" target="_blank">🅿️ PayPal</a>' +
-      '<a class="pay-btn secondary" href="' + LINKS.stripe + '" target="_blank">💳 Card — Stripe</a>' +
-      '<a class="pay-btn secondary" href="' + LINKS.wayforpay_world + '" target="_blank">💳 WayForPay</a>' +
+      '<a class="pay-btn" href="' + LINKS.paypal + '" target="_blank" data-method="paypal">🅿️ PayPal</a>' +
+      '<a class="pay-btn secondary" href="' + LINKS.stripe + '" target="_blank" data-method="stripe">💳 Card — Stripe</a>' +
+      '<a class="pay-btn secondary" href="' + LINKS.wayforpay_world + '" target="_blank" data-method="wayforpay">💳 WayForPay</a>' +
       ICONS_HTML;
   }
 }
@@ -1040,13 +1040,12 @@ window.closePayPopup = function() {
 
 // Track payment method clicks
 document.addEventListener('click', function(e) {
-  var btn = e.target.closest('.pay-btn');
+  var btn = e.target.closest('.pay-btn[data-method]');
   if (!btn) return;
-  var method = btn.textContent.trim().replace(/^[^\w]+/, '').split(' ')[0].toLowerCase();
   gtag('event', 'payment_click', {
     currency: userCountry === 'UA' ? 'UAH' : 'USD',
     value: userCountry === 'UA' ? 399 : 9,
-    payment_method: method,
+    payment_method: btn.getAttribute('data-method'),
     items: [{ item_id: 'psych_reanimation', item_name: 'Психологическая реанимация', price: userCountry === 'UA' ? 399 : 9 }]
   });
 });
