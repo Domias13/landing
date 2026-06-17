@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Психологическая реанимация — аудио-интенсив 7 дней</title>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DRWWDHGRLP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-DRWWDHGRLP');
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1029,6 +1038,19 @@ window.closePayPopup = function() {
   document.body.style.overflow = '';
 };
 
+// Track payment method clicks
+document.addEventListener('click', function(e) {
+  var btn = e.target.closest('.pay-btn');
+  if (!btn) return;
+  var method = btn.textContent.trim().replace(/^[^\w]+/, '').split(' ')[0].toLowerCase();
+  gtag('event', 'payment_click', {
+    currency: userCountry === 'UA' ? 'UAH' : 'USD',
+    value: userCountry === 'UA' ? 399 : 9,
+    payment_method: method,
+    items: [{ item_id: 'psych_reanimation', item_name: 'Психологическая реанимация', price: userCountry === 'UA' ? 399 : 9 }]
+  });
+});
+
 document.addEventListener('click', function(e) {
   if (e.target === document.getElementById('pay-popup-overlay')) closePayPopup();
 });
@@ -1069,7 +1091,16 @@ function startCountdown() {
 document.addEventListener('DOMContentLoaded', function() {
   // CTA buttons
   document.querySelectorAll('.js-open-pay').forEach(function(btn) {
-    btn.addEventListener('click', function(e){ e.preventDefault(); openPayPopup(); });
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      // GA4: открытие попапа оплаты
+      gtag('event', 'begin_checkout', {
+        currency: userCountry === 'UA' ? 'UAH' : 'USD',
+        value: userCountry === 'UA' ? 399 : 9,
+        items: [{ item_id: 'psych_reanimation', item_name: 'Психологическая реанимация', price: userCountry === 'UA' ? 399 : 9 }]
+      });
+      openPayPopup();
+    });
   });
 
   // Scroll reveal
