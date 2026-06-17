@@ -681,28 +681,6 @@ body {
   </div>
 </section>
 
-<!-- ══════ VIDEO ══════ -->
-<section>
-  <div class="wrap">
-    <p class="section-label">Послушай прежде чем решить</p>
-    <h2 class="section-title" style="margin-bottom:16px;">Роман Вейл<br><em>о том, что происходит с тобой</em></h2>
-    <div style="position:relative; width:100%; max-width:320px; margin:0 auto 8px; border-radius:10px; overflow:hidden; box-shadow:0 8px 32px rgba(42,33,24,0.13);">
-      <div style="position:relative; padding-bottom:177.77%; height:0;">
-        <iframe
-          src="https://www.youtube.com/embed/fuCPedKd1Ms?rel=0&modestbranding=1&playsinline=1"
-          style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          loading="lazy"
-          title="Роман Вейл — о боли после разрыва">
-        </iframe>
-      </div>
-    </div>
-    <p style="font-size:12px; color:var(--light); text-align:center; margin-bottom:0;">2 минуты — и ты поймёшь, твоё ли это</p>
-    <div class="divider"></div>
-  </div>
-</section>
-
 <!-- ══════ EPISODES ══════ -->
 <section>
   <div class="wrap">
@@ -916,6 +894,35 @@ body {
   </div>
 </section>
 
+<!-- ══════ SUPPORT ══════ -->
+<section style="padding:28px 0; border-top:1px solid var(--line); background:var(--cream);">
+  <div class="wrap" style="text-align:center;">
+    <p style="font-size:12px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;">Поддержка</p>
+    <p style="font-size:14px; color:var(--muted); margin-bottom:12px; line-height:1.6;">Есть вопросы по оплате или доступу?<br>Напиши — ответим в течение нескольких часов.</p>
+    <a href="https://t.me/back4heart" target="_blank" style="display:inline-flex; align-items:center; gap:8px; background:#fff; border:1.5px solid var(--line); border-radius:6px; padding:11px 20px; text-decoration:none; color:var(--text); font-size:14px; font-weight:700; transition:border-color 0.2s;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.93 6.813l-1.677 7.905c-.125.557-.454.693-.92.432l-2.54-1.873-1.226 1.18c-.136.136-.25.25-.51.25l.18-2.588 4.7-4.245c.204-.18-.044-.28-.317-.1L7.638 14.47l-2.5-.78c-.543-.17-.554-.543.114-.803l9.738-3.754c.452-.164.848.1.94.68z" fill="#229ED9"/></svg>
+      @back4heart
+    </a>
+  </div>
+</section>
+
+<!-- ══════ SUPPORT ══════ -->
+<section style="padding:28px 0; border-top:1px solid var(--line); background:var(--cream);">
+  <div class="wrap" style="text-align:center;">
+    <p style="font-size:12px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--light); margin-bottom:10px;">Поддержка</p>
+    <a href="https://t.me/back4heart" target="_blank"
+       style="display:inline-flex; align-items:center; gap:10px; background:#fff; border:1px solid var(--line); border-radius:8px; padding:12px 20px; text-decoration:none; transition:border-color 0.2s;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="12" fill="#229ED9"/>
+        <path d="M5.5 11.5L17.5 6.5L14.5 18L10.5 14.5L8.5 16.5L8 13L5.5 11.5Z" fill="white"/>
+        <path d="M8 13L14 8.5" stroke="#229ED9" stroke-width="0.8"/>
+      </svg>
+      <span style="font-size:14px; font-weight:600; color:var(--text);">@back4heart</span>
+    </a>
+    <p style="font-size:12px; color:var(--light); margin-top:10px;">Вопросы по оплате и доступу — пишите в Telegram</p>
+  </div>
+</section>
+
 <!-- ══════ STICKY CTA ══════ -->
 <div class="sticky-cta" id="stickyCta">
   <a href="#" class="btn-cta js-open-pay">Вернуть спокойствие — <span id="sticky-price">399 ₴</span> →</a>
@@ -1000,12 +1007,12 @@ function renderPopup(country) {
       ICONS_HTML;
   } else {
     priceEl.textContent   = '$9';
-    taglineEl.textContent = 'Цена чашки кофе — 7 дней, не что бы перестать думать о нём.';
+    taglineEl.textContent = 'The price of a coffee — 7 days without thinking about him.';
     btnsEl.innerHTML =
       '<div class="pay-methods-label">Choose payment method</div>' +
       '<a class="pay-btn" href="' + LINKS.paypal + '" target="_blank">🅿️ PayPal</a>' +
       '<a class="pay-btn secondary" href="' + LINKS.stripe + '" target="_blank">💳 Card — Stripe</a>' +
-      '<a class="pay-btn secondary" href="' + LINKS.wayforpay_world + '" target="_blank">💳 Оплатить интенсив</a>' +
+      '<a class="pay-btn secondary" href="' + LINKS.wayforpay_world + '" target="_blank">💳 WayForPay</a>' +
       ICONS_HTML;
   }
 }
