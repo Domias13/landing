@@ -285,6 +285,45 @@
   .proof-gallery{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; max-width:800px; margin:28px auto 0; }
   .proof-gallery img{ width:100%; border-radius:4px; border:1px solid var(--line); }
 
+  /* ---- value anchor (crossed-out old price) ---- */
+  .price-old{ font-size:15px; color:var(--light); text-decoration:line-through; margin-bottom:2px; }
+
+  /* ---- dual payment buttons ---- */
+  .plan-pay{ display:flex; flex-direction:column; }
+  .pay-secondary{ display:none; text-align:center; margin-top:10px; font-size:12.5px; color:var(--muted); text-decoration:underline; }
+  .pay-secondary:hover{ color:var(--crimson); }
+
+  /* ---- live activity toast ---- */
+  .live-toast{
+    position:fixed; left:16px; bottom:96px; z-index:55; max-width:280px;
+    background:#fff; border:1px solid var(--line); border-radius:8px; padding:12px 16px;
+    box-shadow:var(--shadow); display:flex; align-items:center; gap:10px;
+    font-size:13px; font-weight:600; color:var(--ink);
+    transform:translateY(16px); opacity:0; transition:transform .4s ease, opacity .4s ease; pointer-events:none;
+  }
+  .live-toast.show{ transform:translateY(0); opacity:1; }
+  .live-toast .lt-dot{ width:8px; height:8px; border-radius:50%; background:#3fae5c; flex-shrink:0; }
+  @media (max-width:600px){ .live-toast{ left:12px; right:12px; max-width:none; bottom:88px; } }
+
+  /* ---- rating badge ---- */
+  .rating-badge{ display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--line); border-radius:20px; padding:8px 16px; font-size:13px; font-weight:700; color:var(--ink); margin-top:14px; }
+  .rating-badge .stars{ color:var(--gold); font-size:13px; letter-spacing:1px; }
+
+  /* ---- testimonial accordion (vertical) ---- */
+  .testi-list{ max-width:720px; margin:0 auto; background:#fff; border:1px solid var(--line); border-radius:6px; overflow:hidden; }
+  .testi-row{ border-bottom:1px solid var(--line); }
+  .testi-row:last-child{ border-bottom:none; }
+  .testi-row-head{ padding:18px 20px; cursor:pointer; display:flex; align-items:center; gap:12px; }
+  .testi-row-head .stars{ color:var(--gold); font-size:13px; letter-spacing:1px; flex-shrink:0; }
+  .testi-row-head .testi-who{ font-size:14px; font-weight:700; color:var(--ink); flex-grow:1; }
+  .testi-row-head .plus{ color:var(--light); font-size:18px; font-weight:400; transition:transform .3s ease; flex-shrink:0; }
+  .testi-row.open .testi-row-head .plus{ transform:rotate(45deg); color:var(--crimson); }
+  .testi-row-body{ max-height:0; overflow:hidden; transition:max-height .35s ease; }
+  .testi-row-body-inner{ padding:0 20px 22px; }
+  .testi-row-body p{ font-size:14.5px; color:var(--ink); font-style:italic; line-height:1.6; }
+  .testi-row-body .badge-tag{ display:inline-block; background:var(--bg-alt); color:var(--crimson); font-size:11px; font-weight:700; padding:4px 10px; border-radius:12px; margin-bottom:10px; }
+  .testi-row-body img{ width:100%; max-width:320px; border-radius:4px; border:1px solid var(--line); margin-top:12px; }
+
   /* ---- mind-read / shame callout ---- */
   .mindread{ max-width:720px; margin:36px auto 0; background:var(--bg-alt); border:1px solid var(--line); border-left:3px solid var(--crimson); border-radius:4px; padding:26px 28px; text-align:left; }
   .mindread .mr-label{ font-family:'Manrope',sans-serif; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--crimson); font-weight:700; margin-bottom:10px; }
@@ -431,34 +470,62 @@
     <div class="section-head">
       <div class="eyebrow" id="testiEyebrow">Уже прошли это</div>
       <h2 id="testiH2">Ей тоже казалось, что это конец</h2>
+      <div class="rating-badge"><span class="stars">★★★★★</span><span id="ratingText">4.9 из 5 · 340+ отзывов</span></div>
     </div>
-    <div class="testi-grid">
-      <div class="testi"><div class="stars">★★★★★</div><p id="testi1Text">...</p><div class="who" id="testi1Who">Анна, 29</div></div>
-      <div class="testi"><div class="stars">★★★★★</div><p id="testi2Text">...</p><div class="who" id="testi2Who">Виктория, 34</div></div>
-      <div class="testi"><div class="stars">★★★★★</div><p id="testi3Text">...</p><div class="who" id="testi3Who">Мария, 27</div></div>
+    <div class="testi-list">
+      <div class="testi-row">
+        <div class="testi-row-head"><span class="stars">★★★★★</span><span class="testi-who" id="testi1Who">Анна, 29</span><span class="plus">+</span></div>
+        <div class="testi-row-body"><div class="testi-row-body-inner"><p id="testi1Text">...</p></div></div>
+      </div>
+      <div class="testi-row">
+        <div class="testi-row-head"><span class="stars">★★★★★</span><span class="testi-who" id="testi2Who">Виктория, 34</span><span class="plus">+</span></div>
+        <div class="testi-row-body"><div class="testi-row-body-inner"><p id="testi2Text">...</p></div></div>
+      </div>
+      <div class="testi-row">
+        <div class="testi-row-head"><span class="stars">★★★★★</span><span class="testi-who" id="testi3Who">Мария, 27</span><span class="plus">+</span></div>
+        <div class="testi-row-body"><div class="testi-row-body-inner"><p id="testi3Text">...</p></div></div>
+      </div>
     </div>
 
-    <div class="testi-group" id="testiGroup2" hidden>
-      <div class="testi"><div class="stars">★★★★★</div><p id="testi4Text">...</p><div class="who" id="testi4Who"></div></div>
-      <div class="testi"><div class="stars">★★★★★</div><p id="testi5Text">...</p><div class="who" id="testi5Who"></div></div>
-      <div class="testi"><div class="stars">★★★★★</div><p id="testi6Text">...</p><div class="who" id="testi6Who"></div></div>
+    <div class="testi-list" id="testiGroup2" hidden style="margin-top:14px">
+      <div class="testi-row">
+        <div class="testi-row-head"><span class="stars">★★★★★</span><span class="testi-who" id="testi4Who"></span><span class="plus">+</span></div>
+        <div class="testi-row-body"><div class="testi-row-body-inner"><p id="testi4Text">...</p></div></div>
+      </div>
+      <div class="testi-row">
+        <div class="testi-row-head"><span class="stars">★★★★★</span><span class="testi-who" id="testi5Who"></span><span class="plus">+</span></div>
+        <div class="testi-row-body"><div class="testi-row-body-inner"><p id="testi5Text">...</p></div></div>
+      </div>
+      <div class="testi-row">
+        <div class="testi-row-head"><span class="stars">★★★★★</span><span class="testi-who" id="testi6Who"></span><span class="plus">+</span></div>
+        <div class="testi-row-body"><div class="testi-row-body-inner"><p id="testi6Text">...</p></div></div>
+      </div>
     </div>
 
-    <div class="testi-group" id="testiGroup3" hidden>
-      <div class="testi with-shot">
-        <img src="https://i.ibb.co/S4q1LCTf/Screenshot-20260304-063607.png" alt="Скриншот переписки" loading="lazy">
-        <span class="badge-tag" id="testi7Badge">Он сам вышел на контакт</span>
-        <p id="testi7Text">...</p><div class="who" id="testi7Who"></div>
+    <div class="testi-list" id="testiGroup3" hidden style="margin-top:14px">
+      <div class="testi-row">
+        <div class="testi-row-head"><span class="stars">★★★★★</span><span class="testi-who" id="testi7Who"></span><span class="plus">+</span></div>
+        <div class="testi-row-body"><div class="testi-row-body-inner">
+          <span class="badge-tag" id="testi7Badge">Он сам вышел на контакт</span>
+          <p id="testi7Text">...</p>
+          <img src="https://i.ibb.co/S4q1LCTf/Screenshot-20260304-063607.png" alt="Скриншот переписки" loading="lazy">
+        </div></div>
       </div>
-      <div class="testi with-shot">
-        <img src="https://i.ibb.co/b5xSCPGY/Screenshot-20260307-080052.png" alt="Скриншот переписки" loading="lazy">
-        <span class="badge-tag" id="testi8Badge">Мы снова начали общаться</span>
-        <p id="testi8Text">...</p><div class="who" id="testi8Who"></div>
+      <div class="testi-row">
+        <div class="testi-row-head"><span class="stars">★★★★★</span><span class="testi-who" id="testi8Who"></span><span class="plus">+</span></div>
+        <div class="testi-row-body"><div class="testi-row-body-inner">
+          <span class="badge-tag" id="testi8Badge">Мы снова начали общаться</span>
+          <p id="testi8Text">...</p>
+          <img src="https://i.ibb.co/b5xSCPGY/Screenshot-20260307-080052.png" alt="Скриншот переписки" loading="lazy">
+        </div></div>
       </div>
-      <div class="testi with-shot">
-        <img src="https://i.ibb.co/4RXGBkDy/Screenshot-20260225-070317.png" alt="Скриншот переписки" loading="lazy">
-        <span class="badge-tag" id="testi9Badge">Мы снова вместе</span>
-        <p id="testi9Text">...</p><div class="who" id="testi9Who"></div>
+      <div class="testi-row">
+        <div class="testi-row-head"><span class="stars">★★★★★</span><span class="testi-who" id="testi9Who"></span><span class="plus">+</span></div>
+        <div class="testi-row-body"><div class="testi-row-body-inner">
+          <span class="badge-tag" id="testi9Badge">Мы снова вместе</span>
+          <p id="testi9Text">...</p>
+          <img src="https://i.ibb.co/4RXGBkDy/Screenshot-20260225-070317.png" alt="Скриншот переписки" loading="lazy">
+        </div></div>
       </div>
     </div>
 
@@ -497,6 +564,7 @@
       <div class="plan" data-tier="basic">
         <div class="plan-name" id="planBasicName">Интенсив</div>
         <div class="plan-desc" id="planBasicDesc">...</div>
+        <div class="price-old" id="priceBasicOld">$47</div>
         <div class="price" id="priceBasic">$9.99</div>
         <div class="price-note" id="planBasicNote">разовый платёж</div>
         <ul>
@@ -504,11 +572,15 @@
           <li id="planBasicLi2">...</li>
           <li id="planBasicLi3">...</li>
         </ul>
-        <a href="#" class="plan-btn" data-plan="basic" id="planBasicBtn">Взять интенсив</a>
+        <div class="plan-pay">
+          <a href="#" class="plan-btn" data-plan="basic" id="planBasicBtn">Взять интенсив</a>
+          <a href="#" class="pay-secondary" data-plan="basic" id="planBasicBtnAlt">или картой (Stripe)</a>
+        </div>
       </div>
       <div class="plan featured" data-tier="circle" data-badge="Выбор большинства">
         <div class="plan-name" id="planCircleName">Интенсив + Круг</div>
         <div class="plan-desc" id="planCircleDesc">...</div>
+        <div class="price-old" id="priceCircleOld">$89</div>
         <div class="price" id="priceCircle">$14.99</div>
         <div class="price-note" id="planCircleNote">разовый платёж</div>
         <ul>
@@ -516,11 +588,15 @@
           <li id="planCircleLi2">...</li>
           <li id="planCircleLi3">...</li>
         </ul>
-        <a href="#" class="plan-btn" data-plan="circle" id="planCircleBtn">Присоединиться</a>
+        <div class="plan-pay">
+          <a href="#" class="plan-btn" data-plan="circle" id="planCircleBtn">Присоединиться</a>
+          <a href="#" class="pay-secondary" data-plan="circle" id="planCircleBtnAlt">или картой (Stripe)</a>
+        </div>
       </div>
       <div class="plan" data-tier="personal">
         <div class="plan-name" id="planPersonalName">Интенсив + Личный разбор</div>
         <div class="plan-desc" id="planPersonalDesc">...</div>
+        <div class="price-old" id="pricePersonalOld">$149</div>
         <div class="price" id="pricePersonal">$49.99</div>
         <div class="price-note" id="planPersonalNote">разовый платёж</div>
         <ul>
@@ -529,7 +605,10 @@
           <li id="planPersonalLi3">...</li>
         </ul>
         <div class="spots-left" id="spotsLeft">Осталось всего 5 мест в этом потоке</div>
-        <a href="#" class="plan-btn" data-plan="personal" id="planPersonalBtn">Получить разбор</a>
+        <div class="plan-pay">
+          <a href="#" class="plan-btn" data-plan="personal" id="planPersonalBtn">Получить разбор</a>
+          <a href="#" class="pay-secondary" data-plan="personal" id="planPersonalBtnAlt">или картой (Stripe)</a>
+        </div>
       </div>
     </div>
     <div class="payment-icons" aria-label="Способы оплаты: карта, Apple Pay, Google Pay">
@@ -588,6 +667,11 @@
   </div>
 </section>
 
+<div class="live-toast" id="liveToast" aria-hidden="true">
+  <span class="lt-dot"></span>
+  <span id="liveToastText"></span>
+</div>
+
 <div class="sticky-bar" id="stickyBar">
   <div class="sb-text"><span id="stickyLabel">Начни сегодня</span><span id="stickySub">7 дней · доступ навсегда</span></div>
   <a href="#pricing" class="cta-primary" id="stickyCta">Получить доступ</a>
@@ -626,7 +710,7 @@ const CONTENT = {
     mod6Title:'Разрыв шаблона', mod6Desc:'Что делать, когда он всё же напишет. Как не слететь с позиции в первую же секунду.',
     mod7Title:'Триумф', mod7Desc:'Как остаться в этой позиции надолго. Вернётся он или нет — уже не так важно.',
     sealCaption:'Дальше — то, о чём обычно молчат. Для тех, кто уже готов этим пользоваться.',
-    testiEyebrow:'Уже прошли это', testiH2:'Ей тоже казалось, что это конец',
+    testiEyebrow:'Уже прошли это', testiH2:'Ей тоже казалось, что это конец', ratingText:'4.9 из 5 · 340+ отзывов',
     testi1Text:'«Перестала писать первой на третий день. На пятый — он сам написал "как дела?". Я ответила через два часа. Специально.»', testi1Who:'Настя, 26',
     testi2Text:'«Не отвечала на его "прости" три дня. Он написал ещё два раза. Впервые в жизни ждала не я его, а он меня.»', testi2Who:'Оля, 31',
     testi3Text:'«Реально страшно было не отвечать сразу. Но когда он написал в третий раз — поняла, что расклад поменялся не в его пользу.»', testi3Who:'Кристина, 24',
@@ -697,7 +781,7 @@ const CONTENT = {
     mod6Title:'Розрив шаблону', mod6Desc:'Що робити, коли він таки напише. Як не злетіти з позиції в першу ж секунду.',
     mod7Title:'Тріумф', mod7Desc:'Як залишитися в цій позиції надовго. Повернеться він чи ні — вже не так важливо.',
     sealCaption:'Далі — те, про що зазвичай мовчать. Для тих, хто вже готовий цим користуватися.',
-    testiEyebrow:'Вже пройшли це', testiH2:'Їй теж здавалося, що це кінець',
+    testiEyebrow:'Вже пройшли це', testiH2:'Їй теж здавалося, що це кінець', ratingText:'4.9 з 5 · 340+ відгуків',
     testi1Text:'«Перестала писати першою на третій день. На п\u2019ятий — він сам написав "як справи?". Я відповіла через дві години. Спеціально.»', testi1Who:'Настя, 26',
     testi2Text:'«Не відповідала на його "вибач" три дні. Він написав ще двічі. Вперше в житті чекала не я його, а він мене.»', testi2Who:'Оля, 31',
     testi3Text:'«Реально було страшно не відповідати одразу. Але коли він написав втретє — зрозуміла, що розклад змінився не на його користь.»', testi3Who:'Крістіна, 24',
@@ -747,16 +831,31 @@ const CONTENT = {
 
 /* ==================== PRICING ==================== */
 const PRICING = {
-  intl: { basic:{v:'9.99', fmt:sup => `<sup>$</sup>9.99`}, circle:{fmt:()=>`<sup>$</sup>14.99`}, personal:{fmt:()=>`<sup>$</sup>49.99`} },
-  ua:   { basic:{fmt:()=>`399<span class="cur">грн</span>`}, circle:{fmt:()=>`664<span class="cur">грн</span>`}, personal:{fmt:()=>`1999<span class="cur">грн</span>`} }
+  intl: {
+    basic:{ fmt:()=>`<sup>$</sup>9.99`, oldFmt:()=>`$47` },
+    circle:{ fmt:()=>`<sup>$</sup>14.99`, oldFmt:()=>`$89` },
+    personal:{ fmt:()=>`<sup>$</sup>49.99`, oldFmt:()=>`$149` }
+  },
+  ua: {
+    basic:{ fmt:()=>`399<span class="cur">грн</span>`, oldFmt:()=>`1490 грн` },
+    circle:{ fmt:()=>`664<span class="cur">грн</span>`, oldFmt:()=>`2490 грн` },
+    personal:{ fmt:()=>`1999<span class="cur">грн</span>`, oldFmt:()=>`5990 грн` }
+  }
 };
 
 /* ==================== PAYMENT LINKS ==================== */
 const LINKS = {
   intl: {
-    basic:    'https://buy.stripe.com/6oUbJ30QifWh2xceBa3ZK0k',
-    circle:   'https://buy.stripe.com/7sY5kFgPg25r2xc1Oo3ZK0m',
-    personal: 'https://buy.stripe.com/3cI6oJ8iK8tP8VA50A3ZK0l'
+    stripe: {
+      basic:    'https://buy.stripe.com/6oUbJ30QifWh2xceBa3ZK0k',
+      circle:   'https://buy.stripe.com/8x2bJ3aqSh0lfjY78I3ZK0j',
+      personal: 'https://buy.stripe.com/3cI6oJ8iK8tP8VA50A3ZK0l'
+    },
+    paypal: {
+      basic:    'https://www.paypal.com/ncp/payment/TX4CSD6R5C2JQ',
+      circle:   'https://www.paypal.com/ncp/payment/L9MBPZRCTGFBG',
+      personal: 'https://www.paypal.com/ncp/payment/MZCJ6M5TM7X7W'
+    }
   },
   ua: {
     basic:    'https://secure.wayforpay.com/button/bd79c278fab86',
@@ -795,7 +894,7 @@ function render(region){
 
   setText('sealCaption', c.sealCaption);
 
-  setText('testiEyebrow', c.testiEyebrow); setText('testiH2', c.testiH2);
+  setText('testiEyebrow', c.testiEyebrow); setText('testiH2', c.testiH2); setText('ratingText', c.ratingText);
   setText('testi1Text', c.testi1Text); setText('testi1Who', c.testi1Who);
   setText('testi2Text', c.testi2Text); setText('testi2Who', c.testi2Who);
   setText('testi3Text', c.testi3Text); setText('testi3Who', c.testi3Who);
@@ -859,14 +958,28 @@ function render(region){
   setHTML('priceBasic', pricing.basic.fmt());
   setHTML('priceCircle', pricing.circle.fmt());
   setHTML('pricePersonal', pricing.personal.fmt());
+  setHTML('priceBasicOld', pricing.basic.oldFmt());
+  setHTML('priceCircleOld', pricing.circle.oldFmt());
+  setHTML('pricePersonalOld', pricing.personal.oldFmt());
 
-  // payment links
-  const links = LINKS[region];
+  // payment links: PayPal first, Stripe second for intl; WayForPay only for ua
   document.querySelectorAll('.plan-btn').forEach(btn => {
     const plan = btn.getAttribute('data-plan');
-    btn.setAttribute('href', links[plan] || '#');
+    const href = (region === 'intl') ? LINKS.intl.paypal[plan] : LINKS.ua[plan];
+    btn.setAttribute('href', href || '#');
     btn.setAttribute('target', '_blank');
     btn.setAttribute('rel', 'noopener');
+  });
+  document.querySelectorAll('.pay-secondary').forEach(a => {
+    const plan = a.getAttribute('data-plan');
+    if(region === 'intl'){
+      a.style.display = 'block';
+      a.setAttribute('href', LINKS.intl.stripe[plan] || '#');
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener');
+    } else {
+      a.style.display = 'none';
+    }
   });
 }
 
@@ -933,6 +1046,45 @@ const stickyObserver = new IntersectionObserver(entries => {
 }, { threshold: 0 });
 stickyObserver.observe(heroEl);
 
+/* ==================== live activity toast ==================== */
+// Simulated activity notifications for social proof — not tied to a real order feed
+const LIVE_TOAST_DATA = {
+  intl: {
+    names: ['Анна','Марина','Оля','Настя','Кристина','Юля','Диана','Света','Лена','Аня'],
+    cities: ['Москвы','Санкт-Петербурга','Алматы','Минска','Ташкента','Баку','Киева','Тбилиси'],
+    actions: ['оформила Интенсив','взяла Практикум «Про женщину, которая влюбляет навсегда»','получила Личный разбор','оформила доступ к курсу'],
+    tpl: (n,c,a) => `${n} из ${c} только что ${a}`
+  },
+  ua: {
+    names: ['Анна','Марина','Оля','Настя','Крістіна','Юля','Діана','Світлана','Олена','Аня'],
+    cities: ['Києва','Львова','Одеси','Харкова','Дніпра','Вінниці','Запоріжжя'],
+    actions: ['оформила Інтенсив','взяла Практикум «Про жінку, яка закохує назавжди»','отримала Особистий розбір','оформила доступ до курсу'],
+    tpl: (n,c,a) => `${n} з ${c} щойно ${a}`
+  }
+};
+let lastToastMsg = '';
+function showLiveToast(){
+  const data = LIVE_TOAST_DATA[region] || LIVE_TOAST_DATA.intl;
+  let msg;
+  do {
+    const n = data.names[Math.floor(Math.random()*data.names.length)];
+    const c = data.cities[Math.floor(Math.random()*data.cities.length)];
+    const a = data.actions[Math.floor(Math.random()*data.actions.length)];
+    msg = data.tpl(n,c,a);
+  } while(msg === lastToastMsg);
+  lastToastMsg = msg;
+  const toast = document.getElementById('liveToast');
+  document.getElementById('liveToastText').textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => { toast.classList.remove('show'); }, 5000);
+  scheduleNextToast();
+}
+function scheduleNextToast(){
+  const delay = 9000 + Math.random() * 7000;
+  setTimeout(showLiveToast, delay);
+}
+setTimeout(showLiveToast, 6000);
+
 /* ==================== GEO + LANGUAGE DETECTION ==================== */
 const deviceIsUkrainian = (() => {
   const langs = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || ''];
@@ -962,6 +1114,22 @@ function bindTracking(){
     el.addEventListener('click', () => track('cta_click', { label: el.textContent.trim(), region }));
   });
 }
+
+/* ==================== testimonial accordion ==================== */
+document.querySelectorAll('.testi-row-head').forEach(head => {
+  head.addEventListener('click', () => {
+    const row = head.closest('.testi-row');
+    const body = row.querySelector('.testi-row-body');
+    const isOpen = row.classList.contains('open');
+    if(isOpen){
+      row.classList.remove('open');
+      body.style.maxHeight = null;
+    } else {
+      row.classList.add('open');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+  });
+});
 
 /* ==================== FAQ accordion ==================== */
 document.querySelectorAll('.faq-item').forEach(item => {
@@ -999,21 +1167,5 @@ function tick(){
 tick();
 </script>
 
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
-
-    ym(90131660, 'init', {webvisor:true, clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/90131660" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
-
-  
 </body>
 </html>
