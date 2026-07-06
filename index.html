@@ -68,7 +68,27 @@
     padding:9px 18px; font-size:13px; letter-spacing:0.03em; border-radius:20px; font-weight:600;
     transition:all .25s ease;
   }
-  .nav-cta:hover{ border-color:var(--crimson); color:var(--crimson); }
+  .nav-tg{
+    display:flex; align-items:center; gap:6px;
+    border:1px solid rgba(34,158,217,0.35); background:rgba(34,158,217,0.08); color:#229ED9;
+    padding:9px 14px; font-size:13px; font-weight:600; border-radius:20px;
+    transition:all .2s ease;
+  }
+  .nav-tg svg{ width:15px; height:15px; }
+  .nav-tg:hover{ background:#229ED9; border-color:#229ED9; color:#fff; }
+  @media (max-width:520px){ .nav-tg span{ display:none; } .nav-tg{ padding:9px 10px; } }
+
+  .tg-contact{ text-align:center; padding:56px 24px; background:var(--bg-alt); }
+  .tg-contact p{ font-size:14.5px; color:var(--muted); margin-bottom:20px; }
+  .tg-btn{
+    display:inline-flex; align-items:center; gap:10px;
+    background:linear-gradient(135deg,#2AABEE,#229ED9); color:#fff;
+    padding:16px 34px; border-radius:30px; font-size:15px; font-weight:700;
+    box-shadow:0 10px 26px rgba(34,158,217,0.32);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .tg-btn:hover{ transform:translateY(-2px); box-shadow:0 14px 32px rgba(34,158,217,0.42); }
+  .tg-btn svg{ width:20px; height:20px; flex-shrink:0; }
 
   .hero{
     min-height:100svh; display:flex; flex-direction:column; justify-content:center; align-items:center;
@@ -168,15 +188,17 @@
   .plan ul{ list-style:none; margin-bottom:28px; flex-grow:1; }
   .plan li{ font-size:13px; color:var(--ink); padding:9px 0; border-top:1px solid var(--line); display:flex; gap:10px; }
   .plan li::before{ content:'✓'; color:var(--crimson); font-weight:700; font-size:12px; margin-top:1px; }
-  .plan-btn{ display:block; text-align:center; padding:14px; border-radius:5px; font-size:14px; font-weight:700; letter-spacing:0.02em; border:1.5px solid var(--line); color:var(--ink); transition:all .2s ease; }
-  .plan-btn:hover{ border-color:var(--crimson); color:var(--crimson); }
-  .plan.featured .plan-btn{ background:var(--crimson); border-color:var(--crimson); color:#fff; }
-  .plan.featured .plan-btn:hover{ background:var(--crimson-deep); border-color:var(--crimson-deep); color:#fff; }
+  .plan-btn{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; text-align:center; padding:12px 14px; border-radius:5px; font-size:14px; font-weight:700; letter-spacing:0.02em; border:1.5px solid var(--crimson); background:var(--crimson); color:#fff; transition:all .2s ease; }
+  .plan-btn .pay-main, .pay-secondary .pay-main{ font-size:14px; font-weight:700; line-height:1.2; }
+  .plan-btn .pay-sub, .pay-secondary .pay-sub{ font-size:11px; font-weight:600; opacity:0.8; letter-spacing:0.03em; line-height:1.2; }
+  .plan-btn:hover{ background:var(--crimson-deep); border-color:var(--crimson-deep); color:#fff; }
 
   .payment-icons{ display:flex; justify-content:center; gap:12px; margin-top:24px; }
   .pay-icon{ width:50px; height:32px; display:flex; align-items:center; justify-content:center; background:#fff; border:1px solid var(--line); border-radius:5px; opacity:0.9; transition:opacity .2s ease, border-color .2s ease; }
   .pay-icon:hover{ opacity:1; border-color:var(--gold); }
   .pay-icon svg{ width:70%; height:70%; }
+  .pay-icons-mini{ display:none; justify-content:center; gap:8px; margin-top:12px; }
+  .pay-icons-mini .pay-icon{ width:36px; height:24px; }
 
   .urgency{ text-align:center; background:rgba(192,57,43,0.06); padding:44px 24px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
   .urgency .eyebrow{ color:var(--crimson); }
@@ -290,8 +312,8 @@
 
   /* ---- dual payment buttons ---- */
   .plan-pay{ display:flex; flex-direction:column; }
-  .pay-secondary{ display:none; text-align:center; margin-top:10px; font-size:12.5px; color:var(--muted); text-decoration:underline; }
-  .pay-secondary:hover{ color:var(--crimson); }
+  .pay-secondary{ display:none; flex-direction:column; align-items:center; justify-content:center; gap:2px; text-align:center; margin-top:10px; padding:12px 14px; border-radius:5px; letter-spacing:0.02em; border:1.5px solid var(--line); color:var(--ink); transition:all .2s ease; }
+  .pay-secondary:hover{ border-color:var(--crimson); color:var(--crimson); }
 
   /* ---- live activity toast ---- */
   .live-toast{
@@ -345,6 +367,10 @@
 <header>
   <div class="wrap">
     <div class="logo">back4heart<span>.</span></div>
+    <a href="https://t.me/back4heart" target="_blank" rel="noopener" class="nav-tg" id="navTg">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M21.5 3.5L2.5 11l6 2.2M21.5 3.5L15 20.5l-6.5-7.3M21.5 3.5L8.5 13.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span id="navTgText">Telegram</span>
+    </a>
     <a href="#pricing" class="nav-cta" id="navCta">Получить доступ</a>
   </div>
 </header>
@@ -574,9 +600,15 @@
         </ul>
         <div class="plan-pay">
           <a href="#" class="plan-btn" data-plan="basic" id="planBasicBtn">Взять интенсив</a>
-          <a href="#" class="pay-secondary" data-plan="basic" id="planBasicBtnAlt">или картой (Stripe)</a>
+          <a href="#" class="pay-secondary" data-plan="basic" id="planBasicBtnAlt">Оплатить картой (Stripe)</a>
+          <div class="pay-icons-mini" id="payIconsBasic" aria-label="Способы оплаты: карта, Apple Pay, Google Pay">
+            <span class="pay-icon" title="Карта"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><rect x="1" y="7" width="36" height="4" fill="#b8860b"/><rect x="5" y="16" width="10" height="2.4" rx="1.2" fill="#b8860b" opacity="0.7"/></svg></span>
+            <span class="pay-icon" title="Apple Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M13.2 9.3c-.5.6-1.3 1.1-2.1 1-.1-.8.3-1.7.7-2.2.5-.6 1.4-1.1 2.1-1.1.1.9-.2 1.7-.7 2.3zm.7 1.1c-1.2-.1-2.2.7-2.7.7-.6 0-1.4-.6-2.4-.6-1.2 0-2.4.7-3 1.9-1.3 2.2-.3 5.5.9 7.3.6.9 1.3 1.9 2.3 1.8.9 0 1.3-.6 2.4-.6s1.4.6 2.4.6c1 0 1.6-.9 2.3-1.8.7-1 1-2 1-2-.1 0-1.9-.7-1.9-2.8 0-1.7 1.4-2.6 1.5-2.6-.8-1.2-2.1-1.3-2.5-1.4-.1 0-.2 0-.3.1zm5.6-2v13.4h1.9v-4.6h2.9c2.6 0 4.5-1.8 4.5-4.4s-1.8-4.4-4.4-4.4h-4.9zm1.9 1.6h2.4c1.8 0 2.8 1 2.8 2.8s-1 2.8-2.9 2.8h-2.3V10z" fill="#b8860b"/></svg></span>
+            <span class="pay-icon" title="Google Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M17.6 12.1v2.5h3.5c-.2 1.1-1.3 3.2-3.5 3.2-2.1 0-3.8-1.7-3.8-3.9s1.7-3.9 3.8-3.9c1.2 0 2 .5 2.5.9l1.7-1.6c-1.1-1-2.5-1.6-4.2-1.6-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2c3.6 0 5.9-2.5 5.9-6.1 0-.4 0-.7-.1-1h-5.8z" fill="#b8860b"/><text x="24.5" y="15.4" font-family="Manrope, sans-serif" font-size="6.2" fill="#b8860b" font-weight="700">Pay</text></svg></span>
+          </div>
         </div>
       </div>
+
       <div class="plan featured" data-tier="circle" data-badge="Выбор большинства">
         <div class="plan-name" id="planCircleName">Интенсив + Круг</div>
         <div class="plan-desc" id="planCircleDesc">...</div>
@@ -590,9 +622,15 @@
         </ul>
         <div class="plan-pay">
           <a href="#" class="plan-btn" data-plan="circle" id="planCircleBtn">Присоединиться</a>
-          <a href="#" class="pay-secondary" data-plan="circle" id="planCircleBtnAlt">или картой (Stripe)</a>
+          <a href="#" class="pay-secondary" data-plan="circle" id="planCircleBtnAlt">Оплатить картой (Stripe)</a>
+          <div class="pay-icons-mini" id="payIconsCircle" aria-label="Способы оплаты: карта, Apple Pay, Google Pay">
+            <span class="pay-icon" title="Карта"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><rect x="1" y="7" width="36" height="4" fill="#b8860b"/><rect x="5" y="16" width="10" height="2.4" rx="1.2" fill="#b8860b" opacity="0.7"/></svg></span>
+            <span class="pay-icon" title="Apple Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M13.2 9.3c-.5.6-1.3 1.1-2.1 1-.1-.8.3-1.7.7-2.2.5-.6 1.4-1.1 2.1-1.1.1.9-.2 1.7-.7 2.3zm.7 1.1c-1.2-.1-2.2.7-2.7.7-.6 0-1.4-.6-2.4-.6-1.2 0-2.4.7-3 1.9-1.3 2.2-.3 5.5.9 7.3.6.9 1.3 1.9 2.3 1.8.9 0 1.3-.6 2.4-.6s1.4.6 2.4.6c1 0 1.6-.9 2.3-1.8.7-1 1-2 1-2-.1 0-1.9-.7-1.9-2.8 0-1.7 1.4-2.6 1.5-2.6-.8-1.2-2.1-1.3-2.5-1.4-.1 0-.2 0-.3.1zm5.6-2v13.4h1.9v-4.6h2.9c2.6 0 4.5-1.8 4.5-4.4s-1.8-4.4-4.4-4.4h-4.9zm1.9 1.6h2.4c1.8 0 2.8 1 2.8 2.8s-1 2.8-2.9 2.8h-2.3V10z" fill="#b8860b"/></svg></span>
+            <span class="pay-icon" title="Google Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M17.6 12.1v2.5h3.5c-.2 1.1-1.3 3.2-3.5 3.2-2.1 0-3.8-1.7-3.8-3.9s1.7-3.9 3.8-3.9c1.2 0 2 .5 2.5.9l1.7-1.6c-1.1-1-2.5-1.6-4.2-1.6-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2c3.6 0 5.9-2.5 5.9-6.1 0-.4 0-.7-.1-1h-5.8z" fill="#b8860b"/><text x="24.5" y="15.4" font-family="Manrope, sans-serif" font-size="6.2" fill="#b8860b" font-weight="700">Pay</text></svg></span>
+          </div>
         </div>
       </div>
+
       <div class="plan" data-tier="personal">
         <div class="plan-name" id="planPersonalName">Интенсив + Личный разбор</div>
         <div class="plan-desc" id="planPersonalDesc">...</div>
@@ -607,20 +645,14 @@
         <div class="spots-left" id="spotsLeft">Осталось всего 5 мест в этом потоке</div>
         <div class="plan-pay">
           <a href="#" class="plan-btn" data-plan="personal" id="planPersonalBtn">Получить разбор</a>
-          <a href="#" class="pay-secondary" data-plan="personal" id="planPersonalBtnAlt">или картой (Stripe)</a>
+          <a href="#" class="pay-secondary" data-plan="personal" id="planPersonalBtnAlt">Оплатить картой (Stripe)</a>
+          <div class="pay-icons-mini" id="payIconsPersonal" aria-label="Способы оплаты: карта, Apple Pay, Google Pay">
+            <span class="pay-icon" title="Карта"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><rect x="1" y="7" width="36" height="4" fill="#b8860b"/><rect x="5" y="16" width="10" height="2.4" rx="1.2" fill="#b8860b" opacity="0.7"/></svg></span>
+            <span class="pay-icon" title="Apple Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M13.2 9.3c-.5.6-1.3 1.1-2.1 1-.1-.8.3-1.7.7-2.2.5-.6 1.4-1.1 2.1-1.1.1.9-.2 1.7-.7 2.3zm.7 1.1c-1.2-.1-2.2.7-2.7.7-.6 0-1.4-.6-2.4-.6-1.2 0-2.4.7-3 1.9-1.3 2.2-.3 5.5.9 7.3.6.9 1.3 1.9 2.3 1.8.9 0 1.3-.6 2.4-.6s1.4.6 2.4.6c1 0 1.6-.9 2.3-1.8.7-1 1-2 1-2-.1 0-1.9-.7-1.9-2.8 0-1.7 1.4-2.6 1.5-2.6-.8-1.2-2.1-1.3-2.5-1.4-.1 0-.2 0-.3.1zm5.6-2v13.4h1.9v-4.6h2.9c2.6 0 4.5-1.8 4.5-4.4s-1.8-4.4-4.4-4.4h-4.9zm1.9 1.6h2.4c1.8 0 2.8 1 2.8 2.8s-1 2.8-2.9 2.8h-2.3V10z" fill="#b8860b"/></svg></span>
+            <span class="pay-icon" title="Google Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M17.6 12.1v2.5h3.5c-.2 1.1-1.3 3.2-3.5 3.2-2.1 0-3.8-1.7-3.8-3.9s1.7-3.9 3.8-3.9c1.2 0 2 .5 2.5.9l1.7-1.6c-1.1-1-2.5-1.6-4.2-1.6-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2c3.6 0 5.9-2.5 5.9-6.1 0-.4 0-.7-.1-1h-5.8z" fill="#b8860b"/><text x="24.5" y="15.4" font-family="Manrope, sans-serif" font-size="6.2" fill="#b8860b" font-weight="700">Pay</text></svg></span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="payment-icons" aria-label="Способы оплаты: карта, Apple Pay, Google Pay">
-      <span class="pay-icon" title="Карта">
-        <svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><rect x="1" y="7" width="36" height="4" fill="#b8860b"/><rect x="5" y="16" width="10" height="2.4" rx="1.2" fill="#b8860b" opacity="0.7"/></svg>
-      </span>
-      <span class="pay-icon" title="Apple Pay">
-        <svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M13.2 9.3c-.5.6-1.3 1.1-2.1 1-.1-.8.3-1.7.7-2.2.5-.6 1.4-1.1 2.1-1.1.1.9-.2 1.7-.7 2.3zm.7 1.1c-1.2-.1-2.2.7-2.7.7-.6 0-1.4-.6-2.4-.6-1.2 0-2.4.7-3 1.9-1.3 2.2-.3 5.5.9 7.3.6.9 1.3 1.9 2.3 1.8.9 0 1.3-.6 2.4-.6s1.4.6 2.4.6c1 0 1.6-.9 2.3-1.8.7-1 1-2 1-2-.1 0-1.9-.7-1.9-2.8 0-1.7 1.4-2.6 1.5-2.6-.8-1.2-2.1-1.3-2.5-1.4-.1 0-.2 0-.3.1zm5.6-2v13.4h1.9v-4.6h2.9c2.6 0 4.5-1.8 4.5-4.4s-1.8-4.4-4.4-4.4h-4.9zm1.9 1.6h2.4c1.8 0 2.8 1 2.8 2.8s-1 2.8-2.9 2.8h-2.3V10z" fill="#b8860b"/></svg>
-      </span>
-      <span class="pay-icon" title="Google Pay">
-        <svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M17.6 12.1v2.5h3.5c-.2 1.1-1.3 3.2-3.5 3.2-2.1 0-3.8-1.7-3.8-3.9s1.7-3.9 3.8-3.9c1.2 0 2 .5 2.5.9l1.7-1.6c-1.1-1-2.5-1.6-4.2-1.6-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2c3.6 0 5.9-2.5 5.9-6.1 0-.4 0-.7-.1-1h-5.8z" fill="#b8860b"/><text x="24.5" y="15.4" font-family="Manrope, sans-serif" font-size="6.2" fill="#b8860b" font-weight="700">Pay</text></svg>
-      </span>
     </div>
   </div>
 </section>
@@ -646,6 +678,7 @@
     <div class="section-head">
       <div class="eyebrow" id="faqEyebrow">Вопросы</div>
       <h2 id="faqH2">Прежде чем начать</h2>
+      <p id="faqContactNote"><span id="faqContactText">Не нашла ответ? Пиши в Telegram:</span> <a href="https://t.me/back4heart" target="_blank" rel="noopener">t.me/back4heart</a></p>
     </div>
     <div class="faq" id="faqList">
       <div class="faq-item"><div class="faq-q"><span id="faqQ1"></span><span class="plus">+</span></div><div class="faq-a"><p id="faqA1"></p></div></div>
@@ -655,6 +688,14 @@
       <div class="faq-item"><div class="faq-q"><span id="faqQ5"></span><span class="plus">+</span></div><div class="faq-a"><p id="faqA5"></p></div></div>
     </div>
   </div>
+</section>
+
+<section class="tg-contact">
+  <p id="tgContactText">Остались вопросы? Пиши в Telegram — отвечаю лично.</p>
+  <a href="https://t.me/back4heart" target="_blank" rel="noopener" class="tg-btn">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M21.5 3.5L2.5 11l6 2.2M21.5 3.5L15 20.5l-6.5-7.3M21.5 3.5L8.5 13.2" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span id="tgBtnText">Написать в Telegram</span>
+  </a>
 </section>
 
 <section class="final">
@@ -679,9 +720,12 @@
 
 <footer>
   <div id="footerLine">© 2026 back4heart. Все права защищены.</div>
+  <div style="margin-top:8px;"><span id="footerContact">Вопросы? Пиши в Telegram:</span> <a href="https://t.me/back4heart" target="_blank" rel="noopener">t.me/back4heart</a></div>
   <div style="margin-top:8px;"><a href="#" id="footerTerms">Условия использования</a> · <a href="#" id="footerPrivacy">Политика конфиденциальности</a></div>
 </footer>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-307666615"></script>
 <script>
 /* ==================== CONTENT ==================== */
 const CONTENT = {
@@ -701,7 +745,7 @@ const CONTENT = {
     pain3Mark:'Внутри', pain3Text:'ты и так всё понимаешь. Просто пока ты молчишь и мучаешься, он живёт как ни в чём не бывало. Расклад явно не в твою пользу.',
     promiseQuote:'«Никто не обязывал тебя чинить разбитое сердце в одиночку.<br>А вот сделать так, чтобы сердце было разбито не только у тебя, — это уже твоя задача.»',
     modulesEyebrow:'Что внутри', modulesH2:'7 дней. 7 смещений баланса',
-    modulesDesc:'Каждый день новый урок, минут на 15-20. Наушники, дорога на работу или обед — где угодно. Без тетрадок и домашки, только то, что реально работает.',
+    modulesDesc:'Каждый день новый урок, минут на 15-20. Наушники, дорога на работу или обед — где угодно. Без тетрадок и домашки, только то, что реально работает. И да, мысли о нём по кругу и эта странная тяга куда-то денутся сами — не потому что «отпустила», а потому что голова будет занята игрой, где выигрываешь ты.',
     mod1Title:'Первый удар', mod1Desc:'Разбираем, кого ты из него слепила в своей голове. Спойлер: этот образ пора сносить первым.',
     mod2Title:'Стена', mod2Desc:'После этого урока каждый его шаг навстречу будет стоить ему дороже, чем тебе.',
     mod3Title:'Тень', mod3Desc:'Как быть незаметной — и именно поэтому застрять у него в голове намертво.',
@@ -715,12 +759,12 @@ const CONTENT = {
     testi2Text:'«Не отвечала на его "прости" три дня. Он написал ещё два раза. Впервые в жизни ждала не я его, а он меня.»', testi2Who:'Оля, 31',
     testi3Text:'«Реально страшно было не отвечать сразу. Но когда он написал в третий раз — поняла, что расклад поменялся не в его пользу.»', testi3Who:'Кристина, 24',
     pricingEyebrow:'Доступ', pricingH2:'Выбери, насколько глубоко ты готова зайти',
-    planBasicName:'Интенсив', planBasicDesc:'Весь курс целиком — дальше сама.', planBasicNote:'разовый платёж',
-    planBasicLi1:'7 аудиоуроков, 15–20 минут в день', planBasicLi2:'Доступ навсегда, слушай в своём темпе', planBasicLi3:'Слушай хоть с телефона, хоть с ноутбука', planBasicBtn:'Взять интенсив',
+    planBasicName:'Интенсив', planBasicDesc:'Весь курс целиком. Внутри — техники, которые вырубают навязчивые мысли о нём и саму эту зависимость: не потому что «пора отпустить», а потому что это его рычаг, о котором он сам не в курсе.', planBasicNote:'разовый платёж',
+    planBasicLi1:'7 аудиоуроков, 15–20 минут в день', planBasicLi2:'Доступ навсегда, слушай в своём темпе', planBasicLi3:'Слушай хоть с телефона, хоть с ноутбука', planBasicBtn:'Оплатить через PayPal',
     planCircleBadge:'Выбор большинства', planCircleName:'Интенсив + Практикум «Про женщину, которая влюбляет навсегда»', planCircleDesc:'Курс плюс практикум о том, как быть той, в которую влюбляются заново.', planCircleNote:'разовый платёж',
-    planCircleLi1:'Всё из тарифа «Интенсив»', planCircleLi2:'Практикум «Про женщину, которая влюбляет навсегда»', planCircleLi3:'Практические упражнения и разборы', planCircleBtn:'Присоединиться',
+    planCircleLi1:'Всё из тарифа «Интенсив»', planCircleLi2:'Практикум «Про женщину, которая влюбляет навсегда»', planCircleLi3:'Практические упражнения и разборы', planCircleBtn:'Оплатить через PayPal',
     planPersonalName:'Интенсив + Личный разбор', planPersonalDesc:'Курс плюс разбор именно твоей ситуации, не общими словами.', planPersonalNote:'разовый платёж',
-    planPersonalLi1:'Всё из тарифа «Интенсив»', planPersonalLi2:'Личный разбор твоей ситуации', planPersonalLi3:'Конкретные шаги под твою ситуацию', planPersonalBtn:'Получить разбор',
+    planPersonalLi1:'Всё из тарифа «Интенсив»', planPersonalLi2:'Личный разбор твоей ситуации', planPersonalLi3:'Конкретные шаги под твою ситуацию', planPersonalBtn:'Оплатить через PayPal',
     urgencyEyebrow:'Ограниченный доступ', urgencyH3:'Набор в этот поток закрывается через', urgencyCta:'Успеть попасть в поток',
     lblHours:'часа', lblMin:'мин', lblSec:'сек',
     faqEyebrow:'Вопросы', faqH2:'Прежде чем начать',
@@ -731,6 +775,8 @@ const CONTENT = {
     faqQ5:'Это анонимно?', faqA5:'Да, на сто процентов. Всё приходит на почту, никаких публичных отметок и подтверждений.',
     finalEyebrow:'Решение за тобой', finalH2:'Представь его лицо, когда он поймёт, кого потерял', finalSub:'Через неделю это будет уже не мысль, а факт.', finalCta:'Начать свои 7 дней',
     footerLine:'© 2026 back4heart. Все права защищены.', footerTerms:'Условия использования', footerPrivacy:'Политика конфиденциальности',
+    footerContact:'Вопросы? Пиши в Telegram:', payNote:'И там, и там принимают карту, Apple Pay и Google Pay', faqContactText:'Не нашла ответ? Пиши в Telegram:',
+    tgContactText:'Остались вопросы? Пиши в Telegram — отвечаю лично.', tgBtnText:'Написать в Telegram',
     painTags:['Он игнорирует сообщения?','Заблокировал в соцсетях?','Сказал, что чувства остыли?','Он уже привыкает жить без тебя','С каждым днём вы становитесь для него дальше'],
     mindreadLabel:'Мы точно знаем, что ты делаешь прямо сейчас',
     mindreadText:'Проверяешь, когда он последний раз был в сети — по три раза за вечер. Пересматриваешь сторис, хотя там смотреть нечего. Заходишь к нему в профиль с чужого аккаунта, чтобы не спалиться. Ждёшь уведомление, которое не приходит уже которую неделю. Это не слабость, просто про это никто не говорит вслух — а проходят через это почти все.',
@@ -772,7 +818,7 @@ const CONTENT = {
     pain3Mark:'Всередині', pain3Text:'ти й так усе розумієш. Просто поки ти мовчиш і мучишся, він живе так, ніби нічого не сталося. Розклад явно не на твою користь.',
     promiseQuote:'«Ніхто не зобов’язував тебе лікувати розбите серце наодинці.<br>А от зробити так, щоб серце було розбите не лише в тебе, — це вже твоя справа.»',
     modulesEyebrow:'Що всередині', modulesH2:'7 днів. 7 зміщень балансу',
-    modulesDesc:'Щодня новий урок, хвилин на 15-20. Навушники, дорога на роботу чи обід — де завгодно. Без зошитів і домашки, тільки те, що реально працює.',
+    modulesDesc:'Щодня новий урок, хвилин на 15-20. Навушники, дорога на роботу чи обід — де завгодно. Без зошитів і домашки, тільки те, що реально працює. І так, думки про нього по колу і ця дивна тяга кудись дінуться самі — не тому що «відпустила», а тому що голова буде зайнята грою, в якій виграєш ти.',
     mod1Title:'Перший удар', mod1Desc:'Розбираємо, кого ти з нього виліпила у своїй голові. Спойлер: цей образ пора зносити першим.',
     mod2Title:'Стіна', mod2Desc:'Після цього уроку кожен його крок назустріч коштуватиме йому дорожче, ніж тобі.',
     mod3Title:'Тінь', mod3Desc:'Як бути непомітною — і саме тому застрягти в нього в голові намертво.',
@@ -786,7 +832,7 @@ const CONTENT = {
     testi2Text:'«Не відповідала на його "вибач" три дні. Він написав ще двічі. Вперше в житті чекала не я його, а він мене.»', testi2Who:'Оля, 31',
     testi3Text:'«Реально було страшно не відповідати одразу. Але коли він написав втретє — зрозуміла, що розклад змінився не на його користь.»', testi3Who:'Крістіна, 24',
     pricingEyebrow:'Доступ', pricingH2:'Обери, наскільки глибоко ти готова зайти',
-    planBasicName:'Інтенсив', planBasicDesc:'Весь курс цілком — далі сама.', planBasicNote:'одноразовий платіж',
+    planBasicName:'Інтенсив', planBasicDesc:'Весь курс цілком. Всередині — техніки, які вимикають нав’язливі думки про нього і саму цю залежність: не тому що «пора відпустити», а тому що це його важіль, про який він сам не знає.', planBasicNote:'одноразовий платіж',
     planBasicLi1:'7 аудіоуроків, 15–20 хвилин на день', planBasicLi2:'Доступ назавжди, слухай у своєму темпі', planBasicLi3:'Слухай хоч з телефону, хоч з ноутбука', planBasicBtn:'Взяти інтенсив',
     planCircleBadge:'Вибір більшості', planCircleName:'Інтенсив + Практикум «Про жінку, яка закохує назавжди»', planCircleDesc:'Курс плюс практикум про те, як бути тією, в яку закохуються знову.', planCircleNote:'одноразовий платіж',
     planCircleLi1:'Все з тарифу «Інтенсив»', planCircleLi2:'Практикум «Про жінку, яка закохує назавжди»', planCircleLi3:'Практичні вправи та розбори', planCircleBtn:'Приєднатися',
@@ -802,6 +848,8 @@ const CONTENT = {
     faqQ5:'Це анонімно?', faqA5:'Так, на всі сто. Все приходить на пошту, жодних публічних відміток і підтверджень.',
     finalEyebrow:'Рішення за тобою', finalH2:'Уяви його обличчя, коли він зрозуміє, кого втратив', finalSub:'Через тиждень це буде вже не думка, а факт.', finalCta:'Почати свої 7 днів',
     footerLine:'© 2026 back4heart. Усі права захищені.', footerTerms:'Умови використання', footerPrivacy:'Політика конфіденційності',
+    footerContact:'Питання? Пиши в Telegram:', faqContactText:'Не знайшла відповідь? Пиши в Telegram:',
+    tgContactText:'Залишились питання? Пиши в Telegram — відповідаю особисто.', tgBtnText:'Написати в Telegram',
     painTags:['Він ігнорує повідомлення?','Заблокував у соцмережах?','Сказав, що почуття охололи?','Він вже звикає жити без тебе','Що не день ви стаєте для нього дальші'],
     mindreadLabel:'Ми точно знаємо, що ти робиш прямо зараз',
     mindreadText:'Перевіряєш, коли він востаннє був у мережі — по три рази за вечір. Передивляєшся сторіз, хоча там нема на що дивитись. Заходиш до нього в профіль з чужого акаунта, щоб не спалитися. Чекаєш сповіщення, яке не приходить уже якийсь тиждень. Це не слабкість, просто про це ніхто не говорить вголос — а проходять через це майже всі.',
@@ -919,6 +967,8 @@ function render(region){
 
   setText('finalEyebrow', c.finalEyebrow); setText('finalH2', c.finalH2); setText('finalSub', c.finalSub); setText('finalCta', c.finalCta);
   setText('footerLine', c.footerLine); setText('footerTerms', c.footerTerms); setText('footerPrivacy', c.footerPrivacy);
+  setText('footerContact', c.footerContact); setText('faqContactText', c.faqContactText);
+  setText('tgContactText', c.tgContactText); setText('tgBtnText', c.tgBtnText);
 
   // pain tags
   const painTagsEl = document.getElementById('painTags');
@@ -969,17 +1019,26 @@ function render(region){
     btn.setAttribute('href', href || '#');
     btn.setAttribute('target', '_blank');
     btn.setAttribute('rel', 'noopener');
+    if(region === 'intl'){
+      btn.innerHTML = '<span class="pay-main">Оплатить</span><span class="pay-sub">PayPal</span>';
+    } else {
+      btn.innerHTML = '<span class="pay-main">Оплатити</span><span class="pay-sub">WayForPay</span>';
+    }
   });
   document.querySelectorAll('.pay-secondary').forEach(a => {
     const plan = a.getAttribute('data-plan');
     if(region === 'intl'){
-      a.style.display = 'block';
+      a.style.display = 'flex';
+      a.innerHTML = '<span class="pay-main">Оплатить</span><span class="pay-sub">Stripe</span>';
       a.setAttribute('href', LINKS.intl.stripe[plan] || '#');
       a.setAttribute('target', '_blank');
       a.setAttribute('rel', 'noopener');
     } else {
       a.style.display = 'none';
     }
+  });
+  document.querySelectorAll('.pay-icons-mini').forEach(el => {
+    el.style.display = (region === 'intl') ? 'flex' : 'none';
   });
 }
 
@@ -1051,7 +1110,7 @@ stickyObserver.observe(heroEl);
 const LIVE_TOAST_DATA = {
   intl: {
     names: ['Анна','Марина','Оля','Настя','Кристина','Юля','Диана','Света','Лена','Аня'],
-    cities: ['Москвы','Санкт-Петербурга','Алматы','Минска','Ташкента','Баку','Киева','Тбилиси'],
+    cities: ['Берлина','Варшавы','Праги','Вены','Барселоны','Амстердама','Парижа','Милана','Риги','Вильнюса','Лимассола'],
     actions: ['оформила Интенсив','взяла Практикум «Про женщину, которая влюбляет навсегда»','получила Личный разбор','оформила доступ к курсу'],
     tpl: (n,c,a) => `${n} из ${c} только что ${a}`
   },
@@ -1167,21 +1226,5 @@ function tick(){
 tick();
 </script>
 
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
-
-    ym(90131660, 'init', {webvisor:true, clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/90131660" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
-
-  
 </body>
 </html>
