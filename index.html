@@ -1023,22 +1023,13 @@ function render(region){
     btn.setAttribute('target', '_blank');
     btn.setAttribute('rel', 'noopener');
     if(region === 'intl'){
-      btn.innerHTML = '<span class="pay-main">Оплатить</span><span class="pay-sub">PayPal</span>';
+      btn.innerHTML = '<span class="pay-main">Оплатить</span>';
     } else {
       btn.innerHTML = '<span class="pay-main">Оплатити</span><span class="pay-sub">WayForPay</span>';
     }
   });
   document.querySelectorAll('.pay-secondary').forEach(a => {
-    const plan = a.getAttribute('data-plan');
-    if(region === 'intl'){
-      a.style.display = 'flex';
-      a.innerHTML = '<span class="pay-main">Оплатить</span><span class="pay-sub">Stripe</span>';
-      a.setAttribute('href', LINKS.intl.stripe[plan] || '#');
-      a.setAttribute('target', '_blank');
-      a.setAttribute('rel', 'noopener');
-    } else {
-      a.style.display = 'none';
-    }
+    a.style.display = 'none';
   });
   document.querySelectorAll('.pay-icons-mini').forEach(el => {
     el.style.display = (region === 'intl') ? 'flex' : 'none';
