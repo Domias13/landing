@@ -1029,7 +1029,16 @@ function render(region){
     }
   });
   document.querySelectorAll('.pay-secondary').forEach(a => {
-    a.style.display = 'none';
+    const plan = a.getAttribute('data-plan');
+    if(region === 'intl' && isRussia){
+      a.style.display = 'flex';
+      a.innerHTML = '<span class="pay-main">Оплатить картой</span><span class="pay-sub">Stripe</span>';
+      a.setAttribute('href', LINKS.intl.stripe[plan] || '#');
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener');
+    } else {
+      a.style.display = 'none';
+    }
   });
   document.querySelectorAll('.pay-icons-mini').forEach(el => {
     el.style.display = (region === 'intl') ? 'flex' : 'none';
@@ -1145,6 +1154,7 @@ const deviceIsUkrainian = (() => {
 })();
 
 let region = deviceIsUkrainian ? 'ua' : 'intl';
+let isRussia = false;
 render(region);
 document.body.classList.add('ready');
 
@@ -1152,9 +1162,10 @@ fetch('https://ipapi.co/json/')
   .then(r => r.json())
   .then(data => {
     const countryIsUA = data && data.country_code === 'UA';
+    isRussia = !!(data && data.country_code === 'RU');
     region = (countryIsUA || deviceIsUkrainian) ? 'ua' : 'intl';
     render(region);
-    track('geo_detected', { region, country: data && data.country_code, deviceIsUkrainian });
+    track('geo_detected', { region, country: data && data.country_code, deviceIsUkrainian, isRussia });
     bindTracking();
   })
   .catch(() => { bindTracking(); });
