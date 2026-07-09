@@ -971,44 +971,107 @@ const PRICING = {
   }
 };
 
-/* ==================== PAYMENT LINKS ==================== */
+/* ==================== COMBO PRICES ====================
+   Combo key = tier + which order-bump checkboxes are checked (for "basic" plan):
+   basic            -> Интенсив
+   basic_practicum  -> Интенсив + практикум «Про женщину, которая влюбляет навсегда»
+   basic_webinar    -> Интенсив + вебинар-разбор
+   basic_both       -> Интенсив + практикум + вебинар-разбор
+   personal         -> Интенсив + разбор (no order bumps on this plan) */
+const COMBO_PRICES = {
+  intl: { basic: 9.99, basic_practicum: 14.99, basic_webinar: 34.98, basic_both: 39.98, personal: 49.99 },
+  ua:   { basic: 399,  basic_practicum: 664,   basic_webinar: 1398,  basic_both: 1597,  personal: 1999 }
+};
+
+/* ==================== PAYMENT LINKS ====================
+   Ukraine (by IP)        -> WayForPay only
+   Russia (by IP)         -> Stripe + PayPal (both buttons)
+   Everyone else          -> PayPal only */
 const LINKS = {
+  ua: {
+    basic:            'https://secure.wayforpay.com/button/bd79c278fab86',
+    basic_practicum:  'https://secure.wayforpay.com/button/b94dd4cd56518',
+    basic_webinar:    'https://secure.wayforpay.com/button/bd1df46472db7',
+    basic_both:       'https://secure.wayforpay.com/button/b4331f9527872',
+    personal:         'https://secure.wayforpay.com/button/baaf391f3c4bf'
+  },
   intl: {
     stripe: {
-      basic:    'https://buy.stripe.com/6oUbJ30QifWh2xceBa3ZK0k',
-      circle:   'https://buy.stripe.com/8x2bJ3aqSh0lfjY78I3ZK0j',
-      personal: 'https://buy.stripe.com/3cI6oJ8iK8tP8VA50A3ZK0l'
+      basic:            'https://buy.stripe.com/6oUbJ30QifWh2xceBa3ZK0k',
+      basic_practicum:  'https://buy.stripe.com/8x2bJ3aqSh0lfjY78I3ZK0j',
+      basic_webinar:    'https://buy.stripe.com/cNieVfeH86lH7Rw3Ww3ZK0o',
+      basic_both:       'https://buy.stripe.com/dRm5kFaqS7pL4FkeBa3ZK0n',
+      personal:         'https://buy.stripe.com/3cI6oJ8iK8tP8VA50A3ZK0l'
     },
     paypal: {
-      basic:    'https://www.paypal.com/ncp/payment/TX4CSD6R5C2JQ',
-      circle:   'https://www.paypal.com/ncp/payment/L9MBPZRCTGFBG',
-      personal: 'https://www.paypal.com/ncp/payment/MZCJ6M5TM7X7W'
-    },
-    // ROMAN: создай в PayPal/Stripe отдельные Payment Links на эти спецпродукты
-    // (практикум за $5 и вебинар-разбор за $24.99) и вставь ссылки вместо '#'.
-    bumps: {
-      practicum: '#',
-      webinar:   '#'
-    }
-  },
-  ua: {
-    basic:    'https://secure.wayforpay.com/button/bd79c278fab86',
-    circle:   'https://secure.wayforpay.com/button/b94dd4cd56518',
-    personal: 'https://secure.wayforpay.com/button/baaf391f3c4bf',
-    // ROMAN: создай в WayForPay отдельные кнопки на эти спецпродукты
-    // (практикум за 199 грн и вебинар-разбор за 999 грн) и вставь ссылки вместо '#'.
-    bumps: {
-      practicum: '#',
-      webinar:   '#'
+      basic:            'https://www.paypal.com/ncp/payment/TX4CSD6R5C2JQ',
+      basic_practicum:  'https://www.paypal.com/ncp/payment/L9MBPZRCTGFBG',
+      // ROMAN: не хватает отдельной ссылки PayPal на "Интенсив + вебинар-разбор" ($34.98) — пришли, и я подставлю.
+      basic_webinar:    'https://www.paypal.com/ncp/payment/2HT428V5JGVTA',
+      basic_both:       'https://www.paypal.com/ncp/payment/34ADAGAX8BMTJ',
+      personal:         'https://www.paypal.com/ncp/payment/MZCJ6M5TM7X7W'
     }
   }
 };
 
-/* Base numeric prices (for order-bump total calculation) */
+/* Determine which payment providers to use for the current visitor */
+function getPaymentMode(region){
+  if(region === 'ua') return 'wayforpay';
+  if(isRussia) return 'stripe_paypal';
+  return 'paypal';
+}
+
+/* Base numeric prices (kept for reference / legacy calls) */
 const PLAN_BASE = {
   intl: { basic: 9.99, circle: 14.99, personal: 49.99 },
   ua:   { basic: 399,  circle: 664,   personal: 1999 }
 };
+
+/* Determine combo key for a given .plan element based on checked order-bump boxes */
+function getComboKey(planEl){
+  const tier = planEl.getAttribute('data-tier');
+  if(tier !== 'basic') return tier; // 'personal'
+  const box = planEl.querySelector('.order-bump');
+  if(!box) return 'basic';
+  const checked = Array.from(box.querySelectorAll('.bump-check:checked')).map(cb => cb.getAttribute('data-bump'));
+  const hasPracticum = checked.includes('practicum');
+  const hasWebinar = checked.includes('webinar');
+  if(hasPracticum && hasWebinar) return 'basic_both';
+  if(hasPracticum) return 'basic_practicum';
+  if(hasWebinar) return 'basic_webinar';
+  return 'basic';
+}
+
+/* Update a plan's payment button(s) href to match the current region + combo + provider mode */
+function updatePlanButtonHref(planEl, region){
+  const btn = planEl.querySelector('.plan-btn');
+  const secondary = planEl.querySelector('.pay-secondary');
+  const combo = getComboKey(planEl);
+  const mode = getPaymentMode(region);
+
+  if(mode === 'wayforpay'){
+    if(btn){ btn.setAttribute('href', LINKS.ua[combo] || '#'); btn.setAttribute('data-combo', combo); }
+    if(secondary) secondary.style.display = 'none';
+  } else if(mode === 'stripe_paypal'){
+    if(btn){ btn.setAttribute('href', LINKS.intl.stripe[combo] || '#'); btn.setAttribute('data-combo', combo); }
+    if(secondary){
+      const ppHref = LINKS.intl.paypal[combo];
+      if(ppHref){
+        secondary.style.display = 'flex';
+        secondary.setAttribute('href', ppHref);
+        secondary.setAttribute('data-combo', combo);
+      } else {
+        secondary.style.display = 'none';
+      }
+    }
+  } else { // paypal only
+    if(btn){ btn.setAttribute('href', LINKS.intl.paypal[combo] || '#'); btn.setAttribute('data-combo', combo); }
+    if(secondary) secondary.style.display = 'none';
+  }
+}
+function updateAllPlanButtonHrefs(region){
+  document.querySelectorAll('.plan').forEach(planEl => updatePlanButtonHref(planEl, region));
+}
 function formatMoney(region, amount){
   if(region === 'intl') return '$' + (Math.round(amount*100)/100).toFixed(2).replace(/\.00$/, '');
   return Math.round(amount) + ' грн';
@@ -1117,31 +1180,30 @@ function render(region){
   setHTML('priceCircleOld', pricing.circle.oldFmt());
   setHTML('pricePersonalOld', pricing.personal.oldFmt());
 
-  // payment links: PayPal first, Stripe second for intl; WayForPay only for ua
+  // payment button labels: WayForPay (Ukraine) / Stripe+PayPal (Russia) / PayPal only (everyone else). Href is combo-aware.
+  const paymentMode = getPaymentMode(region);
   document.querySelectorAll('.plan-btn').forEach(btn => {
-    const plan = btn.getAttribute('data-plan');
-    const href = (region === 'intl') ? LINKS.intl.paypal[plan] : LINKS.ua[plan];
-    btn.setAttribute('href', href || '#');
     btn.setAttribute('target', '_blank');
     btn.setAttribute('rel', 'noopener');
-    if(region === 'intl'){
-      btn.innerHTML = '<span class="pay-main">Оплатить</span>';
+    if(paymentMode === 'wayforpay'){
+      btn.innerHTML = '<span class="pay-main">Оплатити карткою</span><span class="pay-sub">WayForPay</span>';
+    } else if(paymentMode === 'stripe_paypal'){
+      btn.innerHTML = '<span class="pay-main">Оплатить картой</span><span class="pay-sub">Stripe</span>';
     } else {
-      btn.innerHTML = '<span class="pay-main">Оплатити</span><span class="pay-sub">WayForPay</span>';
+      btn.innerHTML = '<span class="pay-main">Оплатить</span><span class="pay-sub">PayPal</span>';
     }
   });
   document.querySelectorAll('.pay-secondary').forEach(a => {
-    const plan = a.getAttribute('data-plan');
-    if(region === 'intl' && isRussia){
-      a.style.display = 'flex';
-      a.innerHTML = '<span class="pay-main">Оплатить картой</span><span class="pay-sub">Stripe</span>';
-      a.setAttribute('href', LINKS.intl.stripe[plan] || '#');
-      a.setAttribute('target', '_blank');
-      a.setAttribute('rel', 'noopener');
+    a.setAttribute('target', '_blank');
+    a.setAttribute('rel', 'noopener');
+    if(paymentMode === 'stripe_paypal'){
+      a.innerHTML = '<span class="pay-main">Оплатить</span><span class="pay-sub">PayPal</span>';
+      // visibility (shown/hidden per combo availability) is set in updatePlanButtonHref
     } else {
       a.style.display = 'none';
     }
   });
+  updateAllPlanButtonHrefs(region);
   document.querySelectorAll('.pay-icons-mini').forEach(el => {
     el.style.display = (region === 'intl') ? 'flex' : 'none';
   });
@@ -1161,17 +1223,18 @@ const BUMP_META = {
   webinar:   { intl:{ price:24.99, old:44.99 }, ua:{ price:999, old:1799 } }
 };
 function recalcBumpTotal(box, region){
-  const plan = box.getAttribute('data-plan');
-  let total = PLAN_BASE[region][plan];
+  const planEl = box.closest('.plan');
+  const combo = planEl ? getComboKey(planEl) : box.getAttribute('data-plan');
+  const total = (COMBO_PRICES[region] && COMBO_PRICES[region][combo] != null) ? COMBO_PRICES[region][combo] : PLAN_BASE[region][box.getAttribute('data-plan')];
   let any = false;
-  box.querySelectorAll('.bump-check').forEach(cb => {
-    if(cb.checked){ any = true; total += BUMP_META[cb.getAttribute('data-bump')][region].price; }
-  });
+  box.querySelectorAll('.bump-check').forEach(cb => { if(cb.checked) any = true; });
   const totalEl = box.querySelector('.order-total');
-  if(!totalEl) return;
-  totalEl.classList.toggle('show', any);
-  const sumEl = totalEl.querySelector('.ot-sum');
-  if(sumEl) sumEl.textContent = formatMoney(region, total);
+  if(totalEl){
+    totalEl.classList.toggle('show', any);
+    const sumEl = totalEl.querySelector('.ot-sum');
+    if(sumEl) sumEl.textContent = formatMoney(region, total);
+  }
+  if(planEl) updatePlanButtonHref(planEl, region);
 }
 function updateOrderBumps(region){
   document.querySelectorAll('.bump-item').forEach(label => {
@@ -1184,6 +1247,7 @@ function updateOrderBumps(region){
     if(oldEl) oldEl.textContent = formatMoney(region, meta.old);
   });
   document.querySelectorAll('.order-bump').forEach(box => recalcBumpTotal(box, region));
+  updateAllPlanButtonHrefs(region);
 }
 document.addEventListener('change', function(e){
   if(e.target && e.target.classList && e.target.classList.contains('bump-check')){
@@ -1191,21 +1255,6 @@ document.addEventListener('change', function(e){
     if(box) recalcBumpTotal(box, region);
     track('add_order_bump', { bump: e.target.getAttribute('data-bump'), plan: e.target.getAttribute('data-plan'), checked: e.target.checked, region });
   }
-});
-document.addEventListener('click', function(e){
-  const link = e.target.closest('.plan-btn, .pay-secondary');
-  if(!link) return;
-  const planEl = link.closest('.plan');
-  if(!planEl) return;
-  const box = planEl.querySelector('.order-bump');
-  if(!box) return;
-  box.querySelectorAll('.bump-check:checked').forEach(cb => {
-    const bumpKey = cb.getAttribute('data-bump');
-    const bumpHref = LINKS[region] && LINKS[region].bumps ? LINKS[region].bumps[bumpKey] : null;
-    if(bumpHref && bumpHref !== '#'){
-      setTimeout(() => window.open(bumpHref, '_blank'), 400);
-    }
-  });
 });
 
 /* ==================== GA4 stub ==================== */
