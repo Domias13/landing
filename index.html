@@ -170,7 +170,7 @@
   .testi .who{ color:var(--muted); font-size:12.5px; font-weight:700; }
   .testi-disclaimer{ text-align:center; font-size:12px; color:var(--light); margin-top:20px; }
 
-  .pricing-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch; }
+  .pricing-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px; align-items:stretch; max-width:820px; margin:0 auto; }
   .plan{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:34px 26px; display:flex; flex-direction:column; position:relative; }
   .plan.featured{ border-color:var(--gold); transform:translateY(-8px); box-shadow:var(--shadow); background:linear-gradient(180deg, rgba(192,57,43,0.05), #fff 45%); }
   .plan.featured::before{
@@ -672,35 +672,6 @@
         </div>
       </div>
 
-      <div class="plan featured" data-tier="circle" data-badge="Выбор большинства">
-        <div class="plan-name" id="planCircleName">Интенсив + Круг</div>
-        <div class="plan-desc" id="planCircleDesc">...</div>
-        <div class="price-old" id="priceCircleOld">$89</div>
-        <div class="price" id="priceCircle">$14.99</div>
-        <div class="price-note" id="planCircleNote">разовый платёж</div>
-        <ul>
-          <li id="planCircleLi1">...</li>
-          <li id="planCircleLi2">...</li>
-          <li id="planCircleLi3">...</li>
-        </ul>
-        <div class="order-bump" data-plan="circle">
-          <label class="bump-item">
-            <input type="checkbox" class="bump-check" data-plan="circle" data-bump="webinar" data-price-intl="24.99" data-price-ua="999">
-            <span class="bump-text"><b class="i18n" data-key="bumpWebinarLabel">Добавить Вебинар-разбор «Почему он ушёл на самом деле: Мужской взгляд»</b><span class="bump-price">за <b class="bump-new">$24.99</b> <s class="bump-old">$44.99</s></span></span>
-          </label>
-          <div class="order-total" data-order-total="circle"><span class="i18n" data-key="bumpOrderTotal">Итого к оплате</span><span class="ot-sum"></span></div>
-        </div>
-        <div class="plan-pay">
-          <a href="#" class="plan-btn" data-plan="circle" id="planCircleBtn">Присоединиться</a>
-          <a href="#" class="pay-secondary" data-plan="circle" id="planCircleBtnAlt">Оплатить картой (Stripe)</a>
-          <div class="pay-icons-mini" id="payIconsCircle" aria-label="Способы оплаты: карта, Apple Pay, Google Pay">
-            <span class="pay-icon" title="Карта"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><rect x="1" y="7" width="36" height="4" fill="#b8860b"/><rect x="5" y="16" width="10" height="2.4" rx="1.2" fill="#b8860b" opacity="0.7"/></svg></span>
-            <span class="pay-icon" title="Apple Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M13.2 9.3c-.5.6-1.3 1.1-2.1 1-.1-.8.3-1.7.7-2.2.5-.6 1.4-1.1 2.1-1.1.1.9-.2 1.7-.7 2.3zm.7 1.1c-1.2-.1-2.2.7-2.7.7-.6 0-1.4-.6-2.4-.6-1.2 0-2.4.7-3 1.9-1.3 2.2-.3 5.5.9 7.3.6.9 1.3 1.9 2.3 1.8.9 0 1.3-.6 2.4-.6s1.4.6 2.4.6c1 0 1.6-.9 2.3-1.8.7-1 1-2 1-2-.1 0-1.9-.7-1.9-2.8 0-1.7 1.4-2.6 1.5-2.6-.8-1.2-2.1-1.3-2.5-1.4-.1 0-.2 0-.3.1zm5.6-2v13.4h1.9v-4.6h2.9c2.6 0 4.5-1.8 4.5-4.4s-1.8-4.4-4.4-4.4h-4.9zm1.9 1.6h2.4c1.8 0 2.8 1 2.8 2.8s-1 2.8-2.9 2.8h-2.3V10z" fill="#b8860b"/></svg></span>
-            <span class="pay-icon" title="Google Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M17.6 12.1v2.5h3.5c-.2 1.1-1.3 3.2-3.5 3.2-2.1 0-3.8-1.7-3.8-3.9s1.7-3.9 3.8-3.9c1.2 0 2 .5 2.5.9l1.7-1.6c-1.1-1-2.5-1.6-4.2-1.6-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2c3.6 0 5.9-2.5 5.9-6.1 0-.4 0-.7-.1-1h-5.8z" fill="#b8860b"/><text x="24.5" y="15.4" font-family="Manrope, sans-serif" font-size="6.2" fill="#b8860b" font-weight="700">Pay</text></svg></span>
-          </div>
-        </div>
-      </div>
-
       <div class="plan" data-tier="personal">
         <div class="plan-name" id="planPersonalName">Интенсив + Личный разбор</div>
         <div class="plan-desc" id="planPersonalDesc">...</div>
@@ -1086,7 +1057,7 @@ function render(region){
   setText('planBasicName', c.planBasicName); setText('planBasicDesc', c.planBasicDesc); setText('planBasicNote', c.planBasicNote);
   setText('planBasicLi1', c.planBasicLi1); setText('planBasicLi2', c.planBasicLi2); setText('planBasicLi3', c.planBasicLi3); setText('planBasicBtn', c.planBasicBtn);
 
-  document.querySelector('.plan.featured').setAttribute('data-badge', c.planCircleBadge);
+  const __featuredPlan = document.querySelector('.plan.featured'); if(__featuredPlan) __featuredPlan.setAttribute('data-badge', c.planCircleBadge);
   setText('planCircleName', c.planCircleName); setText('planCircleDesc', c.planCircleDesc); setText('planCircleNote', c.planCircleNote);
   setText('planCircleLi1', c.planCircleLi1); setText('planCircleLi2', c.planCircleLi2); setText('planCircleLi3', c.planCircleLi3); setText('planCircleBtn', c.planCircleBtn);
 
