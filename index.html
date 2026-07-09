@@ -748,7 +748,7 @@
         </div>
         <div class="plan-pay">
           <a href="#" class="plan-btn" data-plan="basic" id="planBasicBtn">Взять интенсив</a>
-          <a href="#" class="pay-secondary" data-plan="basic" id="planBasicBtnAlt">Оплатить картой (Stripe)</a>
+          <a href="#" class="pay-secondary" data-plan="basic" id="planBasicBtnAlt">Оплатить</a>
           <div class="pay-icons-mini" id="payIconsBasic" aria-label="Способы оплаты: карта, Apple Pay, Google Pay">
             <span class="pay-icon" title="Карта"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><rect x="1" y="7" width="36" height="4" fill="#b8860b"/><rect x="5" y="16" width="10" height="2.4" rx="1.2" fill="#b8860b" opacity="0.7"/></svg></span>
             <span class="pay-icon" title="Apple Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M13.2 9.3c-.5.6-1.3 1.1-2.1 1-.1-.8.3-1.7.7-2.2.5-.6 1.4-1.1 2.1-1.1.1.9-.2 1.7-.7 2.3zm.7 1.1c-1.2-.1-2.2.7-2.7.7-.6 0-1.4-.6-2.4-.6-1.2 0-2.4.7-3 1.9-1.3 2.2-.3 5.5.9 7.3.6.9 1.3 1.9 2.3 1.8.9 0 1.3-.6 2.4-.6s1.4.6 2.4.6c1 0 1.6-.9 2.3-1.8.7-1 1-2 1-2-.1 0-1.9-.7-1.9-2.8 0-1.7 1.4-2.6 1.5-2.6-.8-1.2-2.1-1.3-2.5-1.4-.1 0-.2 0-.3.1zm5.6-2v13.4h1.9v-4.6h2.9c2.6 0 4.5-1.8 4.5-4.4s-1.8-4.4-4.4-4.4h-4.9zm1.9 1.6h2.4c1.8 0 2.8 1 2.8 2.8s-1 2.8-2.9 2.8h-2.3V10z" fill="#b8860b"/></svg></span>
@@ -771,7 +771,7 @@
         <div class="spots-left" id="spotsLeft">Осталось всего 5 мест в этом потоке</div>
         <div class="plan-pay">
           <a href="#" class="plan-btn" data-plan="personal" id="planPersonalBtn">Получить разбор</a>
-          <a href="#" class="pay-secondary" data-plan="personal" id="planPersonalBtnAlt">Оплатить картой (Stripe)</a>
+          <a href="#" class="pay-secondary" data-plan="personal" id="planPersonalBtnAlt">Оплатить</a>
           <div class="pay-icons-mini" id="payIconsPersonal" aria-label="Способы оплаты: карта, Apple Pay, Google Pay">
             <span class="pay-icon" title="Карта"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><rect x="1" y="7" width="36" height="4" fill="#b8860b"/><rect x="5" y="16" width="10" height="2.4" rx="1.2" fill="#b8860b" opacity="0.7"/></svg></span>
             <span class="pay-icon" title="Apple Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M13.2 9.3c-.5.6-1.3 1.1-2.1 1-.1-.8.3-1.7.7-2.2.5-.6 1.4-1.1 2.1-1.1.1.9-.2 1.7-.7 2.3zm.7 1.1c-1.2-.1-2.2.7-2.7.7-.6 0-1.4-.6-2.4-.6-1.2 0-2.4.7-3 1.9-1.3 2.2-.3 5.5.9 7.3.6.9 1.3 1.9 2.3 1.8.9 0 1.3-.6 2.4-.6s1.4.6 2.4.6c1 0 1.6-.9 2.3-1.8.7-1 1-2 1-2-.1 0-1.9-.7-1.9-2.8 0-1.7 1.4-2.6 1.5-2.6-.8-1.2-2.1-1.3-2.5-1.4-.1 0-.2 0-.3.1zm5.6-2v13.4h1.9v-4.6h2.9c2.6 0 4.5-1.8 4.5-4.4s-1.8-4.4-4.4-4.4h-4.9zm1.9 1.6h2.4c1.8 0 2.8 1 2.8 2.8s-1 2.8-2.9 2.8h-2.3V10z" fill="#b8860b"/></svg></span>
@@ -1271,18 +1271,18 @@ function render(region){
     btn.setAttribute('target', '_blank');
     btn.setAttribute('rel', 'noopener');
     if(paymentMode === 'wayforpay'){
-      btn.innerHTML = '<span class="pay-main">Оплатити карткою</span><span class="pay-sub">WayForPay</span>';
+      btn.innerHTML = '<span class="pay-main">Сплатити</span>';
     } else if(paymentMode === 'stripe_paypal'){
-      btn.innerHTML = '<span class="pay-main">Оплатить картой</span><span class="pay-sub">Stripe</span>';
+      btn.innerHTML = '<span class="pay-main">Оплатить</span>';
     } else {
-      btn.innerHTML = '<span class="pay-main">Оплатить</span><span class="pay-sub">PayPal</span>';
+      btn.innerHTML = '<span class="pay-main">Оплатить</span>';
     }
   });
   document.querySelectorAll('.pay-secondary').forEach(a => {
     a.setAttribute('target', '_blank');
     a.setAttribute('rel', 'noopener');
     if(paymentMode === 'stripe_paypal'){
-      a.innerHTML = '<span class="pay-main">Оплатить</span><span class="pay-sub">PayPal</span>';
+      a.innerHTML = '<span class="pay-main">Оплатить</span>';
       // visibility (shown/hidden per combo availability) is set in updatePlanButtonHref
     } else {
       a.style.display = 'none';
