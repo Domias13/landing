@@ -202,11 +202,8 @@
 
   .urgency{ text-align:center; background:rgba(192,57,43,0.06); padding:44px 24px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
   .urgency .eyebrow{ color:var(--crimson); }
-  .urgency h3{ font-size:clamp(19px,3vw,26px); margin:12px 0 20px; color:var(--ink); }
-  .timer{ display:flex; gap:16px; justify-content:center; margin-bottom:20px; }
-  .timer .box{ text-align:center; }
-  .timer .num{ font-family:'Playfair Display',serif; font-size:30px; font-weight:700; color:var(--crimson); min-width:52px; }
-  .timer .lbl{ font-size:10px; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); }
+  .urgency h3{ font-size:clamp(19px,3vw,26px); margin:12px 0 14px; color:var(--ink); }
+  .urgency-sub{ font-size:14.5px; color:var(--muted); max-width:440px; margin:0 auto 22px; }
 
   .faq{ max-width:720px; margin:0 auto; background:#fff; border:1px solid var(--line); border-radius:6px; overflow:hidden; }
   .faq-item{ border-bottom:1px solid var(--line); }
@@ -287,12 +284,7 @@
   .author-stat .stat-num{ font-family:'Playfair Display',serif; font-size:26px; font-weight:700; color:var(--gold); }
   .author-stat .stat-lbl{ font-size:12px; color:var(--muted); max-width:140px; line-height:1.3; }
 
-  /* ---- live counter / scarcity ---- */
-  .live-row{ display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:18px; }
-  .live-chip{ display:inline-flex; align-items:center; gap:7px; background:#fff; border:1px solid var(--line); border-radius:20px; padding:8px 14px; font-size:12.5px; font-weight:600; color:var(--ink); }
-  .live-dot{ width:7px; height:7px; border-radius:50%; background:#3fae5c; animation:live-pulse 1.6s ease-in-out infinite; }
-  @keyframes live-pulse{ 0%,100%{opacity:1} 50%{opacity:.35} }
-  .scarcity-line{ margin-top:10px; font-size:12.5px; color:var(--crimson); font-weight:700; }
+  /* (live visitor counter / scarcity-line removed — replaced by evergreen deadline copy) */
 
   /* ---- testimonials groups / screenshots ---- */
   .testi-group{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:18px; }
@@ -677,6 +669,10 @@
       </div>
     </div>
 
+    <div class="show-more-wrap">
+      <button class="show-more-btn" id="showMoreBtn" type="button" data-stage="0">Показать ещё отзывы</button>
+    </div>
+
     <div class="proof-gallery" id="proofGallery" hidden>
       <img src="https://i.ibb.co/qYwk49gQ/Screenshot-20260304-063819.png" alt="Скриншот переписки" loading="lazy">
       <img src="https://i.ibb.co/twZX8kcs/Screenshot-20260304-063655.png" alt="Скриншот переписки" loading="lazy">
@@ -697,10 +693,6 @@
 	        <div class="video-testi">
         <video controls preload="metadata" playsinline src="https://raw.githubusercontent.com/Domias13/landing/main/src/video4.mp4"></video>
       </div>
-    </div>
-
-    <div class="show-more-wrap">
-      <button class="show-more-btn" id="showMoreBtn" type="button" data-stage="0">Показать ещё отзывы</button>
     </div>
 
     <p class="testi-disclaimer"><!-- ROMAN: замени на реальные отзывы и реальные скриншоты переписок участниц перед публикацией --></p>
@@ -768,7 +760,7 @@
           <li id="planPersonalLi2">...</li>
           <li id="planPersonalLi3">...</li>
         </ul>
-        <div class="spots-left" id="spotsLeft">Осталось всего 5 мест в этом потоке</div>
+        <div class="spots-left" id="spotsLeft">Беру только 10 человек в месяц — каждый кейс разбираю лично</div>
         <div class="plan-pay">
           <a href="#" class="plan-btn" data-plan="personal" id="planPersonalBtn">Получить разбор</a>
           <a href="#" class="pay-secondary" data-plan="personal" id="planPersonalBtnAlt">Оплатить</a>
@@ -785,18 +777,9 @@
 
 <section class="urgency">
   <div class="eyebrow" id="urgencyEyebrow">Ограниченный доступ</div>
-  <h3 id="urgencyH3">Набор в этот поток закрывается через</h3>
-  <div class="timer">
-    <div class="box"><div class="num" id="t-hours">23</div><div class="lbl" id="lblHours">часа</div></div>
-    <div class="box"><div class="num" id="t-min">59</div><div class="lbl" id="lblMin">мин</div></div>
-    <div class="box"><div class="num" id="t-sec">59</div><div class="lbl" id="lblSec">сек</div></div>
-  </div>
+  <h3 id="urgencyH3">Набор закрывается в воскресенье</h3>
+  <p class="urgency-sub" id="urgencySub">Новый поток стартует каждую неделю. Успей начать до закрытия текущего набора.</p>
   <a href="#pricing" class="cta-primary" id="urgencyCta">Успеть попасть в поток</a>
-  <div class="live-row">
-    <span class="live-chip"><span class="live-dot"></span><span id="liveCounterText">Сейчас на сайте: 42 женщины</span></span>
-  </div>
-  <div class="scarcity-line" id="scarcityLine">Ограничено количество мест с сопровождением</div>
-  <div class="scarcity-line" id="scarcityLine2">Места с личным разбором ограничены</div>
 </section>
 
 <section class="section">
@@ -919,8 +902,8 @@ const CONTENT = {
     planCircleLi1:'Всё из тарифа «Интенсив»', planCircleLi2:'Практикум «Про женщину, которая влюбляет навсегда»', planCircleLi3:'Практические упражнения и разборы', planCircleBtn:'Оплатить',
     planPersonalName:'Интенсив + Личный разбор', planPersonalDesc:'Курс плюс разбор именно твоей ситуации - особенно если у него уже кто-то есть или ты не знаешь, с чего начать прямо сейчас.', planPersonalNote:'разовый платёж',
     planPersonalLi1:'Всё из тарифа «Интенсив»', planPersonalLi2:'Личный разбор твоей ситуации', planPersonalLi3:'Конкретный разбор твоей ситуации', planPersonalLi4:'Конкретный разбор твоей ситуации', planPersonalBtn:'Оплатить',
-    urgencyEyebrow:'Ограниченный доступ', urgencyH3:'Набор в этот поток закрывается через', urgencyCta:'Успеть попасть в поток',
-    lblHours:'часа', lblMin:'мин', lblSec:'сек',
+    urgencyEyebrow:'Ограниченный доступ', urgencyH3:'Набор закрывается в воскресенье', urgencyCta:'Успеть попасть в поток',
+    urgencySub:'Новый поток стартует каждую неделю. Успей начать до закрытия текущего набора.',
     faqEyebrow:'Вопросы', faqH2:'Прежде чем начать',
     faqQ1:'Сколько времени это займёт?', faqA1:'15–20 минут в день, семь дней подряд. Первый эффект - уже в первые сутки: тяга проверять его страницу заметно слабеет. Можно слушать по дороге на работу, во время готовки, перед сном.',
     faqQ2:'Мы расстались давно, мне подойдёт?', faqA2:'Да, подойдёт. Тут не важно, сколько прошло времени - важно, в какой точке ты находишься сейчас, по отношению к себе и к нему.',
@@ -934,7 +917,7 @@ const CONTENT = {
     painTags:['Заходишь к нему на страницу по десятому разу за день?','Стыдно за сообщения, которые писала после расставания?','У него уже кто-то есть?','Ждёшь уведомление, которое не приходит?','Хочешь, чтобы он наконец пожалел?'],
     mindreadLabel:'Я точно знаю, что ты делаешь прямо сейчас',
     mindreadText:'Проверяешь, когда он последний раз был в сети, по триста раз в сутки. Заходишь к нему в профиль с фейка, чтобы не спалиться. Мысленно споришь с ним, договариваешь то, что не успела сказать вслух. А потом стыдно, что снова сорвалась. Через это проходят все - и после интенсива все из этого выходят.',
-    spotsLeft:'Осталось всего {n} мест в этом потоке', scarcityLine2:'На личный разбор мест совсем немного',
+    spotsLeft:'Беру только 10 человек в месяц — каждый кейс разбираю лично',
     excludeEyebrow:'Если честно', excludeH2:'Кому это НЕ подходит',
     excludeText:'Ищешь утешение, разговоры про то, что время лечит, и подтверждение, что само пройет? Закрывай вкладку, это не сюда. Здесь - для тех, кто хочет избавиться от стыд за прошлые сообщения и унижения, вернуть себе лицо и сделать так, чтобы  жалел он. Без писанины по 40 минут в день и работы с психотерапевтом на полгода вперёд.',
     happensEyebrow:'Что происходит, когда действуешь правильно', happensH2:'У него случается когнитивный диссонанс.',
@@ -953,7 +936,6 @@ const CONTENT = {
     testi8Badge:'3 месяца бегала, ждала, умоляла. ', testi8Text:'«А теперь пишет он первым, почти каждое утро цветы.»', testi8Who:'Света, 47',
     testi9Badge:'Мы снова вместе', testi9Text:'«Через месяц он сам предложил встретиться. Он что-то чувствует.»', testi9Who:'Аня, 51',
     showMoreBtn1:'Показать ещё отзывы', showMoreBtn2:'Показать ещё отзывы', showMoreBtnDone:'Все отзывы показаны',
-    liveCounterText:'Сейчас на сайте: {n} женщины', scarcityLine:'Ограничено количество мест с сопровождением',
     stickyLabel:'Начни сегодня', stickySub:'7 дней · доступ навсегда', stickyCta:'Получить доступ'
   },
   ua: {
@@ -1003,8 +985,8 @@ const CONTENT = {
     planCircleLi1:'Все з тарифу «Інтенсив»', planCircleLi2:'Практикум «Про жінку, яка закохує назавжди»', planCircleLi3:'Практичні вправи та розбори', planCircleBtn:'Приєднатися',
     planPersonalName:'Інтенсив + Особистий розбір', planPersonalDesc:'Курс плюс розбір саме твоєї ситуації, якщо ти вважаєш, що інтенсиву недостатньо.', planPersonalNote:'одноразовий платіж',
     planPersonalLi1:'Все з тарифу «Інтенсив»', planPersonalLi2:'Особистий розбір твоєї ситуації', planPersonalLi3:'Конкретний розбір твоєї ситуації та конкретні кроки під твою ситуацію', planPersonalBtn:'Отримати розбір',
-    urgencyEyebrow:'Обмежений доступ', urgencyH3:'Набір у цей потік закривається через', urgencyCta:'Встигнути потрапити в потік',
-    lblHours:'год', lblMin:'хв', lblSec:'сек',
+    urgencyEyebrow:'Обмежений доступ', urgencyH3:'Набір закривається в неділю', urgencyCta:'Встигнути потрапити в потік',
+    urgencySub:'Новий потік стартує щотижня. Встигни почати до закриття поточного набору.',
     faqEyebrow:'Питання', faqH2:'Перш ніж почати',
     faqQ1:'Скільки часу це займе?', faqA1:'15-20 хвилин на день, сім днів поспіль. Можна слухати по дорозі на роботу, під час готування, перед сном - життя на паузу ставити не доведеться.',
     faqQ2:'Ми розлучилися давно, мені підійде?', faqA2:'Так, підійде. Тут не важливо, скільки минуло часу - важливо, в якій точці ти перебуваєш зараз, стосовно себе і стосовно нього.',
@@ -1018,7 +1000,7 @@ const CONTENT = {
     painTags:['Він ігнорує повідомлення?','Заблокував у соцмережах?','Сказав, що почуття охололи?','Він вже звикає жити без тебе','Що не день ви стаєте для нього дальші'],
     mindreadLabel:'Я точно знаю, що ти робиш просто зараз',
     mindreadText:'Перевіряєш, коли він востаннє був у мережі, по триста разів на добу. Передивляєшся сторіз, хоча там нема на що дивитися. Заходиш до нього в профіль із фейка, щоб не спалитися. Чекаєш сповіщення, яке не приходить уже котрий тиждень. Через це проходять майже всі.',
-    spotsLeft:'Залишилось всього {n} місць у цьому потоці', scarcityLine2:'На особистий розбір місць зовсім небагато',
+    spotsLeft:'Беру лише 10 людей на місяць — кожен кейс розбираю особисто',
     excludeEyebrow:'Чесно кажучи', excludeH2:'Кому це НЕ підходить',
     excludeText:'Шукаєш втіху, розмови про те, що час лікує, і підтвердження, що все минеться само собою? Закривай цю вкладку - тобі не сюди. Тут - для тих, хто хоче позбутися сорому за минулі повідомлення й приниження, повернути собі гідність і зробити так, щоб шкодував він. Без листування по 40 хвилин на день і без пів року психотерапії.',
     happensEyebrow:'Що відбувається, коли діяти правильно', happensH2:'У нього виникає когнітивний дисонанс.',
@@ -1037,7 +1019,6 @@ const CONTENT = {
     testi8Badge:'3 місяці бігала, чекала, благала.', testi8Text:'«А тепер першим пише він, майже щоранку. Квіти.»', testi8Who:'Світлана, 47',
     testi9Badge:'Ми знову разом', testi9Text:'«Через місяць він сам запропонував зустрітися. Він щось відчуває.»', testi9Who:'Аня, 51',
     showMoreBtn1:'Показати ще відгуки', showMoreBtn2:'Показати ще відгуки', showMoreBtnDone:'Усі відгуки показано',
-    liveCounterText:'Зараз на сайті: {n} жінки', scarcityLine:'Обмежена кількість місць із супроводом',
     stickyLabel:'Почни сьогодні', stickySub:'7 днів · доступ назавжди', stickyCta:'Отримати доступ'
   }
 };
@@ -1213,7 +1194,7 @@ function render(region){
   setText('planPersonalLi1', c.planPersonalLi1); setText('planPersonalLi2', c.planPersonalLi2); setText('planPersonalLi3', c.planPersonalLi3); setText('planPersonalBtn', c.planPersonalBtn);
 
   setText('urgencyEyebrow', c.urgencyEyebrow); setText('urgencyH3', c.urgencyH3); setText('urgencyCta', c.urgencyCta);
-  setText('lblHours', c.lblHours); setText('lblMin', c.lblMin); setText('lblSec', c.lblSec);
+  setText('urgencySub', c.urgencySub);
 
   setText('faqEyebrow', c.faqEyebrow); setText('faqH2', c.faqH2);
   for(let i=1;i<=5;i++){ setText('faqQ'+i, c['faqQ'+i]); setText('faqA'+i, c['faqA'+i]); }
@@ -1231,10 +1212,8 @@ function render(region){
   // exclusion / qualifier block
   setText('excludeEyebrow', c.excludeEyebrow); setText('excludeH2', c.excludeH2); setText('excludeText', c.excludeText);
 
-  // scarcity
-  setText('scarcityLine', c.scarcityLine); setText('scarcityLine2', c.scarcityLine2);
-  window.__spotsLeftTemplate = c.spotsLeft;
-  updateSpotsLeftText();
+  // scarcity (personal plan only — honest monthly quota, not a fake counter)
+  setText('spotsLeft', c.spotsLeft);
 
   // what-happens block
   setText('happensEyebrow', c.happensEyebrow); setText('happensH2', c.happensH2);
@@ -1251,9 +1230,7 @@ function render(region){
 
   // sticky bar
   setText('stickyLabel', c.stickyLabel); setText('stickySub', c.stickySub); setText('stickyCta', c.stickyCta);
-  window.__liveCounterTemplate = c.liveCounterText;
   window.__showMoreLabels = { s1: c.showMoreBtn1, s2: c.showMoreBtn2, done: c.showMoreBtnDone };
-  updateLiveCounterText();
   updateShowMoreLabel();
 
   // prices
@@ -1350,29 +1327,7 @@ gtag('js', new Date());
 gtag('config', 'G-QCMC7J0KG1');
 function track(event, params){ try{ gtag('event', event, params || {}); }catch(e){} }
 
-/* ==================== live visitor counter ==================== */
-// Simulated social-proof counter (not tied to real analytics) - fluctuates within a plausible range
-let liveCount = 38 + Math.floor(Math.random() * 12);
-function updateLiveCounterText(){
-  const tpl = window.__liveCounterTemplate || 'Сейчас на сайте: {n} женщины';
-  const el = document.getElementById('liveCounterText');
-  if(el) el.textContent = tpl.replace('{n}', liveCount);
-}
-setInterval(() => {
-  liveCount += Math.floor(Math.random() * 5) - 2;
-  if(liveCount < 28) liveCount = 28;
-  if(liveCount > 57) liveCount = 57;
-  updateLiveCounterText();
-}, 4500);
-
-/* ==================== spots left (personal plan) ==================== */
-// Fixed per page-load, kept modest and plausible - not a live inventory feed
-const spotsLeftCount = 3 + Math.floor(Math.random() * 4); // 3..6
-function updateSpotsLeftText(){
-  const tpl = window.__spotsLeftTemplate || 'Осталось всего {n} мест в этом потоке';
-  const el = document.getElementById('spotsLeft');
-  if(el) el.textContent = tpl.replace('{n}', spotsLeftCount);
-}
+/* (live visitor counter removed — was simulated/fake social proof) */
 
 /* ==================== progressive testimonials reveal ==================== */
 function updateShowMoreLabel(){
@@ -1552,19 +1507,7 @@ const io = new IntersectionObserver(entries => {
 }, { threshold:0.5 });
 io.observe(document.getElementById('sealBlock'));
 
-// Resets on each visit by design (kept in memory only, no browser storage)
-const deadline = Date.now() + (23*3600 + 59*60 + 59)*1000;
-function tick(){
-  const diff = Math.max(0, deadline - Date.now());
-  const h = Math.floor(diff / 3600000);
-  const m = Math.floor((diff % 3600000) / 60000);
-  const s = Math.floor((diff % 60000) / 1000);
-  document.getElementById('t-hours').textContent = String(h).padStart(2,'0');
-  document.getElementById('t-min').textContent = String(m).padStart(2,'0');
-  document.getElementById('t-sec').textContent = String(s).padStart(2,'0');
-  if(diff > 0){ requestAnimationFrame(() => setTimeout(tick, 250)); }
-}
-tick();
+// (fake reset-on-visit countdown timer removed — deadline is now the evergreen 'closes Sunday' copy)
 </script>
 
 <!-- Yandex.Metrika counter -->
