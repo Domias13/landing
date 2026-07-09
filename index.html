@@ -205,6 +205,14 @@
   .urgency h3{ font-size:clamp(19px,3vw,26px); margin:12px 0 14px; color:var(--ink); }
   .urgency-sub{ font-size:14.5px; color:var(--muted); max-width:440px; margin:0 auto 22px; }
 
+  .trust-strip{ display:flex; justify-content:center; gap:28px; flex-wrap:wrap; margin-top:40px; padding-top:32px; border-top:1px solid var(--line); }
+  .trust-item{ display:flex; align-items:flex-start; gap:10px; max-width:230px; }
+  .trust-icon{ width:22px; height:22px; flex-shrink:0; color:var(--gold); margin-top:1px; }
+  .trust-item b{ display:block; font-size:13px; color:var(--ink); margin-bottom:3px; }
+  .trust-item span{ display:block; font-size:12px; color:var(--muted); line-height:1.4; }
+  .trust-item a{ color:var(--crimson); text-decoration:underline; }
+  @media (max-width:820px){ .trust-strip{ gap:22px; } .trust-item{ max-width:280px; } }
+
   .faq{ max-width:720px; margin:0 auto; background:#fff; border:1px solid var(--line); border-radius:6px; overflow:hidden; }
   .faq-item{ border-bottom:1px solid var(--line); }
   .faq-item:last-child{ border-bottom:none; }
@@ -409,6 +417,23 @@
   .exit-modal h3{ font-family:'Playfair Display',serif; font-size:24px; margin-bottom:14px; }
   .exit-modal p{ font-size:14px; color:var(--muted); margin-bottom:22px; line-height:1.6; }
   .exit-modal .cta-primary{ display:inline-block; }
+
+  /* ---- public offer modal ---- */
+  .offer-overlay{ position:fixed; inset:0; background:rgba(20,15,10,0.7); z-index:210; display:none; align-items:center; justify-content:center; padding:20px; }
+  .offer-overlay.show{ display:flex; }
+  .offer-modal{ background:var(--bg-card); max-width:640px; width:100%; max-height:85vh; border-radius:10px; position:relative; box-shadow:0 30px 70px rgba(0,0,0,0.35); display:flex; flex-direction:column; }
+  .offer-modal-head{ padding:26px 50px 18px 32px; border-bottom:1px solid var(--line); flex-shrink:0; }
+  .offer-modal-head h2{ font-family:'Playfair Display',serif; font-size:21px; color:var(--ink); }
+  .offer-close{ position:absolute; top:16px; right:18px; font-size:22px; color:var(--muted); cursor:pointer; line-height:1; background:none; border:none; }
+  .offer-modal-body{ padding:22px 32px 32px; overflow-y:auto; }
+  .offer-modal-body h3{ font-size:14.5px; color:var(--crimson); margin:20px 0 8px; }
+  .offer-modal-body h3:first-child{ margin-top:0; }
+  .offer-modal-body p{ font-size:13.5px; color:var(--muted); line-height:1.65; margin-bottom:10px; }
+  .offer-modal-body ol, .offer-modal-body ul{ margin:0 0 10px 18px; }
+  .offer-modal-body li{ font-size:13.5px; color:var(--muted); line-height:1.6; margin-bottom:6px; }
+  .offer-modal-body a{ color:var(--crimson); text-decoration:underline; }
+  .offer-modal-body .offer-date{ margin-top:16px; font-size:12px; color:var(--light); }
+  @media (max-width:600px){ .offer-modal{ max-height:90vh; } .offer-modal-head{ padding:22px 44px 16px 22px; } .offer-modal-body{ padding:18px 22px 26px; } }
 
   /* ---- telegram floating widget ---- */
   .tg-widget{ position:fixed; right:20px; bottom:20px; z-index:150; display:flex; align-items:center; }
@@ -772,6 +797,21 @@
         </div>
       </div>
     </div>
+
+    <div class="trust-strip">
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.5"/></svg>
+        <div><b id="trustGuaranteeTitle">Гарантия возврата 7 дней</b><span id="trustGuaranteeText">Не подошло — вернём деньги в течение 7 дней, без лишних вопросов</span></div>
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none"><rect x="5" y="10.5" width="14" height="10" rx="1.8" stroke="currentColor" stroke-width="1.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div><b id="trustSecurityTitle">Безопасная оплата</b><span id="trustSecurityText">SSL-шифрование 256 бит. Данные карты не хранятся на сайте</span></div>
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none"><path d="M6 3.5h9l3 3v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-16a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8.5 11h7M8.5 14.5h7M8.5 18h4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <div><b id="trustOfferTitle">Прозрачные условия</b><span id="trustOfferText">Все условия покупки — в <a href="#" id="offerLink" target="_blank" rel="noopener">публичной оферте</a></span></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -830,7 +870,7 @@
 <footer>
   <div id="footerLine">© 2026 back4heart. Все права защищены.</div>
   <div style="margin-top:8px;"><span id="footerContact">Вопросы? Пиши в Telegram:</span> <a href="https://t.me/back4heart" target="_blank" rel="noopener">back4heart</a></div>
-  <div style="margin-top:8px;"><a href="#" id="footerTerms">Условия использования</a> · <a href="#" id="footerPrivacy">Политика конфиденциальности</a></div>
+  <div style="margin-top:8px;"><a href="#" id="footerOffer">Публичная оферта</a> · <a href="#" id="footerTerms">Условия использования</a> · <a href="#" id="footerPrivacy">Политика конфиденциальности</a></div>
 </footer>
 
 <div class="tg-widget" id="tgWidget">
@@ -847,6 +887,16 @@
     <h3 id="exitH3">Не готова на интенсив целиком?</h3>
     <p id="exitText">Держи 1-й день бесплатно - попробуй технику, которая уже за сутки снимает тягу мониторить его страницу и избавит от навязчивых мыслей.</p>
     <a href="https://t.me/back4heartquizbot" target="_blank" rel="noopener" class="cta-primary" id="exitCta">Получить 1-й день бесплатно</a>
+  </div>
+</div>
+
+<div class="offer-overlay" id="offerOverlay">
+  <div class="offer-modal" role="dialog" aria-modal="true" aria-labelledby="offerModalTitle">
+    <div class="offer-modal-head">
+      <h2 id="offerModalTitle">Публичная оферта</h2>
+      <button class="offer-close" id="offerClose" aria-label="Закрыть">×</button>
+    </div>
+    <div class="offer-modal-body" id="offerModalBody"></div>
   </div>
 </div>
 
@@ -911,8 +961,43 @@ const CONTENT = {
     faqQ4:'Доступ будет навсегда?', faqA4:'Да. Уроки остаются с тобой навсегда, переслушивай, когда захочешь.',
     faqQ5:'Это анонимно?', faqA5:'Да, на сто процентов. Всё приходит на почту, никаких публичных отметок и подтверждений.',
     finalEyebrow:'Решение за тобой', finalH2:'Представь его лицо, когда он поймёт, кого потерял', finalSub:'Первые изменения - уже через 24–48 часов. Через неделю это будет не мысль, а факт.', finalCta:'Хочу, чтобы он пожалел',
-    footerLine:'© 2026 back4heart. Все права защищены.', footerTerms:'Условия использования', footerPrivacy:'Политика конфиденциальности',
+    footerLine:'© 2026 back4heart. Все права защищены.', footerTerms:'Условия использования', footerPrivacy:'Политика конфиденциальности', footerOffer:'Публичная оферта',
     footerContact:'Вопросы? Пиши в Telegram:', payNote:'Оплатить можно картой, Apple Pay и Google Pay', faqContactText:'Не нашла ответ? Пиши в Telegram:',
+    trustGuaranteeTitle:'Гарантия возврата 7 дней', trustGuaranteeText:'Не подошло — вернём деньги в течение 7 дней, без лишних вопросов',
+    trustSecurityTitle:'Безопасная оплата', trustSecurityText:'SSL-шифрование 256 бит. Данные карты не хранятся на сайте',
+    trustOfferTitle:'Прозрачные условия', trustOfferText:'Все условия покупки — в <a href="#" id="offerLink" target="_blank" rel="noopener">публичной оферте</a>',
+    offerModalTitle:'Публичная оферта',
+    offerModalBody: `
+      <h3>1. Общие положения</h3>
+      <p>Настоящий документ является публичной офертой Романа Вейл, автора и владельца проекта back4heart (далее — «Продавец»), и содержит существенные условия договора на приобретение цифровых информационных продуктов, размещённых на сайте back4heart.site (далее — «Сайт»).</p>
+      <p>Оплата заказа на Сайте означает полное и безоговорочное принятие условий настоящей оферты (акцепт).</p>
+      <h3>2. Предмет договора</h3>
+      <p>Продавец предоставляет Покупателю доступ к выбранному и оплаченному цифровому продукту (аудиоурокам, PDF-материалам, записям вебинаров, персональному разбору ситуации), а Покупатель оплачивает его стоимость в порядке, установленном настоящей офертой.</p>
+      <h3>3. Порядок заказа и оплаты</h3>
+      <ol>
+        <li>Заказ оформляется на Сайте: Покупатель выбирает продукт и нажимает кнопку оплаты.</li>
+        <li>Оплата производится банковской картой, через Apple Pay или Google Pay с использованием платёжных систем Stripe, PayPal или WayForPay — в зависимости от региона Покупателя.</li>
+        <li>Доступ к материалам предоставляется автоматически на email, указанный при оплате, и/или высылается в Telegram в течение 24 часов после подтверждения оплаты.</li>
+      </ol>
+      <h3>4. Гарантия возврата средств</h3>
+      <p>Покупатель вправе отказаться от продукта и запросить полный возврат уплаченных денежных средств в течение 7 (семи) календарных дней с момента оплаты, если материалы не подошли по любой причине.</p>
+      <p>Для возврата средств нужно написать в Telegram: <a href="https://t.me/back4heart" target="_blank" rel="noopener">t.me/back4heart</a>, указав дату и способ оплаты. Возврат производится тем же способом, которым была произведена оплата, в течение 5–10 рабочих дней.</p>
+      <h3>5. Права на материалы</h3>
+      <p>Все материалы (аудио, тексты, PDF) являются объектом интеллектуальной собственности Продавца и предоставляются Покупателю исключительно для личного использования. Копирование, распространение, публикация и передача материалов третьим лицам без письменного согласия Продавца запрещены.</p>
+      <h3>6. Ограничение ответственности</h3>
+      <p>Материалы Сайта носят информационный и образовательный характер и не являются медицинской, психиатрической или психотерапевтической помощью. Продавец не является практикующим психологом или врачом. Результаты применения методик индивидуальны — Продавец не гарантирует конкретного результата, включая возобновление отношений.</p>
+      <p>При наличии признаков депрессии, суицидальных мыслей или иных серьёзных состояний психического здоровья необходимо обратиться за очной помощью к квалифицированному специалисту.</p>
+      <h3>7. Обработка персональных данных</h3>
+      <p>Оплачивая заказ, Покупатель даёт согласие на обработку своих персональных данных (имя, email, Telegram) в объёме, необходимом для исполнения заказа и связи с Покупателем. Данные не передаются третьим лицам, за исключением платёжных систем, обрабатывающих оплату.</p>
+      <h3>8. Безопасность платежей</h3>
+      <p>Оплата на Сайте производится через сертифицированных платёжных провайдеров (Stripe, PayPal, WayForPay), которые соответствуют стандарту безопасности PCI DSS. Соединение защищено SSL-шифрованием с длиной ключа 256 бит. Сайт back4heart.site не получает и не хранит данные банковских карт Покупателя — все платёжные данные вводятся непосредственно на защищённой странице платёжного провайдера.</p>
+      <h3>9. Прочие условия</h3>
+      <p>Продавец вправе вносить изменения в настоящую оферту в одностороннем порядке. Актуальная редакция всегда доступна на Сайте. Вопросы, не урегулированные офертой, решаются путём переговоров через Telegram.</p>
+      <h3>10. Контакты</h3>
+      <p>Продавец: Роман Вейл, проект back4heart<br>Сайт: back4heart.site<br>Telegram: <a href="https://t.me/back4heart" target="_blank" rel="noopener">t.me/back4heart</a></p>
+      <!-- ROMAN: впиши сюда официальные реквизиты (ФИО/ИП/самозанятый, ИНН, юр. адрес) — без них оферта не имеет полной юридической силы. Перед публикацией рекомендуем показать документ юристу. -->
+      <p class="offer-date">Дата последнего обновления: 9 июля 2026 г.</p>
+    `,
     tgContactText:'Остались вопросы? Пиши в Telegram.', tgBtnText:'Написать в Telegram',
     painTags:['Заходишь к нему на страницу по десятому разу за день?','Стыдно за сообщения, которые писала после расставания?','У него уже кто-то есть?','Ждёшь уведомление, которое не приходит?','Хочешь, чтобы он наконец пожалел?'],
     mindreadLabel:'Я точно знаю, что ты делаешь прямо сейчас',
@@ -994,8 +1079,43 @@ const CONTENT = {
     faqQ4:'Доступ буде назавжди?', faqA4:'Так. Уроки залишаються з тобою назавжди, переслуховуй, коли захочеш.',
     faqQ5:'Це анонімно?', faqA5:'Так, на всі сто. Все приходить на пошту, жодних публічних відміток і підтверджень.',
     finalEyebrow:'Рішення за тобою', finalH2:'Уяви його обличчя, коли він зрозуміє, кого втратив', finalSub:'Через тиждень це буде вже не думка, а факт.', finalCta:'Почати свої 7 днів',
-    footerLine:'© 2026 back4heart. Усі права захищені.', footerTerms:'Умови використання', footerPrivacy:'Політика конфіденційності',
+    footerLine:'© 2026 back4heart. Усі права захищені.', footerTerms:'Умови використання', footerPrivacy:'Політика конфіденційності', footerOffer:'Публічна оферта',
     footerContact:'Питання? Пиши в Telegram:', faqContactText:'Не знайшла відповідь? Пиши в Telegram:',
+    trustGuaranteeTitle:'Гарантія повернення 7 днів', trustGuaranteeText:'Не підійшло — повернемо гроші протягом 7 днів, без зайвих запитань',
+    trustSecurityTitle:'Безпечна оплата', trustSecurityText:'SSL-шифрування 256 біт. Дані картки не зберігаються на сайті',
+    trustOfferTitle:'Прозорі умови', trustOfferText:'Усі умови покупки — у <a href="#" id="offerLink" target="_blank" rel="noopener">публічній оферті</a>',
+    offerModalTitle:'Публічна оферта',
+    offerModalBody: `
+      <h3>1. Загальні положення</h3>
+      <p>Цей документ є публічною офертою Романа Вейл, автора та власника проєкту back4heart (далі — «Продавець»), і містить істотні умови договору на придбання цифрових інформаційних продуктів, розміщених на сайті back4heart.site (далі — «Сайт»).</p>
+      <p>Оплата замовлення на Сайті означає повне і беззастережне прийняття умов цієї оферти (акцепт).</p>
+      <h3>2. Предмет договору</h3>
+      <p>Продавець надає Покупцю доступ до обраного й оплаченого цифрового продукту (аудіоуроків, PDF-матеріалів, записів вебінарів, особистого розбору ситуації), а Покупець оплачує його вартість у порядку, встановленому цією офертою.</p>
+      <h3>3. Порядок замовлення та оплати</h3>
+      <ol>
+        <li>Замовлення оформлюється на Сайті: Покупець обирає продукт і натискає кнопку оплати.</li>
+        <li>Оплата здійснюється банківською карткою, через Apple Pay або Google Pay з використанням платіжних систем Stripe, PayPal або WayForPay — залежно від регіону Покупця.</li>
+        <li>Доступ до матеріалів надається автоматично на email, вказаний під час оплати, та/або надсилається в Telegram протягом 24 годин після підтвердження оплати.</li>
+      </ol>
+      <h3>4. Гарантія повернення коштів</h3>
+      <p>Покупець має право відмовитися від продукту та запросити повне повернення сплачених коштів протягом 7 (семи) календарних днів з моменту оплати, якщо матеріали не підійшли з будь-якої причини.</p>
+      <p>Для повернення коштів потрібно написати в Telegram: <a href="https://t.me/back4heart" target="_blank" rel="noopener">t.me/back4heart</a>, вказавши дату та спосіб оплати. Повернення здійснюється тим самим способом, яким було проведено оплату, протягом 5–10 робочих днів.</p>
+      <h3>5. Права на матеріали</h3>
+      <p>Усі матеріали (аудіо, тексти, PDF) є об'єктом інтелектуальної власності Продавця і надаються Покупцю виключно для особистого використання. Копіювання, поширення, публікація та передача матеріалів третім особам без письмової згоди Продавця заборонені.</p>
+      <h3>6. Обмеження відповідальності</h3>
+      <p>Матеріали Сайту мають інформаційний та освітній характер і не є медичною, психіатричною чи психотерапевтичною допомогою. Продавець не є практикуючим психологом чи лікарем. Результати застосування методик індивідуальні — Продавець не гарантує конкретного результату, включно з відновленням стосунків.</p>
+      <p>За наявності ознак депресії, суїцидальних думок або інших серйозних станів психічного здоров'я необхідно звернутися по очну допомогу до кваліфікованого фахівця.</p>
+      <h3>7. Обробка персональних даних</h3>
+      <p>Оплачуючи замовлення, Покупець надає згоду на обробку своїх персональних даних (ім'я, email, Telegram) в обсязі, необхідному для виконання замовлення та зв'язку з Покупцем. Дані не передаються третім особам, за винятком платіжних систем, що обробляють оплату.</p>
+      <h3>8. Безпека платежів</h3>
+      <p>Оплата на Сайті здійснюється через сертифіковані платіжні системи (Stripe, PayPal, WayForPay), які відповідають стандарту безпеки PCI DSS. З'єднання захищене SSL-шифруванням з довжиною ключа 256 біт. Сайт back4heart.site не отримує і не зберігає дані банківських карток Покупця — усі платіжні дані вводяться безпосередньо на захищеній сторінці платіжного провайдера.</p>
+      <h3>9. Інші умови</h3>
+      <p>Продавець має право вносити зміни до цієї оферти в односторонньому порядку. Актуальна редакція завжди доступна на Сайті. Питання, не врегульовані офертою, вирішуються шляхом переговорів через Telegram.</p>
+      <h3>10. Контакти</h3>
+      <p>Продавець: Роман Вейл, проєкт back4heart<br>Сайт: back4heart.site<br>Telegram: <a href="https://t.me/back4heart" target="_blank" rel="noopener">t.me/back4heart</a></p>
+      <!-- ROMAN: впиши сюди офіційні реквізити (ПІБ/ФОП, ІПН, юр. адреса) — без них оферта не має повної юридичної сили. Перед публікацією рекомендуємо показати документ юристу. -->
+      <p class="offer-date">Дата останнього оновлення: 9 липня 2026 р.</p>
+    `,
     tgContactText:'Залишились питання? Пиши в Telegram - відповідаю особисто.', tgBtnText:'Написати в Telegram',
     painTags:['Він ігнорує повідомлення?','Заблокував у соцмережах?','Сказав, що почуття охололи?','Він вже звикає жити без тебе','Що не день ви стаєте для нього дальші'],
     mindreadLabel:'Я точно знаю, що ти робиш просто зараз',
@@ -1200,9 +1320,13 @@ function render(region){
   for(let i=1;i<=5;i++){ setText('faqQ'+i, c['faqQ'+i]); setText('faqA'+i, c['faqA'+i]); }
 
   setText('finalEyebrow', c.finalEyebrow); setText('finalH2', c.finalH2); setText('finalSub', c.finalSub); setText('finalCta', c.finalCta);
-  setText('footerLine', c.footerLine); setText('footerTerms', c.footerTerms); setText('footerPrivacy', c.footerPrivacy);
+  setText('footerLine', c.footerLine); setText('footerTerms', c.footerTerms); setText('footerPrivacy', c.footerPrivacy); setText('footerOffer', c.footerOffer);
   setText('footerContact', c.footerContact); setText('faqContactText', c.faqContactText);
   setText('tgContactText', c.tgContactText); setText('tgBtnText', c.tgBtnText);
+  setText('trustGuaranteeTitle', c.trustGuaranteeTitle); setText('trustGuaranteeText', c.trustGuaranteeText);
+  setText('trustSecurityTitle', c.trustSecurityTitle); setText('trustSecurityText', c.trustSecurityText);
+  setText('trustOfferTitle', c.trustOfferTitle); setHTML('trustOfferText', c.trustOfferText);
+  setText('offerModalTitle', c.offerModalTitle); setHTML('offerModalBody', c.offerModalBody);
 
   // pain tags
   const painTagsEl = document.getElementById('painTags');
@@ -1470,6 +1594,29 @@ function bindTracking(){
     if(cur < 80 && lastScroll - cur > 60){ showPopup(); }
     lastScroll = cur;
   }, { passive:true });
+})();
+
+/* ==================== PUBLIC OFFER MODAL ==================== */
+(function(){
+  const overlay = document.getElementById('offerOverlay');
+  const closeBtn = document.getElementById('offerClose');
+  if(!overlay) return;
+  function showOffer(e){
+    if(e) e.preventDefault();
+    overlay.classList.add('show');
+    track('offer_modal_open', { region });
+  }
+  function hideOffer(){
+    overlay.classList.remove('show');
+  }
+  // offerLink lives inside dynamically re-rendered i18n content, so use delegation
+  document.addEventListener('click', function(e){
+    const trigger = e.target.closest('#offerLink, #footerOffer');
+    if(trigger) showOffer(e);
+  });
+  closeBtn && closeBtn.addEventListener('click', hideOffer);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) hideOffer(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') hideOffer(); });
 })();
 
 /* ==================== testimonial accordion ==================== */
