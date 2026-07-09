@@ -1050,9 +1050,9 @@ const COMBO_PRICES = {
 };
 
 /* ==================== PAYMENT LINKS ====================
-   Ukraine (by IP)        -> WayForPay only
-   Russia (by IP)         -> Stripe + PayPal (both buttons)
-   Everyone else          -> PayPal only */
+   Ukraine (by IP)             -> WayForPay only
+   Russia + Kazakhstan (by IP) -> Stripe + PayPal (both buttons)
+   Everyone else                -> PayPal only */
 const LINKS = {
   ua: {
     basic:            'https://secure.wayforpay.com/button/bd79c278fab86',
@@ -1083,7 +1083,7 @@ const LINKS = {
 /* Determine which payment providers to use for the current visitor */
 function getPaymentMode(region){
   if(region === 'ua') return 'wayforpay';
-  if(isRussia) return 'stripe_paypal';
+  if(isRussia || isKazakhstan) return 'stripe_paypal';
   return 'paypal';
 }
 
@@ -1242,7 +1242,7 @@ function render(region){
   setHTML('priceCircleOld', pricing.circle.oldFmt());
   setHTML('pricePersonalOld', pricing.personal.oldFmt());
 
-  // payment button labels: WayForPay (Ukraine) / Stripe+PayPal (Russia) / PayPal only (everyone else). Href is combo-aware.
+  // payment button labels: WayForPay (Ukraine) / Stripe+PayPal (Russia, Kazakhstan) / PayPal only (everyone else). Href is combo-aware.
   const paymentMode = getPaymentMode(region);
   document.querySelectorAll('.plan-btn').forEach(btn => {
     btn.setAttribute('target', '_blank');
@@ -1407,6 +1407,7 @@ const deviceIsUkrainian = (() => {
 
 let region = deviceIsUkrainian ? 'ua' : 'intl';
 let isRussia = false;
+let isKazakhstan = false;
 render(region);
 document.body.classList.add('ready');
 
@@ -1415,9 +1416,10 @@ fetch('https://ipapi.co/json/')
   .then(data => {
     const countryIsUA = data && data.country_code === 'UA';
     isRussia = !!(data && data.country_code === 'RU');
+    isKazakhstan = !!(data && data.country_code === 'KZ');
     region = (countryIsUA || deviceIsUkrainian) ? 'ua' : 'intl';
     render(region);
-    track('geo_detected', { region, country: data && data.country_code, deviceIsUkrainian, isRussia });
+    track('geo_detected', { region, country: data && data.country_code, deviceIsUkrainian, isRussia, isKazakhstan });
     bindTracking();
   })
   .catch(() => { bindTracking(); });
