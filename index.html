@@ -189,8 +189,8 @@
   .plan li{ font-size:13px; color:var(--ink); padding:9px 0; border-top:1px solid var(--line); display:flex; gap:10px; }
   .plan li::before{ content:'✓'; color:var(--crimson); font-weight:700; font-size:12px; margin-top:1px; }
   .plan-btn{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; text-align:center; padding:12px 14px; border-radius:5px; font-size:14px; font-weight:700; letter-spacing:0.02em; border:1.5px solid var(--crimson); background:var(--crimson); color:#fff; transition:all .2s ease; }
-  .plan-btn .pay-main, .pay-secondary .pay-main{ font-size:14px; font-weight:700; line-height:1.2; }
-  .plan-btn .pay-sub, .pay-secondary .pay-sub{ font-size:11px; font-weight:600; opacity:0.8; letter-spacing:0.03em; line-height:1.2; }
+  .plan-btn .pay-main, .pay-secondary .pay-main, .pay-tertiary .pay-main{ font-size:14px; font-weight:700; line-height:1.2; }
+  .plan-btn .pay-sub, .pay-secondary .pay-sub, .pay-tertiary .pay-sub{ font-size:11px; font-weight:600; opacity:0.8; letter-spacing:0.03em; line-height:1.2; }
   .plan-btn:hover{ background:var(--crimson-deep); border-color:var(--crimson-deep); color:#fff; }
 
   .payment-icons{ display:flex; justify-content:center; gap:12px; margin-top:24px; }
@@ -337,10 +337,10 @@
   /* ---- value anchor (crossed-out old price) ---- */
   .price-old{ font-size:15px; color:var(--light); text-decoration:line-through; margin-bottom:2px; }
 
-  /* ---- dual payment buttons ---- */
+  /* ---- dual/triple payment buttons ---- */
   .plan-pay{ display:flex; flex-direction:column; }
-  .pay-secondary{ display:none; flex-direction:column; align-items:center; justify-content:center; gap:2px; text-align:center; margin-top:10px; padding:12px 14px; border-radius:5px; letter-spacing:0.02em; border:1.5px solid var(--line); color:var(--ink); transition:all .2s ease; }
-  .pay-secondary:hover{ border-color:var(--crimson); color:var(--crimson); }
+  .pay-secondary, .pay-tertiary{ display:none; flex-direction:column; align-items:center; justify-content:center; gap:2px; text-align:center; margin-top:10px; padding:12px 14px; border-radius:5px; letter-spacing:0.02em; border:1.5px solid var(--line); color:var(--ink); transition:all .2s ease; }
+  .pay-secondary:hover, .pay-tertiary:hover{ border-color:var(--crimson); color:var(--crimson); }
 
   /* ---- live activity toast ---- */
   .live-toast{
@@ -743,6 +743,7 @@
         <div class="plan-pay">
           <a href="#" class="plan-btn" data-plan="basic" id="planBasicBtn">Взять интенсив</a>
           <a href="#" class="pay-secondary" data-plan="basic" id="planBasicBtnAlt">Оплатить</a>
+          <a href="#" class="pay-tertiary" data-plan="basic" id="planBasicBtnAlt2">Оплатить</a>
           <div class="pay-icons-mini" id="payIconsBasic" aria-label="Способы оплаты: карта, Apple Pay, Google Pay">
             <span class="pay-icon" title="Карта"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><rect x="1" y="7" width="36" height="4" fill="#b8860b"/><rect x="5" y="16" width="10" height="2.4" rx="1.2" fill="#b8860b" opacity="0.7"/></svg></span>
             <span class="pay-icon" title="Apple Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M13.2 9.3c-.5.6-1.3 1.1-2.1 1-.1-.8.3-1.7.7-2.2.5-.6 1.4-1.1 2.1-1.1.1.9-.2 1.7-.7 2.3zm.7 1.1c-1.2-.1-2.2.7-2.7.7-.6 0-1.4-.6-2.4-.6-1.2 0-2.4.7-3 1.9-1.3 2.2-.3 5.5.9 7.3.6.9 1.3 1.9 2.3 1.8.9 0 1.3-.6 2.4-.6s1.4.6 2.4.6c1 0 1.6-.9 2.3-1.8.7-1 1-2 1-2-.1 0-1.9-.7-1.9-2.8 0-1.7 1.4-2.6 1.5-2.6-.8-1.2-2.1-1.3-2.5-1.4-.1 0-.2 0-.3.1zm5.6-2v13.4h1.9v-4.6h2.9c2.6 0 4.5-1.8 4.5-4.4s-1.8-4.4-4.4-4.4h-4.9zm1.9 1.6h2.4c1.8 0 2.8 1 2.8 2.8s-1 2.8-2.9 2.8h-2.3V10z" fill="#b8860b"/></svg></span>
@@ -765,6 +766,7 @@
         <div class="plan-pay">
           <a href="#" class="plan-btn" data-plan="circle" id="planCircleBtn">Оплатить</a>
           <a href="#" class="pay-secondary" data-plan="circle" id="planCircleBtnAlt">Оплатить</a>
+          <a href="#" class="pay-tertiary" data-plan="circle" id="planCircleBtnAlt2">Оплатить</a>
           <div class="pay-icons-mini" id="payIconsCircle" aria-label="Способы оплаты: карта, Apple Pay, Google Pay">
             <span class="pay-icon" title="Карта"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><rect x="1" y="7" width="36" height="4" fill="#b8860b"/><rect x="5" y="16" width="10" height="2.4" rx="1.2" fill="#b8860b" opacity="0.7"/></svg></span>
             <span class="pay-icon" title="Apple Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M13.2 9.3c-.5.6-1.3 1.1-2.1 1-.1-.8.3-1.7.7-2.2.5-.6 1.4-1.1 2.1-1.1.1.9-.2 1.7-.7 2.3zm.7 1.1c-1.2-.1-2.2.7-2.7.7-.6 0-1.4-.6-2.4-.6-1.2 0-2.4.7-3 1.9-1.3 2.2-.3 5.5.9 7.3.6.9 1.3 1.9 2.3 1.8.9 0 1.3-.6 2.4-.6s1.4.6 2.4.6c1 0 1.6-.9 2.3-1.8.7-1 1-2 1-2-.1 0-1.9-.7-1.9-2.8 0-1.7 1.4-2.6 1.5-2.6-.8-1.2-2.1-1.3-2.5-1.4-.1 0-.2 0-.3.1zm5.6-2v13.4h1.9v-4.6h2.9c2.6 0 4.5-1.8 4.5-4.4s-1.8-4.4-4.4-4.4h-4.9zm1.9 1.6h2.4c1.8 0 2.8 1 2.8 2.8s-1 2.8-2.9 2.8h-2.3V10z" fill="#b8860b"/></svg></span>
@@ -788,6 +790,7 @@
         <div class="plan-pay">
           <a href="#" class="plan-btn" data-plan="personal" id="planPersonalBtn">Получить разбор</a>
           <a href="#" class="pay-secondary" data-plan="personal" id="planPersonalBtnAlt">Оплатить</a>
+          <a href="#" class="pay-tertiary" data-plan="personal" id="planPersonalBtnAlt2">Оплатить</a>
           <div class="pay-icons-mini" id="payIconsPersonal" aria-label="Способы оплаты: карта, Apple Pay, Google Pay">
             <span class="pay-icon" title="Карта"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><rect x="1" y="7" width="36" height="4" fill="#b8860b"/><rect x="5" y="16" width="10" height="2.4" rx="1.2" fill="#b8860b" opacity="0.7"/></svg></span>
             <span class="pay-icon" title="Apple Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M13.2 9.3c-.5.6-1.3 1.1-2.1 1-.1-.8.3-1.7.7-2.2.5-.6 1.4-1.1 2.1-1.1.1.9-.2 1.7-.7 2.3zm.7 1.1c-1.2-.1-2.2.7-2.7.7-.6 0-1.4-.6-2.4-.6-1.2 0-2.4.7-3 1.9-1.3 2.2-.3 5.5.9 7.3.6.9 1.3 1.9 2.3 1.8.9 0 1.3-.6 2.4-.6s1.4.6 2.4.6c1 0 1.6-.9 2.3-1.8.7-1 1-2 1-2-.1 0-1.9-.7-1.9-2.8 0-1.7 1.4-2.6 1.5-2.6-.8-1.2-2.1-1.3-2.5-1.4-.1 0-.2 0-.3.1zm5.6-2v13.4h1.9v-4.6h2.9c2.6 0 4.5-1.8 4.5-4.4s-1.8-4.4-4.4-4.4h-4.9zm1.9 1.6h2.4c1.8 0 2.8 1 2.8 2.8s-1 2.8-2.9 2.8h-2.3V10z" fill="#b8860b"/></svg></span>
@@ -1160,14 +1163,20 @@ const COMBO_PRICES = {
 };
 
 /* ==================== PAYMENT LINKS ====================
-   Ukraine (by IP)             -> WayForPay only
-   Russia + Kazakhstan (by IP) -> Stripe + PayPal (both buttons)
-   Everyone else                -> PayPal only */
+   Ukraine (by IP)   -> WayForPay only
+   Russia (by IP)    -> Tribute (primary) + Stripe + PayPal (three buttons)
+   Kazakhstan (by IP)-> Stripe + PayPal (two buttons)
+   Everyone else     -> PayPal only */
 const LINKS = {
   ua: {
     basic:    'https://secure.wayforpay.com/button/bd79c278fab86',
     circle:   'https://secure.wayforpay.com/button/b94dd4cd56518',
     personal: 'https://secure.wayforpay.com/button/baaf391f3c4bf'
+  },
+  tribute: {
+    basic:    'https://web.tribute.tg/p/zK6',
+    circle:   'https://web.tribute.tg/p/zK9',
+    personal: 'https://web.tribute.tg/p/zKa'
   },
   intl: {
     stripe: {
@@ -1186,7 +1195,8 @@ const LINKS = {
 /* Determine which payment providers to use for the current visitor */
 function getPaymentMode(region){
   if(region === 'ua') return 'wayforpay';
-  if(isRussia || isKazakhstan) return 'stripe_paypal';
+  if(isRussia) return 'tribute_stripe_paypal';
+  if(isKazakhstan) return 'stripe_paypal';
   return 'paypal';
 }
 
@@ -1205,12 +1215,26 @@ function getComboKey(planEl){
 function updatePlanButtonHref(planEl, region){
   const btn = planEl.querySelector('.plan-btn');
   const secondary = planEl.querySelector('.pay-secondary');
+  const tertiary = planEl.querySelector('.pay-tertiary');
   const combo = getComboKey(planEl);
   const mode = getPaymentMode(region);
 
   if(mode === 'wayforpay'){
     if(btn){ btn.setAttribute('href', LINKS.ua[combo] || '#'); btn.setAttribute('data-combo', combo); }
     if(secondary) secondary.style.display = 'none';
+    if(tertiary) tertiary.style.display = 'none';
+  } else if(mode === 'tribute_stripe_paypal'){
+    if(btn){ btn.setAttribute('href', LINKS.tribute[combo] || '#'); btn.setAttribute('data-combo', combo); }
+    if(secondary){
+      const stripeHref = LINKS.intl.stripe[combo];
+      if(stripeHref){ secondary.style.display = 'flex'; secondary.setAttribute('href', stripeHref); secondary.setAttribute('data-combo', combo); }
+      else secondary.style.display = 'none';
+    }
+    if(tertiary){
+      const ppHref = LINKS.intl.paypal[combo];
+      if(ppHref){ tertiary.style.display = 'flex'; tertiary.setAttribute('href', ppHref); tertiary.setAttribute('data-combo', combo); }
+      else tertiary.style.display = 'none';
+    }
   } else if(mode === 'stripe_paypal'){
     if(btn){ btn.setAttribute('href', LINKS.intl.stripe[combo] || '#'); btn.setAttribute('data-combo', combo); }
     if(secondary){
@@ -1223,9 +1247,11 @@ function updatePlanButtonHref(planEl, region){
         secondary.style.display = 'none';
       }
     }
+    if(tertiary) tertiary.style.display = 'none';
   } else { // paypal only
     if(btn){ btn.setAttribute('href', LINKS.intl.paypal[combo] || '#'); btn.setAttribute('data-combo', combo); }
     if(secondary) secondary.style.display = 'none';
+    if(tertiary) tertiary.style.display = 'none';
   }
 }
 function updateAllPlanButtonHrefs(region){
@@ -1339,15 +1365,17 @@ function render(region){
   setHTML('priceCircleOld', pricing.circle.oldFmt());
   setHTML('pricePersonalOld', pricing.personal.oldFmt());
 
-  // payment button labels: WayForPay (Ukraine) / Stripe+PayPal (Russia, Kazakhstan) / PayPal only (everyone else). Href is combo-aware.
+  // payment button labels: WayForPay (Ukraine) / Tribute+Stripe+PayPal (Russia) / Stripe+PayPal (Kazakhstan) / PayPal only (everyone else). Href is combo-aware.
   const paymentMode = getPaymentMode(region);
   document.querySelectorAll('.plan-btn').forEach(btn => {
     btn.setAttribute('target', '_blank');
     btn.setAttribute('rel', 'noopener');
     if(paymentMode === 'wayforpay'){
       btn.innerHTML = '<span class="pay-main">Сплатити</span>';
-    } else if(paymentMode === 'stripe_paypal'){
+    } else if(paymentMode === 'tribute_stripe_paypal'){
       btn.innerHTML = '<span class="pay-main">Оплатить</span>';
+    } else if(paymentMode === 'stripe_paypal'){
+      btn.innerHTML = '<span class="pay-main">Оплатить</span><span class="pay-sub">Stripe</span>';
     } else {
       btn.innerHTML = '<span class="pay-main">Оплатить</span>';
     }
@@ -1355,8 +1383,20 @@ function render(region){
   document.querySelectorAll('.pay-secondary').forEach(a => {
     a.setAttribute('target', '_blank');
     a.setAttribute('rel', 'noopener');
-    if(paymentMode === 'stripe_paypal'){
-      a.innerHTML = '<span class="pay-main">Оплатить</span>';
+    if(paymentMode === 'tribute_stripe_paypal'){
+      a.innerHTML = '<span class="pay-main">Оплатить</span><span class="pay-sub">Stripe</span>';
+      // visibility (shown/hidden per combo availability) is set in updatePlanButtonHref
+    } else if(paymentMode === 'stripe_paypal'){
+      a.innerHTML = '<span class="pay-main">Оплатить</span><span class="pay-sub">PayPal</span>';
+    } else {
+      a.style.display = 'none';
+    }
+  });
+  document.querySelectorAll('.pay-tertiary').forEach(a => {
+    a.setAttribute('target', '_blank');
+    a.setAttribute('rel', 'noopener');
+    if(paymentMode === 'tribute_stripe_paypal'){
+      a.innerHTML = '<span class="pay-main">Оплатить</span><span class="pay-sub">PayPal</span>';
       // visibility (shown/hidden per combo availability) is set in updatePlanButtonHref
     } else {
       a.style.display = 'none';
