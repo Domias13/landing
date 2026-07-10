@@ -170,7 +170,7 @@
   .testi .who{ color:var(--muted); font-size:12.5px; font-weight:700; }
   .testi-disclaimer{ text-align:center; font-size:12px; color:var(--light); margin-top:20px; }
 
-  .pricing-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px; align-items:stretch; max-width:820px; margin:0 auto; }
+  .pricing-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch; max-width:1080px; margin:0 auto; }
   .plan{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:34px 26px; display:flex; flex-direction:column; position:relative; }
   .plan.featured{ border-color:var(--gold); transform:translateY(-8px); box-shadow:var(--shadow); background:linear-gradient(180deg, rgba(192,57,43,0.05), #fff 45%); }
   .plan.featured::before{
@@ -394,19 +394,7 @@
   .secret-block h2{ font-size:clamp(21px,3vw,27px); margin:10px 0 14px; }
   .secret-block p{ font-size:14.5px; color:var(--muted); line-height:1.7; }
 
-  /* ---- order bumps ---- */
-  .order-bump{ margin:16px 0; display:flex; flex-direction:column; gap:10px; }
-  .bump-item{ display:flex; align-items:flex-start; gap:10px; text-align:left; background:var(--bg-alt); border:1px dashed var(--gold); border-radius:6px; padding:12px 14px; cursor:pointer; transition:background .2s ease; }
-  .bump-item:hover{ background:#efe6d6; }
-  .bump-item input[type="checkbox"]{ margin-top:3px; width:16px; height:16px; accent-color:var(--crimson); flex-shrink:0; cursor:pointer; }
-  .bump-text{ font-size:13px; color:var(--ink); line-height:1.5; }
-  .bump-text b{ display:block; font-weight:700; margin-bottom:2px; }
-  .bump-price{ font-size:12.5px; color:var(--muted); }
-  .bump-price b{ display:inline; color:var(--crimson); font-weight:700; }
-  .bump-price s{ opacity:0.7; }
-  .order-total{ display:none; justify-content:space-between; align-items:center; font-size:14px; font-weight:700; color:var(--ink); border-top:1px dashed var(--line); margin-top:12px; padding-top:12px; }
-  .order-total.show{ display:flex; }
-  .order-total .ot-sum{ color:var(--crimson); font-family:'Playfair Display',serif; font-size:18px; }
+  /* (order-bump styles removed — checkboxes no longer used) */
 
   /* ---- exit-intent popup ---- */
   .exit-overlay{ position:fixed; inset:0; background:rgba(20,15,10,0.7); z-index:200; display:none; align-items:center; justify-content:center; padding:20px; }
@@ -752,21 +740,32 @@
           <li id="planBasicLi2">...</li>
           <li id="planBasicLi3">...</li>
         </ul>
-        <div class="order-bump" data-plan="basic">
-          <label class="bump-item">
-            <input type="checkbox" class="bump-check" data-plan="basic" data-bump="practicum" data-price-intl="5" data-price-ua="199">
-            <span class="bump-text"><b class="i18n" data-key="bumpPracticumLabel">Добавить Практикум «Про женщину, которая влюбляет навсегда»</b><span class="bump-price">за <b class="bump-new">$5</b> <s class="bump-old">$14.99</s></span></span>
-          </label>
-          <label class="bump-item">
-            <input type="checkbox" class="bump-check" data-plan="basic" data-bump="webinar" data-price-intl="24.99" data-price-ua="999">
-            <span class="bump-text"><b class="i18n" data-key="bumpWebinarLabel">Добавить Вебинар-разбор «Почему он ушёл на самом деле: Мужской взгляд»</b><span class="bump-price">за <b class="bump-new">$24.99</b> <s class="bump-old">$44.99</s></span></span>
-          </label>
-          <div class="order-total" data-order-total="basic"><span class="i18n" data-key="bumpOrderTotal">Итого к оплате</span><span class="ot-sum"></span></div>
-        </div>
         <div class="plan-pay">
           <a href="#" class="plan-btn" data-plan="basic" id="planBasicBtn">Взять интенсив</a>
           <a href="#" class="pay-secondary" data-plan="basic" id="planBasicBtnAlt">Оплатить</a>
           <div class="pay-icons-mini" id="payIconsBasic" aria-label="Способы оплаты: карта, Apple Pay, Google Pay">
+            <span class="pay-icon" title="Карта"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><rect x="1" y="7" width="36" height="4" fill="#b8860b"/><rect x="5" y="16" width="10" height="2.4" rx="1.2" fill="#b8860b" opacity="0.7"/></svg></span>
+            <span class="pay-icon" title="Apple Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M13.2 9.3c-.5.6-1.3 1.1-2.1 1-.1-.8.3-1.7.7-2.2.5-.6 1.4-1.1 2.1-1.1.1.9-.2 1.7-.7 2.3zm.7 1.1c-1.2-.1-2.2.7-2.7.7-.6 0-1.4-.6-2.4-.6-1.2 0-2.4.7-3 1.9-1.3 2.2-.3 5.5.9 7.3.6.9 1.3 1.9 2.3 1.8.9 0 1.3-.6 2.4-.6s1.4.6 2.4.6c1 0 1.6-.9 2.3-1.8.7-1 1-2 1-2-.1 0-1.9-.7-1.9-2.8 0-1.7 1.4-2.6 1.5-2.6-.8-1.2-2.1-1.3-2.5-1.4-.1 0-.2 0-.3.1zm5.6-2v13.4h1.9v-4.6h2.9c2.6 0 4.5-1.8 4.5-4.4s-1.8-4.4-4.4-4.4h-4.9zm1.9 1.6h2.4c1.8 0 2.8 1 2.8 2.8s-1 2.8-2.9 2.8h-2.3V10z" fill="#b8860b"/></svg></span>
+            <span class="pay-icon" title="Google Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M17.6 12.1v2.5h3.5c-.2 1.1-1.3 3.2-3.5 3.2-2.1 0-3.8-1.7-3.8-3.9s1.7-3.9 3.8-3.9c1.2 0 2 .5 2.5.9l1.7-1.6c-1.1-1-2.5-1.6-4.2-1.6-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2c3.6 0 5.9-2.5 5.9-6.1 0-.4 0-.7-.1-1h-5.8z" fill="#b8860b"/><text x="24.5" y="15.4" font-family="Manrope, sans-serif" font-size="6.2" fill="#b8860b" font-weight="700">Pay</text></svg></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="plan featured" data-tier="circle">
+        <div class="plan-name" id="planCircleName">Интенсив + практикум «Про женщину, которая влюбляет навсегда»</div>
+        <div class="plan-desc" id="planCircleDesc">...</div>
+        <div class="price-old" id="priceCircleOld">$89</div>
+        <div class="price" id="priceCircle">$14.99</div>
+        <div class="price-note" id="planCircleNote">разовый платёж</div>
+        <ul>
+          <li id="planCircleLi1">...</li>
+          <li id="planCircleLi2">...</li>
+          <li id="planCircleLi3">...</li>
+        </ul>
+        <div class="plan-pay">
+          <a href="#" class="plan-btn" data-plan="circle" id="planCircleBtn">Оплатить</a>
+          <a href="#" class="pay-secondary" data-plan="circle" id="planCircleBtnAlt">Оплатить</a>
+          <div class="pay-icons-mini" id="payIconsCircle" aria-label="Способы оплаты: карта, Apple Pay, Google Pay">
             <span class="pay-icon" title="Карта"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><rect x="1" y="7" width="36" height="4" fill="#b8860b"/><rect x="5" y="16" width="10" height="2.4" rx="1.2" fill="#b8860b" opacity="0.7"/></svg></span>
             <span class="pay-icon" title="Apple Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M13.2 9.3c-.5.6-1.3 1.1-2.1 1-.1-.8.3-1.7.7-2.2.5-.6 1.4-1.1 2.1-1.1.1.9-.2 1.7-.7 2.3zm.7 1.1c-1.2-.1-2.2.7-2.7.7-.6 0-1.4-.6-2.4-.6-1.2 0-2.4.7-3 1.9-1.3 2.2-.3 5.5.9 7.3.6.9 1.3 1.9 2.3 1.8.9 0 1.3-.6 2.4-.6s1.4.6 2.4.6c1 0 1.6-.9 2.3-1.8.7-1 1-2 1-2-.1 0-1.9-.7-1.9-2.8 0-1.7 1.4-2.6 1.5-2.6-.8-1.2-2.1-1.3-2.5-1.4-.1 0-.2 0-.3.1zm5.6-2v13.4h1.9v-4.6h2.9c2.6 0 4.5-1.8 4.5-4.4s-1.8-4.4-4.4-4.4h-4.9zm1.9 1.6h2.4c1.8 0 2.8 1 2.8 2.8s-1 2.8-2.9 2.8h-2.3V10z" fill="#b8860b"/></svg></span>
             <span class="pay-icon" title="Google Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M17.6 12.1v2.5h3.5c-.2 1.1-1.3 3.2-3.5 3.2-2.1 0-3.8-1.7-3.8-3.9s1.7-3.9 3.8-3.9c1.2 0 2 .5 2.5.9l1.7-1.6c-1.1-1-2.5-1.6-4.2-1.6-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2c3.6 0 5.9-2.5 5.9-6.1 0-.4 0-.7-.1-1h-5.8z" fill="#b8860b"/><text x="24.5" y="15.4" font-family="Manrope, sans-serif" font-size="6.2" fill="#b8860b" font-weight="700">Pay</text></svg></span>
@@ -918,9 +917,6 @@ const CONTENT = {
     secretEyebrow:'Информация не для широкой публики',
     secretH2:'Это методика, о которой молчат многие психологи',
     secretText:'Психологи продают тебе годы работы над собой, потому что так работает их бизнес. Я - другое. Техники, которые я собирал - это то что реально работает. Только те методики, которые помогли сотням в похожих ситуациях. Работают быстро и не всегда «экологично» по отношени к бывшему.',
-    bumpPracticumLabel:'Добавить Практикум «Про женщину, которая влюбляет навсегда»',
-    bumpWebinarLabel:'Добавить Вебинар-разбор «Почему он ушёл на самом деле: Мужской взгляд»',
-    bumpOrderTotal:'Итого к оплате',
     tgWidgetText:'Спросить в Telegram',
     exitEyebrow:'Подожди', exitH3:'Не готова на интенсив целиком?',
     exitText:'Держи 1-й день бесплатно - попробуй технику, которая уже за сутки снимает тягу мониторить его страницу и избавит от навязчивых мыслей.',
@@ -948,8 +944,8 @@ const CONTENT = {
     pricingEyebrow:'Закрытый доступ', pricingH2:'Выбери, насколько глубоко ты готова зайти',
     planBasicName:'Интенсив', planBasicDesc:'Весь курс целиком. Техники, которые за 24–48 часов снимают тягу мониторить его страницу - и запускают процесс, после которого жалеть будет он.', planBasicNote:'разовый платёж',
     planBasicLi1:'7 аудиоуроков, 15–20 минут в день', planBasicLi2:'Доступ навсегда, слушай когда удобно', planBasicLi3:'Слушай хоть с телефона, хоть с ноутбука', planBasicBtn:'Оплатить',
-    planCircleBadge:'Выбор большинства', planCircleName:'Интенсив + Практикум «Про женщину, которая влюбляет навсегда»', planCircleDesc:'Курс плюс практикум - как снова стать той, из-за которой он теряет сон.', planCircleNote:'разовый платёж',
-    planCircleLi1:'Всё из тарифа «Интенсив»', planCircleLi2:'Практикум «Про женщину, которая влюбляет навсегда»', planCircleLi3:'Практические упражнения и разборы', planCircleBtn:'Оплатить',
+    planCircleBadge:'Самый популярный', planCircleName:'Интенсив + практикум «Про женщину, которая влюбляет навсегда»', planCircleDesc:'Курс плюс практикум о том, как стать той, в кого влюбляются раз и навсегда - без игр и погони.', planCircleNote:'разовый платёж',
+    planCircleLi1:'Всё из тарифа «Интенсив»', planCircleLi2:'Практикум «Про женщину, которая влюбляет навсегда»', planCircleLi3:'Рабочие техники, которые делают тебя тем человеком, которого не отпускают', planCircleBtn:'Оплатить',
     planPersonalName:'Интенсив + Личный разбор', planPersonalDesc:'Курс плюс разбор именно твоей ситуации - особенно если у него уже кто-то есть или ты не знаешь, с чего начать прямо сейчас.', planPersonalNote:'разовый платёж',
     planPersonalLi1:'Всё из тарифа «Интенсив»', planPersonalLi2:'Личный разбор твоей ситуации', planPersonalLi3:'Конкретный разбор твоей ситуации', planPersonalLi4:'Конкретный разбор твоей ситуации', planPersonalBtn:'Оплатить',
     urgencyEyebrow:'Ограниченный доступ', urgencyH3:'Набор закрывается в воскресенье', urgencyCta:'Успеть попасть в поток',
@@ -1036,9 +1032,6 @@ const CONTENT = {
     secretEyebrow:'Інформація не для широкого загалу',
     secretH2:'Це система, про яку мовчать психологи',
     secretText:'Психологи продають тобі роки роботи над собою, тому що так працює їхній бізнес. Я - інше. Техніки, які я збирав, - це те, що справді працює. Лише ті методики, які допомогли сотням людей у схожих ситуаціях. Працюють швидко й не завжди «екологічно» щодо колишнього.',
-    bumpPracticumLabel:'Додати Практикум «Про жінку, яка закохує назавжди»',
-    bumpWebinarLabel:'Додати Вебінар-розбір «Чому він пішов насправді: Чоловічий погляд»',
-    bumpOrderTotal:'Разом до оплати',
     tgWidgetText:'Запитати в Telegram',
     exitEyebrow:'Зачекай', exitH3:'Не готова на інтенсив цілком?',
     exitText:'Тримай 1-й день безкоштовно - спробуй техніку, яка вже за добу прибирає бажання стежити за його сторінкою та позбавляє нав’язливих думок.',
@@ -1066,8 +1059,8 @@ const CONTENT = {
     pricingEyebrow:'Доступ', pricingH2:'Обери, наскільки глибоко ти готова зайти',
     planBasicName:'Інтенсив', planBasicDesc:'Увесь курс повністю. Усередині - техніки, які прибирають нав’язливі думки про нього та саму емоційну залежність.', planBasicNote:'одноразовий платіж',
     planBasicLi1:'7 аудіоуроків, 15–20 хвилин на день', planBasicLi2:'Доступ назавжди, слухай у своєму темпі', planBasicLi3:'Слухай хоч з телефону, хоч з ноутбука', planBasicBtn:'Взяти інтенсив',
-    planCircleBadge:'Вибір більшості', planCircleName:'Інтенсив + Практикум «Про жінку, яка закохує назавжди»', planCircleDesc:'Курс плюс практикум - як знову стати тією, в яку закохуються.', planCircleNote:'одноразовий платіж',
-    planCircleLi1:'Все з тарифу «Інтенсив»', planCircleLi2:'Практикум «Про жінку, яка закохує назавжди»', planCircleLi3:'Практичні вправи та розбори', planCircleBtn:'Приєднатися',
+    planCircleBadge:'Найпопулярніший', planCircleName:'Інтенсив + практикум «Про жінку, яка закохує назавжди»', planCircleDesc:'Курс плюс практикум про те, як стати тією, в кого закохуються раз і назавжди - без ігор і гонитви.', planCircleNote:'одноразовий платіж',
+    planCircleLi1:'Все з тарифу «Інтенсив»', planCircleLi2:'Практикум «Про жінку, яка закохує назавжди»', planCircleLi3:'Робочі техніки, які роблять тебе тією людиною, яку не відпускають', planCircleBtn:'Оплатити',
     planPersonalName:'Інтенсив + Особистий розбір', planPersonalDesc:'Курс плюс розбір саме твоєї ситуації, якщо ти вважаєш, що інтенсиву недостатньо.', planPersonalNote:'одноразовий платіж',
     planPersonalLi1:'Все з тарифу «Інтенсив»', planPersonalLi2:'Особистий розбір твоєї ситуації', planPersonalLi3:'Конкретний розбір твоєї ситуації та конкретні кроки під твою ситуацію', planPersonalBtn:'Отримати розбір',
     urgencyEyebrow:'Обмежений доступ', urgencyH3:'Набір закривається в неділю', urgencyCta:'Встигнути потрапити в потік',
@@ -1158,15 +1151,12 @@ const PRICING = {
 };
 
 /* ==================== COMBO PRICES ====================
-   Combo key = tier + which order-bump checkboxes are checked (for "basic" plan):
-   basic            -> Интенсив
-   basic_practicum  -> Интенсив + практикум «Про женщину, которая влюбляет навсегда»
-   basic_webinar    -> Интенсив + вебинар-разбор
-   basic_both       -> Интенсив + практикум + вебинар-разбор
-   personal         -> Интенсив + разбор (no order bumps on this plan) */
+   basic    -> Интенсив
+   circle   -> Интенсив + разбор «Почему он ушёл» (самый популярный)
+   personal -> Интенсив + личный разбор */
 const COMBO_PRICES = {
-  intl: { basic: 9.99, basic_practicum: 14.99, basic_webinar: 34.98, basic_both: 39.98, personal: 49.99 },
-  ua:   { basic: 399,  basic_practicum: 664,   basic_webinar: 1398,  basic_both: 1597,  personal: 1999 }
+  intl: { basic: 9.99, circle: 14.99, personal: 49.99 },
+  ua:   { basic: 399,  circle: 664,   personal: 1999 }
 };
 
 /* ==================== PAYMENT LINKS ====================
@@ -1175,27 +1165,20 @@ const COMBO_PRICES = {
    Everyone else                -> PayPal only */
 const LINKS = {
   ua: {
-    basic:            'https://secure.wayforpay.com/button/bd79c278fab86',
-    basic_practicum:  'https://secure.wayforpay.com/button/b94dd4cd56518',
-    basic_webinar:    'https://secure.wayforpay.com/button/bd1df46472db7',
-    basic_both:       'https://secure.wayforpay.com/button/b4331f9527872',
-    personal:         'https://secure.wayforpay.com/button/baaf391f3c4bf'
+    basic:    'https://secure.wayforpay.com/button/bd79c278fab86',
+    circle:   'https://secure.wayforpay.com/button/b94dd4cd56518',
+    personal: 'https://secure.wayforpay.com/button/baaf391f3c4bf'
   },
   intl: {
     stripe: {
-      basic:            'https://buy.stripe.com/6oUbJ30QifWh2xceBa3ZK0k',
-      basic_practicum:  'https://buy.stripe.com/8x2bJ3aqSh0lfjY78I3ZK0j',
-      basic_webinar:    'https://buy.stripe.com/cNieVfeH86lH7Rw3Ww3ZK0o',
-      basic_both:       'https://buy.stripe.com/dRm5kFaqS7pL4FkeBa3ZK0n',
-      personal:         'https://buy.stripe.com/3cI6oJ8iK8tP8VA50A3ZK0l'
+      basic:    'https://buy.stripe.com/6oUbJ30QifWh2xceBa3ZK0k',
+      circle:   'https://buy.stripe.com/8x2bJ3aqSh0lfjY78I3ZK0j',
+      personal: 'https://buy.stripe.com/3cI6oJ8iK8tP8VA50A3ZK0l'
     },
     paypal: {
-      basic:            'https://www.paypal.com/ncp/payment/TX4CSD6R5C2JQ',
-      basic_practicum:  'https://www.paypal.com/ncp/payment/L9MBPZRCTGFBG',
-      // ROMAN: не хватает отдельной ссылки PayPal на "Интенсив + вебинар-разбор" ($34.98) — пришли, и я подставлю.
-      basic_webinar:    'https://www.paypal.com/ncp/payment/2HT428V5JGVTA',
-      basic_both:       'https://www.paypal.com/ncp/payment/34ADAGAX8BMTJ',
-      personal:         'https://www.paypal.com/ncp/payment/MZCJ6M5TM7X7W'
+      basic:    'https://www.paypal.com/ncp/payment/TX4CSD6R5C2JQ',
+      circle:   'https://www.paypal.com/ncp/payment/L9MBPZRCTGFBG',
+      personal: 'https://www.paypal.com/ncp/payment/MZCJ6M5TM7X7W'
     }
   }
 };
@@ -1213,19 +1196,9 @@ const PLAN_BASE = {
   ua:   { basic: 399,  circle: 664,   personal: 1999 }
 };
 
-/* Determine combo key for a given .plan element based on checked order-bump boxes */
+/* Determine combo key for a given .plan element (basic / circle / personal) */
 function getComboKey(planEl){
-  const tier = planEl.getAttribute('data-tier');
-  if(tier !== 'basic') return tier; // 'personal'
-  const box = planEl.querySelector('.order-bump');
-  if(!box) return 'basic';
-  const checked = Array.from(box.querySelectorAll('.bump-check:checked')).map(cb => cb.getAttribute('data-bump'));
-  const hasPracticum = checked.includes('practicum');
-  const hasWebinar = checked.includes('webinar');
-  if(hasPracticum && hasWebinar) return 'basic_both';
-  if(hasPracticum) return 'basic_practicum';
-  if(hasWebinar) return 'basic_webinar';
-  return 'basic';
+  return planEl.getAttribute('data-tier');
 }
 
 /* Update a plan's payment button(s) href to match the current region + combo + provider mode */
@@ -1393,55 +1366,9 @@ function render(region){
   document.querySelectorAll('.pay-icons-mini').forEach(el => {
     el.style.display = (region === 'intl') ? 'flex' : 'none';
   });
-
-  // generic i18n strings (order bumps etc.)
-  document.querySelectorAll('.i18n[data-key]').forEach(el => {
-    const key = el.getAttribute('data-key');
-    if(c[key]) el.textContent = c[key];
-  });
-
-  updateOrderBumps(region);
 }
 
-/* ==================== ORDER BUMPS ==================== */
-const BUMP_META = {
-  practicum: { intl:{ price:5,    old:14.99 }, ua:{ price:199, old:599 } },
-  webinar:   { intl:{ price:24.99, old:44.99 }, ua:{ price:999, old:1799 } }
-};
-function recalcBumpTotal(box, region){
-  const planEl = box.closest('.plan');
-  const combo = planEl ? getComboKey(planEl) : box.getAttribute('data-plan');
-  const total = (COMBO_PRICES[region] && COMBO_PRICES[region][combo] != null) ? COMBO_PRICES[region][combo] : PLAN_BASE[region][box.getAttribute('data-plan')];
-  let any = false;
-  box.querySelectorAll('.bump-check').forEach(cb => { if(cb.checked) any = true; });
-  const totalEl = box.querySelector('.order-total');
-  if(totalEl){
-    totalEl.classList.toggle('show', any);
-    const sumEl = totalEl.querySelector('.ot-sum');
-    if(sumEl) sumEl.textContent = formatMoney(region, total);
-  }
-  if(planEl) updatePlanButtonHref(planEl, region);
-}
-function updateOrderBumps(region){
-  document.querySelectorAll('.bump-item').forEach(label => {
-    const input = label.querySelector('.bump-check');
-    if(!input) return;
-    const meta = BUMP_META[input.getAttribute('data-bump')][region];
-    const newEl = label.querySelector('.bump-new');
-    const oldEl = label.querySelector('.bump-old');
-    if(newEl) newEl.textContent = formatMoney(region, meta.price);
-    if(oldEl) oldEl.textContent = formatMoney(region, meta.old);
-  });
-  document.querySelectorAll('.order-bump').forEach(box => recalcBumpTotal(box, region));
-  updateAllPlanButtonHrefs(region);
-}
-document.addEventListener('change', function(e){
-  if(e.target && e.target.classList && e.target.classList.contains('bump-check')){
-    const box = e.target.closest('.order-bump');
-    if(box) recalcBumpTotal(box, region);
-    track('add_order_bump', { bump: e.target.getAttribute('data-bump'), plan: e.target.getAttribute('data-plan'), checked: e.target.checked, region });
-  }
-});
+/* (order bumps removed — pricing engine now just needs updateAllPlanButtonHrefs per region) */
 
 /* ==================== GA4 stub ==================== */
 window.dataLayer = window.dataLayer || [];
