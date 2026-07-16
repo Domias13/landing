@@ -1489,18 +1489,32 @@ let isKazakhstan = false;
 render(region);
 document.body.classList.add('ready');
 
+function applyGeo(countryCode){
+  const countryIsUA = countryCode === 'UA';
+  isRussia = countryCode === 'RU';
+  isKazakhstan = countryCode === 'KZ';
+  region = (countryIsUA || deviceIsUkrainian) ? 'ua' : 'intl';
+  render(region);
+  track('geo_detected', { region, country: countryCode, deviceIsUkrainian, isRussia, isKazakhstan });
+  bindTracking();
+}
+
 fetch('https://ipapi.co/json/')
   .then(r => r.json())
   .then(data => {
-    const countryIsUA = data && data.country_code === 'UA';
-    isRussia = !!(data && data.country_code === 'RU');
-    isKazakhstan = !!(data && data.country_code === 'KZ');
-    region = (countryIsUA || deviceIsUkrainian) ? 'ua' : 'intl';
-    render(region);
-    track('geo_detected', { region, country: data && data.country_code, deviceIsUkrainian, isRussia, isKazakhstan });
-    bindTracking();
+    if(!data || data.error || !data.country_code) throw new Error('primary geo lookup unavailable');
+    applyGeo(data.country_code);
   })
-  .catch(() => { bindTracking(); });
+  .catch(() => {
+    // fallback geo lookup if the primary provider is rate-limited or unreachable
+    fetch('https://ipwho.is/')
+      .then(r => r.json())
+      .then(data => {
+        if(!data || data.success === false || !data.country_code) throw new Error('fallback geo lookup unavailable');
+        applyGeo(data.country_code);
+      })
+      .catch(() => { bindTracking(); });
+  });
 
 function bindTracking(){
   document.querySelectorAll('.plan-btn').forEach(btn => {
