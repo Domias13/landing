@@ -1148,6 +1148,11 @@ const PRICING = {
     basic:{ fmt:()=>`399<span class="cur">грн</span>`, oldFmt:()=>`1490 грн` },
     circle:{ fmt:()=>`664<span class="cur">грн</span>`, oldFmt:()=>`2490 грн` },
     personal:{ fmt:()=>`1999<span class="cur">грн</span>`, oldFmt:()=>`5990 грн` }
+  },
+  ru: {
+    basic:{ fmt:()=>`1169<span class="cur">₽</span>`, oldFmt:()=>`3490 ₽` },
+    circle:{ fmt:()=>`2104<span class="cur">₽</span>`, oldFmt:()=>`6490 ₽` },
+    personal:{ fmt:()=>`7795<span class="cur">₽</span>`, oldFmt:()=>`19990 ₽` }
   }
 };
 
@@ -1162,7 +1167,7 @@ const COMBO_PRICES = {
 
 /* ==================== PAYMENT LINKS ====================
    Ukraine (by IP)   -> WayForPay only
-   Russia (by IP)    -> Tribute (primary) + Stripe + PayPal (three buttons)
+   Russia (by IP)    -> Tribute only (single button)
    Kazakhstan (by IP)-> Stripe + PayPal (two buttons)
    Everyone else     -> PayPal only */
 const LINKS = {
@@ -1193,7 +1198,7 @@ const LINKS = {
 /* Determine which payment providers to use for the current visitor */
 function getPaymentMode(region){
   if(region === 'ua') return 'wayforpay';
-  if(isRussia) return 'tribute_stripe_paypal';
+  if(isRussia) return 'tribute_only';
   if(isKazakhstan) return 'stripe_paypal';
   return 'paypal';
 }
@@ -1221,18 +1226,10 @@ function updatePlanButtonHref(planEl, region){
     if(btn){ btn.setAttribute('href', LINKS.ua[combo] || '#'); btn.setAttribute('data-combo', combo); }
     if(secondary) secondary.style.display = 'none';
     if(tertiary) tertiary.style.display = 'none';
-  } else if(mode === 'tribute_stripe_paypal'){
+  } else if(mode === 'tribute_only'){
     if(btn){ btn.setAttribute('href', LINKS.tribute[combo] || '#'); btn.setAttribute('data-combo', combo); }
-    if(secondary){
-      const stripeHref = LINKS.intl.stripe[combo];
-      if(stripeHref){ secondary.style.display = 'flex'; secondary.setAttribute('href', stripeHref); secondary.setAttribute('data-combo', combo); }
-      else secondary.style.display = 'none';
-    }
-    if(tertiary){
-      const ppHref = LINKS.intl.paypal[combo];
-      if(ppHref){ tertiary.style.display = 'flex'; tertiary.setAttribute('href', ppHref); tertiary.setAttribute('data-combo', combo); }
-      else tertiary.style.display = 'none';
-    }
+    if(secondary) secondary.style.display = 'none';
+    if(tertiary) tertiary.style.display = 'none';
   } else if(mode === 'stripe_paypal'){
     if(btn){ btn.setAttribute('href', LINKS.intl.stripe[combo] || '#'); btn.setAttribute('data-combo', combo); }
     if(secondary){
@@ -1355,7 +1352,7 @@ function render(region){
   updateShowMoreLabel();
 
   // prices
-  const pricing = PRICING[region];
+  const pricing = isRussia ? PRICING.ru : PRICING[region];
   setHTML('priceBasic', pricing.basic.fmt());
   setHTML('priceCircle', pricing.circle.fmt());
   setHTML('pricePersonal', pricing.personal.fmt());
@@ -1363,14 +1360,14 @@ function render(region){
   setHTML('priceCircleOld', pricing.circle.oldFmt());
   setHTML('pricePersonalOld', pricing.personal.oldFmt());
 
-  // payment button labels: WayForPay (Ukraine) / Tribute+Stripe+PayPal (Russia) / Stripe+PayPal (Kazakhstan) / PayPal only (everyone else). Href is combo-aware.
+  // payment button labels: WayForPay (Ukraine) / Tribute only (Russia) / Stripe+PayPal (Kazakhstan) / PayPal only (everyone else). Href is combo-aware.
   const paymentMode = getPaymentMode(region);
   document.querySelectorAll('.plan-btn').forEach(btn => {
     btn.setAttribute('target', '_blank');
     btn.setAttribute('rel', 'noopener');
     if(paymentMode === 'wayforpay'){
       btn.innerHTML = '<span class="pay-main">Сплатити</span>';
-    } else if(paymentMode === 'tribute_stripe_paypal'){
+    } else if(paymentMode === 'tribute_only'){
       btn.innerHTML = '<span class="pay-main">Оплатить</span>';
     } else if(paymentMode === 'stripe_paypal'){
       btn.innerHTML = '<span class="pay-main">Оплатить</span><span class="pay-sub">Stripe</span>';
@@ -1381,10 +1378,7 @@ function render(region){
   document.querySelectorAll('.pay-secondary').forEach(a => {
     a.setAttribute('target', '_blank');
     a.setAttribute('rel', 'noopener');
-    if(paymentMode === 'tribute_stripe_paypal'){
-      a.innerHTML = '<span class="pay-main">Оплатить</span><span class="pay-sub">Stripe</span>';
-      // visibility (shown/hidden per combo availability) is set in updatePlanButtonHref
-    } else if(paymentMode === 'stripe_paypal'){
+    if(paymentMode === 'stripe_paypal'){
       a.innerHTML = '<span class="pay-main">Оплатить</span><span class="pay-sub">PayPal</span>';
     } else {
       a.style.display = 'none';
@@ -1393,12 +1387,7 @@ function render(region){
   document.querySelectorAll('.pay-tertiary').forEach(a => {
     a.setAttribute('target', '_blank');
     a.setAttribute('rel', 'noopener');
-    if(paymentMode === 'tribute_stripe_paypal'){
-      a.innerHTML = '<span class="pay-main">Оплатить</span><span class="pay-sub">PayPal</span>';
-      // visibility (shown/hidden per combo availability) is set in updatePlanButtonHref
-    } else {
-      a.style.display = 'none';
-    }
+    a.style.display = 'none';
   });
   updateAllPlanButtonHrefs(region);
   document.querySelectorAll('.pay-icons-mini').forEach(el => {
