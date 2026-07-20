@@ -1229,11 +1229,6 @@ const PRICING = {
     circle:{ fmt:()=>`<sup>$</sup>14.99`, oldFmt:()=>`$89` },
     personal:{ fmt:()=>`<sup>$</sup>49.99`, oldFmt:()=>`$149` }
   },
-  default: {
-    basic:{ fmt:()=>`<sup>$</sup>14.99`, oldFmt:()=>`$47` },
-    circle:{ fmt:()=>`<sup>$</sup>27.99`, oldFmt:()=>`$89` },
-    personal:{ fmt:()=>`<sup>$</sup>97`, oldFmt:()=>`$149` }
-  },
   ua: {
     basic:{ fmt:()=>`399<span class="cur">грн</span>`, oldFmt:()=>`1490 грн` },
     circle:{ fmt:()=>`664<span class="cur">грн</span>`, oldFmt:()=>`2490 грн` },
@@ -1258,8 +1253,8 @@ const COMBO_PRICES = {
 /* ==================== PAYMENT LINKS ====================
    Ukraine (by IP)   -> WayForPay only
    Russia (by IP)    -> Tribute only (single button)
-   Kazakhstan (by IP)-> Stripe + PayPal (two buttons, unchanged)
-   Everyone else     -> single Stripe checkout link (LINKS.intl.checkout) */
+   Kazakhstan (by IP)-> Stripe + PayPal (two buttons)
+   Everyone else     -> PayPal only */
 const LINKS = {
   ua: {
     basic:    'https://secure.wayforpay.com/button/bd79c278fab86',
@@ -1281,11 +1276,6 @@ const LINKS = {
       basic:    'https://www.paypal.com/ncp/payment/TX4CSD6R5C2JQ',
       circle:   'https://www.paypal.com/ncp/payment/L9MBPZRCTGFBG',
       personal: 'https://www.paypal.com/ncp/payment/MZCJ6M5TM7X7W'
-    },
-    checkout: {
-      basic:    'https://buy.stripe.com/bJefZj7eGfWhfjYfFe3ZK0q',
-      circle:   'https://buy.stripe.com/9B6cN7aqSdO9efU64E3ZK0r',
-      personal: 'https://buy.stripe.com/7sYaEZ9mOh0l2xc3Ww3ZK0s'
     }
   }
 };
@@ -1338,8 +1328,8 @@ function updatePlanButtonHref(planEl, region){
       }
     }
     if(tertiary) tertiary.style.display = 'none';
-  } else { // default: single Stripe checkout link (replaces PayPal-only fallback)
-    if(btn){ btn.setAttribute('href', LINKS.intl.checkout[combo] || '#'); btn.setAttribute('data-combo', combo); }
+  } else { // paypal only
+    if(btn){ btn.setAttribute('href', LINKS.intl.paypal[combo] || '#'); btn.setAttribute('data-combo', combo); }
     if(secondary) secondary.style.display = 'none';
     if(tertiary) tertiary.style.display = 'none';
   }
@@ -1457,7 +1447,7 @@ function render(region){
   updateShowMoreLabel();
 
   // prices
-  const pricing = isRussia ? PRICING.ru : (region === 'ua' ? PRICING.ua : (isKazakhstan ? PRICING.intl : PRICING.default));
+  const pricing = isRussia ? PRICING.ru : PRICING[region];
   setHTML('priceBasic', pricing.basic.fmt());
   setHTML('priceCircle', pricing.circle.fmt());
   setHTML('pricePersonal', pricing.personal.fmt());
