@@ -236,6 +236,7 @@
     .author-grid{ grid-template-columns:1fr !important; text-align:center; }
     .author-photo{ margin:0 auto; }
     .proof-gallery{ grid-template-columns:repeat(2,1fr) !important; }
+    .proof-context-grid{ grid-template-columns:repeat(2,1fr) !important; }
   }
   @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
 
@@ -306,6 +307,12 @@
 
   .proof-gallery{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; max-width:800px; margin:28px auto 0; }
   .proof-gallery img{ width:100%; border-radius:4px; border:1px solid var(--line); }
+
+  /* ---- after-intensive screenshot proof (with context captions) ---- */
+  .proof-context-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; max-width:900px; margin:0 auto; }
+  .proof-context-card{ display:flex; flex-direction:column; }
+  .proof-context-label{ font-size:13.5px; color:var(--muted); text-align:center; margin-bottom:10px; line-height:1.4; }
+  .proof-context-card img{ width:100%; border-radius:8px; border:1px solid var(--line); }
 
   /* ---- author credentials list + diploma ---- */
   .author-creds{ list-style:none; margin:18px 0 4px; padding:0; }
@@ -589,30 +596,61 @@
   </div>
 </section>
 
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" id="proofEyebrow">Реальные переписки</div>
+      <h2 id="proofH2">Что происходит после прохождения интенсива</h2>
+    </div>
+    <div class="proof-context-grid">
+      <div class="proof-context-card">
+        <div class="proof-context-label" id="proofLabel1">Прошло 3 недели после расставания, она не писала ему</div>
+        <img src="https://back4heart.site/img/file_00000000277471f486595b6d16ccaf07.png" alt="Скриншот переписки" loading="lazy">
+      </div>
+      <div class="proof-context-card">
+        <div class="proof-context-label" id="proofLabel2">После месяца работы над собой</div>
+        <img src="https://back4heart.site/img/1784517303508~2.png" alt="Скриншот переписки" loading="lazy">
+      </div>
+      <div class="proof-context-card">
+        <div class="proof-context-label" id="proofLabel3">Она перестала бегать за ним, занялась собой</div>
+        <img src="https://back4heart.site/img/1784517396070~3.png" alt="Скриншот переписки" loading="lazy">
+      </div>
+      <div class="proof-context-card">
+        <div class="proof-context-label" id="proofLabel4">Она установила жёсткие личные границы и перестала оправдываться</div>
+        <img src="https://back4heart.site/img/file_00000000be148246ab5b3d7722c13b46~2.png" alt="Скриншот переписки" loading="lazy">
+      </div>
+      <div class="proof-context-card">
+        <div class="proof-context-label" id="proofLabel5">Она сместила фокус с бесконечного ожидания его сообщений на свою реальную жизнь</div>
+        <img src="https://back4heart.site/img/file_00000000e05482439a2e2342e97b5fb4.png" alt="Скриншот переписки" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section section-alt">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">Реальные ситуации</div>
-      <h2>Три истории — от «он ушёл» до «он вернулся»</h2>
+      <div class="eyebrow" id="caseEyebrow">Реальные ситуации</div>
+      <h2 id="caseH2">Три истории — от «он ушёл» до «он вернулся»</h2>
     </div>
     <div class="case-list">
       <div class="case-card">
-        <h3>Марина <span>· 43 года</span></h3>
-        <div class="case-row"><div class="case-label">Было</div><p>Муж ушёл к коллеге после 12 лет брака. Марина 2 месяца писала ему каждый день, извинялась, умоляла вернуться. Он читал и не отвечал. Она похудела на 8 кг, не спала, проверяла его страницу каждые 20 минут.</p></div>
-        <div class="case-row"><div class="case-label">Сделала</div><p>Прошла интенсив. На 2-й день перестала писать. На 4-й день убрала его из закладок. На 6-й день выложила фото с подругами (по инструкции из урока «Демонстрация»).</p></div>
-        <div class="case-row"><div class="case-label">Стало</div><p>На 9-й день он написал: «Как ты?». Она не ответила 2 дня (по стратегии из урока 6). Он написал ещё раз. Через месяц попросил о встрече. Марина встретилась — но уже с другой позиции. Сейчас они общаются, но на ЕЁ условиях.</p></div>
+        <h3 id="case1Name">Марина <span>· 43 года</span></h3>
+        <div class="case-row"><div class="case-label" id="case1Label1">Было</div><p id="case1Text1">Муж ушёл к коллеге после 12 лет брака. Марина 2 месяца писала ему каждый день, извинялась, умоляла вернуться. Он читал и не отвечал. Она похудела на 8 кг, не спала, проверяла его страницу каждые 20 минут.</p></div>
+        <div class="case-row"><div class="case-label" id="case1Label2">Сделала</div><p id="case1Text2">Прошла интенсив. На 2-й день перестала писать. На 4-й день убрала его из закладок. На 6-й день выложила фото с подругами (по инструкции из урока «Демонстрация»).</p></div>
+        <div class="case-row"><div class="case-label" id="case1Label3">Стало</div><p id="case1Text3">На 9-й день он написал: «Как ты?». Она не ответила 2 дня (по стратегии из урока 6). Он написал ещё раз. Через месяц попросил о встрече. Марина встретилась — но уже с другой позиции. Сейчас они общаются, но на ЕЁ условиях.</p></div>
       </div>
       <div class="case-card">
-        <h3>Алёна <span>· 37 лет</span></h3>
-        <div class="case-row"><div class="case-label">Было</div><p>Парень бросил после 3 лет отношений. Сказал «я тебя не люблю». Через неделю выложил фото с другой. Алёна рыдала сутками, написала ему 40+ сообщений за одну ночь. Он заблокировал.</p></div>
-        <div class="case-row"><div class="case-label">Сделала</div><p>Начала интенсив в состоянии «мне нечего терять». Урок 1 — перестала заходить на его страницу (техника «Стоп-кран»). Урок 3 — поняла, что новая девушка не угроза, а триггер для его сомнений. Урок 5 — полностью сменила подачу в соцсетях.</p></div>
-        <div class="case-row"><div class="case-label">Стало</div><p>Через 3 недели он разблокировал её и написал с нового аккаунта. Алёна не стала возвращаться — но перестала страдать. Говорит: «Мне впервые за 3 месяца не больно. И мне плевать, напишет он или нет».</p></div>
+        <h3 id="case2Name">Алёна <span>· 37 лет</span></h3>
+        <div class="case-row"><div class="case-label" id="case2Label1">Было</div><p id="case2Text1">Парень бросил после 3 лет отношений. Сказал «я тебя не люблю». Через неделю выложил фото с другой. Алёна рыдала сутками, написала ему 40+ сообщений за одну ночь. Он заблокировал.</p></div>
+        <div class="case-row"><div class="case-label" id="case2Label2">Сделала</div><p id="case2Text2">Начала интенсив в состоянии «мне нечего терять». Урок 1 — перестала заходить на его страницу (техника «Стоп-кран»). Урок 3 — поняла, что новая девушка не угроза, а триггер для его сомнений. Урок 5 — полностью сменила подачу в соцсетях.</p></div>
+        <div class="case-row"><div class="case-label" id="case2Label3">Стало</div><p id="case2Text3">Через 3 недели он разблокировал её и написал с нового аккаунта. Алёна не стала возвращаться — но перестала страдать. Говорит: «Мне впервые за 3 месяца не больно. И мне плевать, напишет он или нет».</p></div>
       </div>
       <div class="case-card">
-        <h3>Ирина <span>· 51 год</span></h3>
-        <div class="case-row"><div class="case-label">Было</div><p>Муж ушёл после 22 лет брака. Двое взрослых детей. Ирина чувствовала, что жизнь закончилась. Стыдилась рассказать подругам. Думала: «В моём возрасте уже поздно что-то менять». Проверяла его онлайн по 50 раз в день.</p></div>
-        <div class="case-row"><div class="case-label">Сделала</div><p>Прошла интенсив + взяла личный разбор. Главный инсайт: «Я 22 года была удобной — и именно поэтому он решил, что может уйти без последствий». Применила стратегию из уроков 4–6.</p></div>
-        <div class="case-row"><div class="case-label">Стало</div><p>Муж начал звонить через 2 недели — сначала «по делу» (дети, документы), потом всё чаще без повода. Через 2 месяца предложил «попробовать снова». Ирина согласилась — но с условиями, которые раньше не посмела бы озвучить.</p></div>
+        <h3 id="case3Name">Ирина <span>· 51 год</span></h3>
+        <div class="case-row"><div class="case-label" id="case3Label1">Было</div><p id="case3Text1">Муж ушёл после 22 лет брака. Двое взрослых детей. Ирина чувствовала, что жизнь закончилась. Стыдилась рассказать подругам. Думала: «В моём возрасте уже поздно что-то менять». Проверяла его онлайн по 50 раз в день.</p></div>
+        <div class="case-row"><div class="case-label" id="case3Label2">Сделала</div><p id="case3Text2">Прошла интенсив + взяла личный разбор. Главный инсайт: «Я 22 года была удобной — и именно поэтому он решил, что может уйти без последствий». Применила стратегию из уроков 4–6.</p></div>
+        <div class="case-row"><div class="case-label" id="case3Label3">Стало</div><p id="case3Text3">Муж начал звонить через 2 недели — сначала «по делу» (дети, документы), потом всё чаще без повода. Через 2 месяца предложил «попробовать снова». Ирина согласилась — но с условиями, которые раньше не посмела бы озвучить.</p></div>
       </div>
     </div>
   </div>
@@ -841,6 +879,7 @@
       <div class="faq-item"><div class="faq-q"><span id="faqQ3"></span><span class="plus">+</span></div><div class="faq-a"><p id="faqA3"></p></div></div>
       <div class="faq-item"><div class="faq-q"><span id="faqQ4"></span><span class="plus">+</span></div><div class="faq-a"><p id="faqA4"></p></div></div>
       <div class="faq-item"><div class="faq-q"><span id="faqQ5"></span><span class="plus">+</span></div><div class="faq-a"><p id="faqA5"></p></div></div>
+      <div class="faq-item"><div class="faq-q"><span id="faqQ6"></span><span class="plus">+</span></div><div class="faq-a"><p id="faqA6"></p></div></div>
     </div>
   </div>
 </section>
@@ -963,6 +1002,7 @@ const CONTENT = {
     faqQ3:'А если он уже встречается с другой?', faqA3:'Почти ничего не меняет. В 95% случаев бывший всё равно выходит на связь в течение первого месяца - конкуренция часто это только ускоряет.',
     faqQ4:'Доступ будет навсегда?', faqA4:'Да. Уроки остаются с тобой навсегда, переслушивай, когда захочешь.',
     faqQ5:'Это анонимно?', faqA5:'Да, на сто процентов. Всё приходит на почту, никаких публичных отметок и подтверждений.',
+    faqQ6:'Не получается оплатить, что делать?', faqA6:'Такое иногда случается из-за банка или региона. Просто напиши мне в Telegram - разберёмся вместе и подберём удобный способ оплаты, без потери времени.',
     finalEyebrow:'Решение за тобой', finalH2:'Представь его лицо, когда он поймёт, кого потерял', finalSub:'Первые изменения - уже через 24–48 часов. Через неделю это будет не мысль, а факт.', finalCta:'Хочу, чтобы он пожалел',
     footerLine:'© 2026 back4heart. Все права защищены.', footerTerms:'Условия использования', footerPrivacy:'Политика конфиденциальности', footerOffer:'Публичная оферта',
     footerContact:'Вопросы? Пиши в Telegram:', payNote:'Оплатить можно картой, Apple Pay и Google Pay', faqContactText:'Не нашла ответ? Пиши в Telegram:',
@@ -1009,6 +1049,25 @@ const CONTENT = {
     excludeEyebrow:'Если честно', excludeH2:'Кому это НЕ подходит',
     excludeText:'Ищешь утешение, разговоры про то, что время лечит, и подтверждение, что само пройдет? Закрывай вкладку, это не сюда. Здесь - для тех, кто хочет избавиться от стыда за прошлые сообщения и унижения, вернуть себе лицо и сделать так, чтобы  жалел он. Без писанины по 40 минут в день и работы с психотерапевтом на полгода вперёд.',
     happensEyebrow:'Что происходит, когда действуешь правильно', happensH2:'У него случается когнитивный диссонанс.',
+    proofEyebrow:'Реальные переписки', proofH2:'Что происходит после прохождения интенсива',
+    proofLabel1:'Прошло 3 недели после расставания, она не писала ему',
+    proofLabel2:'После месяца работы над собой',
+    proofLabel3:'Она перестала бегать за ним, занялась собой',
+    proofLabel4:'Она установила жёсткие личные границы и перестала оправдываться',
+    proofLabel5:'Она сместила фокус с бесконечного ожидания его сообщений на свою реальную жизнь',
+    caseEyebrow:'Реальные ситуации', caseH2:'Три истории — от «он ушёл» до «он вернулся»',
+    case1Name:'Марина <span>· 43 года</span>',
+    case1Label1:'Было', case1Text1:'Муж ушёл к коллеге после 12 лет брака. Марина 2 месяца писала ему каждый день, извинялась, умоляла вернуться. Он читал и не отвечал. Она похудела на 8 кг, не спала, проверяла его страницу каждые 20 минут.',
+    case1Label2:'Сделала', case1Text2:'Прошла интенсив. На 2-й день перестала писать. На 4-й день убрала его из закладок. На 6-й день выложила фото с подругами (по инструкции из урока «Демонстрация»).',
+    case1Label3:'Стало', case1Text3:'На 9-й день он написал: «Как ты?». Она не ответила 2 дня (по стратегии из урока 6). Он написал ещё раз. Через месяц попросил о встрече. Марина встретилась — но уже с другой позиции. Сейчас они общаются, но на ЕЁ условиях.',
+    case2Name:'Алёна <span>· 37 лет</span>',
+    case2Label1:'Было', case2Text1:'Парень бросил после 3 лет отношений. Сказал «я тебя не люблю». Через неделю выложил фото с другой. Алёна рыдала сутками, написала ему 40+ сообщений за одну ночь. Он заблокировал.',
+    case2Label2:'Сделала', case2Text2:'Начала интенсив в состоянии «мне нечего терять». Урок 1 — перестала заходить на его страницу (техника «Стоп-кран»). Урок 3 — поняла, что новая девушка не угроза, а триггер для его сомнений. Урок 5 — полностью сменила подачу в соцсетях.',
+    case2Label3:'Стало', case2Text3:'Через 3 недели он разблокировал её и написал с нового аккаунта. Алёна не стала возвращаться — но перестала страдать. Говорит: «Мне впервые за 3 месяца не больно. И мне плевать, напишет он или нет».',
+    case3Name:'Ирина <span>· 51 год</span>',
+    case3Label1:'Было', case3Text1:'Муж ушёл после 22 лет брака. Двое взрослых детей. Ирина чувствовала, что жизнь закончилась. Стыдилась рассказать подругам. Думала: «В моём возрасте уже поздно что-то менять». Проверяла его онлайн по 50 раз в день.',
+    case3Label2:'Сделала', case3Text2:'Прошла интенсив + взяла личный разбор. Главный инсайт: «Я 22 года была удобной — и именно поэтому он решил, что может уйти без последствий». Применила стратегию из уроков 4–6.',
+    case3Label3:'Стало', case3Text3:'Муж начал звонить через 2 недели — сначала «по делу» (дети, документы), потом всё чаще без повода. Через 2 месяца предложил «попробовать снова». Ирина согласилась — но с условиями, которые раньше не посмела бы озвучить.',
     happens1:'Начинает думать о тебе', happens2:'Проверяет твои соцсети', happens3:'Начинает жалеть о том, что упустил', happens4:'Сам ищет повод написать или встретиться', happens5:'А у тебя перестаёт болеть, и ты чувствуешь превосходство',
     authorH2:'Человек, который реально понимает, как думают мужчины',
     authorP1:'<b>Меня зовут Роман.</b> 7 лет изучал поведенческую психологию и стратегии влияния — не в университете, а на практике: в продажах, переговорах и личных отношениях.',
@@ -1078,9 +1137,10 @@ const CONTENT = {
     faqQ3:'А якщо він не напише?', faqA3:'У 95 % випадків колишній виходить на зв’язок у перший місяць.',
     faqQ4:'Доступ буде назавжди?', faqA4:'Так. Уроки залишаються з тобою назавжди, переслуховуй, коли захочеш.',
     faqQ5:'Це анонімно?', faqA5:'Так, на всі сто. Все приходить на пошту, жодних публічних відміток і підтверджень.',
+    faqQ6:'Не виходить оплатити, що робити?', faqA6:'Таке іноді трапляється через банк або регіон. Просто напиши мені в Telegram - розберемося разом і підберемо зручний спосіб оплати, без втрати часу.',
     finalEyebrow:'Рішення за тобою', finalH2:'Уяви його обличчя, коли він зрозуміє, кого втратив', finalSub:'Через тиждень це буде вже не думка, а факт.', finalCta:'Почати свої 7 днів',
     footerLine:'© 2026 back4heart. Усі права захищені.', footerTerms:'Умови використання', footerPrivacy:'Політика конфіденційності', footerOffer:'Публічна оферта',
-    footerContact:'Питання? Пиши в Telegram:', faqContactText:'Не знайшла відповідь? Пиши в Telegram:',
+    footerContact:'Питання? Пиши в Telegram:', payNote:'Оплатити можна карткою, Apple Pay та Google Pay', faqContactText:'Не знайшла відповідь? Пиши в Telegram:',
     trustGuaranteeTitle:'Гарантія повернення 7 днів', trustGuaranteeText:'Не підійшло — повернемо гроші протягом 7 днів, без зайвих запитань',
     trustSecurityTitle:'Безпечна оплата', trustSecurityText:'SSL-шифрування 256 біт. Дані картки не зберігаються на сайті',
     trustOfferTitle:'Прозорі умови', trustOfferText:'Усі умови покупки — у <a href="#" id="offerLink" target="_blank" rel="noopener">публічній оферті</a>',
@@ -1124,6 +1184,25 @@ const CONTENT = {
     excludeEyebrow:'Чесно кажучи', excludeH2:'Кому це НЕ підходить',
     excludeText:'Шукаєш втіху, розмови про те, що час лікує, і підтвердження, що все минеться само собою? Закривай цю вкладку - тобі не сюди. Тут - для тих, хто хоче позбутися сорому за минулі повідомлення й приниження, повернути собі гідність і зробити так, щоб шкодував він. Без написування по 40 хвилин на день і без пів року психотерапії.',
     happensEyebrow:'Що відбувається, коли діяти правильно', happensH2:'У нього виникає когнітивний дисонанс.',
+    proofEyebrow:'Реальне листування', proofH2:'Що відбувається після проходження інтенсиву',
+    proofLabel1:'Минуло 3 тижні після розставання, вона не писала йому',
+    proofLabel2:'Після місяця роботи над собою',
+    proofLabel3:'Вона перестала бігати за ним, зайнялася собою',
+    proofLabel4:'Вона встановила жорсткі особисті кордони і перестала виправдовуватися',
+    proofLabel5:'Вона змістила фокус з нескінченного очікування його повідомлень на своє реальне життя',
+    caseEyebrow:'Реальні ситуації', caseH2:'Три історії — від «він пішов» до «він повернувся»',
+    case1Name:'Марина <span>· 43 роки</span>',
+    case1Label1:'Було', case1Text1:'Чоловік пішов до колеги після 12 років шлюбу. Марина 2 місяці писала йому щодня, вибачалася, благала повернутися. Він читав і не відповідав. Вона схудла на 8 кг, не спала, перевіряла його сторінку кожні 20 хвилин.',
+    case1Label2:'Зробила', case1Text2:'Пройшла інтенсив. На 2-й день перестала писати. На 4-й день прибрала його із закладок. На 6-й день виклала фото з подругами (за інструкцією з уроку «Демонстрація»).',
+    case1Label3:'Стало', case1Text3:'На 9-й день він написав: «Як ти?». Вона не відповіла 2 дні (за стратегією з уроку 6). Він написав ще раз. Через місяць попросив про зустріч. Марина зустрілася — але вже з іншої позиції. Зараз вони спілкуються, але на ЇЇ умовах.',
+    case2Name:'Альона <span>· 37 років</span>',
+    case2Label1:'Було', case2Text1:'Хлопець кинув після 3 років стосунків. Сказав «я тебе не кохаю». Через тиждень виклав фото з іншою. Альона ридала добами, написала йому 40+ повідомлень за одну ніч. Він заблокував.',
+    case2Label2:'Зробила', case2Text2:'Почала інтенсив у стані «мені нічого втрачати». Урок 1 — перестала заходити на його сторінку (техніка «Стоп-кран»). Урок 3 — зрозуміла, що нова дівчина не загроза, а тригер для його сумнівів. Урок 5 — повністю змінила подачу в соцмережах.',
+    case2Label3:'Стало', case2Text3:'Через 3 тижні він розблокував її і написав з нового акаунта. Альона не стала повертатися — але перестала страждати. Каже: «Мені вперше за 3 місяці не боляче. І мені байдуже, напише він чи ні».',
+    case3Name:'Ірина <span>· 51 рік</span>',
+    case3Label1:'Було', case3Text1:'Чоловік пішов після 22 років шлюбу. Двоє дорослих дітей. Ірина відчувала, що життя закінчилося. Соромилася розповісти подругам. Думала: «У моєму віці вже пізно щось змінювати». Перевіряла його онлайн по 50 разів на день.',
+    case3Label2:'Зробила', case3Text2:'Пройшла інтенсив + взяла особистий розбір. Головний інсайт: «Я 22 роки була зручною — і саме тому він вирішив, що може піти без наслідків». Застосувала стратегію з уроків 4–6.',
+    case3Label3:'Стало', case3Text3:'Чоловік почав дзвонити через 2 тижні — спочатку «у справах» (діти, документи), потім дедалі частіше без приводу. Через 2 місяці запропонував «спробувати знову». Ірина погодилася — але з умовами, які раніше не наважилася б озвучити.',
     happens1:'Починає думати про тебе', happens2:'Перевіряє твої соцмережі', happens3:'Починає присилати подарунки та квіти', happens4:'Сам шукає привід написати або зустрітись', happens5:'А в тебе перестає боліти, і ти відчуваєш перевагу',
     authorH2:'Людина, яка реально розуміє, як думають чоловіки',
     authorP1:'<b>Мене звати Роман.</b> Я допоміг більше 2000 жінок - і майже всі стали щасливішими.',
@@ -1150,6 +1229,11 @@ const PRICING = {
     circle:{ fmt:()=>`<sup>$</sup>14.99`, oldFmt:()=>`$89` },
     personal:{ fmt:()=>`<sup>$</sup>49.99`, oldFmt:()=>`$149` }
   },
+  default: {
+    basic:{ fmt:()=>`<sup>$</sup>14.99`, oldFmt:()=>`$47` },
+    circle:{ fmt:()=>`<sup>$</sup>27.99`, oldFmt:()=>`$89` },
+    personal:{ fmt:()=>`<sup>$</sup>97`, oldFmt:()=>`$149` }
+  },
   ua: {
     basic:{ fmt:()=>`399<span class="cur">грн</span>`, oldFmt:()=>`1490 грн` },
     circle:{ fmt:()=>`664<span class="cur">грн</span>`, oldFmt:()=>`2490 грн` },
@@ -1174,8 +1258,8 @@ const COMBO_PRICES = {
 /* ==================== PAYMENT LINKS ====================
    Ukraine (by IP)   -> WayForPay only
    Russia (by IP)    -> Tribute only (single button)
-   Kazakhstan (by IP)-> Stripe + PayPal (two buttons)
-   Everyone else     -> PayPal only */
+   Kazakhstan (by IP)-> Stripe + PayPal (two buttons, unchanged)
+   Everyone else     -> single Stripe checkout link (LINKS.intl.checkout) */
 const LINKS = {
   ua: {
     basic:    'https://secure.wayforpay.com/button/bd79c278fab86',
@@ -1197,6 +1281,11 @@ const LINKS = {
       basic:    'https://www.paypal.com/ncp/payment/TX4CSD6R5C2JQ',
       circle:   'https://www.paypal.com/ncp/payment/L9MBPZRCTGFBG',
       personal: 'https://www.paypal.com/ncp/payment/MZCJ6M5TM7X7W'
+    },
+    checkout: {
+      basic:    'https://buy.stripe.com/bJefZj7eGfWhfjYfFe3ZK0q',
+      circle:   'https://buy.stripe.com/9B6cN7aqSdO9efU64E3ZK0r',
+      personal: 'https://buy.stripe.com/7sYaEZ9mOh0l2xc3Ww3ZK0s'
     }
   }
 };
@@ -1249,8 +1338,8 @@ function updatePlanButtonHref(planEl, region){
       }
     }
     if(tertiary) tertiary.style.display = 'none';
-  } else { // paypal only
-    if(btn){ btn.setAttribute('href', LINKS.intl.paypal[combo] || '#'); btn.setAttribute('data-combo', combo); }
+  } else { // default: single Stripe checkout link (replaces PayPal-only fallback)
+    if(btn){ btn.setAttribute('href', LINKS.intl.checkout[combo] || '#'); btn.setAttribute('data-combo', combo); }
     if(secondary) secondary.style.display = 'none';
     if(tertiary) tertiary.style.display = 'none';
   }
@@ -1317,7 +1406,7 @@ function render(region){
   setText('urgencySub', c.urgencySub);
 
   setText('faqEyebrow', c.faqEyebrow); setText('faqH2', c.faqH2);
-  for(let i=1;i<=5;i++){ setText('faqQ'+i, c['faqQ'+i]); setText('faqA'+i, c['faqA'+i]); }
+  for(let i=1;i<=6;i++){ setText('faqQ'+i, c['faqQ'+i]); setText('faqA'+i, c['faqA'+i]); }
 
   setText('finalEyebrow', c.finalEyebrow); setText('finalH2', c.finalH2); setText('finalSub', c.finalSub); setText('finalCta', c.finalCta);
   setText('footerLine', c.footerLine); setText('footerTerms', c.footerTerms); setText('footerPrivacy', c.footerPrivacy); setText('footerOffer', c.footerOffer);
@@ -1341,6 +1430,16 @@ function render(region){
 
   // what-happens block
   setText('happensEyebrow', c.happensEyebrow); setText('happensH2', c.happensH2);
+  setText('proofEyebrow', c.proofEyebrow); setText('proofH2', c.proofH2);
+  setText('proofLabel1', c.proofLabel1); setText('proofLabel2', c.proofLabel2); setText('proofLabel3', c.proofLabel3); setText('proofLabel4', c.proofLabel4); setText('proofLabel5', c.proofLabel5);
+  setText('caseEyebrow', c.caseEyebrow); setText('caseH2', c.caseH2);
+  setHTML('case1Name', c.case1Name); setHTML('case2Name', c.case2Name); setHTML('case3Name', c.case3Name);
+  for(let i=1;i<=3;i++){
+    for(let j=1;j<=3;j++){
+      setText('case'+i+'Label'+j, c['case'+i+'Label'+j]);
+      setText('case'+i+'Text'+j, c['case'+i+'Text'+j]);
+    }
+  }
   setText('happens1', c.happens1); setText('happens2', c.happens2); setText('happens3', c.happens3); setText('happens4', c.happens4); setText('happens5', c.happens5);
 
   // author block
@@ -1358,7 +1457,7 @@ function render(region){
   updateShowMoreLabel();
 
   // prices
-  const pricing = isRussia ? PRICING.ru : PRICING[region];
+  const pricing = isRussia ? PRICING.ru : (region === 'ua' ? PRICING.ua : (isKazakhstan ? PRICING.intl : PRICING.default));
   setHTML('priceBasic', pricing.basic.fmt());
   setHTML('priceCircle', pricing.circle.fmt());
   setHTML('pricePersonal', pricing.personal.fmt());
