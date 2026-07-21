@@ -236,7 +236,6 @@
     .author-grid{ grid-template-columns:1fr !important; text-align:center; }
     .author-photo{ margin:0 auto; }
     .proof-gallery{ grid-template-columns:repeat(2,1fr) !important; }
-    .proof-context-grid{ grid-template-columns:repeat(2,1fr) !important; }
   }
   @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
 
@@ -308,12 +307,6 @@
   .proof-gallery{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; max-width:800px; margin:28px auto 0; }
   .proof-gallery img{ width:100%; border-radius:4px; border:1px solid var(--line); }
 
-  /* ---- after-intensive screenshot proof (with context captions) ---- */
-  .proof-context-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; max-width:900px; margin:0 auto; }
-  .proof-context-card{ display:flex; flex-direction:column; }
-  .proof-context-label{ font-size:13.5px; color:var(--muted); text-align:center; margin-bottom:10px; line-height:1.4; }
-  .proof-context-card img{ width:100%; border-radius:8px; border:1px solid var(--line); }
-
   /* ---- author credentials list + diploma ---- */
   .author-creds{ list-style:none; margin:18px 0 4px; padding:0; }
   .author-creds li{ position:relative; padding-left:22px; font-size:14px; color:var(--ink); margin-bottom:8px; line-height:1.4; }
@@ -334,12 +327,6 @@
   .case-label{ font-size:11px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; color:var(--gold); padding-top:2px; }
   .case-row p{ font-size:14px; color:var(--muted); line-height:1.55; margin:0; }
   @media (max-width:600px){ .case-row{ grid-template-columns:1fr; gap:4px; } }
-
-  /* ---- video testimonials ---- */
-  .video-testi-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; max-width:720px; margin:28px auto 0; }
-  .video-testi{ border-radius:10px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow); background:#000; }
-  .video-testi video{ width:100%; display:block; max-height:420px; background:#000; }
-  @media (max-width:640px){ .video-testi-grid{ grid-template-columns:1fr; } }
 
   /* ---- value anchor (crossed-out old price) ---- */
   .price-old{ font-size:15px; color:var(--light); text-decoration:line-through; margin-bottom:2px; }
@@ -596,37 +583,6 @@
   </div>
 </section>
 
-<section class="section">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow" id="proofEyebrow">Реальные переписки</div>
-      <h2 id="proofH2">Что происходит после прохождения интенсива</h2>
-    </div>
-    <div class="proof-context-grid">
-      <div class="proof-context-card">
-        <div class="proof-context-label" id="proofLabel1">Прошло 3 недели после расставания, она не писала ему</div>
-        <img src="https://back4heart.site/img/file_00000000277471f486595b6d16ccaf07.png" alt="Скриншот переписки" loading="lazy">
-      </div>
-      <div class="proof-context-card">
-        <div class="proof-context-label" id="proofLabel2">После месяца работы над собой</div>
-        <img src="https://back4heart.site/img/1784517303508~2.png" alt="Скриншот переписки" loading="lazy">
-      </div>
-      <div class="proof-context-card">
-        <div class="proof-context-label" id="proofLabel3">Она перестала бегать за ним, занялась собой</div>
-        <img src="https://back4heart.site/img/1784517396070~3.png" alt="Скриншот переписки" loading="lazy">
-      </div>
-      <div class="proof-context-card">
-        <div class="proof-context-label" id="proofLabel4">Она установила жёсткие личные границы и перестала оправдываться</div>
-        <img src="https://back4heart.site/img/file_00000000be148246ab5b3d7722c13b46~2.png" alt="Скриншот переписки" loading="lazy">
-      </div>
-      <div class="proof-context-card">
-        <div class="proof-context-label" id="proofLabel5">Она сместила фокус с бесконечного ожидания его сообщений на свою реальную жизнь</div>
-        <img src="https://back4heart.site/img/file_00000000e05482439a2e2342e97b5fb4.png" alt="Скриншот переписки" loading="lazy">
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="section section-alt">
   <div class="wrap">
     <div class="section-head">
@@ -729,19 +685,6 @@
       <img src="https://i.ibb.co/twZX8kcs/Screenshot-20260304-063655.png" alt="Скриншот переписки" loading="lazy">
       <img src="https://i.ibb.co/GvZY9PMP/Screenshot-20260225-073516.png" alt="Скриншот переписки" loading="lazy">
       <img src="https://i.ibb.co/bj4RzcGw/Screenshot-20260225-084353.png" alt="Скриншот переписки" loading="lazy">
-    </div>
-
-    <div class="video-testi-grid">
-      <div class="video-testi">
-        <video controls preload="metadata" playsinline src="https://raw.githubusercontent.com/Domias13/landing/main/src/video1.mp4"></video>
-      </div>
-      <div class="video-testi">
-        <video controls preload="metadata" playsinline src="https://raw.githubusercontent.com/Domias13/landing/main/src/video2.mp4"></video>
-      </div>
-	        <div class="video-testi">
-        <video controls preload="metadata" playsinline src="https://raw.githubusercontent.com/Domias13/landing/main/src/video3.mp4"></video>
-      </div>
-
     </div>
 
     <p class="testi-disclaimer"></p>
@@ -880,6 +823,7 @@
       <div class="faq-item"><div class="faq-q"><span id="faqQ4"></span><span class="plus">+</span></div><div class="faq-a"><p id="faqA4"></p></div></div>
       <div class="faq-item"><div class="faq-q"><span id="faqQ5"></span><span class="plus">+</span></div><div class="faq-a"><p id="faqA5"></p></div></div>
       <div class="faq-item"><div class="faq-q"><span id="faqQ6"></span><span class="plus">+</span></div><div class="faq-a"><p id="faqA6"></p></div></div>
+      <div class="faq-item"><div class="faq-q"><span id="faqQ7"></span><span class="plus">+</span></div><div class="faq-a"><p id="faqA7"></p></div></div>
     </div>
   </div>
 </section>
@@ -1003,6 +947,7 @@ const CONTENT = {
     faqQ4:'Доступ будет навсегда?', faqA4:'Да. Уроки остаются с тобой навсегда, переслушивай, когда захочешь.',
     faqQ5:'Это анонимно?', faqA5:'Да, на сто процентов. Всё приходит на почту, никаких публичных отметок и подтверждений.',
     faqQ6:'Не получается оплатить, что делать?', faqA6:'Такое иногда случается из-за банка или региона. Просто напиши мне в Telegram - разберёмся вместе и подберём удобный способ оплаты, без потери времени.',
+    faqQ7:'Почему так дёшево?', faqA7:'После развода женщина часто оказывается в непростом материальном положении - и это последнее, из-за чего я хочу, чтобы кто-то остался без поддержки. Поэтому я сознательно держу цену минимальной: важнее, чтобы как можно больше женщин получили эти знания и смогли пройти через расставание с меньшей болью, чем заработать на этом по максимуму.',
     finalEyebrow:'Решение за тобой', finalH2:'Представь его лицо, когда он поймёт, кого потерял', finalSub:'Первые изменения - уже через 24–48 часов. Через неделю это будет не мысль, а факт.', finalCta:'Хочу, чтобы он пожалел',
     footerLine:'© 2026 back4heart. Все права защищены.', footerTerms:'Условия использования', footerPrivacy:'Политика конфиденциальности', footerOffer:'Публичная оферта',
     footerContact:'Вопросы? Пиши в Telegram:', payNote:'Оплатить можно картой, Apple Pay и Google Pay', faqContactText:'Не нашла ответ? Пиши в Telegram:',
@@ -1049,12 +994,6 @@ const CONTENT = {
     excludeEyebrow:'Если честно', excludeH2:'Кому это НЕ подходит',
     excludeText:'Ищешь утешение, разговоры про то, что время лечит, и подтверждение, что само пройдет? Закрывай вкладку, это не сюда. Здесь - для тех, кто хочет избавиться от стыда за прошлые сообщения и унижения, вернуть себе лицо и сделать так, чтобы  жалел он. Без писанины по 40 минут в день и работы с психотерапевтом на полгода вперёд.',
     happensEyebrow:'Что происходит, когда действуешь правильно', happensH2:'У него случается когнитивный диссонанс.',
-    proofEyebrow:'Реальные переписки', proofH2:'Что происходит после прохождения интенсива',
-    proofLabel1:'Прошло 3 недели после расставания, она не писала ему',
-    proofLabel2:'После месяца работы над собой',
-    proofLabel3:'Она перестала бегать за ним, занялась собой',
-    proofLabel4:'Она установила жёсткие личные границы и перестала оправдываться',
-    proofLabel5:'Она сместила фокус с бесконечного ожидания его сообщений на свою реальную жизнь',
     caseEyebrow:'Реальные ситуации', caseH2:'Три истории — от «он ушёл» до «он вернулся»',
     case1Name:'Марина <span>· 43 года</span>',
     case1Label1:'Было', case1Text1:'Муж ушёл к коллеге после 12 лет брака. Марина 2 месяца писала ему каждый день, извинялась, умоляла вернуться. Он читал и не отвечал. Она похудела на 8 кг, не спала, проверяла его страницу каждые 20 минут.',
@@ -1138,6 +1077,7 @@ const CONTENT = {
     faqQ4:'Доступ буде назавжди?', faqA4:'Так. Уроки залишаються з тобою назавжди, переслуховуй, коли захочеш.',
     faqQ5:'Це анонімно?', faqA5:'Так, на всі сто. Все приходить на пошту, жодних публічних відміток і підтверджень.',
     faqQ6:'Не виходить оплатити, що робити?', faqA6:'Таке іноді трапляється через банк або регіон. Просто напиши мені в Telegram - розберемося разом і підберемо зручний спосіб оплати, без втрати часу.',
+    faqQ7:'Чому так дешево?', faqA7:'Після розлучення жінка часто опиняється у складному матеріальному становищі - і це останнє, через що я хочу, щоб хтось залишився без підтримки. Тому я свідомо тримаю ціну мінімальною: важливіше, щоб якомога більше жінок отримали ці знання і змогли пройти крізь розставання з меншим болем, ніж заробити на цьому по максимуму.',
     finalEyebrow:'Рішення за тобою', finalH2:'Уяви його обличчя, коли він зрозуміє, кого втратив', finalSub:'Через тиждень це буде вже не думка, а факт.', finalCta:'Почати свої 7 днів',
     footerLine:'© 2026 back4heart. Усі права захищені.', footerTerms:'Умови використання', footerPrivacy:'Політика конфіденційності', footerOffer:'Публічна оферта',
     footerContact:'Питання? Пиши в Telegram:', payNote:'Оплатити можна карткою, Apple Pay та Google Pay', faqContactText:'Не знайшла відповідь? Пиши в Telegram:',
@@ -1184,12 +1124,6 @@ const CONTENT = {
     excludeEyebrow:'Чесно кажучи', excludeH2:'Кому це НЕ підходить',
     excludeText:'Шукаєш втіху, розмови про те, що час лікує, і підтвердження, що все минеться само собою? Закривай цю вкладку - тобі не сюди. Тут - для тих, хто хоче позбутися сорому за минулі повідомлення й приниження, повернути собі гідність і зробити так, щоб шкодував він. Без написування по 40 хвилин на день і без пів року психотерапії.',
     happensEyebrow:'Що відбувається, коли діяти правильно', happensH2:'У нього виникає когнітивний дисонанс.',
-    proofEyebrow:'Реальне листування', proofH2:'Що відбувається після проходження інтенсиву',
-    proofLabel1:'Минуло 3 тижні після розставання, вона не писала йому',
-    proofLabel2:'Після місяця роботи над собою',
-    proofLabel3:'Вона перестала бігати за ним, зайнялася собою',
-    proofLabel4:'Вона встановила жорсткі особисті кордони і перестала виправдовуватися',
-    proofLabel5:'Вона змістила фокус з нескінченного очікування його повідомлень на своє реальне життя',
     caseEyebrow:'Реальні ситуації', caseH2:'Три історії — від «він пішов» до «він повернувся»',
     case1Name:'Марина <span>· 43 роки</span>',
     case1Label1:'Було', case1Text1:'Чоловік пішов до колеги після 12 років шлюбу. Марина 2 місяці писала йому щодня, вибачалася, благала повернутися. Він читав і не відповідав. Вона схудла на 8 кг, не спала, перевіряла його сторінку кожні 20 хвилин.',
@@ -1396,7 +1330,7 @@ function render(region){
   setText('urgencySub', c.urgencySub);
 
   setText('faqEyebrow', c.faqEyebrow); setText('faqH2', c.faqH2);
-  for(let i=1;i<=6;i++){ setText('faqQ'+i, c['faqQ'+i]); setText('faqA'+i, c['faqA'+i]); }
+  for(let i=1;i<=7;i++){ setText('faqQ'+i, c['faqQ'+i]); setText('faqA'+i, c['faqA'+i]); }
 
   setText('finalEyebrow', c.finalEyebrow); setText('finalH2', c.finalH2); setText('finalSub', c.finalSub); setText('finalCta', c.finalCta);
   setText('footerLine', c.footerLine); setText('footerTerms', c.footerTerms); setText('footerPrivacy', c.footerPrivacy); setText('footerOffer', c.footerOffer);
@@ -1420,8 +1354,6 @@ function render(region){
 
   // what-happens block
   setText('happensEyebrow', c.happensEyebrow); setText('happensH2', c.happensH2);
-  setText('proofEyebrow', c.proofEyebrow); setText('proofH2', c.proofH2);
-  setText('proofLabel1', c.proofLabel1); setText('proofLabel2', c.proofLabel2); setText('proofLabel3', c.proofLabel3); setText('proofLabel4', c.proofLabel4); setText('proofLabel5', c.proofLabel5);
   setText('caseEyebrow', c.caseEyebrow); setText('caseH2', c.caseH2);
   setHTML('case1Name', c.case1Name); setHTML('case2Name', c.case2Name); setHTML('case3Name', c.case3Name);
   for(let i=1;i<=3;i++){
