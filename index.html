@@ -180,6 +180,7 @@
   }
   .plan .plan-name{ font-family:'Playfair Display',serif; font-size:19px; margin-bottom:6px; color:var(--ink); }
   .plan .plan-desc{ color:var(--muted); font-size:13px; margin-bottom:20px; min-height:34px; }
+  .plan-more-link{ display:inline-block; font-size:12.5px; color:var(--crimson); text-decoration:underline; margin:-14px 0 18px; }
   .plan .price{ font-family:'Playfair Display',serif; font-size:40px; font-weight:700; color:var(--ink); margin-bottom:4px; }
   .plan .price sup, .plan .price .cur{ font-size:17px; color:var(--muted); font-weight:600; }
   .plan .price sup{ top:-16px; }
@@ -736,6 +737,7 @@
       <div class="plan featured" data-tier="circle">
         <div class="plan-name" id="planCircleName">Интенсив + практикум «Про женщину, которая влюбляет навсегда»</div>
         <div class="plan-desc" id="planCircleDesc">...</div>
+        <a href="#" id="practicumLink" class="plan-more-link">Подробнее о практикуме</a>
         <div class="price-old" id="priceCircleOld">$89</div>
         <div class="price" id="priceCircle">$14.99</div>
         <div class="price-note" id="planCircleNote">разовый платёж</div>
@@ -889,6 +891,16 @@
   </div>
 </div>
 
+<div class="offer-overlay" id="practicumOverlay">
+  <div class="offer-modal" role="dialog" aria-modal="true" aria-labelledby="practicumModalTitle">
+    <div class="offer-modal-head">
+      <h2 id="practicumModalTitle">Практикум «Женщина, которая влюбляет навсегда»</h2>
+      <button class="offer-close" id="practicumClose" aria-label="Закрыть">×</button>
+    </div>
+    <div class="offer-modal-body" id="practicumModalBody"></div>
+  </div>
+</div>
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QCMC7J0KG1"></script>
 <script>
@@ -955,6 +967,19 @@ const CONTENT = {
     trustSecurityTitle:'Безопасная оплата', trustSecurityText:'SSL-шифрование 256 бит. Данные карты не хранятся на сайте',
     trustOfferTitle:'Прозрачные условия', trustOfferText:'Все условия покупки — в <a href="#" id="offerLink" target="_blank" rel="noopener">публичной оферте</a>',
     offerModalTitle:'Публичная оферта',
+    practicumModalTitle:'Практикум «Женщина, которая влюбляет навсегда»',
+    practicumModalBody: `
+      <p>Это бонус-практикум, который входит в тариф «Интенсив + практикум». Он не про то, как понравиться на один вечер, а про то, как стать женщиной, к которой хочется возвращаться - без игр, показного равнодушия и беготни за мужчиной.</p>
+      <h3>5 блоков, в конце каждого - практическое задание</h3>
+      <ul>
+        <li><b>Внутренний магнит</b> - что на самом деле включает интерес мужчины, и почему забота с жертвенностью тут ни при чём.</li>
+        <li><b>Энергия без дефицита</b> - как перестать держаться из последних сил и наполниться по-настоящему, а не изображать спокойствие.</li>
+        <li><b>Загадка вместо прозрачности</b> - почему полная открытость иногда работает против тебя, и как оставаться собой, не выкладывая всё до конца.</li>
+        <li><b>Территория, куда хочется возвращаться</b> - что мужчина на самом деле оценивает, выбирая, задержаться или уйти.</li>
+        <li><b>Незаменимость</b> - из чего складывается связь, которую невозможно заменить и с кем не хочется сравнивать.</li>
+      </ul>
+      <p>Формат: аудио + короткие практики. Слушать можно в своём темпе, доступ остаётся навсегда.</p>
+    `,
     offerModalBody: `
       <h3>1. Общие положения</h3>
       <p>Настоящий документ является публичной офертой Романа Вейл, автора и владельца проекта back4heart (далее — «Продавец»), и содержит существенные условия договора на приобретение цифровых информационных продуктов, размещённых на сайте back4heart.site (далее — «Сайт»).</p>
@@ -1085,6 +1110,19 @@ const CONTENT = {
     trustSecurityTitle:'Безпечна оплата', trustSecurityText:'SSL-шифрування 256 біт. Дані картки не зберігаються на сайті',
     trustOfferTitle:'Прозорі умови', trustOfferText:'Усі умови покупки — у <a href="#" id="offerLink" target="_blank" rel="noopener">публічній оферті</a>',
     offerModalTitle:'Публічна оферта',
+    practicumModalTitle:'Практикум «Жінка, яка закохує назавжди»',
+    practicumModalBody: `
+      <p>Це бонус-практикум, який входить у тариф «Інтенсив + практикум». Він не про те, як сподобатися на один вечір, а про те, як стати жінкою, до якої хочеться повертатися - без ігор, показної байдужості й гонитви за чоловіком.</p>
+      <h3>5 блоків, наприкінці кожного - практичне завдання</h3>
+      <ul>
+        <li><b>Внутрішній магніт</b> - що насправді вмикає інтерес чоловіка, і чому турбота із жертовністю тут ні до чого.</li>
+        <li><b>Енергія без дефіциту</b> - як перестати триматися з останніх сил і наповнитися по-справжньому, а не вдавати спокій.</li>
+        <li><b>Загадка замість прозорості</b> - чому повна відкритість іноді працює проти тебе, і як залишатися собою, не викладаючи все до кінця.</li>
+        <li><b>Територія, куди хочеться повертатися</b> - що чоловік насправді оцінює, вирішуючи, залишитися чи піти.</li>
+        <li><b>Незамінність</b> - з чого складається зв'язок, який неможливо замінити і з ким не хочеться порівнювати.</li>
+      </ul>
+      <p>Формат: аудіо + короткі практики. Слухати можна у своєму темпі, доступ залишається назавжди.</p>
+    `,
     offerModalBody: `
       <h3>1. Загальні положення</h3>
       <p>Цей документ є публічною офертою Романа Вейл, автора та власника проєкту back4heart (далі — «Продавець»), і містить істотні умови договору на придбання цифрових інформаційних продуктів, розміщених на сайті back4heart.site (далі — «Сайт»).</p>
@@ -1340,6 +1378,7 @@ function render(region){
   setText('trustSecurityTitle', c.trustSecurityTitle); setText('trustSecurityText', c.trustSecurityText);
   setText('trustOfferTitle', c.trustOfferTitle); setHTML('trustOfferText', c.trustOfferText);
   setText('offerModalTitle', c.offerModalTitle); setHTML('offerModalBody', c.offerModalBody);
+  setText('practicumModalTitle', c.practicumModalTitle); setHTML('practicumModalBody', c.practicumModalBody);
 
   // pain tags
   const painTagsEl = document.getElementById('painTags');
@@ -1620,6 +1659,28 @@ function bindTracking(){
   closeBtn && closeBtn.addEventListener('click', hideOffer);
   overlay.addEventListener('click', function(e){ if(e.target === overlay) hideOffer(); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') hideOffer(); });
+})();
+
+/* ==================== PRACTICUM INFO MODAL ==================== */
+(function(){
+  const overlay = document.getElementById('practicumOverlay');
+  const closeBtn = document.getElementById('practicumClose');
+  if(!overlay) return;
+  function showPracticum(e){
+    if(e) e.preventDefault();
+    overlay.classList.add('show');
+    track('practicum_modal_open', { region });
+  }
+  function hidePracticum(){
+    overlay.classList.remove('show');
+  }
+  document.addEventListener('click', function(e){
+    const trigger = e.target.closest('#practicumLink');
+    if(trigger) showPracticum(e);
+  });
+  closeBtn && closeBtn.addEventListener('click', hidePracticum);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) hidePracticum(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') hidePracticum(); });
 })();
 
 /* ==================== testimonial accordion ==================== */
