@@ -37,6 +37,13 @@
   .nav-tg svg{ width:14px; height:14px; }
   @media (max-width:520px){ .nav-tg span{ display:none; } }
 
+  .sticky-cta-bar{ position:fixed; left:0; right:0; bottom:0; z-index:60; display:none; gap:8px; align-items:center; padding:10px 14px; padding-bottom:calc(10px + env(safe-area-inset-bottom)); background:rgba(250,248,245,.97); backdrop-filter:blur(6px); border-top:1px solid var(--line); box-shadow:0 -8px 20px rgba(42,33,24,0.08); transform:translateY(100%); transition:transform .25s ease; }
+  .sticky-cta-bar.show{ transform:translateY(0); }
+  .sticky-cta{ flex:1; text-align:center; background:var(--accent); color:#fff; padding:13px 10px; font-size:13.5px; font-weight:700; border-radius:6px; }
+  .sticky-cta-alt{ flex-shrink:0; text-align:center; font-size:11.5px; font-weight:600; color:var(--muted); border:1px solid var(--line); padding:12px 10px; border-radius:6px; white-space:nowrap; }
+  @media (min-width:761px){ .sticky-cta-bar{ display:none !important; } }
+  @media (max-width:760px){ .sticky-cta-bar{ display:flex; } }
+
   .section{ padding:80px 0; }
   .section-alt{ background:var(--bg-alt); }
   .section-head{ text-align:center; max-width:600px; margin:0 auto 40px; }
@@ -89,6 +96,7 @@
   .sticky::before{ content:''; position:absolute; top:-8px; left:50%; transform:translateX(-50%) rotate(-3deg); width:38px; height:14px; background:rgba(255,255,255,0.55); border:1px solid rgba(0,0,0,0.05); }
   .sticky b{ display:block; margin-bottom:4px; font-family:'Playfair Display',serif; font-size:15px; }
   .sticky p{ font-size:13px; color:var(--muted); margin:0; }
+  .sticky-answer{ margin-top:8px !important; padding-top:8px; border-top:1px dashed rgba(179,69,58,.25); font-size:11.5px !important; font-style:italic; color:var(--accent-deep) !important; }
   @media (max-width:760px){ .sticky-grid{ grid-template-columns:1fr 1fr; } }
   @media (max-width:480px){ .sticky-grid{ grid-template-columns:1fr; } .sticky{ transform:none !important; } }
   .safety-note{ text-align:center; max-width:560px; margin:26px auto 0; font-size:13.5px; color:var(--muted); background:#fff; border:1px dashed var(--line); border-radius:8px; padding:14px 20px; }
@@ -131,6 +139,12 @@
   .result-item{ display:flex; gap:12px; align-items:flex-start; font-size:15px; color:var(--ink); }
   .result-item .mark{ color:var(--accent); font-weight:700; }
   .explain-img-wrap{ text-align:center; margin-top:40px; }
+  .before-after{ max-width:600px; margin:30px auto 0; display:flex; flex-direction:column; gap:12px; }
+  .ba-item{ display:flex; align-items:center; gap:12px; background:#fff; border:1px solid var(--line); border-radius:8px; padding:14px 18px; font-size:13.5px; }
+  .ba-was{ color:var(--light); text-decoration:line-through; flex:1; }
+  .ba-arrow{ color:var(--gold); font-weight:700; flex-shrink:0; }
+  .ba-now{ color:var(--ink); font-weight:600; flex:1; }
+  @media (max-width:600px){ .ba-item{ flex-direction:column; align-items:flex-start; gap:6px; } .ba-arrow{ align-self:center; } }
 
   /* how it works */
   .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; max-width:960px; margin:0 auto; }
@@ -165,6 +179,9 @@
   @media (max-width:760px){ .video-testi-grid{ grid-template-columns:1fr; } }
 
   /* pricing */
+  .price-anchor{ text-align:center; max-width:520px; margin:0 auto 18px; font-family:'Playfair Display',serif; font-style:italic; font-size:16.5px; color:var(--accent-deep); }
+  .price-countdown{ text-align:center; margin:0 auto 34px; font-size:13.5px; font-weight:700; color:var(--accent); }
+  .price-countdown span{ font-family:'Playfair Display',serif; font-size:15px; }
   .pricing-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch; max-width:1000px; margin:0 auto; }
   .plan{ background:#fff; border:1px solid var(--line); border-radius:10px; padding:30px 24px; display:flex; flex-direction:column; position:relative; text-align:left; }
   .plan.featured{ border-color:var(--gold); box-shadow:var(--shadow); }
@@ -212,6 +229,10 @@
   .faq-a{ max-height:0; overflow:hidden; transition:max-height .35s ease; }
   .faq-a p{ padding:0 20px 18px; color:var(--muted); font-size:13.5px; }
 
+  .antiblock{ max-width:600px; margin:0 auto; text-align:center; background:var(--ink); color:#f3ece2; border-radius:10px; padding:34px 30px; }
+  .antiblock .eyebrow{ color:var(--gold); }
+  .antiblock p{ font-size:16px; line-height:1.7; margin-top:14px; color:#e6ddd0; }
+
   /* final + tg */
   .final{ text-align:center; padding:90px 24px; background:var(--bg-alt); }
   .final h2{ font-size:clamp(24px,4.4vw,36px); max-width:640px; margin:14px auto 0; }
@@ -250,12 +271,17 @@
   </div>
 </header>
 
+<div class="sticky-cta-bar" id="stickyCtaBar">
+  <a href="#pricing" class="sticky-cta">Начать интенсив</a>
+  <a href="https://t.me/back4heartquizbot" target="_blank" rel="noopener" class="sticky-cta-alt">1-й урок бесплатно →</a>
+</div>
+
 <section class="hero">
   <div class="wrap">
     <span class="eyebrow">Аудиоинтенсив «Бэушный ещё пожалеет» · 7 дней · доступ навсегда</span>
     <h1>БЭушный <em style="font-style:italic;color:var(--accent);">ещё пожалеет</em></h1>
-    <p class="sub">Через неделю ты перестанешь жить только мыслями о нём и начнёшь понимать, почему он поступил именно так. Мужской взгляд на расставание - от человека, который смотрит на ситуацию с другой стороны.</p>
-    <p class="hero-physio">Давит в груди. Мысли крутятся по кругу. Руки тянутся написать ему в три ночи. Знакомо? Это нормальная реакция мозга на потерю привязанности - и с ней можно работать.</p>
+    <p class="sub">Через неделю первая мысль утром будет не о нём. Увидишь, что он в сети, и внутри ничего не екнёт. Вечером просто ляжешь спать - без привычного «а вдруг напишет». Мужской взгляд на расставание, без розовых очков и без «время лечит».</p>
+    <p class="hero-physio">Давит в груди, мысли крутятся по кругу, а руки тянутся написать ему в три ночи. Знакомо? Это не слабость. Просто так работает привязанность - и с ней можно что-то сделать.</p>
     <div class="hero-cta">
       <a href="#pricing" class="cta-primary">Начать интенсив</a>
       <div class="cta-price">Аудиоформат · 15–20 минут в день · доступ навсегда</div>
@@ -275,11 +301,11 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Почему сейчас так больно</span>
-      <h2>Это не ты слабая - это работает привязанность</h2>
+      <h2>Потому что так работает привязанность</h2>
     </div>
-    <p>Если ты по кругу проверяешь его сторис в 3 часа ночи - дело не в силе воли. Это нейробиология: разрыв близкой связи активирует те же зоны мозга, что и физическая боль. Пока привязанность "не отпустила", мысли будут возвращаться к нему снова и снова, как бы ты ни старалась запретить себе это.</p>
-    <p>Просто «отпустить» не получится - и это нормально. Сначала нужно понять, что происходит с тобой, а что - с ним, и почему один совет "переключись на себя" редко срабатывает сам по себе.</p>
-    <p class="neuro-cta">Разобраться в этом - и правда первый шаг. Можно начать уже сегодня.</p>
+    <p>Если ты постоянно проверяешь его сторис - дело не в силе воли. Так работает привязанность: пока она не отпустила, мысли будут возвращаться к нему, сколько бы ты себе ни запрещала.</p>
+    <p>Просто взять и «отпустить» не получится, и это нормально. Сначала стоит понять, что происходит с тобой, а что - с ним. Иначе советы типа «переключись» или «замись собой» так и останется словами, которые не работают.</p>
+    <p class="neuro-cta">Разобраться в этом - уже половина дела. Начать можно сегодня.</p>
   </div>
 </section>
 
@@ -289,7 +315,7 @@
       <span class="eyebrow">Мужской взгляд на расставание</span>
       <h2>Почему мужчины редко объясняют, что чувствуют</h2>
     </div>
-    <p>В этой нише почти все психологи - женщины, и это не удивительно. Но у мужской логики решений - молчания, исчезновения, задержанных сообщений - есть своя структура, и её проще объяснить мужчине, который сам через это проходил. Я не обещаю «годы работы над собой» - это конкретный маршрут: от точки, где больно и непонятно, до точки, где ты понимаешь, что произошло, и можешь жить дальше.</p>
+    <p>Почти все психологи в этой нише - женщины, и тут нет ничего удивительного. Но за молчанием, исчезновением, задержанными на два дня сообщениями стоит своя логика, и мужчине, который сам это проходил, объяснить её проще. Никаких «лет работы над собой» я не обещаю. Есть маршрут: сейчас больно и непонятно, а к концу ты понимаешь, что случилось, и можешь жить дальше.</p>
   </div>
 </section>
 
@@ -300,20 +326,20 @@
       <h2>Тебе знакомо что-то из этого?</h2>
     </div>
     <div class="sticky-grid">
-      <div class="sticky"><div><b>По сто раз в день</b><p>перечитываешь переписку, ищешь смысл в каждом слове.</p></div></div>
-      <div class="sticky"><div><b>Стыдно вспомнить</b><p>сколько раз писала первой, извинялась, умоляла ответить.</p></div></div>
-      <div class="sticky"><div><b>А если у него уже кто-то есть</b><p>внутри всё обрывается - кажется, что ты опоздала.</p></div></div>
-      <div class="sticky"><div><b>Не можешь уснуть</b><p>прокручиваешь в голове одни и те же разговоры.</p></div></div>
-      <div class="sticky"><div><b>Задаёшь себе один вопрос</b><p>почему он так поступил - и не находишь ответа.</p></div></div>
-      <div class="sticky"><div><b>Пишешь и удаляешь</b><p>сообщение - по три раза за вечер, так и не отправив.</p></div></div>
-      <div class="sticky"><div><b>Ждёшь знак</b><p>что он напишет первым - и злишься на себя за это ожидание.</p></div></div>
-      <div class="sticky"><div><b>Хочешь одного</b><p>наконец понять, что произошло, и перестать себя накручивать.</p></div></div>
+      <div class="sticky"><div><b>По сто раз в день</b><p>перечитываешь переписку, ищешь смысл в каждом слове.</p><p class="sticky-answer">Урок 3 как раз про то, что он чувствует в эти же дни</p></div></div>
+      <div class="sticky"><div><b>Стыдно вспомнить</b><p>сколько раз писала первой, извинялась, умоляла ответить.</p><p class="sticky-answer">Урок 5: какие реакции только тянут боль дольше, и что делать вместо</p></div></div>
+      <div class="sticky"><div><b>А если у него уже кто-то есть</b><p>внутри всё обрывается - кажется, что ты опоздала.</p><p class="sticky-answer">Про это - урок 3: что для него значит «уже кто-то есть»</p></div></div>
+      <div class="sticky"><div><b>Не можешь уснуть</b><p>прокручиваешь в голове одни и те же разговоры.</p><p class="sticky-answer">Первая техника из урока 1 снимает именно это</p></div></div>
+      <div class="sticky"><div><b>Задаёшь себе один вопрос</b><p>почему он так поступил - и не находишь ответа.</p><p class="sticky-answer">10 причин, почему мужчины уходят, - в уроке 2</p></div></div>
+      <div class="sticky"><div><b>Пишешь и удаляешь</b><p>сообщение, так и не отправив.</p><p class="sticky-answer">Урок 4 - почему мужчины замолкают и что за этим стоит</p></div></div>
+      <div class="sticky"><div><b>Ждёшь знак</b><p>что он напишет первым - и злишься на себя за это ожидание.</p><p class="sticky-answer">Урок 6 - как перестать зависеть от его сообщений</p></div></div>
+      <div class="sticky"><div><b>Хочешь одного</b><p>наконец понять, что произошло, и перестать себя накручивать.</p><p class="sticky-answer">Урок 7 - жизнь дальше, что бы он ни решил</p></div></div>
     </div>
     <p class="checklist-note">«Давай разберёмся, что с тобой происходит, и вернём тебе спокойствие - без стыда за то, что было»</p>
-    <p class="safety-note">Это не манипуляции - это возвращение себе достоинства и понимания того, что произошло. Техники защищают твои границы, а не разрушают тебя.</p>
+    <p class="safety-note">Здесь нет манипуляций. Здесь то, что  поможет тебе вернуть себе достоинство и понимание того, что случилось.</p>
     <div class="mindread">
       <div class="mr-label">Я точно знаю, что происходит у тебя в голове</div>
-      <p>Ты по кругу прокручиваешь последний разговор, ищешь, что можно было сказать по-другому. Мысленно споришь с ним, договариваешь то, что не успела сказать вслух. А потом стыдно, что снова накрутила себя. Через это проходят все - и после интенсива все из этого выходят.</p>
+      <p>Ты часто прокручиваешь последний разговор, ищешь, что можно было сказать по-другому. Мысленно споришь с ним, договариваешь то, что не успела сказать вслух. А потом стыдно, что снова накрутила себя. Через это проходит почти каждая - и почти у каждой после интенсива это отпускает быстрее.</p>
     </div>
   </div>
 </section>
@@ -322,21 +348,22 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Обо мне</span>
-      <h2>Мужчина, который реально понимает, как думают мужчины</h2>
+      <h2>Я тот, кто реально понимает, как думают мужчины</h2>
     </div>
     <div class="author-grid">
       <div class="author-photo"><img src="https://back4heart.site/img/1784627058331~2.png" alt="Роман Вейл" loading="lazy"></div>
       <div class="author-text">
-        <p><b>Меня зовут Роман.</b> Я мужчина - и это не просто факт биографии, а главное, что отличает меня от любого психолога-женщины: я знаю, как мужчины думают и что чувствуют, изнутри, а не по теории.</p>
-        <p>7 лет изучал поведенческую психологию и стратегии влияния - не в университете, а на практике: в коучинге, консультировании и личных отношениях. Прошёл более 12 программ у частных практиков.</p>
-        <p>Начал помогать женщинам случайно - подруга попросила совет после развода. Потом её подруга. Потом ещё одна. За 4 года через меня прошло <b>больше 2000 ситуаций</b> - я видел, через что проходят женщины после расставания, и знаю, что реально помогает.</p>
-        <p>Я вижу паттерны, которые повторяются в 90% случаев - потому что смотрю на ситуацию с обеих сторон. Я - тот, кто знает, как думают мужчины, потому что я один из них.</p>
+        <p><b>Меня зовут Роман.</b> Я реально знаю, как мы мужчины, думаем, потому что сам мужчина.</p>
+        <p>7 лет разбирался в поведенческой психологии и стратегиях влияния. Прошёл больше 12 программ у частных практиков.</p>
+        <p>За 4 года через меня прошло <b>больше 2000 ситуаций</b> - я видел, через что проходят женщины после расставания, и знаю, что реально помогает.</p>
+        <p>Это не теория - это то, что реально меняет состояние человека, а не просто объясняет его. Поэтому в интенсиве не только «почему он так сделал». Там конкретные техники, которые проверены в таких ситуациях: что делать руками и головой, когда тянет проверить его страницы, как убрать желание написать, как перестать прокручивать одно и то же в голове. Это рабочие инструменты.</p>
+        <p>90% ситуаций укладываются в одни и те же паттерны - я вижу их, потому что смотрю с обеих сторон сразу и провёл тысячи разборов.</p>
         <div class="author-stats">
           <div class="author-stat"><b>2000+</b><span>разобранных женских ситуаций за 4 года</span></div>
           <div class="author-stat"><b>12+</b><span>пройденных программ</span></div>
           <div class="author-stat"><b>717</b><span>женщин уже прошли интенсив</span></div>
         </div>
-        <div class="author-quote">«Я мужчина, я видел это изнутри - и знаю, что работает.»</div>
+        <div class="author-quote">«Я мужчина. Я знаю всё это изнутри. Так же знаю, что реально работает для тебя.»</div>
         <div class="author-socials">
           
           <a href="https://t.me/back4heart" target="_blank" rel="noopener">Telegram-канал</a>
@@ -365,16 +392,16 @@
     <div class="section-head">
       <span class="eyebrow">Что внутри</span>
       <h2>7 дней. От боли и непонимания - к спокойствию</h2>
-      <p>Каждый день новый урок на 15–20 минут. Наушники, дорога на работу или обед - где угодно. Разбираем, что происходит с тобой и с ним: почему так больно сейчас, почему мужчины уходят и молчат, что творится у него в голове через неделю, месяц, три месяца после расставания - и как вернуть себе спокойствие и ценность вне зависимости от того, что решит он.</p>
+      <p>Каждый день - новый урок на 15–20 минут. Можно слушать в наушниках по дороге на работу, за обедом, где угодно. Разбираем, что происходит с тобой и с ним: почему сейчас так больно, почему мужчины уходят и молчат, что творится у него в голове через неделю, месяц, три месяца. И как вернуть себе спокойствие и ценность - независимо от того, что он решит.</p>
     </div>
     <div class="lesson-list">
-      <div class="lesson"><div class="n">01</div><div><h3>Почему сейчас так больно</h3><p>Как работает привязанность и почему мозг буквально "ломает" в первые дни после расставания. Первые техники, которые снимают остроту боли.</p></div></div>
+      <div class="lesson"><div class="n">01</div><div><h3>Почему сейчас так больно</h3><p>Как работает привязанность и почему мозг буквально "взрывается" в первые дни после расставания. Первые техники, которые снимают остроту боли - и что в эти же дни чувствует он, просто по-другому, чем ты.</p></div></div>
       <div class="lesson"><div class="n">02</div><div><h3>Почему мужчина уходит</h3><p>10 настоящих причин, по которым мужчины принимают решение уйти - без иллюзий и без вины на пустом месте.</p></div></div>
-      <div class="lesson"><div class="n">03</div><div><h3>Что происходит у него после расставания</h3><p>Что мужчина чувствует через неделю, через месяц, через три месяца. Мужская психология без домыслов и гаданий.</p></div></div>
+      <div class="lesson"><div class="n">03</div><div><h3>Что происходит с ним после расставания</h3><p>Что мужчина чувствует через неделю, через месяц, через три месяца. Мужская психология без домыслов и гаданий.</p></div></div>
       <div class="lesson"><div class="n">04</div><div><h3>Почему мужчины молчат</h3><p>Почему не пишут, почему исчезают, почему бывает стыдно написать первым. Логика, которая редко видна со стороны.</p></div></div>
-      <div class="lesson"><div class="n">05</div><div><h3>Ошибки, которые совершают почти все</h3><p>Разбираем типичные реакции на расставание, которые только продлевают боль - и что делать вместо этого.</p></div></div>
-      <div class="lesson"><div class="n">06</div><div><h3>Внутренняя ценность</h3><p>Упражнения на то, чтобы вернуть себе опору и уверенность - независимо от того, что происходит с ним.</p></div></div>
-      <div class="lesson"><div class="n">07</div><div><h3>Жизнь дальше</h3><p>Как начать жить дальше вне зависимости от того, вернётся он или нет. Итоги и план на ближайшие недели.</p></div></div>
+      <div class="lesson"><div class="n">05</div><div><h3>Ошибки, которые совершают почти все</h3><p>Разбираем типичные реакции на расставание, которые только продлевают боль - и как это выглядит с его стороны, когда ты делаешь эти вещи.</p></div></div>
+      <div class="lesson"><div class="n">06</div><div><h3>Внутренняя ценность</h3><p>Упражнения на то, чтобы вернуть себе опору и уверенность - независимо от того, что происходит с ним, и что мужчина замечает в женщине, которая вернула себе эту опору.</p></div></div>
+      <div class="lesson"><div class="n">07</div><div><h3>Жизнь дальше</h3><p>Как начать жить дальше вне зависимости от того, вернётся он или нет. Итоги и план на ближайшие недели - и как он воспринимает женщину, которая живёт своей жизнью, а не ждёт его решения.</p></div></div>
       <div class="lesson"><div class="n">+</div><div><h3>Аптечка на тяжёлую ночь</h3><p>Бонусный урок с упражнениями, которые помогают в моменте, когда накрывает - конкретный алгоритм, а не «просто отвлекись».</p></div></div>
     </div>
   </div>
@@ -391,7 +418,11 @@
       <div class="result-item"><span class="mark">✓</span>Ты понимаешь, что происходило и почему</div>
       <div class="result-item"><span class="mark">✓</span>Ты возвращаешь фокус на свою жизнь</div>
       <div class="result-item"><span class="mark">✓</span>Ты чувствуешь уверенность и спокойствие</div>
-      <div class="result-item"><span class="mark">✓</span>Тебе отпускает - без вины и без стыда</div>
+      <div class="result-item"><span class="mark">✓</span>Тебе отпускает, перестает болеть.</div>
+    </div>
+    <div class="before-after">
+      <div class="ba-item"><span class="ba-was">Проверяешь его сторис</span><span class="ba-arrow">→</span><span class="ba-now">Спишь спокойно</span></div>
+      <div class="ba-item"><span class="ba-was">Пишешь и удаляешь сообщения</span><span class="ba-arrow">→</span><span class="ba-now">Тебе просто не хочется писать - не из гордости, а потому что отпустило</span></div>
     </div>
   </div>
 </section>
@@ -404,7 +435,7 @@
     </div>
     <div class="steps">
       <div class="step"><div class="n">1</div><h3>Оплата</h3><p id="stepPaymentText">Любой картой - Visa, Mastercard. Принимаются карты разных стран.</p></div>
-      <div class="step"><div class="n">2</div><h3>Доступ в личку</h3><p>Сразу после оплаты в Telegram придёт ссылка на закрытый канал интенсива.</p></div>
+      <div class="step"><div class="n">2</div><h3>Доступ в личку</h3><p>После оплаты в Telegram придёт ссылка на закрытый канал интенсива.</p></div>
       <div class="step"><div class="n">3</div><h3>Все уроки внутри</h3><p>В канале - все 7 аудиоуроков и бонусная памятка. Слушаешь в своём темпе.</p></div>
       <div class="step"><div class="n">4</div><h3>Доступ навсегда</h3><p>Канал не удаляется, уроки не пропадают - пересматривай в любое время.</p></div>
     </div>
@@ -427,7 +458,7 @@
       <span class="eyebrow">Уже прошли это</span>
       <h2>Ей тоже казалось, что она всё испортила</h2>
     </div>
-    <div class="honest-box">4.9 из 5 · 340+ отзывов</div>
+    <div class="honest-box">4.9 из 5 · 340+ отзывов · 717 женщин уже прошли интенсив - 94% говорят, что стало легче уже к 3-му дню</div>
     <div class="testi-grid">
       <div class="testi"><div class="stars">★★★★★</div><p>«Перестала прокручивать мысли о нём уже на третий день. Впервые за долгое время выспалась.»</p><div class="who">Настя, 46</div></div>
       <div class="testi"><div class="stars">★★★★★</div><p>«Наконец поняла, почему он так себя вёл - и мне стало легче, будто камень с души.»</p><div class="who">Оля, 41</div></div>
@@ -453,7 +484,7 @@
         <div class="who">Света, 47</div>
       </div>
       <div class="testi testi-shot">
-        <span class="badge-tag">Мы снова начали общаться</span>
+        <span class="badge-tag">Она перестала тревожиться - и общение наладилось само</span>
         <div class="stars">★★★★★</div>
         <p>«Через месяц мы снова начали общаться - но уже без прежней тревоги с моей стороны.»</p>
         <img src="https://i.ibb.co/4RXGBkDy/Screenshot-20260225-070317.png" alt="Скриншот переписки" loading="lazy">
@@ -513,10 +544,12 @@
       <span class="eyebrow">Закрытый доступ</span>
       <h2>Выбери, насколько глубоко ты готова зайти</h2>
     </div>
+    <p class="price-anchor">Одна сессия у психолога стоит $60-120. Здесь - 7 дней, мужской взгляд изнутри и доступ навсегда, и всё это за $9.99.</p>
+    <p class="price-countdown">Цена по акции действует ещё: <span id="countdownTimer">--:--:--</span></p>
     <div class="pricing-grid">
       <div class="plan" data-tier="basic">
         <div class="plan-name">Интенсив</div>
-        <div class="plan-desc">7 аудиоуроков по 15–20 минут + 3 авторские техники. Первая техника снимает остроту навязчивых мыслей уже в первые сутки.</div>
+        <div class="plan-desc">7 аудиоуроков по 15–20 минут + 3 авторские техники. Первая техника помогает снизить остроту навязчивых мыслей - многие участницы замечают разницу уже в первые сутки.</div>
         <div class="price-row"><span class="price-old" id="priceBasicOld">$47</span><span class="price" id="priceBasic">$9.99</span></div>
         <div class="price-note">разовый платёж</div>
         <ul>
@@ -530,7 +563,7 @@
 
       <div class="plan featured" data-tier="circle" data-badge="Самый популярный">
         <div class="plan-name">Интенсив + практикум «Про женщину, которая влюбляет навсегда»</div>
-        <div class="plan-desc">Всё то же самое, что в «Интенсиве», плюс отдельный практикум о том, как чувствовать себя увереннее в общении и новых отношениях - не только пережить расставание, но и не наступить на те же грабли дальше.</div>
+        <div class="plan-desc">Всё из «Интенсива» плюс практикум об уверенности в общении и новых отношениях - чтобы не наступать на те же грабли снова.</div>
         <div class="price-row"><span class="price-old" id="priceCircleOld">$89</span><span class="price" id="priceCircle">$14.99</span></div>
         <div class="price-note">разовый платёж</div>
         <ul>
@@ -587,7 +620,7 @@
       <h2>Прежде чем начать</h2>
     </div>
     <div class="faq">
-      <div class="faq-item"><div class="faq-q"><span>Сколько времени это займёт?</span><span class="plus">+</span></div><div class="faq-a"><p>15–20 минут в день, семь дней подряд. Первый эффект - уже в первые сутки: навязчивые мысли о нём заметно слабеют. Можно слушать по дороге на работу, во время готовки, перед сном.</p></div></div>
+      <div class="faq-item"><div class="faq-q"><span>Сколько времени это займёт?</span><span class="plus">+</span></div><div class="faq-a"><p>15–20 минут в день, семь дней подряд. Первые изменения многие замечают уже в первые сутки: навязчивые мысли о нём становятся заметно слабее. Можно слушать по дороге на работу, во время готовки, перед сном.</p></div></div>
       <div class="faq-item"><div class="faq-q"><span>Мы расстались давно, мне подойдёт?</span><span class="plus">+</span></div><div class="faq-a"><p>Да, подойдёт. Тут не важно, сколько прошло времени - важно, в какой точке ты находишься сейчас, по отношению к себе и к нему.</p></div></div>
       <div class="faq-item"><div class="faq-q"><span>А если он уже встречается с другой?</span><span class="plus">+</span></div><div class="faq-a"><p>Это не мешает пройти программу. Она не про то, чтобы отслеживать его новую жизнь, а про то, чтобы перестать сравнивать себя с ней и вернуть опору внутри себя - это работает вне зависимости от того, с кем он сейчас.</p></div></div>
       <div class="faq-item"><div class="faq-q"><span>Доступ будет навсегда?</span><span class="plus">+</span></div><div class="faq-a"><p>Да. Уроки остаются с тобой навсегда, переслушивай, когда захочешь.</p></div></div>
@@ -606,10 +639,19 @@
   </a>
 </section>
 
+<section class="section">
+  <div class="wrap">
+    <div class="antiblock">
+      <span class="eyebrow">Через неделю</span>
+      <p>Через неделю - либо ты всё ещё в 3 ночи проверяешь его сторис и ждёшь сообщение, которого не будет, либо уже знаешь, почему всё так вышло, и просто спишь спокойно. Решает тут не время. Решаешь ты - и не через месяц, а сейчас.</p>
+    </div>
+  </div>
+</section>
+
 <section class="final">
   <span class="eyebrow">Решение за тобой</span>
   <h2>Представь себя через неделю - спокойной и понимающей, что произошло</h2>
-  <p class="sub">Первые изменения - уже через 24–48 часов. </p>
+  <p class="sub">Первые изменения многие замечают уже через 24-48 часов.</p>
   <div style="margin-top:30px;"><a href="#pricing" class="cta-primary">Начать интенсив</a></div>
 </section>
 
@@ -669,10 +711,10 @@
       <p>Это бонус-практикум, который входит в тариф «Интенсив + практикум». Он не про то, как понравиться на один вечер, а про то, как стать женщиной, к которой хочется возвращаться - без игр, показного равнодушия и беготни за мужчиной.</p>
       <h3>5 блоков, в конце каждого - практическое задание</h3>
       <ul>
-        <li><b>Внутренний магнит</b> - что на самом деле включает интерес мужчины, и почему забота с жертвенностью тут ни при чём.</li>
+        <li><b>Внутренний магнит</b> - что включает мужской интерес по-настоящему, и почему забота с жертвенностью тут ни при чём.</li>
         <li><b>Энергия без дефицита</b> - как перестать держаться из последних сил и наполниться по-настоящему, а не изображать спокойствие.</li>
         <li><b>Загадка вместо прозрачности</b> - почему полная открытость иногда работает против тебя, и как оставаться собой, не выкладывая всё до конца.</li>
-        <li><b>Территория, куда хочется возвращаться</b> - что мужчина на самом деле оценивает, выбирая, задержаться или уйти.</li>
+        <li><b>Территория, куда хочется возвращаться</b> - что мужчина оценивает в первую очередь, выбирая, остаться или уйти.</li>
         <li><b>Незаменимость</b> - из чего складывается связь, которую невозможно заменить и с кем не хочется сравнивать.</li>
       </ul>
       <p>Формат: аудио + короткие практики. Слушать можно в своём темпе, доступ остаётся навсегда.</p>
@@ -688,7 +730,7 @@
     <div class="offer-modal-body" style="padding-top:0;">
       <span class="eyebrow">Подожди</span>
       <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:var(--ink);margin:10px 0 12px;">Не готова на интенсив целиком?</h3>
-      <p>Держи 1-й день бесплатно - попробуй технику, которая уже за сутки снимает остроту навязчивых мыслей о нём.</p>
+      <p>Держи 1-й день бесплатно.</p>
       <a href="https://t.me/back4heartquizbot" target="_blank" rel="noopener" class="cta-primary" style="display:inline-block;margin-top:8px;">Получить 1-й день бесплатно</a>
     </div>
   </div>
@@ -696,6 +738,20 @@
 
 <script>
 document.body.classList.add('ready');
+
+// sticky mobile CTA bar - appears once user scrolls past the hero
+(function(){
+  const bar = document.getElementById('stickyCtaBar');
+  const hero = document.querySelector('.hero');
+  if(!bar || !hero) return;
+  function update(){
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    if(heroBottom < 0) bar.classList.add('show');
+    else bar.classList.remove('show');
+  }
+  window.addEventListener('scroll', update, { passive:true });
+  update();
+})();
 
 // FAQ accordion
 document.querySelectorAll('.faq-item').forEach(item=>{
@@ -706,6 +762,33 @@ document.querySelectorAll('.faq-item').forEach(item=>{
     if(!isOpen){ item.classList.add('open'); a.style.maxHeight=a.scrollHeight+'px'; }
   });
 });
+
+/* ==================== COUNTDOWN TIMER (per-visitor, evergreen 48h) ==================== */
+(function(){
+  const el = document.getElementById('countdownTimer');
+  if(!el) return;
+  const KEY = 'b4h_price_deadline';
+  const WINDOW_MS = 48 * 60 * 60 * 1000;
+  let deadline = parseInt(localStorage.getItem(KEY), 10);
+  if(!deadline || isNaN(deadline) || deadline < Date.now()){
+    deadline = Date.now() + WINDOW_MS;
+    localStorage.setItem(KEY, String(deadline));
+  }
+  function tick(){
+    let diff = deadline - Date.now();
+    if(diff <= 0){
+      deadline = Date.now() + WINDOW_MS;
+      localStorage.setItem(KEY, String(deadline));
+      diff = WINDOW_MS;
+    }
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    el.textContent = String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
 
 /* ==================== PRICING (по регионам, как в оригинале) ==================== */
 const PRICING = {
@@ -877,14 +960,40 @@ fetch('https://ipapi.co/json/')
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') hideModal(); });
 })();
 
-// exit-intent free lesson offer (desktop, shows once)
+// exit-intent free lesson offer (desktop mouseleave + mobile scroll/time trigger, shows once)
 (function(){
   const overlay=document.getElementById('exitOverlay');
   const closeBtn=document.getElementById('exitClose');
   let shown=false;
-  function show(){ if(shown) return; shown=true; overlay.classList.add('show'); }
+  let ctaClicked=false;
+  const startTime=Date.now();
+  function show(){ if(shown || ctaClicked) return; shown=true; overlay.classList.add('show'); }
   function hide(){ overlay.classList.remove('show'); }
+
+  // desktop: mouse leaves toward the top of the viewport
   document.addEventListener('mouseleave', function(e){ if(e.clientY<=0) show(); });
+
+  // mobile / any device: scrolled past 60% and 30s on page, hasn't converted
+  function scrollPercent(){
+    const doc = document.documentElement;
+    const scrollable = doc.scrollHeight - doc.clientHeight;
+    if(scrollable <= 0) return 0;
+    return (window.scrollY / scrollable) * 100;
+  }
+  window.addEventListener('scroll', function(){
+    if(shown || ctaClicked) return;
+    if(scrollPercent() >= 60 && (Date.now() - startTime) >= 30000) show();
+  }, { passive:true });
+  setInterval(function(){
+    if(shown || ctaClicked) return;
+    if(scrollPercent() >= 60 && (Date.now() - startTime) >= 30000) show();
+  }, 5000);
+
+  // treat any click on a real CTA as conversion - stop bothering them
+  document.addEventListener('click', function(e){
+    if(e.target.closest('.cta-primary, .plan-btn, .plan-btn-alt, .sticky-cta')) ctaClicked = true;
+  });
+
   closeBtn.addEventListener('click', hide);
   overlay.addEventListener('click', function(e){ if(e.target===overlay) hide(); });
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') hide(); });
