@@ -140,9 +140,14 @@ ym(110274644, 'init', {ssr:true, webvisor:true, clickmap:true, referrer: documen
     padding:10px 12px;font-size:12.5px;color:var(--text);margin-bottom:14px;}
   .plan-btn{display:block;text-align:center;background:linear-gradient(180deg,#eec479,#d8a85b);color:#231a0c;
     font-weight:700;font-size:15px;padding:14px;border-radius:10px;text-decoration:none;}
-  .plan-btn-alt{display:block;text-align:center;margin-top:8px;padding:11px;border-radius:10px;
-    border:1px solid var(--line);color:var(--muted);text-decoration:none;font-size:13px;}
+  .plan-btn-alt{display:block;text-align:center;margin-top:4px;padding:13px;border-radius:10px;
+    border:1.5px solid var(--gold2);background:rgba(226,183,106,.08);color:var(--gold);
+    text-decoration:none;font-size:14.5px;font-weight:700;transition:background .15s ease;}
+  .plan-btn-alt:hover{background:rgba(226,183,106,.16);}
   .plan-btn-alt[hidden]{display:none;}
+  .alt-divider{display:block;text-align:center;margin-top:10px;font-size:12px;color:var(--muted);
+    text-transform:uppercase;letter-spacing:.04em;}
+  .alt-divider[hidden]{display:none;}
   .pay{background:rgba(226,183,106,.07);border:1px solid var(--line);border-radius:12px;
     padding:16px 20px;margin:26px auto 0;max-width:780px;font-size:15px;color:var(--text);text-align:center;}
   .pay b{color:var(--gold);}
@@ -446,6 +451,7 @@ ym(110274644, 'init', {ssr:true, webvisor:true, clickmap:true, referrer: documen
     <h2 class="h" style="text-align:center;">Выбери, насколько глубоко ты готова зайти</h2>
     <p class="price-anchor">Одна сессия у психолога стоит $60–120. Здесь - 7 аудиоуроков, компас на месяц вперёд и доступ навсегда - от $9.99.</p>
     <p class="price-countdown">Цена по акции действует ещё: <span id="countdownTimer">--:--:--</span></p>
+    <p id="dualPaymentNote" hidden style="text-align:center;max-width:560px;margin:0 auto 10px;color:var(--muted);font-size:14px;">💳 Показываем сразу два способа оплаты - карту и PayPal, - чтобы платёж точно прошёл, даже если один из них не поддерживает твой банк.</p>
 
     <div class="pricing-grid">
       <div class="plan" data-tier="basic">
@@ -458,7 +464,8 @@ ym(110274644, 'init', {ssr:true, webvisor:true, clickmap:true, referrer: documen
           <li>Доступ навсегда, слушай когда удобно</li>
         </ul>
         <a href="#" class="plan-btn" data-plan="basic" id="planBasicBtn" onclick="track('click_plan_basic');track('buy_course')">Оплатить</a>
-        <a href="#" class="plan-btn-alt" data-plan="basic" id="planBasicBtnAlt" hidden onclick="track('click_plan_basic_alt')">Оплатить</a>
+        <span class="alt-divider" id="basicAltDivider" hidden>или</span>
+        <a href="#" class="plan-btn-alt" data-plan="basic" id="planBasicBtnAlt" hidden onclick="track('click_plan_basic_alt')">Оплатить через PayPal</a>
       </div>
 
       <div class="plan featured" data-tier="circle" data-badge="Самый популярный">
@@ -473,7 +480,8 @@ ym(110274644, 'init', {ssr:true, webvisor:true, clickmap:true, referrer: documen
         </ul>
         <div class="bonus-tag">🎁 При покупке сейчас - бонус: памятка «Аптечка скорой помощи на тяжёлую ночь» в подарок</div>
         <a href="#" class="plan-btn" data-plan="circle" id="planCircleBtn" onclick="track('click_plan_circle');track('buy_course')">Оплатить</a>
-        <a href="#" class="plan-btn-alt" data-plan="circle" id="planCircleBtnAlt" hidden onclick="track('click_plan_circle_alt')">Оплатить</a>
+        <span class="alt-divider" id="circleAltDivider" hidden>или</span>
+        <a href="#" class="plan-btn-alt" data-plan="circle" id="planCircleBtnAlt" hidden onclick="track('click_plan_circle_alt')">Оплатить через PayPal</a>
         <a href="#" id="practicumLink" style="display:block;text-align:center;font-size:12px;color:var(--muted);text-decoration:underline;margin-top:10px;" onclick="track('click_practicum_info')">Что внутри практикума?</a>
       </div>
 
@@ -489,7 +497,8 @@ ym(110274644, 'init', {ssr:true, webvisor:true, clickmap:true, referrer: documen
         </ul>
         <div class="bonus-tag">🎁 При покупке сейчас - бонус: памятка «Аптечка скорой помощи на тяжёлую ночь» в подарок</div>
         <a href="#" class="plan-btn" data-plan="personal" id="planPersonalBtn" onclick="track('click_plan_personal');track('buy_course')">Оплатить</a>
-        <a href="#" class="plan-btn-alt" data-plan="personal" id="planPersonalBtnAlt" hidden onclick="track('click_plan_personal_alt')">Оплатить</a>
+        <span class="alt-divider" id="personalAltDivider" hidden>или</span>
+        <a href="#" class="plan-btn-alt" data-plan="personal" id="planPersonalBtnAlt" hidden onclick="track('click_plan_personal_alt')">Оплатить через PayPal</a>
       </div>
     </div>
 
@@ -722,8 +731,8 @@ ym(110274644, 'init', {ssr:true, webvisor:true, clickmap:true, referrer: documen
   /* ==================== PAYMENT LINKS ====================
      Украина (по IP)     -> WayForPay
      Россия (по IP)      -> Tribute
-     Казахстан (по IP)   -> Stripe + PayPal (две кнопки)
-     Остальные страны    -> PayPal */
+     Остальные страны    -> Stripe (карта) + PayPal (два способа оплаты) */
+
   var LINKS = {
     ua: {
       basic:    'https://secure.wayforpay.com/button/bd79c278fab86',
@@ -750,13 +759,11 @@ ym(110274644, 'init', {ssr:true, webvisor:true, clickmap:true, referrer: documen
   };
 
   var isRussia = false;
-  var isKazakhstan = false;
 
   function getPaymentMode(region){
     if(region === 'ua') return 'wayforpay';
     if(isRussia) return 'tribute_only';
-    if(isKazakhstan) return 'stripe_paypal';
-    return 'paypal';
+    return 'stripe_paypal';
   }
 
   function updatePlanButtons(region){
@@ -765,24 +772,31 @@ ym(110274644, 'init', {ssr:true, webvisor:true, clickmap:true, referrer: documen
       var combo = planEl.getAttribute('data-tier');
       var btn = planEl.querySelector('.plan-btn');
       var alt = planEl.querySelector('.plan-btn-alt');
+      var divider = planEl.querySelector('.alt-divider');
       if(mode === 'wayforpay'){
         btn.setAttribute('href', LINKS.ua[combo] || '#');
-        alt.hidden = true;
+        btn.textContent = 'Оплатить';
+        alt.hidden = true; if(divider) divider.hidden = true;
       } else if(mode === 'tribute_only'){
         btn.setAttribute('href', LINKS.tribute[combo] || '#');
-        alt.hidden = true;
+        btn.textContent = 'Оплатить';
+        alt.hidden = true; if(divider) divider.hidden = true;
       } else if(mode === 'stripe_paypal'){
         btn.setAttribute('href', LINKS.intl.stripe[combo] || '#');
+        btn.textContent = 'Оплатить картой';
         var ppHref = LINKS.intl.paypal[combo];
-        if(ppHref){ alt.setAttribute('href', ppHref); alt.hidden = false; }
-        else { alt.hidden = true; }
+        if(ppHref){ alt.setAttribute('href', ppHref); alt.hidden = false; if(divider) divider.hidden = false; }
+        else { alt.hidden = true; if(divider) divider.hidden = true; }
       } else {
         btn.setAttribute('href', LINKS.intl.paypal[combo] || '#');
-        alt.hidden = true;
+        btn.textContent = 'Оплатить';
+        alt.hidden = true; if(divider) divider.hidden = true;
       }
       btn.setAttribute('target','_blank'); btn.setAttribute('rel','noopener');
       alt.setAttribute('target','_blank'); alt.setAttribute('rel','noopener');
     });
+    var dualNote = document.getElementById('dualPaymentNote');
+    if(dualNote) dualNote.hidden = (mode !== 'stripe_paypal');
   }
 
   function renderPricing(region){
@@ -819,7 +833,6 @@ ym(110274644, 'init', {ssr:true, webvisor:true, clickmap:true, referrer: documen
   function applyGeo(countryCode){
     var countryIsUA = countryCode === 'UA';
     isRussia = countryCode === 'RU';
-    isKazakhstan = countryCode === 'KZ';
     region = (countryIsUA || deviceIsUkrainian) ? 'ua' : 'intl';
     renderPricing(region);
   }
