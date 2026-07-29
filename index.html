@@ -546,7 +546,7 @@ ym(110274644, 'init', {ssr:true, webvisor:true, clickmap:true, referrer: documen
   <div class="wrap">
     <h2>Расставание ощущается как конец. Но очень часто это начало - отношений с самым важным человеком в твоей жизни. С собой.</h2>
     <p class="s">7 аудиоуроков. 15 минут в день. И ты уже не там, где была.</p>
-    <a class="btn btn-glow" href="#pricing" onclick="track('click_course_final');track('buy_course')">Начать - от $9.99</a>
+    <a class="btn btn-glow" href="#pricing" onclick="track('click_course_final');track('buy_course')">Пройти интенсив - от $9.99</a>
   </div>
 </section>
 
@@ -749,7 +749,7 @@ ym(110274644, 'init', {ssr:true, webvisor:true, clickmap:true, referrer: documen
     intl: {
       stripe: {
         basic:    'https://buy.stripe.com/6oUbJ30QifWh2xceBa3ZK0k',
-        circle:   'https://buy.stripe.com/8x2bJ3aqSh0lfjY78I3ZK0j',
+        circle:   'https://buy.stripe.com/7sY5kFgPg25r2xc1Oo3ZK0m',
         personal: 'https://buy.stripe.com/3cI6oJ8iK8tP8VA50A3ZK0l'
       },
       paypal: {
@@ -779,21 +779,21 @@ ym(110274644, 'init', {ssr:true, webvisor:true, clickmap:true, referrer: documen
       var divider = planEl.querySelector('.alt-divider');
       if(mode === 'wayforpay'){
         btn.setAttribute('href', LINKS.ua[combo] || '#');
-        btn.textContent = 'Оплатить в гривнах';
+        btn.textContent = 'Оплатить';
         alt.hidden = true; if(divider) divider.hidden = true;
       } else if(mode === 'tribute_only'){
         btn.setAttribute('href', LINKS.tribute[combo] || '#');
-        btn.textContent = 'Оплатить в рублях';
+        btn.textContent = 'Оплатить';
         alt.hidden = true; if(divider) divider.hidden = true;
       } else if(mode === 'stripe_paypal'){
         btn.setAttribute('href', LINKS.intl.stripe[combo] || '#');
-        btn.textContent = 'Оплатить картой в долларах';
+        btn.textContent = 'Оплатить';
         var ppHref = LINKS.intl.paypal[combo];
-        if(ppHref){ alt.setAttribute('href', ppHref); alt.textContent = 'Оплатить через PayPal в долларах'; alt.hidden = false; if(divider) divider.hidden = false; }
+        if(ppHref){ alt.setAttribute('href', ppHref); alt.textContent = 'Оплатить через PayPal'; alt.hidden = false; if(divider) divider.hidden = false; }
         else { alt.hidden = true; if(divider) divider.hidden = true; }
       } else {
         btn.setAttribute('href', LINKS.intl.stripe[combo] || '#');
-        btn.textContent = 'Оплатить в долларах';
+        btn.textContent = 'Оплатить';
         alt.hidden = true; if(divider) divider.hidden = true;
       }
       btn.setAttribute('target','_blank'); btn.setAttribute('rel','noopener');
