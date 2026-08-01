@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Персональный разбор ситуации — Роман Вельд</title>
+
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+    ym(90131660, 'init', {webvisor:true, clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/90131660" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+
+
+
+<style>
+  :root{--bg:#141210;--bg2:#1b1916;--card:#221f1b;--gold:#e2b76a;--gold2:#caa05a;--text:#ece7df;--muted:#ada596;--line:#3a342c;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  img{max-width:100%;height:auto;}
+  body{background:var(--bg);color:var(--text);font-family:"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif;}
+  .gold{color:var(--gold);}
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px;}
+  section{padding:52px 0;border-bottom:1px solid rgba(58,52,44,.5);}
+  .kicker{color:var(--gold);letter-spacing:.18em;text-transform:uppercase;font-size:12px;margin-bottom:12px;}
+  h2.h{font-size:30px;line-height:1.15;margin-bottom:22px;}
+
+  .btn{display:inline-block;background:linear-gradient(180deg,#eec479,#d8a85b);color:#231a0c;font-weight:700;font-size:18px;padding:17px 34px;border-radius:14px;text-decoration:none;transition:transform .15s;}
+  .btn:hover{transform:translateY(-2px);}
+  @keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(226,183,106,.45),0 10px 28px rgba(226,183,106,.22);}50%{box-shadow:0 0 26px 6px rgba(226,183,106,.5),0 10px 28px rgba(226,183,106,.28);}}
+  .btn-glow{animation:glow 2.3s ease-in-out infinite;}
+  .price-old{text-decoration:line-through;opacity:.6;font-weight:400;}
+
+  .hero{padding-top:44px;}
+  .hero-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:38px;align-items:center;}
+  .hero img{width:100%;border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.55);}
+  .hero h1{font-size:42px;line-height:1.05;margin:10px 0 14px;}
+  .hero .sub{font-size:19px;color:var(--text);margin-bottom:22px;}
+  .badges{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px;}
+  .badge{background:var(--card);border:1px solid var(--line);border-radius:30px;padding:7px 13px;font-size:13px;color:var(--muted);}
+  .badge b{color:var(--gold);font-weight:600;}
+
+  .checks{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+  .check{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 17px;display:flex;gap:11px;}
+  .check .v{color:var(--gold);font-weight:700;}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;}
+  .step .num{width:42px;height:42px;border-radius:50%;border:2px solid var(--gold);color:var(--gold);font-family:Georgia,serif;font-size:20px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
+  .step h3{font-size:17px;margin-bottom:7px;}
+  .step p{color:var(--muted);font-size:14px;}
+
+  .get{list-style:none;}
+  .get li{padding:11px 0 11px 30px;position:relative;border-bottom:1px solid var(--line);}
+  .get li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700;}
+  .quote{border-left:3px solid var(--gold);padding:16px 22px;margin-top:24px;background:rgba(226,183,106,.06);font-style:italic;font-size:18px;}
+
+  .offer{background:linear-gradient(180deg,#241f17,#1b1814);border:1px solid var(--gold2);border-radius:20px;padding:40px;text-align:center;}
+  .offer .price{font-family:Georgia,serif;font-size:50px;color:var(--gold);margin:6px 0 4px;}
+  .pay{background:rgba(226,183,106,.07);border:1px solid var(--line);border-radius:12px;padding:15px 18px;margin:16px auto 20px;max-width:620px;font-size:15px;}
+  .pay b{color:var(--gold);}
+  .curbtn{background:transparent;border:1px solid var(--gold2);color:var(--gold);border-radius:30px;padding:10px 20px;font-size:14px;cursor:pointer;}
+  .curpanel{display:none;margin:12px auto 0;max-width:460px;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:6px 18px 12px;text-align:left;}
+  .curpanel.open{display:block;}
+  .curpanel .row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);}
+  .curpanel .row:last-child{border-bottom:none;}
+  .curpanel .row b{color:var(--gold);font-family:Georgia,serif;}
+  .curpanel .src{color:#8b8478;font-size:12px;margin-top:9px;text-align:center;}
+  .note{color:var(--muted);font-size:14px;margin-top:12px;}
+
+  .back{display:inline-block;color:var(--muted);text-decoration:none;font-size:14px;margin-bottom:6px;}
+  .back:hover{color:var(--gold);}
+  footer{color:#8b8478;font-size:13px;line-height:1.6;padding:30px 0 56px;text-align:center;}
+
+  @media(max-width:760px){body{font-size:18px;}.hero-grid{grid-template-columns:1fr;}.hero h1{font-size:34px;}.hero .sub{font-size:18px;}.checks,.steps{grid-template-columns:1fr;}.hero .order-img{order:-1;}h2.h{font-size:25px;}.step p{font-size:15px;}.badge{font-size:14px;}.pay{font-size:16px;}.curbtn{font-size:15px;}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <a class="back" href="index.html" onclick="track('click_consult_back')">← Все продукты Романа</a>
+    <div class="hero-grid">
+      <div class="order-img"><img src="https://back4heart.site/img/1784626834709~2.png" width="1000" height="747" alt="Роман Вельд" decoding="async"></div>
+      <div>
+        <span class="kicker">Личная работа с Романом Вельд</span>
+        <h1>Персональный разбор <span class="gold">твоей ситуации</span></h1>
+        <p class="sub">Напиши мне лично — расскажи, что у тебя, своими словами. Я разберу именно твою историю: что с тобой происходит, почему — и что делать дальше. Без общих фраз «время лечит».</p>
+        <!-- Ссылка на товар в Tribute -->
+        <a class="btn btn-glow" href="https://buy.stripe.com/3cI6oJ8iK8tP8VA50A3ZK0l" target="_blank" rel="noopener" onclick="track('click_consult_hero')">Написать Роману — $49.99</a>
+        <div class="badges">
+          <span class="badge">💬 <b>Личный чат</b> в Telegram</span>
+          <span class="badge">✍️ Ответ <b>лично от Романа</b></span>
+          <span class="badge">💳 Оплата из любой страны</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ДЛЯ КОГО -->
+<section>
+  <div class="wrap">
+    <p class="kicker">Когда стоит написать лично</p>
+    <h2 class="h">Это для тебя, если</h2>
+    <div class="checks">
+      <div class="check"><span class="v">✓</span><span>Твоя ситуация запутанная, и хочется взгляда именно на свой случай, а не общих советов из интернета</span></div>
+      <div class="check"><span class="v">✓</span><span>Ты крутишь одно и то же в голове и не понимаешь, что вообще происходит и что делать</span></div>
+      <div class="check"><span class="v">✓</span><span>Нужно, чтобы кто-то понимающий разложил всё по полочкам — без осуждения и «сама виновата»</span></div>
+      <div class="check"><span class="v">✓</span><span>Тебе важно проговорить это живому человеку и получить конкретные шаги под свою историю</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- КАК РАБОТАЕТ -->
+<section>
+  <div class="wrap">
+    <p class="kicker">Как это работает</p>
+    <h2 class="h">Просто и прямо в Telegram</h2>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>Оплачиваешь доступ</h3><p>Любой картой (Visa, Mastercard, «МИР») или по «СБП». Карты Украины, Казахстана, Узбекистана и др.</p></div>
+      <div class="step"><div class="num">2</div><h3>Открывается чат</h3><p>Сразу после оплаты у тебя открывается приватный чат со мной в Telegram.</p></div>
+      <div class="step"><div class="num">3</div><h3>Получаешь разбор</h3><p>Рассказываешь свою ситуацию своими словами — я разбираю именно её и говорю, что делать дальше.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ЧТО ПОЛУЧИШЬ -->
+<section>
+  <div class="wrap">
+    <p class="kicker">Что ты получишь</p>
+    <h2 class="h">Взгляд на твою историю, а не на «среднего человека»</h2>
+    <ul class="get">
+      <li>Личный разбор именно твоей ситуации — что с тобой происходит и почему</li>
+      <li>Понятные, конкретные шаги под твой случай, а не абстрактные советы</li>
+      <li>Спокойный, бережный разговор — без осуждения и давления</li>
+    </ul>
+    <p class="quote">«Здравствуйте. Это Роман. Рад, что вы написали — значит, вы готовы разобраться, а не просто терпеть и гадать. Расскажите свою ситуацию своими словами, не переживайте.»</p>
+  </div>
+</section>
+
+<!-- ОФФЕР -->
+<section>
+  <div class="wrap">
+    <div class="offer">
+      <p class="kicker" style="text-align:center;">Доступ к личному разбору</p>
+      <h2 class="h" style="margin-bottom:8px;">Личный разбор твоей ситуации</h2>
+      <div class="price">$49.99</div>
+      <button class="curbtn" id="showPrice" type="button" onclick="track('click_consult_showprice')">💱 Показать цену в моей валюте</button>
+      <div class="curpanel" id="pricePanel">
+        <div class="row"><span>🇷🇺 Рубли</span><b id="p-rub">…</b></div>
+        <div class="row"><span>🇺🇦 Гривны</span><b id="p-uah">…</b></div>
+        <div class="row"><span>🇰🇿 Тенге</span><b id="p-kzt">…</b></div>
+        <div class="row"><span>🇺🇿 Сум</span><b id="p-uzs">…</b></div>
+        <div class="row"><span>🇪🇺 Евро</span><b id="p-eur">…</b></div>
+        <div class="src">Цена ориентировочная, по курсу ЦБ на сегодня. Спишется в валюте твоей карты.</div>
+      </div>
+      <div class="pay">
+        💳 <b>Оплата картой любой страны</b> (Visa, Mastercard, «МИР»; Россия, Украина, Казахстан, Узбекистан и др.). Для России — «СБП».<br><br>
+        💬 <b>После оплаты</b> у тебя сразу откроется личный чат со мной в Telegram.
+      </div>
+      <a class="btn btn-glow" href="https://buy.stripe.com/3cI6oJ8iK8tP8VA50A3ZK0l" target="_blank" rel="noopener" onclick="track('click_consult_offer')">Написать Роману — $49.99</a>
+      <p class="note">Одна оплата за диалог. Без подписок и скрытых доплат.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="max-width:760px;margin:0 auto;">
+    Личный разбор — это поддержка и взгляд психолога, он не заменяет очную психотерапию или медицинскую помощь. Если ты в тяжёлой депрессии или есть мысли причинить себе вред — пожалуйста, обратись к живому специалисту или на линию психологической помощи.
+    <br><br>© Роман Вельд · Психология отношений<br><a href="mailto:seoxabiz@gmail.com" style="color:#a99f8f;">seoxabiz@gmail.com</a> · <a href="https://back4heart.site/policy.html" style="color:#a99f8f;">Политика конфиденциальности</a> · <a href="https://back4heart.site/oferta.html" style="color:#a99f8f;">Публичная оферта</a>
+  </div>
+</footer>
+
+<script>
+  var PRICE_USD = 49.99;
+  var FALLBACK = { usd:80, eur:92, uah:1.95, kzt:0.16, uzs:0.0065 };
+  var loaded = false;
+  function fmt(n,s){return (Math.round(n/s)*s).toLocaleString('ru-RU');}
+  function fill(r){var rub=PRICE_USD*r.usd;
+    document.getElementById('p-rub').textContent=fmt(rub,10)+' ₽';
+    document.getElementById('p-uah').textContent='≈ '+fmt(rub/r.uah,10)+' ₴';
+    document.getElementById('p-kzt').textContent='≈ '+fmt(rub/r.kzt,100)+' ₸';
+    document.getElementById('p-uzs').textContent='≈ '+fmt(rub/r.uzs,1000)+' сум';
+    document.getElementById('p-eur').textContent='≈ '+fmt(rub/r.eur,1)+' €';}
+  function loadRates(){if(loaded)return;
+    fetch('https://www.cbr-xml-daily.ru/daily_json.js').then(function(r){return r.json();}).then(function(d){
+      var v=d.Valute;fill({usd:v.USD.Value/v.USD.Nominal,eur:v.EUR.Value/v.EUR.Nominal,uah:v.UAH.Value/v.UAH.Nominal,kzt:v.KZT.Value/v.KZT.Nominal,uzs:v.UZS.Value/v.UZS.Nominal});loaded=true;
+    }).catch(function(){fill(FALLBACK);loaded=true;});}
+  document.getElementById('showPrice').addEventListener('click',function(){
+    var p=document.getElementById('pricePanel');var o=p.classList.toggle('open');
+    this.textContent=o?'💱 Скрыть цену в валютах':'💱 Показать цену в моей валюте';if(o)loadRates();});
+</script>
+
+</body>
+</html>
