@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Мужская психология после расставания - аудиоинтенсив 7 дней | back4heart</title>
-<meta name="description" content="Как пережить расставание без боли, перестать думать только о нём и понять мужскую психологию - взгляд мужчины на то, что происходит после разрыва.">
+<title id="pageTitle">Мужская психология после расставания - аудиоинтенсив 7 дней | back4heart</title>
+<meta name="description" id="pageDescription" content="Как пережить расставание без боли, перестать думать только о нём и понять мужскую психологию - взгляд мужчины на то, что происходит после разрыва.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -543,7 +543,7 @@
       <span class="eyebrow" data-t="pricing_eyebrow">Закрытый доступ</span>
       <h2 data-t="pricing_h2">Выбери, насколько глубоко ты готова зайти</h2>
     </div>
-    <p class="price-anchor" data-t="price_anchor">Одна сессия у психолога стоит $60-120. Здесь - 7 дней, мужской взгляд изнутри и доступ навсегда, и всё это за $9.99.</p>
+    <p class="price-anchor" id="priceAnchor" data-t="price_anchor">Одна сессия у психолога стоит $60-120. Здесь - 7 дней, мужской взгляд изнутри и доступ навсегда, и всё это за $9.99.</p>
     <p class="price-countdown"><span data-t="price_countdown_label">Цена по акции действует ещё:</span> <span id="countdownTimer">--:--:--</span></p>
     <p id="dualPaymentNote" hidden style="text-align:center;max-width:580px;margin:0 auto 22px;color:var(--muted);font-size:13.5px;background:#fff;border:1px dashed var(--line);border-radius:8px;padding:12px 18px;" data-t="dual_note">💳 Показываем сразу два способа оплаты, чтобы платёж точно прошёл, даже если один из них не поддерживает твой банк или страну.</p>
     <div class="pricing-grid">
@@ -943,14 +943,41 @@ const TRANSLATIONS = {
   }
 };
 
+const META_UK = {
+  title: 'Чоловіча психологія після розставання - аудіоінтенсив 7 днів | back4heart',
+  description: 'Як пережити розставання без болю, перестати думати тільки про нього і зрозуміти чоловічу психологію - погляд чоловіка на те, що відбувається після розриву.'
+};
+const META_RU = {
+  title: 'Мужская психология после расставания - аудиоинтенсив 7 дней | back4heart',
+  description: 'Как пережить расставание без боли, перестать думать только о нём и понять мужскую психологию - взгляд мужчины на то, что происходит после разрыва.'
+};
+
 function setLanguage(lang){
-  if(!TRANSLATIONS[lang]) { document.documentElement.lang = 'ru'; return; }
+  if(!TRANSLATIONS[lang]) {
+    document.documentElement.lang = 'ru';
+    const titleElRu = document.getElementById('pageTitle');
+    const descElRu = document.getElementById('pageDescription');
+    if(titleElRu) titleElRu.textContent = META_RU.title;
+    if(descElRu) descElRu.setAttribute('content', META_RU.description);
+    return;
+  }
   document.querySelectorAll('[data-t]').forEach(function(el){
     var key = el.getAttribute('data-t');
     if(TRANSLATIONS[lang][key] !== undefined) el.innerHTML = TRANSLATIONS[lang][key];
   });
   document.documentElement.lang = 'uk';
+  const titleEl = document.getElementById('pageTitle');
+  const descEl = document.getElementById('pageDescription');
+  if(titleEl) titleEl.textContent = META_UK.title;
+  if(descEl) descEl.setAttribute('content', META_UK.description);
 }
+
+/* ==================== PRICE ANCHOR (сравнение с ценой сессии психолога, по регионам) ==================== */
+const ANCHOR_RANGE = {
+  intl: { low:'$60', high:'$120' },
+  ua:   { low:'800 грн', high:'1500 грн' },
+  ru:   { low:'4000 ₽', high:'8000 ₽' }
+};
 
 /* ==================== PRICING (по регионам) ==================== */
 const PRICING = {
@@ -1063,8 +1090,21 @@ function updatePlanButtons(region){
   if(tributeIcon) tributeIcon.hidden = (mode !== 'tribute_only');
 }
 
+function renderPriceAnchor(region){
+  const lang = currentLang();
+  const key = isRussia ? 'ru' : (region === 'ua' ? 'ua' : 'intl');
+  const range = ANCHOR_RANGE[key];
+  const p = isRussia ? PRICING.ru : PRICING[region];
+  const el = document.getElementById('priceAnchor');
+  if(!el || !p) return;
+  el.innerHTML = lang === 'uk'
+    ? `Одна сесія у психолога коштує ${range.low}-${range.high}. Тут - 7 днів, чоловічий погляд зсередини і доступ назавжди, і все це за ${p.basic.fmt}.`
+    : `Одна сессия у психолога стоит ${range.low}-${range.high}. Здесь - 7 дней, мужской взгляд изнутри и доступ навсегда, и всё это за ${p.basic.fmt}.`;
+}
+
 function renderPricing(region){
   const p = isRussia ? PRICING.ru : PRICING[region];
+  renderPriceAnchor(region);
   document.getElementById('priceBasic').innerHTML = p.basic.fmt;
   document.getElementById('priceBasicOld').textContent = p.basic.old;
   document.getElementById('priceCircle').innerHTML = p.circle.fmt;
