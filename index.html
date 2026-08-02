@@ -56,6 +56,8 @@
   .hero h1{ font-size:clamp(30px,5.6vw,50px); line-height:1.18; max-width:680px; margin:0 auto; }
   .hero .sub{ margin:20px auto 0; max-width:520px; font-size:16px; color:var(--muted); }
   .hero .sub b{ color:var(--ink); }
+  .hero-expert{ margin:18px auto 0; max-width:560px; font-family:'Playfair Display',serif; font-weight:600; font-size:19px; line-height:1.4; color:var(--ink); }
+  .hero-expert b{ color:var(--accent-deep); }
   .hero-physio{ margin:14px auto 0; max-width:480px; font-size:14.5px; font-style:italic; color:var(--accent-deep); }
   .hero-cta{ margin-top:30px; display:inline-flex; flex-direction:column; align-items:center; gap:10px; }
   .cta-primary{ display:inline-block; background:var(--accent); color:#fff; padding:16px 38px; font-size:15px; font-weight:700; border-radius:6px; box-shadow:0 12px 26px rgba(179,69,58,0.24); transition:transform .2s ease, background .2s ease; }
@@ -180,6 +182,13 @@
 
   /* pricing */
   .price-anchor{ text-align:center; max-width:520px; margin:0 auto 18px; font-family:'Playfair Display',serif; font-style:italic; font-size:16.5px; color:var(--accent-deep); }
+  .price-compare{ max-width:420px; margin:0 auto 18px; display:flex; flex-direction:column; gap:8px; }
+  .price-compare-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:14px; color:var(--muted); padding-bottom:8px; border-bottom:1px dashed var(--line); }
+  .price-compare-row b{ color:var(--ink); font-weight:600; }
+  .price-compare-row span{ font-family:'Playfair Display',serif; font-weight:700; color:var(--ink); }
+  .price-compare-row.highlight{ color:var(--accent-deep); }
+  .price-compare-row.highlight b, .price-compare-row.highlight span{ color:var(--accent-deep); }
+  .price-compare-tagline{ text-align:center; max-width:480px; margin:0 auto 18px; font-family:'Playfair Display',serif; font-style:italic; font-size:15.5px; color:var(--ink); }
   .price-countdown{ text-align:center; margin:0 auto 34px; font-size:13.5px; font-weight:700; color:var(--accent); }
   .price-countdown span{ font-family:'Playfair Display',serif; font-size:15px; }
   .pricing-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch; max-width:1000px; margin:0 auto; }
@@ -280,6 +289,7 @@
   <div class="wrap">
     <span class="eyebrow">Аудиоинтенсив «Бэушный ещё пожалеет» · 7 дней · доступ навсегда</span>
     <h1>БЭушный <em style="font-style:italic;color:var(--accent);">ещё пожалеет</em></h1>
+    <p class="hero-expert">Верни себе <b>контроль</b>, пока он думает, что ты сломлена. Пошаговый алгоритм выхода из эмоциональной зависимости за 7 дней.</p>
     <p class="sub">Через неделю первая мысль утром будет не о нём. Увидишь, что он в сети, и внутри ничего не екнёт. Вечером просто ляжешь спать - без привычного «а вдруг напишет». Мужской взгляд на расставание, без розовых очков и без «время лечит».</p>
     <p class="hero-physio">Давит в груди, мысли крутятся по кругу, а руки тянутся написать ему в три ночи. Знакомо? Это не слабость. Просто так работает привязанность - и с ней можно что-то сделать.</p>
     <div class="hero-cta">
@@ -304,6 +314,7 @@
       <h2>Потому что так работает привязанность</h2>
     </div>
     <p>Если ты постоянно проверяешь его сторис - дело не в силе воли. Так работает привязанность: пока она не отпустила, мысли будут возвращаться к нему, сколько бы ты себе ни запрещала.</p>
+    <p>Твоя тяга написать ему - это не любовь, это <b>нейробиологический сбой</b>. Мозг требует дозу дофамина, которую раньше давал партнёр. Если кормить эту зависимость проверкой сторис, боль растянется на годы. В интенсиве я показываю, как «взломать» эту систему и перепрошить реакции за неделю.</p>
     <p>Просто взять и «отпустить» не получится, и это нормально. Сначала стоит понять, что происходит с тобой, а что - с ним. Иначе советы типа «переключись» или «замись собой» так и останется словами, которые не работают.</p>
     <p class="neuro-cta">Разобраться в этом - уже половина дела. Начать можно сегодня.</p>
   </div>
@@ -463,7 +474,7 @@
     <div class="honest-box">4.9 из 5 · 340+ отзывов · 700+ женщин уже прошли интенсив - 94% говорят, что стало легче уже к 3-му дню</div>
     <div class="testi-grid">
       <div class="testi"><div class="stars">★★★★★</div><p>«Перестала прокручивать мысли о нём уже на третий день. Впервые за долгое время выспалась.»</p><div class="who">Настя, 46</div></div>
-      <div class="testi"><div class="stars">★★★★★</div><p>«Наконец поняла, почему он так себя вёл - и мне стало легче, будто камень с души.»</p><div class="who">Оля, 41</div></div>
+      <div class="testi"><div class="stars">★★★★★</div><p>«Наконец поняла, почему он так себя вёл - и мне стало легче, будто камень с души.»</p><div class="who">Оля, 41 год. 3 года в созависимых отношениях - вышла в стабильное состояние на 4-й день интенсива</div></div>
       <div class="testi"><div class="stars">★★★★★</div><p>«Боялась, что забуду, что делать со стыдом за прошлые сообщения. Урок про ошибки поставил всё на место.»</p><div class="who">Кристина, 54</div></div>
       <div class="testi"><div class="stars">★★★★★</div><p>«Перестала листать его страницу по вечерам. Просто отпустило - без борьбы с собой.»</p><div class="who">Лена, 49</div></div>
       <div class="testi"><div class="stars">★★★★★</div><p>«Раньше я первая писала "доброе утро". Теперь спокойно живу свой день и не жду от него ничего.»</p><div class="who">Юля, 43</div></div>
@@ -546,7 +557,13 @@
       <span class="eyebrow">Закрытый доступ</span>
       <h2>Выбери, насколько глубоко ты готова зайти</h2>
     </div>
-    <p class="price-anchor">Одна сессия у психолога стоит $60-120. Здесь - 7 дней, мужской взгляд изнутри и доступ навсегда, и всё это за $14.99.</p>
+    <p class="price-anchor">Одна сессия у психолога стоит $60-120. Здесь - 7 дней, мужской взгляд изнутри и доступ навсегда.</p>
+    <div class="price-compare">
+      <div class="price-compare-row"><b>1 сессия у психолога</b><span>$50-100</span></div>
+      <div class="price-compare-row"><b>Вино и подруги на вечер</b><span>$40</span></div>
+      <div class="price-compare-row highlight"><b>Интенсив «Бэушный ещё пожалеет»</b><span>$14.99</span></div>
+    </div>
+    <p class="price-compare-tagline">Ты тратишь больше на кофе за неделю, чем стоит твоё спокойствие на годы.</p>
     <p class="price-countdown">Цена по акции действует ещё: <span id="countdownTimer">--:--:--</span></p>
     <div class="pricing-grid">
       <div class="plan" data-tier="basic">
@@ -659,6 +676,7 @@
 
 <footer>
   <p class="legal-note">Этот интенсив - про восстановление после расставания. Он не заменяет личную терапию или медицинскую помощь. Если прямо сейчас тебе тяжело и есть мысли причинить себе вред - пожалуйста, не оставайся с этим один на один, обратись к специалисту или на линию психологической помощи.</p>
+  <p class="legal-note">Результаты индивидуальны и зависят от твоей готовности работать над собой. Интенсив не гарантирует возврата партнёра и направлен на восстановление психологического состояния. Условия и порядок возврата средств - в <a href="#" id="footerOfferDisclaimer">публичной оферте</a>.</p>
   <div>© 2026 back4heart. Все права защищены.</div>
   <div style="margin-top:8px;"><span>Вопросы? Пиши в Telegram:</span> <a href="https://t.me/back4heart" target="_blank" rel="noopener">back4heart</a></div>
   <div style="margin-top:8px;"><a href="#" id="footerOffer">Публичная оферта</a></div>
@@ -732,8 +750,8 @@
     <div class="offer-modal-body" style="padding-top:0;">
       <span class="eyebrow">Подожди</span>
       <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:var(--ink);margin:10px 0 12px;">Не готова на интенсив целиком?</h3>
-      <p>Держи тест бесплатно.</p>
-      <a href="https://t.me/back4heartquizbot" target="_blank" rel="noopener" class="cta-primary" style="display:inline-block;margin-top:8px;">Пройти тест</a>
+      <p>Держи 1-й день бесплатно.</p>
+      <a href="https://t.me/back4heartquizbot" target="_blank" rel="noopener" class="cta-primary" style="display:inline-block;margin-top:8px;">Получить 1-й день бесплатно</a>
     </div>
   </div>
 </div>
@@ -939,7 +957,7 @@ fetch('https://ipapi.co/json/')
   function showOffer(e){ if(e) e.preventDefault(); overlay.classList.add('show'); }
   function hideOffer(){ overlay.classList.remove('show'); }
   document.addEventListener('click', function(e){
-    const trigger=e.target.closest('#offerLink, #offerLink2, #footerOffer');
+    const trigger=e.target.closest('#offerLink, #offerLink2, #footerOffer, #footerOfferDisclaimer');
     if(trigger) showOffer(e);
   });
   closeBtn.addEventListener('click', hideOffer);
