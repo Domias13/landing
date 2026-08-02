@@ -199,7 +199,7 @@
       <h1>Жизнь <span class="gold">после&nbsp;разрыва</span></h1>
       <p class="subh">Как перестать страдать, отпустить и снова стать собой</p>
       <p class="quote">«Прошёл уже почти год, а мне всё ещё больно» — узнаёшь себя?</p>
-      <a class="btn btn-glow" href="https://buy.stripe.com/7sY5kFgPg25r2xc1Oo3ZK0m" target="_blank" rel="noopener" onclick="track('click_course_hero');track('buy_course')">Пройти курс — $14.99</a>
+      <a class="btn btn-glow buy-link" href="https://buy.stripe.com/7sY5kFgPg25r2xc1Oo3ZK0m" target="_blank" rel="noopener" onclick="track('click_course_hero');track('buy_course')">Пройти курс — <span class="buy-price">$14.99</span></a>
       <span class="btn-sub">Дешевле одной консультации у психолога · + бонус «Про женщину, которая влюбляет навсегда»</span>
       <div class="badges">
         <span class="badge">🎬 <b>6 уроков</b></span>
@@ -331,7 +331,7 @@
 <section class="ctaband">
   <div class="wrap">
     <h3>Хватит проживать одну и ту же ночь по кругу</h3>
-    <a class="btn btn-glow" href="https://buy.stripe.com/7sY5kFgPg25r2xc1Oo3ZK0m" target="_blank" rel="noopener" onclick="track('click_course_mid');track('buy_course')">Пройти курс — $14.99</a>
+    <a class="btn btn-glow buy-link" href="https://buy.stripe.com/7sY5kFgPg25r2xc1Oo3ZK0m" target="_blank" rel="noopener" onclick="track('click_course_mid');track('buy_course')">Пройти курс — <span class="buy-price">$14.99</span></a>
   </div>
 </section>
 
@@ -357,9 +357,9 @@
         <li>Бонус: практикум «Про женщину, которая влюбляет навсегда»</li>
         <li>Доступ навсегда — канал не удаляется, пересматривай в любое время</li>
       </ul>
-      <div class="price">$14.99</div>
+      <div class="price" id="mainPrice">$14.99</div>
 
-      <div class="curwrap">
+      <div class="curwrap" id="curWrap">
         <button class="curbtn" id="showPrice" type="button" onclick="track('click_course_showprice')">💱 Показать цену в моей валюте</button>
         <div class="curpanel" id="pricePanel">
           <div class="row"><span>🇷🇺 Рубли</span><b id="p-rub">…</b></div>
@@ -371,11 +371,11 @@
         </div>
       </div>
 
-      <div class="pay">
+      <div class="pay" id="payBlock">
         💳 <b>Оплата — картой любой страны:</b> Visa, Mastercard, «МИР» (Россия, Украина, Казахстан, Узбекистан и другие страны СНГ). Для России также доступна оплата по <b>«СБП»</b>.<br><br>
         📩 <b>После оплаты</b> тебе придёт в личку в Telegram ссылка на закрытый канал, где размещены все файлы курса. <b>Доступ навсегда.</b>
       </div>
-      <a class="btn btn-glow" href="https://buy.stripe.com/7sY5kFgPg25r2xc1Oo3ZK0m" target="_blank" rel="noopener" style="margin-top:6px;" onclick="track('click_course_offer');track('buy_course')">Пройти курс — $14.99</a>
+      <a class="btn btn-glow buy-link" href="https://buy.stripe.com/7sY5kFgPg25r2xc1Oo3ZK0m" target="_blank" rel="noopener" style="margin-top:6px;" onclick="track('click_course_offer');track('buy_course')">Пройти курс — <span class="buy-price">$14.99</span></a>
       <p class="note">Одна цена, без скрытых доплат и допродаж.</p>
     </div>
   </div>
@@ -411,7 +411,7 @@
   <div class="wrap">
     <h2>Расставание ощущается как конец. Но очень часто это начало — отношений с самым важным человеком в твоей жизни. С собой.</h2>
     <p class="s">6 уроков. 6 дней. И ты уже не там, где была.</p>
-    <a class="btn btn-glow" href="https://buy.stripe.com/7sY5kFgPg25r2xc1Oo3ZK0m" target="_blank" rel="noopener" onclick="track('click_course_final');track('buy_course')">Начать — $14.99</a>
+    <a class="btn btn-glow buy-link" href="https://buy.stripe.com/7sY5kFgPg25r2xc1Oo3ZK0m" target="_blank" rel="noopener" onclick="track('click_course_final');track('buy_course')">Начать — <span class="buy-price">$14.99</span></a>
   </div>
 </section>
 
@@ -485,6 +485,51 @@
     this.textContent = open ? '💱 Скрыть цену в валютах' : '💱 Показать цену в моей валюте';
     if(open) loadRates();
   });
+</script>
+
+<script>
+  // Определение страны по IP и подмена цены/ссылки на оплату для Украины и России.
+  // Используется бесплатный CORS-доступный сервис ipwho.is (без ключа).
+  function detectCountry(){
+    return fetch('https://ipwho.is/')
+      .then(function(r){ return r.json(); })
+      .then(function(d){ return (d && d.success && d.country_code) ? d.country_code : null; })
+      .catch(function(){ return null; });
+  }
+
+  function applyGeoPricing(country){
+    if(country !== 'UA' && country !== 'RU') return; // для всех остальных стран — без изменений
+
+    var buyLinks  = document.querySelectorAll('.buy-link');
+    var buyPrices = document.querySelectorAll('.buy-price');
+    var mainPrice = document.getElementById('mainPrice');
+    var payBlock  = document.getElementById('payBlock');
+    var curWrap   = document.getElementById('curWrap');
+
+    var link, priceLabel;
+
+    if(country === 'UA'){
+      link = 'https://secure.wayforpay.com/button/b94dd4cd56518';
+      priceLabel = '664 грн';
+
+      if(payBlock){
+        payBlock.innerHTML =
+          '💳 <b>Оплата — картой любой страны:</b> Visa, Mastercard, (Украина, Казахстан, Узбекистан и другие страны СНГ).<br><br>' +
+          '📩 <b>После оплаты</b> тебе придёт в личку в Telegram ссылка на закрытый канал, где размещены все файлы курса. <b>Доступ навсегда.</b>';
+      }
+    } else { // RU
+      link = 'https://web.tribute.tg/p/zK9';
+      priceLabel = '2104 руб';
+      // текст блока оплаты для России остаётся без изменений
+    }
+
+    buyLinks.forEach(function(a){ a.setAttribute('href', link); });
+    buyPrices.forEach(function(s){ s.textContent = priceLabel; });
+    if(mainPrice) mainPrice.textContent = priceLabel;
+    if(curWrap) curWrap.style.display = 'none'; // конвертер валют больше не нужен — цена уже локальная
+  }
+
+  detectCountry().then(applyGeoPricing);
 </script>
 
 </body>
