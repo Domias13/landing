@@ -98,7 +98,7 @@
         <h1>Персональный разбор <span class="gold">твоей ситуации</span></h1>
         <p class="sub">Напиши мне лично — расскажи, что у тебя, своими словами. Я разберу именно твою историю: что с тобой происходит, почему — и что делать дальше. Без общих фраз «время лечит».</p>
         <!-- Ссылка на товар в Tribute -->
-        <a class="btn btn-glow" href="https://buy.stripe.com/3cI6oJ8iK8tP8VA50A3ZK0l" target="_blank" rel="noopener" onclick="track('click_consult_hero')">Написать Роману — $49.99</a>
+        <a class="btn btn-glow" id="btnHero" href="https://buy.stripe.com/3cI6oJ8iK8tP8VA50A3ZK0l" target="_blank" rel="noopener" onclick="track('click_consult_hero')">Написать Роману — $49.99</a>
         <div class="badges">
           <span class="badge">💬 <b>Личный чат</b> в Telegram</span>
           <span class="badge">✍️ Ответ <b>лично от Романа</b></span>
@@ -156,7 +156,7 @@
     <div class="offer">
       <p class="kicker" style="text-align:center;">Доступ к личному разбору</p>
       <h2 class="h" style="margin-bottom:8px;">Личный разбор твоей ситуации</h2>
-      <div class="price">$49.99</div>
+      <div class="price" id="mainPrice">$49.99</div>
       <button class="curbtn" id="showPrice" type="button" onclick="track('click_consult_showprice')">💱 Показать цену в моей валюте</button>
       <div class="curpanel" id="pricePanel">
         <div class="row"><span>🇷🇺 Рубли</span><b id="p-rub">…</b></div>
@@ -166,11 +166,11 @@
         <div class="row"><span>🇪🇺 Евро</span><b id="p-eur">…</b></div>
         <div class="src">Цена ориентировочная, по курсу ЦБ на сегодня. Спишется в валюте твоей карты.</div>
       </div>
-      <div class="pay">
+      <div class="pay" id="payText">
         💳 <b>Оплата картой любой страны</b> (Visa, Mastercard, «МИР»; Россия, Украина, Казахстан, Узбекистан и др.). Для России — «СБП».<br><br>
         💬 <b>После оплаты</b> у тебя сразу откроется личный чат со мной в Telegram.
       </div>
-      <a class="btn btn-glow" href="https://buy.stripe.com/3cI6oJ8iK8tP8VA50A3ZK0l" target="_blank" rel="noopener" onclick="track('click_consult_offer')">Написать Роману — $49.99</a>
+      <a class="btn btn-glow" id="btnOffer" href="https://buy.stripe.com/3cI6oJ8iK8tP8VA50A3ZK0l" target="_blank" rel="noopener" onclick="track('click_consult_offer')">Написать Роману — $49.99</a>
       <p class="note">Одна оплата за диалог. Без подписок и скрытых доплат.</p>
     </div>
   </div>
@@ -201,6 +201,59 @@
   document.getElementById('showPrice').addEventListener('click',function(){
     var p=document.getElementById('pricePanel');var o=p.classList.toggle('open');
     this.textContent=o?'💱 Скрыть цену в валютах':'💱 Показать цену в моей валюте';if(o)loadRates();});
+</script>
+
+<!-- Geo-IP localization: Ukraine / Russia get local price, text and payment link -->
+<script>
+(function(){
+  var LOCALES = {
+    UA: {
+      priceLabel: '1999 грн',
+      link: 'https://secure.wayforpay.com/button/baaf391f3c4bf',
+      payHTML: '💳 <b>Оплата</b> — картой любой страны: Visa, Mastercard, (Украина, Казахстан, Узбекистан и другие страны СНГ).<br><br>💬 <b>После оплаты</b> у тебя сразу откроется личный чат со мной в Telegram.'
+    },
+    RU: {
+      priceLabel: '7795 руб.',
+      link: 'https://web.tribute.tg/p/zKa',
+      payHTML: null // keep original pay text for Russia
+    }
+  };
+
+  function applyLocale(code){
+    var loc = LOCALES[code];
+    if (!loc) return; // all other countries: leave everything as-is
+
+    var btnHero = document.getElementById('btnHero');
+    var btnOffer = document.getElementById('btnOffer');
+    var mainPrice = document.getElementById('mainPrice');
+    var payText = document.getElementById('payText');
+    var showPriceBtn = document.getElementById('showPrice');
+    var pricePanel = document.getElementById('pricePanel');
+
+    if (btnHero) { btnHero.href = loc.link; btnHero.textContent = 'Написать Роману — ' + loc.priceLabel; }
+    if (btnOffer) { btnOffer.href = loc.link; btnOffer.textContent = 'Написать Роману — ' + loc.priceLabel; }
+    if (mainPrice) { mainPrice.textContent = loc.priceLabel; }
+    if (loc.payHTML && payText) { payText.innerHTML = loc.payHTML; }
+
+    // the multi-currency converter is redundant once the price is already localized
+    if (showPriceBtn) showPriceBtn.style.display = 'none';
+    if (pricePanel) pricePanel.style.display = 'none';
+  }
+
+  function detectCountry(){
+    fetch('https://ipapi.co/json/').then(function(r){ return r.json(); }).then(function(d){
+      if (d && d.country_code) { applyLocale(d.country_code); }
+      else { throw new Error('no country'); }
+    }).catch(function(){
+      // fallback provider if the first one is blocked or fails
+      fetch('https://ipwho.is/').then(function(r){ return r.json(); }).then(function(d){
+        if (d && d.success && d.country_code) { applyLocale(d.country_code); }
+      }).catch(function(){ /* leave defaults ($49.99, Stripe) on failure */ });
+    });
+  }
+
+  detectCountry();
+})();
 </script>
 
 </body>
