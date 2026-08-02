@@ -732,7 +732,7 @@
     <div class="offer-modal-body" style="padding-top:0;">
       <span class="eyebrow">Подожди</span>
       <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:var(--ink);margin:10px 0 12px;">Не готова на интенсив целиком?</h3>
-      <p>Пройди тест бесплатно.</p>
+      <p>Держи тест бесплатно.</p>
       <a href="https://t.me/back4heartquizbot" target="_blank" rel="noopener" class="cta-primary" style="display:inline-block;margin-top:8px;">Пройти тест</a>
     </div>
   </div>
@@ -815,7 +815,7 @@ const PRICING = {
    Украина (по IP)     -> WayForPay
    Россия (по IP)      -> Tribute
    Казахстан (по IP)   -> Stripe + PayPal (две кнопки)
-   Остальные страны    -> PayPal */
+   Остальные страны    -> Stripe */
 const LINKS = {
   ua: {
     basic:    'https://secure.wayforpay.com/button/bd79c278fab86',
@@ -848,7 +848,7 @@ function getPaymentMode(region){
   if(region === 'ua') return 'wayforpay';
   if(isRussia) return 'tribute_only';
   if(isKazakhstan) return 'stripe_paypal';
-  return 'paypal';
+  return 'stripe';
 }
 
 function updatePlanButtons(region){
@@ -868,8 +868,8 @@ function updatePlanButtons(region){
       const ppHref = LINKS.intl.paypal[combo];
       if(ppHref){ alt.setAttribute('href', ppHref); alt.hidden = false; }
       else { alt.hidden = true; }
-    } else { // paypal only
-      btn.setAttribute('href', LINKS.intl.paypal[combo] || '#');
+    } else { // stripe only
+      btn.setAttribute('href', LINKS.intl.stripe[combo] || '#');
       alt.hidden = true;
     }
     btn.setAttribute('target','_blank'); btn.setAttribute('rel','noopener');
