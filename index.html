@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Роман  Велььд · Психология отношений</title>
+<title>Роман  Вельд · Психология отношений</title>
 <meta name="description" content="Психолог Роман Вельд: курс «Жизнь после разрыва», личный разбор ситуации, медитации.">
 
 <!-- Yandex.Metrika counter -->
@@ -70,12 +70,12 @@
 
       <a class="link primary" href="https://back4heart.site/cours.html" onclick="track('click_hub_course')">
         <div class="t">🎓 Курс «Жизнь после разрыва»</div>
-        <div class="d">Как перестать страдать, отпустить и снова стать собой. 6 уроков · <span class="price">$14.99</span></div>
+        <div class="d">Как перестать страдать, отпустить и снова стать собой. 6 уроков · <span class="price" id="price-course" data-usd="$14.99" data-uah="664 ₴" data-rub="2104 ₽">$14.99</span></div>
       </a>
 
       <a class="link" href="https://back4heart.site/consult.html" onclick="track('click_hub_consult')">
         <div class="t">💬 Персональный разбор твоей ситуации</div>
-        <div class="d">Напиши Роману лично — разбор именно твоей истории в приватном чате. <span class="price">$49.99</span></div>
+        <div class="d">Напиши Роману лично — разбор именно твоей истории в приватном чате. <span class="price" id="price-consult" data-usd="$49.99" data-uah="1999 ₴" data-rub="7795 ₽">$49.99</span></div>
       </a>
 
 <!--      <a class="link" href="https://web.tribute.tg/p/B4v" target="_blank" rel="noopener" onclick="track('click_hub_meditations')">
@@ -103,5 +103,46 @@
 
     <div class="foot">© Роман Вельд · Психология отношений<br><a href="policy.html" style="color:#8a8275;">Политика конфиденциальности</a> · <a href="oferta.html" style="color:#8a8275;">Оферта</a></div>
   </div>
+
+  <script>
+    (function () {
+      // Определяем страну посетителя по IP и подставляем цену в нужной валюте.
+      // По умолчанию (если сервис недоступен или страна не UA/RU) остаётся цена в $.
+      function applyPricing(countryCode) {
+        var key = 'usd';
+        if (countryCode === 'UA') key = 'uah';
+        else if (countryCode === 'RU') key = 'rub';
+        if (key === 'usd') return; // уже стоит $ в разметке по умолчанию
+
+        document.querySelectorAll('.price[data-' + key + ']').forEach(function (el) {
+          el.textContent = el.getAttribute('data-' + key);
+        });
+      }
+
+      // Основной провайдер геолокации по IP (без ключа, с поддержкой CORS)
+      fetch('https://ipwho.is/', { cache: 'no-store' })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (data && data.success !== false && data.country_code) {
+            applyPricing(data.country_code);
+          } else {
+            return fallbackLookup();
+          }
+        })
+        .catch(fallbackLookup);
+
+      // Резервный провайдер на случай, если основной недоступен
+      function fallbackLookup() {
+        fetch('https://ipapi.co/json/', { cache: 'no-store' })
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            if (data && data.country_code) {
+              applyPricing(data.country_code);
+            }
+          })
+          .catch(function () { /* оставляем цены в $ */ });
+      }
+    })();
+  </script>
 </body>
 </html>
