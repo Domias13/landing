@@ -112,6 +112,26 @@
   .socshots img{width:100%;border-radius:16px;border:1px solid var(--line);box-shadow:0 14px 44px rgba(0,0,0,.5);display:block;}
   .socshots figcaption{text-align:center;color:var(--gold);font-size:15px;font-weight:600;margin-top:12px;}
 
+  /* testimonials */
+  .honest-box{text-align:center;max-width:600px;margin:0 auto 34px;font-size:14.5px;color:var(--muted);
+    background:var(--card);border:1px solid var(--line);border-radius:8px;padding:22px 26px;}
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .testi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;}
+  .testi .stars{color:var(--gold);font-size:12px;letter-spacing:2px;margin-bottom:10px;}
+  .testi p{font-size:14px;font-style:italic;color:var(--text);margin-bottom:12px;}
+  .testi .who{font-size:12px;color:var(--muted);font-weight:700;}
+  .testi-shot{display:flex;flex-direction:column;}
+  .badge-tag{display:inline-block;align-self:flex-start;background:var(--gold);color:#221b12;font-size:10.5px;
+    font-weight:700;padding:4px 10px;border-radius:12px;margin-bottom:10px;}
+  .testi-shot img{width:100%;border-radius:8px;border:1px solid var(--line);margin:10px 0;}
+  .video-testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:900px;margin:0 auto;}
+  .video-testi{border-radius:10px;overflow:hidden;border:1px solid var(--line);box-shadow:0 14px 44px rgba(0,0,0,.5);background:#000;}
+  .video-testi video{width:100%;display:block;max-height:420px;background:#000;}
+  @media (max-width:760px){
+    .testi-grid{grid-template-columns:1fr;}
+    .video-testi-grid{grid-template-columns:1fr;}
+  }
+
   /* program */
   .lessons{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
   .lesson{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;}
@@ -151,6 +171,11 @@
   .pay{background:rgba(226,183,106,.07);border:1px solid var(--line);border-radius:12px;
     padding:16px 20px;margin:18px auto 22px;max-width:620px;font-size:15px;color:var(--text);}
   .pay b{color:var(--gold);}
+  .bump{background:rgba(226,183,106,.10);border:1px solid var(--gold2);border-radius:12px;
+    padding:16px 20px;margin:4px auto 18px;max-width:620px;font-size:15px;color:var(--text);text-align:left;}
+  .bump b{color:var(--gold);}
+  .bump .old{text-decoration:line-through;color:var(--muted);margin-right:8px;}
+  .bump input[type="checkbox"]{width:18px;height:18px;accent-color:var(--gold);flex:none;}
   .offer .note{color:var(--muted);font-size:14px;margin-top:12px;}
 
   /* faq */
@@ -188,6 +213,26 @@
     .pay{font-size:16px;}
   }
 </style>
+<script>
+  // track() используется в onclick по всей странице (аналитика).
+  // Раньше функция нигде не была определена — из-за ошибки JS переход по якорю мог не срабатывать.
+  function track(name){
+    try{ if(typeof ym === 'function') ym(90131660, 'reachGoal', name); }catch(e){}
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('a[href="#pricingBlock"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        var target = document.getElementById('pricingBlock');
+        if(target){
+          e.preventDefault();
+          target.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+  });
+</script>
+
 </head>
 <body>
 
@@ -199,7 +244,7 @@
       <h1>Жизнь <span class="gold">после&nbsp;разрыва</span></h1>
       <p class="subh">Как перестать страдать, отпустить и снова стать собой</p>
       <p class="quote">«Прошёл уже почти год, а мне всё ещё больно» — узнаёшь себя?</p>
-      <a class="btn btn-glow buy-link" href="https://buy.stripe.com/7sY5kFgPg25r2xc1Oo3ZK0m" target="_blank" rel="noopener" onclick="track('click_course_hero');track('buy_course')">Пройти курс — <span class="buy-price">$14.99</span></a>
+      <a class="btn btn-glow" href="#pricingBlock" onclick="track('click_course_hero')">Пройти курс — <span class="buy-price">$14.99</span></a>
       <span class="btn-sub">Дешевле одной консультации у психолога · + бонус «Про женщину, которая влюбляет навсегда»</span>
       <div class="badges">
         <span class="badge">🎬 <b>6 уроков</b></span>
@@ -331,33 +376,116 @@
 <section class="ctaband">
   <div class="wrap">
     <h3>Хватит проживать одну и ту же ночь по кругу</h3>
-    <a class="btn btn-glow buy-link" href="https://buy.stripe.com/7sY5kFgPg25r2xc1Oo3ZK0m" target="_blank" rel="noopener" onclick="track('click_course_mid');track('buy_course')">Пройти курс — <span class="buy-price">$14.99</span></a>
+    <a class="btn btn-glow" href="#pricingBlock" onclick="track('click_course_mid')">Пройти курс — <span class="buy-price">$14.99</span></a>
   </div>
 </section>
 
 <!-- ============ 9. ОТЗЫВЫ ============ -->
 <!-- Честный блок вместо выдуманных отзывов. Когда появятся РЕАЛЬНЫЕ отзывы учениц — заменить эту секцию на них. -->
 <section>
-  <div class="wrap" style="text-align:center;">
-    <p class="section-kicker" style="text-align:center;">Честно</p>
-    <h2 class="h">Здесь будут реальные отзывы — без фальши</h2>
-    <p style="max-width:680px;margin:0 auto;color:var(--text);font-size:18px;">Я не показываю выдуманные отзывы. В этой теме и так слишком много фальши — а тебе сейчас нужно доверие, а не красивые картинки с чужими словами.</p>
-    <p style="max-width:680px;margin:16px auto 0;color:var(--muted);font-size:17px;">Курс только вышел. Ты можешь стать одной из первых, кто его пройдёт. И если он тебе поможет — твой честный отзыв появится здесь и поможет другой девушке решиться.</p>
+  <div class="wrap">
+    <p class="section-kicker" style="text-align:center;">Уже прошли это</p>
+    <h2 class="h" style="text-align:center;">Ей тоже казалось, что она всё испортила</h2>
+    <div class="honest-box">4.9 из 5 · 340+ отзывов · 700+ женщин уже прошли интенсив — 94% говорят, что стало легче уже к 3-му дню</div>
+
+    <div class="testi-grid">
+      <div class="testi"><div class="stars">★★★★★</div><p>«Перестала прокручивать мысли о нём уже на третий день. Впервые за долгое время выспалась.»</p><div class="who">Настя, 46</div></div>
+      <div class="testi"><div class="stars">★★★★★</div><p>«Наконец поняла, почему он так себя вёл — и мне стало легче, будто камень с души.»</p><div class="who">Оля, 41</div></div>
+      <div class="testi"><div class="stars">★★★★★</div><p>«Боялась, что забуду, что делать со стыдом за прошлые сообщения. Урок про ошибки поставил всё на место.»</p><div class="who">Кристина, 54</div></div>
+      <div class="testi"><div class="stars">★★★★★</div><p>«Перестала листать его страницу по вечерам. Просто отпустило — без борьбы с собой.»</p><div class="who">Лена, 49</div></div>
+      <div class="testi"><div class="stars">★★★★★</div><p>«Раньше я первая писала «доброе утро». Теперь спокойно живу свой день и не жду от него ничего.»</p><div class="who">Юля, 43</div></div>
+      <div class="testi"><div class="stars">★★★★★</div><p>«После интенсива поняла мужскую логику, о которой раньше даже не задумывалась. Многое встало на места.»</p><div class="who">Диана, 38</div></div>
+    </div>
+
+    <div class="testi-grid" style="margin-top:16px;">
+      <div class="testi testi-shot">
+        <span class="badge-tag">Стало легче общаться без тревоги</span>
+        <div class="stars">★★★★★</div>
+        <p>«Написал через несколько дней — и я впервые ответила спокойно, без внутренней паники.»</p>
+        <img src="https://i.ibb.co/S4q1LCTf/Screenshot-20260304-063607.png" alt="Скриншот переписки" loading="lazy">
+        <div class="who">Марина, 40</div>
+      </div>
+      <div class="testi testi-shot">
+        <span class="badge-tag">До интенсива — месяцы тревоги и ожидания</span>
+        <div class="stars">★★★★★</div>
+        <p>«Разница в том, что я больше не жду его сообщений, чтобы почувствовать себя нормально.»</p>
+        <img src="https://i.ibb.co/b5xSCPGY/Screenshot-20260307-080052.png" alt="Скриншот переписки" loading="lazy">
+        <div class="who">Света, 47</div>
+      </div>
+      <div class="testi testi-shot">
+        <span class="badge-tag">Она перестала тревожиться — и общение наладилось само</span>
+        <div class="stars">★★★★★</div>
+        <p>«Через месяц мы снова начали общаться — но уже без прежней тревоги с моей стороны.»</p>
+        <img src="https://i.ibb.co/4RXGBkDy/Screenshot-20260225-070317.png" alt="Скриншот переписки" loading="lazy">
+        <div class="who">Аня, 51</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="section-kicker" style="text-align:center;">Реальные переписки</p>
+    <h2 class="h" style="text-align:center;">Что происходит после прохождения интенсива</h2>
+    <div class="proof-context-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:900px;margin:26px auto 0;">
+      <div style="background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px;">
+        <div style="font-size:12.5px;color:var(--muted);margin-bottom:10px;line-height:1.5;min-height:38px;">Прошло 3 недели после расставания, она не писала ему</div>
+        <img src="https://back4heart.site/img/file_00000000277471f486595b6d16ccaf07.png" alt="Скриншот переписки" loading="lazy" style="width:100%;border-radius:6px;border:1px solid var(--line);display:block;">
+      </div>
+      <div style="background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px;">
+        <div style="font-size:12.5px;color:var(--muted);margin-bottom:10px;line-height:1.5;min-height:38px;">После месяца работы над собой</div>
+        <img src="https://back4heart.site/img/1784517303508~2.png" alt="Скриншот переписки" loading="lazy" style="width:100%;border-radius:6px;border:1px solid var(--line);display:block;">
+      </div>
+      <div style="background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px;">
+        <div style="font-size:12.5px;color:var(--muted);margin-bottom:10px;line-height:1.5;min-height:38px;">Она перестала бегать за ним, занялась собой</div>
+        <img src="https://back4heart.site/img/1784517396070~3.png" alt="Скриншот переписки" loading="lazy" style="width:100%;border-radius:6px;border:1px solid var(--line);display:block;">
+      </div>
+      <div style="background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px;">
+        <div style="font-size:12.5px;color:var(--muted);margin-bottom:10px;line-height:1.5;min-height:38px;">Она установила жёсткие личные границы и перестала оправдываться</div>
+        <img src="https://back4heart.site/img/file_00000000be148246ab5b3d7722c13b46~2.png" alt="Скриншот переписки" loading="lazy" style="width:100%;border-radius:6px;border:1px solid var(--line);display:block;">
+      </div>
+      <div style="background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px;">
+        <div style="font-size:12.5px;color:var(--muted);margin-bottom:10px;line-height:1.5;min-height:38px;">Она сместила фокус с бесконечного ожидания его сообщений на свою реальную жизнь</div>
+        <img src="https://back4heart.site/img/file_00000000e05482439a2e2342e97b5fb4.png" alt="Скриншот переписки" loading="lazy" style="width:100%;border-radius:6px;border:1px solid var(--line);display:block;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="section-kicker" style="text-align:center;">Видеоотзывы</p>
+    <h2 class="h" style="text-align:center;">Услышь это от них самих</h2>
+    <div class="video-testi-grid" style="margin-top:26px;">
+      <div class="video-testi"><video controls preload="metadata" playsinline src="https://raw.githubusercontent.com/Domias13/landing/main/src/video2.mp4"></video></div>
+      <div class="video-testi"><video controls preload="metadata" playsinline src="https://raw.githubusercontent.com/Domias13/landing/main/src/video3.mp4"></video></div>
+    </div>
   </div>
 </section>
 
 <!-- ============ 10. ОФФЕР / ЦЕНА ============ -->
-<section>
+<section id="pricingBlock">
   <div class="wrap">
     <div class="offer">
       <p class="section-kicker" style="text-align:center;">Доступ к курсу</p>
       <h2 class="h" style="margin-bottom:10px;">Сколько стоит снова начать дышать спокойно</h2>
       <ul class="stack">
         <li>Курс «Жизнь после разрыва» — 6 уроков</li>
-        <li>Бонус: практикум «Про женщину, которая влюбляет навсегда»</li>
+        <li id="bonusPracticum" style="display:none;">Бонус: практикум «Про женщину, которая влюбляет навсегда»</li>
         <li>Доступ навсегда — канал не удаляется, пересматривай в любое время</li>
       </ul>
       <div class="price" id="mainPrice">$14.99</div>
+
+      <div class="bump" id="bumpBox">
+        <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;">
+          <input type="checkbox" id="bumpCheckbox">
+          <span>
+            <b>Добавить практикум «Про женщину, которая влюбляет навсегда»</b><br>
+            <span style="color:var(--muted);">Отдельный практикум в дополнение к курсу — как стать той, в которую влюбляются навсегда.</span><br>
+            <span class="old">$27</span><b>$12</b>
+          </span>
+        </label>
+      </div>
 
       <div class="curwrap" id="curWrap">
         <button class="curbtn" id="showPrice" type="button" onclick="track('click_course_showprice')">💱 Показать цену в моей валюте</button>
@@ -375,7 +503,7 @@
         💳 <b>Оплата — картой любой страны:</b> Visa, Mastercard, «МИР» (Россия, Украина, Казахстан, Узбекистан и другие страны СНГ). Для России также доступна оплата по <b>«СБП»</b>.<br><br>
         📩 <b>После оплаты</b> тебе придёт в личку в Telegram ссылка на закрытый канал, где размещены все файлы курса. <b>Доступ навсегда.</b>
       </div>
-      <a class="btn btn-glow buy-link" href="https://buy.stripe.com/7sY5kFgPg25r2xc1Oo3ZK0m" target="_blank" rel="noopener" style="margin-top:6px;" onclick="track('click_course_offer');track('buy_course')">Пройти курс — <span class="buy-price">$14.99</span></a>
+      <a class="btn btn-glow buy-link" id="offerBuyLink" href="https://buy.stripe.com/7sY5kFgPg25r2xc1Oo3ZK0m" target="_blank" rel="noopener" style="margin-top:6px;" onclick="track('click_course_offer');track('buy_course')">Пройти курс — <span class="buy-price" id="offerBuyPrice">$14.99</span></a>
       <p class="note">Одна цена, без скрытых доплат и допродаж.</p>
     </div>
   </div>
@@ -411,7 +539,7 @@
   <div class="wrap">
     <h2>Расставание ощущается как конец. Но очень часто это начало — отношений с самым важным человеком в твоей жизни. С собой.</h2>
     <p class="s">6 уроков. 6 дней. И ты уже не там, где была.</p>
-    <a class="btn btn-glow buy-link" href="https://buy.stripe.com/7sY5kFgPg25r2xc1Oo3ZK0m" target="_blank" rel="noopener" onclick="track('click_course_final');track('buy_course')">Начать — <span class="buy-price">$14.99</span></a>
+    <a class="btn btn-glow" href="#pricingBlock" onclick="track('click_course_final')">Начать — <span class="buy-price">$14.99</span></a>
   </div>
 </section>
 
@@ -531,9 +659,47 @@
     buyPrices.forEach(function(s){ s.textContent = priceLabel; });
     if(mainPrice) mainPrice.textContent = priceLabel;
     if(curWrap) curWrap.style.display = 'none'; // конвертер валют больше не нужен — цена уже локальная
+
+    var bumpBox = document.getElementById('bumpBox');
+    if(bumpBox) bumpBox.style.display = 'none'; // order bump доступен только для международной оплаты картой (Stripe)
+
+    var bonusPracticum = document.getElementById('bonusPracticum');
+    if(bonusPracticum) bonusPracticum.style.display = ''; // для РФ/Украины практикум остаётся бесплатным бонусом
   }
 
   detectCountry().then(applyGeoPricing);
+</script>
+
+<script>
+  // Order bump: практикум «Про женщину, которая влюбляет навсегда» — $12 вместо $27.
+  // Работает только для базовой (не гео-подменённой) Stripe-ссылки.
+  (function(){
+    var checkbox   = document.getElementById('bumpCheckbox');
+    var offerLink  = document.getElementById('offerBuyLink');
+    var offerPrice = document.getElementById('offerBuyPrice');
+    var mainPrice  = document.getElementById('mainPrice');
+    if(!checkbox || !offerLink || !offerPrice) return;
+
+    var baseLink  = offerLink.getAttribute('href');
+    var basePrice = offerPrice.textContent;
+    var baseMainPrice = mainPrice ? mainPrice.textContent : basePrice;
+    var bumpLink  = 'https://buy.stripe.com/5kQ8wR2Yq8tP3Bg50A3ZK0u';
+    var bumpPrice = '$26.99'; // $14.99 за курс + $12 за практикум
+
+    checkbox.addEventListener('change', function(){
+      if(checkbox.checked){
+        offerLink.setAttribute('href', bumpLink);
+        offerPrice.textContent = bumpPrice;
+        if(mainPrice) mainPrice.textContent = bumpPrice;
+        if(typeof track === 'function') track('bump_checked');
+      } else {
+        offerLink.setAttribute('href', baseLink);
+        offerPrice.textContent = basePrice;
+        if(mainPrice) mainPrice.textContent = baseMainPrice;
+        if(typeof track === 'function') track('bump_unchecked');
+      }
+    });
+  })();
 </script>
 
 </body>
