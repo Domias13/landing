@@ -198,6 +198,9 @@
   .plan .plan-name{ font-family:'Playfair Display',serif; font-size:18px; margin-bottom:6px; }
   .plan .plan-desc{ color:var(--muted); font-size:13px; margin-bottom:18px; min-height:34px; }
   .bonus-tag{ font-size:12px; color:var(--accent-deep); background:#fdeceb; border:1px dashed #e0b8b3; border-radius:6px; padding:10px 12px; margin-bottom:14px; line-height:1.5; }
+  .scarcity-counter{ display:flex; align-items:center; gap:6px; font-size:12.5px; font-weight:700; color:var(--accent-deep); background:#fff3ea; border:1px solid #f0d0b8; border-radius:6px; padding:9px 12px; margin-bottom:14px; }
+  .scarcity-counter .dot{ width:7px; height:7px; border-radius:50%; background:var(--accent); flex-shrink:0; animation:scarcityPulse 1.6s ease-in-out infinite; }
+  @keyframes scarcityPulse{ 0%,100%{ opacity:1; } 50%{ opacity:.35; } }
   .plan .price-row{ display:flex; align-items:baseline; gap:8px; margin-bottom:2px; }
   .plan .price{ font-family:'Playfair Display',serif; font-size:32px; font-weight:700; }
   .plan .price .cur{ font-size:16px; color:var(--muted); font-weight:600; margin-left:2px; }
@@ -282,18 +285,17 @@
 
 <div class="sticky-cta-bar" id="stickyCtaBar">
   <a href="#pricing" class="sticky-cta">Начать интенсив</a>
-  <a href="https://t.me/back4heartquizbot" target="_blank" rel="noopener" class="sticky-cta-alt">1-й урок бесплатно →</a>
 </div>
 
 <section class="hero">
   <div class="wrap">
     <span class="eyebrow">Аудиоинтенсив «Бэушный ещё пожалеет» · 7 дней · доступ навсегда</span>
     <h1>БЭушный <em style="font-style:italic;color:var(--accent);">ещё пожалеет</em></h1>
-    <p class="hero-expert">Верни себе <b>контроль</b>, пока он думает, что ты сломлена. Пошаговый алгоритм выхода из эмоциональной зависимости за 7 дней.</p>
-    <p class="sub">Через неделю первая мысль утром будет не о нём. Увидишь, что он в сети, и внутри ничего не екнёт. Вечером просто ляжешь спать - без привычного «а вдруг напишет». Мужской взгляд на расставание, без розовых очков и без «время лечит».</p>
     <p class="hero-physio">Давит в груди, мысли крутятся по кругу, а руки тянутся написать ему в три ночи. Знакомо? Это не слабость. Просто так работает привязанность - и с ней можно что-то сделать.</p>
+    <p class="hero-expert">Верни себе <b>контроль</b>, пока он думает, что ты сломлена. Пошаговый аудиоинтенсив - 15-20 минут в день, мужской взгляд изнутри, без «время лечит».</p>
+    <p class="sub">Через неделю первая мысль утром будет не о нём. Увидишь, что он в сети, и внутри ничего не екнёт. Вечером просто ляжешь спать - без привычного «а вдруг напишет».</p>
     <div class="hero-cta">
-      <a href="#pricing" class="cta-primary">Начать интенсив</a>
+      <a href="#pricing" class="cta-primary">Купить</a>
       <div class="cta-price">Аудиоформат · 15–20 минут в день · доступ навсегда</div>
     </div>
     <div class="badges">
@@ -598,6 +600,7 @@
       <div class="plan" data-tier="personal">
         <div class="plan-name">Персональный разбор твоей ситуации</div>
         <div class="plan-desc">Напиши мне лично - расскажи, что у тебя, своими словами. Я разберу именно твою историю: что с тобой происходит, почему - и что делать дальше. Без общих фраз «время лечит».</div>
+        <div class="scarcity-counter"><span class="dot"></span>Осталось <span id="scarcityCount">19</span> мест на разбор этой недели</div>
         <div class="price-row"><span class="price-old" id="pricePersonalOld">$199</span><span class="price" id="pricePersonal">$59.99</span></div>
         <div class="price-note">разовый платёж</div>
         <ul>
@@ -917,6 +920,54 @@ function renderPricing(region){
     ? 'Любой картой - Visa, Mastercard, «МИР». Принимаются карты разных стран.'
     : 'Любой картой - Visa, Mastercard. Принимаются карты разных стран.';
 }
+
+// personal breakdown weekly scarcity counter
+(function(){
+  const el = document.getElementById('scarcityCount');
+  if(!el) return;
+
+  // stable per-ISO-week key so the "random" start number is the same all week for everyone
+  function isoWeekKey(date){
+    const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+    const dayNum = (d.getUTCDay() + 6) % 7; // Mon=0..Sun=6
+    d.setUTCDate(d.getUTCDate() - dayNum + 3);
+    const firstThursday = new Date(Date.UTC(d.getUTCFullYear(), 0, 4));
+    const week = 1 + Math.round(((d - firstThursday) / 86400000 - 3 + ((firstThursday.getUTCDay() + 6) % 7)) / 7);
+    return d.getUTCFullYear() + '-' + week;
+  }
+
+  function seededFraction(str){
+    let h = 0;
+    for(let i = 0; i < str.length; i++){ h = (Math.imul(31, h) + str.charCodeAt(i)) | 0; }
+    return (Math.abs(h) % 1000) / 1000;
+  }
+
+  function render(){
+    const now = new Date();
+    const startCount = 12 + Math.floor(seededFraction(isoWeekKey(now)) * 9); // 12..20, fixed for the whole week
+
+    const dayIdx = (now.getDay() + 6) % 7; // Mon=0 ... Sun=6
+    const weekStart = new Date(now);
+    weekStart.setHours(0, 0, 0, 0);
+    weekStart.setDate(weekStart.getDate() - dayIdx);
+
+    const weekEnd = new Date(weekStart);
+    weekEnd.setDate(weekEnd.getDate() + 6);
+    weekEnd.setHours(23, 59, 59, 999); // Sunday evening/end of day
+
+    const totalMs = weekEnd - weekStart;
+    const elapsedMs = Math.min(Math.max(now - weekStart, 0), totalMs);
+    const progress = elapsedMs / totalMs;
+
+    let remaining = Math.round(startCount - progress * (startCount - 1));
+    remaining = Math.max(1, Math.min(startCount, remaining));
+
+    el.textContent = remaining;
+  }
+
+  render();
+  setInterval(render, 30 * 60 * 1000); // refresh every 30 min so it visibly ticks down over the week
+})();
 
 /* ==================== GEO DETECTION ==================== */
 const deviceIsUkrainian = (() => {
