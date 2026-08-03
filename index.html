@@ -194,7 +194,7 @@
   .price-compare-tagline{ text-align:center; max-width:480px; margin:0 auto 18px; font-family:'Playfair Display',serif; font-style:italic; font-size:15.5px; color:var(--ink); }
   .price-countdown{ text-align:center; margin:0 auto 34px; font-size:13.5px; font-weight:700; color:var(--accent); }
   .price-countdown span{ font-family:'Playfair Display',serif; font-size:15px; }
-  .pricing-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch; max-width:1000px; margin:0 auto; }
+  .pricing-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; align-items:stretch; max-width:760px; margin:0 auto; }
   .plan{ background:#fff; border:1px solid var(--line); border-radius:10px; padding:30px 24px; display:flex; flex-direction:column; position:relative; text-align:left; }
   .plan.featured{ border-color:var(--gold); box-shadow:var(--shadow); }
   .plan.featured::before{ content:attr(data-badge); position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--gold); color:#fff; font-size:10.5px; font-weight:700; letter-spacing:.04em; padding:5px 13px; border-radius:20px; text-transform:uppercase; white-space:nowrap; }
@@ -217,7 +217,14 @@
   .plan-btn-alt{ display:block; text-align:center; padding:11px 14px; margin-top:8px; border-radius:6px; font-size:12.5px; font-weight:700; border:1.5px solid var(--line); color:var(--muted); }
   .plan-btn-alt:hover{ border-color:var(--accent); color:var(--accent); }
   .plan-btn-alt[hidden]{ display:none; }
-  @media (max-width:860px){ .pricing-grid{ grid-template-columns:1fr; } }
+  @media (max-width:760px){ .pricing-grid{ grid-template-columns:1fr; } }
+
+  .order-bump{ display:flex; gap:12px; align-items:flex-start; background:#fdf6e9; border:1.5px dashed var(--gold); border-radius:8px; padding:14px 16px; margin-bottom:18px; cursor:pointer; }
+  .order-bump input{ margin-top:3px; width:17px; height:17px; accent-color:var(--accent); flex-shrink:0; cursor:pointer; }
+  .order-bump .bump-title{ font-size:13px; font-weight:700; color:var(--ink); margin-bottom:3px; }
+  .order-bump .bump-desc{ font-size:12px; color:var(--muted); line-height:1.5; }
+  .order-bump .bump-desc a{ text-decoration:underline; color:var(--accent-deep); }
+  .order-bump .bump-price{ font-size:12px; color:var(--accent-deep); font-weight:700; margin-top:4px; display:block; }
 
   .payment-block{ max-width:640px; margin:34px auto 0; text-align:center; padding-top:26px; border-top:1px solid var(--line); }
   .payment-block p{ font-size:13px; color:var(--muted); line-height:1.7; }
@@ -571,7 +578,7 @@
     <p class="price-compare-tagline">Ты тратишь больше на кофе за неделю, чем стоит твоё спокойствие на годы.</p>
     <p class="price-countdown">Цена по акции действует ещё: <span id="countdownTimer">--:--:--</span></p>
     <div class="pricing-grid">
-      <div class="plan" data-tier="basic">
+      <div class="plan featured" data-tier="basic" data-badge="Самый популярный">
         <div class="plan-name">Интенсив</div>
         <div class="plan-desc">7 аудиоуроков по 15–20 минут + 3 авторские техники. Первая техника помогает снизить остроту навязчивых мыслей - многие участницы замечают разницу уже в первые сутки.</div>
         <div class="price-row"><span class="price-old" id="priceBasicOld">$79</span><span class="price" id="priceBasic">$14.99</span></div>
@@ -581,23 +588,16 @@
           <li>Доступ навсегда, слушай когда удобно</li>
           <li>Слушай хоть с телефона, хоть с ноутбука</li>
         </ul>
+        <label class="order-bump" for="bumpPracticum">
+          <input type="checkbox" id="bumpPracticum">
+          <div>
+            <div class="bump-title">Добавить практикум «Про женщину, которая влюбляет навсегда»</div>
+            <div class="bump-desc">Уверенность в общении и новых отношениях - чтобы не наступать на те же грабли снова. <a href="#" id="practicumLink">Что внутри?</a></div>
+            <span class="bump-price" id="bumpPriceNote">Разово доплатить до <span id="bumpTargetPrice">$27</span></span>
+          </div>
+        </label>
         <a href="#" class="plan-btn" data-plan="basic" id="planBasicBtn">Получить доступ к техникам</a>
         <a href="#" class="plan-btn-alt" data-plan="basic" id="planBasicBtnAlt" hidden>Получить доступ к техникам</a>
-      </div>
-
-      <div class="plan featured" data-tier="circle" data-badge="Самый популярный">
-        <div class="plan-name">Интенсив + практикум «Про женщину, которая влюбляет навсегда»</div>
-        <div class="plan-desc">Всё из «Интенсива» плюс практикум об уверенности в общении и новых отношениях - чтобы не наступать на те же грабли снова.</div>
-        <div class="price-row"><span class="price-old" id="priceCircleOld">$179</span><span class="price" id="priceCircle">$27</span></div>
-        <div class="price-note">разовый платёж</div>
-        <ul>
-          <li>Всё из тарифа «Интенсив»</li>
-          <li>Практикум «Про женщину, которая влюбляет навсегда»</li>
-          <li>Рабочие упражнения на уверенность и внутреннюю ценность в новых отношениях</li>
-        </ul>
-        <a href="#" class="plan-btn" data-plan="circle" id="planCircleBtn">Получить доступ к техникам</a>
-        <a href="#" class="plan-btn-alt" data-plan="circle" id="planCircleBtnAlt" hidden>Получить доступ к техникам</a>
-        <a href="#" id="practicumLink" style="display:block;text-align:center;font-size:12px;color:var(--muted);text-decoration:underline;margin-top:10px;">Что внутри практикума?</a>
       </div>
 
       <div class="plan" data-tier="personal">
@@ -734,7 +734,7 @@
       <button class="offer-close" id="practicumClose" aria-label="Закрыть">×</button>
     </div>
     <div class="offer-modal-body">
-      <p>Это бонус-практикум, который входит в тариф «Интенсив + практикум». Он не про то, как понравиться на один вечер, а про то, как стать женщиной, к которой хочется возвращаться - без игр, показного равнодушия и беготни за мужчиной.</p>
+      <p>Это практикум, который можно добавить к интенсиву. Он не про то, как понравиться на один вечер, а про то, как стать женщиной, к которой хочется возвращаться - без игр, показного равнодушия и беготни за мужчиной.</p>
       <h3>5 блоков, в конце каждого - практическое задание</h3>
       <ul>
         <li><b>Внутренний магнит</b> - что включает мужской интерес по-настоящему, и почему забота с жертвенностью тут ни при чём.</li>
@@ -878,7 +878,8 @@ function getPaymentMode(region){
 function updatePlanButtons(region){
   const mode = getPaymentMode(region);
   document.querySelectorAll('.plan').forEach(planEl=>{
-    const combo = planEl.getAttribute('data-tier');
+    let combo = planEl.getAttribute('data-tier');
+    if(combo === 'basic' && practicumBumpChecked) combo = 'circle';
     const btn = planEl.querySelector('.plan-btn');
     const alt = planEl.querySelector('.plan-btn-alt');
     if(mode === 'wayforpay'){
@@ -901,14 +902,17 @@ function updatePlanButtons(region){
   });
 }
 
+let practicumBumpChecked = false;
+
 function renderPricing(region){
   const p = isRussia ? PRICING.ru : PRICING[region];
-  document.getElementById('priceBasic').innerHTML = p.basic.fmt;
-  document.getElementById('priceBasicOld').textContent = p.basic.old;
-  document.getElementById('priceCircle').innerHTML = p.circle.fmt;
-  document.getElementById('priceCircleOld').textContent = p.circle.old;
+  const basicKey = practicumBumpChecked ? 'circle' : 'basic';
+  document.getElementById('priceBasic').innerHTML = p[basicKey].fmt;
+  document.getElementById('priceBasicOld').textContent = p[basicKey].old;
   document.getElementById('pricePersonal').innerHTML = p.personal.fmt;
   document.getElementById('pricePersonalOld').textContent = p.personal.old;
+  const bumpTarget = document.getElementById('bumpTargetPrice');
+  if(bumpTarget) bumpTarget.innerHTML = p.circle.fmt;
   updatePlanButtons(region);
 
   const ruNote = document.getElementById('paymentTextRu');
@@ -979,6 +983,16 @@ const deviceIsUkrainian = (() => {
 })();
 let region = deviceIsUkrainian ? 'ua' : 'intl';
 renderPricing(region);
+
+// order-bump: adding the practicum swaps the "Интенсив" price + payment link to the combined offer
+(function(){
+  const bump = document.getElementById('bumpPracticum');
+  if(!bump) return;
+  bump.addEventListener('change', function(){
+    practicumBumpChecked = bump.checked;
+    renderPricing(region);
+  });
+})();
 
 function applyGeo(countryCode){
   const countryIsUA = countryCode === 'UA';
