@@ -68,6 +68,9 @@
   .badges span{ display:flex; align-items:center; gap:6px; }
   .hero-photo{ max-width:420px; margin:44px auto 0; border-radius:10px; overflow:hidden; box-shadow:var(--shadow); }
   .hero-photo img{ width:100%; display:block; }
+  .product-visual{ text-align:center; margin:0 auto 34px; }
+  .product-visual img{ display:block; max-width:340px; width:100%; margin:0 auto; border-radius:12px; box-shadow:var(--shadow); }
+  .product-visual p{ font-size:12.5px; color:var(--muted); margin-top:12px; }
   .scroll-hint{ margin-top:16px; font-size:11.5px; letter-spacing:.15em; text-transform:uppercase; color:var(--light); text-align:center; }
 
   /* explainer */
@@ -274,17 +277,13 @@
 <body>
 
 <header>
-  <div class="wrap-wide">
+  <div class="wrap-wide" style="justify-content:center;">
     <div class="logo">back4heart <span>· Roman Veil</span></div>
-    <a href="https://t.me/back4heart" target="_blank" rel="noopener" class="nav-tg">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M21.5 3.5L2.5 11l6 2.2M21.5 3.5L15 20.5l-6.5-7.3M21.5 3.5L8.5 13.2" stroke="#229ED9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span>Telegram</span>
-    </a>
   </div>
 </header>
 
 <div class="sticky-cta-bar" id="stickyCtaBar">
-  <a href="#pricing" class="sticky-cta">Начать интенсив</a>
+  <a href="#pricing" class="sticky-cta">Начать трансформацию</a>
 </div>
 
 <section class="hero">
@@ -292,10 +291,10 @@
     <span class="eyebrow">Аудиоинтенсив «Бэушный ещё пожалеет» · 7 дней · доступ навсегда</span>
     <h1>БЭушный <em style="font-style:italic;color:var(--accent);">ещё пожалеет</em></h1>
     <p class="hero-physio">Давит в груди, мысли крутятся по кругу, а руки тянутся написать ему в три ночи. Знакомо? Это не слабость. Просто так работает привязанность - и с ней можно что-то сделать.</p>
-    <p class="hero-expert">Верни себе <b>контроль</b>, пока он думает, что ты сломлена. Пошаговый аудиоинтенсив - 15-20 минут в день, мужской взгляд изнутри, без «время лечит».</p>
+    <p class="hero-expert">Верни себе <b>контроль</b> и заставь его пожалеть об уходе. Пошаговый план выхода из эмоциональной ямы за 7 дней - мужской взгляд изнутри, без «время лечит».</p>
     <p class="sub">Через неделю первая мысль утром будет не о нём. Увидишь, что он в сети, и внутри ничего не екнёт. Вечером просто ляжешь спать - без привычного «а вдруг напишет».</p>
     <div class="hero-cta">
-      <a href="#pricing" class="cta-primary">Купить</a>
+      <a href="#pricing" class="cta-primary">Начать трансформацию</a>
       <div class="cta-price">Аудиоформат · 15–20 минут в день · доступ навсегда</div>
     </div>
     <div class="badges">
@@ -363,22 +362,22 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Обо мне</span>
-      <h2>Я тот, кто реально понимает, как думают мужчины</h2>
+      <h2>Эксперт по стратегическому влиянию и поведенческой психологии</h2>
     </div>
     <div class="author-grid">
       <div class="author-photo"><img src="https://back4heart.site/img/1784627058331~2.png" alt="Роман Вейл" loading="lazy"></div>
       <div class="author-text">
-        <p><b>Меня зовут Роман.</b> Я реально знаю, как мы мужчины, думаем, потому что сам мужчина.</p>
-        <p>7 лет разбирался в поведенческой психологии и стратегиях влияния. Прошёл больше 12 программ у частных практиков.</p>
-        <p>За 4 года через меня прошло <b>больше 2000 ситуаций</b> - я видел, через что проходят женщины после расставания, и знаю, что реально помогает.</p>
-        <p>Это не теория - это то, что реально меняет состояние человека, а не просто объясняет его. Поэтому в интенсиве не только «почему он так сделал». Там конкретные техники, которые проверены в таких ситуациях: что делать руками и головой, когда тянет проверить его страницы, как убрать желание написать, как перестать прокручивать одно и то же в голове. Это рабочие инструменты.</p>
-        <p>90% ситуаций укладываются в одни и те же паттерны - я вижу их, потому что смотрю с обеих сторон сразу и провёл тысячи разборов.</p>
+        <p><b>Меня зовут Роман Вейл.</b> Я не просто «мужчина, который понимает» - я специалист по поведенческой психологии и стратегиям влияния, и я вижу расставание изнутри мужской логики, к которой у большинства психологов-женщин просто нет доступа.</p>
+        <p>7 лет системной работы в поведенческой психологии и стратегиях влияния. Прошёл больше 12 профильных программ у частных практиков, чтобы выстроить рабочий, а не теоретический метод.</p>
+        <p>За 4 года через мою практику прошло <b>больше 2000 разобранных ситуаций</b> - я вижу паттерны там, где другие видят только хаос и боль, и знаю, что реально работает, а что - просто красивые слова.</p>
+        <p>Это не теория - это прикладной инструмент, который меняет состояние человека, а не просто объясняет его. В интенсиве не «почему он так сделал», а конкретные техники, отточенные на тысячах случаев: что делать руками и головой, когда тянет проверить его страницы, как убрать желание написать, как перестать прокручивать одно и то же в голове.</p>
+        <p>90% ситуаций укладываются в одни и те же паттерны - я вижу их точно, потому что смотрю с обеих сторон сразу и провёл тысячи разборов лично.</p>
         <div class="author-stats">
-          <div class="author-stat"><b>2000+</b><span>разобранных женских ситуаций за 4 года</span></div>
-          <div class="author-stat"><b>12+</b><span>пройденных программ</span></div>
-          <div class="author-stat"><b>700+</b><span>женщин уже прошли интенсив</span></div>
+          <div class="author-stat"><b>2000+</b><span>разобранных ситуаций за 4 года практики</span></div>
+          <div class="author-stat"><b>12+</b><span>пройденных профильных программ</span></div>
+          <div class="author-stat"><b>700+</b><span>женщин прошли интенсив</span></div>
         </div>
-        <div class="author-quote">«Я мужчина. Я знаю всё это изнутри. Так же знаю, что реально работает для тебя.»</div>
+        <div class="author-quote">«Я мужчина. Я знаю всё это изнутри. Так же точно знаю, что реально работает для тебя.»</div>
         <div class="author-socials">
           
           <a href="https://t.me/back4heart" target="_blank" rel="noopener">Telegram-канал</a>
@@ -560,6 +559,10 @@
       <h2>Выбери, насколько глубоко ты готова зайти</h2>
     </div>
     <p class="price-anchor">Одна сессия у психолога стоит $60-120. Здесь - 7 дней, мужской взгляд изнутри и доступ навсегда.</p>
+    <div class="product-visual">
+      <img src="https://back4heart.site/img/1785743920451~2.png" alt="Интенсив «Бэушный ещё пожалеет» - что внутри" loading="lazy">
+      <p>Всё, что ты получишь сразу после оплаты - в Telegram, без ожидания</p>
+    </div>
     <div class="price-compare">
       <div class="price-compare-row"><b>1 сессия у психолога</b><span>$50-100</span></div>
       <div class="price-compare-row"><b>Вино и подруги на вечер</b><span>$40</span></div>
@@ -578,8 +581,8 @@
           <li>Доступ навсегда, слушай когда удобно</li>
           <li>Слушай хоть с телефона, хоть с ноутбука</li>
         </ul>
-        <a href="#" class="plan-btn" data-plan="basic" id="planBasicBtn">Оплатить</a>
-        <a href="#" class="plan-btn-alt" data-plan="basic" id="planBasicBtnAlt" hidden>Оплатить</a>
+        <a href="#" class="plan-btn" data-plan="basic" id="planBasicBtn">Получить доступ к техникам</a>
+        <a href="#" class="plan-btn-alt" data-plan="basic" id="planBasicBtnAlt" hidden>Получить доступ к техникам</a>
       </div>
 
       <div class="plan featured" data-tier="circle" data-badge="Самый популярный">
@@ -592,8 +595,8 @@
           <li>Практикум «Про женщину, которая влюбляет навсегда»</li>
           <li>Рабочие упражнения на уверенность и внутреннюю ценность в новых отношениях</li>
         </ul>
-        <a href="#" class="plan-btn" data-plan="circle" id="planCircleBtn">Оплатить</a>
-        <a href="#" class="plan-btn-alt" data-plan="circle" id="planCircleBtnAlt" hidden>Оплатить</a>
+        <a href="#" class="plan-btn" data-plan="circle" id="planCircleBtn">Получить доступ к техникам</a>
+        <a href="#" class="plan-btn-alt" data-plan="circle" id="planCircleBtnAlt" hidden>Получить доступ к техникам</a>
         <a href="#" id="practicumLink" style="display:block;text-align:center;font-size:12px;color:var(--muted);text-decoration:underline;margin-top:10px;">Что внутри практикума?</a>
       </div>
 
@@ -609,8 +612,8 @@
           <li>Конкретный план действий для тебя, а не общие советы</li>
         </ul>
         <div class="bonus-tag">🎁 При покупке сейчас - бонус: памятка «Аптечка скорой помощи на тяжёлую ночь» в подарок</div>
-        <a href="#" class="plan-btn" data-plan="personal" id="planPersonalBtn">Оплатить</a>
-        <a href="#" class="plan-btn-alt" data-plan="personal" id="planPersonalBtnAlt" hidden>Оплатить</a>
+        <a href="#" class="plan-btn" data-plan="personal" id="planPersonalBtn">Получить доступ к техникам</a>
+        <a href="#" class="plan-btn-alt" data-plan="personal" id="planPersonalBtnAlt" hidden>Получить доступ к техникам</a>
       </div>
     </div>
 
@@ -648,7 +651,7 @@
       <div class="faq-item"><div class="faq-q"><span>Доступ будет навсегда?</span><span class="plus">+</span></div><div class="faq-a"><p>Да. Уроки остаются с тобой навсегда, переслушивай, когда захочешь.</p></div></div>
       <div class="faq-item"><div class="faq-q"><span>Это анонимно?</span><span class="plus">+</span></div><div class="faq-a"><p>Да, на сто процентов. Всё приходит в телеграм, никаких публичных отметок и подтверждений.</p></div></div>
       <div class="faq-item"><div class="faq-q"><span>Не получается оплатить, что делать?</span><span class="plus">+</span></div><div class="faq-a"><p>Такое иногда случается из-за банка или региона. Просто напиши мне в Telegram - разберёмся вместе и подберём удобный способ оплаты.</p></div></div>
-      <div class="faq-item"><div class="faq-q"><span>Почему так дёшево?</span><span class="plus">+</span></div><div class="faq-a"><p>После развода женщина часто оказывается в непростом материальном положении - и это последнее, из-за чего я хочу, чтобы кто-то остался без поддержки. Поэтому я сознательно держу цену минимальной: важнее, чтобы как можно больше женщин получили эти знания и смогли пройти через расставание с меньшей болью, чем заработать на этом по максимуму.</p></div></div>
+      <div class="faq-item"><div class="faq-q"><span>Почему такая цена?</span><span class="plus">+</span></div><div class="faq-a"><p>Это спецпредложение для новых подписчиков - твой входной продукт, чтобы ты на практике убедилась в качестве метода, прежде чем идти дальше. Такую цену я держу не постоянно и не для всех - именно поэтому наверху есть счётчик мест на этой неделе.</p></div></div>
     </div>
   </div>
 </section>
@@ -674,7 +677,7 @@
   <span class="eyebrow">Решение за тобой</span>
   <h2>Представь себя через неделю - спокойной и понимающей, что произошло</h2>
   <p class="sub">Первые изменения многие замечают уже через 24-48 часов.</p>
-  <div style="margin-top:30px;"><a href="#pricing" class="cta-primary">Начать интенсив</a></div>
+  <div style="margin-top:30px;"><a href="#pricing" class="cta-primary">Начать трансформацию</a></div>
 </section>
 
 <footer>
