@@ -194,7 +194,7 @@
   .price-compare-tagline{ text-align:center; max-width:480px; margin:0 auto 18px; font-family:'Playfair Display',serif; font-style:italic; font-size:15.5px; color:var(--ink); }
   .price-countdown{ text-align:center; margin:0 auto 34px; font-size:13.5px; font-weight:700; color:var(--accent); }
   .price-countdown span{ font-family:'Playfair Display',serif; font-size:15px; }
-  .pricing-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; align-items:stretch; max-width:760px; margin:0 auto; }
+  .pricing-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch; max-width:1000px; margin:0 auto; }
   .plan{ background:#fff; border:1px solid var(--line); border-radius:10px; padding:30px 24px; display:flex; flex-direction:column; position:relative; text-align:left; }
   .plan.featured{ border-color:var(--gold); box-shadow:var(--shadow); }
   .plan.featured::before{ content:attr(data-badge); position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--gold); color:#fff; font-size:10.5px; font-weight:700; letter-spacing:.04em; padding:5px 13px; border-radius:20px; text-transform:uppercase; white-space:nowrap; }
@@ -217,14 +217,7 @@
   .plan-btn-alt{ display:block; text-align:center; padding:11px 14px; margin-top:8px; border-radius:6px; font-size:12.5px; font-weight:700; border:1.5px solid var(--line); color:var(--muted); }
   .plan-btn-alt:hover{ border-color:var(--accent); color:var(--accent); }
   .plan-btn-alt[hidden]{ display:none; }
-  @media (max-width:760px){ .pricing-grid{ grid-template-columns:1fr; } }
-
-  .order-bump{ display:flex; gap:12px; align-items:flex-start; background:#fdf6e9; border:1.5px dashed var(--gold); border-radius:8px; padding:14px 16px; margin-bottom:18px; cursor:pointer; }
-  .order-bump input{ margin-top:3px; width:17px; height:17px; accent-color:var(--accent); flex-shrink:0; cursor:pointer; }
-  .order-bump .bump-title{ font-size:13px; font-weight:700; color:var(--ink); margin-bottom:3px; }
-  .order-bump .bump-desc{ font-size:12px; color:var(--muted); line-height:1.5; }
-  .order-bump .bump-desc a{ text-decoration:underline; color:var(--accent-deep); }
-  .order-bump .bump-price{ font-size:12px; color:var(--accent-deep); font-weight:700; margin-top:4px; display:block; }
+  @media (max-width:860px){ .pricing-grid{ grid-template-columns:1fr; } }
 
   .payment-block{ max-width:640px; margin:34px auto 0; text-align:center; padding-top:26px; border-top:1px solid var(--line); }
   .payment-block p{ font-size:13px; color:var(--muted); line-height:1.7; }
@@ -295,11 +288,10 @@
 
 <section class="hero">
   <div class="wrap">
-    <span class="eyebrow">Аудиоинтенсив «Бэушный ещё пожалеет» · 7 дней · доступ навсегда</span>
-    <h1>БЭушный <em style="font-style:italic;color:var(--accent);">ещё пожалеет</em></h1>
-    <p class="hero-physio">Давит в груди, мысли крутятся по кругу, а руки тянутся написать ему в три ночи. Знакомо? Это не слабость. Просто так работает привязанность - и с ней можно что-то сделать.</p>
-    <p class="hero-expert">Верни себе <b>контроль</b> и заставь его пожалеть об уходе. Пошаговый план выхода из эмоциональной ямы за 7 дней - мужской взгляд изнутри, без «время лечит».</p>
-    <p class="sub">Через неделю первая мысль утром будет не о нём. Увидишь, что он в сети, и внутри ничего не екнёт. Вечером просто ляжешь спать - без привычного «а вдруг напишет».</p>
+    <span class="eyebrow">Мужской взгляд изнутри · аудиоинтенсив 7 дней</span>
+    <h1>Он ушёл. А ты до сих пор живёшь <em style="font-style:italic;color:var(--accent);">его жизнью</em>.</h1>
+    <p class="sub">Если ты каждый день проверяешь его страницу, ждёшь сообщения, винишь себя и хочешь, чтобы однажды пожалел уже он - этот интенсив для тебя.</p>
+    <p class="hero-expert"><b>«Бэушный ещё пожалеет»</b> - 7 аудиоуроков по 15-20 минут, мужской взгляд изнутри на то, что с тобой сейчас происходит.</p>
     <div class="hero-cta">
       <a href="#pricing" class="cta-primary">Начать трансформацию</a>
       <div class="cta-price">Аудиоформат · 15–20 минут в день · доступ навсегда</div>
@@ -315,16 +307,32 @@
   </div>
 </section>
 
+<section class="section" style="padding-top:56px;padding-bottom:56px;">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:26px;">
+      <span class="eyebrow">Узнала себя?</span>
+      <h2 style="font-size:clamp(22px,3.6vw,28px);">Этот интенсив для тебя, если:</h2>
+    </div>
+    <div class="checklist">
+      <div class="check-item"><span class="mark">✓</span>прошло меньше месяца, и всё ещё как будто вчера</div>
+      <div class="check-item"><span class="mark">✓</span>прошло полгода и больше, но ты всё ещё думаешь о нём</div>
+      <div class="check-item"><span class="mark">✓</span>он ушёл к другой</div>
+      <div class="check-item"><span class="mark">✓</span>он молчит и игнорирует</div>
+      <div class="check-item"><span class="mark">✓</span>тебе кажется, что ты сама всё испортила</div>
+      <div class="check-item"><span class="mark">✓</span>ты писала ему то, за что сейчас стыдно</div>
+    </div>
+  </div>
+</section>
+
 <section class="section neuro-block">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Почему сейчас так больно</span>
       <h2>Потому что так работает привязанность</h2>
     </div>
-    <p>Если ты постоянно проверяешь его сторис - дело не в силе воли. Так работает привязанность: пока она не отпустила, мысли будут возвращаться к нему, сколько бы ты себе ни запрещала.</p>
-    <p>Твоя тяга написать ему - это не любовь, это <b>нейробиологический сбой</b>. Мозг требует дозу дофамина, которую раньше давал партнёр. Если кормить эту зависимость проверкой сторис, боль растянется на годы. В интенсиве я показываю, как «взломать» эту систему и перепрошить реакции за неделю.</p>
-    <p>Просто взять и «отпустить» не получится, и это нормально. Сначала стоит понять, что происходит с тобой, а что - с ним. Иначе советы типа «переключись» или «замись собой» так и останется словами, которые не работают.</p>
-    <p class="neuro-cta">Разобраться в этом - уже половина дела. Начать можно сегодня.</p>
+    <p>Если ты постоянно проверяешь его сторис - дело не в силе воли. Так работает привязанность: мозг требует дозу, которую раньше давал он, и тянет проверить, написать, посмотреть - снова и снова.</p>
+    <p>Просто «отпустить» не получится - и это нормально. Сначала нужно понять, что происходит с тобой, а что - с ним. В интенсиве я показываю, как разорвать этот цикл за неделю.</p>
+    <p class="neuro-cta">Разобраться в этом - уже половина дела.</p>
   </div>
 </section>
 
@@ -335,6 +343,22 @@
       <h2>Почему мужчины редко объясняют, что чувствуют</h2>
     </div>
     <p>Почти все психологи в этой нише - женщины, и тут нет ничего удивительного. Но за молчанием, исчезновением, задержанными на два дня сообщениями стоит своя логика, и мужчине, который сам это проходил, объяснить её проще. Никаких «лет работы над собой» я не обещаю. Есть маршрут: сейчас больно и непонятно, а к концу ты понимаешь, что случилось, и можешь жить дальше.</p>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Почему обычные советы не работают</span>
+      <h2>«Займи себя», «время лечит», «просто отпусти»</h2>
+      <p>Эти советы не работают не потому, что ты слабая, а потому что они обращены не туда. Они пытаются лечить симптом - боль, - не трогая причину: привязанность и незакрытые вопросы «почему».</p>
+    </div>
+    <div class="before-after" style="margin-top:8px;">
+      <div class="ba-item"><span class="ba-was">«Займи себя чем-нибудь» - на час отвлекает, вечером накрывает с новой силой</span></div>
+      <div class="ba-item"><span class="ba-was">«Время лечит» - лечит, но годы, а не недели, если не понимать, что происходит</span></div>
+      <div class="ba-item"><span class="ba-was">«Просто отпусти» - невозможно отпустить то, что не понято до конца</span></div>
+    </div>
+    <p style="text-align:center;max-width:560px;margin:26px auto 0;color:var(--ink);font-family:'Playfair Display',serif;font-style:italic;font-size:17px;">Интенсив работает иначе: сначала - что происходит и почему, потом - конкретная техника на каждый день.</p>
   </div>
 </section>
 
@@ -374,14 +398,13 @@
     <div class="author-grid">
       <div class="author-photo"><img src="https://back4heart.site/img/1784627058331~2.png" alt="Роман Вейл" loading="lazy"></div>
       <div class="author-text">
-        <p><b>Меня зовут Роман Вейл.</b> Я не просто «мужчина, который понимает» - я специалист по поведенческой психологии и стратегиям влияния, и я вижу расставание изнутри мужской логики, к которой у большинства психологов-женщин просто нет доступа.</p>
-        <p>7 лет системной работы в поведенческой психологии и стратегиях влияния. Прошёл больше 12 профильных программ у частных практиков, чтобы выстроить рабочий, а не теоретический метод.</p>
-        <p>За 4 года через мою практику прошло <b>больше 2000 разобранных ситуаций</b> - я вижу паттерны там, где другие видят только хаос и боль, и знаю, что реально работает, а что - просто красивые слова.</p>
-        <p>Это не теория - это прикладной инструмент, который меняет состояние человека, а не просто объясняет его. В интенсиве не «почему он так сделал», а конкретные техники, отточенные на тысячах случаев: что делать руками и головой, когда тянет проверить его страницы, как убрать желание написать, как перестать прокручивать одно и то же в голове.</p>
-        <p>90% ситуаций укладываются в одни и те же паттерны - я вижу их точно, потому что смотрю с обеих сторон сразу и провёл тысячи разборов лично.</p>
+        <p><b>Меня зовут Роман Вейл.</b> Я сам прошёл через тяжёлый разрыв - и знаю это состояние не по учебникам.</p>
+        <p>После этого я начал системно разбирать чужие истории расставаний - сотни, потом тысячи. За 4 года через мою практику прошло <b>больше 2000 разобранных ситуаций</b>.</p>
+        <p>На таком количестве случаев начинаешь видеть не хаос, а повторяющиеся паттерны: 90% ситуаций укладываются в одни и те же сценарии - и с мужской, и с женской стороны.</p>
+        <p>Из этих паттернов я собрал рабочую систему - не теорию «почему он так сделал», а конкретные техники: что делать руками и головой, когда тянет проверить его страницы, как убрать желание написать, как перестать прокручивать одно и то же в голове.</p>
+        <p>Эту систему уже прошли <b>700+ женщин</b>.</p>
         <div class="author-stats">
           <div class="author-stat"><b>2000+</b><span>разобранных ситуаций за 4 года практики</span></div>
-          <div class="author-stat"><b>12+</b><span>пройденных профильных программ</span></div>
           <div class="author-stat"><b>700+</b><span>женщин прошли интенсив</span></div>
         </div>
         <div class="author-quote">«Я мужчина. Я знаю всё это изнутри. Так же точно знаю, что реально работает для тебя.»</div>
@@ -444,6 +467,30 @@
     <div class="before-after">
       <div class="ba-item"><span class="ba-was">Проверяешь его сторис</span><span class="ba-arrow">→</span><span class="ba-now">Спишь спокойно</span></div>
       <div class="ba-item"><span class="ba-was">Пишешь и удаляешь сообщения</span><span class="ba-arrow">→</span><span class="ba-now">Тебе просто не хочется писать - не из гордости, а потому что отпустило</span></div>
+      <div class="ba-item"><span class="ba-was">Первая мысль утром - о нём</span><span class="ba-arrow">→</span><span class="ba-now">Утро начинается с себя, а не с него</span></div>
+      <div class="ba-item"><span class="ba-was">Стыдно за прошлые сообщения ему</span><span class="ba-arrow">→</span><span class="ba-now">Стыд отпускает, остаётся только опыт</span></div>
+      <div class="ba-item"><span class="ba-was">Сравниваешь себя с его новой</span><span class="ba-arrow">→</span><span class="ba-now">Своя ценность не зависит от его выбора</span></div>
+    </div>
+    <div class="section-head" style="margin-top:56px;">
+      <span class="eyebrow">Твой путь</span>
+      <h2 style="font-size:clamp(22px,3.6vw,28px);">Как это будет происходить</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Сегодня</h3><p>Слушаешь первый урок, понимаешь, что происходит с тобой на самом деле</p></div>
+      <div class="step"><div class="n">2</div><h3>Завтра</h3><p>Первая техника снижает остроту навязчивых мыслей</p></div>
+      <div class="step"><div class="n">3</div><h3>Через 3 дня</h3><p>Реже тянет проверить его страницу, легче засыпаешь</p></div>
+      <div class="step"><div class="n">4</div><h3>Через неделю</h3><p>Все 7 уроков пройдены, есть опора и понимание, что случилось</p></div>
+    </div>
+    <p style="text-align:center;max-width:480px;margin:26px auto 0;color:var(--muted);font-size:14px;">А через месяц - оглядываешься назад и уже не узнаёшь себя нынешнюю в той, что писала ему по три раза за вечер.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Почему это тяжелее в 35-50</span>
+      <h2>Расставание в этом возрасте бьёт иначе</h2>
+      <p>В 20 лет расставание - это боль и новая страница. В 35-50 добавляется страх: «а вдруг это был последний шанс», обесценивание прожитых вместе лет, сравнение себя с более молодыми женщинами рядом с ним. Плюс - меньше пространства для «просто погоревать»: дети, работа, быт не ставятся на паузу. Именно поэтому общие советы вроде «сходи потусуйся» здесь не работают - нужна не отвлечение, а конкретная работа с тем, что происходит внутри.</p>
     </div>
   </div>
 </section>
@@ -481,12 +528,12 @@
     </div>
     <div class="honest-box">4.9 из 5 · 340+ отзывов · 700+ женщин уже прошли интенсив - 94% говорят, что стало легче уже к 3-му дню</div>
     <div class="testi-grid">
-      <div class="testi"><div class="stars">★★★★★</div><p>«Перестала прокручивать мысли о нём уже на третий день. Впервые за долгое время выспалась.»</p><div class="who">Настя, 46</div></div>
-      <div class="testi"><div class="stars">★★★★★</div><p>«Наконец поняла, почему он так себя вёл - и мне стало легче, будто камень с души.»</p><div class="who">Оля, 41 год. 3 года в созависимых отношениях - вышла в стабильное состояние на 4-й день интенсива</div></div>
-      <div class="testi"><div class="stars">★★★★★</div><p>«Боялась, что забуду, что делать со стыдом за прошлые сообщения. Урок про ошибки поставил всё на место.»</p><div class="who">Кристина, 54</div></div>
-      <div class="testi"><div class="stars">★★★★★</div><p>«Перестала листать его страницу по вечерам. Просто отпустило - без борьбы с собой.»</p><div class="who">Лена, 49</div></div>
-      <div class="testi"><div class="stars">★★★★★</div><p>«Раньше я первая писала "доброе утро". Теперь спокойно живу свой день и не жду от него ничего.»</p><div class="who">Юля, 43</div></div>
-      <div class="testi"><div class="stars">★★★★★</div><p>«После интенсива поняла мужскую логику, о которой раньше даже не задумывалась. Многое встало на места.»</p><div class="who">Диана, 38</div></div>
+      <div class="testi"><div class="stars">★★★★★</div><p>Писала ему по ночам, удаляла и писала снова. Прошёл один урок - и через три дня сама удивилась, что вечером не тянет открыть переписку.</p><div class="who">Настя, 46</div></div>
+      <div class="testi"><div class="stars">★★★★★</div><p>3 года в созависимых отношениях, каждый день - тревога «что не так со мной». К 4-му дню интенсива поняла, почему он так себя вёл - и стало легче, будто камень с души.</p><div class="who">Оля, 41</div></div>
+      <div class="testi"><div class="stars">★★★★★</div><p>Боялась, что стыд за прошлые сообщения ему никогда не пройдёт. Урок про ошибки поставил всё на место - страх ушёл в тот же вечер.</p><div class="who">Кристина, 54</div></div>
+      <div class="testi"><div class="stars">★★★★★</div><p>Каждый вечер листала его страницу по кругу. После третьего урока просто перестало тянуть - без борьбы с собой, само отпустило.</p><div class="who">Лена, 49</div></div>
+      <div class="testi"><div class="stars">★★★★★</div><p>Первая писала «доброе утро», даже когда он не отвечал сутками. Теперь спокойно живу свой день и не жду от него ничего.</p><div class="who">Юля, 43</div></div>
+      <div class="testi"><div class="stars">★★★★★</div><p>Не понимала, почему он молчал неделями. После интенсива поняла мужскую логику - и многое, что казалось необъяснимым, наконец встало на места.</p><div class="who">Диана, 38</div></div>
     </div>
 
     <div class="testi-grid" style="margin-top:16px;">
@@ -546,6 +593,16 @@
   </div>
 </section>
 
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">История</span>
+      <h2>17 лет брака. Он ушёл к другой</h2>
+    </div>
+    <p style="text-align:center;max-width:600px;margin:0 auto;color:var(--muted);font-size:15px;">Она узнала о другой женщине случайно, через переписку в его телефоне. Первые недели - гнев и попытки понять, «что в ней есть такого, чего нет во мне». Потом - тишина и полная растерянность: 17 лет одной жизни закончились одним сообщением. На интенсиве самым сложным было не «отпустить его», а перестать сравнивать себя с той, другой. К концу недели пришло: сравнение было не про неё, а про собственную ценность, которую она давно перестала замечать в себе сама.</p>
+  </div>
+</section>
+
 <section class="section">
   <div class="wrap">
     <div class="section-head">
@@ -578,7 +635,7 @@
     <p class="price-compare-tagline">Ты тратишь больше на кофе за неделю, чем стоит твоё спокойствие на годы.</p>
     <p class="price-countdown">Цена по акции действует ещё: <span id="countdownTimer">--:--:--</span></p>
     <div class="pricing-grid">
-      <div class="plan featured" data-tier="basic" data-badge="Самый популярный">
+      <div class="plan" data-tier="basic">
         <div class="plan-name">Интенсив</div>
         <div class="plan-desc">7 аудиоуроков по 15–20 минут + 3 авторские техники. Первая техника помогает снизить остроту навязчивых мыслей - многие участницы замечают разницу уже в первые сутки.</div>
         <div class="price-row"><span class="price-old" id="priceBasicOld">$79</span><span class="price" id="priceBasic">$14.99</span></div>
@@ -588,16 +645,23 @@
           <li>Доступ навсегда, слушай когда удобно</li>
           <li>Слушай хоть с телефона, хоть с ноутбука</li>
         </ul>
-        <label class="order-bump" for="bumpPracticum">
-          <input type="checkbox" id="bumpPracticum">
-          <div>
-            <div class="bump-title">Добавить практикум «Про женщину, которая влюбляет навсегда»</div>
-            <div class="bump-desc">Уверенность в общении и новых отношениях - чтобы не наступать на те же грабли снова. <a href="#" id="practicumLink">Что внутри?</a></div>
-            <span class="bump-price" id="bumpPriceNote">Разово доплатить <span id="bumpTargetPrice">$12</span></span>
-          </div>
-        </label>
         <a href="#" class="plan-btn" data-plan="basic" id="planBasicBtn">Получить доступ к техникам</a>
         <a href="#" class="plan-btn-alt" data-plan="basic" id="planBasicBtnAlt" hidden>Получить доступ к техникам</a>
+      </div>
+
+      <div class="plan featured" data-tier="circle" data-badge="Самый популярный">
+        <div class="plan-name">Интенсив + практикум «Про женщину, которая влюбляет навсегда»</div>
+        <div class="plan-desc">Всё из «Интенсива» плюс практикум об уверенности в общении и новых отношениях - чтобы не наступать на те же грабли снова.</div>
+        <div class="price-row"><span class="price-old" id="priceCircleOld">$179</span><span class="price" id="priceCircle">$27</span></div>
+        <div class="price-note">разовый платёж</div>
+        <ul>
+          <li>Всё из тарифа «Интенсив»</li>
+          <li>Практикум «Про женщину, которая влюбляет навсегда»</li>
+          <li>Рабочие упражнения на уверенность и внутреннюю ценность в новых отношениях</li>
+        </ul>
+        <a href="#" class="plan-btn" data-plan="circle" id="planCircleBtn">Получить доступ к техникам</a>
+        <a href="#" class="plan-btn-alt" data-plan="circle" id="planCircleBtnAlt" hidden>Получить доступ к техникам</a>
+        <a href="#" id="practicumLink" style="display:block;text-align:center;font-size:12px;color:var(--muted);text-decoration:underline;margin-top:10px;">Что внутри практикума?</a>
       </div>
 
       <div class="plan" data-tier="personal">
@@ -628,6 +692,10 @@
       </div>
     </div>
 
+    <div class="mindread" style="max-width:640px;">
+      <div class="mr-label">Гарантия 7 дней</div>
+      <p>Прослушай интенсив. Если не почувствуешь разницы - напиши мне в Telegram в течение 7 дней, и я верну деньги полностью, без объяснений и лишних вопросов. Ты ничем не рискуешь, кроме недели, за которую всё равно станет легче.</p>
+    </div>
     <div class="trust-row">
       <div class="trust-item"><b>Гарантия возврата 7 дней</b><span>Не подошло - верну деньги в течение 7 дней, без лишних вопросов</span></div>
       <div class="trust-item"><b>Безопасная оплата</b><span>SSL-шифрование 256 бит. Данные карты не хранятся на сайте</span></div>
@@ -652,6 +720,11 @@
       <div class="faq-item"><div class="faq-q"><span>Это анонимно?</span><span class="plus">+</span></div><div class="faq-a"><p>Да, на сто процентов. Всё приходит в телеграм, никаких публичных отметок и подтверждений.</p></div></div>
       <div class="faq-item"><div class="faq-q"><span>Не получается оплатить, что делать?</span><span class="plus">+</span></div><div class="faq-a"><p>Такое иногда случается из-за банка или региона. Просто напиши мне в Telegram - разберёмся вместе и подберём удобный способ оплаты.</p></div></div>
       <div class="faq-item"><div class="faq-q"><span>Почему такая цена?</span><span class="plus">+</span></div><div class="faq-a"><p>Это спецпредложение для новых подписчиков - твой входной продукт, чтобы ты на практике убедилась в качестве метода, прежде чем идти дальше. Такую цену я держу не постоянно и не для всех - именно поэтому наверху есть счётчик мест на этой неделе.</p></div></div>
+      <div class="faq-item"><div class="faq-q"><span>А если виновата я?</span><span class="plus">+</span></div><div class="faq-a"><p>Даже если ты видишь свои ошибки - это не значит, что ты обязана нести их как приговор себе. В интенсиве отдельно разбираем, как перестать наказывать себя за прошлое и что с этим грузом делать дальше.</p></div></div>
+      <div class="faq-item"><div class="faq-q"><span>А если прошло уже два года?</span><span class="plus">+</span></div><div class="faq-a"><p>Подойдёт. Если мысли о нём до сих пор возвращаются спустя два года - значит, привязанность так и не была закрыта до конца, и работать с ней можно в любой момент, а не только «по горячим следам».</p></div></div>
+      <div class="faq-item"><div class="faq-q"><span>Мы были вместе двадцать лет, это не «просто расставание»</span><span class="plus">+</span></div><div class="faq-a"><p>Согласен, и метод это учитывает: чем дольше были вместе, тем сильнее переплетена жизнь и тем важнее пройти это без разрушения себя. Здесь это не игнорируется, а разбирается отдельно.</p></div></div>
+      <div class="faq-item"><div class="faq-q"><span>А если он вернётся?</span><span class="plus">+</span></div><div class="faq-a"><p>Урок 7 - как раз об этом: что делать, если он напишет или захочет вернуться, чтобы не откатиться в прежнее состояние за один вечер и войти в отношения уже из другой позиции.</p></div></div>
+      <div class="faq-item"><div class="faq-q"><span>А если он никогда не вернётся?</span><span class="plus">+</span></div><div class="faq-a"><p>Тогда результат интенсива не изменится: спокойствие и опора в себе не зависят от его решения. Цель - не ждать его шага, а вернуть тебе устойчивость независимо от того, что он выберет.</p></div></div>
     </div>
   </div>
 </section>
@@ -667,8 +740,13 @@
 <section class="section">
   <div class="wrap">
     <div class="antiblock">
-      <span class="eyebrow">Через неделю</span>
-      <p>Через неделю - либо ты всё ещё в 3 ночи проверяешь его сторис и ждёшь сообщение, которого не будет, либо уже знаешь, почему всё так вышло, и просто спишь спокойно. Решает тут не время. Решаешь ты - и не через месяц, а сейчас.</p>
+      <span class="eyebrow">Если ничего не менять</span>
+      <div class="before-after" style="margin-top:18px;">
+        <div class="ba-item" style="background:transparent;border-color:rgba(255,255,255,.15);"><span class="ba-was" style="color:#cfc4b6;">Через неделю - ты всё ещё будешь ждать</span></div>
+        <div class="ba-item" style="background:transparent;border-color:rgba(255,255,255,.15);"><span class="ba-was" style="color:#cfc4b6;">Через месяц - ты всё ещё будешь заходить к нему на страницу</span></div>
+        <div class="ba-item" style="background:transparent;border-color:rgba(255,255,255,.15);"><span class="ba-was" style="color:#cfc4b6;">Через полгода - ты всё ещё будешь сравнивать себя с его новой женщиной</span></div>
+      </div>
+      <p style="margin-top:22px;">А через неделю после интенсива - ты перестаёшь просыпаться с первой мыслью о нём. Решает не время. Решаешь ты - и не через месяц, а сейчас.</p>
     </div>
   </div>
 </section>
@@ -734,7 +812,7 @@
       <button class="offer-close" id="practicumClose" aria-label="Закрыть">×</button>
     </div>
     <div class="offer-modal-body">
-      <p>Это практикум, который можно добавить к интенсиву. Он не про то, как понравиться на один вечер, а про то, как стать женщиной, к которой хочется возвращаться - без игр, показного равнодушия и беготни за мужчиной.</p>
+      <p>Это бонус-практикум, который входит в тариф «Интенсив + практикум». Он не про то, как понравиться на один вечер, а про то, как стать женщиной, к которой хочется возвращаться - без игр, показного равнодушия и беготни за мужчиной.</p>
       <h3>5 блоков, в конце каждого - практическое задание</h3>
       <ul>
         <li><b>Внутренний магнит</b> - что включает мужской интерес по-настоящему, и почему забота с жертвенностью тут ни при чём.</li>
@@ -878,8 +956,7 @@ function getPaymentMode(region){
 function updatePlanButtons(region){
   const mode = getPaymentMode(region);
   document.querySelectorAll('.plan').forEach(planEl=>{
-    let combo = planEl.getAttribute('data-tier');
-    if(combo === 'basic' && practicumBumpChecked) combo = 'circle';
+    const combo = planEl.getAttribute('data-tier');
     const btn = planEl.querySelector('.plan-btn');
     const alt = planEl.querySelector('.plan-btn-alt');
     if(mode === 'wayforpay'){
@@ -902,17 +979,14 @@ function updatePlanButtons(region){
   });
 }
 
-let practicumBumpChecked = false;
-
 function renderPricing(region){
   const p = isRussia ? PRICING.ru : PRICING[region];
-  const basicKey = practicumBumpChecked ? 'circle' : 'basic';
-  document.getElementById('priceBasic').innerHTML = p[basicKey].fmt;
-  document.getElementById('priceBasicOld').textContent = p[basicKey].old;
+  document.getElementById('priceBasic').innerHTML = p.basic.fmt;
+  document.getElementById('priceBasicOld').textContent = p.basic.old;
+  document.getElementById('priceCircle').innerHTML = p.circle.fmt;
+  document.getElementById('priceCircleOld').textContent = p.circle.old;
   document.getElementById('pricePersonal').innerHTML = p.personal.fmt;
   document.getElementById('pricePersonalOld').textContent = p.personal.old;
-  const bumpTarget = document.getElementById('bumpTargetPrice');
-  if(bumpTarget) bumpTarget.innerHTML = p.circle.fmt;
   updatePlanButtons(region);
 
   const ruNote = document.getElementById('paymentTextRu');
@@ -983,16 +1057,6 @@ const deviceIsUkrainian = (() => {
 })();
 let region = deviceIsUkrainian ? 'ua' : 'intl';
 renderPricing(region);
-
-// order-bump: adding the practicum swaps the "Интенсив" price + payment link to the combined offer
-(function(){
-  const bump = document.getElementById('bumpPracticum');
-  if(!bump) return;
-  bump.addEventListener('change', function(){
-    practicumBumpChecked = bump.checked;
-    renderPricing(region);
-  });
-})();
 
 function applyGeo(countryCode){
   const countryIsUA = countryCode === 'UA';
