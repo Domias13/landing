@@ -973,7 +973,7 @@ const PRICING = {
 
 /* ==================== PAYMENT LINKS ====================
    Украина (по IP)     -> WayForPay
-   Россия (по IP)      -> Tribute + Stripe (две кнопки - на случай, если один способ не пройдёт у банка)
+   Россия (по IP)      -> Tribute (Stripe не работает с РФ и не должен ей предлагаться)
    Остальные страны    -> Stripe + PayPal (две кнопки - платёж точно пройдёт) */
 const LINKS = {
   ua: {
@@ -989,7 +989,7 @@ const LINKS = {
   intl: {
     stripe: {
       basic:    'https://buy.stripe.com/6oUbJ30QifWh2xceBa3ZK0k',
-      circle:   'https://buy.stripe.com/7sY5kFgPg25r2xc1Oo3ZK0m',
+      circle:   'https://buy.stripe.com/8x2bJ3aqSh0lfjY78I3ZK0j',
       personal: 'https://buy.stripe.com/3cI6oJ8iK8tP8VA50A3ZK0l'
     },
     paypal: {
@@ -1002,13 +1002,13 @@ const LINKS = {
 
 let isRussia = false;
 
-// getPaymentMode: 'ua' -> WayForPay only (уже покрывает страну хорошо);
-// Russia -> Tribute (основной) + Stripe (запасной способ);
+// getPaymentMode: 'ua' -> WayForPay only;
+// Russia -> Tribute only (Stripe не работает с Россией и не должен ей предлагаться);
 // все остальные -> Stripe (основной) + PayPal (запасной способ),
 // чтобы оплата точно прошла, даже если банк не поддерживает один из провайдеров.
 function getPaymentMode(region){
   if(region === 'ua') return 'wayforpay';
-  if(isRussia) return 'tribute_stripe';
+  if(isRussia) return 'tribute_only';
   return 'stripe_paypal';
 }
 
@@ -1018,7 +1018,6 @@ function updatePlanButtons(region){
   const mode = getPaymentMode(region);
   const lang = currentLang();
   const mainLabel = lang === 'uk' ? 'Оплатити' : 'Оплатить';
-  const stripeAltLabel = lang === 'uk' ? 'Оплатити карткою (Stripe)' : 'Оплатить картой (Stripe)';
   const paypalAltLabel = lang === 'uk' ? 'Оплатити через PayPal' : 'Оплатить через PayPal';
   const tributeLabel = lang === 'uk' ? 'Оплатити через Tribute' : 'Оплатить через Tribute';
 
@@ -1030,12 +1029,10 @@ function updatePlanButtons(region){
       btn.setAttribute('href', LINKS.ua[combo] || '#');
       btn.textContent = mainLabel;
       alt.hidden = true;
-    } else if(mode === 'tribute_stripe'){
+    } else if(mode === 'tribute_only'){
       btn.setAttribute('href', LINKS.tribute[combo] || '#');
       btn.textContent = tributeLabel;
-      const stripeHref = LINKS.intl.stripe[combo];
-      if(stripeHref){ alt.setAttribute('href', stripeHref); alt.textContent = stripeAltLabel; alt.hidden = false; }
-      else { alt.hidden = true; }
+      alt.hidden = true;
     } else { // stripe_paypal (по умолчанию для всех остальных стран)
       btn.setAttribute('href', LINKS.intl.stripe[combo] || '#');
       btn.textContent = mainLabel;
@@ -1050,26 +1047,20 @@ function updatePlanButtons(region){
   // почему два способа оплаты - объясняем, чтобы не спугнуть покупательницу
   const dualNote = document.getElementById('dualPaymentNote');
   if(dualNote){
-    dualNote.hidden = (mode === 'wayforpay');
+    dualNote.hidden = (mode !== 'stripe_paypal');
     if(!dualNote.hidden){
-      if(mode === 'tribute_stripe'){
-        dualNote.innerHTML = lang === 'uk'
-          ? '💳 Показуємо два способи оплати - Tribute і карту (Stripe), - щоб оплата точно пройшла, навіть якщо один зі способів не спрацює у твого банку.'
-          : '💳 Показываем два способа оплаты - Tribute и карту (Stripe), - чтобы оплата точно прошла, даже если один из способов не сработает у твоего банка.';
-      } else {
-        dualNote.innerHTML = lang === 'uk'
-          ? '💳 Показуємо одразу два способи оплати - карту (Stripe) і PayPal, - щоб платіж точно пройшов, навіть якщо один з них не підтримує твій банк.'
-          : '💳 Показываем сразу два способа оплаты - карту (Stripe) и PayPal, - чтобы платёж точно прошёл, даже если один из них не поддерживает твой банк.';
-      }
+      dualNote.innerHTML = lang === 'uk'
+        ? '💳 Показуємо одразу два способи оплати - карту (Stripe) і PayPal, - щоб платіж точно пройшов, навіть якщо один з них не підтримує твій банк.'
+        : '💳 Показываем сразу два способа оплаты - карту (Stripe) и PayPal, - чтобы платёж точно прошёл, даже если один из них не поддерживает твой банк.';
     }
   }
 
   const stripeIcon = document.getElementById('stripeIcon');
   const paypalIcon = document.getElementById('paypalIcon');
   const tributeIcon = document.getElementById('tributeIcon');
-  if(stripeIcon) stripeIcon.hidden = (mode === 'wayforpay');
+  if(stripeIcon) stripeIcon.hidden = (mode !== 'stripe_paypal');
   if(paypalIcon) paypalIcon.hidden = (mode !== 'stripe_paypal');
-  if(tributeIcon) tributeIcon.hidden = (mode !== 'tribute_stripe');
+  if(tributeIcon) tributeIcon.hidden = (mode !== 'tribute_only');
 }
 
 function renderPricing(region){
