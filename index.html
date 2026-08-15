@@ -291,7 +291,7 @@
     <span class="eyebrow">Мужской взгляд изнутри · аудиоинтенсив 7 дней</span>
     <h1>БЭушный <em style="font-style:italic;color:var(--accent);">ещё пожалеет</em>.</h1>
     <p class="sub">7 дней, чтобы перестать жить его жизнью и вернуть себе контроль.</p>
-    <p class="hero-expert">Не советы «забудь и живи дальше». <b>«Бэушный ещё пожалеет»</b> - 7 аудиоуроков с мужским взглядом изнутри: что происходит после расставания, почему тебя тянет к нему и как перестать зависеть от его реакции.</p>
+    <p class="hero-expert">Не советы «забудь и живи дальше». <b>«Бэушный ещё пожалеет»</b> - 7 коротких аудиоуроков с мужским взглядом изнутри: что происходит после расставания, почему тебя тянет к нему и как перестать зависеть от его реакции.</p>
     <div class="hero-cta">
       <a href="#pricing" class="cta-primary">Начать трансформацию</a>
       <div class="cta-price">Аудиоформат · 15-20 минут в день · доступ навсегда</div>
@@ -1073,20 +1073,42 @@ function applyGeo(countryCode){
   renderPricing(region);
 }
 
-fetch('https://ipapi.co/json/')
+function fetchWithTimeout(url, ms){
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), ms);
+  return fetch(url, { signal: controller.signal }).finally(() => clearTimeout(timer));
+}
+
+// Несколько независимых geo-IP сервисов подряд: каждый по отдельности может быть
+// недоступен/заблокирован/лимитирован (особенно из РФ), и тогда регион раньше
+// молча оставался 'intl' -> доллары и Stripe вместо рублей и Tribute.
+fetchWithTimeout('https://ipapi.co/json/', 4000)
   .then(r => r.json())
   .then(data => {
     if(!data || data.error || !data.country_code) throw new Error('primary geo lookup unavailable');
     applyGeo(data.country_code);
   })
   .catch(() => {
-    fetch('https://ipwho.is/')
+    fetchWithTimeout('https://ipwho.is/', 4000)
       .then(r => r.json())
       .then(data => {
         if(!data || data.success === false || !data.country_code) throw new Error('fallback geo lookup unavailable');
         applyGeo(data.country_code);
       })
-      .catch(() => {});
+      .catch(() => {
+        fetchWithTimeout('https://get.geojs.io/v1/ip/geo.json', 4000)
+          .then(r => r.json())
+          .then(data => {
+            if(!data || !data.country_code) throw new Error('geojs lookup unavailable');
+            applyGeo(data.country_code);
+          })
+          .catch(() => {
+            // Все три geo-сервиса недоступны — оставляем region как есть (intl,
+            // либо ua если язык устройства украинский). Язык браузера "ru" не
+            // используется как признак России, т.к. русский язык распространён
+            // и за пределами РФ (Германия, Израиль и т.д.).
+          });
+      });
   });
 
 // offer modal
