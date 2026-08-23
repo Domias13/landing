@@ -202,6 +202,11 @@
   .plan-btn-alt{ display:block; text-align:center; padding:11px 14px; margin-top:8px; border-radius:6px; font-size:12.5px; font-weight:700; border:1.5px solid var(--line); color:var(--muted); }
   .plan-btn-alt:hover{ border-color:var(--accent); color:var(--accent); }
   .plan-btn-alt[hidden]{ display:none; }
+  .plan-btn-tribute{ display:block; text-align:center; padding:11px 14px; margin-top:8px; border-radius:6px; font-size:12.5px; font-weight:700; border:1.5px solid var(--line); color:var(--muted); }
+  .plan-btn-tribute:hover{ border-color:var(--accent); color:var(--accent); }
+  .plan-btn-tribute[hidden]{ display:none; }
+  .tribute-note{ text-align:center; font-size:11.5px; color:var(--light); margin:10px 0 0; }
+  .tribute-note[hidden]{ display:none; }
   @media (max-width:860px){ .pricing-grid{ grid-template-columns:1fr; } }
 
   .payment-block{ max-width:640px; margin:34px auto 0; text-align:center; padding-top:26px; border-top:1px solid var(--line); }
@@ -543,14 +548,14 @@
       <span class="eyebrow" data-t="pricing_eyebrow">Закрытый доступ</span>
       <h2 data-t="pricing_h2">Выбери, насколько глубоко ты готова зайти</h2>
     </div>
-    <p class="price-anchor" data-t="price_anchor">Одна сессия у психолога стоит $60-120. Здесь - 7 дней, мужской взгляд изнутри и доступ навсегда, и всё это за $9.99.</p>
+    <p class="price-anchor" data-t="price_anchor">Одна сессия у психолога стоит $60-120. Здесь - 7 дней, мужской взгляд изнутри и доступ навсегда, и всё это за $14.99.</p>
     <p class="price-countdown"><span data-t="price_countdown_label">Цена по акции действует ещё:</span> <span id="countdownTimer">--:--:--</span></p>
     <p id="dualPaymentNote" hidden style="text-align:center;max-width:580px;margin:0 auto 22px;color:var(--muted);font-size:13.5px;background:#fff;border:1px dashed var(--line);border-radius:8px;padding:12px 18px;" data-t="dual_note">💳 Показываем сразу два способа оплаты, чтобы платёж точно прошёл, даже если один из них не поддерживает твой банк или страну.</p>
     <div class="pricing-grid">
       <div class="plan" data-tier="basic">
         <div class="plan-name" data-t="plan_basic_name">Интенсив</div>
         <div class="plan-desc" data-t="plan_basic_desc">7 аудиоуроков по 15–20 минут + 3 авторские техники. Первая техника помогает снизить остроту навязчивых мыслей - многие участницы замечают разницу уже в первые сутки.</div>
-        <div class="price-row"><span class="price-old" id="priceBasicOld">$47</span><span class="price" id="priceBasic">$9.99</span></div>
+        <div class="price-row"><span class="price-old" id="priceBasicOld">$79</span><span class="price" id="priceBasic">$14.99</span></div>
         <div class="price-note" data-t="price_note">разовый платёж</div>
         <ul>
           <li data-t="plan_basic_li1">7 аудиоуроков, 15–20 минут в день</li>
@@ -559,12 +564,14 @@
         </ul>
         <a href="#" class="plan-btn" data-plan="basic" id="planBasicBtn" data-t="pay_btn">Оплатить</a>
         <a href="#" class="plan-btn-alt" data-plan="basic" id="planBasicBtnAlt" hidden>Оплатить</a>
+        <p class="tribute-note" id="planBasicTributeNote" hidden>Если вы из России - используйте этот способ</p>
+        <a href="#" class="plan-btn-tribute" data-plan="basic" id="planBasicBtnTribute" hidden>Оплатить через Tribute</a>
       </div>
 
       <div class="plan featured" data-tier="circle" data-badge="Самый популярный">
         <div class="plan-name" data-t="plan_circle_name">Интенсив + практикум «Про женщину, которая влюбляет навсегда»</div>
         <div class="plan-desc" data-t="plan_circle_desc">Всё из «Интенсива» плюс практикум об уверенности в общении и новых отношениях - чтобы не наступать на те же грабли снова.</div>
-        <div class="price-row"><span class="price-old" id="priceCircleOld">$89</span><span class="price" id="priceCircle">$14.99</span></div>
+        <div class="price-row"><span class="price-old" id="priceCircleOld">$179</span><span class="price" id="priceCircle">$27</span></div>
         <div class="price-note" data-t="price_note">разовый платёж</div>
         <ul>
           <li data-t="plan_circle_li1">Всё из тарифа «Интенсив»</li>
@@ -573,13 +580,15 @@
         </ul>
         <a href="#" class="plan-btn" data-plan="circle" id="planCircleBtn" data-t="pay_btn">Оплатить</a>
         <a href="#" class="plan-btn-alt" data-plan="circle" id="planCircleBtnAlt" hidden>Оплатить</a>
+        <p class="tribute-note" id="planCircleTributeNote" hidden>Если вы из России - используйте этот способ</p>
+        <a href="#" class="plan-btn-tribute" data-plan="circle" id="planCircleBtnTribute" hidden>Оплатить через Tribute</a>
         <a href="#" id="practicumLink" style="display:block;text-align:center;font-size:12px;color:var(--muted);text-decoration:underline;margin-top:10px;" data-t="practicum_link">Что внутри практикума?</a>
       </div>
 
       <div class="plan" data-tier="personal">
         <div class="plan-name" data-t="plan_personal_name">Персональный разбор твоей ситуации</div>
         <div class="plan-desc" data-t="plan_personal_desc">Напиши мне лично - расскажи, что у тебя, своими словами. Я разберу именно твою историю: что с тобой происходит, почему - и что делать дальше. Без общих фраз «время лечит».</div>
-        <div class="price-row"><span class="price-old" id="pricePersonalOld">$149</span><span class="price" id="pricePersonal">$49.99</span></div>
+        <div class="price-row"><span class="price-old" id="pricePersonalOld">$199</span><span class="price" id="pricePersonal">$59.99</span></div>
         <div class="price-note" data-t="price_note">разовый платёж</div>
         <ul>
           <li data-t="plan_personal_li1">Всё из тарифа «Интенсив»</li>
@@ -589,6 +598,8 @@
         <div class="bonus-tag" data-t="bonus_tag">🎁 При покупке сейчас - бонус: памятка «Аптечка скорой помощи на тяжёлую ночь» в подарок</div>
         <a href="#" class="plan-btn" data-plan="personal" id="planPersonalBtn" data-t="pay_btn">Оплатить</a>
         <a href="#" class="plan-btn-alt" data-plan="personal" id="planPersonalBtnAlt" hidden>Оплатить</a>
+        <p class="tribute-note" id="planPersonalTributeNote" hidden>Если вы из России - используйте этот способ</p>
+        <a href="#" class="plan-btn-tribute" data-plan="personal" id="planPersonalBtnTribute" hidden>Оплатить через Tribute</a>
       </div>
     </div>
 
@@ -869,7 +880,7 @@ const TRANSLATIONS = {
     "video_h2": "Почуй це від них самих",
     "pricing_eyebrow": "Закритий доступ",
     "pricing_h2": "Обери, наскільки глибоко ти готова зайти",
-    "price_anchor": "Одна сесія у психолога коштує $60-120. Тут - 7 днів, чоловічий погляд зсередини і доступ назавжди, і все це за $9.99.",
+    "price_anchor": "Одна сесія у психолога коштує $60-120. Тут - 7 днів, чоловічий погляд зсередини і доступ назавжди, і все це за $14.99.",
     "price_countdown_label": "Ціна за акцією діє ще:",
     "plan_basic_name": "Інтенсив",
     "plan_basic_desc": "7 аудіоуроків по 15-20 хвилин + 3 авторські техніки. Перша техніка допомагає знизити гостроту нав'язливих думок - багато учасниць помічають різницю вже в перші доби.",
@@ -955,26 +966,26 @@ function setLanguage(lang){
 /* ==================== PRICING (по регионам) ==================== */
 const PRICING = {
   intl: {
-    basic:   { fmt:'$9.99',  old:'$47' },
-    circle:  { fmt:'$14.99', old:'$89' },
-    personal:{ fmt:'$49.99', old:'$149' }
+    basic:   { fmt:'$14.99', old:'$79' },
+    circle:  { fmt:'$27', old:'$179' },
+    personal:{ fmt:'$59.99', old:'$199' }
   },
   ua: {
-    basic:   { fmt:'399<span class="cur">грн</span>',  old:'1490 грн' },
-    circle:  { fmt:'664<span class="cur">грн</span>',  old:'2490 грн' },
-    personal:{ fmt:'1999<span class="cur">грн</span>', old:'5990 грн' }
+    basic:   { fmt:'719<span class="cur">грн</span>',  old:'2690 грн' },
+    circle:  { fmt:'1399<span class="cur">грн</span>', old:'5250 грн' },
+    personal:{ fmt:'2399<span class="cur">грн</span>', old:'7190 грн' }
   },
   ru: {
-    basic:   { fmt:'1169<span class="cur">₽</span>',  old:'3490 ₽' },
-    circle:  { fmt:'2104<span class="cur">₽</span>',  old:'6490 ₽' },
-    personal:{ fmt:'7795<span class="cur">₽</span>',  old:'19990 ₽' }
+    basic:   { fmt:'2099<span class="cur">₽</span>',  old:'6290 ₽' },
+    circle:  { fmt:'4990<span class="cur">₽</span>',  old:'15390 ₽' },
+    personal:{ fmt:'9390<span class="cur">₽</span>',  old:'24990 ₽' }
   }
 };
 
 /* ==================== PAYMENT LINKS ====================
    Украина (по IP)     -> WayForPay
    Россия (по IP)      -> Tribute (Stripe не работает с РФ и не должен ей предлагаться)
-   Остальные страны    -> Stripe + PayPal (две кнопки - платёж точно пройдёт) */
+   Остальные страны    -> Stripe (основной) + кнопка Tribute с подписью «если вы из России» (на случай, если гео определилось неверно), PayPal убран */
 const LINKS = {
   ua: {
     basic:    'https://secure.wayforpay.com/button/bd79c278fab86',
@@ -988,14 +999,14 @@ const LINKS = {
   },
   intl: {
     stripe: {
-      basic:    'https://buy.stripe.com/6oUbJ30QifWh2xceBa3ZK0k',
-      circle:   'https://buy.stripe.com/8x2bJ3aqSh0lfjY78I3ZK0j',
-      personal: 'https://buy.stripe.com/3cI6oJ8iK8tP8VA50A3ZK0l'
+      basic:    'https://buy.stripe.com/00w14pbuWdO9b3IeBa3ZK0t',
+      circle:   'https://buy.stripe.com/5kQ8wR2Yq8tP3Bg50A3ZK0u',
+      personal: 'https://buy.stripe.com/aFaeVffLcdO9go29gQ3ZK0v'
     },
     paypal: {
-      basic:    'https://www.paypal.com/ncp/payment/TX4CSD6R5C2JQ',
-      circle:   'https://www.paypal.com/ncp/payment/L9MBPZRCTGFBG',
-      personal: 'https://www.paypal.com/ncp/payment/MZCJ6M5TM7X7W'
+      basic:    'https://www.paypal.com/ncp/payment/525GY3JGD4QXE',
+      circle:   'https://www.paypal.com/ncp/payment/MLJQ92EYSCMGG',
+      personal: 'https://www.paypal.com/ncp/payment/7Z2PN6QZNHBCS'
     }
   }
 };
@@ -1004,12 +1015,12 @@ let isRussia = false;
 
 // getPaymentMode: 'ua' -> WayForPay only;
 // Russia -> Tribute only (Stripe не работает с Россией и не должен ей предлагаться);
-// все остальные -> Stripe (основной) + PayPal (запасной способ),
-// чтобы оплата точно прошла, даже если банк не поддерживает один из провайдеров.
+// все остальные -> Stripe (основной) + кнопка Tribute с подписью «если вы из России»
+// на случай, если гео определилось неверно.
 function getPaymentMode(region){
   if(region === 'ua') return 'wayforpay';
   if(isRussia) return 'tribute_only';
-  return 'stripe_paypal';
+  return 'stripe_tribute';
 }
 
 function currentLang(){ return document.documentElement.lang === 'uk' ? 'uk' : 'ru'; }
@@ -1018,49 +1029,58 @@ function updatePlanButtons(region){
   const mode = getPaymentMode(region);
   const lang = currentLang();
   const mainLabel = lang === 'uk' ? 'Оплатити' : 'Оплатить';
-  const paypalAltLabel = lang === 'uk' ? 'Оплатити через PayPal' : 'Оплатить через PayPal';
   const tributeLabel = lang === 'uk' ? 'Оплатити через Tribute' : 'Оплатить через Tribute';
+  const tributeCaption = lang === 'uk' ? 'Якщо ви з Росії - використовуйте цей спосіб' : 'Если вы из России - используйте этот способ';
 
   document.querySelectorAll('.plan').forEach(planEl=>{
     const combo = planEl.getAttribute('data-tier');
     const btn = planEl.querySelector('.plan-btn');
     const alt = planEl.querySelector('.plan-btn-alt');
+    const tributeBtn = planEl.querySelector('.plan-btn-tribute');
+    const tributeNote = planEl.querySelector('.tribute-note');
+    alt.hidden = true; // PayPal больше нигде не показываем
     if(mode === 'wayforpay'){
       btn.setAttribute('href', LINKS.ua[combo] || '#');
       btn.textContent = mainLabel;
-      alt.hidden = true;
+      if(tributeBtn) tributeBtn.hidden = true;
+      if(tributeNote) tributeNote.hidden = true;
     } else if(mode === 'tribute_only'){
       btn.setAttribute('href', LINKS.tribute[combo] || '#');
       btn.textContent = tributeLabel;
-      alt.hidden = true;
-    } else { // stripe_paypal (по умолчанию для всех остальных стран)
+      if(tributeBtn) tributeBtn.hidden = true;
+      if(tributeNote) tributeNote.hidden = true;
+    } else { // stripe_tribute (по умолчанию для всех стран, кроме России и Украины)
       btn.setAttribute('href', LINKS.intl.stripe[combo] || '#');
       btn.textContent = mainLabel;
-      const ppHref = LINKS.intl.paypal[combo];
-      if(ppHref){ alt.setAttribute('href', ppHref); alt.textContent = paypalAltLabel; alt.hidden = false; }
-      else { alt.hidden = true; }
+      if(tributeBtn){
+        tributeBtn.setAttribute('href', LINKS.tribute[combo] || '#');
+        tributeBtn.textContent = tributeLabel;
+        tributeBtn.hidden = false;
+      }
+      if(tributeNote){ tributeNote.textContent = tributeCaption; tributeNote.hidden = false; }
     }
     btn.setAttribute('target','_blank'); btn.setAttribute('rel','noopener');
     alt.setAttribute('target','_blank'); alt.setAttribute('rel','noopener');
+    if(tributeBtn){ tributeBtn.setAttribute('target','_blank'); tributeBtn.setAttribute('rel','noopener'); }
   });
 
-  // почему два способа оплаты - объясняем, чтобы не спугнуть покупательницу
+  // почему показываем два способа оплаты - объясняем, чтобы не спугнуть покупательницу
   const dualNote = document.getElementById('dualPaymentNote');
   if(dualNote){
-    dualNote.hidden = (mode !== 'stripe_paypal');
+    dualNote.hidden = (mode !== 'stripe_tribute');
     if(!dualNote.hidden){
       dualNote.innerHTML = lang === 'uk'
-        ? '💳 Показуємо одразу два способи оплати - карту (Stripe) і PayPal, - щоб платіж точно пройшов, навіть якщо один з них не підтримує твій банк.'
-        : '💳 Показываем сразу два способа оплаты - карту (Stripe) и PayPal, - чтобы платёж точно прошёл, даже если один из них не поддерживает твой банк.';
+        ? '💳 Основний спосіб оплати - картою (Stripe). Якщо ви з Росії і Stripe не спрацює, скористайтесь кнопкою Tribute нижче.'
+        : '💳 Основной способ оплаты - картой (Stripe). Если вы из России и Stripe не сработает, используйте кнопку Tribute ниже.';
     }
   }
 
   const stripeIcon = document.getElementById('stripeIcon');
   const paypalIcon = document.getElementById('paypalIcon');
   const tributeIcon = document.getElementById('tributeIcon');
-  if(stripeIcon) stripeIcon.hidden = (mode !== 'stripe_paypal');
-  if(paypalIcon) paypalIcon.hidden = (mode !== 'stripe_paypal');
-  if(tributeIcon) tributeIcon.hidden = (mode !== 'tribute_only');
+  if(stripeIcon) stripeIcon.hidden = (mode !== 'stripe_tribute');
+  if(paypalIcon) paypalIcon.hidden = true; // PayPal скрыт полностью
+  if(tributeIcon) tributeIcon.hidden = (mode !== 'tribute_only' && mode !== 'stripe_tribute');
 }
 
 function renderPricing(region){
