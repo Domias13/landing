@@ -515,6 +515,8 @@
         📩 <b>После оплаты</b> тебе придёт в личку в Telegram ссылка на закрытый канал, где размещены все файлы курса. <b>Доступ навсегда.</b>
       </div>
       <a class="btn btn-glow buy-link" id="offerBuyLink" href="https://buy.stripe.com/7sY5kFgPg25r2xc1Oo3ZK0m" target="_blank" rel="noopener" style="margin-top:6px;" onclick="track('click_course_offer');track('buy_course')">Начать восстановление — <span class="buy-price" id="offerBuyPrice">$14.99</span></a>
+      <p class="tribute-note" id="offerTributeNote" style="color:var(--muted);font-size:13px;margin-top:14px;">Если вы из России — используйте этот способ:</p>
+      <a class="btn tribute-link" id="offerBuyLinkTribute" href="https://web.tribute.tg/p/zK9" target="_blank" rel="noopener" style="display:inline-block;margin-top:6px;background:transparent;border:1.5px solid var(--gold2);color:var(--gold);padding:14px 30px;border-radius:14px;font-weight:700;font-size:15px;text-decoration:none;" onclick="track('click_course_offer_tribute');track('buy_course')">Оплатить через Tribute</a>
       <p class="note">Одна цена, без скрытых доплат и допродаж.</p>
     </div>
   </div>
@@ -670,6 +672,13 @@
     buyPrices.forEach(function(s){ s.textContent = priceLabel; });
     if(mainPrice) mainPrice.textContent = priceLabel;
     if(curWrap) curWrap.style.display = 'none'; // конвертер валют больше не нужен — цена уже локальная
+
+    // Tribute как второй способ оплаты нужен только тем, у кого основной способ — Stripe
+    // (т.е. всем, кроме Украины и России — у них уже есть свой основной способ)
+    var tributeBtn  = document.getElementById('offerBuyLinkTribute');
+    var tributeNote = document.getElementById('offerTributeNote');
+    if(tributeBtn)  tributeBtn.style.display  = 'none';
+    if(tributeNote) tributeNote.style.display = 'none';
 
     var bumpBox = document.getElementById('bumpBox');
     if(bumpBox) bumpBox.style.display = 'none'; // order bump доступен только для международной оплаты картой (Stripe)
