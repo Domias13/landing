@@ -196,6 +196,8 @@
   .plan .price .cur{ font-size:16px; color:var(--muted); font-weight:600; margin-left:2px; }
   .plan .price-old{ font-size:15px; color:var(--light); text-decoration:line-through; }
   .plan .price-note{ font-size:11.5px; color:var(--light); margin-bottom:20px; }
+  .plan-get-title{ font-family:'Playfair Display',serif; font-size:14px; font-weight:700; color:var(--ink); margin-bottom:10px; }
+  .plan-get-sub{ font-size:12.5px; font-weight:700; color:var(--accent-deep); margin:2px 0 6px; }
   .plan ul{ list-style:none; margin-bottom:22px; flex-grow:1; }
   .plan li{ font-size:12.5px; color:var(--ink); padding:8px 0; border-top:1px solid var(--line); display:flex; gap:8px; }
   .plan li::before{ content:'✓'; color:var(--accent); font-weight:700; font-size:12px; }
@@ -559,6 +561,7 @@
         <div class="plan-desc" data-t="plan_basic_desc">7 аудиоуроков по 15–20 минут + 3 авторские техники. Первая техника помогает снизить остроту навязчивых мыслей - многие участницы замечают разницу уже в первые сутки.</div>
         <div class="price-row"><span class="price-old" id="priceBasicOld">$79</span><span class="price" id="priceBasic">$14.99</span></div>
         <div class="price-note" data-t="price_note">разовый платёж</div>
+        <div class="plan-get-title" data-t="plan_basic_get_title">Что ты получишь</div>
         <ul>
           <li data-t="plan_basic_li1">7 аудиоуроков, 15–20 минут в день</li>
           <li data-t="plan_basic_li2">Доступ навсегда, слушай когда удобно</li>
@@ -566,7 +569,7 @@
         </ul>
         <a href="#" class="plan-btn" data-plan="basic" id="planBasicBtn" data-t="pay_btn">Оплатить</a>
         <a href="#" class="plan-btn-alt" data-plan="basic" id="planBasicBtnAlt" hidden>Оплатить</a>
-        <p class="tribute-note" id="planBasicTributeNote" hidden>Если вы из России - используйте этот способ</p>
+        <p class="tribute-note" id="planBasicTributeNote" hidden>Если вы из России - используйте этот способ ↓</p>
         <a href="#" class="plan-btn-tribute" data-plan="basic" id="planBasicBtnTribute" hidden>Оплатить</a>
       </div>
 
@@ -575,6 +578,7 @@
         <div class="plan-desc" data-t="plan_circle_desc">Всё из «Интенсива» плюс практикум для тех моментов, когда снова хочется проверить его сторис, написать первой, позвонить или вернуть разговор в прошлое.</div>
         <div class="price-row"><span class="price-old" id="priceCircleOld">$179</span><span class="price" id="priceCircle">$27</span></div>
         <div class="price-note" data-t="price_note">разовый платёж</div>
+        <div class="plan-get-title" data-t="plan_circle_get_title">Что ты получишь</div>
         <ul>
           <li data-t="plan_circle_li1">Всё из тарифа «Интенсив»</li>
           <li data-t="plan_circle_li2">Практикум «Не написать ему: практикум против откатов»</li>
@@ -582,7 +586,7 @@
         </ul>
         <a href="#" class="plan-btn" data-plan="circle" id="planCircleBtn" data-t="pay_btn">Оплатить</a>
         <a href="#" class="plan-btn-alt" data-plan="circle" id="planCircleBtnAlt" hidden>Оплатить</a>
-        <p class="tribute-note" id="planCircleTributeNote" hidden>Если вы из России - используйте этот способ</p>
+        <p class="tribute-note" id="planCircleTributeNote" hidden>Если вы из России - используйте этот способ ↓</p>
         <a href="#" class="plan-btn-tribute" data-plan="circle" id="planCircleBtnTribute" hidden>Оплатить</a>
         <a href="#" id="practicumLink" style="display:block;text-align:center;font-size:12px;color:var(--muted);text-decoration:underline;margin-top:10px;" data-t="practicum_link">Что внутри практикума?</a>
       </div>
@@ -592,17 +596,21 @@
         <div class="plan-desc" data-t="plan_personal_desc">Расскажи о ситуации своими словами: что произошло, что беспокоит сейчас и какой вопрос хочешь обсудить. В личной переписке можно рассмотреть обстоятельства и возможные следующие шаги.</div>
         <div class="price-row"><span class="price-old" id="pricePersonalOld">$199</span><span class="price" id="pricePersonal">$59.99</span></div>
         <div class="price-note" data-t="price_note">разовый платёж</div>
+        <div class="plan-get-title" data-t="plan_personal_get_title">Что ты получишь</div>
+        <div class="plan-get-sub" data-t="plan_personal_get_sub">Решение твоего вопроса</div>
         <ul>
+          <li data-t="plan_personal_li0a">Нахождение самого оптимального решения</li>
+          <li data-t="plan_personal_li0b">Варианты действий, которые можно применить со своей ситуацией</li>
+          <li data-t="plan_personal_li0c">Упражнения, техники и рекомендации</li>
           <li data-t="plan_personal_li1">Всё из тарифа «Интенсив» - 7 аудиоуроков и 3 авторские техники</li>
           <li data-t="plan_personal_li2">Личный разбор именно твоей истории - пишешь мне сама, отвечаю я, а не шаблон</li>
           <li data-t="plan_personal_li3">Честный ответ, почему он поступил так, а не иначе - без прикрас и без «сам разберётся»</li>
           <li data-t="plan_personal_li4">Конкретный план действий на ближайшие дни - что делать, а не просто «отпусти»</li>
           <li data-t="plan_personal_li5">Возможность задать уточняющие вопросы, если что-то останется непонятным</li>
         </ul>
-        <div class="bonus-tag" data-t="bonus_tag">🎁 При покупке сейчас - бонус: памятка «Аптечка скорой помощи на тяжёлую ночь» в подарок</div>
         <a href="#" class="plan-btn" data-plan="personal" id="planPersonalBtn" data-t="pay_btn">Оплатить</a>
         <a href="#" class="plan-btn-alt" data-plan="personal" id="planPersonalBtnAlt" hidden>Оплатить</a>
-        <p class="tribute-note" id="planPersonalTributeNote" hidden>Если вы из России - используйте этот способ</p>
+        <p class="tribute-note" id="planPersonalTributeNote" hidden>Если вы из России - используйте этот способ ↓</p>
         <a href="#" class="plan-btn-tribute" data-plan="personal" id="planPersonalBtnTribute" hidden>Оплатить</a>
       </div>
     </div>
@@ -890,6 +898,13 @@ const TRANSLATIONS = {
     "plan_basic_name": "Інтенсив",
     "plan_basic_desc": "7 аудіоуроків по 15-20 хвилин + 3 авторські техніки. Перша техніка допомагає знизити гостроту нав'язливих думок - багато учасниць помічають різницю вже в перші доби.",
     "price_note": "разовий платіж",
+    "plan_basic_get_title": "Що ти отримаєш",
+    "plan_circle_get_title": "Що ти отримаєш",
+    "plan_personal_get_title": "Що ти отримаєш",
+    "plan_personal_get_sub": "Вирішення твого питання",
+    "plan_personal_li0a": "Знаходження найоптимальнішого рішення",
+    "plan_personal_li0b": "Варіанти дій, які можна застосувати до своєї ситуації",
+    "plan_personal_li0c": "Вправи, техніки та рекомендації",
     "plan_basic_li1": "7 аудіоуроків, 15-20 хвилин на день",
     "plan_basic_li2": "Доступ назавжди, слухай коли зручно",
     "plan_basic_li3": "Слухай хоч з телефону, хоч з ноутбука",
@@ -1037,7 +1052,7 @@ function updatePlanButtons(region){
   const lang = currentLang();
   const mainLabel = lang === 'uk' ? 'Оплатити' : 'Оплатить';
   const tributeLabel = lang === 'uk' ? 'Оплатити' : 'Оплатить';
-  const tributeCaption = lang === 'uk' ? 'Якщо ви з Росії - використовуйте цей спосіб' : 'Если вы из России - используйте этот способ';
+  const tributeCaption = lang === 'uk' ? 'Якщо ви з Росії - використовуйте цей спосіб ↓' : 'Если вы из России - используйте этот способ ↓';
 
   document.querySelectorAll('.plan').forEach(planEl=>{
     const combo = planEl.getAttribute('data-tier');
