@@ -194,12 +194,33 @@
   .price-anchor{ text-align:center; max-width:520px; margin:0 auto 18px; font-family:'Playfair Display',serif; font-style:italic; font-size:16.5px; color:var(--accent-deep); }
   .price-countdown{ text-align:center; margin:0 auto 34px; font-size:13.5px; font-weight:700; color:var(--accent); }
   .price-countdown span{ font-family:'Playfair Display',serif; font-size:15px; }
-  .pricing-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch; max-width:1000px; margin:0 auto; }
+  .pricing-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; align-items:stretch; max-width:1000px; margin:0 auto; }
   .plan{ background:#fff; border:1px solid var(--line); border-radius:10px; padding:30px 24px; display:flex; flex-direction:column; position:relative; text-align:left; }
   .plan.featured{ border-color:var(--gold); box-shadow:var(--shadow); }
   .plan[data-badge]::before{ content:attr(data-badge); position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--accent); color:#fff; font-size:10.5px; font-weight:700; letter-spacing:.04em; padding:5px 13px; border-radius:20px; text-transform:uppercase; white-space:nowrap; }
   .plan.featured::before{ background:var(--gold); }
-  .plan[data-tier="personal"]{ border-color:var(--accent); }
+  .plan-tag{ font-size:11.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+  .plan.featured{ border:2px solid var(--accent); background:linear-gradient(180deg,#fffaf6 0%,#fff 40%); box-shadow:0 26px 60px rgba(179,69,58,0.18); transform:scale(1.04); z-index:2; padding-top:36px; }
+  .plan.featured::before{ background:var(--accent); font-size:11.5px; padding:6px 16px; box-shadow:0 6px 14px rgba(179,69,58,.3); }
+  .plan.featured .price{ color:var(--accent-deep); font-size:38px; }
+  .plan.featured .plan-btn{ padding:16px 14px; font-size:15px; box-shadow:0 12px 26px rgba(179,69,58,0.28); }
+  .plan.premium{ border-color:var(--ink); background:#fbf8f3; }
+  .plan.premium::before{ background:var(--ink); }
+  .plan.premium .plan-btn{ background:var(--ink); border-color:var(--ink); }
+  .plan.premium .plan-btn:hover{ background:#000; }
+  .plan-result{ font-size:12.5px; color:var(--muted); background:#f3efe8; border-radius:6px; padding:10px 12px; margin:0 0 18px; line-height:1.55; }
+  .plan-result b{ color:var(--ink); }
+  .mentor-detail{ max-width:720px; margin:44px auto 0; background:#fff; border:1px solid var(--line); border-radius:10px; padding:32px 30px; }
+  .mentor-detail h3{ font-size:clamp(20px,3.4vw,26px); margin:10px 0 14px; }
+  .mentor-detail p{ font-size:14.5px; color:var(--muted); margin-bottom:12px; }
+  .mentor-incl-title{ font-weight:700; font-size:14.5px; margin:16px 0 8px; }
+  .mentor-detail ul{ list-style:none; margin-bottom:16px; }
+  .mentor-detail li{ font-size:14px; padding:7px 0 7px 22px; position:relative; border-top:1px solid var(--line); }
+  .mentor-detail li::before{ content:'✓'; position:absolute; left:0; color:var(--accent); font-weight:700; }
+  .mentor-price{ font-size:16px !important; color:var(--ink) !important; }
+  .mentor-note{ font-size:12.5px !important; font-style:italic; color:var(--light) !important; }
+  @media (max-width:860px){ .plan.featured{ transform:none; order:-1; } }
+
   .plan .plan-name{ font-family:'Playfair Display',serif; font-size:18px; margin-bottom:6px; }
   .plan .plan-desc{ color:var(--muted); font-size:13px; margin-bottom:18px; min-height:34px; }
   .bonus-tag{ font-size:12px; color:var(--accent-deep); background:#fdeceb; border:1px dashed #e0b8b3; border-radius:6px; padding:10px 12px; margin-bottom:14px; line-height:1.5; }
@@ -607,6 +628,7 @@
     <p id="dualPaymentNote" hidden style="text-align:center;max-width:580px;margin:0 auto 22px;color:var(--muted);font-size:13.5px;background:#fff;border:1px dashed var(--line);border-radius:8px;padding:12px 18px;" data-t="dual_note">💳 Показываем сразу два способа оплаты, чтобы платёж точно прошёл, даже если один из них не поддерживает твой банк или страну.</p>
     <div class="pricing-grid">
       <div class="plan" data-tier="basic">
+        <div class="plan-tag" data-t="plan_basic_tag">Начать самостоятельно</div>
         <div class="plan-name" data-t="plan_basic_name">Интенсив</div>
         <div class="plan-desc" data-t="plan_basic_desc">7 аудиоуроков по 15–20 минут + 3 авторские техники. Первая техника помогает снизить остроту навязчивых мыслей - многие участницы замечают разницу уже в первые сутки.</div>
         <div class="price-row"><span class="price-old" id="priceBasicOld">$79</span><span class="price" id="priceBasic">$14.99</span></div>
@@ -622,32 +644,16 @@
         <a href="#" class="plan-btn-tribute" data-plan="basic" id="planBasicBtnTribute" hidden>Оплатить</a>
       </div>
 
-      <div class="plan featured" data-tier="circle" data-badge="Самый популярный">
-        <div class="plan-name" data-t="plan_circle_name">Интенсив + практикум «Верни себя себе»</div>
-        <div class="plan-desc" data-t="plan_circle_desc">Всё из «Интенсива» плюс практикум, который поможет перестать жить ожиданием его сообщения, вернуть внутреннюю опору и снова почувствовать вкус к своей жизни.</div>
-        <div class="price-row"><span class="price-old" id="priceCircleOld">$179</span><span class="price" id="priceCircle">$27</span></div>
-        <div class="price-note" data-t="price_note">разовый платёж</div>
-        <ul>
-          <li data-t="plan_circle_li1">Всё из тарифа «Интенсив»</li>
-          <li data-t="plan_circle_li2">Практикум «Верни себя себе»</li>
-          <li data-t="plan_circle_li3">Что делать в моменты, когда тянет написать, позвонить или зайти к нему в сторис</li>
-        </ul>
-        <a href="#" class="plan-btn" data-plan="circle" id="planCircleBtn" data-t="pay_btn">Оплатить</a>
-        <a href="#" class="plan-btn-alt" data-plan="circle" id="planCircleBtnAlt" hidden>Оплатить</a>
-        <p class="tribute-note" id="planCircleTributeNote" hidden>Если вы из России - используйте этот способ ↓</p>
-        <a href="#" class="plan-btn-tribute" data-plan="circle" id="planCircleBtnTribute" hidden>Оплатить</a>
-        <a href="#" id="practicumLink" style="display:block;text-align:center;font-size:12px;color:var(--muted);text-decoration:underline;margin-top:10px;" data-t="practicum_link">Что внутри практикума?</a>
-      </div>
-
-      <div class="plan" data-tier="personal" data-badge="Максимум внимания к тебе">
+      <div class="plan featured" data-tier="personal" data-badge="Основной выбор">
+        <div class="plan-tag" data-t="plan_personal_tag">Разобрать свою ситуацию</div>
         <div class="plan-name" data-t="plan_personal_name">Персональный разбор твоей ситуации</div>
         <div class="plan-desc" data-t="plan_personal_desc">Разберём именно твою ситуацию, какой бы сложной она ни казалась. Ты поймёшь: что он на самом деле имел в виду, почему исчез или повёл себя именно так, и что тебе делать дальше. Никаких «само пройдёт» и «время лечит» - разбор твоей конкретной ситуации и план, как из неё выйти. Это не шаблонный ответ и не работа ассистента - твою историю читаю и разбираю я сам, лично. Ты получишь то, чего не даст ни один общий урок: ясность именно про твой случай - и наконец перестанешь гадать, что произошло и что теперь делать.</div>
-        <div class="price-row"><span class="price-old" id="pricePersonalOld">$199</span><span class="price" id="pricePersonal">$59.99</span></div>
+        <div class="price-row"><span class="price-old" id="pricePersonalOld">$149</span><span class="price" id="pricePersonal">$59.99</span></div>
         <div class="price-note" data-t="price_note">разовый платёж</div>
         <ul>
           <li data-t="plan_personal_li1">Всё из тарифа «Интенсив» - 7 аудиоуроков и 3 авторские техники</li>
           <li data-t="plan_personal_li2">Личный разбор именно твоей истории</li>
-          <li data-t="plan_personal_li3">Честный ответ, почему он поступил так, а не иначе»</li>
+          <li data-t="plan_personal_li3">Честный ответ, почему он поступил так, а не иначе</li>
           <li data-t="plan_personal_li4">Конкретный план действий - что делать, а не просто «отпусти»</li>
         </ul>
         <div class="bonus-tag" data-t="bonus_tag">🎁 При покупке сейчас - бонус: памятка «Аптечка скорой помощи на тяжёлую ночь» в подарок</div>
@@ -656,6 +662,43 @@
         <p class="tribute-note" id="planPersonalTributeNote" hidden>Если вы из России - используйте этот способ ↓</p>
         <a href="#" class="plan-btn-tribute" data-plan="personal" id="planPersonalBtnTribute" hidden>Оплатить</a>
       </div>
+
+      <div class="plan premium" data-tier="mentor" data-badge="Премиум">
+        <div class="plan-tag" data-t="plan_mentor_tag">Индивидуальная программа с сопровождением</div>
+        <div class="plan-name" data-t="plan_mentor_name">Личное ведение</div>
+        <div class="plan-desc" data-t="plan_mentor_desc">Для тех, кому нужны регулярные встречи и обратная связь.</div>
+        <div class="price-row"><span class="price-old" id="priceMentorOld"></span><span class="price" id="priceMentor">$200</span></div>
+        <div class="price-note" data-t="price_note">разовый платёж</div>
+        <ul>
+          <li data-t="plan_mentor_li1">Всё из тарифа «Интенсив»</li>
+          <li data-t="plan_mentor_li2">4 индивидуальные сессии</li>
+          <li data-t="plan_mentor_li3">Возможность задавать вопросы в Telegram в течение оговорённого периода</li>
+          <li data-t="plan_mentor_li4">Индивидуальный план работы и корректировка шагов по мере продвижения</li>
+        </ul>
+        <p class="plan-result" data-t="plan_mentor_result"><b>Результат:</b> не только получить рекомендации, но и последовательно работать над своей ситуацией с обратной связью.</p>
+        <a href="#" class="plan-btn" data-plan="mentor" id="planMentorBtn" data-t="mentor_btn">Записаться на личное ведение</a>
+        <a href="#" class="plan-btn-alt" data-plan="mentor" id="planMentorBtnAlt" hidden>Оплатить</a>
+        <p class="tribute-note" id="planMentorTributeNote" hidden>Если вы из России - используйте этот способ ↓</p>
+        <a href="#" class="plan-btn-tribute" data-plan="mentor" id="planMentorBtnTribute" hidden>Оплатить</a>
+      </div>
+    </div>
+
+    <div class="mentor-detail" id="mentor">
+      <span class="eyebrow" data-t="mentor_eyebrow">Личное ведение</span>
+      <h3 data-t="mentor_h">4 недели индивидуальной работы. Не нужно разбираться во всём одной.</h3>
+      <p data-t="mentor_p1">Иногда недостаточно просто послушать аудиоуроки или получить один разбор. Ты понимаешь, что происходит, но затем возникает новая ситуация, появляются вопросы и снова становится трудно понять, как действовать.</p>
+      <p data-t="mentor_p2">В личном ведении мы работаем именно с твоей историей и твоими решениями.</p>
+      <div class="mentor-incl-title" data-t="mentor_incl_h">Что входит:</div>
+      <ul>
+        <li data-t="mentor_li1">Полный аудиоинтенсив «БЭушный ещё пожалеет»</li>
+        <li data-t="mentor_li2">4 индивидуальные сессии</li>
+        <li data-t="mentor_li3">Индивидуальный план работы</li>
+        <li data-t="mentor_li4">Возможность задавать вопросы в Telegram в течение программы</li>
+        <li data-t="mentor_li5">Обсуждение сложных ситуаций и корректировка дальнейших действий</li>
+      </ul>
+      <p class="mentor-price" data-t="mentor_price">Стоимость программы - <b id="mentorPriceInline">$200</b>.</p>
+      <p data-t="mentor_p3">Это формат для тех, кому недостаточно универсальных рекомендаций и кто хочет последовательно разобраться в своей ситуации с индивидуальной обратной связью.</p>
+      <p class="mentor-note" data-t="mentor_note">Продолжительность сессий, сроки ответов в Telegram и условия сопровождения согласовываются до начала работы.</p>
     </div>
 
     <div class="payment-block">
@@ -730,27 +773,6 @@
   <div style="margin-top:8px;"><span data-t="footer_questions">Вопросы? Пиши в Telegram:</span> <a href="https://t.me/back4heart" target="_blank" rel="noopener">back4heart</a></div>
   <div style="margin-top:8px;"><a href="policy.html" target="_blank" rel="noopener" data-t="footer_policy">Политика конфиденциальности</a> · <a href="oferta.html" target="_blank" rel="noopener" id="footerOffer" data-t="footer_offer">Публичная оферта</a></div>
 </footer>
-
-<div class="offer-overlay" id="practicumOverlay">
-  <div class="offer-modal" role="dialog" aria-modal="true" aria-labelledby="practicumModalTitle">
-    <div class="offer-modal-head">
-      <h2 id="practicumModalTitle" style="font-size:18px;" data-t="practicum_title">Практикум «Верни себя себе»</h2>
-      <button class="offer-close" id="practicumClose" aria-label="Закрыть">×</button>
-    </div>
-    <div class="offer-modal-body">
-      <p data-t="practicum_intro">Это бонус-практикум, который входит в тариф «Интенсив + практикум». Он поможет перестать жить ожиданием его сообщения, вернуть внутреннюю опору и снова почувствовать вкус к своей жизни - без него.</p>
-      <h3 data-t="practicum_blocks_h">5 блоков, в конце каждого - практическое задание</h3>
-      <ul>
-        <li data-t="practicum_li1"><b>Стоп ожиданию</b> - почему ты до сих пор сверяешь свой день с тем, напишет он или нет, и как перестать это делать.</li>
-        <li data-t="practicum_li2"><b>Внутренняя опора</b> - откуда взялось ощущение, что без него не на что опереться, и как вернуть эту опору себе, а не искать её в нём.</li>
-        <li data-t="practicum_li3"><b>Вкус к жизни</b> - что делать, если сейчас ничего не радует и не хочется даже того, что раньше любила.</li>
-        <li data-t="practicum_li4"><b>Своя территория</b> - как перестать жить в его ритме - проверять страницы, ждать звонка - и выстроить свой собственный.</li>
-        <li data-t="practicum_li5"><b>Что дальше</b> - как не откатиться назад, когда станет легче, и что делать, если он снова напишет или появится.</li>
-      </ul>
-      <p data-t="practicum_footer">Формат: аудио + короткие практики. Слушать можно в своём темпе, доступ остаётся навсегда.</p>
-    </div>
-  </div>
-</div>
 
 <div class="offer-overlay" id="exitOverlay">
   <div class="offer-modal" style="max-width:440px;text-align:center;">
@@ -963,19 +985,36 @@ const TRANSLATIONS = {
     "plan_basic_li2": "Доступ назавжди, слухай коли зручно",
     "plan_basic_li3": "Слухай хоч з телефону, хоч з ноутбука",
     "pay_btn": "Оплатити",
-    "plan_circle_name": "Інтенсив + практикум «Поверни себе себе»",
-    "plan_circle_desc": "Все з «Інтенсиву» плюс практикум, який допоможе перестати жити очікуванням його повідомлення, повернути внутрішню опору і знову відчути смак до свого життя.",
-    "plan_circle_li1": "Все з тарифу «Інтенсив»",
-    "plan_circle_li2": "Практикум «Поверни себе себе»",
-    "plan_circle_li3": "Що робити в моменти, коли тягне написати, зателефонувати або зайти до нього в сторіс",
-    "practicum_link": "Що всередині практикуму?",
+    "plan_basic_tag": "Почати самостійно",
+    "plan_personal_tag": "Розібрати свою ситуацію",
     "plan_personal_name": "Персональний розбір твоєї ситуації",
     "plan_personal_desc": "Розберемо саме твою ситуацію, якою б складною вона не здавалася. Ти зрозумієш: що він насправді мав на увазі, чому зник або повівся саме так, і що тобі робити далі. Жодних «само минеться» і «час лікує» - розбір твоєї конкретної ситуації і план, як з неї вийти. Це не шаблонна відповідь і не робота асистента - твою історію читаю і розбираю я сам, особисто. Ти отримаєш те, чого не дасть жоден загальний урок: ясність саме про твій випадок - і нарешті перестанеш гадати, що сталося і що тепер робити.",
     "plan_personal_li1": "Все з тарифу «Інтенсив» - 7 аудіоуроків і 3 авторські техніки",
-    "plan_personal_li2": "Особистий розбір саме твоєї історії - пишеш мені сама, відповідаю я, а не шаблон",
-    "plan_personal_li3": "Чесна відповідь, чому він вчинив так, а не інакше - без прикрас і без «само минеться»",
-    "plan_personal_li4": "Конкретний план дій на найближчі дні - що робити, а не просто «відпусти»",
-    "plan_personal_li5": "Можливість поставити уточнювальні запитання, якщо щось залишиться незрозумілим",
+    "plan_personal_li2": "Особистий розбір саме твоєї історії",
+    "plan_personal_li3": "Чесна відповідь, чому він вчинив так, а не інакше",
+    "plan_personal_li4": "Конкретний план дій - що робити, а не просто «відпусти»",
+    "plan_mentor_tag": "Індивідуальна програма із супроводом",
+    "plan_mentor_name": "Особисте ведення",
+    "plan_mentor_desc": "Для тих, кому потрібні регулярні зустрічі та зворотний зв'язок.",
+    "plan_mentor_li1": "Все з тарифу «Інтенсив»",
+    "plan_mentor_li2": "4 індивідуальні сесії",
+    "plan_mentor_li3": "Можливість ставити запитання в Telegram протягом погодженого періоду",
+    "plan_mentor_li4": "Індивідуальний план роботи і коригування кроків у міру просування",
+    "plan_mentor_result": "<b>Результат:</b> не лише отримати рекомендації, а й послідовно працювати над своєю ситуацією зі зворотним зв'язком.",
+    "mentor_btn": "Записатися на особисте ведення",
+    "mentor_eyebrow": "Особисте ведення",
+    "mentor_h": "4 тижні індивідуальної роботи. Не потрібно розбиратися в усьому самій.",
+    "mentor_p1": "Іноді недостатньо просто послухати аудіоуроки чи отримати один розбір. Ти розумієш, що відбувається, але потім виникає нова ситуація, з'являються питання і знову стає важко зрозуміти, як діяти.",
+    "mentor_p2": "В особистому веденні ми працюємо саме з твоєю історією і твоїми рішеннями.",
+    "mentor_incl_h": "Що входить:",
+    "mentor_li1": "Повний аудіоінтенсив «Б/у ще пошкодує»",
+    "mentor_li2": "4 індивідуальні сесії",
+    "mentor_li3": "Індивідуальний план роботи",
+    "mentor_li4": "Можливість ставити запитання в Telegram протягом програми",
+    "mentor_li5": "Обговорення складних ситуацій і коригування подальших дій",
+    "mentor_price": "Вартість програми - <b id=\"mentorPriceInline\">$200</b>.",
+    "mentor_p3": "Це формат для тих, кому недостатньо універсальних рекомендацій і хто хоче послідовно розібратися у своїй ситуації з індивідуальним зворотним зв'язком.",
+    "mentor_note": "Тривалість сесій, терміни відповідей у Telegram та умови супроводу узгоджуються до початку роботи.",
     "bonus_tag": "🎁 При покупці зараз - бонус: пам'ятка «Аптечка швидкої допомоги на важку ніч» у подарунок",
     "pay_text_base": "💳 <b>Оплата - карткою будь-якої країни:</b> Visa, Mastercard, карткою, випущеною у вашій країні.",
     "pay_text_ru": "🇷🇺 Для Росії також доступна оплата за <b>«МІР»</b> та <b>«СБП»</b>.",
@@ -1014,15 +1053,6 @@ const TRANSLATIONS = {
     "footer_questions": "Питання? Пиши в Telegram:",
     "footer_policy": "Політика конфіденційності",
     "footer_offer": "Публічна оферта",
-    "practicum_title": "Практикум «Поверни себе себе»",
-    "practicum_intro": "Це бонус-практикум, який входить у тариф «Інтенсив + практикум». Він допоможе перестати жити очікуванням його повідомлення, повернути внутрішню опору і знову відчути смак до свого життя - без нього.",
-    "practicum_blocks_h": "5 блоків, наприкінці кожного - практичне завдання",
-    "practicum_li1": "<b>Стоп очікуванню</b> - чому ти досі звіряєш свій день з тим, напише він чи ні, і як перестати це робити.",
-    "practicum_li2": "<b>Внутрішня опора</b> - звідки взялося відчуття, що без нього нема на що спертися, і як повернути цю опору собі, а не шукати її в ньому.",
-    "practicum_li3": "<b>Смак до життя</b> - що робити, якщо зараз ніщо не радує і не хочеться навіть того, що раніше любила.",
-    "practicum_li4": "<b>Своя територія</b> - як перестати жити в його ритмі - перевіряти сторінки, чекати дзвінка - і вибудувати свій власний.",
-    "practicum_li5": "<b>Що далі</b> - як не відкотитися назад, коли стане легше, і що робити, якщо він знову напише або з'явиться.",
-    "practicum_footer": "Формат: аудіо + короткі практики. Слухати можна у своєму темпі, доступ залишається назавжди.",
     "exit_eyebrow": "Зачекай",
     "exit_h3": "Не готова на інтенсив цілком?",
     "exit_p": "Тримай 1-й день безкоштовно.",
@@ -1043,18 +1073,18 @@ function setLanguage(lang){
 const PRICING = {
   intl: {
     basic:   { fmt:'$14.99', old:'$79' },
-    circle:  { fmt:'$27', old:'$179' },
-    personal:{ fmt:'$59.99', old:'$199' }
+    personal:{ fmt:'$59.99', old:'$149' },
+    mentor:  { fmt:'$200', old:'' }
   },
   ua: {
     basic:   { fmt:'719<span class="cur">грн</span>',  old:'2690 грн' },
-    circle:  { fmt:'1399<span class="cur">грн</span>', old:'5250 грн' },
-    personal:{ fmt:'2399<span class="cur">грн</span>', old:'7190 грн' }
+    personal:{ fmt:'2399<span class="cur">грн</span>', old:'7150 грн' },
+    mentor:  { fmt:'9590<span class="cur">грн</span>', old:'' }
   },
   ru: {
     basic:   { fmt:'2099<span class="cur">₽</span>',  old:'6290 ₽' },
-    circle:  { fmt:'4990<span class="cur">₽</span>',  old:'15390 ₽' },
-    personal:{ fmt:'9390<span class="cur">₽</span>',  old:'24990 ₽' }
+    personal:{ fmt:'9390<span class="cur">₽</span>',  old:'20990 ₽' },
+    mentor:  { fmt:'27990<span class="cur">₽</span>', old:'' }
   }
 };
 
@@ -1065,23 +1095,22 @@ const PRICING = {
 const LINKS = {
   ua: {
     basic:    'https://secure.wayforpay.com/button/bd79c278fab86',
-    circle:   'https://secure.wayforpay.com/button/b94dd4cd56518',
-    personal: 'https://secure.wayforpay.com/button/baaf391f3c4bf'
+    personal: 'https://secure.wayforpay.com/button/baaf391f3c4bf',
+    mentor:   'https://secure.wayforpay.com/button/b26c38896a9ab'
   },
   tribute: {
     basic:    'https://web.tribute.tg/p/zK6',
-    circle:   'https://web.tribute.tg/p/zK9',
-    personal: 'https://web.tribute.tg/p/zKa'
+    personal: 'https://web.tribute.tg/p/zKa',
+    mentor:   'https://web.tribute.tg/p/IBZ'
   },
   intl: {
     stripe: {
       basic:    'https://buy.stripe.com/00w14pbuWdO9b3IeBa3ZK0t',
-      circle:   'https://buy.stripe.com/5kQ8wR2Yq8tP3Bg50A3ZK0u',
-      personal: 'https://buy.stripe.com/aFaeVffLcdO9go29gQ3ZK0v'
+      personal: 'https://buy.stripe.com/aFaeVffLcdO9go29gQ3ZK0v',
+      mentor:   'https://buy.stripe.com/eVq7sN8iK8tP5JofFe3ZK0C'
     },
     paypal: {
       basic:    'https://www.paypal.com/ncp/payment/525GY3JGD4QXE',
-      circle:   'https://www.paypal.com/ncp/payment/MLJQ92EYSCMGG',
       personal: 'https://www.paypal.com/ncp/payment/7Z2PN6QZNHBCS'
     }
   }
@@ -1135,6 +1164,7 @@ function updatePlanButtons(region){
       }
       if(tributeNote){ tributeNote.textContent = tributeCaption; tributeNote.hidden = false; }
     }
+    if(combo === 'mentor') btn.textContent = lang === 'uk' ? 'Записатися на особисте ведення' : 'Записаться на личное ведение';
     btn.setAttribute('target','_blank'); btn.setAttribute('rel','noopener');
     alt.setAttribute('target','_blank'); alt.setAttribute('rel','noopener');
     if(tributeBtn){ tributeBtn.setAttribute('target','_blank'); tributeBtn.setAttribute('rel','noopener'); }
@@ -1163,10 +1193,12 @@ function renderPricing(region){
   const p = isRussia ? PRICING.ru : PRICING[region];
   document.getElementById('priceBasic').innerHTML = p.basic.fmt;
   document.getElementById('priceBasicOld').textContent = p.basic.old;
-  document.getElementById('priceCircle').innerHTML = p.circle.fmt;
-  document.getElementById('priceCircleOld').textContent = p.circle.old;
   document.getElementById('pricePersonal').innerHTML = p.personal.fmt;
   document.getElementById('pricePersonalOld').textContent = p.personal.old;
+  document.getElementById('priceMentor').innerHTML = p.mentor.fmt;
+  document.getElementById('priceMentorOld').textContent = p.mentor.old;
+  const mi = document.getElementById('mentorPriceInline');
+  if(mi) mi.innerHTML = p.mentor.fmt;
   updatePlanButtons(region);
 
   const ruNote = document.getElementById('paymentTextRu');
@@ -1215,21 +1247,6 @@ fetch('https://ipapi.co/json/')
       })
       .catch(() => {});
   });
-
-// practicum modal
-(function(){
-  const overlay=document.getElementById('practicumOverlay');
-  const closeBtn=document.getElementById('practicumClose');
-  function showModal(e){ if(e) e.preventDefault(); overlay.classList.add('show'); }
-  function hideModal(){ overlay.classList.remove('show'); }
-  document.addEventListener('click', function(e){
-    const trigger=e.target.closest('#practicumLink');
-    if(trigger) showModal(e);
-  });
-  closeBtn.addEventListener('click', hideModal);
-  overlay.addEventListener('click', function(e){ if(e.target===overlay) hideModal(); });
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape') hideModal(); });
-})();
 
 // exit-intent free lesson offer (desktop mouseleave + mobile scroll/time trigger, shows once)
 (function(){
