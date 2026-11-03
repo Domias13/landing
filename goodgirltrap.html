@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ловушка хорошей девочки — @back4heart</title>
+<link rel="icon" href="/favicon.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'DM Sans',sans-serif;background:#FAF7F2;color:#2D2A26;font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+  .container{max-width:680px;margin:0 auto;padding:0 14px;}
+  section{padding:28px 0;}
+  h1{font-family:'Playfair Display',serif;font-size:38px;font-weight:700;line-height:1.15;color:#2D2A26;}
+  h2{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;line-height:1.25;color:#2D2A26;margin-bottom:18px;}
+  h3{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:#7B2D48;margin-bottom:10px;}
+  p{margin-bottom:14px;color:#4A4641;}
+
+  /* HERO */
+  .hero{padding:40px 0 28px;text-align:center;}
+  .hero .hook{font-family:'Playfair Display',serif;font-size:22px;font-style:italic;color:#6B6560;margin-bottom:16px;line-height:1.45;}
+  .hero h3{margin-bottom:10px;}
+  .hero h1{margin-bottom:10px;}
+  .hero .hero-sub{font-family:'Playfair Display',serif;font-size:19px;color:#6B6560;margin-bottom:8px;font-style:italic;}
+  .hero .hero-desc{font-size:17px;color:#6B6560;max-width:500px;margin:0 auto 22px;line-height:1.6;}
+  .hero-price{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1.5px solid #E8E2DA;border-radius:12px;padding:10px 22px;margin-bottom:8px;}
+  .hero-price .p-new{font-size:26px;font-weight:800;color:#7B2D48;}
+  .hero-price .p-label{font-size:15px;color:#8A8580;}
+  .scroll-hint{font-size:15px;color:#A39E98;margin-top:6px;}
+  .scroll-hint a{color:#7B2D48;text-decoration:none;font-weight:600;}
+
+  /* BUTTONS */
+  .btn{display:block;width:100%;text-align:center;padding:17px 24px;background:#7B2D48;color:#fff;font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;text-decoration:none;border-radius:14px;transition:all 0.2s;}
+  .btn:hover{background:#621f38;transform:translateY(-1px);box-shadow:0 6px 20px rgba(123,45,72,0.28);}
+  .btn-ghost{display:block;text-align:center;padding:14px;background:transparent;color:#6B6560;font-size:15px;font-weight:600;border:1.5px solid #C8C0B8;border-radius:12px;text-decoration:none;margin-top:12px;transition:all 0.2s;}
+  .btn-ghost:hover{border-color:#7B2D48;color:#7B2D48;}
+
+  .divider{border:none;border-top:1px solid #EDE8E0;margin:0;}
+
+  /* PAIN */
+  .pain p{font-size:18px;}
+  .pain .highlight{background:#F8EEF2;border-left:3px solid #7B2D48;padding:18px 20px;border-radius:0 12px 12px 0;margin:20px 0;font-style:italic;color:#4A4641;font-family:'Playfair Display',serif;font-size:20px;line-height:1.5;}
+
+  /* INVERSION TABLE */
+  .inv-table{margin:24px 0;border-radius:14px;overflow:hidden;border:1px solid #EDE8E0;box-shadow:0 2px 12px rgba(0,0,0,0.04);}
+  .inv-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #EDE8E0;}
+  .inv-row:last-child{border-bottom:none;}
+  .inv-header .inv-cell{background:#F8EEF2;font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:#7B2D48;padding:12px 16px;}
+  .inv-cell{padding:11px 16px;font-size:15px;color:#4A4641;background:#fff;}
+  .inv-cell:first-child{color:#7B2D48;font-weight:600;border-right:1px solid #EDE8E0;}
+  .inv-note{text-align:center;font-size:14px;color:#A39E98;margin-top:10px;}
+
+  /* ZONES */
+  .zone-card{background:#fff;border-radius:14px;padding:20px 22px;margin-bottom:12px;box-shadow:0 1px 12px rgba(0,0,0,0.04);border-left:4px solid #7B2D48;}
+  .zone-card.mauve{border-left-color:#B56576;}
+  .zone-card.gold{border-left-color:#9E7E30;}
+  .zone-card.teal{border-left-color:#2D7A72;}
+  .zone-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#7B2D48;margin-bottom:6px;}
+  .zone-card.mauve .zone-label{color:#B56576;}
+  .zone-card.gold .zone-label{color:#9E7E30;}
+  .zone-card.teal .zone-label{color:#2D7A72;}
+  .zone-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#2D2A26;margin-bottom:6px;}
+  .zone-body{font-size:15px;color:#6B6560;line-height:1.6;margin-bottom:8px;}
+  .zone-price{font-size:14px;color:#A39E98;font-style:italic;border-top:1px solid #EDE8E0;padding-top:8px;margin:0;}
+
+  /* FOR YOU */
+  .qual-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;}
+  .qual-box{background:#fff;border-radius:14px;padding:20px;box-shadow:0 1px 12px rgba(0,0,0,0.04);}
+  .qual-box .label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+  .qual-box.yes .label{color:#7B2D48;}
+  .qual-box.no .label{color:#A39E98;}
+  .qual-box ul{list-style:none;}
+  .qual-box ul li{font-size:15px;line-height:1.55;padding:5px 0 5px 24px;position:relative;border-bottom:1px solid #F5F0EB;}
+  .qual-box ul li:last-child{border-bottom:none;}
+  .qual-box.yes ul li::before{content:"✓";position:absolute;left:0;color:#7B2D48;font-weight:700;}
+  .qual-box.no ul li::before{content:"✗";position:absolute;left:0;color:#C8C0B8;}
+  .qual-box.no ul li{color:#A39E98;}
+
+  /* SAFETY */
+  .safety-box{background:#FDF8F0;border:1px solid #E8D9B8;border-radius:14px;padding:16px 20px;margin:20px 0;}
+  .safety-box .safety-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#9E7E30;margin-bottom:6px;}
+  .safety-box p{font-size:14px;color:#7A6E60;margin:0;}
+
+  /* REVIEWS */
+  .review-card{background:#fff;border-radius:14px;padding:18px 22px;margin:10px 0;box-shadow:0 1px 12px rgba(0,0,0,0.04);border-left:3px solid #7B2D48;}
+  .review-stars{font-size:14px;color:#7B2D48;margin-bottom:6px;letter-spacing:2px;}
+  .review-text{font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:#4A4641;line-height:1.6;margin-bottom:8px;}
+  .review-name{font-size:13px;color:#A39E98;font-weight:600;}
+  .review-card.doubt{border-left-color:#C8C0B8;}
+
+  /* INSIDE */
+  .inside-item{background:#fff;border-radius:14px;padding:18px 22px;margin-bottom:10px;box-shadow:0 1px 12px rgba(0,0,0,0.04);}
+  .inside-item .part-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#7B2D48;margin-bottom:5px;}
+  .inside-item.exit .part-label{color:#2D7A72;}
+  .inside-item .inside-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:#2D2A26;margin-bottom:5px;}
+  .inside-item .inside-desc{font-size:15px;color:#6B6560;line-height:1.6;margin:0;}
+
+  /* QUOTE */
+  .quote-block{text-align:center;padding:28px 20px;background:#fff;border-radius:16px;box-shadow:0 1px 12px rgba(0,0,0,0.04);margin:24px 0;}
+  .quote-block .quote-text{font-family:'Playfair Display',serif;font-size:21px;font-style:italic;color:#4A4641;line-height:1.55;max-width:480px;margin:0 auto 10px;}
+  .quote-block .quote-attr{font-size:13px;color:#A39E98;}
+
+  /* FAQ */
+  .faq-item{background:#fff;border-radius:14px;padding:18px 22px;margin-bottom:10px;box-shadow:0 1px 12px rgba(0,0,0,0.04);border:1px solid #EDE8E0;cursor:pointer;}
+  .faq-q{font-size:16px;font-weight:700;color:#2D2A26;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+  .faq-q::after{content:"+";font-size:20px;color:#7B2D48;flex-shrink:0;transition:transform 0.2s;}
+  .faq-item.open .faq-q::after{transform:rotate(45deg);}
+  .faq-a{font-size:15px;color:#6B6560;line-height:1.65;margin-top:12px;padding-top:12px;border-top:1px solid #F0EBE4;display:none;}
+  .faq-item.open .faq-a{display:block;}
+
+  /* URGENCY */
+  .mirror-line{text-align:center;font-family:'Playfair Display',serif;font-size:19px;font-style:italic;color:#6B6560;padding:20px 0 4px;max-width:480px;margin:0 auto;}
+
+  /* BRIDGE */
+  .bridge-box{background:#FAF7F2;border:1px solid #E8E2DA;border-radius:16px;padding:22px 20px;margin-top:24px;text-align:center;}
+  .bridge-box .bridge-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#A39E98;margin-bottom:8px;}
+  .bridge-box p{font-size:15px;color:#6B6560;margin-bottom:14px;max-width:460px;margin-left:auto;margin-right:auto;}
+  .bridge-btn{display:inline-block;padding:13px 32px;background:transparent;color:#C0392B;font-size:15px;font-weight:700;border:1.5px solid #C0392B;border-radius:12px;text-decoration:none;transition:all 0.2s;}
+  .bridge-btn:hover{background:#C0392B;color:#fff;}
+
+  footer{text-align:center;padding:24px 20px 44px;font-size:14px;color:#A39E98;border-top:1px solid #EDE8E0;}
+  footer a{color:#A39E98;text-decoration:none;}
+  footer a:hover{color:#7B2D48;}
+
+  html { scroll-padding-top: 20px; }
+  #pain { scroll-margin-top: 20px; }
+
+  @media(max-width:600px){
+    h1{font-size:30px;}.qual-grid{grid-template-columns:1fr;}
+    .hero{padding:28px 0 20px;}section{padding:20px 0;}.container{padding:0 12px;}
+    .inv-row{grid-template-columns:1fr;}
+    .inv-cell:first-child{border-right:none;border-bottom:1px solid #EDE8E0;}
+    .hero .hook{font-size:19px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO — connects to viral FBI Profiler carousel ── -->
+<section class="hero">
+  <div class="container">
+    <p class="hook">Вы сделали всё правильно.<br>И всё равно не сработало.</p>
+    <h1>Ловушка хорошей девочки.</h1>
+    <p class="hero-sub">Чего вам стоит следование правилам.</p>
+    <p class="hero-desc">В отношениях. В карьере. С деньгами. С самой собой.</p>
+    <p class="hero-desc">3 архетипа мужчин, которые выбирают в жертвы удобных женщин &middot; 47 дословных сценариев для работы, отношений, семьи, переговоров и себя.</p>
+    <div class="hero-price">
+      <span class="p-new" style="text-decoration:none;">$14.99</span>
+      <span class="p-label">Рабочая тетрадь в PDF</span>
+    </div>
+    <p style="font-size:14px;color:#A39E98;margin-top:6px;">Расширенное издание — теперь включает 47 дословных сценариев</p>
+    <div style="display:flex;justify-content:center;margin:16px 0 8px;">
+  <a href="https://secure.wayforpay.com/button/be1d548872a00" class="btn" target="_blank" rel="noopener">Купить — $14.99</a>
+</div>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- ── BRIDGE FROM CAROUSEL — what's actually inside ── -->
+<section style="background:#F8EEF2;padding:32px 0;">
+  <div class="container">
+    <h3 style="text-align:center;color:#7B2D48;">Что внутри руководства</h3>
+    <h2 style="text-align:center;margin-bottom:18px;">Больше, чем три фразы.</h2>
+    <ul style="list-style:none;max-width:540px;margin:0 auto;font-size:16px;color:#2D2A26;line-height:1.7;">
+      <li style="padding:8px 0 8px 28px;position:relative;border-bottom:1px solid rgba(123,45,72,0.15);">
+        <span style="position:absolute;left:0;color:#7B2D48;font-weight:700;">&rarr;</span>
+        Три типа мужчин, которые выбирают в жертвы удобных женщин &mdash; и как понять, который из них сейчас у вас в телефоне
+      </li>
+      <li style="padding:8px 0 8px 28px;position:relative;border-bottom:1px solid rgba(123,45,72,0.15);">
+        <span style="position:absolute;left:0;color:#7B2D48;font-weight:700;">&rarr;</span>
+        Карта по неделям &mdash; что проявляется на 1-м свидании, на 3-й неделе, во 2-м месяце
+      </li>
+      <li style="padding:8px 0 8px 28px;position:relative;border-bottom:1px solid rgba(123,45,72,0.15);">
+        <span style="position:absolute;left:0;color:#7B2D48;font-weight:700;">&rarr;</span>
+        47 дословных сценариев &mdash; для работы, отношений, семьи, переговоров и разговора с самой собой. Нужная фраза в нужный момент
+      </li>
+      <li style="padding:8px 0 8px 28px;position:relative;">
+        <span style="position:absolute;left:0;color:#7B2D48;font-weight:700;">&rarr;</span>
+        Диагностика, которая объясняет, почему вас снова и снова находит один и тот же тип мужчин
+      </li>
+      <li style="padding:8px 0 8px 28px;position:relative;">
+        <span style="position:absolute;left:0;color:#7B2D48;font-weight:700;">&rarr;</span>
+        <strong style="color:#7B2D48;">НОВОЕ:</strong> Приложение с 47 сценариями &mdash; самостоятельный справочник на те моменты, когда ловушка проявляется на работе, в переговорах и в вашей собственной голове
+      </li>
+    </ul>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- ── PAIN ── -->
+<section class="pain">
+  <div class="container">
+    <p>Вы сходили на свидание. Он говорил правильные вещи. Возможно, одна-две фразы заставили вас слегка насторожиться &mdash; &laquo;ты не такая, как все&raquo;, &laquo;такое чувство, что я знаю тебя целую вечность&raquo;. Вы списали это на химию.</p>
+    <p>Вы проделали работу. Вы ходили к терапевту. Вы перестали гоняться за недоступными мужчинами. Вы научились выстраивать границы. По любым меркам, вы из тех, кто к этому моменту уже должен быть в здоровых отношениях.</p>
+    <p>А потом вы оглядываетесь, и вас снова и снова находит один и тот же тип. Другое лицо. Тот же сюжет. Очарователен на первом свидании. Отдалён к четвёртому месяцу. Вы устали.</p>
+    <div class="highlight">&laquo;Быть хорошей должно было стать стратегией. Оказалось, что это была приманка.&raquo;</div>
+    <p>Это руководство о конкретной причине, почему так происходит снова и снова, &mdash; и о том, что вы можете сделать, когда научитесь называть этот паттерн. Не противоположность «быть хорошей». Нечто лучшее, чем ловушка.</p>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- ── INVERSION TABLE ── -->
+<section>
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:6px;">То, что вы называли добродетелью</h2>
+    <p style="text-align:center;color:#6B6560;margin-bottom:22px;font-size:17px;">Часто было чем-то совсем другим.</p>
+    <div class="inv-table">
+      <div class="inv-row inv-header">
+        <div class="inv-cell">Вы называли это</div>
+        <div class="inv-cell">На самом деле это было</div>
+      </div>
+      <div class="inv-row"><div class="inv-cell">Внимательность</div><div class="inv-cell">Страх платить цену за наличие потребностей</div></div>
+      <div class="inv-row"><div class="inv-cell">Терпение</div><div class="inv-cell">Ожидание разрешения, которое так и не пришло</div></div>
+      <div class="inv-row"><div class="inv-cell">Покладистость</div><div class="inv-cell">Избегание конфликтов, мешавшее настоящей близости</div></div>
+      <div class="inv-row"><div class="inv-cell">Трудолюбие</div><div class="inv-cell">Попытка заслужить любовь и одобрение результатом, а не присутствием</div></div>
+      <div class="inv-row"><div class="inv-cell">Независимость</div><div class="inv-cell">Усвоенная идея, что просить о помощи — значит быть обузой</div></div>
+      <div class="inv-row"><div class="inv-cell">Сила</div><div class="inv-cell">Демонстрация способностей, чтобы никто не увидел, как много вам нужно</div></div>
+    </div>
+    <p class="inv-note">В руководстве разобраны 12 инверсий. Здесь показаны 6 из них.</p>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- ── 4 ZONES ── -->
+<section>
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:6px;">Ловушка действует в четырёх зонах</h2>
+    <p style="text-align:center;color:#6B6560;margin-bottom:22px;font-size:17px;">И в каждой из них она выглядит точно как добродетель.</p>
+
+    <div class="zone-card">
+      <div class="zone-label">Зона 1 &middot; Отношения</div>
+      <div class="zone-title">Вас выбирают за удобство, а не за вас саму.</div>
+      <p class="zone-body">Вы подстраиваетесь. Вы уступаете. Вы не говорите, что вам нужно. Вас любят не за то, какая вы, &mdash; вас любят за удобство.</p>
+      <p class="zone-price">Цена: отношения, в которых от вас не требуется быть собой &mdash; потому что вы никогда ею и не были.</p>
+    </div>
+    <div class="zone-card mauve">
+      <div class="zone-label">Зона 2 &middot; Карьера</div>
+      <div class="zone-title">Вы работаете больше, чем вам платят.</div>
+      <p class="zone-body">Вы выполняете. Вы не жалуетесь. Вы смягчаете каждое письмо словами &laquo;просто&raquo; и &laquo;извините за беспокойство&raquo;. Те, кто делает меньше, но громче заявляет о себе, обгоняют вас.</p>
+      <p class="zone-price">Цена: карьера, которая отражает вашу уступчивость больше, чем вашу компетентность.</p>
+    </div>
+    <div class="zone-card gold">
+      <div class="zone-label">Зона 3 &middot; Деньги и статус</div>
+      <div class="zone-title">Вам обещали, что награда придёт.</div>
+      <p class="zone-body">Работай честно. Будь терпелива. Не выставляйся. Вы сделали всё это. Те, кто этого не делал, &mdash; некоторые из них живут той жизнью, которую должен был принести ваш подход.</p>
+      <p class="zone-price">Цена: финансовый рост, отстающий от ваших возможностей &mdash; потому что вы ждали разрешения.</p>
+    </div>
+    <div class="zone-card teal">
+      <div class="zone-label">Зона 4 &middot; Личность</div>
+      <div class="zone-title">Вы не знаете, кто вы, когда никто не смотрит.</div>
+      <p class="zone-body">Вы так долго подстраивали себя под то, что одобряют другие, что когда кто-то спрашивает, чего вы на самом деле хотите, &mdash; возникает пауза, длиннее, чем должна быть.</p>
+      <p class="zone-price">Цена: «я», собранное из чужих зон комфорта.</p>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- ── IS THIS FOR YOU ── -->
+<section>
+  <div class="container">
+    <h2 style="text-align:center;">Подходит ли это вам?</h2>
+    <div class="qual-grid">
+      <div class="qual-box yes">
+        <div class="label">Подходит, если</div>
+        <ul>
+          <li>Вы много работаете, а признания получаете меньше, чем те, кто работает меньше</li>
+          <li>Вы знаете потребности партнёра лучше, чем свои</li>
+          <li>Вы извиняетесь рефлекторно &mdash; даже когда не виноваты</li>
+          <li>Вы оставались в чём-то дольше, чем следовало, потому что уйти казалось эгоистичным</li>
+          <li>Вы лучше знаете, чего не хотите, чем чего хотите</li>
+        </ul>
+      </div>
+      <div class="qual-box no">
+        <div class="label">Не подходит, если</div>
+        <ul>
+          <li>Вы хотите остаться в паттерне, но чувствовать себя при этом лучше</li>
+          <li>Вы ищете разрешения плохо обращаться с людьми</li>
+          <li>В вашей ситуации присутствует насилие &mdash; пожалуйста, сначала обратитесь за профессиональной помощью</li>
+        </ul>
+      </div>
+    </div>
+    <div class="safety-box">
+      <div class="safety-label">&#9888; Примечание по безопасности</div>
+      <p>Если в ваших отношениях есть контроль, страх или любая форма насилия, пожалуйста, поговорите с квалифицированным специалистом, прежде чем работать с этим материалом. Crisis Text Line (США): отправьте HOME на 741741 &middot; crisistextline.org</p>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- ── REVIEWS — moved above What's Inside ── -->
+<section>
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:20px;">Что говорят читатели</h2>
+
+    <div class="review-card doubt">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">&laquo;Я чуть не отказалась от покупки. PDF? Серьёзно? Я прочитала всё за один вечер и сразу написала сестре, чтобы она тоже купила. Одни только сценарии стоят в 10 раз больше.&raquo;</p>
+      <div class="review-name">&mdash; Claire H., проверенный покупатель</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">&laquo;Одна только Таблица инверсий уже стоила своих денег. Годами я называла себя &bdquo;покладистой&ldquo;. Прочитать, что это было &bdquo;избегание конфликтов, мешавшее настоящей близости&ldquo; &mdash; я просидела над этим час.&raquo;</p>
+      <div class="review-name">&mdash; Sarah K., проверенный покупатель</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">&laquo;Сценарии из Части 5 &mdash; это то, чем я реально пользуюсь. На прошлой неделе я сказала своему руководителю: &bdquo;Я часто говорила, что мне всё равно &mdash; я перестану так делать и скажу вам, что я на самом деле думаю&ldquo;. Сработало.&raquo;</p>
+      <div class="review-name">&mdash; Jordan R., проверенный покупатель</div>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- ── FIRST CTA — after pain + proof ── -->
+<section style="padding:24px 0 28px;text-align:center;">
+  <div class="container">
+    <p style="font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:#2D2A26;margin-bottom:6px;">Вы увидели ловушку.</p>
+    <p style="font-size:17px;color:#6B6560;margin-bottom:20px;">Вот выход.</p>
+<div style="display:flex;justify-content:center;">
+  <a href="https://secure.wayforpay.com/button/be1d548872a00" class="btn" target="_blank" rel="noopener">Купить — $14.99</a>
+</div>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- ── WHAT'S INSIDE ── -->
+<section>
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:22px;">Что внутри</h2>
+    <div class="inside-item">
+      <div class="part-label">Диагностический тест</div>
+      <div class="inside-title">Узнаёте ли вы себя?</div>
+      <p class="inside-desc">10 утверждений. Не экзамен &mdash; зеркало. Большинство отмечает 6 и больше. Это отправная точка.</p>
+    </div>
+    <div class="inside-item">
+      <div class="part-label">Часть 1 &middot; Истоки</div>
+      <div class="inside-title">Где вы усвоили правила</div>
+      <p class="inside-desc">Семья. Школа. Культура. Индустрия саморазвития. Упражнение 1 точно показывает, откуда взялись ваши правила &mdash; и кому они на самом деле служат.</p>
+    </div>
+    <div class="inside-item">
+      <div class="part-label">Часть 2 &middot; Цена</div>
+      <div class="inside-title">Чего это стоит вам прямо сейчас</div>
+      <p class="inside-desc">Четыре зоны. Для каждой: что вы говорите себе, как это выглядит со стороны и какова конкретная цена. Зеркало, которое делает ловушку осязаемой.</p>
+    </div>
+    <div class="inside-item">
+      <div class="part-label">Часть 3 &middot; Инверсия</div>
+      <div class="inside-title">То, что вы называли добродетелью, часто было приспособлением</div>
+      <p class="inside-desc">12 инверсий. Внимательность. Терпение. Независимость. Сила. Каждая пересмотрена заново. Этот раздел люди снимают на скриншот и отправляют подругам.</p>
+    </div>
+    <div class="inside-item">
+      <div class="part-label">Часть 4 &middot; Паттерн</div>
+      <div class="inside-title">Почему вы снова и снова выбираете одного и того же человека</div>
+      <p class="inside-desc">Три архетипа: Спасатель, Добытчик, Призрак. Карта паттернов, которая показывает, какую динамику вы воспроизводите снова и снова, &mdash; и диагностический вопрос, дающий чёткий ответ.</p>
+    </div>
+    <div class="inside-item exit">
+      <div class="part-label">Часть 5 &middot; Выход</div>
+      <div class="inside-title">Не противоположность хорошему. Нечто лучшее.</div>
+      <p class="inside-desc">Каково это — настоящие перемены (и реалистичные сроки). Письмо самой себе, пока вы не забыли. Плюс полное приложение с 47 сценариями &mdash; дословные фразы для работы, отношений, семьи, переговоров и тех моментов, когда ловушка громче всего звучит в вашей собственной голове.</p>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- ── FAQ ── -->
+<section>
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:20px;">Быстрые вопросы</h2>
+    <div class="faq-item">
+      <div class="faq-q">Это только про отношения?</div>
+      <div class="faq-a">Нет. Руководство охватывает четыре зоны: отношения, карьеру, деньги и статус, личность. Ловушка проявляется везде, где вас учили быть маленькой. Большинство людей обнаруживает, что одна зона обходится им значительно дороже остальных &mdash; руководство помогает понять, какая именно и почему.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Сколько времени уходит на прохождение?</div>
+      <div class="faq-a">Основное руководство занимает 2&ndash;3 вечера. Пять упражнений, к каждому есть интерпретация, чтобы вы поняли, что означают ваши ответы. Приложение с 47 сценариями &mdash; это справочник: вы держите его в телефоне и открываете в тот момент, когда нужна фраза. Большинство людей пользуется им месяцами.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Это подходит и мужчинам?</div>
+      <div class="faq-a">Руководство написано для женщин, но эти паттерны &mdash; угодничество, заслуживание любви результатом, пребывание там, где уже нет смысла, &mdash; не зависят от пола. Мужчины, узнавшие себя в этом описании, находят его не менее полезным.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Что, если оно мне не пригодится?</div>
+      <div class="faq-a">Напишите на info@back4heart.site. Но большинство тех, кто начинает, доходит до конца &mdash; и это заложено в конструкции. Упражнения опираются друг на друга. К Части 3 вы уже найдёте ту фразу, которая попала в цель.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Как получить после покупки?</div>
+      <div class="faq-a">Мгновенно. Ссылка для скачивания приходит на вашу почту сразу после оплаты. PDF &mdash; открывается на телефоне, планшете или ноутбуке. Без приложения, без подписки.</div>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- ── FINAL CTA ── -->
+<section style="padding:32px 0 40px;">
+  <div class="container" style="text-align:center;">
+    <h2 style="margin-bottom:10px;">Вы пришли сюда не случайно.</h2>
+    <p style="max-width:440px;margin:0 auto 8px;color:#6B6560;">Мужчина произнёс одну из этих фраз. А может, две. Ваша нервная система уже знала. Вам просто нужно было, чтобы кто-то назвал это.</p>
+    <p class="mirror-line">Паттерн не делает паузу, пока вы раздумываете.</p>
+    <br>
+<div style="display:flex;justify-content:center;">
+  <a href="https://secure.wayforpay.com/button/be1d548872a00" class="btn" target="_blank" rel="noopener">Купить — $14.99</a>
+</div>
+
+    <!-- Bridge — visually quiet, secondary -->
+    <div class="bridge-box">
+      <div class="bridge-label">Также от @back4heart</div>
+      <p>Когда вы определите свой паттерн &mdash; Спасатель, Добытчик или Призрак, &mdash; <strong>Руководство по красным флагам</strong> покажет конкретные тревожные признаки, связанные с ним. Проделанная вами работа, применённая в реальном времени.</p>
+      <a href="/redflag/" class="bridge-btn">Смотреть Руководство по красным флагам &rarr;</a>
+    </div>
+  </div>
+</section>
+<footer style="text-align:center;padding:28px 20px 44px;font-size:14px;color:#A39E98;border-top:1px solid #EDE8E0;">
+  <a href="/" style="display:inline-block;padding:13px 32px;background:#2D8E5F;color:#fff;font-size:16px;font-weight:700;text-decoration:none;border-radius:12px;margin-bottom:18px;" target="_blank">← Все руководства</a>
+  <p style="margin-bottom:4px;">Вопросы? <a href="mailto:info@back4heart.site" style="color:#C0392B;text-decoration:none;">info@back4heart.site</a> &nbsp;·&nbsp; <a href="https://instagram.com/back4heart" target="_blank" style="color:#C0392B;text-decoration:none;">Instagram</a></p>
+  <p style="margin-bottom:14px;">15560 N Frank Lloyd Wright, Suite B4-7224, Scottsdale, AZ 85260, United States</p>
+  <p style="display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:10px;">
+    <a href="/contact/" style="color:#A39E98;text-decoration:none;">Контакты</a>
+    <a href="/terms/" style="color:#A39E98;text-decoration:none;">Условия использования</a>
+    <a href="/privacy/" style="color:#A39E98;text-decoration:none;">Конфиденциальность и возвраты</a>
+  </p>
+  <p style="color:#C8C2BB;">© 2026 back4heart · Роман Вельд | Все права защищены</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>

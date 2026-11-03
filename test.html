@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Тест «Соседи по квартире» — @back4heart</title>
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <meta name="description" content="6 вопросов. 2 минуты. Узнайте, не скатываются ли ваши отношения в режим «соседей по квартире»." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#FFFDF7;font-family:'DM Sans',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:16px}
+    #app{width:100%;max-width:520px;margin:auto}
+    footer{margin-top:auto;width:100%;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes slideIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+    @keyframes fillBar{from{width:0}}
+    .fade-in{animation:fadeIn .6s ease both}
+    .slide-in{animation:slideIn .4s ease both}
+    .btn-red{display:inline-block;background:#C0392B;color:#fff;border:none;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;letter-spacing:1.2px;padding:16px 32px;transition:background .2s;text-decoration:none;text-align:center}
+    .btn-red:hover{background:#a93226}
+    .btn-red.full{width:100%;display:block}
+    .answer-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+    .answer-btn{padding:16px 18px;border-radius:10px;border:2px solid #D0C8BF;background:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500;color:#1A1A1A;text-align:center;transition:all .15s ease}
+    .answer-btn:hover{border-color:#C0392B;background:#FDF0EE;color:#C0392B;font-weight:600}
+    .answer-btn .val{font-size:11px;color:#C0392B;margin-right:6px}
+    .progress-wrap{height:3px;background:#F0EBE4;border-radius:99px;overflow:hidden;margin-bottom:32px}
+    .progress-bar{height:100%;background:#C0392B;border-radius:99px;transition:width .4s ease}
+    .card{background:#F8F5F0;border:1px solid #E8DED3;border-radius:16px;padding:24px;margin-bottom:24px}
+    .card-dark{background:#1A1A1A;border-radius:16px;padding:24px;margin-bottom:24px;text-align:center}
+    .card-result{border-radius:16px;padding:24px;margin-bottom:24px}
+    input[type=email]{width:100%;padding:16px 20px;border-radius:10px;border:1px solid #E8DED3;background:#fff;font-family:'DM Sans',sans-serif;font-size:16px;color:#1A1A1A;margin-bottom:12px;outline:none;transition:border-color .2s;display:block}
+    input[type=email]:focus{border-color:#C0392B}
+    .serif{font-family:'Playfair Display',Georgia,serif}
+    .score-bar-wrap{height:8px;background:#F0EBE4;border-radius:99px;overflow:hidden;margin-bottom:8px}
+    .score-bar{height:100%;border-radius:99px;animation:fillBar 1.2s ease both}
+    .breakdown-bar-wrap{height:4px;background:#E8DED3;border-radius:99px;overflow:hidden}
+    .breakdown-bar{height:100%;border-radius:99px}
+    .rec-card{background:#fff;border:2px solid #C0392B;border-radius:16px;padding:24px;margin-bottom:24px;text-align:center}
+    .rec-label{font-size:12px;letter-spacing:2px;color:#C0392B;font-weight:600;margin-bottom:10px}
+    .rec-price{font-size:15px;color:#5A5A5A;margin-top:10px}
+    .divider{width:60px;height:2px;background:#C0392B;margin:0 auto 32px}
+    .screen{display:none}
+    .screen.active{display:block}
+  </style>
+</head>
+<body>
+<div id="app">
+
+  <div id="screen-intro" class="screen active fade-in" style="text-align:center">
+    <div style="font-size:12px;letter-spacing:3px;color:#C0392B;font-weight:300;margin-bottom:24px">ТЕСТ ОТ @BACK4HEART</div>
+    <h1 class="serif" style="font-size:42px;font-weight:700;color:#1A1A1A;line-height:1.1">Соседи по квартире</h1>
+    <h1 class="serif" style="font-size:42px;font-weight:700;color:#C0392B;line-height:1.1;margin-bottom:24px">Тест</h1>
+    <div class="divider"></div>
+    <p style="font-size:17px;color:#1A1A1A;line-height:1.6;margin-bottom:12px">6 вопросов. 2 минуты. Ответ, которого вы избегали.</p>
+    <p style="font-size:15px;color:#3A3A3A;line-height:1.6;margin-bottom:40px">Узнайте, не скатываются ли ваши отношения в режим «соседей по квартире», — и что с этим делать.</p>
+    <button class="btn-red" onclick="startTest()">ПРОЙТИ ТЕСТ</button>
+    <p style="font-size:11px;color:#5A5A5A;margin-top:20px">Бесплатно · Конфиденциально </p>
+  </div>
+
+  <div id="screen-questions" class="screen">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <span id="q-counter" style="font-size:12px;letter-spacing:2px;color:#C0392B"></span>
+      <span id="q-label" style="font-size:12px;color:#5A5A5A"></span>
+    </div>
+    <div class="progress-wrap"><div class="progress-bar" id="progress-bar" style="width:0"></div></div>
+    <div class="card"><p class="serif" id="q-text" style="font-size:20px;color:#1A1A1A;line-height:1.5"></p></div>
+    <p style="font-size:12px;color:#3A3A3A;letter-spacing:1.5px;text-align:center;margin-bottom:4px">НАСКОЛЬКО ЭТО ПРО ВАС?</p>
+    <div class="answer-grid" id="answer-grid"></div>
+  </div>
+
+  <div id="screen-result" class="screen fade-in">
+    <div style="text-align:center;padding:40px 0 32px">
+      <div style="font-size:12px;letter-spacing:3px;color:#C0392B;font-weight:300;margin-bottom:20px">ВАШ БАЛЛ «СОСЕДЕЙ ПО КВАРТИРЕ»</div>
+      <div class="serif" id="score-number" style="font-size:96px;font-weight:700;line-height:1"></div>
+      <div style="font-size:14px;color:#5A5A5A;margin-top:6px;margin-bottom:28px">из 60</div>
+      <div style="padding:0 8px;margin-bottom:32px">
+        <div class="score-bar-wrap"><div class="score-bar" id="score-bar"></div></div>
+        <div style="display:flex;justify-content:space-between;margin-top:6px">
+          <span style="font-size:10px;color:#5B8C5A">Близость</span>
+          <span style="font-size:10px;color:#C5A55A">Соседи</span>
+          <span style="font-size:10px;color:#C0392B">Параллельные жизни</span>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="text-align:center;padding:28px 24px">
+      <p id="result-tagline" style="font-size:17px;color:#1A1A1A;line-height:1.6;margin-bottom:0"></p>
+    </div>
+    <div class="rec-card">
+      <div class="rec-label">РЕКОМЕНДУЕМ ДЛЯ ВАШЕГО РЕЗУЛЬТАТА</div>
+      <h3 class="serif" id="rec-title" style="font-size:24px;font-weight:700;color:#1A1A1A;margin-bottom:10px"></h3>
+      <p id="rec-desc" style="font-size:15px;color:#3A3A3A;line-height:1.6;margin-bottom:20px;text-align:left"></p>
+      <a href="/thegame/" class="btn-red full" id="rec-btn" target="_blank">СМОТРЕТЬ РУКОВОДСТВО</a>
+    </div>
+    <div style="text-align:center;padding-bottom:40px"></div>
+  </div>
+
+</div>
+<script>
+  var questions = [
+    {id:"logistics",label:"Ловушка логистики",  text:"Наши разговоры в основном о задачах, расписании и домашних делах. Мы редко говорим о том, что на самом деле чувствуем."},
+    {id:"phone",    label:"Стена из телефонов",       text:"По вечерам мы больше смотрим в экраны, чем друг на друга. Телефоны присутствуют почти во всех наших совместных моментах."},
+    {id:"touch",    label:"Засуха прикосновений",    text:"Физический контакт между нами стал редким или автоматическим — быстрый чмок, привычное объятие. Мы не задерживаемся."},
+    {id:"curiosity",label:"Смерть любопытства",  text:"Не помню, когда партнёр в последний раз задавал мне настоящий вопрос о моём внутреннем мире — о страхах, мечтах или мыслях."},
+    {id:"effort",   label:"Невидимые усилия", text:"Мне часто кажется, что то, что я делаю, остаётся незамеченным. Никто из нас регулярно не говорит «спасибо» за ежедневные усилия."},
+    {id:"dreaming", label:"Мечты в одиночку",    text:"Свои тревоги, надежды и планы я переживаю в основном в собственной голове. Мы больше не делимся внутренними мирами."}
+  ];
+
+  var scale = [
+    {val:0,label:"Совсем нет"},{val:2,label:"Редко"},{val:4,label:"Иногда"},
+    {val:6,label:"Часто"},{val:8,label:"Очень часто"},{val:10,label:"Всегда"}
+  ];
+
+  var recs = {
+    early: {title:"Долгая игра", href:"/thegame/", btn:"СМОТРЕТЬ «ДОЛГУЮ ИГРУ» — $29.99",
+      desc:"Дрейф только начался — самое время его остановить. 30-дневная система на 10 минут в день: тест «Соседи по квартире» в День 1 и День 30, 30 ежедневных действий, 10 сценариев для трудных разговоров и протокол еженедельной встречи."},
+    mid: {title:"Долгая игра", href:"/thegame/", btn:"СМОТРЕТЬ «ДОЛГУЮ ИГРУ» — $29.99",
+      desc:"Режим «соседей» уже наступил — и 30-дневная система создана именно для этого. 30 ежедневных действий в 6 блоках (по 10 минут в день), каждое упражнение в двух версиях — вместе или в одиночку, 8 реальных историй пар и 10 дословных сценариев."},
+    high: {title:"Полная система отношений", href:"/complete/", btn:"СМОТРЕТЬ ПОЛНУЮ СИСТЕМУ — $49.99",
+      desc:"Параллельные жизни требуют больше, чем одного инструмента. 4 руководства и 3 бонуса: «Долгая игра» для возвращения близости, «Перезагрузка и сближение» для повторяющихся ссор, пакет «Трудные разговоры» и календарь для пар. 7 продуктов, одна покупка."}
+  };
+
+  function getResult(s) {
+    if(s<=18) return {level:"Early Drift",color:"#5B8C5A",
+      tagline:"Ваша связь всё ещё крепка. Я покажу, как сохранить её такой."};
+    if(s<=36) return {level:"Full Roommate Mode",color:"#C5A55A",
+      tagline:"Дистанция реальна — и это именно тот этап, на котором её пора заметить."};
+    return {level:"Parallel Lives",color:"#C0392B",
+      tagline:"Вы не одиноки с этим результатом. Многим парам удавалось вернуться отсюда."};
+  }
+
+  var currentQ=0, answers={};
+
+  function show(id){
+    document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active');});
+    document.getElementById('screen-'+id).classList.add('active');
+    window.scrollTo(0,0);
+  }
+
+  function startTest(){currentQ=0;answers={};renderQuestion();show('questions');}
+
+  function renderQuestion(){
+    var q=questions[currentQ];
+    document.getElementById('q-counter').textContent='ВОПРОС '+(currentQ+1)+' ИЗ '+questions.length;
+    document.getElementById('q-label').textContent=q.label;
+    document.getElementById('progress-bar').style.width=(currentQ/questions.length*100)+'%';
+    document.getElementById('q-text').textContent='«'+q.text+'»';
+    var grid=document.getElementById('answer-grid');
+    grid.innerHTML='';
+    scale.forEach(function(item){
+      var b=document.createElement('button');
+      b.className='answer-btn';
+      b.innerHTML=item.label;
+      b.onclick=function(){selectAnswer(item.val);};
+      grid.appendChild(b);
+    });
+    var qs=document.getElementById('screen-questions');
+    qs.style.animation='none';qs.offsetHeight;qs.style.animation='slideIn .4s ease both';
+  }
+
+  function selectAnswer(val){
+    answers[questions[currentQ].id]=val;
+    if(currentQ<questions.length-1){currentQ++;renderQuestion();}
+    else{
+      var score=0;
+      Object.values(answers).forEach(function(v){score+=v;});
+      renderResult(score,getResult(score));show('result');
+    }
+  }
+
+  function renderResult(score,r){
+    var el=document.getElementById('score-number');
+    el.textContent=score;
+    el.style.color=r.color;
+    var sb=document.getElementById('score-bar');
+    sb.style.width=(score/60*100)+'%';sb.style.background=r.color;
+    document.getElementById('result-tagline').textContent=r.tagline;
+    var rec=recs[r.level==='Early Drift'?'early':(r.level==='Full Roommate Mode'?'mid':'high')];
+    document.getElementById('rec-title').textContent=rec.title;
+    document.getElementById('rec-desc').textContent=rec.desc;
+    var rb=document.getElementById('rec-btn');rb.href=rec.href;rb.textContent=rec.btn;
+  }
+</script>
+<footer style="text-align:center;padding:28px 20px 44px;font-size:14px;color:#A39E98;border-top:1px solid #EDE8E0;">
+  <a href="/" style="display:inline-block;padding:13px 32px;background:#2D8E5F;color:#fff;font-size:16px;font-weight:700;text-decoration:none;border-radius:12px;margin-bottom:18px;" target="_blank">← Все руководства</a>
+  <p style="margin-bottom:4px;">Вопросы? <a href="mailto:info@back4heart.site" style="color:#C0392B;text-decoration:none;">info@back4heart.site</a> &nbsp;·&nbsp; <a href="https://instagram.com/back4heart" target="_blank" style="color:#C0392B;text-decoration:none;">Instagram</a></p>
+  <p style="margin-bottom:14px;">15560 N Frank Lloyd Wright, Suite B4-7224, Scottsdale, AZ 85260, United States</p>
+  <p style="display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:10px;">
+    <a href="/contact/" style="color:#A39E98;text-decoration:none;">Контакты</a>
+    <a href="/terms/" style="color:#A39E98;text-decoration:none;">Условия использования</a>
+    <a href="/privacy/" style="color:#A39E98;text-decoration:none;">Конфиденциальность и возвраты</a>
+  </p>
+  <p style="color:#C8C2BB;">© 2026 back4heart · Роман Вельд | Все права защищены</p>
+</footer> 

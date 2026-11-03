@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ДОЛГАЯ ИГРА - Почему одни пары вместе 25+ лет</title>
+<link rel="icon" href="/favicon.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #FAF7F2;
+    color: #2D2A26;
+    font-size: 18px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 680px; margin: 0 auto; padding: 0 14px; }
+  section { padding: 28px 0; }
+
+  h1 { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; line-height: 1.15; color: #2D2A26; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; line-height: 1.25; color: #2D2A26; margin-bottom: 18px; }
+  h3 { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: #C0392B; margin-bottom: 10px; }
+  p { margin-bottom: 14px; color: #4A4641; }
+  .muted { color: #8A8580; }
+
+  .hero { padding: 32px 0 24px; text-align: center; }
+  .hero h3 { margin-bottom: 12px; }
+  .hero h1 { margin-bottom: 8px; }
+  .hero .subtitle-25 { font-family: 'Playfair Display', serif; font-size: 20px; color: #6B6560; margin-bottom: 14px; font-style: italic; }
+  .hero .subtitle { font-size: 18px; color: #6B6560; max-width: 520px; margin: 0 auto 24px; line-height: 1.6; }
+  .hero-price { display: inline-flex; align-items: center; gap: 10px; background: #fff; border: 1.5px solid #E8E2DA; border-radius: 12px; padding: 10px 22px; margin-bottom: 20px; }
+  .hero-price .p-new { font-size: 26px; font-weight: 800; color: #C0392B; }
+  .hero-price .p-label { font-size: 15px; color: #8A8580; }
+
+  .btn { display: inline-block; padding: 16px 48px; background: #C0392B; color: #FFFFFF; font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 600; border: none; border-radius: 12px; cursor: pointer; text-decoration: none; transition: background 0.2s ease, transform 0.15s ease; }
+  .btn:hover { background: #A93226; transform: translateY(-1px); }
+  .btn-block { display: block; width: 100%; text-align: center; }
+  .btn-note { text-align: center; font-size: 14px; color: #A39E98; margin-top: 10px; }
+  .btn s { color: rgba(255,255,255,0.6); text-decoration: line-through; font-weight: 400; margin-right: 4px; }
+
+  .btn-green { display: inline-block; padding: 16px 48px; background: #27855A; color: #FFFFFF; font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 600; border: none; border-radius: 12px; cursor: pointer; text-decoration: none; transition: background 0.2s ease, transform 0.15s ease; margin-top: 20px; }
+  .btn-green:hover { background: #1f6e49; transform: translateY(-1px); }
+
+  .divider { border: none; border-top: 1px solid #EDE8E0; margin: 0; }
+
+  .pain p { font-size: 18px; }
+  .pain .highlight { background: #FFF8F0; border-left: 3px solid #C0392B; padding: 18px 20px; border-radius: 0 12px 12px 0; margin: 20px 0; font-style: italic; color: #6B6560; }
+
+  .qual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+  .qual-box { background: #FFFFFF; border-radius: 14px; padding: 20px; box-shadow: 0 1px 12px rgba(0,0,0,0.04); }
+  .qual-box .label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+  .qual-box.yes .label { color: #27855A; }
+  .qual-box.no .label { color: #A39E98; }
+  .qual-box ul { list-style: none; }
+  .qual-box ul li { font-size: 16px; line-height: 1.5; padding: 4px 0 4px 28px; position: relative; }
+  .qual-box ul li::before { position: absolute; left: 0; top: 4px; font-size: 14px; }
+  .qual-box.yes ul li::before { content: "✅"; }
+  .qual-box.no ul li::before { content: "❌"; }
+  .qual-box.no ul li { color: #8A8580; }
+
+  .inside-item { background: #FFFFFF; border-radius: 14px; padding: 20px 24px; margin-bottom: 12px; box-shadow: 0 1px 12px rgba(0,0,0,0.04); }
+  .inside-item .chapter-num { font-size: 13px; font-weight: 600; color: #C0392B; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .inside-item .chapter-title { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 600; color: #2D2A26; margin-bottom: 6px; }
+  .inside-item .chapter-desc { font-size: 15px; color: #6B6560; line-height: 1.6; margin: 0; }
+  .bonus-tag { display: inline-block; background: #FFF3E0; color: #C0392B; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 3px 10px; border-radius: 6px; margin-bottom: 6px; }
+
+  .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+  .ba-col { background: #FFFFFF; border-radius: 14px; padding: 20px; box-shadow: 0 1px 12px rgba(0,0,0,0.04); }
+  .ba-col .ba-label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+  .ba-col.before .ba-label { color: #A39E98; }
+  .ba-col.after .ba-label { color: #27855A; }
+  .ba-col ul { list-style: none; }
+  .ba-col ul li { font-size: 15px; line-height: 1.5; padding: 4px 0; color: #4A4641; }
+  .ba-col.before ul li { color: #8A8580; }
+
+  .quote-block { text-align: center; padding: 32px 20px; background: #FFFFFF; border-radius: 16px; box-shadow: 0 1px 12px rgba(0,0,0,0.04); margin: 24px 0; }
+  .quote-block .quote-text { font-family: 'Playfair Display', serif; font-size: 20px; font-style: italic; color: #4A4641; line-height: 1.5; max-width: 520px; margin: 0 auto 14px; }
+  .quote-block .quote-author { font-size: 14px; color: #A39E98; }
+
+  .final-cta { text-align: center; padding: 28px 0 40px; }
+  .final-cta h2 { margin-bottom: 14px; }
+  .final-cta p { max-width: 480px; margin: 0 auto 24px; color: #6B6560; }
+
+  footer { text-align: center; padding: 24px 20px; font-size: 14px; color: #A39E98; border-top: 1px solid #EDE8E0; }
+  footer a { color: #A39E98; text-decoration: none; }
+  footer a:hover { color: #C0392B; }
+
+  @media (max-width: 600px) {
+    .qual-grid { grid-template-columns: 1fr; gap: 12px; }
+    .ba-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 28px; }
+    .hero .subtitle { font-size: 17px; }
+    .hero { padding: 24px 0 20px; }
+    section { padding: 20px 0; }
+    .container { padding: 0 12px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="container">
+    <h3>Руководство от @back4heart</h3>
+    <h1>ДОЛГАЯ ИГРА</h1>
+    <p class="subtitle-25">Почему одни пары вместе 25+ лет</p>
+    <p class="subtitle">30-дневная система, которая вернёт вас из «по сути соседей» обратно в настоящих партнёров. Даже если стараетесь только вы.</p>
+     <div class="hero-price">
+      <span style="font-size:18px;color:#A39E98;text-decoration:line-through;font-weight:400;">$97</span>
+      <span class="p-new">$29.99</span>
+      <span class="p-label">· PDF мгновенно · Мгновенная доставка</span>
+    </div>
+    <div style="display:flex;justify-content:center;">
+      <a href="https://secure.wayforpay.com/button/beff5206c5cb8" class="btn" target="_blank" rel="noopener">Купить — $29.99</a>
+ 
+</section>
+<hr class="divider">
+
+<section class="pain">
+  <div class="container">
+    <p>Он заходит в дверь, а вы едва поднимаете глаза. Не потому что злитесь. А потому что в какой-то момент вы просто перестали поднимать глаза.</p>
+    <p>Ужин — это расписания и счета. Постель — это двое людей с двумя телефонами. Последний настоящий разговор, где вы действительно сказали, что чувствуете, был так давно, что вы не можете вспомнить когда.</p>
+    <p>Ничего плохого не происходит. Но и ничего хорошего не чувствуется.</p>
+    <div class="highlight">
+      Вы не разваливаетесь. Вы угасаете. И это на самом деле сложнее исправить — потому что нет кризиса, на который можно отреагировать. Только медленная, тихая дистанция, которая с каждой неделей становится чуть шире.
+    </div>
+    <p>Вы, вероятно, гуглили. Читали статьи. Возможно, даже говорили об этом подруге, а она сказала: «это просто брак». Как будто жить на автопилоте — то, с чем нужно смириться.</p>
+    <p>Это не так. И это руководство существует потому, что сотни пар вернулись именно оттуда, где вы находитесь сейчас.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section>
+  <div class="container">
+    <h2 style="text-align:center;">Подходит ли это вам?</h2>
+    <div class="qual-grid">
+      <div class="qual-box yes">
+        <div class="label">Подходит, если</div>
+        <ul>
+          <li>Вы любите его, но чувствуете себя скорее совместными управляющими, чем парой</li>
+          <li>Ваши разговоры на 90% — логистика и на 10% — настоящий разговор</li>
+          <li>Вы скучаете по близости, но не знаете, как её вернуть</li>
+          <li>Вам нужна ежедневная система, а не мотивационные цитаты</li>
+          <li>Вы готовы сделать первый шаг — даже если он не прочтёт ни одной страницы</li>
+        </ul>
+      </div>
+      <div class="qual-box no">
+        <div class="label">Не подходит, если</div>
+        <ul>
+          <li>Вы ищете подтверждение, что всё кончено</li>
+          <li>Вы хотите, чтобы он изменился, а вы ничего не меняли</li>
+          <li>В ваших отношениях есть насилие, угрозы или проблемы с безопасностью</li>
+        </ul>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;margin-top:24px;">
+      <a href="https://secure.wayforpay.com/button/beff5206c5cb8" class="btn" target="_blank" rel="noopener">Купить — $29.99</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section>
+  <div class="container">
+    <h2 style="text-align:center; margin-bottom:24px;">Что внутри</h2>
+
+    <div class="inside-item">
+      <div class="chapter-num">Главы 1-2</div>
+      <div class="chapter-title">Тест «Соседи по квартире»</div>
+      <p class="chapter-desc">Диагностический инструмент, который оценивает ваши отношения по шести паттернам. Вы проходите его в День 1 и снова в День 30. Разница между результатами — ваше доказательство, что это работает.</p>
+    </div>
+
+    <div class="inside-item">
+      <div class="chapter-num">Глава 3</div>
+      <div class="chapter-title">Почему один человек может изменить всё</div>
+      <p class="chapter-desc">Исследования показывают: когда один партнёр меняет своё поведение, другой начинает отвечать в течение 2-4 недель. Вам не нужно его разрешение, чтобы начать. Вам нужно просто сделать первый шаг.</p>
+    </div>
+
+    <div class="inside-item">
+      <div class="chapter-num">Главы 4-9</div>
+      <div class="chapter-title">Шесть паттернов, которые вас держат</div>
+      <p class="chapter-desc">Ловушка логистики. Стена из телефонов. Засуха прикосновений. Смерть любопытства. Невидимые усилия. Мечты в одиночку. Каждому посвящена глава с конкретными инструментами, которые можно применить в тот же вечер.</p>
+    </div>
+
+    <div class="inside-item">
+      <div class="chapter-num">Глава 11</div>
+      <div class="chapter-title">30-дневный челлендж по восстановлению близости</div>
+      <p class="chapter-desc">Одно действие в день. Ни один день не занимает больше 10 минут. Шесть 5-дневных блоков, каждый нацелен на свой «соседский» паттерн. К Дню 30 вы восстановите привычки, на потерю которых ушли месяцы.</p>
+    </div>
+
+    <div class="inside-item">
+      <span class="bonus-tag">Бонус</span>
+      <div class="chapter-title">10 сценариев для трудных разговоров</div>
+      <p class="chapter-desc">Дословные фразы на случай, когда вы чувствуете себя забытой, когда нужно поднять повторяющуюся проблему, когда хочется извиниться без «но». Скопируйте их в сообщение. Скажите за ужином. Они работают.</p>
+    </div>
+
+    <div class="inside-item">
+      <span class="bonus-tag">Бонус</span>
+      <div class="chapter-title">Протокол еженедельной встречи</div>
+      <p class="chapter-desc">Пять вопросов, 15 минут, каждое воскресенье. Это позволяет заметить невысказанные потребности, пока они не превратились в обиды. Пары, которые делают это каждую неделю, сообщают о меньшем числе ссор и более быстром восстановлении.</p>
+    </div>
+
+    <div class="inside-item">
+      <span class="bonus-tag">Бонус</span>
+      <div class="chapter-title">Рабочие листы для печати</div>
+      <p class="chapter-desc">Шаблоны еженедельных встреч. Журнал восстановления после ссоры. Рабочий лист видения отношений. Распечатайте, заполните вместе, храните на видном месте.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section>
+  <div class="container">
+    <h2 style="text-align:center; margin-bottom:24px;">До и после 30 дней</h2>
+    <div class="ba-grid">
+      <div class="ba-col before">
+        <div class="ba-label">До</div>
+        <ul>
+          <li>«Как прошёл день?» «Нормально».</li>
+          <li>Ужин = дела, счета, дети, тишина</li>
+          <li>Два телефона, два мира, одна постель</li>
+          <li>Быстрый чмок на пороге</li>
+          <li>Вы переживаете всё в собственной голове</li>
+          <li>«У нас всё хорошо. Мы просто... заняты».</li>
+        </ul>
+      </div>
+      <div class="ba-col after">
+        <div class="ba-label">После</div>
+        <ul>
+          <li>«Что у тебя на уме такого, о чём ты никому не говорил?»</li>
+          <li>Ужин = настоящие вопросы, настоящие ответы, настоящий зрительный контакт</li>
+          <li>Телефоны на кухне. Разговор в спальне.</li>
+          <li>10-секундное объятие, в которое вы оба погружаетесь</li>
+          <li>Вы делитесь тревогами, мечтами и странными идеями вслух</li>
+          <li>«Что-то изменилось. Не знаю когда, но я это чувствую».</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="quote-block">
+    <p class="quote-text">«Самое опасное в долгих отношениях — не конфликт. Это безразличие. Конфликт значит, что вам ещё не всё равно. Безразличие значит, что вы перестали стараться».</p>
+    <p class="quote-author">- ДОЛГАЯ ИГРА, Глава 1</p>
+  </div>
+</div>
+
+<section class="final-cta">
+  <div class="container">
+    <h2>Вам было не всё равно, раз вы дочитали до этого места</h2>
+    <p>Это уже ставит вас впереди большинства людей. У пар, которые вернулись из режима «соседей», было одно общее: кто-то сделал первый шаг.</p>
+    <div style="display:flex;justify-content:center;">
+      <a href="https://secure.wayforpay.com/button/beff5206c5cb8" class="btn" target="_blank" rel="noopener">Купить — $29.99</a>
+    </div>
+    <p class="btn-note">PDF мгновенно. 60 страниц. Придёт на вашу почту после оплаты.</p>
+  </div>
+</section>
+
+<footer style="text-align:center;padding:28px 20px 44px;font-size:14px;color:#A39E98;border-top:1px solid #EDE8E0;">
+  <a href="/" style="display:inline-block;padding:13px 32px;background:#2D8E5F;color:#fff;font-size:16px;font-weight:700;text-decoration:none;border-radius:12px;margin-bottom:18px;" target="_blank">← Все руководства</a>
+  <p style="margin-bottom:4px;">Вопросы? <a href="mailto:info@back4heart.site" style="color:#C0392B;text-decoration:none;">info@back4heart.site</a> &nbsp;·&nbsp; <a href="https://instagram.com/back4heart" target="_blank" style="color:#C0392B;text-decoration:none;">Instagram</a></p>
+  <p style="margin-bottom:14px;">15560 N Frank Lloyd Wright, Suite B4-7224, Scottsdale, AZ 85260, United States</p>
+  <p style="display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:10px;">
+    <a href="/contact/" style="color:#A39E98;text-decoration:none;">Контакты</a>
+    <a href="/terms/" style="color:#A39E98;text-decoration:none;">Условия использования</a>
+    <a href="/privacy/" style="color:#A39E98;text-decoration:none;">Конфиденциальность и возвраты</a>
+  </p>
+  <p style="color:#C8C2BB;">© 2026 back4heart · Роман Вельд | Все права защищены</p>
+</footer>
+
+</body>
+</html>

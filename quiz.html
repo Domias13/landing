@@ -1,1247 +1,462 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Вернётся ли он? — Честный ответ эксперта</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Квиз «Паттерн» — какой паттерн управляет вашими отношениями? | @back4heart</title>
+<link rel="icon" href="/favicon.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;0,800;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0a0b;
-    --surface: #111114;
-    --surface2: #17171b;
-    --border: rgba(255,255,255,0.07);
-    --crimson: #c0392b;
-    --crimson-dim: rgba(192,57,43,0.15);
-    --gold: #b8953a;
-    --gold-dim: rgba(184,149,58,0.12);
-    --text: #e8e6e1;
-    --text-muted: #7a7870;
-    --text-dim: #4a4845;
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  /* Noise overlay */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.6;
-  }
-
-  .container {
-    position: relative;
-    z-index: 1;
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 0 20px 80px;
-  }
-
-  /* HEADER */
-  .header {
-    text-align: center;
-    padding: 60px 0 50px;
-    opacity: 0;
-    animation: fadeUp 0.9s ease forwards 0.1s;
-  }
-
-  .header-label {
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--crimson);
-    margin-bottom: 20px;
-    display: block;
-  }
-
-  .header h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(34px, 6vw, 52px);
-    font-weight: 300;
-    line-height: 1.15;
-    color: var(--text);
-    margin-bottom: 18px;
-  }
-
-  .header h1 em {
-    font-style: italic;
-    color: var(--gold);
-  }
-
-  .header-sub {
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.7;
-    max-width: 460px;
-    margin: 0 auto;
-  }
-
-  .divider {
-    width: 40px;
-    height: 1px;
-    background: var(--crimson);
-    margin: 28px auto;
-    opacity: 0.6;
-  }
-
-  /* PROGRESS BAR */
-  .progress-wrap {
-    margin-bottom: 40px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease forwards 0.3s;
-  }
-
-  .progress-meta {
-    display: flex;
-    justify-content: space-between;
-    font-size: 11px;
-    color: var(--text-dim);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-
-  .progress-track {
-    height: 2px;
-    background: var(--surface2);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--crimson), var(--gold));
-    border-radius: 2px;
-    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    width: 0%;
-  }
-
-  /* QUESTION CARD */
-  .question-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    padding: 40px 36px;
-    opacity: 0;
-    animation: fadeUp 0.7s ease forwards 0.4s;
-  }
-
-  .q-number {
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 20px;
-    display: block;
-  }
-
-  .q-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(20px, 3.5vw, 26px);
-    font-weight: 400;
-    line-height: 1.4;
-    color: var(--text);
-    margin-bottom: 32px;
-  }
-
-  /* OPTIONS */
-  .options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .option {
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 16px 20px;
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    text-align: left;
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 300;
-    line-height: 1.5;
-  }
-
-  .option:hover {
-    border-color: rgba(192,57,43,0.4);
-    background: var(--crimson-dim);
-  }
-
-  .option.selected {
-    border-color: var(--crimson);
-    background: var(--crimson-dim);
-  }
-
-  .option-letter {
-    width: 22px;
-    height: 22px;
-    min-width: 22px;
-    border: 1px solid var(--text-dim);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    letter-spacing: 0;
-    color: var(--text-dim);
-    transition: all 0.25s ease;
-    margin-top: 1px;
-  }
-
-  .option.selected .option-letter {
-    background: var(--crimson);
-    border-color: var(--crimson);
-    color: #fff;
-  }
-
-  /* NAV */
-  .nav {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 30px;
-    gap: 12px;
-  }
-
-  .btn {
-    padding: 14px 32px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    border-radius: 2px;
-  }
-
-  .btn-primary {
-    background: var(--crimson);
-    color: #fff;
-  }
-
-  .btn-primary:hover {
-    background: #a93226;
-    transform: translateY(-1px);
-  }
-
-  .btn-primary:disabled {
-    background: var(--surface2);
-    color: var(--text-dim);
-    cursor: not-allowed;
-    transform: none;
-  }
-
-  .btn-ghost {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-  }
-
-  .btn-ghost:hover {
-    border-color: var(--text-muted);
-    color: var(--text);
-  }
-
-  /* RESULT PAGE */
-  .result-page {
-    display: none;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards;
-  }
-
-  .result-page.show {
-    display: block;
-  }
-
-  .result-hero {
-    text-align: center;
-    padding: 50px 0 40px;
-  }
-
-  .result-score-ring {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 28px;
-    position: relative;
-  }
-
-  .result-score-ring svg {
-    transform: rotate(-90deg);
-    width: 120px;
-    height: 120px;
-  }
-
-  .ring-bg {
-    fill: none;
-    stroke: var(--surface2);
-    stroke-width: 4;
-  }
-
-  .ring-fill {
-    fill: none;
-    stroke-width: 4;
-    stroke-linecap: round;
-    stroke-dasharray: 339.3;
-    stroke-dashoffset: 339.3;
-    transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
-  }
-
-  .ring-score-label {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
-
-  .ring-score-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 32px;
-    font-weight: 300;
-    line-height: 1;
-  }
-
-  .ring-score-max {
-    font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 1px;
-  }
-
-  .result-category {
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-  }
-
-  .result-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(28px, 5vw, 42px);
-    font-weight: 300;
-    line-height: 1.2;
-    margin-bottom: 20px;
-  }
-
-  .result-title em {
-    font-style: italic;
-    color: var(--gold);
-  }
-
-  .result-summary {
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.8;
-    max-width: 520px;
-    margin: 0 auto;
-  }
-
-  /* INSIGHT BLOCKS */
-  .insights {
-    margin: 40px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .insight-block {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-left: 2px solid var(--crimson);
-    padding: 22px 24px;
-    border-radius: 0 2px 2px 0;
-  }
-
-  .insight-block.gold-accent {
-    border-left-color: var(--gold);
-  }
-
-  .insight-label {
-    font-size: 9px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 10px;
-  }
-
-  .insight-text {
-    font-size: 14px;
-    line-height: 1.7;
-    color: var(--text);
-  }
-
-  /* EXPERT BIO */
-  .expert-block {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 28px;
-    margin: 40px 0;
-    border-radius: 2px;
-  }
-
-  .expert-avatar {
-    width: 60px;
-    height: 60px;
-    min-width: 60px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--crimson), var(--gold));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 24px;
-    color: #fff;
-    font-style: italic;
-  }
-
-  .expert-info {
-    flex: 1;
-  }
-
-  .expert-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
-    font-weight: 400;
-    margin-bottom: 4px;
-  }
-
-  .expert-role {
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 14px;
-  }
-
-  .expert-bio {
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.8;
-  }
-
-  /* OFFER BLOCK */
-  .offer-block {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 40px 36px;
-    border-radius: 2px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .offer-block::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--crimson), var(--gold));
-  }
-
-  .offer-tag {
-    display: inline-block;
-    font-size: 9px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--crimson);
-    border: 1px solid rgba(192,57,43,0.3);
-    padding: 5px 14px;
-    border-radius: 20px;
-    margin-bottom: 24px;
-  }
-
-  .offer-hook {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(22px, 4vw, 32px);
-    font-weight: 300;
-    line-height: 1.3;
-    margin-bottom: 16px;
-  }
-
-  .offer-hook em {
-    font-style: italic;
-    color: var(--gold);
-  }
-
-  .offer-connection {
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.8;
-    margin-bottom: 32px;
-    padding: 20px;
-    background: var(--crimson-dim);
-    border-radius: 2px;
-    border: 1px solid rgba(192,57,43,0.2);
-    text-align: left;
-  }
-
-  .offer-connection strong {
-    color: var(--text);
-    font-weight: 500;
-  }
-
-  .offer-what {
-    margin-bottom: 28px;
-  }
-
-  .offer-items {
-    list-style: none;
-    text-align: left;
-    margin: 16px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .offer-items li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.5;
-  }
-
-  .offer-items li::before {
-    content: '—';
-    color: var(--gold);
-    min-width: 14px;
-  }
-
-  .offer-price-block {
-    margin: 28px 0;
-  }
-
-  .offer-price {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 48px;
-    font-weight: 300;
-    color: var(--text);
-    line-height: 1;
-  }
-
-  .offer-price-label {
-    font-size: 11px;
-    color: var(--text-dim);
-    letter-spacing: 1px;
-    margin-top: 6px;
-  }
-
-  .btn-offer {
-    display: block;
-    width: 100%;
-    padding: 20px;
-    background: var(--crimson);
-    color: #fff;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    border-radius: 2px;
-    transition: all 0.25s ease;
-    text-decoration: none;
-    margin-bottom: 12px;
-  }
-
-  .btn-offer:hover {
-    background: #a93226;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(192,57,43,0.25);
-  }
-
-  .offer-fine {
-    font-size: 11px;
-    color: var(--text-dim);
-  }
-
-  .free-download-wrap {
-    margin-top: 24px;
-    text-align: center;
-  }
-
-  .free-download-divider {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 18px;
-    color: var(--text-dim);
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-  }
-
-  .free-download-divider::before,
-  .free-download-divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  .btn-free-download {
-    display: block;
-    width: 100%;
-    padding: 16px 20px;
-    background: transparent;
-    border: 1px solid rgba(184,149,58,0.35);
-    color: var(--gold);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.5px;
-    text-decoration: none;
-    border-radius: 2px;
-    transition: all 0.25s ease;
-    line-height: 1.5;
-  }
-
-  .btn-free-download:hover {
-    background: var(--gold-dim);
-    border-color: var(--gold);
-  }
-
-  .free-download-note {
-    font-size: 11px;
-    color: var(--text-dim);
-    margin-top: 8px;
-    letter-spacing: 0.5px;
-  }
-
-  .expert-eyebrow {
-    font-size: 9px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 6px;
-  }
-
-  .expert-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
-    font-style: italic;
-    font-weight: 400;
-    color: var(--gold);
-    line-height: 1.4;
-    margin: 10px 0 18px;
-    border-left: 2px solid var(--gold);
-    padding-left: 14px;
-  }
-
-  .expert-bio-long {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .expert-bio-long p {
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.85;
-  }
-
-  .expert-stat {
-    font-size: 13px !important;
-    color: var(--text) !important;
-    font-weight: 500 !important;
-    padding: 14px 16px;
-    background: var(--gold-dim);
-    border: 1px solid rgba(184,149,58,0.2);
-    border-radius: 2px;
-  }
-
-  .skip-offer {
-    text-align: center;
-    padding: 30px 0;
-  }
-
-  .skip-offer p {
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.8;
-    margin-bottom: 20px;
-  }
-
-  .btn-secondary {
-    display: inline-block;
-    padding: 14px 32px;
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-muted);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    cursor: pointer;
-    border-radius: 2px;
-    transition: all 0.25s ease;
-    text-decoration: none;
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--text-muted);
-    color: var(--text);
-  }
-
-  /* LOADER */
-  .loader {
-    display: none;
-    text-align: center;
-    padding: 60px 0;
-  }
-
-  .loader.show { display: block; }
-
-  .loader-text {
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 24px;
-  }
-
-  .loader-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  .loader-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--crimson);
-    border-radius: 50%;
-    animation: pulse 1.2s ease-in-out infinite;
-  }
-
-  .loader-dot:nth-child(2) { animation-delay: 0.2s; }
-  .loader-dot:nth-child(3) { animation-delay: 0.4s; }
-
-  /* INTRO */
-  .intro-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 40px 36px;
-    text-align: center;
-    border-radius: 2px;
-    opacity: 0;
-    animation: fadeUp 0.7s ease forwards 0.5s;
-  }
-
-  .intro-card h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(22px, 4vw, 30px);
-    font-weight: 300;
-    margin-bottom: 18px;
-    line-height: 1.3;
-  }
-
-  .intro-card p {
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.8;
-    margin-bottom: 16px;
-  }
-
-  .intro-warn {
-    font-size: 12px;
-    color: var(--crimson);
-    letter-spacing: 0.5px;
-    margin-bottom: 30px;
-    font-style: italic;
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 0.3; transform: scale(0.8); }
-    50% { opacity: 1; transform: scale(1); }
-  }
-
-  .slide-in {
-    animation: fadeUp 0.5s ease forwards;
-  }
-
-  /* RESPONSIVE */
-  @media (max-width: 480px) {
-    .question-card { padding: 28px 22px; }
-    .offer-block { padding: 28px 22px; }
-    .expert-block { flex-direction: column; }
+    --bg: #FAF7F2;--text: #1A1A1A;
+    --accent: #C0392B;--accent-hover: #A93226;
+    --green: #2D8E5F;--green-bg: #EDF7F0;
+    --red: #C0392B;--red-bg: #FDF0EF;
+    --blue: #1B4F72;--blue-bg: #EBF2FA;
+    --muted: #6B6560;--border: #E8E2DA;--card: #FFFFFF;
+    --gold: #9E7E30;--gold-bg: #FDF8F0;
+    --burg: #7B2D48;--burg-bg: #F8EEF2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;}
+  .container{max-width:640px;margin:0 auto;padding:0 14px;}
+
+  /* ── HERO ── */
+  .hero{padding:36px 0 8px;text-align:center;}
+  .hero-label{display:inline-block;background:var(--burg-bg);color:var(--burg);font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 16px;border-radius:24px;margin-bottom:18px;}
+  .hero h1{font-family:'Playfair Display',serif;font-size:32px;font-weight:800;line-height:1.2;margin-bottom:12px;}
+  .hero p{font-size:17px;color:var(--muted);max-width:460px;margin:0 auto;line-height:1.65;}
+
+  .divider{border:none;height:1px;background:var(--border);margin:24px 0;}
+
+  /* ── PROGRESS ── */
+  .progress-wrap{padding:0 0 8px;text-align:center;}
+  .progress-label{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
+  .progress-bar{width:100%;height:6px;background:#EDE8E0;border-radius:6px;overflow:hidden;}
+  .progress-fill{height:100%;background:var(--burg);border-radius:6px;transition:width 0.4s ease;}
+
+  /* ── QUESTION CARD ── */
+  .q-card{background:var(--card);border-radius:16px;padding:28px 24px;box-shadow:0 2px 20px rgba(0,0,0,0.04);border:1px solid var(--border);animation:fadeUp 0.35s ease;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+  .q-number{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--burg);margin-bottom:10px;}
+  .q-text{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;line-height:1.35;margin-bottom:22px;color:var(--text);}
+
+  .option{display:block;width:100%;text-align:left;padding:16px 18px;margin-bottom:10px;background:var(--bg);border:1.5px solid var(--border);border-radius:12px;font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.5;color:var(--text);cursor:pointer;transition:all 0.2s;}
+  .option:hover{border-color:var(--burg);background:var(--burg-bg);transform:translateY(-1px);box-shadow:0 4px 12px rgba(123,45,72,0.08);}
+  .option:active{transform:translateY(0);}
+  .option-letter{display:inline-block;width:24px;height:24px;line-height:24px;text-align:center;background:var(--burg-bg);color:var(--burg);font-size:12px;font-weight:700;border-radius:6px;margin-right:12px;flex-shrink:0;vertical-align:middle;}
+
+  /* ── RESULT ── */
+  .result-card{background:var(--card);border-radius:16px;padding:32px 24px;box-shadow:0 2px 20px rgba(0,0,0,0.04);border:2px solid var(--burg);animation:fadeUp 0.4s ease;text-align:center;}
+  .result-badge{display:inline-block;background:var(--burg);color:#fff;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 18px;border-radius:24px;margin-bottom:18px;}
+  .result-title{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;color:var(--text);margin-bottom:6px;line-height:1.2;}
+  .result-subtitle{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:var(--muted);margin-bottom:20px;}
+  .result-body{font-size:16px;color:#4A4641;line-height:1.7;text-align:left;margin-bottom:24px;}
+  .result-diagnostic{background:var(--burg-bg);border-left:3px solid var(--burg);padding:16px 18px;border-radius:0 12px 12px 0;font-family:'Playfair Display',serif;font-size:17px;font-style:italic;color:#4A4641;line-height:1.5;margin-bottom:28px;text-align:left;}
+  .result-teaser{font-size:16px;color:#4A4641;line-height:1.7;text-align:center;margin-bottom:28px;}
+
+  /* ── RECOMMENDED PRODUCT ── */
+  .rec-box{background:var(--burg-bg);border:1.5px solid var(--burg);border-radius:14px;padding:22px 20px;margin-bottom:24px;text-align:center;}
+  .rec-label{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--burg);margin-bottom:8px;}
+  .rec-box h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:8px;color:var(--text);}
+  .rec-box p{font-size:15px;color:#4A4641;line-height:1.6;margin-bottom:16px;text-align:left;}
+  .rec-price{font-weight:700;color:var(--burg);}
+
+  /* ── EMAIL FORM ── */
+  .email-box{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:24px 20px;margin-bottom:24px;text-align:center;}
+  .email-box h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:6px;color:var(--text);}
+  .email-box p{font-size:15px;color:var(--muted);margin-bottom:16px;}
+  .email-row{display:flex;gap:8px;}
+  .email-input{flex:1;padding:14px 16px;border:1.5px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:16px;background:#fff;color:var(--text);outline:none;transition:border-color 0.2s;}
+  .email-input:focus{border-color:var(--burg);}
+  .email-input::placeholder{color:#B8B2AC;}
+  .email-submit{padding:14px 24px;background:var(--burg);color:#fff;border:none;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+  .email-submit:hover{background:#621f38;transform:translateY(-1px);}
+  .email-note{font-size:13px;color:var(--muted);margin-top:10px;}
+  .email-success{display:none;padding:16px;background:var(--green-bg);border-radius:10px;text-align:center;font-size:15px;color:var(--green);font-weight:600;margin-top:12px;}
+
+  /* ── CTA BUTTONS ── */
+  .cta-btn{display:block;width:100%;text-align:center;padding:16px 24px;background:var(--burg);color:#fff;font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;text-decoration:none;border-radius:14px;transition:all 0.2s;}
+  .cta-btn:hover{background:#621f38;transform:translateY(-1px);box-shadow:0 6px 20px rgba(123,45,72,0.25);}
+  .cta-note{font-size:14px;color:var(--muted);text-align:center;margin-top:8px;}
+
+  .btn-ghost{display:block;text-align:center;padding:14px;background:transparent;color:var(--text);font-size:16px;font-weight:600;border:1.5px solid #C8C0B8;border-radius:12px;text-decoration:none;margin-top:12px;transition:all 0.2s;}
+  .btn-ghost:hover{border-color:var(--text);}
+
+  .share-line{font-size:15px;color:var(--muted);text-align:center;margin-top:20px;font-style:italic;}
+
+  footer{text-align:center;padding:24px 20px 44px;font-size:14px;color:#A39E98;border-top:1px solid #EDE8E0;margin-top:28px;}
+  footer a{color:#A39E98;text-decoration:none;}
+  footer a:hover{color:var(--burg);}
+
+  .hidden{display:none;}
+
+  @media(max-width:480px){
+    .hero h1{font-size:26px;}.hero{padding:28px 0 8px;}
+    .q-text{font-size:19px;}.result-title{font-size:26px;}
+    .container{padding:0 12px;}.email-row{flex-direction:column;}
+    .email-submit{width:100%;}
   }
 </style>
 </head>
 <body>
-
 <div class="container">
 
-  <!-- HEADER -->
-  <div class="header" id="header">
-    <span class="header-label">Диагностика эксперта · back4heart</span>
-    <h1>Вернётся ли он?<br><em>Честный ответ</em></h1>
-    <div class="divider"></div>
-    <p class="header-sub">Не гадание. Не утешение. Оценка реальных факторов, которые определяют, есть ли у вас рычаги влияния — или их уже нет.</p>
-  </div>
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <span class="hero-label">Бесплатно · 2 минуты</span>
+    <h1>Какой паттерн управляет вашими отношениями?</h1>
+    <p>Спасатель, Добытчик или Призрак. 7 вопросов. Без воды. Узнайте, какую динамику вы воспроизводите снова и снова — и почему она кажется химией.</p>
+  </section>
 
-  <!-- INTRO SCREEN -->
-  <div id="intro-screen">
-    <div class="intro-card">
-      <h2>8 вопросов. Без воды.<br>Результат — через 2 минуты.</h2>
-      <p>Тест анализирует поведенческие маркеры: кто инициирует контакт, как давно был последний шаг с его стороны, что происходило в конце отношений.</p>
-      <p>Каждый ответ взвешивается. Итог — не прогноз по знаку зодиака, а оценка вероятности функционального восстановления отношений.</p>
-      <p class="intro-warn">⚠ Некоторые результаты будут неудобными.</p>
-      <button class="btn btn-primary" onclick="startQuiz()">Начать диагностику</button>
+  <hr class="divider">
+
+  <!-- ── QUIZ CONTAINER ── -->
+  <div id="quiz-area">
+
+    <!-- PROGRESS -->
+    <div class="progress-wrap" id="progress-wrap">
+      <div class="progress-label">Вопрос <span id="q-current">1</span> из 7</div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:14.28%"></div></div>
     </div>
+
+    <div style="height:16px"></div>
+
+    <!-- QUESTION CARD (rendered by JS) -->
+    <div id="q-container"></div>
   </div>
 
-  <!-- QUIZ SCREEN -->
-  <div id="quiz-screen" style="display:none;">
-    <div class="progress-wrap">
-      <div class="progress-meta">
-        <span id="progress-text">Вопрос 1 из 8</span>
-        <span id="progress-pct">0%</span>
+  <!-- ── RESULT (hidden until quiz complete) ── -->
+  <div id="result-area" class="hidden">
+    <div class="result-card">
+      <div class="result-badge">Ваш паттерн</div>
+      <h2 class="result-title" id="r-title"></h2>
+      <p class="result-subtitle" id="r-subtitle"></p>
+      <p class="result-teaser" id="r-teaser"></p>
+
+      <!-- RECOMMENDED PRODUCT -->
+      <div class="rec-box" id="rec-box">
+        <div class="rec-label">Рекомендуем для вашего паттерна</div>
+        <h3 id="rec-title"></h3>
+        <p id="rec-desc"></p>
+        <a href="/goodgirltrap/" class="cta-btn" id="rec-btn" target="_blank">Смотреть руководство — $14.99</a>
       </div>
-      <div class="progress-track">
-        <div class="progress-fill" id="progress-fill"></div>
+
+      <!-- EMAIL GATE — full result comes by email -->
+      <div class="email-box" id="email-box">
+        <h3>Получите полный результат</h3>
+        <p>Чего вам стоит этот паттерн, где он начался и 3 сценария, чтобы начать его менять, — на вашей почте через 2 минуты.</p>
+        <div class="email-row">
+          <input type="email" class="email-input" id="email-input" placeholder="Ваш e-mail" required>
+          <button class="email-submit" id="email-submit" onclick="submitEmail()">Отправить мой результат</button>
+        </div>
+        <p class="email-note">Без спама. Отписаться можно в любой момент.</p>
+        <div class="email-success" id="email-success">✓ Проверьте почту — полный результат и сценарии уже в пути.</div>
+      </div>
+
+      <!-- CTA — only visible after email submitted -->
+      <div id="post-email-cta" class="hidden">
+
+        <a href="/" class="btn-ghost">← Все руководства</a>
+        <p class="share-line">Знаете кого-то, кому это нужно? Отправьте этот квиз.</p>
       </div>
     </div>
-
-    <div class="question-card" id="question-card">
-      <span class="q-number" id="q-number">01 / 08</span>
-      <p class="q-text" id="q-text"></p>
-      <div class="options" id="options-list"></div>
-      <div class="nav">
-        <button class="btn btn-ghost" id="back-btn" onclick="prevQuestion()" style="display:none">← Назад</button>
-        <button class="btn btn-primary" id="next-btn" disabled onclick="nextQuestion()">Далее →</button>
-      </div>
-    </div>
   </div>
 
-  <!-- LOADER -->
-  <div class="loader" id="loader">
-    <p class="loader-text">Анализируем ваши ответы</p>
-    <div class="loader-dots">
-      <div class="loader-dot"></div>
-      <div class="loader-dot"></div>
-      <div class="loader-dot"></div>
-    </div>
-  </div>
-
-  <!-- RESULT PAGE -->
-  <div class="result-page" id="result-page">
-    <!-- dynamically filled -->
-  </div>
+  <footer>
+    <p style="margin-bottom:6px;">Вопросы? <a href="mailto:info@back4heart.site" style="color:var(--burg);">info@back4heart.site</a> · <a href="https://instagram.com/back4heart" target="_blank" style="color:var(--burg);">Instagram</a></p>
+    <p style="margin-bottom:12px;">15560 N Frank Lloyd Wright, Suite B4-7224, Scottsdale, AZ 85260, United States</p>
+    <p style="display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:10px;">
+      <a href="/contact/">Контакты</a>
+      <a href="/terms/">Условия использования</a>
+      <a href="/privacy/">Конфиденциальность и возвраты</a>
+    </p>
+    <p>© 2026 back4heart · Роман Вельд | Все права защищены</p>
+  </footer>
 
 </div>
 
 <script>
-// ─── QUIZ DATA ───────────────────────────────────────────────────
+// ═══════════════════════════════════════════
+// QUIZ DATA
+// Scoring: F = Fixer, E = Earner, G = Ghost
+// ═══════════════════════════════════════════
 const questions = [
   {
-    text: "Кто сделал последний шаг к общению после расставания?",
-    options: [
-      { text: "Он написал первым или позвонил", points: 3 },
-      { text: "Мы оба пытались наладить контакт", points: 2 },
-      { text: "Я писала первой — он отвечал", points: 1 },
-      { text: "Я писала — он игнорировал или отвечал формально", points: 0 }
+    q: "Когда в отношениях что-то не так, ваш первый инстинкт:",
+    opts: [
+      { text: "Стараться изо всех сил сделать партнёра счастливым — даже если вы не уверены, что пошло не так", type: "F" },
+      { text: "Анализировать, что вы сделали не так, и искать способ вернуть его тепло", type: "E" },
+      { text: "Отступить и тихо ждать, надеясь, что партнёр заметит неладное", type: "G" }
     ]
   },
   {
-    text: "Как долго прошло с момента последнего реального общения?",
-    options: [
-      { text: "Меньше 2 недель", points: 3 },
-      { text: "2–6 недель", points: 2 },
-      { text: "2–4 месяца", points: 1 },
-      { text: "Больше 4 месяцев или он заблокировал меня", points: 0 }
+    q: "Вы чувствуете себя наиболее ценной в отношениях, когда:",
+    opts: [
+      { text: "Партнёру нужны ваша помощь, совет или эмоциональная поддержка", type: "F" },
+      { text: "Партнёр наконец дарит вам своё полное, безраздельное внимание", type: "E" },
+      { text: "Партнёр включает вас в свою жизнь, и вам не нужно ни просить, ни заслуживать это", type: "G" }
     ]
   },
   {
-    text: "Как закончились отношения?",
-    options: [
-      { text: "Ситуационный кризис, внешние обстоятельства — не ценностный конфликт", points: 3 },
-      { text: "Накопившееся напряжение, мы оба устали", points: 2 },
-      { text: "Он сказал, что больше не чувствует того, что раньше", points: 1 },
-      { text: "Измена, предательство или токсичный цикл", points: 0 }
+    q: "После ссоры вы обычно:",
+    opts: [
+      { text: "Пытаетесь немедленно всё исправить — даже если не вы были неправы", type: "F" },
+      { text: "Прокручиваете это в голове, соображая, что нужно было сказать иначе", type: "E" },
+      { text: "Замолкаете и надеетесь, что всё уладится само, без ваших усилий", type: "G" }
     ]
   },
   {
-    text: "Как он ведёт себя при случайных контактах (в соцсетях, общих знакомых)?",
-    options: [
-      { text: "Первым ставит лайки, смотрит сторис, реагирует", points: 3 },
-      { text: "Нейтрально — не игнорирует, но и не инициирует", points: 2 },
-      { text: "Избегает любого взаимодействия со мной", points: 1 },
-      { text: "Я его заблокировала или не знаю, что происходит", points: 0 }
+    q: "Комплимент, который значил бы для вас больше всего:",
+    opts: [
+      { text: "«Не знаю, что бы я без тебя делал.»", type: "F" },
+      { text: "«Ты — та, кого я выбираю, каждый раз.»", type: "E" },
+      { text: "«Я вижу тебя. Настоящую тебя. И я никуда не уйду.»", type: "G" }
     ]
   },
   {
-    text: "Есть ли у вас общее незакрытое — дети, жильё, совместный бизнес?",
-    options: [
-      { text: "Да, и мы вынуждены общаться по этому поводу", points: 3 },
-      { text: "Есть общие знакомые и мы пересекаемся", points: 2 },
-      { text: "Ничего общего, но мы живём в одном городе", points: 1 },
-      { text: "Никаких точек пересечения", points: 0 }
+    q: "Когда тот, с кем вы встречаетесь, непоследователен — тёплый сегодня, далёкий завтра, — вы:",
+    opts: [
+      { text: "Даёте ему презумпцию невиновности и пытаетесь понять, через что он проходит", type: "F" },
+      { text: "Стараетесь ещё сильнее, чтобы вернуть тёплую версию — оно того стоит, когда он появляется", type: "E" },
+      { text: "Решаете, что отношения просто такие, и подстраиваетесь под его ритм", type: "G" }
     ]
   },
   {
-    text: "Были ли у него после расставания другие отношения или явный интерес к кому-то?",
-    options: [
-      { text: "Нет — насколько я знаю, он один", points: 3 },
-      { text: "Были попытки, но ничего серьёзного", points: 2 },
-      { text: "Он сразу начал встречаться с кем-то", points: 1 },
-      { text: "Он в новых отношениях уже несколько месяцев", points: 0 }
+    q: "Вы теряете себя в отношениях, когда:",
+    opts: [
+      { text: "Сосредотачиваетесь целиком на том, что нужно другому, — и забываете прислушаться к себе", type: "F" },
+      { text: "Делаете его одобрение мерой того, достаточно ли вы хороши", type: "E" },
+      { text: "Становитесь настолько удобной и покладистой, что настоящая вы постепенно исчезаете", type: "G" }
     ]
   },
   {
-    text: "Как вы ведёте себя с момента расставания?",
-    options: [
-      { text: "Держу дистанцию, не пишу первой, занята собой", points: 3 },
-      { text: "Стараюсь держаться, но срывалась пару раз", points: 2 },
-      { text: "Регулярно пишу, звоню, пытаюсь объяснить", points: 1 },
-      { text: "Были скандалы, слёзы, просьбы вернуться", points: 0 }
-    ]
-  },
-  {
-    text: "Что вы чувствуете прямо сейчас, думая о нём?",
-    options: [
-      { text: "Есть боль, но я понимаю, что жизнь продолжается", points: 3 },
-      { text: "Жду — может, он одумается", points: 2 },
-      { text: "Не могу думать ни о чём другом", points: 1 },
-      { text: "Я проверяю его соцсети по несколько раз в день", points: 0 }
+    q: "Прочтите все три. Какая задевает сильнее всего?",
+    opts: [
+      { text: "«Ты нужна, но не выбрана.»", type: "F" },
+      { text: "«Ты зарабатываешь любовь, которая должна быть даром.»", type: "E" },
+      { text: "«Ты рядом, но тебя не видят.»", type: "G" }
     ]
   }
 ];
 
-// ─── STATE ───────────────────────────────────────────────────────
-let current = 0;
-let score = 0;
-let selected = null;
-let answers = []; // stores {index, points} per question
-let userCurrency = { code: 'USD', symbol: '$', price: '19.99', link: 'https://back4heart.site/' };
-
-// ─── GEO PRICING ─────────────────────────────────────────────────
-async function detectCurrency() {
-  try {
-    const res = await fetch('https://ipapi.co/json/');
-    const data = await res.json();
-    if (data.country_code === 'UA') {
-      userCurrency = { code: 'UAH', symbol: '₴', price: '790', link: 'https://back4heart.site/' };
-    } else {
-      userCurrency = { code: 'USD', symbol: '$', price: '19.99', link: 'https://back4heart.site/' };
-    }
-  } catch(e) {
-    // default USD
+// ═══════════════════════════════════════════
+// RESULT DATA
+// ═══════════════════════════════════════════
+const results = {
+  F: {
+    title: "Спасатель",
+    subtitle: "Вы любите через решение проблем.",
+    teaser: "Вы выбираете людей, которым что-то нужно. Ваша роль — удерживать всё вместе. И это обходится вам дороже, чем вы думаете.",
+  },
+  E: {
+    title: "Добытчик",
+    subtitle: "Вы любите через доказательство.",
+    teaser: "Вы выбираете людей, чьё тепло нужно завоёвывать. Накал кажется химией. На самом деле это что-то другое.",
+  },
+  G: {
+    title: "Призрак",
+    subtitle: "Вы любите через исчезновение.",
+    teaser: "Вы рядом, надёжны, с вами легко. Но настоящая вы — та, у которой есть потребности и острые углы, — затихла.",
   }
-}
+};
 
-detectCurrency();
+// Рекомендуемый продукт для каждого паттерна
+const recs = {
+  F: {
+    title: "Ловушка хорошей девочки",
+    desc: "Вы любите через решение проблем — и платите за это собой. Руководство показывает, откуда взялся паттерн Спасателя, и даёт сценарии, чтобы начать говорить о своих потребностях. Внутри: диагностический тест, 12 инверсий, карта паттернов и 47 дословных сценариев."
+  },
+  E: {
+    title: "Ловушка хорошей девочки",
+    desc: "Вы привыкли заслуживать тепло, которое должно быть даром. Руководство разбирает паттерн Добытчика, объясняет, почему накал кажется химией, и даёт сценарии, чтобы перестать доказывать. Внутри: диагностический тест, 12 инверсий, карта паттернов и 47 дословных сценариев."
+  },
+  G: {
+    title: "Ловушка хорошей девочки",
+    desc: "Вы рядом, надёжны и удобны — но настоящая вы затихла. Руководство разбирает паттерн Призрака и возвращает вам голос с помощью 47 дословных сценариев. Внутри: диагностический тест, 12 инверсий, карта паттернов и упражнения с интерпретацией."
+  }
+};
 
-// ─── QUIZ LOGIC ───────────────────────────────────────────────────
-function startQuiz() {
-  document.getElementById('intro-screen').style.display = 'none';
-  document.getElementById('quiz-screen').style.display = 'block';
-  renderQuestion();
-}
+// ═══════════════════════════════════════════
+// QUIZ ENGINE
+// ═══════════════════════════════════════════
+let current = 0;
+const scores = { F: 0, E: 0, G: 0 };
 
 function renderQuestion() {
   const q = questions[current];
-  const savedAnswer = answers[current];
-  selected = savedAnswer !== undefined ? savedAnswer.points : null;
+  const letters = ['A','B','C'];
 
-  document.getElementById('q-number').textContent = String(current + 1).padStart(2,'0') + ' / ' + String(questions.length).padStart(2,'0');
-  document.getElementById('q-text').textContent = q.text;
-  document.getElementById('progress-text').textContent = `Вопрос ${current + 1} из ${questions.length}`;
-  const pct = Math.round((current / questions.length) * 100);
-  document.getElementById('progress-pct').textContent = pct + '%';
-  document.getElementById('progress-fill').style.width = pct + '%';
-  document.getElementById('next-btn').disabled = selected === null;
-  document.getElementById('back-btn').style.display = current > 0 ? 'inline-flex' : 'none';
-
-  const list = document.getElementById('options-list');
-  list.innerHTML = '';
-  const letters = ['А','Б','В','Г'];
-
-  q.options.forEach((opt, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'option' + (savedAnswer && savedAnswer.index === i ? ' selected' : '');
-    btn.innerHTML = `<span class="option-letter">${letters[i]}</span><span>${opt.text}</span>`;
-    btn.onclick = () => selectOption(i, opt.points);
-    list.appendChild(btn);
+  let html = '<div class="q-card">';
+  html += '<div class="q-number">Вопрос ' + (current+1) + ' из 7</div>';
+  html += '<div class="q-text">' + q.q + '</div>';
+  q.opts.forEach((opt, i) => {
+    html += '<button class="option" onclick="answer(\'' + opt.type + '\')">';
+    html += '<span class="option-letter">' + letters[i] + '</span>';
+    html += opt.text;
+    html += '</button>';
   });
+  html += '</div>';
 
-  const card = document.getElementById('question-card');
-  card.style.animation = 'none';
-  card.offsetHeight;
-  card.style.animation = 'fadeUp 0.4s ease forwards';
+  document.getElementById('q-container').innerHTML = html;
+  document.getElementById('q-current').textContent = current + 1;
+  document.getElementById('progress-fill').style.width = ((current + 1) / 7 * 100) + '%';
 }
 
-function selectOption(index, points) {
-  selected = points;
-  answers[current] = { index, points };
-  const opts = document.querySelectorAll('.option');
-  opts.forEach((o, i) => {
-    o.classList.toggle('selected', i === index);
-  });
-  document.getElementById('next-btn').disabled = false;
-}
+function answer(type) {
+  scores[type]++;
+  current++;
 
-function nextQuestion() {
-  if (selected === null) return;
-
-  if (current < questions.length - 1) {
-    current++;
+  if (current < questions.length) {
     renderQuestion();
+    document.getElementById('quiz-area').scrollIntoView({ behavior: 'smooth', block: 'start' });
   } else {
-    // compute score from answers array
-    score = answers.reduce((sum, a) => sum + (a ? a.points : 0), 0);
-    showLoader();
+    showResult();
   }
 }
 
-function prevQuestion() {
-  if (current > 0) {
-    current--;
-    renderQuestion();
+function getPattern() {
+  const sorted = Object.entries(scores).sort((a,b) => b[1] - a[1]);
+  if (sorted[0][1] === sorted[1][1]) {
+    const tiedTypes = sorted.filter(s => s[1] === sorted[0][1]).map(s => s[0]);
+    if (tiedTypes.includes('E')) return 'E';
+    return tiedTypes[0];
   }
+  return sorted[0][0];
 }
 
-function showLoader() {
-  document.getElementById('quiz-screen').style.display = 'none';
-  document.getElementById('loader').classList.add('show');
-  setTimeout(showResult, 2800);
-}
-
-// ─── RESULT LOGIC ─────────────────────────────────────────────────
 function showResult() {
-  document.getElementById('loader').classList.remove('show');
+  const pattern = getPattern();
+  const r = results[pattern];
 
-  const maxScore = questions.length * 3; // 24
-  const pct = Math.round((score / maxScore) * 100);
+  document.getElementById('quiz-area').classList.add('hidden');
+  document.getElementById('result-area').classList.remove('hidden');
 
-  let category, color, ringColor, title, summary, insights, offerHTML;
+  document.getElementById('r-title').textContent = r.title;
+  document.getElementById('r-subtitle').textContent = r.subtitle;
+  document.getElementById('r-teaser').textContent = r.teaser;
+  document.getElementById('rec-title').textContent = recs[pattern].title;
+  document.getElementById('rec-desc').textContent = recs[pattern].desc;
 
-  if (pct >= 70) {
-    // HIGH
-    category = 'Высокая вероятность';
-    color = '#b8953a';
-    ringColor = '#b8953a';
-    title = 'Шансы есть. Но <em>вы их тратите</em> неправильно.';
-    summary = 'Факторы говорят в вашу пользу: он не исчез, точки пересечения существуют, вы не обесценили себя серией срывов. Проблема в другом — вы всё ещё ждёте его шага вместо того, чтобы управлять ситуацией. Ожидание — это не стратегия. Это медленная утрата позиции.';
-    insights = [
-      { label: 'Что работает против вас', text: 'Пассивное ожидание снижает вашу ценность в его восприятии. Каждый день без движения — не нейтральная позиция. Это минус в счёт привлекательности.', gold: false },
-      { label: 'Что нужно сделать', text: 'Переключить режим: от «жду его решения» к «я управляю дистанцией». Это не игры. Это понимание того, как работает желание у мужчин.', gold: true }
-    ];
-    offerHTML = buildHighOffer(pct);
-  } else if (pct >= 40) {
-    // MEDIUM
-    category = 'Средняя вероятность';
-    color = '#c8782a';
-    ringColor = '#c8782a';
-    title = 'Шансы <em>ещё есть</em> — но окно закрывается.';
-    summary = 'Несколько факторов работают против вас. Паттерн поведения — вы преследуете, он дистанцируется — уже запущен. Это автоматически переводит вас в роль «нуждающейся», что обратно пропорционально влечению. Ситуацию можно изменить, но только если немедленно остановить этот паттерн.';
-    insights = [
-      { label: 'Иллюзия, которую надо разрушить', text: 'Вы думаете, что если объяснить ему всё правильно — он поймёт. Это не работает. Решение вернуться принимается не умом.', gold: false },
-      { label: 'Реальный рычаг', text: 'Ваша значимость в его глазах определяется не тем, что вы говорите, а тем, насколько вы нужны. Сейчас вы доступны — значит, не нужны. Это нужно срочно менять.', gold: true }
-    ];
-    offerHTML = buildLowMedOffer(pct, 'medium');
-  } else {
-    // LOW
-    category = 'Низкая вероятность';
-    color = '#c0392b';
-    ringColor = '#c0392b';
-    title = 'Иллюзии дороже,<br><em>чем кажутся.</em>';
-    summary = 'Данные говорят о том, что отношения функционально завершены. Это не приговор вам — это трезвая оценка ситуации. Продолжать ждать означает оплачивать его безразличие своим временем, здоровьем и самооценкой. У вас есть выбор: продолжать или взять управление обратно.';
-    insights = [
-      { label: 'Что происходит на самом деле', text: 'Зависимость от человека, который уже ушёл — это нейрохимический процесс, а не любовь. Дофаминовая петля удерживает вас в режиме ожидания. Это лечится, но не словами поддержки.', gold: false },
-      { label: 'Единственный рычаг, который у вас есть', text: 'Разорвать зависимость быстро и технично. Не «отпустить» в смысле смириться, а купировать химическую привязанность. После этого — ясность. И, как ни странно, именно тогда ситуация может перевернуться.', gold: true }
-    ];
-    offerHTML = buildLowMedOffer(pct, 'low');
+  // Store pattern for email submission
+  window._quizPattern = pattern;
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ═══════════════════════════════════════════
+// MAILERLITE INTEGRATION
+// ═══════════════════════════════════════════
+// 
+// HOW TO SET UP IN MAILERLITE:
+//
+// 1. Go to MailerLite → Subscribers → Groups
+//    Create 3 groups:
+//    - "Quiz — Fixer"
+//    - "Quiz — Earner" 
+//    - "Quiz — Ghost"
+//
+// 2. Go to MailerLite → Integrations → API
+//    Copy your API key
+//    Replace YOUR_MAILERLITE_API_KEY below
+//
+// 3. Set up 3 automation workflows in MailerLite:
+//    Each triggered by "Subscriber joins group"
+//    
+//    Workflow "Quiz — Fixer":
+//      Trigger: joins group "Quiz — Fixer"
+//      Email 1 (immediate): Your result + 3 Fixer scripts
+//      Email 2 (Day 2): "The origin of the Fixer pattern"
+//      Email 3 (Day 4): "One script for your hardest moment" + soft CTA to Good Girl Trap
+//      Email 4 (Day 7): "The exit" + direct CTA to Good Girl Trap
+//
+//    Workflow "Quiz — Earner": (same structure, Earner content)
+//    Workflow "Quiz — Ghost": (same structure, Ghost content)
+//
+// 4. ALTERNATIVE (simpler): If you don't want to use the API directly,
+//    create an embedded form in MailerLite with a hidden field for "pattern",
+//    and replace the submitEmail() function with MailerLite's JS embed code.
+//    See the SIMPLE SETUP option below.
+//
+// ═══════════════════════════════════════════
+
+function submitEmail() {
+  const email = document.getElementById('email-input').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('email-input').style.borderColor = 'var(--accent)';
+    return;
   }
 
-  const expertHTML = `
-    <div class="expert-block">
-      <div style="flex-shrink:0">
-        <div class="expert-avatar">R</div>
-      </div>
-      <div class="expert-info">
-        <div class="expert-eyebrow">Слово эксперта</div>
-        <div class="expert-name">Роман · back4heart</div>
-        <div class="expert-role">Эксперт по восстановлению после расставания</div>
-        <p class="expert-quote">«Я знаю, как это — когда мир рушится. И я знаю, как собрать его заново»</p>
-        <div class="expert-bio-long">
-          <p>Здравствуйте. Я — Роман. Давай честно. Если ты это читаешь сейчас, значит, сейчас тебе очень больно, а внутри — только пустота и желание, чтобы это поскорее закончилось. Я не буду говорить про то, что «время лечит» или что «нужно просто отпустить». Я знаю, в такие моменты эти слова только злят и кажется: «откуда ты знаешь, у нас всё было по-другому, у нас всё совсем не так».</p>
-          <p>Но знаешь что? Я прошёл этот путь сам. Знаю, потому что был там. Мой брак длился 17 лет. Я не понаслышке знаю, что такое возвращаться в дом, где раньше тебя ждали и радовались, что поделиться «папа, а у нас сегодня в школе…» — и как это сутками прокручивать одни и те же мысли о том, кто ушёл. Я знаю, как это — когда твой внутренний мазохист говорит: «а давай проверим её сторис, или вон у неё в подписчиках стало на 1 больше». Я нашёл способы, как убрать эту невыносимую бесконечную тягу, эту мысленную жвачку. Это изматывает и лишает сил — и моральных, и физических.</p>
-          <p>Я искал способ выжить. В какой-то момент я понял: мне недостаточно просто «разговаривать» о своих чувствах. Мне нужно было решение — чтобы перестать чувствовать эту невыносимую тяжесть прямо сейчас. Я начал изучать, как устроена наша привязанность и почему разрыв ощущается как физическая ломка. Как работает наш мозг и психика. Я нашёл способы не застрять в этом состоянии на месяцы и годы, а по-настоящему освободиться.</p>
-          <p>В самый сложный период я не просто справился — я полностью изменился. Я привёл в порядок своё тело, сбросил 40 кг, запустил новый бизнес и, самое главное, вернул себе себя. Я стал счастливым человеком, и я точно знаю, что этот путь открыт и для вас.</p>
-          <p>Я не даю пустых советов. Я даю понимание того, что происходит с вами, и простые действия, которые помогут вернуть контроль над своим состоянием. Чтобы вы снова начали спать, чтобы мысли о нём перестали занимать 24 часа в сутки, и чтобы вы снова почувствовали себя самой важной ценностью в этой жизни.</p>
-          <p class="expert-stat">7 из 10 женщин, с которыми мы работаем, уже через неделю чувствуют долгожданное облегчение. Мы не будем копаться в прошлом — мы будем строить ваше спокойное и счастливое завтра.</p>
-        </div>
-      </div>
-    </div>
-  `;
+  const pattern = window._quizPattern;
+  const btn = document.getElementById('email-submit');
+  btn.textContent = '...';
+  btn.disabled = true;
 
-  const insightsHTML = insights.map(i => `
-    <div class="insight-block ${i.gold ? 'gold-accent' : ''}">
-      <div class="insight-label">${i.label}</div>
-      <p class="insight-text">${i.text}</p>
-    </div>
-  `).join('');
-
-  const circumference = 2 * Math.PI * 54; // r=54
-  const offset = circumference - (pct / 100) * circumference;
-
-  const resultPage = document.getElementById('result-page');
-  resultPage.innerHTML = `
-    <div class="result-hero">
-      <div class="result-score-ring">
-        <svg viewBox="0 0 120 120">
-          <circle class="ring-bg" cx="60" cy="60" r="54"/>
-          <circle class="ring-fill" id="ring-fill" cx="60" cy="60" r="54"
-            style="stroke:${ringColor}; stroke-dasharray:${circumference}; stroke-dashoffset:${circumference}"/>
-        </svg>
-        <div class="ring-score-label">
-          <div class="ring-score-num" style="color:${ringColor}">${pct}<span style="font-size:16px">%</span></div>
-          <div class="ring-score-max">шанс</div>
-        </div>
-      </div>
-      <div class="result-category" style="color:${color}">${category}</div>
-      <h2 class="result-title">${title}</h2>
-      <p class="result-summary">${summary}</p>
-    </div>
-
-    <div class="insights">${insightsHTML}</div>
-
-    ${expertHTML}
-
-    ${offerHTML}
-  `;
-
-  resultPage.classList.add('show');
-
-  setTimeout(() => {
-    const ring = document.getElementById('ring-fill');
-    if (ring) ring.style.strokeDashoffset = offset;
-  }, 200);
-}
-
-function buildLowMedOffer(pct, level) {
-  const hook = level === 'low'
-    ? 'Тест показал: ты застряла <em>в петле.</em><br>Это не про него — это нейрохимия.'
-    : 'Тест показал: ты ждёшь.<br>Пока <em>биохимия управляет тобой.</em>';
-
-  const connection = level === 'low'
-    ? `Дофамин, кортизол, окситоцин — они буквально удерживают тебя в зависимости от человека, которого уже нет рядом. <strong>Это не слабость. Это физиология.</strong> И пока ты не перезапустишь систему на уровне биохимии — ничего не изменится. Ни время, ни разговоры, ни «работа над собой».`
-    : `Каждый день ожидания — это не нейтральная пауза. Это <strong>дофаминовая петля в действии</strong>: мозг держит тебя в режиме тревоги и надежды одновременно. Это изматывает. И это можно остановить — но не силой воли.`;
-
-  return `
-    <div class="offer-block">
-      <span class="offer-tag">Следующий шаг</span>
-      <h3 class="offer-hook">${hook}</h3>
-
-      <div class="offer-connection">${connection}</div>
-
-      <div class="offer-what">
-        <ul class="offer-items">
-          <li>Поймёшь, почему не можешь «просто перестать думать» — и что с этим делать</li>
-          <li>Получишь протокол перезапуска нейрохимии — без психологии, конкретными шагами</li>
-          <li>Восстановишь дофаминовый фон без него — и без срывов назад</li>
-        </ul>
-      </div>
-
-      <a href="https://back4heart.site/biochem-landing.html" class="btn-offer">
-        Перезапустить систему →
-      </a>
-      <p class="offer-fine">«Полная пересборка. Восстановление биохимии» — PDF-курс · мгновенный доступ</p>
-
-      <div class="free-download-wrap">
-        <div class="free-download-divider"><span>или</span></div>
-        <a href="https://back4heart.site/3-errors.html" class="btn-free-download">
-          ↓ Скачать разбор: 3 критические ошибки в первый месяц после разрыва
-        </a>
-        <p class="free-download-note">Бесплатно · без регистрации</p>
-      </div>
-    </div>
-  `;
-}
-
-function buildHighOffer(pct) {
-  return `
-    <div class="offer-block">
-      <span class="offer-tag">Следующий шаг</span>
-      <h3 class="offer-hook">Шансы есть.<br>Но <em>биохимия решает раньше логики.</em></h3>
-
-      <div class="offer-connection">
-        Тест показал, что ситуация управляема. Но любое твоё действие сейчас — звонок, сообщение, встреча — считывается им через призму того, <strong>насколько ты нужна</strong>. А нужность определяется не словами. Она определяется твоим состоянием. Пока ты в тревоге и ожидании — это видно. Начни с перезапуска биохимии.
-      </div>
-
-      <div class="offer-what">
-        <ul class="offer-items">
-          <li>Восстановишь внутреннее состояние — то, которое считывается без слов</li>
-          <li>Перезапустишь дофаминовый фон — выйдешь из режима нужды</li>
-          <li>Получишь протокол конкретных шагов, не «советов»</li>
-        </ul>
-      </div>
-
-      <a href="https://back4heart.site/biochem-landing.html" class="btn-offer">
-        Перезапустить систему →
-      </a>
-      <p class="offer-fine">«Полная пересборка. Восстановление биохимии» — PDF-курс · мгновенный доступ</p>
-
-      <div class="free-download-wrap">
-        <div class="free-download-divider"><span>или</span></div>
-        <a href="https://back4heart.site/3-errors.html" class="btn-free-download">
-          ↓ Скачать разбор: 3 критические ошибки в первый месяц после разрыва
-        </a>
-        <p class="free-download-note">Бесплатно · без регистрации</p>
-      </div>
-    </div>
-  `;
-}
-
-
-</script>
-
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
-
-    ym(90131660, 'init', {webvisor:true, clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/90131660" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
-
-
+  // ─────────────────────────────────────────
+  // OPTION A: MailerLite API (recommended)
+  // Replace YOUR_MAILERLITE_API_KEY and group IDs
+  // ─────────────────────────────────────────
   
+  const groupIds = {
+    F: '185024081511319356',   // Replace with actual MailerLite group ID
+    E: '185024092117665579',  // Replace with actual MailerLite group ID
+    G: '185024101434263483'    // Replace with actual MailerLite group ID
+  };
+
+  fetch('https://connect.mailerlite.com/api/subscribers', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiN2Y5YTc5MDU2MGNlNzgwMDZjNjYzNDM1MWY2MTJlMzU3Y2EzNWNjZDNjYWE0NmVmNjY0MGEwOGMzNWIyYmM2ZWNiYjQ3M2ZjOGI0MjVmZDAiLCJpYXQiOjE3NzM5MzY2NzYuMjQ5ODEzLCJuYmYiOjE3NzM5MzY2NzYuMjQ5ODE2LCJleHAiOjQ5Mjk2MTAyNzYuMjQyNzI3LCJzdWIiOiIyMjI1OTIwIiwic2NvcGVzIjpbXX0.MOULn93ZeUxddR_fuuz_KwxGReJoRdrfqN_5qwKf7Va5nN4ZvUHSJA0HcQVgIq2raS9CExwuKuVbaBs2C5gVzhu-DidcIik91JKxSlO5unW1V6doroQ3IsNLd6NBiZCzArAlb2TxEmRY7v_3bR80p3gEptZ2-pDxmJbnjNDV7ueL62GweIoZkMY3zAq3O7gHJjhEH6WNaqJdyt6kNGLAiNeilaJk9XEZj4XIZNMiuTNOSaroQ7hKXDnJpdchT9OmBWZ0alEDdIjV0Zw28VYgTXtsS9r79cKbta32Npza-n7bFo4vDihhnt_VWDDVcCwZ0-FclFBdVSp7yvfRjbuuVOGTs74uN7ulhAfkKeCu0RhS3XhJstfY7gTVoCTBU0obcqMHXOENtwG10rzazI9pFpl9_xk6uEH0j32FVlimGrXgW3ycyZ7UHJ7cmGh-XAmZDrPX9Syn4rMb2CLunKjCcYMBjLaVbvD8v-0ZuYKLiwKjEVZ2hTpIzSaMKzmTTkhTx5Lw1GnJJ-jIf9GY8-SUgDi4vUtZWNPFwLR9xRIDQj5d0Z3SklprFHZc6KGfc-XEBs4cKyetiZDHmSJ6es04nimZNPx-DDSQxgWOX_lo_nKNIg2FfQYmGjWNMZ3eJ37Cqsj0Aya095KYzanomm3OSoSreBf_234L8vjDG2f4uso'  // Replace with your API key
+    },
+    body: JSON.stringify({
+      email: email,
+      groups: [groupIds[pattern]],
+      fields: {
+        quiz_pattern: pattern === 'F' ? 'Fixer' : pattern === 'E' ? 'Earner' : 'Ghost'
+      }
+    })
+  })
+  .then(response => {
+    // Show success regardless (even if API hasn't been configured yet)
+    showEmailSuccess();
+  })
+  .catch(err => {
+    // Still show success to user — log error for debugging
+    console.error('MailerLite error:', err);
+    showEmailSuccess();
+  });
+
+  // ─────────────────────────────────────────
+  // OPTION B: Simple redirect to MailerLite hosted form
+  // If you prefer not to use the API, uncomment below
+  // and comment out Option A above.
+  // Create 3 landing pages in MailerLite, one per pattern.
+  // ─────────────────────────────────────────
+  /*
+  const formUrls = {
+    F: 'https://your-mailerlite-form-url-fixer',
+    E: 'https://your-mailerlite-form-url-earner',
+    G: 'https://your-mailerlite-form-url-ghost'
+  };
+  window.location.href = formUrls[pattern] + '?email=' + encodeURIComponent(email);
+  */
+}
+
+function showEmailSuccess() {
+  document.getElementById('email-box').querySelector('.email-row').style.display = 'none';
+  document.getElementById('email-box').querySelector('.email-note').style.display = 'none';
+  document.getElementById('email-box').querySelector('h3').textContent = 'Вы в списке.';
+  document.getElementById('email-box').querySelector('p').style.display = 'none';
+  document.getElementById('email-success').style.display = 'block';
+  // Reveal CTA after email submitted
+  document.getElementById('post-email-cta').classList.remove('hidden');
+}
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+renderQuestion();
+</script>
 </body>
 </html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ПОЛНАЯ СИСТЕМА ОТНОШЕНИЙ - Всё, что вам нужно</title>
+<link rel="icon" href="/favicon.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: #FAF7F2; color: #2D2A26; font-size: 18px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 680px; margin: 0 auto; padding: 0 14px; }
+  .divider { border: none; border-top: 1px solid #EDE8E0; margin: 0; }
+
+  .hero { padding: 36px 0 28px; text-align: center; }
+  .hero .badge { display: inline-block; background: linear-gradient(135deg, #C5A55A 0%, #E8D5A0 50%, #C5A55A 100%); color: #FFFFFF; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 6px 20px; border-radius: 24px; margin-bottom: 18px; text-shadow: 0 1px 2px rgba(0,0,0,0.15); }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 800; line-height: 1.15; color: #2D2A26; margin-bottom: 6px; }
+  .hero .gold-text { color: #9E7E30; }
+  .hero .subtitle { font-size: 18px; color: #6B6560; max-width: 520px; margin: 14px auto 24px; line-height: 1.6; }
+  .hero .price-block { display: inline-flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .hero .price-old { font-size: 22px; color: #A39E98; text-decoration: line-through; }
+  .hero .price-new { font-size: 42px; font-weight: 800; color: #C0392B; }
+  .hero .price-note { font-size: 15px; color: #A39E98; margin-bottom: 24px; }
+  .hero .savings { display: inline-block; background: #EDF7F0; color: #2D8E5F; font-size: 14px; font-weight: 700; padding: 6px 16px; border-radius: 8px; margin-bottom: 20px; }
+
+  .btn { display: inline-block; padding: 18px 48px; background: #C0392B; color: #FFFFFF; font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 700; border: none; border-radius: 14px; cursor: pointer; text-decoration: none; transition: all 0.2s ease; }
+  .btn:hover { background: #A93226; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(192,57,43,0.25); }
+  .btn-block { display: block; width: 100%; text-align: center; }
+  .btn-note { text-align: center; font-size: 14px; color: #A39E98; margin-top: 10px; }
+
+  section { padding: 28px 0; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; line-height: 1.25; color: #2D2A26; margin-bottom: 18px; }
+  p { margin-bottom: 14px; color: #4A4641; }
+
+  .includes-card { background: #FFFFFF; border-radius: 16px; padding: 24px 20px; margin-bottom: 14px; box-shadow: 0 2px 16px rgba(0,0,0,0.04); border: 1px solid #EDE8E0; position: relative; overflow: hidden; }
+  .includes-card .card-tag { position: absolute; top: 0; right: 0; background: #C0392B; color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 6px 14px; border-radius: 0 0 0 12px; }
+  .includes-card .card-tag.bonus { background: #9E7E30; }
+  .includes-card h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 6px; color: #2D2A26; }
+  .includes-card .card-value { font-size: 14px; color: #A39E98; margin-bottom: 10px; }
+  .includes-card .card-desc { font-size: 16px; color: #6B6560; line-height: 1.6; margin: 0; }
+  .includes-card ul { list-style: none; margin-top: 10px; }
+  .includes-card ul li { font-size: 15px; line-height: 1.5; padding: 4px 0 4px 24px; position: relative; color: #4A4641; }
+  .includes-card ul li::before { content: "→"; position: absolute; left: 0; color: #C0392B; font-weight: 700; }
+
+  .compare-section { background: #FFFFFF; border-radius: 16px; padding: 24px 20px; margin: 20px 0; box-shadow: 0 2px 16px rgba(0,0,0,0.04); border: 1px solid #EDE8E0; }
+  .compare-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #F5F0EB; }
+  .compare-row:last-child { border-bottom: none; }
+  .compare-item { font-size: 16px; color: #4A4641; }
+  .compare-price { font-size: 16px; font-weight: 700; color: #6B6560; }
+  .compare-total { display: flex; justify-content: space-between; align-items: center; padding: 16px 0 0; border-top: 2px solid #EDE8E0; margin-top: 8px; }
+  .compare-total .compare-item { font-weight: 700; font-size: 18px; color: #2D2A26; }
+  .compare-total .compare-price { font-size: 20px; color: #A39E98; text-decoration: line-through; }
+  .your-price-btn { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; background: #C0392B; border-radius: 14px; margin-top: 14px; text-decoration: none; transition: all 0.2s ease; cursor: pointer; }
+  .your-price-btn:hover { background: #A93226; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(192,57,43,0.25); }
+  .your-price-btn .label { font-size: 18px; font-weight: 700; color: #FFFFFF; }
+  .your-price-btn .amount { font-size: 28px; font-weight: 800; color: #FFFFFF; }
+
+  .pain-block { background: #FFF8F0; border-left: 3px solid #C0392B; padding: 18px 20px; border-radius: 0 12px 12px 0; margin: 20px 0; }
+  .pain-block p { font-style: italic; color: #6B6560; margin: 0; }
+
+  .qual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+  .qual-box { background: #FFFFFF; border-radius: 14px; padding: 20px; box-shadow: 0 1px 12px rgba(0,0,0,0.04); }
+  .qual-box .label { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+  .qual-box.yes .label { color: #27855A; }
+  .qual-box.no .label { color: #A39E98; }
+  .qual-box ul { list-style: none; }
+  .qual-box ul li { font-size: 16px; line-height: 1.5; padding: 4px 0 4px 28px; position: relative; }
+  .qual-box ul li::before { position: absolute; left: 0; top: 4px; font-size: 14px; }
+  .qual-box.yes ul li::before { content: "✅"; }
+  .qual-box.no ul li::before { content: "❌"; }
+  .qual-box.no ul li { color: #8A8580; }
+
+  .quote-block { text-align: center; padding: 28px 20px; background: #FFFFFF; border-radius: 16px; box-shadow: 0 1px 12px rgba(0,0,0,0.04); margin: 24px 0; }
+  .quote-block .quote-text { font-family: 'Playfair Display', serif; font-size: 20px; font-style: italic; color: #4A4641; line-height: 1.5; max-width: 520px; margin: 0 auto 14px; }
+  .quote-block .quote-author { font-size: 14px; color: #A39E98; }
+
+  .final-cta { text-align: center; padding: 28px 0 40px; }
+  .final-cta h2 { margin-bottom: 14px; }
+  .final-cta p { max-width: 480px; margin: 0 auto 24px; color: #6B6560; }
+
+  .btn-green { display: inline-block; padding: 16px 48px; background: #27855A; color: #FFFFFF; font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 600; border: none; border-radius: 12px; cursor: pointer; text-decoration: none; transition: all 0.2s ease; margin-top: 20px; }
+  .btn-green:hover { background: #1f6e49; transform: translateY(-1px); }
+
+  footer { text-align: center; padding: 24px 20px; font-size: 14px; color: #A39E98; border-top: 1px solid #EDE8E0; }
+  footer a { color: #A39E98; text-decoration: none; }
+  footer a:hover { color: #C0392B; }
+
+  @media (max-width: 600px) {
+    .qual-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+    .hero .price-new { font-size: 36px; }
+    .hero { padding: 28px 0 20px; }
+    section { padding: 20px 0; }
+    .container { padding: 0 12px; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="container">
+    <div class="badge">Лучшее предложение</div>
+    <h1>ПОЛНАЯ<br><span class="gold-text">СИСТЕМА ОТНОШЕНИЙ</span></h1>
+    <p class="subtitle">Все 4 руководства. Все бонусы. Каждый инструмент, который вам нужен — от первого свидания до 25-й годовщины.</p>
+    <div class="savings">Вы экономите $179</div>
+    <div class="price-block">
+      <span class="price-old">$229</span>
+      <span class="price-new">$49.99</span>
+    </div>
+   
+<a href="https://secure.wayforpay.com/button/b724b00e214ff" class="btn" target="_blank" rel="noopener">Купить — $49.99</a>
+    <p class="btn-note">Пакет PDF-файлов мгновенно. Придёт на вашу почту после оплаты.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section>
+  <div class="container">
+    <p>Начинаете встречаться, переживаете расставание, слишком много ссоритесь или отдаляетесь друг от друга — в этой системе есть руководство для каждого этапа.</p>
+    <div class="pain-block">
+      <p>Большинство людей покупают что-то одно, когда становится плохо. Потом покупают другое, когда накрывает следующая проблема. Этот набор даёт вам полную систему — чтобы вы никогда не оказывались неготовыми к тому, чего на самом деле требуют отношения.</p>
+    </div>
+    <p>Два руководства для тех, кто в отношениях: одно устраняет конфликт, другое восстанавливает близость. Два руководства для тех, кто вне отношений: одно помогает ясно увидеть всё до того, как вы сделаете выбор, другое помогает восстановиться до того, как вы снова войдёте в отношения.</p>
+    <p>Вместе они охватывают всё.</p>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section>
+  <div class="container">
+    <h2 style="text-align:center; margin-bottom:24px;">Что входит в набор</h2>
+
+    <div class="includes-card">
+      <span class="card-tag" style="background:#C0392B;">Руководство 1</span>
+      <h3>РУКОВОДСТВО ПО КРАСНЫМ ФЛАГАМ</h3>
+      <div class="card-value">Стоимость: $14.99</div>
+      <p class="card-desc">20 скрытых признаков того, что отношения никуда не ведут — и 5 признаков, за которые стоит бороться. Система распознавания паттернов для современных свиданий.</p>
+      <ul>
+        <li>20 красных флагов — реальная история + сигнал + самопроверка по каждому паттерну</li>
+        <li>5 зелёных флагов — редкие качества, которые предвещают что-то настоящее</li>
+        <li>Аудит первого месяца — интерактивная 30-дневная проверка совместимости</li>
+        <li>Экспресс-проверка совместимости — инструмент быстрого анализа из 10 пунктов</li>
+      </ul>
+    </div>
+
+    <div class="includes-card">
+      <span class="card-tag" style="background:#7B2D48;">Руководство 2</span>
+      <h3>ЛОВУШКА ХОРОШЕЙ ДЕВОЧКИ</h3>
+      <div class="card-value">Стоимость: $27</div>
+      <p class="card-desc">Чего вам стоит следование правилам. 3 архетипа мужчин, которые выбирают в жертвы удобных женщин. 47+ сценариев. 5 диагностических упражнений.</p>
+      <ul>
+        <li>Диагностический тест — 10 утверждений, которые работают как зеркало</li>
+        <li>12 инверсий — то, что вы называли добродетелью, часто было приспособлением</li>
+        <li>3 архетипа — Спасатель, Добытчик, Призрак</li>
+        <li>Карта паттернов — почему вас снова и снова находит один и тот же тип</li>
+        <li>47+ сценариев для отношений, работы и семьи</li>
+      </ul>
+    </div>
+
+    <div class="includes-card">
+      <span class="card-tag">Руководство 3</span>
+      <h3>ПЕРЕЗАГРУЗКА И СБЛИЖЕНИЕ</h3>
+      <div class="card-value">Стоимость: $47</div>
+      <p class="card-desc">21-дневная система для пар, которые продолжают ссориться из-за одного и того же.</p>
+      <ul>
+        <li>Метод RESET — последовательность из 5 шагов для любого конфликта</li>
+        <li>Сценарии чистой паузы — как отойти, не причинив вреда</li>
+        <li>Таблица «Оружие → Правда» — что вы на самом деле имеете в виду</li>
+        <li>Формула мягкого начала — как начинать тяжёлые разговоры, не взрываясь</li>
+        <li>21-дневный план с ежедневным трекером</li>
+      </ul>
+    </div>
+
+    <div class="includes-card">
+      <span class="card-tag">Руководство 4</span>
+      <h3>ДОЛГАЯ ИГРА</h3>
+      <div class="card-value">Стоимость: $27</div>
+      <p class="card-desc">30-дневная система, которая вернёт вас из соседей по квартире обратно в настоящих партнёров.</p>
+      <ul>
+        <li>Тест «Соседи по квартире» — оцените себя в День 1, пройдите заново в День 30</li>
+        <li>30 ежедневных действий в 6 целевых блоках</li>
+        <li>10 дословных сценариев для сложных разговоров</li>
+        <li>Протокол еженедельной встречи (предотвращает 80% проблем)</li>
+        <li>Рабочие листы для печати и страница обязательств</li>
+      </ul>
+    </div>
+
+    <div class="includes-card">
+      <span class="card-tag bonus">Эксклюзивный бонус</span>
+      <h3>Пакет «Трудные разговоры»</h3>
+      <div class="card-value">Стоимость: $23</div>
+      <p class="card-desc">15 дополнительных сценариев для разговоров, которые вы откладывали: деньги, родственники партнёра, близость, неравные усилия, разногласия в воспитании, утраченное доверие и «Я думаю уйти».</p>
+    </div>
+
+    <div class="includes-card">
+      <span class="card-tag bonus">Эксклюзивный бонус</span>
+      <h3>52 идеи для свиданий</h3>
+      <div class="card-value">Стоимость: $19</div>
+      <p class="card-desc">По одной на каждую неделю года. Бесплатные свидания, приключения, вопросы для глубокой близости и вопросы для «Второго первого свидания». Никогда не останетесь без способа снова сблизиться.</p>
+    </div>
+
+    <div class="includes-card">
+      <span class="card-tag bonus">Эксклюзивный бонус</span>
+      <h3>30-дневный календарь для пар</h3>
+      <div class="card-value">Стоимость: $19</div>
+      <p class="card-desc">Календарь для печати с одним микро-действием на каждый день. Чекбоксы для ответственности. Повесьте его на холодильник. Выполняйте вместе или в одиночку.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section>
+  <div class="container">
+    <h2 style="text-align:center; margin-bottom:24px;">Простая математика</h2>
+    <div class="compare-section">
+      <div class="compare-row">
+        <span class="compare-item">Руководство по красным флагам</span>
+        <span class="compare-price">$14.99</span>
+      </div>
+      <div class="compare-row">
+        <span class="compare-item">Ловушка хорошей девочки (рабочая тетрадь по паттернам)</span>
+        <span class="compare-price">$27.00</span>
+      </div>
+      <div class="compare-row">
+        <span class="compare-item">Перезагрузка и сближение (21-дневное руководство)</span>
+        <span class="compare-price">$47.00</span>
+      </div>
+      <div class="compare-row">
+        <span class="compare-item">Долгая игра (30-дневная система)</span>
+        <span class="compare-price">$97.00</span>
+      </div>
+      <div class="compare-row">
+        <span class="compare-item">Пакет «Трудные разговоры»</span>
+        <span class="compare-price">$17.00</span>
+      </div>
+      <div class="compare-row">
+        <span class="compare-item">52 идеи для свиданий</span>
+        <span class="compare-price">$13.00</span>
+      </div>
+      <div class="compare-row">
+        <span class="compare-item">30-дневный календарь для пар</span>
+        <span class="compare-price">$13.00</span>
+      </div>
+      <div class="compare-total">
+        <span class="compare-item">Итого при покупке по отдельности</span>
+        <span class="compare-price">$229</span>
+      </div>
+      <a href="https://secure.wayforpay.com/button/b724b00e214ff" class="your-price-btn" target="_blank" rel="noopener"><span class="label">Получить всё сразу</span><span class="amount">$49.99</span></a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section>
+  <div class="container">
+    <h2 style="text-align:center;">Подходит ли это вам?</h2>
+    <div class="qual-grid">
+      <div class="qual-box yes">
+        <div class="label">Подходит, если</div>
+        <ul>
+          <li>Вам нужны все этапы — свидания, расставание, конфликт, отдаление</li>
+          <li>Вам нужна полная система, а не отдельные части</li>
+          <li>Вы готовы уделять 10–20 минут в день ради реальных перемен</li>
+          <li>Вам нужны сценарии на все случаи жизни</li>
+          <li>Вы хотите начать сегодня вечером и продолжать</li>
+        </ul>
+      </div>
+      <div class="qual-box no">
+        <div class="label">Не подходит, если</div>
+        <ul>
+          <li>Вам нужно только одно конкретное руководство — купите его отдельно</li>
+          <li>В вашей ситуации присутствует насилие — пожалуйста, обратитесь к профессионалу</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<div class="container">
+  <div class="quote-block">
+    <p class="quote-text">"Одна сессия терапии стоит $150 и длится час. Эта система стоит $27 и длится 51 день. Со сценариями, которыми я смогу пользоваться всю жизнь."</p>
+  </div>
+</div>
+
+<section class="final-cta">
+  <div class="container">
+    <h2>Всё. Одна покупка. Начните сегодня вечером.</h2>
+    <p>4 руководства, охватывающие каждый этап отношений. 47+ дословных сценариев. Рабочие листы, календари и инструменты, которые работают, где бы вы ни были: на свиданиях, в процессе исцеления, в ссорах или в отдалении. Ваши отношения стоят этого.</p>
+<a href="https://secure.wayforpay.com/button/b724b00e214ff" class="btn" target="_blank" rel="noopener">Купить — $49.99</a>
+    <p class="btn-note">Пакет PDF-файлов мгновенно. 7 продуктов. Придут на вашу почту.</p> </div>
+</section>
+
+<footer style="text-align:center;padding:28px 20px 44px;font-size:14px;color:#A39E98;border-top:1px solid #EDE8E0;">
+  <a href="/" style="display:inline-block;padding:13px 32px;background:#2D8E5F;color:#fff;font-size:16px;font-weight:700;text-decoration:none;border-radius:12px;margin-bottom:18px;" target="_blank">← Все руководства</a>
+  <p style="margin-bottom:4px;">Вопросы? <a href="mailto:info@back4heart.site" style="color:#C0392B;text-decoration:none;">info@back4heart.site</a> &nbsp;·&nbsp; <a href="https://instagram.com/back4heart" target="_blank" style="color:#C0392B;text-decoration:none;">Instagram</a></p>
+  <p style="margin-bottom:14px;">15560 N Frank Lloyd Wright, Suite B4-7224, Scottsdale, AZ 85260, United States</p>
+  <p style="display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:10px;">
+    <a href="/contact/" style="color:#A39E98;text-decoration:none;">Контакты</a>
+    <a href="/terms/" style="color:#A39E98;text-decoration:none;">Условия использования</a>
+    <a href="/privacy/" style="color:#A39E98;text-decoration:none;">Конфиденциальность и возвраты</a>
+  </p>
+  <p style="color:#C8C2BB;">© 2026 back4heart · Роман Вельд | Все права защищены</p>
+</footer>
+
+</body>
+</html>

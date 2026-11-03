@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Руководство по красным флагам — @back4heart</title>
+<link rel="icon" href="/favicon.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #FAF7F2;
+    color: #2D2A26;
+    font-size: 18px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 680px; margin: 0 auto; padding: 0 14px; }
+  section { padding: 28px 0; }
+
+  h1 { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 700; line-height: 1.15; color: #2D2A26; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; line-height: 1.25; color: #2D2A26; margin-bottom: 18px; }
+  h3 { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: #C0392B; margin-bottom: 10px; }
+  p { margin-bottom: 14px; color: #4A4641; }
+
+  /* ── HERO ── */
+  .hero { padding: 36px 0 28px; text-align: center; }
+  .hero h3 { margin-bottom: 12px; }
+  .hero h1 { margin-bottom: 12px; }
+  .hero .hero-sub { font-family: 'Playfair Display', serif; font-size: 20px; color: #6B6560; margin-bottom: 8px; font-style: italic; }
+  .hero .hero-desc { font-size: 18px; color: #6B6560; max-width: 520px; margin: 0 auto 28px; line-height: 1.65; }
+
+  /* ── PRICE TAG IN HERO ── */
+  .hero-price { display: inline-flex; align-items: center; gap: 10px; background: #fff; border: 1.5px solid #E8E2DA; border-radius: 12px; padding: 10px 22px; margin-bottom: 20px; }
+  .hero-price .p-new { font-size: 26px; font-weight: 800; color: #C0392B; }
+  .hero-price .p-label { font-size: 15px; color: #8A8580; }
+
+  /* ── BUTTONS ── */
+  .btn { display: inline-block; padding: 16px 48px; background: #C0392B; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 700; border: none; border-radius: 12px; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s; text-align: center; }
+  .btn:hover { background: #A93226; transform: translateY(-1px); }
+  .btn-block { display: block; width: 100%; text-align: center; }
+  .btn-note { text-align: center; font-size: 14px; color: #A39E98; margin-top: 10px; }
+  .btn-ghost { display: inline-block; padding: 14px 36px; background: transparent; color: #2D2A26; font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 600; border: 1.5px solid #C8C0B8; border-radius: 12px; text-decoration: none; margin-top: 14px; transition: all 0.2s; }
+  .btn-ghost:hover { border-color: #2D2A26; }
+
+  .divider { border: none; border-top: 1px solid #EDE8E0; margin: 0; }
+
+  /* ── PAIN ── */
+  .pain p { font-size: 18px; }
+  .pain .highlight {
+    background: #FFF8F0;
+    border-left: 3px solid #C0392B;
+    padding: 18px 20px;
+    border-radius: 0 12px 12px 0;
+    margin: 20px 0;
+    font-style: italic;
+    color: #6B6560;
+  }
+
+  /* ── STAT ROW ── */
+  .stat-row { display: flex; gap: 12px; margin: 24px 0; }
+  .stat-box { flex: 1; background: #fff; border-radius: 14px; padding: 18px 14px; text-align: center; box-shadow: 0 1px 12px rgba(0,0,0,0.04); border: 1px solid #EDE8E0; }
+  .stat-box .stat-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: #C0392B; line-height: 1.1; }
+  .stat-box .stat-label { font-size: 13px; color: #8A8580; margin-top: 4px; line-height: 1.4; }
+
+  /* ── QUAL GRID ── */
+  .qual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+  .qual-box { background: #fff; border-radius: 14px; padding: 20px; box-shadow: 0 1px 12px rgba(0,0,0,0.04); }
+  .qual-box .label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+  .qual-box.yes .label { color: #C0392B; }
+  .qual-box.no .label { color: #A39E98; }
+  .qual-box ul { list-style: none; }
+  .qual-box ul li { font-size: 15px; line-height: 1.55; padding: 5px 0 5px 28px; position: relative; border-bottom: 1px solid #F5F0EB; }
+  .qual-box ul li:last-child { border-bottom: none; }
+  .qual-box ul li::before { position: absolute; left: 0; top: 5px; font-size: 13px; }
+  .qual-box.yes ul li::before { content: "🚩"; }
+  .qual-box.no ul li::before { content: "✗"; color: #C8C0B8; }
+  .qual-box.no ul li { color: #A39E98; }
+
+  /* ── INSIDE ITEMS ── */
+  .inside-item { background: #fff; border-radius: 14px; padding: 20px 24px; margin-bottom: 12px; box-shadow: 0 1px 12px rgba(0,0,0,0.04); border-left: 3px solid #E8E2DA; }
+  .inside-item.red-flag { border-left-color: #C0392B; }
+  .inside-item.green-flag { border-left-color: #2D8E5F; }
+  .inside-item.gold { border-left-color: #9E7E30; }
+  .inside-item .part-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; }
+  .inside-item.red-flag .part-label { color: #C0392B; }
+  .inside-item.green-flag .part-label { color: #2D8E5F; }
+  .inside-item.gold .part-label { color: #9E7E30; }
+  .inside-item .inside-title { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 600; color: #2D2A26; margin-bottom: 6px; }
+  .inside-item .inside-desc { font-size: 15px; color: #6B6560; line-height: 1.6; margin: 0; }
+
+  /* ── FLAG PREVIEW ── */
+  .flag-preview { margin: 20px 0; }
+  .flag-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #F0EBE4; }
+  .flag-item:last-child { border-bottom: none; }
+  .flag-icon { font-size: 16px; flex-shrink: 0; margin-top: 2px; }
+  .flag-title { font-size: 16px; font-weight: 600; color: #2D2A26; line-height: 1.3; }
+  .flag-sub { font-size: 14px; color: #8A8580; line-height: 1.4; margin-top: 2px; }
+
+  /* ── BEFORE / AFTER ── */
+  .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+  .ba-col { background: #fff; border-radius: 14px; padding: 20px; box-shadow: 0 1px 12px rgba(0,0,0,0.04); }
+  .ba-col .ba-label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+  .ba-col.before .ba-label { color: #A39E98; }
+  .ba-col.after .ba-label { color: #2D8E5F; }
+  .ba-col ul { list-style: none; }
+  .ba-col ul li { font-size: 15px; line-height: 1.5; padding: 5px 0; color: #4A4641; }
+  .ba-col.before ul li { color: #A39E98; }
+
+  /* ── QUOTE ── */
+  .quote-block { text-align: center; padding: 32px 20px; background: #fff; border-radius: 16px; box-shadow: 0 1px 12px rgba(0,0,0,0.04); margin: 24px 0; }
+  .quote-block .quote-text { font-family: 'Playfair Display', serif; font-size: 20px; font-style: italic; color: #4A4641; line-height: 1.55; max-width: 500px; margin: 0 auto 14px; }
+  .quote-block .quote-author { font-size: 14px; color: #A39E98; }
+
+  /* ── SAFETY BOX ── */
+  .safety-box { background: #FDF8F0; border: 1px solid #E8D9B8; border-radius: 14px; padding: 20px 24px; margin: 24px 0; }
+  .safety-box .safety-label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: #9E7E30; margin-bottom: 10px; }
+  .safety-box p { font-size: 15px; color: #6B6560; margin: 0; }
+
+  /* ── FUNNEL BRIDGE ── */
+  .bridge-box { background: #EDF7F0; border: 1.5px solid #2D8E5F; border-radius: 16px; padding: 24px 20px; margin: 28px 0; text-align: center; }
+  .bridge-box h3 { color: #2D8E5F; margin-bottom: 8px; }
+  .bridge-box p { font-size: 16px; color: #4A7060; margin-bottom: 16px; }
+  .bridge-btn { display: inline-block; padding: 14px 36px; background: #2D8E5F; color: #fff; font-size: 16px; font-weight: 700; text-decoration: none; border-radius: 12px; transition: all 0.2s; }
+  .bridge-btn:hover { background: #1f6e49; transform: translateY(-1px); }
+
+  /* ── MOCKUP ── */
+  .mockup-wrap { text-align: center; margin: 28px 0 8px; }
+  .mockup-device {
+    display: inline-block;
+    position: relative;
+    background: #1A1714;
+    border-radius: 36px;
+    padding: 14px 10px 20px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.22), 0 4px 16px rgba(0,0,0,0.12);
+    width: 220px;
+  }
+  .mockup-notch {
+    width: 60px; height: 10px;
+    background: #0D0C0A;
+    border-radius: 8px;
+    margin: 0 auto 10px;
+  }
+  .mockup-screen {
+    background: #FAF7F2;
+    border-radius: 22px;
+    padding: 18px 14px 14px;
+    text-align: left;
+    min-height: 280px;
+  }
+  .mockup-label {
+    font-size: 8px; font-weight: 700; letter-spacing: 1.8px;
+    text-transform: uppercase; color: #C0392B; margin-bottom: 4px;
+  }
+  .mockup-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px; font-weight: 700; color: #1A1714;
+    line-height: 1.2; margin-bottom: 10px;
+  }
+  .mockup-rule { height: 1px; background: #E8E2DA; margin-bottom: 10px; }
+  .mockup-flag { display: flex; align-items: flex-start; gap: 6px; margin-bottom: 7px; }
+  .mockup-flag-dot { width: 6px; height: 6px; border-radius: 50%; background: #C0392B; flex-shrink: 0; margin-top: 4px; }
+  .mockup-flag-text { font-size: 9px; color: #4A4641; line-height: 1.4; }
+  .mockup-flag-text strong { font-weight: 700; color: #1A1714; display: block; }
+  .mockup-green-dot { background: #2D8E5F; }
+  .mockup-caption { font-size: 13px; color: #A39E98; margin-top: 10px; }
+
+  /* ── SOCIAL PROOF ── */
+  .proof-bar {
+    background: #fff;
+    border: 1px solid #E8E2DA;
+    border-radius: 14px;
+    padding: 18px 20px;
+    text-align: center;
+    margin: 24px 0;
+    box-shadow: 0 1px 12px rgba(0,0,0,0.04);
+  }
+  .proof-bar .proof-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; font-weight: 700; color: #C0392B; line-height: 1;
+  }
+  .proof-bar .proof-label {
+    font-size: 15px; color: #6B6560; margin-top: 4px; margin-bottom: 0;
+  }
+  .review-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin: 12px 0;
+    box-shadow: 0 1px 12px rgba(0,0,0,0.04);
+    border-left: 3px solid #C0392B;
+  }
+  .review-stars { font-size: 14px; color: #C0392B; margin-bottom: 8px; letter-spacing: 2px; }
+  .review-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px; font-style: italic; color: #4A4641;
+    line-height: 1.6; margin-bottom: 10px;
+  }
+  .review-name { font-size: 13px; color: #A39E98; font-weight: 600; }
+
+  /* ── FAQ ── */
+  .faq-item {
+    background: #fff;
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 12px rgba(0,0,0,0.04);
+    border: 1px solid #EDE8E0;
+    cursor: pointer;
+  }
+  .faq-q {
+    font-size: 16px; font-weight: 700; color: #2D2A26;
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    list-style: none;
+  }
+  .faq-q::after { content: "+"; font-size: 20px; color: #C0392B; flex-shrink: 0; transition: transform 0.2s; }
+  .faq-item.open .faq-q::after { transform: rotate(45deg); }
+  .faq-a {
+    font-size: 15px; color: #6B6560; line-height: 1.65;
+    margin-top: 12px; padding-top: 12px;
+    border-top: 1px solid #F0EBE4;
+    display: none;
+  }
+  .faq-item.open .faq-a { display: block; }
+
+  /* ── CTA SECTION ── */
+  .final-cta { text-align: center; padding: 32px 0 44px; }
+  .final-cta h2 { margin-bottom: 12px; }
+  .final-cta p { max-width: 460px; margin: 0 auto 24px; color: #6B6560; }
+
+  footer { text-align: center; padding: 24px 20px; font-size: 14px; color: #A39E98; border-top: 1px solid #EDE8E0; }
+  footer a { color: #A39E98; text-decoration: none; }
+  footer a:hover { color: #C0392B; }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 30px; }
+    .qual-grid { grid-template-columns: 1fr; gap: 12px; }
+    .ba-grid { grid-template-columns: 1fr; }
+    .stat-row { flex-direction: column; }
+    .hero { padding: 24px 0 20px; }
+    section { padding: 20px 0; }
+    .container { padding: 0 12px; }
+    .mockup-device { width: 180px; }
+    .mockup-screen { min-height: 220px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ──────────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="container">
+    <h3>АУДИТ СВИДАНИЙ · @back4heart</h3>
+    <h1>Руководство по красным флагам</h1>
+    <p class="hero-sub">20 скрытых признаков того, что эти отношения никуда не ведут<br>и 5 признаков, за которые стоит бороться</p>
+    <p class="hero-desc">Система распознавания паттернов для современных свиданий. Перестаньте выбирать не того человека — пока вы не провели в отношениях полгода и не привязались эмоционально.</p>
+
+    <div class="hero-price">
+      <span class="p-new">$14.99</span>
+      <span class="p-label">· Рабочая тетрадь в PDF · Мгновенная доставка</span>
+    </div>
+
+    <br>
+    <div style="display:flex;justify-content:center;">
+      <a href="https://secure.wayforpay.com/button/b065289d42eb0" class="btn" target="_blank" rel="noopener">Купить — $14.99</a>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- ── MOCKUP ─────────────────────────────────────────────────────────────── -->
+<section style="padding: 20px 0 8px; text-align:center;">
+  <div class="container">
+    <div class="mockup-wrap">
+      <div class="mockup-device">
+        <div class="mockup-notch"></div>
+        <div class="mockup-screen">
+          <div class="mockup-label">Аудит свиданий · @back4heart</div>
+          <div class="mockup-title">Руководство<br>по красным флагам</div>
+          <div class="mockup-rule"></div>
+
+          <div class="mockup-flag">
+            <div class="mockup-flag-dot"></div>
+            <div class="mockup-flag-text"><strong>Лавбомбинг</strong>Накал, который кажется судьбой</div>
+          </div>
+          <div class="mockup-flag">
+            <div class="mockup-flag-dot"></div>
+            <div class="mockup-flag-text"><strong>Обещания будущего</strong>Обещания, чтобы уйти от ответственности</div>
+          </div>
+          <div class="mockup-flag">
+            <div class="mockup-flag-dot"></div>
+            <div class="mockup-flag-text"><strong>То горячо, то холодно</strong>Почему непредсказуемость вызывает зависимость</div>
+          </div>
+
+          <div class="mockup-rule" style="margin-top:10px;"></div>
+
+          <div class="mockup-flag">
+            <div class="mockup-flag-dot mockup-green-dot"></div>
+            <div class="mockup-flag-text"><strong>5 зелёных флагов</strong>Признаки, за которые стоит бороться</div>
+          </div>
+          <div class="mockup-flag">
+            <div class="mockup-flag-dot" style="background:#9E7E30;"></div>
+            <div class="mockup-flag-text"><strong>30-дневный аудит</strong>Интерактивная проверка совместимости</div>
+          </div>
+        </div>
+      </div>
+      <p class="mockup-caption">Рабочая тетрадь в PDF · Читайте на любом устройстве</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── PAIN ──────────────────────────────────────────────────────────────── -->
+<section class="pain">
+  <div class="container">
+    <p>Где-то вы это знали. Не сразу — сначала это казалось химией, будто наконец-то это тот самый человек. Но примерно на шестой неделе или в третий месяц появилось чувство, которому вы не могли дать название.</p>
+    <p>Что-то было не так. Тепло приходило и уходило. Планы так и не воплощались. Ваши потребности становились всё меньше, тише, их было всё легче игнорировать.</p>
+    <p>Вы говорили себе, что преувеличиваете. Вы гуглили. Вы спрашивали подругу, и она отвечала «всё сложно», или «он просто такой», или «дай этому больше времени».</p>
+    <div class="highlight">
+      Проблема была не в том, что вы не видели признаков. Проблема была в том, что никто не дал вам языка для того, что вы уже чувствовали.
+    </div>
+    <p>Вы подмечали правильные паттерны. Просто у вас ещё не было для них названий. Это руководство даёт вам названия — и систему, чтобы пользоваться ими, пока вы ещё не слишком привязались, чтобы трезво смотреть на вещи.</p>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- ── THE COST ───────────────────────────────────────────────────────────── -->
+<section>
+  <div class="container">
+    <h2 style="text-align:center;">Реальная цена неправильного выбора</h2>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num">$30–50K</div>
+        <div class="stat-label">средняя стоимость неудавшихся долгих отношений (терапия, время, переезд)</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">18 мес.</div>
+        <div class="stat-label">среднее время, которое люди остаются в отношениях после первых тревожных признаков</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">Неделя 2</div>
+        <div class="stat-label">когда впервые проявляется большинство паттернов красных флагов — если знать, на что смотреть</div>
+      </div>
+    </div>
+    <p style="color:#8A8580; font-size:15px; text-align:center;">Это руководство стоит $14.99. Альтернатива стоит месяцев.</p>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- ── IS THIS FOR YOU ────────────────────────────────────────────────────── -->
+<section>
+  <div class="container">
+    <h2 style="text-align:center;">Подходит ли это вам?</h2>
+    <div class="qual-grid">
+      <div class="qual-box yes">
+        <div class="label">Подходит, если</div>
+        <ul>
+          <li>Вы продолжаете выбирать людей, которые выглядят подходящими, но кажутся неправильными</li>
+          <li>Вы в начале чего-то нового и хотите входить в это с ясным взглядом</li>
+          <li>Вы здесь уже бывали — в этот раз хотите увидеть всё раньше</li>
+          <li>Вы сидите в приложениях для знакомств и переживаете выгорание от свиданий</li>
+          <li>Вам нужна система, а не ощущения</li>
+        </ul>
+      </div>
+      <div class="qual-box no">
+        <div class="label">Не подходит, если</div>
+        <ul>
+          <li>Вам нужно подтверждение, что всё кончено, а не ясность</li>
+          <li>В ваших отношениях есть насилие или угроза безопасности</li>
+          <li>Вы ищете, кого обвинить</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="safety-box">
+      <div class="safety-label">⚠ Примечание по безопасности</div>
+      <p>Если вы находитесь в отношениях, где вам страшно или вами управляют, это руководство не заменяет профессиональную поддержку. Национальная горячая линия по домашнему насилию (США): <strong>1-800-799-7233</strong> · thehotline.org</p>
+    </div>
+
+    <div style="display:flex;justify-content:center;margin-top:24px;">
+      <a href="https://secure.wayforpay.com/button/b065289d42eb0" class="btn" target="_blank" rel="noopener">Купить — $14.99</a>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- ── WHAT'S INSIDE ──────────────────────────────────────────────────────── -->
+<section>
+  <div class="container">
+    <h2 style="text-align:center; margin-bottom:24px;">Что внутри</h2>
+
+    <div class="inside-item red-flag">
+      <div class="part-label">Часть I · 20 красных флагов</div>
+      <div class="inside-title">Система распознавания паттернов</div>
+      <p class="inside-desc">20 поведенческих паттернов, предвещающих отношения, которые никуда не ведут. В каждом: реальная история, названный сигнал и вопрос для самопроверки. Вы читаете один раз для ясности — и возвращаетесь, когда нужно трезво взглянуть на ситуацию.</p>
+    </div>
+
+    <!-- FLAG PREVIEW -->
+    <div class="flag-preview">
+      <div class="flag-item">
+        <span class="flag-icon">🚩</span>
+        <div>
+          <div class="flag-title">Лавбомбинг в первые 3 недели</div>
+          <div class="flag-sub">Накал, который кажется судьбой, — и почему это не она</div>
+        </div>
+      </div>
+      <div class="flag-item">
+        <span class="flag-icon">🚩</span>
+        <div>
+          <div class="flag-title">Пишет только после 23:00</div>
+          <div class="flag-sub">Как распознать ситуационшип, пока вы не привязались</div>
+        </div>
+      </div>
+      <div class="flag-item">
+        <span class="flag-icon">🚩</span>
+        <div>
+          <div class="flag-title">Нарциссическое поведение на первых 3 свиданиях</div>
+          <div class="flag-sub">4 конкретных признака, на которые стоит смотреть, — без необходимости в диагнозе</div>
+        </div>
+      </div>
+      <div class="flag-item">
+        <span class="flag-icon">🚩</span>
+        <div>
+          <div class="flag-title">Обещания будущего</div>
+          <div class="flag-sub">Обещания про «потом», чтобы уйти от ответственности сейчас</div>
+        </div>
+      </div>
+      <div class="flag-item">
+        <span class="flag-icon">🚩</span>
+        <div>
+          <div class="flag-title">Поведение «то горячо, то холодно»</div>
+          <div class="flag-sub">Почему непредсказуемость похожа на страсть — и чем она является на самом деле</div>
+        </div>
+      </div>
+      <div class="flag-item">
+        <span class="flag-icon">🚩</span>
+        <div>
+          <div class="flag-title">Грубо обращается с официантом</div>
+          <div class="flag-sub">Старейший тест на свиданиях — и почему он каждый раз срабатывает</div>
+        </div>
+      </div>
+      <div class="flag-item" style="border-bottom:none; color:#8A8580; font-size:15px;">
+        <span class="flag-icon">+</span>
+        <div>
+          <div class="flag-title" style="color:#8A8580;">Ещё 14 паттернов внутри руководства</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="inside-item green-flag">
+      <div class="part-label">Часть II · 5 зелёных флагов</div>
+      <div class="inside-title">Признаки, за которые стоит бороться</div>
+      <p class="inside-desc">Потому что цель — не только избегать неподходящих людей. Это ещё и умение узнать подходящих, когда они появляются. Эти 5 качеств встречаются реже, чем должны, — и предвещают отношения, которые действительно растут.</p>
+    </div>
+
+    <div class="inside-item gold">
+      <div class="part-label">Часть III · Интерактивный аудит</div>
+      <div class="inside-title">Аудит первого месяца</div>
+      <p class="inside-desc">30-дневная проверка совместимости, которую можно запустить прямо сейчас. Неделя 1: аудит внимания. Неделя 2: проверка границ. Неделя 3: проверка постоянства. Неделя 4: вопрос об интеграции. Каждая неделя вскрывает новый слой того, что на самом деле есть.</p>
+    </div>
+
+    <div class="inside-item gold">
+      <div class="part-label">Бонус-инструмент</div>
+      <div class="inside-title">Экспресс-проверка совместимости</div>
+      <p class="inside-desc">Таблица быстрого анализа из 10 пунктов для раннего этапа знакомства. Наглядно, честно, быстро. 8+ галочек = сильный ранний сигнал. Меньше 5 = присмотритесь внимательнее, пока не зашли дальше.</p>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- ── BEFORE / AFTER ─────────────────────────────────────────────────────── -->
+<section>
+  <div class="container">
+    <h2 style="text-align:center; margin-bottom:24px;">До и после руководства</h2>
+    <div class="ba-grid">
+      <div class="ba-col before">
+        <div class="ba-label">До</div>
+        <ul>
+          <li>«Он просто занят». (Опять.)</li>
+          <li>Гуглить «это нормально?» в полночь</li>
+          <li>Оправдывать поведение, которое вы бы не приняли от друга</li>
+          <li>Ждать 4-го месяца, чтобы поверить тому, что почувствовали на 2-й неделе</li>
+          <li>«Я знала, что что-то не так, просто не могла это назвать».</li>
+        </ul>
+      </div>
+      <div class="ba-col after">
+        <div class="ba-label">После</div>
+        <ul>
+          <li>У вас есть название для того, что вы чувствовали</li>
+          <li>Вы поставили небольшую границу на 2-м свидании и посмотрели, что произойдёт</li>
+          <li>Вы отличаете химию от химии как контроля</li>
+          <li>Вы вошли с ясным взглядом — и почувствовали это</li>
+          <li>«В этот раз мне не понадобилось 6 месяцев. Я увидела это за 6 дней».</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── QUOTE ──────────────────────────────────────────────────────────────── -->
+<div class="container">
+  <div class="quote-block">
+    <p class="quote-text">«Химия говорит, что вы чувствуете рядом с человеком сегодня. Совместимость говорит, кем вы будете через пять лет.»</p>
+    <p class="quote-author">— Руководство по красным флагам, Введение</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ── THE QUESTION ───────────────────────────────────────────────────────── -->
+<section>
+  <div class="container">
+    <h2>Один вопрос, который меняет всё</h2>
+    <p>После всех флагов и всех чек-листов есть один вопрос, который важнее любого из них:</p>
+    <div class="quote-block" style="padding: 24px 20px;">
+      <p class="quote-text" style="font-size:22px;">«Кем я становлюсь в этих отношениях?»</p>
+    </div>
+    <p>Не «люблю ли я его». Не «хороший ли он человек». Не «получится ли у нас».</p>
+    <p>Вы больше становитесь собой рядом с ним — или меньше? Вы растёте — или справляетесь? Этот единственный вопрос, заданный честно, стоит больше, чем любой список признаков.</p>
+    <p>Руководство по красным флагам даёт вам инструменты, чтобы задать его рано — до того, как ответ обойдётся вам в год.</p>
+  </div>
+</section>
+<hr class="divider">
+
+<!-- ── FAQ ───────────────────────────────────────────────────────────────── -->
+<section>
+  <div class="container">
+    <h2 style="text-align:center; margin-bottom:20px;">Быстрые вопросы</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Это для мужчин или для женщин?</div>
+      <div class="faq-a">Для всех. Паттерны, описанные в этом руководстве, — лавбомбинг, обещания будущего, поведение «то горячо, то холодно», эмоциональное обесценивание, — проявляются в отношениях независимо от пола. В историях разные имена и ситуации, но сигналы универсальны.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Как получить руководство после покупки?</div>
+      <div class="faq-a">Мгновенно. После оплаты вы получите ссылку для скачивания прямо на почту. Руководство — это PDF: открывайте на телефоне, планшете, ноутбуке или распечатайте. Приложение не нужно, подписок нет.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Что, если я уже 6 месяцев в отношениях?</div>
+      <div class="faq-a">Никогда не поздно провести аудит своей реальности. Многие читают это руководство, уже находясь в отношениях, и обнаруживают, что назвать то, что они чувствовали, — наконец получить для этого язык — самое полезное, что они сделали за последние месяцы. Аудит первого месяца работает на любом этапе. У паттернов нет срока годности.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Это терапия или профессиональная консультация?</div>
+      <div class="faq-a">Нет — и не претендует на это. Это система распознавания паттернов, построенная на исследованиях и реальных историях. Она даёт вам язык и инструменты, а не диагнозы. Если в вашей ситуации есть насилие, контроль или угроза безопасности, пожалуйста, обратитесь за помощью к квалифицированному специалисту. Ресурсы приведены внутри руководства.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── SOCIAL PROOF ───────────────────────────────────────────────────────── -->
+<section>
+  <div class="container">
+
+    <div class="proof-bar">
+      <div class="proof-num">500+</div>
+      <p class="proof-label">людей, которые решили перестать гадать и начать видеть ясно</p>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">«Жаль, что у меня не было этого два отношения назад. Я постоянно замечала то, что казалось неправильным, но не могла это назвать. Это руководство дало мне язык — и уверенность доверять тому, что я уже замечала.»</p>
+      <div class="review-name">— Sarah M., проверенный покупатель</div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">«Один только Аудит первого месяца уже стоит своих денег. Я прошла его с человеком, с которым встречалась 3 недели, и ясность пришла сразу. Сэкономило мне месяцы.»</p>
+      <div class="review-name">— Jamie R., проверенный покупатель</div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">«Я купила это со скепсисом к „контенту про красные флаги“. Это другое — сбалансированно, честно, а раздел о зелёных флагах помог мне понять, что я на самом деле хочу искать, а не просто избегать.»</p>
+      <div class="review-name">— Priya K., проверенный покупатель</div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── FINAL CTA ──────────────────────────────────────────────────────────── -->
+<section class="final-cta">
+  <div class="container">
+    <h2>Вы уже чувствуете, что что-то не так</h2>
+    <p>Этот инстинкт — информация. Руководство даёт ему название — и систему, чтобы действовать до того, как вы проведёте в отношениях полгода и слишком привяжетесь, чтобы видеть трезво.</p>
+    <div style="display:flex;justify-content:center;">
+      <a href="https://secure.wayforpay.com/button/b065289d42eb0" class="btn" target="_blank" rel="noopener">Купить — $14.99</a>
+    </div>
+    <p class="btn-note">PDF мгновенно · Интерактивные чек-листы · Доставка сразу</p>
+
+    <!-- BRIDGE TO LONG GAME -->
+    <div class="bridge-box">
+      <h3>УЖЕ В ОТНОШЕНИЯХ?</h3>
+      <p>Руководство по красным флагам — это диагноз. <strong>«Долгая игра»</strong> — это лечение: 30-дневная система для пар, которые хотят вернуться от «по сути соседей» к настоящим партнёрам.</p>
+      <a href="https://back4heart.site/longgame/" class="bridge-btn" target="_blank">Смотреть «Долгую игру» →</a>
+    </div>
+  </div>
+</section>
+
+<footer style="text-align:center;padding:28px 20px 44px;font-size:14px;color:#A39E98;border-top:1px solid #EDE8E0;">
+  <a href="/" style="display:inline-block;padding:13px 32px;background:#2D8E5F;color:#fff;font-size:16px;font-weight:700;text-decoration:none;border-radius:12px;margin-bottom:18px;" target="_blank">← Все руководства</a>
+  <p style="margin-bottom:4px;">Вопросы? <a href="mailto:info@back4heart.site" style="color:#C0392B;text-decoration:none;">info@back4heart.site</a> &nbsp;·&nbsp; <a href="https://instagram.com/back4heart" target="_blank" style="color:#C0392B;text-decoration:none;">Instagram</a></p>
+  <p style="margin-bottom:14px;">15560 N Frank Lloyd Wright, Suite B4-7224, Scottsdale, AZ 85260, United States</p>
+  <p style="display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:10px;">
+    <a href="/contact/" style="color:#A39E98;text-decoration:none;">Контакты</a>
+    <a href="/terms/" style="color:#A39E98;text-decoration:none;">Условия использования</a>
+    <a href="/privacy/" style="color:#A39E98;text-decoration:none;">Конфиденциальность и возвраты</a>
+  </p>
+  <p style="color:#C8C2BB;">© 2026 back4heart · Роман Вельд | Все права защищены</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>
