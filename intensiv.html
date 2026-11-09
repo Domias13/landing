@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="geo-pending">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Мужская психология после расставания - аудиоинтенсив 7 дней | back4heart</title>
-<meta name="description" content="Как пережить расставание без боли, перестать думать только о нём и понять мужскую психологию - взгляд мужчины на то, что происходит после разрыва.">
+<title>Вернуться к себе после расставания — аудиоинтенсив 7 дней | BACK4HEART</title>
+<meta name="description" content="Ждёшь его сообщения, перечитываешь переписку, проверяешь соцсети и винишь себя? 7-дневный аудиоинтенсив поможет справиться с навязчивыми мыслями, чувством вины и эмоциональными откатами после расставания.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -192,6 +192,7 @@
 
   /* pricing */
   .price-anchor{ text-align:center; max-width:520px; margin:0 auto 18px; font-family:'Playfair Display',serif; font-style:italic; font-size:16.5px; color:var(--accent-deep); }
+  .pricing-intro{ text-align:center; max-width:650px; margin:0 auto 24px; color:var(--muted); font-size:15px; line-height:1.65; }
   .price-countdown{ text-align:center; margin:0 auto 34px; font-size:13.5px; font-weight:700; color:var(--accent); }
   .price-countdown span{ font-family:'Playfair Display',serif; font-size:15px; }
   .pricing-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; align-items:stretch; max-width:1000px; margin:0 auto; }
@@ -200,7 +201,8 @@
   .plan[data-badge]::before{ content:attr(data-badge); position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--accent); color:#fff; font-size:10.5px; font-weight:700; letter-spacing:.04em; padding:5px 13px; border-radius:20px; text-transform:uppercase; white-space:nowrap; }
   .plan.featured::before{ background:var(--gold); }
   .plan-tag{ font-size:11.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
-  .plan.featured{ border:2px solid var(--accent); background:linear-gradient(180deg,#fffaf6 0%,#fff 40%); box-shadow:0 26px 60px rgba(179,69,58,0.18); transform:scale(1.04); z-index:2; padding-top:36px; }
+  .plan-popular{ position:absolute; top:-13px; left:50%; transform:translateX(-50%); white-space:nowrap; padding:6px 12px; border-radius:20px; background:var(--accent); color:#fff; font-size:10.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; box-shadow:0 6px 14px rgba(179,69,58,.2); }
+  .plan.featured{ border:2px solid var(--accent); background:linear-gradient(180deg,#fffaf6 0%,#fff 40%); box-shadow:0 26px 60px rgba(179,69,58,0.18); transform:scale(1.04); z-index:2; padding-top:30px; }
   .plan.featured::before{ background:var(--accent); font-size:11.5px; padding:6px 16px; box-shadow:0 6px 14px rgba(179,69,58,.3); }
   .plan.featured .price{ color:var(--accent-deep); font-size:38px; }
   .plan.featured .plan-btn{ padding:16px 14px; font-size:15px; box-shadow:0 12px 26px rgba(179,69,58,0.28); }
@@ -219,7 +221,14 @@
   .mentor-detail li::before{ content:'✓'; position:absolute; left:0; color:var(--accent); font-weight:700; }
   .mentor-price{ font-size:16px !important; color:var(--ink) !important; }
   .mentor-note{ font-size:12.5px !important; font-style:italic; color:var(--light) !important; }
-  @media (max-width:860px){ .plan.featured{ transform:none; order:-1; } }
+  @media (max-width:920px){
+    .pricing-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); max-width:760px; gap:20px; }
+    .plan.featured{ transform:none; order:-1; grid-column:1 / -1; width:min(100%,560px); justify-self:center; }
+  }
+  @media (max-width:760px){
+    .pricing-grid{ grid-template-columns:1fr; max-width:520px; gap:18px; }
+    .plan.featured{ grid-column:auto; }
+  }
 
   .plan .plan-name{ font-family:'Playfair Display',serif; font-size:18px; margin-bottom:6px; }
   .plan .plan-desc{ color:var(--muted); font-size:13px; margin-bottom:18px; min-height:34px; }
@@ -297,6 +306,20 @@
   .offer-modal-body ol{ padding-left:18px; }
 
   @media (prefers-reduced-motion:reduce){ *{ animation:none!important; transition:none!important; } }
+
+/* Clear offer, region selection, and highlighted entry plan */
+.hero-price { margin: 0; font-size: 15px; font-weight: 600; color: var(--ink); }
+.hero-price b { color: var(--accent-deep); font-size: 18px; }
+.cta-secondary { display: inline-block; color: var(--accent-deep); font-size: 14px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; padding: 4px 10px; }
+.cta-secondary:hover { color: var(--accent); }
+.geo-status, .geo-fallback { max-width: 620px; margin: 0 auto 18px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--muted); text-align: center; font-size: 13.5px; line-height: 1.55; }
+.geo-fallback[hidden] { display: none; }
+.geo-fallback p { margin: 0 0 10px; }
+.geo-fallback-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.geo-fallback-buttons button { border: 1px solid var(--accent); border-radius: 6px; background: #fff; color: var(--accent-deep); padding: 10px 14px; font: inherit; font-weight: 700; cursor: pointer; }
+.geo-fallback-buttons button:hover { background: var(--accent); color: #fff; }
+html.geo-pending .hero-price, html.geo-pending #priceAnchorPrice { visibility: hidden; }
+html.geo-pending .pricing-grid .price-row, html.geo-pending .pricing-grid .plan-btn, html.geo-pending .pricing-grid .plan-btn-alt, html.geo-pending .pricing-grid .tribute-note, html.geo-pending .pricing-grid .plan-btn-tribute { visibility: hidden; }
 </style>
 </head>
 <body>
@@ -312,18 +335,18 @@
 </header>
 
 <div class="sticky-cta-bar" id="stickyCtaBar">
-  <a href="#pricing" class="sticky-cta" data-t="sticky_cta">Начать интенсив</a>
+  <a href="#pricing" class="sticky-cta" data-t="sticky_cta">Выбрать тариф</a>
 </div>
 
 <section class="hero">
   <div class="wrap">
     <span class="eyebrow" data-t="hero_eyebrow">Аудиоинтенсив · 7 дней · доступ навсегда</span>
-    <h1><span data-t="hero_h1_1">БЭушный ещё пожалеет,</span> <em style="font-style:italic;color:var(--accent);" data-t="hero_h1_2">а мне уже похер</em></h1>
-    <p class="sub" data-t="hero_sub">Он давно не рядом. Но до сих пор управляет твоим настроением, твоим сном и твоим вниманием. За 7 дней ты вернёшь себе управление собственной жизнью - независимо от того, что решит он.</p>
-    <p class="hero-physio" data-t="hero_physio">Интенсив для женщин, которые устали думать о бывшем, проверять его соцсети и ждать сообщения, которого не будет.</p>
+    <h1 data-t="hero_h1">Вернуться к себе после расставания</h1>
+    <p class="sub" data-t="hero_sub">Ждёшь его сообщения, перечитываешь переписку, проверяешь соцсети и винишь себя? За 7 дней ты разберёшься, почему мысли о нём не отпускают, что делать, когда тянет написать, и как пережить чувство вины, сравнение с другой и эмоциональные откаты.</p>
+    <p class="hero-physio" data-t="hero_physio">7 коротких аудиоуроков и практики помогут шаг за шагом вернуть внимание к своей жизни — даже если его молчание или очередное сообщение снова выбивают тебя из равновесия.</p>
     <div class="hero-cta">
-      <a href="#pricing" class="cta-primary" data-t="hero_cta">Начать возвращаться к себе</a>
-      <div class="cta-price" data-t="hero_cta_price">Аудиоформат · 15–20 минут в день · доступ навсегда</div>
+      <a href="#pricing" class="cta-primary" data-t="hero_cta">Выбрать тариф</a>
+      <p class="hero-price"><span data-t="hero_price_lead">Интенсив —</span> <b id="heroPriceTop">—</b><span data-t="hero_price_suffix"> · разовый платёж</span></p> <a href="https://t.me/kurs20262_bot" target="_blank" rel="noopener" class="cta-secondary free-lesson-cta" data-t="hero_free_lesson">Получить 1-й день бесплатно</a> <div class="cta-price" data-t="hero_cta_price">7 аудиоуроков · 15–20 минут в день · 3 практики · доступ навсегда</div>
     </div>
     <div class="badges">
       <span data-t="badge_1">👨 Мужской взгляд изнутри</span>
@@ -487,6 +510,125 @@
   </div>
 </section>
 
+<section class="section section-alt" id="pricing">
+  <div class="wrap-wide">
+    <div class="section-head">
+      <span class="eyebrow" data-t="pricing_eyebrow">Закрытый доступ</span>
+      <h2 data-t="pricing_h2">Выбери формат, который нужен тебе сейчас</h2>
+    </div>
+    <p class="pricing-intro" data-t="pricing_intro">Пройди интенсив самостоятельно или разбери свою историю лично и получи конкретный план следующих шагов.</p>
+    <p class="price-anchor"><span data-t="price_anchor">7 аудиоуроков, 3 техники и доступ навсегда —</span> <b id="priceAnchorPrice">—</b>.</p>
+    <p class="price-countdown"><span data-t="price_countdown_label">Цена по акции действует ещё:</span> <span id="countdownTimer">--:--:--</span></p>
+    <p id="dualPaymentNote" hidden style="text-align:center;max-width:580px;margin:0 auto 22px;color:var(--muted);font-size:13.5px;background:#fff;border:1px dashed var(--line);border-radius:8px;padding:12px 18px;" data-t="dual_note">💳 Показываем сразу два способа оплаты, чтобы платёж точно прошёл, даже если один из них не поддерживает твой банк или страну.</p>
+    <p id="geoPendingNote" class="geo-status" data-t="geo_pending">Определяем страну, чтобы показать цену и способ оплаты…</p>
+<div id="geoFallback" class="geo-fallback" hidden>
+  <p data-t="geo_failed">Не удалось определить страну. Выберите её, чтобы увидеть точную цену и способ оплаты.</p>
+  <div class="geo-fallback-buttons">
+    <button type="button" data-geo-choice="UA" data-t="geo_ua">Украина</button>
+    <button type="button" data-geo-choice="RU" data-t="geo_ru">Россия</button>
+    <button type="button" data-geo-choice="INTL" data-t="geo_intl">Другая страна</button>
+  </div>
+</div>
+<div class="pricing-grid">
+      <div class="plan" data-tier="basic">
+        <div class="plan-tag" data-t="plan_basic_tag">Самостоятельный формат</div>
+        <div class="plan-name" data-t="plan_basic_name">Интенсив</div>
+        <div class="plan-desc" data-t="plan_basic_desc">7 коротких аудиоуроков и 3 практики: навязчивые мысли, желание написать первой, вина и стыд, сравнение с другой и эмоциональные откаты после его сообщений.</div>
+        <div class="price-row"><span class="price-old" id="priceBasicOld">$79</span><span class="price" id="priceBasic">$14.99</span></div>
+        <div class="price-note" data-t="price_note">разовый платёж</div>
+        <ul>
+          <li data-t="plan_basic_li1">7 аудиоуроков, 15–20 минут в день</li>
+          <li data-t="plan_basic_li2">Доступ навсегда, слушай когда удобно</li>
+          <li data-t="plan_basic_li3">Слушай хоть с телефона, хоть с ноутбука</li>
+        </ul>
+        <a href="#" class="plan-btn" data-plan="basic" id="planBasicBtn" data-t="pay_btn">Оплатить</a>
+        <a href="#" class="plan-btn-alt" data-plan="basic" id="planBasicBtnAlt" hidden>Оплатить</a>
+        <p class="tribute-note" id="planBasicTributeNote" hidden>Если вы из России - используйте этот способ ↓</p>
+        <a href="#" class="plan-btn-tribute" data-plan="basic" id="planBasicBtnTribute" hidden>Оплатить</a>
+      </div>
+
+      <div class="plan featured" data-tier="personal">
+        <div class="plan-popular" data-t="plan_popular">Самый популярный</div>
+        <div class="plan-tag" data-t="plan_personal_tag">Разобрать свою ситуацию</div>
+        <div class="plan-name" data-t="plan_personal_name">Персональный разбор твоей ситуации</div>
+        <div class="plan-desc" data-t="plan_personal_desc">Я лично прочитаю твою историю и разберу, что происходит именно в твоём случае. Ты получишь ясность по своим вопросам и конкретный план следующих шагов — без шаблонных советов.</div>
+        <div class="price-row"><span class="price-old" id="pricePersonalOld">$149</span><span class="price" id="pricePersonal">$59.99</span></div>
+        <div class="price-note" data-t="price_note">разовый платёж</div>
+        <ul>
+          <li data-t="plan_personal_li1">Всё из тарифа «Интенсив» - 7 аудиоуроков и 3 авторские техники</li>
+          <li data-t="plan_personal_li2">Личный разбор именно твоей истории</li>
+          <li data-t="plan_personal_li3">Честный ответ, почему он поступил так, а не иначе</li>
+          <li data-t="plan_personal_li4">Конкретный план действий - что делать, а не просто «отпусти»</li>
+        </ul>
+        <div class="bonus-tag" data-t="bonus_tag">🎁 При покупке сейчас - бонус: памятка «Аптечка скорой помощи на тяжёлую ночь» в подарок</div>
+        <a href="#" class="plan-btn" data-plan="personal" id="planPersonalBtn" data-t="pay_btn">Оплатить</a>
+        <a href="#" class="plan-btn-alt" data-plan="personal" id="planPersonalBtnAlt" hidden>Оплатить</a>
+        <p class="tribute-note" id="planPersonalTributeNote" hidden>Если вы из России - используйте этот способ ↓</p>
+        <a href="#" class="plan-btn-tribute" data-plan="personal" id="planPersonalBtnTribute" hidden>Оплатить</a>
+      </div>
+
+      <div class="plan premium" data-tier="mentor" data-badge="Премиум">
+        <div class="plan-tag" data-t="plan_mentor_tag">Индивидуальная программа с сопровождением</div>
+        <div class="plan-name" data-t="plan_mentor_name">Личное ведение</div>
+        <div class="plan-desc" data-t="plan_mentor_desc">Для тех, кому нужны регулярные встречи и обратная связь.</div>
+        <div class="price-row"><span class="price-old" id="priceMentorOld"></span><span class="price" id="priceMentor">$200</span></div>
+        <div class="price-note" data-t="price_note">разовый платёж</div>
+        <ul>
+          <li data-t="plan_mentor_li1">Всё из тарифа «Интенсив»</li>
+          <li data-t="plan_mentor_li2">4 индивидуальные сессии</li>
+          <li data-t="plan_mentor_li3">Возможность задавать вопросы в Telegram в течение оговорённого периода</li>
+          <li data-t="plan_mentor_li4">Индивидуальный план работы и корректировка шагов по мере продвижения</li>
+        </ul>
+        <p class="plan-result" data-t="plan_mentor_result"><b>Результат:</b> не только получить рекомендации, но и последовательно работать над своей ситуацией с обратной связью.</p>
+        <a href="#" class="plan-btn" data-plan="mentor" id="planMentorBtn" data-t="mentor_btn">Записаться на личное ведение</a>
+        <a href="#" class="plan-btn-alt" data-plan="mentor" id="planMentorBtnAlt" hidden>Оплатить</a>
+        <p class="tribute-note" id="planMentorTributeNote" hidden>Если вы из России - используйте этот способ ↓</p>
+        <a href="#" class="plan-btn-tribute" data-plan="mentor" id="planMentorBtnTribute" hidden>Оплатить</a>
+      </div>
+    </div>
+
+    <div class="mentor-detail" id="mentor">
+      <span class="eyebrow" data-t="mentor_eyebrow">Личное ведение</span>
+      <h3 data-t="mentor_h">4 недели индивидуальной работы. Не нужно разбираться во всём одной.</h3>
+      <p data-t="mentor_p1">Иногда недостаточно просто послушать аудиоуроки или получить один разбор. Ты понимаешь, что происходит, но затем возникает новая ситуация, появляются вопросы и снова становится трудно понять, как действовать.</p>
+      <p data-t="mentor_p2">В личном ведении мы работаем именно с твоей историей и твоими решениями.</p>
+      <div class="mentor-incl-title" data-t="mentor_incl_h">Что входит:</div>
+      <ul>
+  <li data-t="mentor_li1">Полный аудиоинтенсив «Вернуться к себе после расставания»</li>
+        <li data-t="mentor_li2">4 индивидуальные сессии</li>
+        <li data-t="mentor_li3">Индивидуальный план работы</li>
+        <li data-t="mentor_li4">Возможность задавать вопросы в Telegram в течение программы</li>
+        <li data-t="mentor_li5">Обсуждение сложных ситуаций и корректировка дальнейших действий</li>
+      </ul>
+      <p class="mentor-price" data-t="mentor_price">Стоимость программы - <b id="mentorPriceInline">$200</b>.</p>
+      <p data-t="mentor_p3">Это формат для тех, кому недостаточно универсальных рекомендаций и кто хочет последовательно разобраться в своей ситуации с индивидуальной обратной связью.</p>
+      <p class="mentor-note" data-t="mentor_note">Продолжительность сессий, сроки ответов в Telegram и условия сопровождения согласовываются до начала работы.</p>
+    </div>
+
+    <div class="payment-block">
+      <p id="paymentTextBase" data-t="pay_text_base">💳 <b>Оплата - картой любой страны:</b> Visa, Mastercard, картой, выпущенной в вашей стране.</p>
+      <p id="paymentTextRu" hidden data-t="pay_text_ru">🇷🇺 Для России также доступна оплата по <b>«МИР»</b> и <b>«СБП»</b>.</p>
+      <div class="payment-icons">
+        <span class="pay-icon" title="Visa"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#7a6b5a" stroke-width="1.3"/><text x="19" y="16" text-anchor="middle" font-family="Arial" font-weight="700" font-size="9" fill="#7a6b5a">VISA</text></svg></span>
+        <span class="pay-icon" title="Mastercard"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#7a6b5a" stroke-width="1.3"/><circle cx="16" cy="12" r="6.5" fill="#b3453a" opacity="0.8"/><circle cx="24" cy="12" r="6.5" fill="#b8860b" opacity="0.7"/></svg></span>
+        <span class="pay-icon" title="МИР" id="mirIcon" hidden><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#7a6b5a" stroke-width="1.3"/><text x="19" y="16" text-anchor="middle" font-family="Arial" font-weight="700" font-size="8" fill="#7a6b5a">МИР</text></svg></span>
+        <span class="pay-icon" title="СБП" id="sbpIcon" hidden><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#7a6b5a" stroke-width="1.3"/><text x="19" y="15" text-anchor="middle" font-family="Arial" font-weight="700" font-size="7.5" fill="#7a6b5a">СБП</text></svg></span>
+        <span class="pay-icon" title="Stripe" id="stripeIcon" hidden><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#7a6b5a" stroke-width="1.3"/><text x="19" y="16" text-anchor="middle" font-family="Arial" font-weight="700" font-size="8" fill="#7a6b5a">Stripe</text></svg></span>
+        <span class="pay-icon" title="PayPal" id="paypalIcon" hidden><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#7a6b5a" stroke-width="1.3"/><text x="19" y="16" text-anchor="middle" font-family="Arial" font-weight="700" font-size="7.5" fill="#7a6b5a">PayPal</text></svg></span>
+        <span class="pay-icon" title="Tribute" id="tributeIcon" hidden><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#7a6b5a" stroke-width="1.3"/><text x="19" y="16" text-anchor="middle" font-family="Arial" font-weight="700" font-size="7" fill="#7a6b5a">Tribute</text></svg></span>
+      </div>
+    </div>
+
+    <div class="trust-row">
+      <div class="trust-item"><b data-t="trust1_b">Гарантия возврата 7 дней</b><span data-t="trust1_span">Не подошло - верну деньги в течение 7 дней, без лишних вопросов</span></div>
+      <div class="trust-item"><b data-t="trust2_b">Безопасная оплата</b><span data-t="trust2_span">SSL-шифрование 256 бит. Данные карты не хранятся на сайте</span></div>
+      <div class="trust-item"><b data-t="trust3_b">Прозрачные условия</b><span data-t="trust3_span">Все условия покупки - в <a href="oferta.html" id="offerLink2" target="_blank" rel="noopener">публичной оферте</a></span></div>
+    </div>
+
+    <p style="text-align:center;font-size:12.5px;color:var(--light);margin-top:20px;" data-t="no_hidden_fees">Без скрытых доплат и допродаж.</p>
+  </div>
+</section>
+
 <section class="section section-alt">
   <div class="wrap">
     <div class="section-head">
@@ -613,117 +755,11 @@
     </ul>
     <p class="pain-final" data-t="pain3_final">Он уже не с тобой. Но до сих пор управляет твоей жизнью.</p>
     <p class="pain-bridge" data-t="pain3_bridge">7 дней - чтобы вернуть управление себе.</p>
-    <div style="text-align:center;margin-top:26px;"><a href="#pricing" class="cta-primary" data-t="hero_cta">Начать возвращаться к себе</a></div>
+    <div style="text-align:center;margin-top:26px;"><a href="#pricing" class="cta-primary" data-t="hero_cta">Выбрать тариф</a></div>
   </div>
 </section>
 
-<section class="section section-alt" id="pricing">
-  <div class="wrap-wide">
-    <div class="section-head">
-      <span class="eyebrow" data-t="pricing_eyebrow">Закрытый доступ</span>
-      <h2 data-t="pricing_h2">Выбери, насколько глубоко ты готова зайти</h2>
-    </div>
-    <p class="price-anchor" data-t="price_anchor">Одна сессия у психолога стоит $60-120. Здесь - 7 дней, мужской взгляд изнутри и доступ навсегда, и всё это за $14.99.</p>
-    <p class="price-countdown"><span data-t="price_countdown_label">Цена по акции действует ещё:</span> <span id="countdownTimer">--:--:--</span></p>
-    <p id="dualPaymentNote" hidden style="text-align:center;max-width:580px;margin:0 auto 22px;color:var(--muted);font-size:13.5px;background:#fff;border:1px dashed var(--line);border-radius:8px;padding:12px 18px;" data-t="dual_note">💳 Показываем сразу два способа оплаты, чтобы платёж точно прошёл, даже если один из них не поддерживает твой банк или страну.</p>
-    <div class="pricing-grid">
-      <div class="plan" data-tier="basic">
-        <div class="plan-tag" data-t="plan_basic_tag">Начать самостоятельно</div>
-        <div class="plan-name" data-t="plan_basic_name">Интенсив</div>
-        <div class="plan-desc" data-t="plan_basic_desc">7 аудиоуроков по 15–20 минут + 3 авторские техники. Первая техника помогает снизить остроту навязчивых мыслей - многие участницы замечают разницу уже в первые сутки.</div>
-        <div class="price-row"><span class="price-old" id="priceBasicOld">$79</span><span class="price" id="priceBasic">$14.99</span></div>
-        <div class="price-note" data-t="price_note">разовый платёж</div>
-        <ul>
-          <li data-t="plan_basic_li1">7 аудиоуроков, 15–20 минут в день</li>
-          <li data-t="plan_basic_li2">Доступ навсегда, слушай когда удобно</li>
-          <li data-t="plan_basic_li3">Слушай хоть с телефона, хоть с ноутбука</li>
-        </ul>
-        <a href="#" class="plan-btn" data-plan="basic" id="planBasicBtn" data-t="pay_btn">Оплатить</a>
-        <a href="#" class="plan-btn-alt" data-plan="basic" id="planBasicBtnAlt" hidden>Оплатить</a>
-        <p class="tribute-note" id="planBasicTributeNote" hidden>Если вы из России - используйте этот способ ↓</p>
-        <a href="#" class="plan-btn-tribute" data-plan="basic" id="planBasicBtnTribute" hidden>Оплатить</a>
-      </div>
 
-      <div class="plan featured" data-tier="personal" data-badge="Основной выбор">
-        <div class="plan-tag" data-t="plan_personal_tag">Разобрать свою ситуацию</div>
-        <div class="plan-name" data-t="plan_personal_name">Персональный разбор твоей ситуации</div>
-        <div class="plan-desc" data-t="plan_personal_desc">Разберём именно твою ситуацию, какой бы сложной она ни казалась. Ты поймёшь: что он на самом деле имел в виду, почему исчез или повёл себя именно так, и что тебе делать дальше. Никаких «само пройдёт» и «время лечит» - разбор твоей конкретной ситуации и план, как из неё выйти. Это не шаблонный ответ и не работа ассистента - твою историю читаю и разбираю я сам, лично. Ты получишь то, чего не даст ни один общий урок: ясность именно про твой случай - и наконец перестанешь гадать, что произошло и что теперь делать.</div>
-        <div class="price-row"><span class="price-old" id="pricePersonalOld">$149</span><span class="price" id="pricePersonal">$59.99</span></div>
-        <div class="price-note" data-t="price_note">разовый платёж</div>
-        <ul>
-          <li data-t="plan_personal_li1">Всё из тарифа «Интенсив» - 7 аудиоуроков и 3 авторские техники</li>
-          <li data-t="plan_personal_li2">Личный разбор именно твоей истории</li>
-          <li data-t="plan_personal_li3">Честный ответ, почему он поступил так, а не иначе</li>
-          <li data-t="plan_personal_li4">Конкретный план действий - что делать, а не просто «отпусти»</li>
-        </ul>
-        <div class="bonus-tag" data-t="bonus_tag">🎁 При покупке сейчас - бонус: памятка «Аптечка скорой помощи на тяжёлую ночь» в подарок</div>
-        <a href="#" class="plan-btn" data-plan="personal" id="planPersonalBtn" data-t="pay_btn">Оплатить</a>
-        <a href="#" class="plan-btn-alt" data-plan="personal" id="planPersonalBtnAlt" hidden>Оплатить</a>
-        <p class="tribute-note" id="planPersonalTributeNote" hidden>Если вы из России - используйте этот способ ↓</p>
-        <a href="#" class="plan-btn-tribute" data-plan="personal" id="planPersonalBtnTribute" hidden>Оплатить</a>
-      </div>
-
-      <div class="plan premium" data-tier="mentor" data-badge="Премиум">
-        <div class="plan-tag" data-t="plan_mentor_tag">Индивидуальная программа с сопровождением</div>
-        <div class="plan-name" data-t="plan_mentor_name">Личное ведение</div>
-        <div class="plan-desc" data-t="plan_mentor_desc">Для тех, кому нужны регулярные встречи и обратная связь.</div>
-        <div class="price-row"><span class="price-old" id="priceMentorOld"></span><span class="price" id="priceMentor">$200</span></div>
-        <div class="price-note" data-t="price_note">разовый платёж</div>
-        <ul>
-          <li data-t="plan_mentor_li1">Всё из тарифа «Интенсив»</li>
-          <li data-t="plan_mentor_li2">4 индивидуальные сессии</li>
-          <li data-t="plan_mentor_li3">Возможность задавать вопросы в Telegram в течение оговорённого периода</li>
-          <li data-t="plan_mentor_li4">Индивидуальный план работы и корректировка шагов по мере продвижения</li>
-        </ul>
-        <p class="plan-result" data-t="plan_mentor_result"><b>Результат:</b> не только получить рекомендации, но и последовательно работать над своей ситуацией с обратной связью.</p>
-        <a href="#" class="plan-btn" data-plan="mentor" id="planMentorBtn" data-t="mentor_btn">Записаться на личное ведение</a>
-        <a href="#" class="plan-btn-alt" data-plan="mentor" id="planMentorBtnAlt" hidden>Оплатить</a>
-        <p class="tribute-note" id="planMentorTributeNote" hidden>Если вы из России - используйте этот способ ↓</p>
-        <a href="#" class="plan-btn-tribute" data-plan="mentor" id="planMentorBtnTribute" hidden>Оплатить</a>
-      </div>
-    </div>
-
-    <div class="mentor-detail" id="mentor">
-      <span class="eyebrow" data-t="mentor_eyebrow">Личное ведение</span>
-      <h3 data-t="mentor_h">4 недели индивидуальной работы. Не нужно разбираться во всём одной.</h3>
-      <p data-t="mentor_p1">Иногда недостаточно просто послушать аудиоуроки или получить один разбор. Ты понимаешь, что происходит, но затем возникает новая ситуация, появляются вопросы и снова становится трудно понять, как действовать.</p>
-      <p data-t="mentor_p2">В личном ведении мы работаем именно с твоей историей и твоими решениями.</p>
-      <div class="mentor-incl-title" data-t="mentor_incl_h">Что входит:</div>
-      <ul>
-        <li data-t="mentor_li1">Полный аудиоинтенсив «БЭушный ещё пожалеет»</li>
-        <li data-t="mentor_li2">4 индивидуальные сессии</li>
-        <li data-t="mentor_li3">Индивидуальный план работы</li>
-        <li data-t="mentor_li4">Возможность задавать вопросы в Telegram в течение программы</li>
-        <li data-t="mentor_li5">Обсуждение сложных ситуаций и корректировка дальнейших действий</li>
-      </ul>
-      <p class="mentor-price" data-t="mentor_price">Стоимость программы - <b id="mentorPriceInline">$200</b>.</p>
-      <p data-t="mentor_p3">Это формат для тех, кому недостаточно универсальных рекомендаций и кто хочет последовательно разобраться в своей ситуации с индивидуальной обратной связью.</p>
-      <p class="mentor-note" data-t="mentor_note">Продолжительность сессий, сроки ответов в Telegram и условия сопровождения согласовываются до начала работы.</p>
-    </div>
-
-    <div class="payment-block">
-      <p id="paymentTextBase" data-t="pay_text_base">💳 <b>Оплата - картой любой страны:</b> Visa, Mastercard, картой, выпущенной в вашей стране.</p>
-      <p id="paymentTextRu" hidden data-t="pay_text_ru">🇷🇺 Для России также доступна оплата по <b>«МИР»</b> и <b>«СБП»</b>.</p>
-      <div class="payment-icons">
-        <span class="pay-icon" title="Visa"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#7a6b5a" stroke-width="1.3"/><text x="19" y="16" text-anchor="middle" font-family="Arial" font-weight="700" font-size="9" fill="#7a6b5a">VISA</text></svg></span>
-        <span class="pay-icon" title="Mastercard"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#7a6b5a" stroke-width="1.3"/><circle cx="16" cy="12" r="6.5" fill="#b3453a" opacity="0.8"/><circle cx="24" cy="12" r="6.5" fill="#b8860b" opacity="0.7"/></svg></span>
-        <span class="pay-icon" title="МИР" id="mirIcon" hidden><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#7a6b5a" stroke-width="1.3"/><text x="19" y="16" text-anchor="middle" font-family="Arial" font-weight="700" font-size="8" fill="#7a6b5a">МИР</text></svg></span>
-        <span class="pay-icon" title="СБП" id="sbpIcon" hidden><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#7a6b5a" stroke-width="1.3"/><text x="19" y="15" text-anchor="middle" font-family="Arial" font-weight="700" font-size="7.5" fill="#7a6b5a">СБП</text></svg></span>
-        <span class="pay-icon" title="Stripe" id="stripeIcon" hidden><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#7a6b5a" stroke-width="1.3"/><text x="19" y="16" text-anchor="middle" font-family="Arial" font-weight="700" font-size="8" fill="#7a6b5a">Stripe</text></svg></span>
-        <span class="pay-icon" title="PayPal" id="paypalIcon" hidden><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#7a6b5a" stroke-width="1.3"/><text x="19" y="16" text-anchor="middle" font-family="Arial" font-weight="700" font-size="7.5" fill="#7a6b5a">PayPal</text></svg></span>
-        <span class="pay-icon" title="Tribute" id="tributeIcon" hidden><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#7a6b5a" stroke-width="1.3"/><text x="19" y="16" text-anchor="middle" font-family="Arial" font-weight="700" font-size="7" fill="#7a6b5a">Tribute</text></svg></span>
-      </div>
-    </div>
-
-    <div class="trust-row">
-      <div class="trust-item"><b data-t="trust1_b">Гарантия возврата 7 дней</b><span data-t="trust1_span">Не подошло - верну деньги в течение 7 дней, без лишних вопросов</span></div>
-      <div class="trust-item"><b data-t="trust2_b">Безопасная оплата</b><span data-t="trust2_span">SSL-шифрование 256 бит. Данные карты не хранятся на сайте</span></div>
-      <div class="trust-item"><b data-t="trust3_b">Прозрачные условия</b><span data-t="trust3_span">Все условия покупки - в <a href="oferta.html" id="offerLink2" target="_blank" rel="noopener">публичной оферте</a></span></div>
-    </div>
-
-    <p style="text-align:center;font-size:12.5px;color:var(--light);margin-top:20px;" data-t="no_hidden_fees">Без скрытых доплат и допродаж.</p>
-  </div>
-</section>
 
 <section class="section">
   <div class="wrap">
@@ -764,7 +800,7 @@
   <span class="eyebrow" data-t="final_eyebrow">Решение за тобой</span>
   <h2 data-t="final_h2">Представь неделю, когда его сообщение - или его молчание - перестанет решать твоё настроение</h2>
   <p class="sub" data-t="final_sub">Первые изменения многие замечают уже через 24-48 часов.</p>
-  <div style="margin-top:30px;"><a href="#pricing" class="cta-primary" data-t="hero_cta">Начать возвращаться к себе</a></div>
+  <div style="margin-top:30px;"><a href="#pricing" class="cta-primary" data-t="hero_cta">Выбрать тариф</a></div>
 </section>
 
 <footer>
@@ -846,16 +882,15 @@ document.querySelectorAll('.faq-item').forEach(item=>{
 /* ==================== ПЕРЕВОД (для украинских посетителей) ==================== */
 const TRANSLATIONS = {
   uk: {
-    "sticky_cta": "Почати інтенсив",
+    "sticky_cta": "Обрати тариф",
     "sticky_cta_alt": "1-й урок безкоштовно →",
     "hero_eyebrow": "Аудіоінтенсив · 7 днів · доступ назавжди",
-    "hero_h1_1": "Б/у ще пошкодує,",
-    "hero_h1_2": "а мені вже начхати",
-    "hero_sub": "Він давно не поруч. Але досі керує твоїм настроєм, твоїм сном і твоєю увагою. За 7 днів ти повернеш собі керування власним життям - незалежно від того, що вирішить він.",
-    "hero_physio": "Інтенсив для жінок, які втомилися думати про колишнього, перевіряти його соцмережі і чекати повідомлення, якого не буде.",
-    "hero_cta": "Почати повертатися до себе",
-    "hero_cta_price": "Аудіоформат · 15-20 хвилин на день · доступ назавжди",
-    "badge_1": "👨 Чоловічий погляд зсередини",
+    "hero_h1": "Повернутися до себе після розставання",
+    "hero_sub": "Чекаєш на його повідомлення, перечитуєш листування, перевіряєш соцмережі й звинувачуєш себе? За 7 днів ти розберешся, чому думки про нього не відпускають, що робити, коли тягне написати, і як прожити провину, порівняння з іншою та емоційні відкати.",
+    "hero_physio": "7 коротких аудіоуроків і практики допоможуть крок за кроком повернути увагу до власного життя — навіть якщо його мовчання чи чергове повідомлення знову вибивають тебе з рівноваги.",
+    "hero_cta": "Обрати тариф",
+    "hero_cta_price": "7 аудіоуроків · 15–20 хвилин на день · 3 практики · доступ назавжди",
+    "hero_price_lead": "Інтенсив —", "hero_price_suffix": " · разовий платіж", "hero_free_lesson": "Отримати перший день безкоштовно", "geo_pending": "Визначаємо країну, щоб показати ціну та спосіб оплати…", "geo_failed": "Не вдалося визначити країну. Оберіть її, щоб побачити точну ціну й спосіб оплати.", "geo_ua": "Україна", "geo_ru": "Росія", "geo_intl": "Інша країна", "badge_1": "👨 Чоловічий погляд зсередини",
     "badge_2": "🎧 7 аудіоуроків",
     "badge_3": "♾️ Доступ назавжди",
     "badge_4": "📩 Одразу в Telegram",
@@ -976,20 +1011,22 @@ const TRANSLATIONS = {
     "pain3_final": "Його вже немає поруч. Але він досі керує твоїм життям.",
     "pain3_bridge": "7 днів - щоб повернути керування собі.",
     "pricing_eyebrow": "Закритий доступ",
-    "pricing_h2": "Обери, наскільки глибоко ти готова зайти",
-    "price_anchor": "Одна сесія у психолога коштує $60-120. Тут - 7 днів, чоловічий погляд зсередини і доступ назавжди, і все це за $14.99.",
+    "pricing_h2": "Обери формат, який потрібен тобі зараз",
+    "pricing_intro": "Пройди інтенсив самостійно або розбери свою історію особисто й отримай конкретний план наступних кроків.",
+    "price_anchor": "7 аудіоуроків, 3 техніки й доступ назавжди —",
     "price_countdown_label": "Ціна за акцією діє ще:",
     "plan_basic_name": "Інтенсив",
-    "plan_basic_desc": "7 аудіоуроків по 15-20 хвилин + 3 авторські техніки. Перша техніка допомагає знизити гостроту нав'язливих думок - багато учасниць помічають різницю вже в перші доби.",
+    "plan_basic_desc": "7 коротких аудіоуроків і 3 практики: нав'язливі думки, бажання написати першою, провина й сором, порівняння з іншою та емоційні відкати після його повідомлень.",
     "price_note": "разовий платіж",
     "plan_basic_li1": "7 аудіоуроків, 15-20 хвилин на день",
     "plan_basic_li2": "Доступ назавжди, слухай коли зручно",
     "plan_basic_li3": "Слухай хоч з телефону, хоч з ноутбука",
     "pay_btn": "Оплатити",
-    "plan_basic_tag": "Почати самостійно",
+    "plan_basic_tag": "Самостійний формат",
+    "plan_popular": "Найпопулярніший",
     "plan_personal_tag": "Розібрати свою ситуацію",
     "plan_personal_name": "Персональний розбір твоєї ситуації",
-    "plan_personal_desc": "Розберемо саме твою ситуацію, якою б складною вона не здавалася. Ти зрозумієш: що він насправді мав на увазі, чому зник або повівся саме так, і що тобі робити далі. Жодних «само минеться» і «час лікує» - розбір твоєї конкретної ситуації і план, як з неї вийти. Це не шаблонна відповідь і не робота асистента - твою історію читаю і розбираю я сам, особисто. Ти отримаєш те, чого не дасть жоден загальний урок: ясність саме про твій випадок - і нарешті перестанеш гадати, що сталося і що тепер робити.",
+    "plan_personal_desc": "Я особисто прочитаю твою історію й розберу, що відбувається саме у твоєму випадку. Ти отримаєш ясність щодо своїх запитань і конкретний план наступних кроків — без шаблонних порад.",
     "plan_personal_li1": "Все з тарифу «Інтенсив» - 7 аудіоуроків і 3 авторські техніки",
     "plan_personal_li2": "Особистий розбір саме твоєї історії",
     "plan_personal_li3": "Чесна відповідь, чому він вчинив так, а не інакше",
@@ -1008,7 +1045,7 @@ const TRANSLATIONS = {
     "mentor_p1": "Іноді недостатньо просто послухати аудіоуроки чи отримати один розбір. Ти розумієш, що відбувається, але потім виникає нова ситуація, з'являються питання і знову стає важко зрозуміти, як діяти.",
     "mentor_p2": "В особистому веденні ми працюємо саме з твоєю історією і твоїми рішеннями.",
     "mentor_incl_h": "Що входить:",
-    "mentor_li1": "Повний аудіоінтенсив «Б/у ще пошкодує»",
+    "mentor_li1": "Повний аудіоінтенсив «Повернутися до себе після розставання»",
     "mentor_li2": "4 індивідуальні сесії",
     "mentor_li3": "Індивідуальний план роботи",
     "mentor_li4": "Можливість ставити запитання в Telegram протягом програми",
@@ -1132,123 +1169,141 @@ function getPaymentMode(region){
 function currentLang(){ return document.documentElement.lang === 'uk' ? 'uk' : 'ru'; }
 
 function updatePlanButtons(region){
-  const mode = getPaymentMode(region);
-  const lang = currentLang();
-  const mainLabel = lang === 'uk' ? 'Оплатити' : 'Оплатить';
-  const tributeLabel = lang === 'uk' ? 'Оплатити' : 'Оплатить';
-  const tributeCaption = lang === 'uk' ? 'Якщо ви з Росії - використовуйте цей спосіб ↓' : 'Если вы из России - используйте этот способ ↓';
-
-  document.querySelectorAll('.plan').forEach(planEl=>{
-    const combo = planEl.getAttribute('data-tier');
-    const btn = planEl.querySelector('.plan-btn');
-    const alt = planEl.querySelector('.plan-btn-alt');
-    const tributeBtn = planEl.querySelector('.plan-btn-tribute');
-    const tributeNote = planEl.querySelector('.tribute-note');
-    alt.hidden = true; // PayPal больше нигде не показываем
-    if(mode === 'wayforpay'){
-      btn.setAttribute('href', LINKS.ua[combo] || '#');
-      btn.textContent = mainLabel;
-      if(tributeBtn) tributeBtn.hidden = true;
-      if(tributeNote) tributeNote.hidden = true;
-    } else if(mode === 'tribute_only'){
-      btn.setAttribute('href', LINKS.tribute[combo] || '#');
-      btn.textContent = tributeLabel;
-      if(tributeBtn) tributeBtn.hidden = true;
-      if(tributeNote) tributeNote.hidden = true;
-    } else { // stripe_tribute (по умолчанию для всех стран, кроме России и Украины)
-      btn.setAttribute('href', LINKS.intl.stripe[combo] || '#');
-      btn.textContent = mainLabel;
-      if(tributeBtn){
-        tributeBtn.setAttribute('href', LINKS.tribute[combo] || '#');
-        tributeBtn.textContent = tributeLabel;
-        tributeBtn.hidden = false;
-      }
-      if(tributeNote){ tributeNote.textContent = tributeCaption; tributeNote.hidden = false; }
-    }
-    if(combo === 'mentor') btn.textContent = lang === 'uk' ? 'Записатися на особисте ведення' : 'Записаться на личное ведение';
-    btn.setAttribute('target','_blank'); btn.setAttribute('rel','noopener');
-    alt.setAttribute('target','_blank'); alt.setAttribute('rel','noopener');
-    if(tributeBtn){ tributeBtn.setAttribute('target','_blank'); tributeBtn.setAttribute('rel','noopener'); }
-  });
-
-  // почему показываем два способа оплаты - объясняем, чтобы не спугнуть покупательницу
-  const dualNote = document.getElementById('dualPaymentNote');
-  if(dualNote){
-    dualNote.hidden = (mode !== 'stripe_tribute');
-    if(!dualNote.hidden){
-      dualNote.innerHTML = lang === 'uk'
-        ? '💳 Основний спосіб оплати - картою (Stripe). Якщо ви з Росії і Stripe не спрацює, скористайтесь другою кнопкою нижче.'
-        : '💳 Основной способ оплаты - картой (Stripe). Если вы из России и Stripe не сработает, используйте вторую кнопку ниже.';
-    }
+ const mode = getPaymentMode(region);
+ const lang = currentLang();
+ const planLabels = lang === 'uk'
+  ? { basic:'Купити інтенсив', personal:'Оплатити персональний розбір', mentor:'Оплатити супровід' }
+  : { basic:'Купить интенсив', personal:'Оплатить персональный разбор', mentor:'Оплатить сопровождение' };
+ const tributeLabel = lang === 'uk' ? 'Оплатити через Tribute' : 'Оплатить через Tribute';
+ const tributeCaption = lang === 'uk' ? 'Якщо ви з Росії - використовуйте цей спосіб ↓' : 'Если вы из России - используйте этот способ ↓';
+ document.querySelectorAll('.plan').forEach(planEl=>{
+  const combo = planEl.getAttribute('data-tier');
+  const btn = planEl.querySelector('.plan-btn');
+  const alt = planEl.querySelector('.plan-btn-alt');
+  const tributeBtn = planEl.querySelector('.plan-btn-tribute');
+  const tributeNote = planEl.querySelector('.tribute-note');
+  alt.hidden = true;
+  if(mode === 'wayforpay'){
+   btn.setAttribute('href', LINKS.ua[combo] || '#');
+   btn.textContent = planLabels[combo];
+   if(tributeBtn) tributeBtn.hidden = true;
+   if(tributeNote) tributeNote.hidden = true;
+  } else if(mode === 'tribute_only'){
+   btn.setAttribute('href', LINKS.tribute[combo] || '#');
+   btn.textContent = tributeLabel;
+   if(tributeBtn) tributeBtn.hidden = true;
+   if(tributeNote) tributeNote.hidden = true;
+  } else {
+   btn.setAttribute('href', LINKS.intl.stripe[combo] || '#');
+   btn.textContent = planLabels[combo];
+   if(tributeBtn){
+    tributeBtn.setAttribute('href', LINKS.tribute[combo] || '#');
+    tributeBtn.textContent = tributeLabel;
+    tributeBtn.hidden = false;
+   }
+   if(tributeNote){ tributeNote.textContent = tributeCaption; tributeNote.hidden = false; }
   }
-
-  const stripeIcon = document.getElementById('stripeIcon');
-  const paypalIcon = document.getElementById('paypalIcon');
-  const tributeIcon = document.getElementById('tributeIcon');
-  if(stripeIcon) stripeIcon.hidden = (mode !== 'stripe_tribute');
-  if(paypalIcon) paypalIcon.hidden = true; // PayPal скрыт полностью
-  if(tributeIcon) tributeIcon.hidden = (mode !== 'tribute_only' && mode !== 'stripe_tribute');
+  btn.setAttribute('target','_blank'); btn.setAttribute('rel','noopener');
+  alt.setAttribute('target','_blank'); alt.setAttribute('rel','noopener');
+  if(tributeBtn){ tributeBtn.setAttribute('target','_blank'); tributeBtn.setAttribute('rel','noopener'); }
+ });
+ const dualNote = document.getElementById('dualPaymentNote');
+ if(dualNote){
+  dualNote.hidden = (mode !== 'stripe_tribute');
+  if(!dualNote.hidden){
+   dualNote.innerHTML = lang === 'uk'
+    ? '💳 Основний спосіб оплати - картою (Stripe). Якщо ви з Росії і Stripe не спрацює, скористайтесь другою кнопкою нижче.'
+    : '💳 Основной способ оплаты - картой (Stripe). Если вы из России и Stripe не сработает, используйте вторую кнопку ниже.';
+  }
+ }
+ const stripeIcon = document.getElementById('stripeIcon');
+ const paypalIcon = document.getElementById('paypalIcon');
+ const tributeIcon = document.getElementById('tributeIcon');
+ if(stripeIcon) stripeIcon.hidden = (mode !== 'stripe_tribute');
+ if(paypalIcon) paypalIcon.hidden = true;
+ if(tributeIcon) tributeIcon.hidden = (mode !== 'tribute_only' && mode !== 'stripe_tribute');
 }
-
 function renderPricing(region){
-  const p = isRussia ? PRICING.ru : PRICING[region];
-  document.getElementById('priceBasic').innerHTML = p.basic.fmt;
-  document.getElementById('priceBasicOld').textContent = p.basic.old;
-  document.getElementById('pricePersonal').innerHTML = p.personal.fmt;
-  document.getElementById('pricePersonalOld').textContent = p.personal.old;
-  document.getElementById('priceMentor').innerHTML = p.mentor.fmt;
-  document.getElementById('priceMentorOld').textContent = p.mentor.old;
-  const mi = document.getElementById('mentorPriceInline');
-  if(mi) mi.innerHTML = p.mentor.fmt;
-  updatePlanButtons(region);
-
-  const ruNote = document.getElementById('paymentTextRu');
-  const mirIcon = document.getElementById('mirIcon');
-  const sbpIcon = document.getElementById('sbpIcon');
-  if(ruNote) ruNote.hidden = !isRussia;
-  if(mirIcon) mirIcon.hidden = !isRussia;
-  if(sbpIcon) sbpIcon.hidden = !isRussia;
-
-  const lang = currentLang();
-  const stepPay = document.getElementById('stepPaymentText');
-  if(stepPay) stepPay.textContent = isRussia
-    ? (lang === 'uk' ? 'Будь-якою карткою - Visa, Mastercard, «МИР». Приймаються картки різних країн.' : 'Любой картой - Visa, Mastercard, «МИР». Принимаются карты разных стран.')
-    : (lang === 'uk' ? 'Будь-якою карткою - Visa, Mastercard. Приймаються картки різних країн.' : 'Любой картой - Visa, Mastercard. Принимаются карты разных стран.');
+ const p = isRussia ? PRICING.ru : PRICING[region];
+ document.getElementById('priceBasic').innerHTML = p.basic.fmt;
+ document.getElementById('priceBasicOld').textContent = p.basic.old;
+ document.getElementById('pricePersonal').innerHTML = p.personal.fmt;
+ document.getElementById('pricePersonalOld').textContent = p.personal.old;
+ document.getElementById('priceMentor').innerHTML = p.mentor.fmt;
+ document.getElementById('priceMentorOld').textContent = p.mentor.old;
+ const mentorInline = document.getElementById('mentorPriceInline');
+ if(mentorInline) mentorInline.innerHTML = p.mentor.fmt;
+ const heroPrice = document.getElementById('heroPriceTop');
+ if(heroPrice) heroPrice.innerHTML = p.basic.fmt;
+ const priceAnchor = document.getElementById('priceAnchorPrice');
+ if(priceAnchor) priceAnchor.innerHTML = p.basic.fmt;
+ updatePlanButtons(region);
+ const ruNote = document.getElementById('paymentTextRu');
+ const mirIcon = document.getElementById('mirIcon');
+ const sbpIcon = document.getElementById('sbpIcon');
+ if(ruNote) ruNote.hidden = !isRussia;
+ if(mirIcon) mirIcon.hidden = !isRussia;
+ if(sbpIcon) sbpIcon.hidden = !isRussia;
+ const lang = currentLang();
+ const stepPay = document.getElementById('stepPaymentText');
+ if(stepPay) stepPay.textContent = isRussia
+  ? (lang === 'uk' ? 'Будь-якою карткою - Visa, Mastercard, «МИР». Приймаються картки різних країн.' : 'Любой картой - Visa, Mastercard, «МИР». Принимаются карты разных стран.')
+  : (lang === 'uk' ? 'Будь-якою карткою - Visa, Mastercard. Приймаються картки різних країн.' : 'Любой картой - Visa, Mastercard. Принимаются карты разных стран.');
+ const pendingNote = document.getElementById('geoPendingNote');
+ const fallback = document.getElementById('geoFallback');
+ if(pendingNote) pendingNote.hidden = true;
+ if(fallback) fallback.hidden = true;
+ document.documentElement.classList.remove('geo-pending');
 }
-
-/* ==================== GEO DETECTION + LANGUAGE ==================== */
 const deviceIsUkrainian = (() => {
-  const langs = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || ''];
-  return langs.some(l => l && l.toLowerCase().startsWith('uk'));
+ const langs = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || ''];
+ return langs.some(l => l && l.toLowerCase().startsWith('uk'));
 })();
-let region = deviceIsUkrainian ? 'ua' : 'intl';
-if(region === 'ua') setLanguage('uk');
-renderPricing(region);
-
+let region = null;
+setLanguage(deviceIsUkrainian ? 'uk' : 'ru');
 function applyGeo(countryCode){
-  const countryIsUA = countryCode === 'UA';
-  isRussia = countryCode === 'RU';
-  region = (countryIsUA || deviceIsUkrainian) ? 'ua' : 'intl';
-  setLanguage(region === 'ua' ? 'uk' : 'ru');
-  renderPricing(region);
+ const code = String(countryCode || '').trim().toUpperCase();
+ isRussia = code === 'RU';
+ region = code === 'UA' ? 'ua' : 'intl';
+ setLanguage(deviceIsUkrainian ? 'uk' : 'ru');
+ renderPricing(region);
 }
-
-fetch('https://ipapi.co/json/')
-  .then(r => r.json())
-  .then(data => {
-    if(!data || data.error || !data.country_code) throw new Error('primary geo lookup unavailable');
-    applyGeo(data.country_code);
-  })
-  .catch(() => {
-    fetch('https://ipwho.is/')
-      .then(r => r.json())
-      .then(data => {
-        if(!data || data.success === false || !data.country_code) throw new Error('fallback geo lookup unavailable');
-        applyGeo(data.country_code);
-      })
-      .catch(() => {});
-  });
-
+function showGeoFallback(){
+ const pendingNote = document.getElementById('geoPendingNote');
+ const fallback = document.getElementById('geoFallback');
+ if(pendingNote) pendingNote.hidden = true;
+ if(fallback) fallback.hidden = false;
+}
+async function requestGeoJson(url){
+ const controller = new AbortController();
+ const timeoutId = window.setTimeout(function(){ controller.abort(); }, 5000);
+ try{
+  const response = await fetch(url, { headers:{Accept:'application/json'}, cache:'no-store', signal:controller.signal });
+  if(!response.ok) throw new Error('GeoIP request failed');
+  return await response.json();
+ } finally { window.clearTimeout(timeoutId); }
+}
+async function detectCountry(){
+ try{
+  const primary = await requestGeoJson('https://ipapi.co/json/');
+  if(primary && !primary.error){
+   const code = String(primary.country_code || primary.country || '').trim().toUpperCase();
+   if(/^[A-Z]{2}$/.test(code)){ applyGeo(code); return; }
+  }
+ } catch(error){}
+ try{
+  const backup = await requestGeoJson('https://ipwho.is/');
+  if(backup && backup.success !== false){
+   const code = String(backup.country_code || '').trim().toUpperCase();
+   if(/^[A-Z]{2}$/.test(code)){ applyGeo(code); return; }
+  }
+ } catch(error){}
+ showGeoFallback();
+}
+document.querySelectorAll('[data-geo-choice]').forEach(button=>{
+ button.addEventListener('click', function(){ applyGeo(button.getAttribute('data-geo-choice')); });
+});
+detectCountry();
 // exit-intent free lesson offer (desktop mouseleave + mobile scroll/time trigger, shows once)
 (function(){
   const overlay=document.getElementById('exitOverlay');
@@ -1280,7 +1335,7 @@ fetch('https://ipapi.co/json/')
 
   // treat any click on a real CTA as conversion - stop bothering them
   document.addEventListener('click', function(e){
-    if(e.target.closest('.cta-primary, .plan-btn, .plan-btn-alt, .sticky-cta')) ctaClicked = true;
+    if(e.target.closest('.cta-primary, .free-lesson-cta, .plan-btn, .plan-btn-alt, .sticky-cta')) ctaClicked = true;
   });
 
   closeBtn.addEventListener('click', hide);
