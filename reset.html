@@ -97,7 +97,10 @@
 
 /* Country-aware payment options */
 .payment-options { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%; margin: 12px auto 8px; }
-.payment-options .payment-stripe { box-sizing: border-box; width: 100%; max-width: 440px; text-align: center; }
+.payment-options.geo-pending::before { content: 'Определяем способ оплаты…'; color: #6B6560; font-size: 14px; text-align: center; }
+.payment-options .payment-stripe, .payment-options .payment-wayforpay { box-sizing: border-box; width: 100%; max-width: 440px; text-align: center; }
+.payment-options .wayforpay-payment { width: 100%; max-width: 440px; }
+.payment-options .payment-stripe[hidden], .payment-options .wayforpay-payment[hidden] { display: none !important; }
 .payment-options .payment-tribute { display: block; box-sizing: border-box; width: 100%; max-width: 440px; text-align: center; }
 .payment-options .tribute-payment { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 100%; max-width: 440px; }
 .payment-options .tribute-payment[hidden] { display: none !important; }
@@ -122,7 +125,7 @@
       <span class="p-label">· PDF мгновенно · Мгновенная доставка</span>
     </div>
     <div style="display:flex;justify-content:center;">
-      <div class="payment-options"><a href="https://buy.stripe.com/7sY6oJ9mOcK58VAeBa3ZK0F" class="cta-btn payment-stripe" target="_blank" rel="noopener">Купить — $14.99</a><div class="tribute-payment" hidden><p class="tribute-note">Для оплаты через СБП, МИР и др. используй ⬇️</p><a href="https://web.tribute.tg/p/JBl" class="payment-tribute" target="_blank" rel="noopener">Оплатить</a></div></div>
+      <div class="payment-options geo-pending"><a href="https://buy.stripe.com/7sY6oJ9mOcK58VAeBa3ZK0F" class="cta-btn payment-stripe" hidden target="_blank" rel="noopener">Купить — $14.99</a><div class="tribute-payment" hidden><p class="tribute-note">Для оплаты через СБП, МИР и др. используй ⬇️</p><a href="https://web.tribute.tg/p/JBl" class="payment-tribute" target="_blank" rel="noopener">Оплатить</a></div><div class="wayforpay-payment" hidden><a href="https://secure.wayforpay.com/button/baf3b43869905" class="cta-btn payment-wayforpay" target="_blank" rel="noopener">Купить — $14.99</a></div></div>
     </div>
     <p class="price-note">Придёт на вашу почту после оплаты.</p>
   </section>
@@ -154,7 +157,7 @@
 
   <div class="mini-cta">
     <div style="display:flex;justify-content:center;">
-      <div class="payment-options"><a href="https://buy.stripe.com/7sY6oJ9mOcK58VAeBa3ZK0F" class="cta-btn payment-stripe" target="_blank" rel="noopener">Купить — $14.99</a><div class="tribute-payment" hidden><p class="tribute-note">Для оплаты через СБП, МИР и др. используй ⬇️</p><a href="https://web.tribute.tg/p/JBl" class="payment-tribute" target="_blank" rel="noopener">Оплатить</a></div></div>
+      <div class="payment-options geo-pending"><a href="https://buy.stripe.com/7sY6oJ9mOcK58VAeBa3ZK0F" class="cta-btn payment-stripe" hidden target="_blank" rel="noopener">Купить — $14.99</a><div class="tribute-payment" hidden><p class="tribute-note">Для оплаты через СБП, МИР и др. используй ⬇️</p><a href="https://web.tribute.tg/p/JBl" class="payment-tribute" target="_blank" rel="noopener">Оплатить</a></div><div class="wayforpay-payment" hidden><a href="https://secure.wayforpay.com/button/baf3b43869905" class="cta-btn payment-wayforpay" target="_blank" rel="noopener">Купить — $14.99</a></div></div>
     </div>
     <p class="note">39 страниц · 10-15 мин в день · Работает, даже если начинает только один партнёр</p>
   </div>
@@ -222,7 +225,7 @@
 
   <section style="text-align:center;padding:20px 0 32px;">
     <div style="display:flex;justify-content:center;">
-      <div class="payment-options"><a href="https://buy.stripe.com/7sY6oJ9mOcK58VAeBa3ZK0F" class="cta-btn payment-stripe" target="_blank" rel="noopener">Купить — $14.99</a><div class="tribute-payment" hidden><p class="tribute-note">Для оплаты через СБП, МИР и др. используй ⬇️</p><a href="https://web.tribute.tg/p/JBl" class="payment-tribute" target="_blank" rel="noopener">Оплатить</a></div></div>
+      <div class="payment-options geo-pending"><a href="https://buy.stripe.com/7sY6oJ9mOcK58VAeBa3ZK0F" class="cta-btn payment-stripe" hidden target="_blank" rel="noopener">Купить — $14.99</a><div class="tribute-payment" hidden><p class="tribute-note">Для оплаты через СБП, МИР и др. используй ⬇️</p><a href="https://web.tribute.tg/p/JBl" class="payment-tribute" target="_blank" rel="noopener">Оплатить</a></div><div class="wayforpay-payment" hidden><a href="https://secure.wayforpay.com/button/baf3b43869905" class="cta-btn payment-wayforpay" target="_blank" rel="noopener">Купить — $14.99</a></div></div>
     </div>
     <p class="cta-sub">PDF мгновенно · 39 страниц · Придёт на вашу почту после оплаты</p>
   </section>
@@ -241,36 +244,74 @@
 
 <script>
 (async function () {
+  const stripeLinks = document.querySelectorAll('.payment-stripe');
   const tributeBlocks = document.querySelectorAll('.tribute-payment');
+  const wayforpayBlocks = document.querySelectorAll('.wayforpay-payment');
+  const paymentOptions = document.querySelectorAll('.payment-options');
+  const finishRouting = function () {
+    paymentOptions.forEach(function (block) { block.classList.remove('geo-pending'); });
+  };
+  const showStripe = function () {
+    stripeLinks.forEach(function (link) { link.hidden = false; });
+  };
   const showTribute = function () {
     tributeBlocks.forEach(function (block) { block.hidden = false; });
   };
-
-  try {
-    const response = await fetch('https://ipapi.co/json/', {
-      headers: { Accept: 'application/json' },
-      cache: 'no-store'
-    });
-    if (!response.ok) throw new Error('Country lookup failed');
-    const location = await response.json();
-    const countryCode = String(location.country_code || location.country || '').trim().toUpperCase();
-    if (countryCode === 'UA') {
-      const ukrainianPrice = '399 грн';
-      document.documentElement.classList.add('ua-pricing');
-      document.querySelectorAll('.p-new, .price-new, .ua-current-price').forEach(function (element) {
-        element.textContent = ukrainianPrice;
+  const showWayForPay = function () {
+    wayforpayBlocks.forEach(function (block) { block.hidden = false; });
+  };
+  const requestJson = async function (url) {
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(function () { controller.abort(); }, 5000);
+    try {
+      const response = await fetch(url, {
+        headers: { Accept: 'application/json' },
+        cache: 'no-store',
+        signal: controller.signal
       });
-      document.querySelectorAll('.payment-stripe').forEach(function (link) {
-        const amount = link.querySelector('.amount');
-        if (amount) amount.textContent = ukrainianPrice;
-        else link.textContent = link.textContent.replace(/\$\d+(?:\.\d{2})?/, ukrainianPrice);
-      });
-    } else {
-      showTribute();
+      if (!response.ok) throw new Error('GeoIP request failed');
+      return await response.json();
+    } finally {
+      window.clearTimeout(timeoutId);
     }
-  } catch (error) {
+  };
+  const getCountryCode = async function () {
+    try {
+      const primary = await requestJson('https://ipapi.co/json/');
+      const primaryCode = String(primary.country_code || primary.country || '').trim().toUpperCase();
+      if (/^[A-Z]{2}$/.test(primaryCode)) return primaryCode;
+    } catch (error) {
+      // Try the backup geolocation service.
+    }
+    try {
+      const backup = await requestJson('https://ipwho.is/');
+      if (backup.success === false) throw new Error('Backup GeoIP lookup failed');
+      const backupCode = String(backup.country_code || '').trim().toUpperCase();
+      if (/^[A-Z]{2}$/.test(backupCode)) return backupCode;
+    } catch (error) {
+      // Both lookups failed; the page will show the fallback payment methods.
+    }
+    return '';
+  };
+
+  const countryCode = await getCountryCode();
+  if (countryCode === 'UA') {
+    const ukrainianPrice = '399 грн';
+    document.documentElement.classList.add('ua-pricing');
+    document.querySelectorAll('.p-new, .price-new, .ua-current-price').forEach(function (element) {
+      element.textContent = ukrainianPrice;
+    });
+    document.querySelectorAll('.payment-wayforpay').forEach(function (link) {
+      const amount = link.querySelector('.amount');
+      if (amount) amount.textContent = ukrainianPrice;
+      else link.textContent = link.textContent.replace(/\$\d+(?:\.\d{2})?/, ukrainianPrice);
+    });
+    showWayForPay();
+  } else {
+    showStripe();
     showTribute();
   }
+  finishRouting();
 })();
 </script>
 </body>
