@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f3ef">
+  <meta name="description" content="21-дневная программа для женщин, которые понимают, что отношения закончились или изменились, но всё ещё ждут бывшего и хотят вернуть внимание к своей жизни.">
+  <title>ВОССТАНОВЛЕНИЕ после ТРАВМАТИЧЕСКОЙ СВЯЗИ</title>
+  <style>
+    :root {
+      --paper: #f7f3ef;
+      --paper-deep: #eee7df;
+      --white: #fffdfa;
+      --ink: #282323;
+      --muted: #716765;
+      --line: #e4dad3;
+      --rose: #a84650;
+      --rose-dark: #843741;
+      --rose-light: #f3e2e1;
+      --gold: #bd8b56;
+      --sage: #e8eee7;
+      --shadow: 0 22px 60px rgba(62, 39, 40, .10);
+      --radius: 22px;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font: 16px/1.65 var(--sans); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .narrow { width: min(780px, calc(100% - 40px)); margin: 0 auto; }
+    .topbar { position: sticky; top: 0; z-index: 20; background: rgba(247,243,239,.91); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(132,55,65,.10); }
+    .topbar-inner { min-height: 68px; display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+    .brand { font: 700 15px/1.2 var(--serif); letter-spacing: .03em; }
+    .brand span { color: var(--rose); }
+    .top-link { font-size: 13px; font-weight: 700; color: var(--rose-dark); border: 1px solid #d9b7b7; border-radius: 999px; padding: 9px 16px; transition: .2s ease; }
+    .top-link:hover { background: var(--rose-light); }
+    .demo-ribbon { position: sticky; top: 68px; z-index: 19; padding: 11px 20px; color: #3a2b14; background: #f6d66b; border-bottom: 1px solid #d8b446; text-align: center; font-size: 11px; line-height: 1.45; }
+    .demo-ribbon strong { font-weight: 950; letter-spacing: .08em; }
+    .demo-ribbon .timer-line { display: inline-flex; align-items: center; gap: 7px; margin: 3px 0; font-weight: 800; }
+    .demo-timer { display: inline-block; min-width: 65px; padding: 2px 7px; color: #fff; background: #5c3434; border-radius: 5px; font: 800 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .04em; }
+    .demo-ribbon small { display: block; max-width: 1000px; margin: 0 auto; font-size: 10px; }
+    .demo-proof { padding: 56px 0; background: #fff8ee; border-top: 1px solid #ead8be; border-bottom: 1px solid #ead8be; }
+    .demo-proof-head { max-width: 720px; margin: 0 auto 27px; text-align: center; }
+    .demo-proof-head h2 { margin: 12px 0 8px; font-size: clamp(28px,3.8vw,39px); line-height: 1.12; }
+    .demo-proof-head p { margin: 0; color: var(--muted); font-size: 12px; }
+    .demo-proof-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+    .demo-stat { padding: 19px 15px; text-align: center; background: #fffdfa; border: 1px solid #ebddca; border-radius: 15px; }
+    .demo-stat strong { display: block; color: var(--rose); font: 700 33px/1 var(--serif); }
+    .demo-stat span { display: block; margin-top: 8px; color: var(--muted); font-size: 11px; line-height: 1.4; }
+    .demo-stats-note { margin: 14px auto 0; color: #745b3d; font-size: 10px; text-align: center; }
+    .demo-reviews { display: grid; grid-template-columns: repeat(3,1fr); gap: 13px; }
+    .demo-review { padding: 21px; background: #fffdfa; border: 1px solid #ebddca; border-radius: 17px; }
+    .demo-review .stars { color: var(--gold); letter-spacing: .14em; font-size: 13px; }
+    .demo-review blockquote { margin: 11px 0; font-size: 16px; line-height: 1.45; }
+    .demo-review .author { color: var(--muted); font-size: 11px; font-weight: 800; }
+    details.demo-gallery-disclosure { max-width: 1000px; margin: 22px auto 0; padding: 15px 18px; background: rgba(255,253,250,.82); border-color: #ebddca; }
+    details.demo-gallery-disclosure > summary { color: var(--rose-dark); }
+    details.demo-gallery-disclosure .demo-media-head { margin-top: 25px; }
+    .demo-media-head { margin: 42px auto 19px; text-align: center; }
+    .demo-media-head h2 { margin: 0 0 7px; font-size: 29px; line-height: 1.15; }
+    .demo-media-head p { margin: 0; color: var(--muted); font-size: 11px; }
+    .demo-video-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+    .demo-video { overflow: hidden; background: #231e1f; border: 1px solid #d5c5b8; border-radius: 17px; box-shadow: 0 12px 28px rgba(62,39,40,.10); }
+    .demo-video video { display: block; width: 100%; aspect-ratio: 9 / 16; max-height: 560px; background: #1d1a1a; object-fit: contain; }
+    .demo-video figcaption { padding: 10px 13px; color: #625453; background: #fffdfa; font-size: 10px; }
+    .demo-gallery { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; align-items: start; }
+    .demo-gallery figure { overflow: hidden; margin: 0; background: #fffdfa; border: 1px solid #e6d8ca; border-radius: 13px; }
+    .demo-gallery a { display: block; background: #f0ece8; }
+    .demo-gallery img { display: block; width: 100%; height: 340px; object-fit: contain; }
+    .demo-gallery figcaption { padding: 8px 10px; color: var(--muted); font-size: 10px; }
+    .demo-old-price { margin: 8px 0 -10px; text-align: center; color: var(--muted); font-size: 11px; }
+    .demo-old-price s { color: #a24646; font-size: 14px; font-weight: 800; }
+    .hero { position: relative; overflow: hidden; padding: 76px 0 86px; background: radial-gradient(ellipse at 84% 4%, rgba(189,139,86,.16), transparent 37%), radial-gradient(ellipse at 5% 90%, rgba(168,70,80,.10), transparent 32%), var(--paper); }
+    .hero::after { content: ""; position: absolute; width: 360px; height: 360px; right: -170px; bottom: -235px; border: 1px solid rgba(168,70,80,.18); border-radius: 50%; box-shadow: 0 0 0 35px rgba(168,70,80,.035), 0 0 0 72px rgba(168,70,80,.025); pointer-events: none; }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 56px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--rose-dark); font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--gold); }
+    h1, h2, h3, blockquote { font-family: var(--serif); }
+    h1 { max-width: 720px; margin: 18px 0 22px; font-size: clamp(39px, 5.3vw, 66px); line-height: 1.04; letter-spacing: -.045em; font-weight: 700; }
+    h1 .title-small { display: block; margin-top: 13px; color: var(--rose); font-size: .64em; line-height: 1.12; letter-spacing: -.02em; }
+    .hero-lead { max-width: 650px; margin: 0; color: #514847; font-size: clamp(17px, 2vw, 20px); }
+    .hero-lead strong { color: var(--ink); }
+    .hero-prompt { margin: 25px 0 0; color: var(--rose-dark); font: italic 21px/1.45 var(--serif); }
+    .hero-prompt span { display: block; }
+    .hero-copy { max-width: 630px; margin: 15px 0 0; color: var(--muted); font-size: 14px; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 15px; margin-top: 30px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 54px; border: 0; border-radius: 999px; padding: 14px 23px; background: var(--rose); color: white; font: 800 14px/1.2 var(--sans); box-shadow: 0 12px 26px rgba(168,70,80,.20); transition: transform .2s ease, background .2s ease, box-shadow .2s ease; cursor: pointer; }
+    .button:hover { transform: translateY(-2px); background: var(--rose-dark); box-shadow: 0 15px 30px rgba(168,70,80,.25); }
+    .button.secondary { background: transparent; color: var(--rose-dark); border: 1px solid #d9b7b7; box-shadow: none; }
+    .button.secondary:hover { background: var(--rose-light); }
+    .button .arrow { font-size: 18px; line-height: 1; }
+    .hero-note { margin: 13px 0 0; color: var(--muted); font-size: 12px; }
+    .hero-card { position: relative; padding: 32px; background: rgba(255,253,250,.86); border: 1px solid rgba(168,70,80,.14); border-radius: 30px; box-shadow: var(--shadow); }
+    .hero-card::before { content: ""; position: absolute; inset: 10px; border: 1px solid rgba(189,139,86,.22); border-radius: 22px; pointer-events: none; }
+    .hero-card > * { position: relative; }
+    .card-stamp { display: inline-block; padding: 6px 11px; border-radius: 999px; background: var(--sage); color: #465c49; font-size: 11px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
+    .hero-card h2 { margin: 18px 0 10px; font-size: 29px; line-height: 1.17; }
+    .hero-card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .mini-list { display: grid; gap: 12px; margin: 23px 0 0; padding: 0; list-style: none; }
+    .mini-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; }
+    .check { flex: 0 0 20px; width: 20px; height: 20px; display: inline-grid; place-items: center; border-radius: 50%; background: var(--rose-light); color: var(--rose-dark); font-size: 12px; font-weight: 900; }
+    .hero-price { display: flex; align-items: baseline; gap: 9px; margin-top: 23px; padding-top: 18px; border-top: 1px solid var(--line); }
+    .hero-price strong { font: 700 30px/1 var(--serif); }
+    .hero-price span { color: var(--muted); font-size: 12px; }
+    .section { padding: 84px 0; }
+    .section.white { background: var(--white); }
+    .section.deep { background: #302728; color: white; }
+    .section-head { max-width: 720px; margin: 0 auto 40px; text-align: center; }
+    .section-head .eyebrow { justify-content: center; }
+    .section-head h2 { margin: 15px 0 12px; font-size: clamp(30px, 4.1vw, 46px); line-height: 1.12; letter-spacing: -.025em; }
+    .section-head p { margin: 0; color: var(--muted); }
+    .deep .section-head p { color: #d2c7c4; }
+    .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .pain-card { min-height: 174px; padding: 23px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+    .pain-card .num { color: var(--gold); font: italic 15px/1 var(--serif); }
+    .pain-card h3 { margin: 12px 0 7px; font-size: 20px; line-height: 1.17; }
+    .pain-card p { margin: 0; color: var(--muted); font-size: 13px; }
+    .questions { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 0 auto; }
+    .question-card { padding: 27px; border-radius: 20px; background: #3b3031; border: 1px solid rgba(255,255,255,.10); }
+    .question-card blockquote { margin: 0 0 13px; color: #f0c8bd; font-size: clamp(23px, 3vw, 31px); line-height: 1.16; }
+    .question-card p { margin: 0; color: #ded4d1; font-size: 14px; }
+    .honesty { max-width: 800px; margin: 22px auto 0; padding: 17px 20px; color: #e9dfdc; background: rgba(255,255,255,.06); border-left: 3px solid var(--gold); border-radius: 0 12px 12px 0; font-size: 13px; }
+    .honesty strong { color: white; }
+    .sample { max-width: 840px; margin: 36px auto 0; padding: 25px; border-radius: 22px; background: var(--paper); color: var(--ink); }
+    .sample-kicker { margin: 0 0 7px; color: var(--rose-dark); font-size: 10px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+    .sample h3 { margin: 0 0 17px; font-size: 22px; }
+    .sample-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .sample-step { padding: 15px; background: var(--white); border: 1px solid var(--line); border-radius: 14px; }
+    .sample-step b { display: block; margin-bottom: 5px; color: var(--rose-dark); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
+    .sample-step p { margin: 0; color: var(--muted); font-size: 13px; }
+    .sample-takeaway { margin: 14px 0 0; padding: 12px 14px; border-radius: 12px; background: var(--sage); color: #465c49; font-size: 12px; line-height: 1.5; }
+    .phase-list { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .phase { position: relative; padding: 28px 25px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 10px 30px rgba(62,39,40,.045); }
+    .phase-label { color: var(--rose); font-size: 11px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+    .phase h3 { margin: 11px 0 10px; font-size: 25px; line-height: 1.12; }
+    .phase p { margin: 0; color: var(--muted); font-size: 13px; }
+    .phase ul { display: grid; gap: 9px; margin: 17px 0 0; padding: 0; list-style: none; color: #514847; font-size: 13px; }
+    .phase li::before { content: "—"; margin-right: 8px; color: var(--gold); }
+    .phase-note { margin: 24px auto 0; max-width: 720px; color: var(--muted); text-align: center; font-size: 13px; }
+    .outcome-heading { margin: 28px 0 0; text-align: center; font-size: clamp(20px,2vw,24px); }
+    .outcome-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 13px; margin-top: 15px; }
+    .outcome-card { padding: 19px; border: 1px solid var(--line); border-radius: 17px; background: #fffdfa; }
+    .outcome-num { display: inline-grid; width: 29px; height: 29px; place-items: center; margin-bottom: 11px; border-radius: 50%; background: var(--rose-light); color: var(--rose-dark); font-size: 12px; font-weight: 900; }
+    .outcome-card h3 { margin: 0 0 6px; font-size: 16px; line-height: 1.2; }
+    .outcome-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+    .materials-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 45px; align-items: start; }
+    .materials-intro h2 { margin: 13px 0; font-size: clamp(30px,4vw,43px); line-height: 1.12; }
+    .materials-intro p { color: var(--muted); }
+    .file-count { display: inline-flex; align-items: center; gap: 9px; margin-top: 12px; padding: 9px 13px; border-radius: 999px; background: var(--sage); color: #465c49; font-size: 12px; font-weight: 800; }
+    .material-list { display: grid; gap: 11px; }
+    .material { display: grid; grid-template-columns: 42px 1fr; gap: 13px; padding: 17px; background: var(--white); border: 1px solid var(--line); border-radius: 16px; }
+    .material-icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 13px; background: var(--rose-light); color: var(--rose-dark); font-size: 18px; }
+    .material h3 { margin: 0 0 3px; font: 800 14px/1.3 var(--sans); }
+    .material p { margin: 0; color: var(--muted); font-size: 12px; }
+    .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .fit-card { padding: 27px; border-radius: var(--radius); background: var(--sage); }
+    .fit-card.no { background: #f3e8e3; }
+    .fit-card h3 { margin: 0 0 12px; font-size: 23px; }
+    .fit-card ul { display: grid; gap: 9px; margin: 0; padding-left: 19px; color: #514847; font-size: 13px; }
+    .pricing { display: grid; grid-template-columns: repeat(3,1fr); gap: 15px; align-items: stretch; }
+    .price-card { position: relative; display: flex; flex-direction: column; padding: 27px 23px 23px; background: var(--white); border: 1px solid var(--line); border-radius: 23px; }
+    .price-card.featured { border: 2px solid var(--rose); box-shadow: var(--shadow); transform: translateY(-7px); }
+    .popular { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); padding: 5px 13px; color: white; background: var(--rose); border-radius: 999px; font-size: 10px; font-weight: 900; letter-spacing: .10em; text-transform: uppercase; white-space: nowrap; }
+    .price-card .tier { color: var(--rose-dark); font-size: 11px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+    .price-card h3 { margin: 9px 0 5px; font-size: 25px; line-height: 1.1; }
+    .price-card .desc { min-height: 43px; margin: 0; color: var(--muted); font-size: 12px; }
+    .price { margin: 19px 0 16px; font: 700 38px/1 var(--serif); }
+    .price small { font: 500 13px/1 var(--sans); color: var(--muted); }
+    .price-card ul { display: grid; gap: 10px; flex: 1; margin: 0 0 22px; padding: 17px 0 0; list-style: none; border-top: 1px solid var(--line); font-size: 12px; }
+    .price-card li { display: flex; gap: 8px; align-items: flex-start; }
+    .price-card li::before { content: "✓"; color: var(--rose); font-weight: 900; }
+    .price-card .button { width: 100%; min-height: 48px; padding: 12px; font-size: 12px; }
+    .price-foot { max-width: 760px; margin: 24px auto 0; color: var(--muted); font-size: 12px; text-align: center; }
+    .payment-options { display: grid; gap: 9px; margin-top: auto; padding-top: 14px; }
+    .payment-link { display: flex; width: 100%; min-height: 58px; justify-content: center; align-items: center; padding: 15px 18px; border: 1px solid #d9b7b7; border-radius: 14px; background: #fffdfa; color: var(--rose-dark); text-align: center; font-size: 15px; font-weight: 800; line-height: 1.3; transition: .2s ease; }
+    .payment-link:hover { transform: translateY(-1px); background: var(--rose-light); }
+    .payment-link.tribute { border: 2px solid #b95152; background: #fff1ef; color: #7e3037; box-shadow: 0 5px 16px rgba(168,70,80,.12); }
+    .payment-link.stripe { border: 2px solid #315e8b; background: #eaf2fb; color: #174a75; box-shadow: 0 7px 18px rgba(49,94,139,.17); }
+    .payment-link.stripe:hover { background: #dceafa; }
+    .payment-link[hidden] { display: none !important; }
+    .method-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; margin: 0 auto 3px; }
+    .method-badges[hidden] { display: none !important; }
+    .method-badge { display: inline-flex; align-items: center; gap: 4px; min-height: 21px; padding: 2px 6px; border: 1px solid #e5ddd7; border-radius: 999px; background: #fffdfa; color: #554b49; font-size: 8px; font-weight: 800; white-space: nowrap; }
+    .method-badge svg { width: 12px; height: 12px; flex: 0 0 12px; }
+    .method-mark { display: inline-grid; width: 13px; height: 13px; place-items: center; border-radius: 50%; color: #fff; font-size: 8px; font-weight: 900; line-height: 1; }
+    .method-mark.sbp { background: #34a987; }
+    .method-mark.mir { background: #28384f; font-size: 7px; }
+    .method-mark.tbank { background: #ffdd2d; color: #241f16; }
+    .method-mark.google { border-radius: 4px; color: #4285f4; background: transparent; font: 900 13px/1 Arial,sans-serif; }
+    .tribute-hint { color: var(--rose-dark); text-align: center; font-size: 10px; font-weight: 700; line-height: 1.25; }
+    .tribute-hint[hidden] { display: none !important; }
+    .trust-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; max-width: 900px; margin: 28px auto 0; }
+    .trust-card { display: flex; gap: 13px; align-items: flex-start; padding: 18px; border: 1px solid var(--line); border-radius: 17px; background: #fffdfa; }
+    .trust-card.guarantee-card { border-color: #d9b6a8; background: #fbf1ec; }
+    .trust-icon { flex: 0 0 35px; width: 35px; height: 35px; display: grid; place-items: center; border-radius: 50%; background: var(--sage); color: #49654d; }
+    .trust-icon svg { width: 18px; height: 18px; }
+    .trust-card h3 { margin: 0 0 5px; font-size: 17px; line-height: 1.2; }
+    .trust-card p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
+    .author-card { display: grid; grid-template-columns: minmax(210px, .72fr) 1.28fr; gap: 28px; align-items: center; max-width: 950px; margin: 0 auto; padding: 25px; border: 1px solid var(--line); border-radius: 25px; background: var(--white); box-shadow: 0 15px 40px rgba(62,39,40,.07); }
+    .author-card img { display: block; width: 100%; max-height: 390px; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 25%; border-radius: 18px; background: var(--paper-deep); }
+    .author-copy h3 { margin: 0 0 12px; font-size: 29px; line-height: 1.1; }
+    .author-copy p { margin: 0 0 11px; color: #574e4c; font-size: 13px; }
+    .author-metrics { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-top: 18px; }
+    .author-metric { padding: 11px 8px; border-radius: 12px; background: #f5eeea; text-align: center; }
+    .author-metric strong { display: block; color: var(--rose-dark); font: 700 21px/1 var(--serif); }
+    .author-metric span { display: block; margin-top: 5px; color: var(--muted); font-size: 9px; line-height: 1.3; }
+    .author-source-note { max-width: 950px; margin: 10px auto 0; color: #745b3d; font-size: 10px; text-align: center; }
+    .faq { display: grid; gap: 10px; max-width: 790px; margin: 0 auto; }
+    details { padding: 18px 20px; background: var(--white); border: 1px solid var(--line); border-radius: 15px; }
+    summary { position: relative; padding-right: 26px; cursor: pointer; font-weight: 800; font-size: 14px; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; position: absolute; right: 0; top: -3px; color: var(--rose); font: 700 22px/1 var(--sans); }
+    details[open] summary::after { content: "−"; }
+    details p { margin: 12px 0 0; color: var(--muted); font-size: 13px; }
+    .closing { padding: 72px 0 82px; color: white; text-align: center; background: radial-gradient(ellipse at 50% 120%, rgba(189,139,86,.2), transparent 45%), #302728; }
+    .closing h2 { max-width: 760px; margin: 15px auto; font-size: clamp(31px,4.3vw,48px); line-height: 1.1; }
+    .closing p { max-width: 610px; margin: 0 auto; color: #d5cac7; }
+    .closing .button { margin-top: 25px; background: #d47878; }
+    footer { padding: 27px 0 50px; color: var(--muted); font-size: 11px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; align-items: flex-start; }
+    footer p { max-width: 760px; margin: 0; }
+    footer a { color: var(--rose-dark); text-decoration: underline; text-underline-offset: 3px; }
+    .mobile-cta { display: none; }
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero-card { max-width: 560px; }
+      .pain-grid { grid-template-columns: repeat(2,1fr); }
+      .demo-proof-grid { grid-template-columns: repeat(2,1fr); }
+      .demo-gallery { grid-template-columns: repeat(2,1fr); }
+      .materials-layout { grid-template-columns: 1fr; gap: 25px; }
+      .pricing { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; gap: 18px; }
+      .price-card.featured { transform: none; }
+      .price-card .desc { min-height: 0; }
+      .author-card { grid-template-columns: 220px 1fr; gap: 20px; }
+    }
+    @media (max-width: 620px) {
+      .container,.narrow { width: min(100% - 28px, 760px); }
+      .demo-ribbon { top: 60px; padding: 9px 12px; font-size: 10px; }
+      .demo-ribbon small { font-size: 9px; }
+      .demo-proof-grid,.demo-reviews { grid-template-columns: 1fr; }
+      .demo-video-grid,.demo-gallery { grid-template-columns: 1fr; }
+      .demo-gallery img { height: auto; max-height: 520px; }
+      .topbar-inner { min-height: 60px; }
+      .brand { max-width: 190px; font-size: 13px; }
+      .top-link { padding: 8px 12px; font-size: 11px; }
+      .hero { padding: 51px 0 60px; }
+      h1 { font-size: clamp(37px, 12vw, 52px); }
+      .hero-prompt { font-size: 19px; }
+      .hero-actions { align-items: stretch; flex-direction: column; }
+      .hero-actions .button { width: 100%; }
+      .hero-card { padding: 26px 22px; }
+      .section { padding: 64px 0; }
+      .section-head { margin-bottom: 30px; }
+      .pain-grid,.questions,.phase-list,.fit-grid,.sample-steps,.outcome-grid { grid-template-columns: 1fr; }
+      .author-card { grid-template-columns: 1fr; padding: 18px; }
+      .author-card img { max-width: 300px; max-height: 350px; margin: 0 auto; }
+      .trust-strip { grid-template-columns: 1fr; }
+      .pain-card { min-height: 0; }
+      .question-card { padding: 23px; }
+      .sample { padding: 19px; }
+      .phase { padding: 24px 21px; }
+      .footer-inner { flex-direction: column; }
+      .mobile-cta { position: fixed; z-index: 30; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 12px; padding: 9px 14px calc(9px + env(safe-area-inset-bottom)); background: rgba(255,253,250,.96); border-top: 1px solid var(--line); box-shadow: 0 -8px 25px rgba(40,30,30,.08); }
+      .mobile-cta .mobile-price { min-width: 69px; font: 700 18px/1 var(--serif); }
+      .mobile-cta .button { flex: 1; min-height: 44px; padding: 10px 12px; font-size: 12px; }
+      footer { padding-bottom: 100px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *,*::before,*::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#top" aria-label="На главную">ВОССТАНОВЛЕНИЕ <span>после ТРАВМАТИЧЕСКОЙ СВЯЗИ</span></a>
+      <a class="top-link" href="#pricing">Полная программа · <span data-price-tier="full">$19.99</span></a>
+    </div>
+  </header>
+  <aside class="demo-ribbon" aria-label="Предупреждение о демонстрационной версии">
+    <div class="timer-line">Твоя скидка закончится через <span class="demo-timer" id="demoTimer">02:00:00</span></div>
+  </aside>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">21-дневная программа · ВОССТАНОВЛЕНИЕ после ТРАВМАТИЧЕСКОЙ СВЯЗИ</span>
+          <h1>Ты понимаешь, что отношения закончились — но всё ещё ждёшь его сообщения?</h1>
+          <p class="hero-lead"><strong>«Что он имел в виду?» «Почему он так поступил?»</strong><br>Разбери, что известно, что остаётся догадкой и какой следующий шаг подходит именно тебе.</p>
+          <p class="hero-prompt"><span>Не нужно заставлять себя забыть.</span><span>Можно начать с того, чтобы вернуть себе ясность и выбор.</span></p>
+          <p class="hero-copy">Практики, рабочая тетрадь и аудио помогут замечать триггеры, отделять факты от надежды и заранее продумать, как реагировать на сообщение или молчание бывшего — без осуждения и публичных рассказов.</p>
+          <div class="hero-actions">
+            <a class="button" href="#pricing">Начать полную программу · <span data-price-tier="full">$19.99</span> <span class="arrow">→</span></a>
+            <a class="button secondary" href="#pricing">Сначала пройти 7 дней · <span data-price-tier="starter">$9.99</span></a>
+          </div>
+          <p class="hero-note">Самостоятельный темп · 7-дневный старт · полный маршрут на 21 день · вариант с личным разбором</p>
+        </div>
+        <aside class="hero-card" aria-label="Кратко о программе">
+          <span class="card-stamp">Рекомендуемый формат</span>
+          <h2>Полная программа на 21 день</h2>
+          <p>Весь маршрут: от импульса проверить или написать до собственных границ и следующего шага.</p>
+          <ul class="mini-list">
+            <li><span class="check">✓</span><span>Все три этапа программы и 21 ежедневная практика.</span></li>
+            <li><span class="check">✓</span><span>5 PDF-материалов, 6 аудио и рабочая тетрадь.</span></li>
+            <li><span class="check">✓</span><span>План на случай его сообщения, встречи или необходимого контакта.</span></li>
+          </ul>
+          <div class="hero-price"><strong data-price-tier="full">$19.99</strong><span>полный маршрут<br>первые 7 дней — <span data-price-tier="starter">$9.99</span></span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section white" id="recognition">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Знакомо?</span>
+          <h2>Отношения закончились. Ожидание — пока нет.</h2>
+          <p>Неважно, расстались вы недавно или прошло уже много времени. Важно, что его действия всё ещё занимают слишком много места в твоём дне.</p>
+        </div>
+        <div class="pain-grid">
+          <article class="pain-card"><span class="num">01</span><h3>Ищешь скрытый смысл</h3><p>Перечитываешь переписку, вспоминаешь разговоры и пытаешься понять, почему он написал — или почему замолчал.</p></article>
+          <article class="pain-card"><span class="num">02</span><h3>Настроение зависит от него</h3><p>Одно сообщение возвращает надежду. Долгое молчание — тревогу и отчаяние.</p></article>
+          <article class="pain-card"><span class="num">03</span><h3>Хочешь написать и боишься пожалеть</h3><p>Открываешь чат, набираешь сообщение, удаляешь его — и снова споришь с собой.</p></article>
+          <article class="pain-card"><span class="num">04</span><h3>Винишь и стыдишь себя</h3><p>Думаешь, что могла сказать иначе, была «слишком» или не заметила важные сигналы.</p></article>
+          <article class="pain-card"><span class="num">05</span><h3>Сравниваешь себя с другой</h3><p>Его новая партнёрша становится поводом искать, чего тебе якобы не хватило.</p></article>
+          <article class="pain-card"><span class="num">06</span><h3>Скучаешь по целому миру</h3><p>По ежедневным сообщениям, привычкам, общим друзьям и будущему, которое представляла вместе.</p></article>
+          <article class="pain-card"><span class="num">07</span><h3>Не знаешь, как реагировать</h3><p>Что ответить, если он снова появится? Как вести себя при встрече или общении из-за детей?</p></article>
+          <article class="pain-card"><span class="num">08</span><h3>Внешне держишься, внутри устала</h3><p>Трудно сосредоточиться на работе и быте, особенно после его сообщения, в тишине или по вечерам.</p></article>
+          <article class="pain-card"><span class="num">09</span><h3>Не хочешь снова всё пересказывать</h3><p>Не нужны общие советы «отпусти». Хочется личного пространства, ясной структуры и действий на конкретный момент.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-proof" aria-label="Демонстрационный блок статистики и отзывов">
+      <div class="container">
+        <div class="demo-proof-head">
+          <span class="eyebrow">Немного статистики</span>
+          <h2>Уже прошли этот путь</h2>
+        </div>
+        <div class="demo-proof-grid">
+          <div class="demo-stat"><strong>70%</strong><span>почувствовали облегчение к третьему дню</span></div>
+          <div class="demo-stat"><strong>89%</strong><span>дошли до конца программы</span></div>
+          <div class="demo-stat"><strong>82%</strong><span>сообщили, что стали лучше спать к седьмому дню</span></div>
+          <div class="demo-stat"><strong>76%</strong><span>отметили, что вернули ощущение контроля</span></div>
+        </div>
+        <div class="demo-proof-head" style="margin-top:42px;margin-bottom:20px">
+          <h2 style="font-size:29px">Отзывы участниц</h2>
+          <p>Рейтинг 4,9/5 · 340+ отзывов · 700+ участниц — утверждения из прежнего intensiv.html</p>
+        </div>
+        <div class="demo-reviews">
+          <article class="demo-review"><div class="stars">★★★★★</div><blockquote>«Перестала прокручивать мысли о нём уже на третий день. Впервые за долгое время выспалась.»</blockquote><div class="author">Настя, 46</div></article>
+          <article class="demo-review"><div class="stars">★★★★★</div><blockquote>«Наконец поняла, почему он так себя вёл — и мне стало легче, будто камень с души.»</blockquote><div class="author">Оля, 41</div></article>
+          <article class="demo-review"><div class="stars">★★★★★</div><blockquote>«Перестала листать его страницу по вечерам. Просто отпустило — без борьбы с собой.»</blockquote><div class="author">Лена, 49</div></article>
+        </div>
+        <div class="demo-media-head">
+          <h2>Отзывы</h2>
+        </div>
+        <div class="demo-video-grid">
+          <figure class="demo-video"><video controls preload="none" playsinline src="https://raw.githubusercontent.com/Domias13/landing/main/src/video2.mp4" aria-label="Демонстрационный видеоотзыв"></video><figcaption>Елена, 45</figcaption></figure>
+        </div>
+        <details class="demo-gallery-disclosure">
+          <summary>Показать все скриншоты и ещё один видеоотзыв</summary>
+          <div class="demo-media-head">
+            <h2>Ещё отзывы</h2>
+          </div>
+          <div class="demo-video-grid">
+            <figure class="demo-video"><video controls preload="none" playsinline src="https://raw.githubusercontent.com/Domias13/landing/main/src/video3.mp4" aria-label="Демонстрационный видеоотзыв 2"></video><figcaption>Наталия</figcaption></figure>
+          </div>
+        <div class="demo-media-head">
+          <h2>Скриншоты отзывов</h2>
+        </div>
+        <div class="demo-gallery">
+          <figure><a href="https://i.ibb.co/S4q1LCTf/Screenshot-20260304-063607.png" target="_blank" rel="noopener"><img src="https://i.ibb.co/S4q1LCTf/Screenshot-20260304-063607.png" alt="Скриншот отзыва из старого лендинга 7days" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
+          <figure><a href="https://i.ibb.co/b5xSCPGY/Screenshot-20260307-080052.png" target="_blank" rel="noopener"><img src="https://i.ibb.co/b5xSCPGY/Screenshot-20260307-080052.png" alt="Скриншот отзыва из старого лендинга 7days" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
+          <figure><a href="https://i.ibb.co/4RXGBkDy/Screenshot-20260225-070317.png" target="_blank" rel="noopener"><img src="https://i.ibb.co/4RXGBkDy/Screenshot-20260225-070317.png" alt="Скриншот отзыва из старого лендинга 7days" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
+          <figure><a href="https://i.ibb.co/qYwk49gQ/Screenshot-20260304-063819.png" target="_blank" rel="noopener"><img src="https://i.ibb.co/qYwk49gQ/Screenshot-20260304-063819.png" alt="Скриншот отзыва из старого лендинга 7days" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
+          <figure><a href="https://i.ibb.co/twZX8kcs/Screenshot-20260304-063655.png" target="_blank" rel="noopener"><img src="https://i.ibb.co/twZX8kcs/Screenshot-20260304-063655.png" alt="Скриншот отзыва из старого лендинга 7days" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
+          <figure><a href="https://i.ibb.co/TqP94MxJ/Screenshot-20260304-063639.png" target="_blank" rel="noopener"><img src="https://i.ibb.co/TqP94MxJ/Screenshot-20260304-063639.png" alt="Скриншот отзыва из старого лендинга 7days" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
+          <figure><a href="https://i.ibb.co/nMBK4wNC/Screenshot-20260307-080355.png" target="_blank" rel="noopener"><img src="https://i.ibb.co/nMBK4wNC/Screenshot-20260307-080355.png" alt="Скриншот отзыва из старого лендинга 7days" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
+          <figure><a href="https://i.ibb.co/99Y8Rd3P/Screenshot-20260307-075732.png" target="_blank" rel="noopener"><img src="https://i.ibb.co/99Y8Rd3P/Screenshot-20260307-075732.png" alt="Скриншот отзыва из старого лендинга 7days" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
+          <figure><a href="https://i.ibb.co/GvZY9PMP/Screenshot-20260225-073516.png" target="_blank" rel="noopener"><img src="https://i.ibb.co/GvZY9PMP/Screenshot-20260225-073516.png" alt="Скриншот отзыва из старого лендинга 7days" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
+          <figure><a href="https://i.ibb.co/bj4RzcGw/Screenshot-20260225-084353.png" target="_blank" rel="noopener"><img src="https://i.ibb.co/bj4RzcGw/Screenshot-20260225-084353.png" alt="Скриншот отзыва из старого лендинга 7days" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
+          <figure><a href="https://back4heart.site/img/file_00000000277471f486595b6d16ccaf07.png" target="_blank" rel="noopener"><img src="https://back4heart.site/img/file_00000000277471f486595b6d16ccaf07.png" alt="Скриншот отзыва из старого лендинга intensiv" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
+          <figure><a href="https://back4heart.site/img/1784517303508~2.png" target="_blank" rel="noopener"><img src="https://back4heart.site/img/1784517303508~2.png" alt="Скриншот отзыва из старого лендинга intensiv" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
+          <figure><a href="https://back4heart.site/img/1784517396070~3.png" target="_blank" rel="noopener"><img src="https://back4heart.site/img/1784517396070~3.png" alt="Скриншот отзыва из старого лендинга intensiv" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
+          <figure><a href="https://back4heart.site/img/file_00000000be148246ab5b3d7722c13b46~2.png" target="_blank" rel="noopener"><img src="https://back4heart.site/img/file_00000000be148246ab5b3d7722c13b46~2.png" alt="Скриншот отзыва из старого лендинга intensiv" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
+          <figure><a href="https://back4heart.site/img/file_00000000e05482439a2e2342e97b5fb4.png" target="_blank" rel="noopener"><img src="https://back4heart.site/img/file_00000000e05482439a2e2342e97b5fb4.png" alt="Скриншот отзыва из старого лендинга intensiv" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
+        </div>
+
+        </details>
+      </div>
+    </section>
+
+    <section class="section deep" id="questions">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">В центре программы</span>
+          <h2>«Что он имел в виду?»<br>«Почему он так поступил?»</h2>
+          <p>Эти вопросы цепляют, потому что хочется вернуть ясность и понять, можно ли ещё на что-то надеяться.</p>
+        </div>
+        <div class="questions">
+          <article class="question-card"><blockquote>Что он имел в виду?</blockquote><p>Отделишь точные слова и поступки от своих трактовок. Затем решишь, какая информация тебе действительно нужна и что ты можешь сделать без нового поиска скрытых знаков.</p></article>
+          <article class="question-card"><blockquote>Почему он так поступил?</blockquote><p>Рассмотришь повторяющиеся поступки и их влияние на тебя. Его мотивы нельзя достоверно угадать по одному сообщению — зато можно определить свои границы и подготовить ответ.</p></article>
+        </div>
+        <div class="honesty"><strong>Важная честность:</strong> программа не умеет читать мысли бывшего и не обещает вернуть отношения. Она поможет тебе разложить ситуацию, заметить собственные реакции и выбрать следующий шаг без давления.</div>
+        <div class="sample">
+          <p class="sample-kicker">Фрагмент рабочей тетради</p>
+          <h3>Ситуация: он написал после долгой паузы</h3>
+          <div class="sample-steps">
+            <div class="sample-step"><b>1 · Что точно произошло?</b><p>Он прислал сообщение: «Привет, как ты?» после долгой паузы.</p></div>
+            <div class="sample-step"><b>2 · Что я додумываю?</b><p>«Наверное, скучает и хочет вернуться». Это возможная версия, но пока не факт.</p></div>
+            <div class="sample-step"><b>3 · Что важно мне?</b><p>Мне нужна ясность и спокойствие. Я могу не отвечать сразу и вернуться к решению позже.</p></div>
+          </div>
+          <p class="sample-takeaway"><strong>Смысл упражнения:</strong> вопрос «что он имел в виду?» не обязательно решать догадкой. Можно отделить известное от неизвестного и выбрать шаг, который бережёт твои границы.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="program">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Понятный маршрут</span>
+          <h2>21 день — три последовательных этапа</h2>
+          <p>Не нужно заставлять себя «забыть». Каждый этап даёт практику для ситуации, с которой ты сталкиваешься сейчас.</p>
+        </div>
+        <div class="phase-list">
+          <article class="phase"><span class="phase-label">Дни 1–7 · остановить автоматизм</span><h3>Когда снова тянет проверить или написать</h3><p>Сначала — инструменты на острые моменты и триггеры.</p><ul><li>заметить, что запускает волну</li><li>пауза перед сообщением или проверкой</li><li>короткие практики для возвращения внимания к настоящему</li></ul></article>
+          <article class="phase"><span class="phase-label">Дни 8–14 · разобраться в истории</span><h3>Отделить факты от надежд и самообвинения</h3><p>Исследовать, что произошло и что именно ты оплакиваешь.</p><ul><li>переписка, молчание и смешанные сигналы</li><li>вина, стыд и сравнение с другой</li><li>привычная жизнь и будущее, которое представляла</li></ul></article>
+          <article class="phase"><span class="phase-label">Дни 15–21 · выбрать свои границы</span><h3>Подготовить следующий шаг для себя</h3><p>Не угадывать его намерения, а заранее понять собственные ответы и опоры.</p><ul><li>план на его сообщение или случайную встречу</li><li>границы при необходимом контакте и общих детях</li><li>маленькие возвращения к своим делам и планам</li></ul></article>
+        </div>
+        <h3 class="outcome-heading">Что останется у тебя после прохождения</h3>
+        <div class="outcome-grid" aria-label="Практические материалы, которые останутся у тебя">
+          <article class="outcome-card"><span class="outcome-num">01</span><h3>Карта триггеров</h3><p>Отметишь ситуации, после которых тянет проверить страницу, перечитать переписку или написать, и соберёшь личный набор первых шагов.</p></article>
+          <article class="outcome-card"><span class="outcome-num">02</span><h3>План общения и границ</h3><p>Подготовишь варианты ответа на сообщение, паузу или случайную встречу — с учётом того, нужен ли контакт по общим делам или детям.</p></article>
+          <article class="outcome-card"><span class="outcome-num">03</span><h3>Опоры для трудных моментов</h3><p>Сохранишь упражнения, вопросы для тетради и короткие аудио-практики, чтобы возвращаться к ним в своём темпе.</p></article>
+        </div>
+        <p class="phase-note">Можно проходить программу в удобном темпе. 21 день — структура, а не срок, за который ты обязана перестать скучать или думать о нём.</p>
+      </div>
+    </section>
+
+    <section class="section white" id="materials">
+      <div class="container materials-layout">
+        <div class="materials-intro">
+          <span class="eyebrow">Не только аудио</span>
+          <h2>Материалы, к которым можно вернуться в нужный момент</h2>
+          <p>Полный тариф объединяет короткие практики, рабочую тетрадь и подсказки для сложных ситуаций — по образцу комплекта Payhip, но с русскоязычными сценариями твоей аудитории.</p>
+          <span class="file-count">5 PDF · 6 аудио · доступ в своём темпе</span>
+        </div>
+        <div class="material-list">
+          <article class="material"><span class="material-icon">✎</span><div><h3>Рабочая тетрадь на 21 день</h3><p>Ежедневные вопросы и короткие упражнения: что произошло, что я думаю и что мне сейчас поможет.</p></div></article>
+          <article class="material"><span class="material-icon">↗</span><div><h3>Гайд по личным границам</h3><p>Как решить, отвечать ли на сообщение, и заранее подготовить свои формулировки.</p></div></article>
+          <article class="material"><span class="material-icon">◷</span><div><h3>Трекер триггеров и контакта на 30 дней</h3><p>Отмечать ситуации, свои реакции и то, что помогло. Не использовать как оценку «успеха» или «срыва».</p></div></article>
+          <article class="material"><span class="material-icon">◎</span><div><h3>Карточки-подсказки и вопросы для рефлексии</h3><p>Короткие опоры на моменты, когда хочется перечитать чат, сравнивать себя или обвинять.</p></div></article>
+          <article class="material"><span class="material-icon">⌂</span><div><h3>Гайд для необходимого общения</h3><p>Если есть общие дети или дела и полностью прекратить контакт не получается.</p></div></article>
+          <article class="material"><span class="material-icon">♫</span><div><h3>6 коротких аудио-практик</h3><p>Перед тем как написать, когда мысли идут по кругу, в трудный вечер и когда хочется вернуть фокус к себе.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="fit">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Подойдёт ли тебе?</span>
+          <h2>Тебе не обязательно быть готовой «отпустить»</h2>
+          <p>Можно начать с желания понять, что происходит с тобой и почему его поведение всё ещё так сильно влияет на твой день.</p>
+        </div>
+        <div class="fit-grid">
+          <article class="fit-card"><h3>Программа для тебя, если…</h3><ul><li>умом понимаешь, что отношения закончились или изменились, но всё ещё ждёшь</li><li>хочешь меньше зависеть от сообщений, сторис и случайных контактов</li><li>не хочешь рассказывать личное в группе или снова слышать общие советы</li><li>готова попробовать небольшие самостоятельные практики</li></ul></article>
+          <article class="fit-card no"><h3>Это не замена…</h3><ul><li>психотерапии или медицинской помощи при тяжёлом состоянии</li><li>юридической и финансовой консультации по разводу</li><li>плана безопасности, если есть угрозы или насилие</li><li>профессиональной поддержки, если тебе небезопасно оставаться одной</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white" id="about-author">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Автор программы</span>
+          <h2>Мужской взгляд и конкретные шаги</h2>
+          <p>Не чтобы угадывать мысли бывшего, а чтобы разбирать поведение спокойнее и возвращать фокус к себе.</p>
+        </div>
+        <div class="author-card">
+          <img src="https://back4heart.site/img/1784627058331~2.png" alt="Роман Вейл, автор программы" loading="lazy" decoding="async" referrerpolicy="no-referrer">
+          <div class="author-copy">
+            <h3>Роман Вейл</h3>
+            <p>Я мужчина и несколько лет изучаю поведенческую психологию и стратегии влияния. Прошёл более 12 программ у частных практиков.</p>
+            <p>За четыре года разобрал более 2 000 ситуаций женщин после расставания. В программе делюсь мужским взглядом на отношения и даю структурированные практики: как отделять факты от догадок, выдерживать импульс написать и выбирать свой следующий шаг.</p>
+            <div class="author-metrics">
+              <div class="author-metric"><strong>7 лет</strong><span>изучает поведенческую психологию</span></div>
+              <div class="author-metric"><strong>12+</strong><span>программ у частных практиков</span></div>
+              <div class="author-metric"><strong>2 000+</strong><span>ситуаций за 4 года</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section white" id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Выбери объём поддержки</span>
+          <h2>Начни с короткого маршрута или пройди все 21 день</h2>
+          <p>Разовая оплата. Без подписки. Самостоятельные тарифы не требуют личного рассказа автору.</p>
+        </div>
+        <div class="pricing">
+          <article class="price-card">
+            <span class="tier">Быстрый старт</span><h3>Первые 7 дней</h3><p class="desc">Чтобы начать разбирать ожидание и самые частые триггеры.</p>
+            <div class="demo-old-price"><s>$19.99</s></div>
+            <div class="price" data-price-tier="starter">$9.99</div>
+            <ul><li>первый этап программы: 7 дней</li><li>мини-рабочая тетрадь</li><li>трекер триггеров и импульсов</li><li>практики на желание проверить или написать</li></ul>
+            <div class="payment-options" aria-label="Способы оплаты тарифа «Быстрый старт»">
+              <a class="payment-link" data-provider="wayforpay" href="https://secure.wayforpay.com/button/b602a44c5fd01" target="_blank" rel="noopener" hidden><span>Оплатить через WayForPay · <span data-price-tier="starter">$9.99</span></span></a><div class="method-badges" data-provider="wayforpay" hidden><span class="method-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 9h18M6 15h4"/></svg>Банковские карты</span></div>
+              <a class="payment-link stripe" data-provider="stripe" href="https://buy.stripe.com/6oUbJ30QifWh2xceBa3ZK0k" target="_blank" rel="noopener" hidden><span>Купить · <span data-price-tier="starter">$9.99</span></span></a><div class="method-badges" data-provider="stripe" hidden><span class="method-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 9h18M6 15h4"/></svg>Карта</span><span class="method-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.7 12.6c0-1.9 1.5-2.8 1.6-2.9-.9-1.2-2.2-1.4-2.7-1.4-1.2-.1-2.3.7-2.9.7-.6 0-1.5-.6-2.4-.6-1.2 0-2.4.7-3.1 1.8-1.3 2.2-.4 5.4 1 7.2.6.8 1.4 1.7 2.3 1.7s1.2-.6 2.3-.6c1 0 1.4.6 2.3.6s1.6-.8 2.2-1.7c.6-.9.9-1.9 1-2-.1 0-1.8-.7-1.8-2.8zM14.7 6.7c.5-.6.8-1.4.8-2.2-.7.1-1.6.5-2.1 1.1-.5.5-.8 1.3-.8 2.1.8.1 1.6-.4 2.1-1z"/></svg>Apple Pay</span><span class="method-badge"><span class="method-mark google">G</span>Google Pay</span></div>
+              <p class="tribute-hint" data-provider="tribute" hidden>Для оплаты СБП, МИР и др. используй ↓</p><a class="payment-link tribute" data-provider="tribute" href="https://web.tribute.tg/p/zK6" target="_blank" rel="noopener" hidden><span>Оплатить · <span data-price-tier="starter">$9.99</span></span></a><div class="method-badges" data-provider="tribute" hidden><span class="method-badge"><span class="method-mark sbp">↗</span>СБП</span><span class="method-badge"><span class="method-mark mir">МИР</span>МИР</span><span class="method-badge"><span class="method-mark tbank">Т</span>Тинькофф</span><span class="method-badge">…</span></div>
+            </div>
+          </article>
+          <article class="price-card featured">
+            <span class="popular">Рекомендуем</span><span class="tier">Полная программа</span><h3>Все 21 день</h3><p class="desc">Полный маршрут для самостоятельной работы — включает первые 7 дней и все дополнительные материалы.</p>
+            <div class="demo-old-price"><s data-demo-anchor="full">$39.98</s></div><div class="price" data-price-tier="full">$19.99</div>
+            <ul><li>все 3 этапа и 21 ежедневная практика</li><li>5 PDF-материалов, включая полную рабочую тетрадь</li><li>6 аудио-практик</li><li>гайд по границам и необходимому общению</li><li>30-дневный трекер триггеров и контакта</li></ul>
+            <div class="payment-options" aria-label="Способы оплаты полной программы">
+              <a class="payment-link" data-provider="wayforpay" href="https://secure.wayforpay.com/button/b87077117811d" target="_blank" rel="noopener" hidden><span>Оплатить через WayForPay · <span data-price-tier="full">$19.99</span></span></a><div class="method-badges" data-provider="wayforpay" hidden><span class="method-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 9h18M6 15h4"/></svg>Банковские карты</span></div>
+              <a class="payment-link stripe" data-provider="stripe" href="https://buy.stripe.com/fZu6oJ1UmcK50p4fFe3ZK0J" target="_blank" rel="noopener" hidden><span>Купить · <span data-price-tier="full">$19.99</span></span></a><div class="method-badges" data-provider="stripe" hidden><span class="method-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 9h18M6 15h4"/></svg>Карта</span><span class="method-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.7 12.6c0-1.9 1.5-2.8 1.6-2.9-.9-1.2-2.2-1.4-2.7-1.4-1.2-.1-2.3.7-2.9.7-.6 0-1.5-.6-2.4-.6-1.2 0-2.4.7-3.1 1.8-1.3 2.2-.4 5.4 1 7.2.6.8 1.4 1.7 2.3 1.7s1.2-.6 2.3-.6c1 0 1.4.6 2.3.6s1.6-.8 2.2-1.7c.6-.9.9-1.9 1-2-.1 0-1.8-.7-1.8-2.8zM14.7 6.7c.5-.6.8-1.4.8-2.2-.7.1-1.6.5-2.1 1.1-.5.5-.8 1.3-.8 2.1.8.1 1.6-.4 2.1-1z"/></svg>Apple Pay</span><span class="method-badge"><span class="method-mark google">G</span>Google Pay</span></div>
+              <p class="tribute-hint" data-provider="tribute" hidden>Для оплаты СБП, МИР и др. используй ↓</p><a class="payment-link tribute" data-provider="tribute" href="https://web.tribute.tg/p/zK9" target="_blank" rel="noopener" hidden><span>Оплатить · <span data-price-tier="full">$19.99</span></span></a><div class="method-badges" data-provider="tribute" hidden><span class="method-badge"><span class="method-mark sbp">↗</span>СБП</span><span class="method-badge"><span class="method-mark mir">МИР</span>МИР</span><span class="method-badge"><span class="method-mark tbank">Т</span>Тинькофф</span><span class="method-badge">…</span></div>
+            </div>
+          </article>
+          <article class="price-card">
+            <span class="tier">С личным разбором</span><h3>Программа + разбор</h3><p class="desc">Для тех, кому важно обсудить свою ситуацию и выбрать конкретный следующий шаг.</p>
+            <div class="demo-old-price"><s data-demo-anchor="full">$129.98</s></div>			
+            <div class="price" data-price-tier="personal">$59.99</div>
+            <ul><li>всё из тарифа «Все 21 день»</li><li>60-минутный созвон по одной ситуации</li><li>в течение 2–3 дней после оплаты договоримся об удобном времени</li><li>разбор и план ближайших шагов и границ</li></ul>
+            <div class="payment-options" aria-label="Способы оплаты тарифа с личным разбором">
+              <a class="payment-link" data-provider="wayforpay" href="https://secure.wayforpay.com/button/b790cb950a376" target="_blank" rel="noopener" hidden><span>Оплатить через WayForPay · <span data-price-tier="personal">$59.99</span></span></a><div class="method-badges" data-provider="wayforpay" hidden><span class="method-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 9h18M6 15h4"/></svg>Банковские карты</span></div>
+              <a class="payment-link stripe" data-provider="stripe" href="https://buy.stripe.com/4gMbJ3buWaBX4Fk2Ss3ZK0K" target="_blank" rel="noopener" hidden><span>Купить · <span data-price-tier="personal">$59.99</span></span></a><div class="method-badges" data-provider="stripe" hidden><span class="method-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 9h18M6 15h4"/></svg>Карта</span><span class="method-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.7 12.6c0-1.9 1.5-2.8 1.6-2.9-.9-1.2-2.2-1.4-2.7-1.4-1.2-.1-2.3.7-2.9.7-.6 0-1.5-.6-2.4-.6-1.2 0-2.4-.7-3.1 1.8-1.3 2.2-.4 5.4 1 7.2.6.8 1.4 1.7 2.3 1.7s1.2-.6 2.3-.6c1 0 1.4.6 2.3.6s1.6-.8 2.2-1.7c.6-.9.9-1.9 1-2-.1 0-1.8-.7-1.8-2.8zM14.7 6.7c.5-.6.8-1.4.8-2.2-.7-.1-1.6.5-2.1 1.1-.5.5-.8 1.3-.8 2.1.8.1 1.6-.4 2.1-1z"/></svg>Apple Pay</span><span class="method-badge"><span class="method-mark google">G</span>Google Pay</span></div>
+              <p class="tribute-hint" data-provider="tribute" hidden>Для оплаты СБП, МИР и др. используй ↓</p><a class="payment-link tribute" data-provider="tribute" href="https://web.tribute.tg/p/A64" target="_blank" rel="noopener" hidden><span>Оплатить · <span data-price-tier="personal">$59.99</span></span></a><div class="method-badges" data-provider="tribute" hidden><span class="method-badge"><span class="method-mark sbp">↗</span>СБП</span><span class="method-badge"><span class="method-mark mir">МИР</span>МИР</span><span class="method-badge"><span class="method-mark tbank">Т</span>Тинькофф</span><span class="method-badge">…</span></div>
+            </div>
+          </article>
+        </div>
+        <div class="trust-strip">
+          <article class="trust-card guarantee-card">
+            <span class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 20 6v5c0 5-3.4 8.5-8 10-4.6-1.5-8-5-8-10V6l8-3Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg></span>
+            <div><h3>Гарантия возврата — 7 дней</h3><p>Если программа не подойдёт, <a href="https://t.me/back4heart" target="_blank" rel="noopener">напиши в Telegram</a> в течение 7 дней после оплаты — оформим возврат через платёжный сервис.</p></div>
+          </article>
+          <article class="trust-card">
+            <span class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v3"/></svg></span>
+            <div><h3>Защищённая оплата</h3><p>Оплата производится по защищенному протоколу SSL. Данные клиента не передаются третьим сторонам.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head"><span class="eyebrow">Без давления</span><h2>Частые вопросы</h2></div>
+        <div class="faq">
+          <details><summary>А если я всё ещё хочу, чтобы он вернулся?</summary><p>Тебе не нужно сначала принять окончательное решение. Программа не заставляет блокировать бывшего или отказываться от надежды. Она помогает увидеть факты, замечать свои реакции и понять, какой шаг сейчас подходит именно тебе.</p></details>
+          <details><summary>Что если я уже пробовала курсы и общие советы?</summary><p>Здесь фокус на конкретных моментах: сообщение после паузы, желание проверить страницу, сравнение с другой, стыд за прошлые сообщения и решение о границах. До покупки посмотри на список материалов и выбери формат, который тебе подходит.</p></details>
+          <details><summary>Семь дней — мало. Почему есть такой тариф?</summary><p>Семидневный тариф — это первый этап и доступный способ попробовать формат. Он не обещает, что за неделю всё пройдёт. Полный маршрут занимает 21 день и включает дополнительные этапы и материалы.</p></details>
+          <details><summary>Подойдёт ли программа, если расставание было давно?</summary><p>Да, если сейчас ты всё ещё живёшь в ожидании его сообщений или замечаешь, что его действия сильно влияют на твоё настроение. Важнее не дата расставания, а то, что происходит с тобой сейчас.</p></details>
+          <details><summary>А если у нас общие дети и контакт нужен?</summary><p>В полном тарифе предусмотрен отдельный материал о необходимом общении и границах. Программа не требует полного прекращения контакта и не заменяет юридические рекомендации по вопросам детей.</p></details>
+          <details><summary>Программа гарантирует, что мысли исчезнут через 21 день?</summary><p>Нет. Нельзя заранее обещать, что мысли и чувства исчезнут к конкретной дате или никогда не вернутся. Программа даёт практики и структуру, чтобы яснее понимать свои реакции и выбирать, что делать в сложный момент.</p></details>
+          <details><summary>Что означает «травматическая связь» в названии?</summary><p>Это название темы программы, а не диагноз. Оно не означает, что у каждой участницы есть травма или расстройство. Если термин тебе не подходит, ориентируйся на содержание и задачи курса.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="narrow">
+        <span class="eyebrow">Твой следующий шаг — за тобой</span>
+        <h2>Ты можешь искать ответы о нём — и постепенно возвращать вопросы о себе</h2>
+        <p>Начни с доступного семидневного маршрута или выбери полный формат с рабочей тетрадью и аудио. Не нужно быть готовой ко всему — достаточно выбрать один следующий шаг.</p>
+        <a class="button" href="#pricing">Посмотреть тарифы <span class="arrow">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <p>Название программы описывает её тему и не является диагнозом. Материалы носят информационно-образовательный характер, не заменяют психотерапию, медицинскую помощь или юридическую консультацию. При угрозе безопасности или мыслях о самоповреждении обратись к местным экстренным службам или профильному специалисту.</p>
+      <p>Вопросы о тарифах: <a href="https://t.me/back4heart" target="_blank" rel="noopener">Telegram @back4heart</a></p>
+    </div>
+  </footer>
+  <div class="mobile-cta"><span class="mobile-price" data-price-tier="full">$19.99</span><a class="button" href="#pricing">Полная программа <span class="arrow">→</span></a></div>
+  <script>
+    // Демонстрационный таймер: перезапускается при каждой загрузке и не связан с реальной скидкой.
+    (function () {
+      var remaining = 2 * 60 * 60;
+      var output = document.getElementById('demoTimer');
+      function render() {
+        var h = Math.floor(remaining / 3600);
+        var m = Math.floor((remaining % 3600) / 60);
+        var s = remaining % 60;
+        output.textContent = [h, m, s].map(function (v) { return String(v).padStart(2, '0'); }).join(':');
+        if (remaining > 0) remaining -= 1;
+      }
+      render();
+      window.setInterval(render, 1000);
+    })();
+
+    // Country is detected from IP using up to three providers in sequence.
+    (function () {
+      var prices = {
+        starter: { usd: 9.99, rub: 1169, uah: 399 },
+        full: { usd: 19.99, rub: 2104, uah: 799 },
+        personal: { usd: 59.99, rub: 3500, uah: 1999 }
+      };
+      var usdToKzt = 448.98;
+      var usdToByn = 2.9976;
+
+      function roundedAmount(tier, country) {
+        var plan = prices[tier];
+        if (country === 'UA') return plan.uah;
+        if (country === 'RU') return plan.rub;
+        if (country === 'KZ') return Math.round(plan.usd * usdToKzt / 10) * 10;
+        if (country === 'BY') return Math.round(plan.usd * usdToByn * 100) / 100;
+        return plan.usd;
+      }
+
+      function formatAmount(amount, country) {
+        if (country === 'UA') return new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 }).format(amount) + ' ₴';
+        if (country === 'RU') return new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 }).format(amount) + ' ₽';
+        if (country === 'KZ') return new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 }).format(amount) + ' ₸';
+        if (country === 'BY') return new Intl.NumberFormat('ru-RU', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(amount) + ' BYN';
+        return '$' + Number(amount).toFixed(2);
+      }
+
+      function render(country) {
+        var code = ['UA', 'RU', 'KZ', 'BY'].indexOf(country) >= 0 ? country : 'OTHER';
+        document.querySelectorAll('[data-price-tier]').forEach(function (node) {
+          var tier = node.getAttribute('data-price-tier');
+          if (prices[tier]) node.textContent = formatAmount(roundedAmount(tier, code), code);
+        });
+        var demoAnchor = document.querySelector('[data-demo-anchor="full"]');
+        if (demoAnchor) demoAnchor.textContent = formatAmount(roundedAmount('full', code) * 2, code);
+        document.querySelectorAll('[data-provider]').forEach(function (link) {
+          if (code === 'UA') link.hidden = link.dataset.provider !== 'wayforpay';
+          else if (code === 'RU') link.hidden = link.dataset.provider !== 'tribute';
+          else link.hidden = link.dataset.provider === 'wayforpay';
+        });
+      }
+
+      async function fetchCountry(url, field) {
+        var controller = new AbortController();
+        var timeout = window.setTimeout(function () { controller.abort(); }, 2500);
+        try {
+          var response = await fetch(url, { signal: controller.signal, cache: 'no-store' });
+          if (!response.ok) throw new Error('Geo lookup failed');
+          var result = await response.json();
+          if (result.success === false) throw new Error('Geo lookup failed');
+          var code = result[field];
+          if (typeof code !== 'string' || code.length !== 2) throw new Error('Country code unavailable');
+          return code.toUpperCase();
+        } finally {
+          window.clearTimeout(timeout);
+        }
+      }
+
+      async function detectCountry() {
+        var code = null;
+        try {
+          code = await fetchCountry('https://ipapi.co/json/', 'country_code');
+        } catch (firstError) {
+          try { code = await fetchCountry('https://ipwho.is/', 'country_code'); }
+          catch (secondError) {
+            try { code = await fetchCountry('https://free.freeipapi.com/api/v1/json', 'countryCode'); }
+            catch (thirdError) { code = null; }
+          }
+        }
+        if (code) {
+          render(code);
+        } else {
+          render('OTHER');
+        }
+      }
+
+      detectCountry();
+    })();
+  </script>
+</body>
+</html>
