@@ -1,683 +1,1666 @@
-<!doctype html>
-<html lang="ru">
+<!DOCTYPE html>
+<html lang="ru" id="htmlRoot">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f3ef">
-  <meta name="description" content="21-дневная программа для женщин, которые понимают, что отношения закончились или изменились, но всё ещё ждут бывшего и хотят вернуть внимание к своей жизни.">
-  <title>ВОССТАНОВЛЕНИЕ после ТРАВМАТИЧЕСКОЙ СВЯЗИ</title>
-  <style>
-    :root {
-      --paper: #f7f3ef;
-      --paper-deep: #eee7df;
-      --white: #fffdfa;
-      --ink: #282323;
-      --muted: #716765;
-      --line: #e4dad3;
-      --rose: #a84650;
-      --rose-dark: #843741;
-      --rose-light: #f3e2e1;
-      --gold: #bd8b56;
-      --sage: #e8eee7;
-      --shadow: 0 22px 60px rgba(62, 39, 40, .10);
-      --radius: 22px;
-      --serif: Georgia, "Times New Roman", serif;
-      --sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; color: var(--ink); background: var(--paper); font: 16px/1.65 var(--sans); -webkit-font-smoothing: antialiased; }
-    a { color: inherit; text-decoration: none; }
-    button, a { -webkit-tap-highlight-color: transparent; }
-    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
-    .narrow { width: min(780px, calc(100% - 40px)); margin: 0 auto; }
-    .topbar { position: sticky; top: 0; z-index: 20; background: rgba(247,243,239,.91); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(132,55,65,.10); }
-    .topbar-inner { min-height: 68px; display: flex; justify-content: space-between; align-items: center; gap: 18px; }
-    .brand { font: 700 15px/1.2 var(--serif); letter-spacing: .03em; }
-    .brand span { color: var(--rose); }
-    .top-link { font-size: 13px; font-weight: 700; color: var(--rose-dark); border: 1px solid #d9b7b7; border-radius: 999px; padding: 9px 16px; transition: .2s ease; }
-    .top-link:hover { background: var(--rose-light); }
-    .demo-ribbon { position: sticky; top: 68px; z-index: 19; padding: 11px 20px; color: #3a2b14; background: #f6d66b; border-bottom: 1px solid #d8b446; text-align: center; font-size: 11px; line-height: 1.45; }
-    .demo-ribbon strong { font-weight: 950; letter-spacing: .08em; }
-    .demo-ribbon .timer-line { display: inline-flex; align-items: center; gap: 7px; margin: 3px 0; font-weight: 800; }
-    .demo-timer { display: inline-block; min-width: 65px; padding: 2px 7px; color: #fff; background: #5c3434; border-radius: 5px; font: 800 12px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .04em; }
-    .demo-ribbon small { display: block; max-width: 1000px; margin: 0 auto; font-size: 10px; }
-    .demo-proof { padding: 56px 0; background: #fff8ee; border-top: 1px solid #ead8be; border-bottom: 1px solid #ead8be; }
-    .demo-proof-head { max-width: 720px; margin: 0 auto 27px; text-align: center; }
-    .demo-proof-head h2 { margin: 12px 0 8px; font-size: clamp(28px,3.8vw,39px); line-height: 1.12; }
-    .demo-proof-head p { margin: 0; color: var(--muted); font-size: 12px; }
-    .demo-proof-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
-    .demo-stat { padding: 19px 15px; text-align: center; background: #fffdfa; border: 1px solid #ebddca; border-radius: 15px; }
-    .demo-stat strong { display: block; color: var(--rose); font: 700 33px/1 var(--serif); }
-    .demo-stat span { display: block; margin-top: 8px; color: var(--muted); font-size: 11px; line-height: 1.4; }
-    .demo-stats-note { margin: 14px auto 0; color: #745b3d; font-size: 10px; text-align: center; }
-    .demo-reviews { display: grid; grid-template-columns: repeat(3,1fr); gap: 13px; }
-    .demo-review { padding: 21px; background: #fffdfa; border: 1px solid #ebddca; border-radius: 17px; }
-    .demo-review .stars { color: var(--gold); letter-spacing: .14em; font-size: 13px; }
-    .demo-review blockquote { margin: 11px 0; font-size: 16px; line-height: 1.45; }
-    .demo-review .author { color: var(--muted); font-size: 11px; font-weight: 800; }
-    details.demo-gallery-disclosure { max-width: 1000px; margin: 22px auto 0; padding: 15px 18px; background: rgba(255,253,250,.82); border-color: #ebddca; }
-    details.demo-gallery-disclosure > summary { color: var(--rose-dark); }
-    details.demo-gallery-disclosure .demo-media-head { margin-top: 25px; }
-    .demo-media-head { margin: 42px auto 19px; text-align: center; }
-    .demo-media-head h2 { margin: 0 0 7px; font-size: 29px; line-height: 1.15; }
-    .demo-media-head p { margin: 0; color: var(--muted); font-size: 11px; }
-    .demo-video-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
-    .demo-video { overflow: hidden; background: #231e1f; border: 1px solid #d5c5b8; border-radius: 17px; box-shadow: 0 12px 28px rgba(62,39,40,.10); }
-    .demo-video video { display: block; width: 100%; aspect-ratio: 9 / 16; max-height: 560px; background: #1d1a1a; object-fit: contain; }
-    .demo-video figcaption { padding: 10px 13px; color: #625453; background: #fffdfa; font-size: 10px; }
-    .demo-gallery { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; align-items: start; }
-    .demo-gallery figure { overflow: hidden; margin: 0; background: #fffdfa; border: 1px solid #e6d8ca; border-radius: 13px; }
-    .demo-gallery a { display: block; background: #f0ece8; }
-    .demo-gallery img { display: block; width: 100%; height: 340px; object-fit: contain; }
-    .demo-gallery figcaption { padding: 8px 10px; color: var(--muted); font-size: 10px; }
-    .demo-old-price { margin: 8px 0 -10px; text-align: center; color: var(--muted); font-size: 11px; }
-    .demo-old-price s { color: #a24646; font-size: 14px; font-weight: 800; }
-    .hero { position: relative; overflow: hidden; padding: 76px 0 86px; background: radial-gradient(ellipse at 84% 4%, rgba(189,139,86,.16), transparent 37%), radial-gradient(ellipse at 5% 90%, rgba(168,70,80,.10), transparent 32%), var(--paper); }
-    .hero::after { content: ""; position: absolute; width: 360px; height: 360px; right: -170px; bottom: -235px; border: 1px solid rgba(168,70,80,.18); border-radius: 50%; box-shadow: 0 0 0 35px rgba(168,70,80,.035), 0 0 0 72px rgba(168,70,80,.025); pointer-events: none; }
-    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 56px; }
-    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--rose-dark); font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
-    .eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--gold); }
-    h1, h2, h3, blockquote { font-family: var(--serif); }
-    h1 { max-width: 720px; margin: 18px 0 22px; font-size: clamp(39px, 5.3vw, 66px); line-height: 1.04; letter-spacing: -.045em; font-weight: 700; }
-    h1 .title-small { display: block; margin-top: 13px; color: var(--rose); font-size: .64em; line-height: 1.12; letter-spacing: -.02em; }
-    .hero-lead { max-width: 650px; margin: 0; color: #514847; font-size: clamp(17px, 2vw, 20px); }
-    .hero-lead strong { color: var(--ink); }
-    .hero-prompt { margin: 25px 0 0; color: var(--rose-dark); font: italic 21px/1.45 var(--serif); }
-    .hero-prompt span { display: block; }
-    .hero-copy { max-width: 630px; margin: 15px 0 0; color: var(--muted); font-size: 14px; }
-    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 15px; margin-top: 30px; }
-    .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 54px; border: 0; border-radius: 999px; padding: 14px 23px; background: var(--rose); color: white; font: 800 14px/1.2 var(--sans); box-shadow: 0 12px 26px rgba(168,70,80,.20); transition: transform .2s ease, background .2s ease, box-shadow .2s ease; cursor: pointer; }
-    .button:hover { transform: translateY(-2px); background: var(--rose-dark); box-shadow: 0 15px 30px rgba(168,70,80,.25); }
-    .button.secondary { background: transparent; color: var(--rose-dark); border: 1px solid #d9b7b7; box-shadow: none; }
-    .button.secondary:hover { background: var(--rose-light); }
-    .button .arrow { font-size: 18px; line-height: 1; }
-    .hero-note { margin: 13px 0 0; color: var(--muted); font-size: 12px; }
-    .hero-card { position: relative; padding: 32px; background: rgba(255,253,250,.86); border: 1px solid rgba(168,70,80,.14); border-radius: 30px; box-shadow: var(--shadow); }
-    .hero-card::before { content: ""; position: absolute; inset: 10px; border: 1px solid rgba(189,139,86,.22); border-radius: 22px; pointer-events: none; }
-    .hero-card > * { position: relative; }
-    .card-stamp { display: inline-block; padding: 6px 11px; border-radius: 999px; background: var(--sage); color: #465c49; font-size: 11px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
-    .hero-card h2 { margin: 18px 0 10px; font-size: 29px; line-height: 1.17; }
-    .hero-card p { margin: 0; color: var(--muted); font-size: 14px; }
-    .mini-list { display: grid; gap: 12px; margin: 23px 0 0; padding: 0; list-style: none; }
-    .mini-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; }
-    .check { flex: 0 0 20px; width: 20px; height: 20px; display: inline-grid; place-items: center; border-radius: 50%; background: var(--rose-light); color: var(--rose-dark); font-size: 12px; font-weight: 900; }
-    .hero-price { display: flex; align-items: baseline; gap: 9px; margin-top: 23px; padding-top: 18px; border-top: 1px solid var(--line); }
-    .hero-price strong { font: 700 30px/1 var(--serif); }
-    .hero-price span { color: var(--muted); font-size: 12px; }
-    .section { padding: 84px 0; }
-    .section.white { background: var(--white); }
-    .section.deep { background: #302728; color: white; }
-    .section-head { max-width: 720px; margin: 0 auto 40px; text-align: center; }
-    .section-head .eyebrow { justify-content: center; }
-    .section-head h2 { margin: 15px 0 12px; font-size: clamp(30px, 4.1vw, 46px); line-height: 1.12; letter-spacing: -.025em; }
-    .section-head p { margin: 0; color: var(--muted); }
-    .deep .section-head p { color: #d2c7c4; }
-    .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-    .pain-card { min-height: 174px; padding: 23px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
-    .pain-card .num { color: var(--gold); font: italic 15px/1 var(--serif); }
-    .pain-card h3 { margin: 12px 0 7px; font-size: 20px; line-height: 1.17; }
-    .pain-card p { margin: 0; color: var(--muted); font-size: 13px; }
-    .questions { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 0 auto; }
-    .question-card { padding: 27px; border-radius: 20px; background: #3b3031; border: 1px solid rgba(255,255,255,.10); }
-    .question-card blockquote { margin: 0 0 13px; color: #f0c8bd; font-size: clamp(23px, 3vw, 31px); line-height: 1.16; }
-    .question-card p { margin: 0; color: #ded4d1; font-size: 14px; }
-    .honesty { max-width: 800px; margin: 22px auto 0; padding: 17px 20px; color: #e9dfdc; background: rgba(255,255,255,.06); border-left: 3px solid var(--gold); border-radius: 0 12px 12px 0; font-size: 13px; }
-    .honesty strong { color: white; }
-    .sample { max-width: 840px; margin: 36px auto 0; padding: 25px; border-radius: 22px; background: var(--paper); color: var(--ink); }
-    .sample-kicker { margin: 0 0 7px; color: var(--rose-dark); font-size: 10px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
-    .sample h3 { margin: 0 0 17px; font-size: 22px; }
-    .sample-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
-    .sample-step { padding: 15px; background: var(--white); border: 1px solid var(--line); border-radius: 14px; }
-    .sample-step b { display: block; margin-bottom: 5px; color: var(--rose-dark); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
-    .sample-step p { margin: 0; color: var(--muted); font-size: 13px; }
-    .sample-takeaway { margin: 14px 0 0; padding: 12px 14px; border-radius: 12px; background: var(--sage); color: #465c49; font-size: 12px; line-height: 1.5; }
-    .phase-list { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
-    .phase { position: relative; padding: 28px 25px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 10px 30px rgba(62,39,40,.045); }
-    .phase-label { color: var(--rose); font-size: 11px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
-    .phase h3 { margin: 11px 0 10px; font-size: 25px; line-height: 1.12; }
-    .phase p { margin: 0; color: var(--muted); font-size: 13px; }
-    .phase ul { display: grid; gap: 9px; margin: 17px 0 0; padding: 0; list-style: none; color: #514847; font-size: 13px; }
-    .phase li::before { content: "—"; margin-right: 8px; color: var(--gold); }
-    .phase-note { margin: 24px auto 0; max-width: 720px; color: var(--muted); text-align: center; font-size: 13px; }
-    .outcome-heading { margin: 28px 0 0; text-align: center; font-size: clamp(20px,2vw,24px); }
-    .outcome-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 13px; margin-top: 15px; }
-    .outcome-card { padding: 19px; border: 1px solid var(--line); border-radius: 17px; background: #fffdfa; }
-    .outcome-num { display: inline-grid; width: 29px; height: 29px; place-items: center; margin-bottom: 11px; border-radius: 50%; background: var(--rose-light); color: var(--rose-dark); font-size: 12px; font-weight: 900; }
-    .outcome-card h3 { margin: 0 0 6px; font-size: 16px; line-height: 1.2; }
-    .outcome-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
-    .materials-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 45px; align-items: start; }
-    .materials-intro h2 { margin: 13px 0; font-size: clamp(30px,4vw,43px); line-height: 1.12; }
-    .materials-intro p { color: var(--muted); }
-    .file-count { display: inline-flex; align-items: center; gap: 9px; margin-top: 12px; padding: 9px 13px; border-radius: 999px; background: var(--sage); color: #465c49; font-size: 12px; font-weight: 800; }
-    .material-list { display: grid; gap: 11px; }
-    .material { display: grid; grid-template-columns: 42px 1fr; gap: 13px; padding: 17px; background: var(--white); border: 1px solid var(--line); border-radius: 16px; }
-    .material-icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 13px; background: var(--rose-light); color: var(--rose-dark); font-size: 18px; }
-    .material h3 { margin: 0 0 3px; font: 800 14px/1.3 var(--sans); }
-    .material p { margin: 0; color: var(--muted); font-size: 12px; }
-    .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .fit-card { padding: 27px; border-radius: var(--radius); background: var(--sage); }
-    .fit-card.no { background: #f3e8e3; }
-    .fit-card h3 { margin: 0 0 12px; font-size: 23px; }
-    .fit-card ul { display: grid; gap: 9px; margin: 0; padding-left: 19px; color: #514847; font-size: 13px; }
-    .pricing { display: grid; grid-template-columns: repeat(3,1fr); gap: 15px; align-items: stretch; }
-    .price-card { position: relative; display: flex; flex-direction: column; padding: 27px 23px 23px; background: var(--white); border: 1px solid var(--line); border-radius: 23px; }
-    .price-card.featured { border: 2px solid var(--rose); box-shadow: var(--shadow); transform: translateY(-7px); }
-    .popular { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); padding: 5px 13px; color: white; background: var(--rose); border-radius: 999px; font-size: 10px; font-weight: 900; letter-spacing: .10em; text-transform: uppercase; white-space: nowrap; }
-    .price-card .tier { color: var(--rose-dark); font-size: 11px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
-    .price-card h3 { margin: 9px 0 5px; font-size: 25px; line-height: 1.1; }
-    .price-card .desc { min-height: 43px; margin: 0; color: var(--muted); font-size: 12px; }
-    .price { margin: 19px 0 16px; font: 700 38px/1 var(--serif); }
-    .price small { font: 500 13px/1 var(--sans); color: var(--muted); }
-    .price-card ul { display: grid; gap: 10px; flex: 1; margin: 0 0 22px; padding: 17px 0 0; list-style: none; border-top: 1px solid var(--line); font-size: 12px; }
-    .price-card li { display: flex; gap: 8px; align-items: flex-start; }
-    .price-card li::before { content: "✓"; color: var(--rose); font-weight: 900; }
-    .price-card .button { width: 100%; min-height: 48px; padding: 12px; font-size: 12px; }
-    .price-foot { max-width: 760px; margin: 24px auto 0; color: var(--muted); font-size: 12px; text-align: center; }
-    .payment-options { display: grid; gap: 9px; margin-top: auto; padding-top: 14px; }
-    .payment-link { display: flex; width: 100%; min-height: 58px; justify-content: center; align-items: center; padding: 15px 18px; border: 1px solid #d9b7b7; border-radius: 14px; background: #fffdfa; color: var(--rose-dark); text-align: center; font-size: 15px; font-weight: 800; line-height: 1.3; transition: .2s ease; }
-    .payment-link:hover { transform: translateY(-1px); background: var(--rose-light); }
-    .payment-link.tribute { border: 2px solid #b95152; background: #fff1ef; color: #7e3037; box-shadow: 0 5px 16px rgba(168,70,80,.12); }
-    .payment-link.stripe { border: 2px solid #315e8b; background: #eaf2fb; color: #174a75; box-shadow: 0 7px 18px rgba(49,94,139,.17); }
-    .payment-link.stripe:hover { background: #dceafa; }
-    .payment-link[hidden] { display: none !important; }
-    .method-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; margin: 0 auto 3px; }
-    .method-badges[hidden] { display: none !important; }
-    .method-badge { display: inline-flex; align-items: center; gap: 4px; min-height: 21px; padding: 2px 6px; border: 1px solid #e5ddd7; border-radius: 999px; background: #fffdfa; color: #554b49; font-size: 8px; font-weight: 800; white-space: nowrap; }
-    .method-badge svg { width: 12px; height: 12px; flex: 0 0 12px; }
-    .method-mark { display: inline-grid; width: 13px; height: 13px; place-items: center; border-radius: 50%; color: #fff; font-size: 8px; font-weight: 900; line-height: 1; }
-    .method-mark.sbp { background: #34a987; }
-    .method-mark.mir { background: #28384f; font-size: 7px; }
-    .method-mark.tbank { background: #ffdd2d; color: #241f16; }
-    .method-mark.google { border-radius: 4px; color: #4285f4; background: transparent; font: 900 13px/1 Arial,sans-serif; }
-    .tribute-hint { color: var(--rose-dark); text-align: center; font-size: 10px; font-weight: 700; line-height: 1.25; }
-    .tribute-hint[hidden] { display: none !important; }
-    .trust-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; max-width: 900px; margin: 28px auto 0; }
-    .trust-card { display: flex; gap: 13px; align-items: flex-start; padding: 18px; border: 1px solid var(--line); border-radius: 17px; background: #fffdfa; }
-    .trust-card.guarantee-card { border-color: #d9b6a8; background: #fbf1ec; }
-    .trust-icon { flex: 0 0 35px; width: 35px; height: 35px; display: grid; place-items: center; border-radius: 50%; background: var(--sage); color: #49654d; }
-    .trust-icon svg { width: 18px; height: 18px; }
-    .trust-card h3 { margin: 0 0 5px; font-size: 17px; line-height: 1.2; }
-    .trust-card p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
-    .author-card { display: grid; grid-template-columns: minmax(210px, .72fr) 1.28fr; gap: 28px; align-items: center; max-width: 950px; margin: 0 auto; padding: 25px; border: 1px solid var(--line); border-radius: 25px; background: var(--white); box-shadow: 0 15px 40px rgba(62,39,40,.07); }
-    .author-card img { display: block; width: 100%; max-height: 390px; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 25%; border-radius: 18px; background: var(--paper-deep); }
-    .author-copy h3 { margin: 0 0 12px; font-size: 29px; line-height: 1.1; }
-    .author-copy p { margin: 0 0 11px; color: #574e4c; font-size: 13px; }
-    .author-metrics { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-top: 18px; }
-    .author-metric { padding: 11px 8px; border-radius: 12px; background: #f5eeea; text-align: center; }
-    .author-metric strong { display: block; color: var(--rose-dark); font: 700 21px/1 var(--serif); }
-    .author-metric span { display: block; margin-top: 5px; color: var(--muted); font-size: 9px; line-height: 1.3; }
-    .author-source-note { max-width: 950px; margin: 10px auto 0; color: #745b3d; font-size: 10px; text-align: center; }
-    .faq { display: grid; gap: 10px; max-width: 790px; margin: 0 auto; }
-    details { padding: 18px 20px; background: var(--white); border: 1px solid var(--line); border-radius: 15px; }
-    summary { position: relative; padding-right: 26px; cursor: pointer; font-weight: 800; font-size: 14px; list-style: none; }
-    summary::-webkit-details-marker { display: none; }
-    summary::after { content: "+"; position: absolute; right: 0; top: -3px; color: var(--rose); font: 700 22px/1 var(--sans); }
-    details[open] summary::after { content: "−"; }
-    details p { margin: 12px 0 0; color: var(--muted); font-size: 13px; }
-    .closing { padding: 72px 0 82px; color: white; text-align: center; background: radial-gradient(ellipse at 50% 120%, rgba(189,139,86,.2), transparent 45%), #302728; }
-    .closing h2 { max-width: 760px; margin: 15px auto; font-size: clamp(31px,4.3vw,48px); line-height: 1.1; }
-    .closing p { max-width: 610px; margin: 0 auto; color: #d5cac7; }
-    .closing .button { margin-top: 25px; background: #d47878; }
-    footer { padding: 27px 0 50px; color: var(--muted); font-size: 11px; }
-    .footer-inner { display: flex; justify-content: space-between; gap: 20px; align-items: flex-start; }
-    footer p { max-width: 760px; margin: 0; }
-    footer a { color: var(--rose-dark); text-decoration: underline; text-underline-offset: 3px; }
-    .mobile-cta { display: none; }
-    @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
-      .hero-card { max-width: 560px; }
-      .pain-grid { grid-template-columns: repeat(2,1fr); }
-      .demo-proof-grid { grid-template-columns: repeat(2,1fr); }
-      .demo-gallery { grid-template-columns: repeat(2,1fr); }
-      .materials-layout { grid-template-columns: 1fr; gap: 25px; }
-      .pricing { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; gap: 18px; }
-      .price-card.featured { transform: none; }
-      .price-card .desc { min-height: 0; }
-      .author-card { grid-template-columns: 220px 1fr; gap: 20px; }
-    }
-    @media (max-width: 620px) {
-      .container,.narrow { width: min(100% - 28px, 760px); }
-      .demo-ribbon { top: 60px; padding: 9px 12px; font-size: 10px; }
-      .demo-ribbon small { font-size: 9px; }
-      .demo-proof-grid,.demo-reviews { grid-template-columns: 1fr; }
-      .demo-video-grid,.demo-gallery { grid-template-columns: 1fr; }
-      .demo-gallery img { height: auto; max-height: 520px; }
-      .topbar-inner { min-height: 60px; }
-      .brand { max-width: 190px; font-size: 13px; }
-      .top-link { padding: 8px 12px; font-size: 11px; }
-      .hero { padding: 51px 0 60px; }
-      h1 { font-size: clamp(37px, 12vw, 52px); }
-      .hero-prompt { font-size: 19px; }
-      .hero-actions { align-items: stretch; flex-direction: column; }
-      .hero-actions .button { width: 100%; }
-      .hero-card { padding: 26px 22px; }
-      .section { padding: 64px 0; }
-      .section-head { margin-bottom: 30px; }
-      .pain-grid,.questions,.phase-list,.fit-grid,.sample-steps,.outcome-grid { grid-template-columns: 1fr; }
-      .author-card { grid-template-columns: 1fr; padding: 18px; }
-      .author-card img { max-width: 300px; max-height: 350px; margin: 0 auto; }
-      .trust-strip { grid-template-columns: 1fr; }
-      .pain-card { min-height: 0; }
-      .question-card { padding: 23px; }
-      .sample { padding: 19px; }
-      .phase { padding: 24px 21px; }
-      .footer-inner { flex-direction: column; }
-      .mobile-cta { position: fixed; z-index: 30; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 12px; padding: 9px 14px calc(9px + env(safe-area-inset-bottom)); background: rgba(255,253,250,.96); border-top: 1px solid var(--line); box-shadow: 0 -8px 25px rgba(40,30,30,.08); }
-      .mobile-cta .mobile-price { min-width: 69px; font: 700 18px/1 var(--serif); }
-      .mobile-cta .button { flex: 1; min-height: 44px; padding: 10px 12px; font-size: 12px; }
-      footer { padding-bottom: 100px; }
-    }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *,*::before,*::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Бэушный ещё пожалеет - аудиоинтенсив 7 дней | back4heart</title>
+<meta name="description" id="pageDesc" content="7 дней, чтобы он осознал, кого потерял. Аудиоинтенсив для тех, кто выбирает триумф, а не смирение.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #faf8f5;
+    --bg-alt: #f3efe8;
+    --bg-card: #ffffff;
+    --cream: #f9f5ee;
+    --crimson: #c0392b;
+    --crimson-deep: #a93226;
+    --gold: #b8860b;
+    --gold-light: #b8860b;
+    --ink: #2a2118;
+    --muted: #7a6b5a;
+    --light: #b8a898;
+    --line: #e0d9ce;
+    --shadow: 0 16px 40px rgba(42,33,24,0.09);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Manrope', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    opacity:0;
+    transition:opacity .4s ease;
+  }
+  body.ready{ opacity:1; }
+
+  h1,h2,h3,.serif{ font-family:'Playfair Display', serif; font-weight:700; letter-spacing:-0.01em; }
+
+  .eyebrow{
+    font-family:'Manrope', sans-serif; font-size:12px; letter-spacing:0.22em;
+    text-transform:uppercase; color:var(--gold); font-weight:700;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  img,svg{ display:block; max-width:100%; }
+  section{ position:relative; }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 24px; }
+
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:50; padding:18px 0;
+    background:rgba(250,248,245,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid transparent;
+  }
+  header .wrap{ display:flex; justify-content:space-between; align-items:center; }
+  .logo{ font-family:'Playfair Display', serif; font-size:18px; letter-spacing:0.04em; color:var(--ink); }
+  .logo span{ color:var(--crimson); }
+  .nav-cta{
+    border:1px solid var(--line); background:#fff; color:var(--ink);
+    padding:9px 18px; font-size:13px; letter-spacing:0.03em; border-radius:20px; font-weight:600;
+    transition:all .25s ease;
+  }
+  .nav-tg{
+    display:flex; align-items:center; gap:6px;
+    border:1px solid rgba(34,158,217,0.35); background:rgba(34,158,217,0.08); color:#229ED9;
+    padding:9px 14px; font-size:13px; font-weight:600; border-radius:20px;
+    transition:all .2s ease;
+  }
+  .nav-tg svg{ width:15px; height:15px; }
+  .nav-tg:hover{ background:#229ED9; border-color:#229ED9; color:#fff; }
+  @media (max-width:520px){ .nav-tg span{ display:none; } .nav-tg{ padding:9px 10px; } }
+
+  .tg-contact{ text-align:center; padding:56px 24px; background:var(--bg-alt); }
+  .tg-contact p{ font-size:14.5px; color:var(--muted); margin-bottom:20px; }
+  .tg-btn{
+    display:inline-flex; align-items:center; gap:10px;
+    background:linear-gradient(135deg,#2AABEE,#229ED9); color:#fff;
+    padding:16px 34px; border-radius:30px; font-size:15px; font-weight:700;
+    box-shadow:0 10px 26px rgba(34,158,217,0.32);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .tg-btn:hover{ transform:translateY(-2px); box-shadow:0 14px 32px rgba(34,158,217,0.42); }
+  .tg-btn svg{ width:20px; height:20px; flex-shrink:0; }
+
+  .hero{
+    min-height:100svh; display:flex; flex-direction:column; justify-content:center; align-items:center;
+    text-align:center; padding:140px 24px 90px; position:relative;
+    background: var(--cream);
+    border-bottom:1px solid var(--line);
+  }
+  .seal{ width:100px; height:100px; margin-bottom:24px; opacity:0.92; }
+  .hero .eyebrow{ margin-bottom:20px; }
+  .hero h1{ font-size:clamp(32px, 6vw, 58px); line-height:1.14; max-width:780px; color:var(--ink); }
+  .hero h1 em{ font-style:italic; color:var(--crimson); }
+  .hero .sub{ margin-top:24px; font-size:clamp(15px,2.1vw,18px); color:var(--muted); max-width:540px; font-weight:400; }
+  .hero .sub b{ color:var(--ink); font-weight:700; }
+  .cta-primary{
+    margin-top:36px; display:inline-block;
+    background:var(--crimson);
+    color:#fff; padding:17px 40px; font-size:15px; font-weight:700; letter-spacing:0.02em; border-radius:5px;
+    box-shadow:0 12px 26px rgba(192,57,43,0.24);
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .cta-primary:hover{ transform:translateY(-2px); box-shadow:0 16px 34px rgba(192,57,43,0.32); background:var(--crimson-deep); }
+  .cta-note{ margin-top:14px; font-size:12px; color:var(--light); letter-spacing:0.02em; }
+
+  .scroll-hint{
+    position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+    font-size:11px; letter-spacing:0.2em; color:var(--light); text-transform:uppercase;
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+  }
+  .scroll-hint::after{
+    content:''; width:1px; height:30px; background:linear-gradient(var(--gold), transparent);
+    animation:pulse-line 2s ease-in-out infinite;
+  }
+  @keyframes pulse-line{ 0%,100%{opacity:.25} 50%{opacity:.8} }
+
+  .section{ padding:88px 0; }
+  .section-alt{ background:var(--bg-alt); }
+  .section-head{ text-align:center; max-width:640px; margin:0 auto 48px; }
+  .section-head h2{ font-size:clamp(26px,4vw,38px); margin-top:14px; }
+  .section-head p{ color:var(--muted); margin-top:14px; font-size:15.5px; }
+
+  .pain-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:940px; margin:0 auto; }
+  .pain-card{ background:#fff; border:1px solid var(--line); border-left:3px solid var(--crimson); border-radius:4px; padding:22px 20px; }
+  .pain-card p{ color:var(--muted); font-size:14.5px; }
+  .pain-card .mark{ font-family:'Playfair Display',serif; font-style:italic; color:var(--crimson); font-size:18px; display:block; margin-bottom:10px; }
+
+  .promise{
+    text-align:center; padding:100px 24px; position:relative;
+    background: var(--bg-alt);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .promise blockquote{
+    font-family:'Playfair Display', serif; font-style:italic; font-size:clamp(20px,3.4vw,30px);
+    max-width:760px; margin:0 auto; line-height:1.45; color:var(--ink);
+  }
+  .promise cite{ display:block; margin-top:22px; font-style:normal; font-size:12.5px; letter-spacing:0.1em; color:var(--light); text-transform:uppercase; }
+
+  .modules{ counter-reset:mod; background:var(--bg); }
+  .module-list{ max-width:760px; margin:0 auto; }
+  .module{ display:grid; grid-template-columns:56px 1fr; gap:20px; padding:22px 0; border-bottom:1px solid var(--line); align-items:flex-start; }
+  .module:first-child{ border-top:1px solid var(--line); }
+  .module-icon{ width:48px; height:48px; background:var(--bg-alt); border:1px solid var(--line); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--crimson); }
+  .module-icon svg{ width:20px; height:20px; }
+  .module h3{ font-size:18px; color:var(--ink); margin-bottom:6px; font-weight:700; }
+  .module h3 span{ color:var(--gold); font-style:italic; font-weight:600; margin-right:8px; font-family:'Playfair Display',serif; }
+  .module p{ color:var(--muted); font-size:14px; max-width:520px; }
+
+  .seal-block{ display:flex; flex-direction:column; align-items:center; justify-content:center; padding:80px 24px; text-align:center; background:var(--cream); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .seal-large{ width:150px; height:150px; position:relative; margin-bottom:26px; }
+  .seal-large svg{ width:100%; height:100%; }
+  .seal-half{ transition:transform 1.1s cubic-bezier(.2,.8,.2,1), opacity 1.1s ease; }
+  .seal-large.split .seal-half.left{ transform:translateX(-12px) rotate(-4deg); }
+  .seal-large.split .seal-half.right{ transform:translateX(12px) rotate(4deg); }
+  .seal-block .caption{ font-family:'Playfair Display',serif; font-style:italic; color:var(--ink); font-size:19px; max-width:500px; }
+
+  .testi-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .testi{ background:#fff; border:1px solid var(--line); border-top:2px solid var(--crimson); border-radius:4px; padding:24px; font-size:14px; color:var(--muted); }
+  .testi .stars{ color:var(--gold); margin-bottom:12px; font-size:13px; letter-spacing:2px; }
+  .testi p{ margin-bottom:14px; font-style:italic; color:var(--ink); }
+  .testi .who{ color:var(--muted); font-size:12.5px; font-weight:700; }
+  .testi-disclaimer{ text-align:center; font-size:12px; color:var(--light); margin-top:20px; }
+
+  .pricing-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch; max-width:1080px; margin:0 auto; }
+  .plan{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:34px 26px; display:flex; flex-direction:column; position:relative; }
+  .plan.featured{ border-color:var(--gold); transform:translateY(-8px); box-shadow:var(--shadow); background:linear-gradient(180deg, rgba(192,57,43,0.05), #fff 45%); }
+  .plan.featured::before{
+    content:attr(data-badge); position:absolute; top:-13px; left:50%; transform:translateX(-50%);
+    background:var(--gold); color:#fff; font-size:11px; font-weight:700;
+    letter-spacing:0.05em; padding:6px 14px; border-radius:20px; text-transform:uppercase;
+  }
+  .plan .plan-name{ font-family:'Playfair Display',serif; font-size:19px; margin-bottom:6px; color:var(--ink); }
+  .plan .plan-desc{ color:var(--muted); font-size:13px; margin-bottom:20px; min-height:34px; }
+  .plan .price{ font-family:'Playfair Display',serif; font-size:40px; font-weight:700; color:var(--ink); margin-bottom:4px; }
+  .plan .price sup, .plan .price .cur{ font-size:17px; color:var(--muted); font-weight:600; }
+  .plan .price sup{ top:-16px; }
+  .plan .price .cur{ margin-left:4px; }
+  .plan .price-note{ font-size:11.5px; color:var(--light); margin-bottom:24px; }
+  .plan ul{ list-style:none; margin-bottom:28px; flex-grow:1; }
+  .plan li{ font-size:13px; color:var(--ink); padding:9px 0; border-top:1px solid var(--line); display:flex; gap:10px; }
+  .plan li::before{ content:'✓'; color:var(--crimson); font-weight:700; font-size:12px; margin-top:1px; }
+  .plan-btn{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; text-align:center; padding:12px 14px; border-radius:5px; font-size:14px; font-weight:700; letter-spacing:0.02em; border:1.5px solid var(--crimson); background:var(--crimson); color:#fff; transition:all .2s ease; }
+  .plan-btn .pay-main, .pay-secondary .pay-main, .pay-tertiary .pay-main{ font-size:14px; font-weight:700; line-height:1.2; }
+  .plan-btn .pay-sub, .pay-secondary .pay-sub, .pay-tertiary .pay-sub{ font-size:11px; font-weight:600; opacity:0.8; letter-spacing:0.03em; line-height:1.2; }
+  .plan-btn:hover{ background:var(--crimson-deep); border-color:var(--crimson-deep); color:#fff; }
+
+  .payment-icons{ display:flex; justify-content:center; gap:12px; margin-top:24px; }
+  .pay-icon{ width:50px; height:32px; display:flex; align-items:center; justify-content:center; background:#fff; border:1px solid var(--line); border-radius:5px; opacity:0.9; transition:opacity .2s ease, border-color .2s ease; }
+  .pay-icon:hover{ opacity:1; border-color:var(--gold); }
+  .pay-icon svg{ width:70%; height:70%; }
+  .pay-icons-mini{ display:none; justify-content:center; gap:8px; margin-top:12px; }
+  .pay-icons-mini .pay-icon{ width:36px; height:24px; }
+
+  .urgency{ text-align:center; background:rgba(192,57,43,0.06); padding:44px 24px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .urgency .eyebrow{ color:var(--crimson); }
+  .urgency h3{ font-size:clamp(19px,3vw,26px); margin:12px 0 14px; color:var(--ink); }
+  .urgency-sub{ font-size:14.5px; color:var(--muted); max-width:440px; margin:0 auto 22px; }
+
+  .trust-strip{ display:flex; justify-content:center; gap:28px; flex-wrap:wrap; margin-top:40px; padding-top:32px; border-top:1px solid var(--line); }
+  .trust-item{ display:flex; align-items:flex-start; gap:10px; max-width:230px; }
+  .trust-icon{ width:22px; height:22px; flex-shrink:0; color:var(--gold); margin-top:1px; }
+  .trust-item b{ display:block; font-size:13px; color:var(--ink); margin-bottom:3px; }
+  .trust-item span{ display:block; font-size:12px; color:var(--muted); line-height:1.4; }
+  .trust-item a{ color:var(--crimson); text-decoration:underline; }
+  @media (max-width:820px){ .trust-strip{ gap:22px; } .trust-item{ max-width:280px; } }
+
+  .faq{ max-width:720px; margin:0 auto; background:#fff; border:1px solid var(--line); border-radius:6px; overflow:hidden; }
+  .faq-item{ border-bottom:1px solid var(--line); }
+  .faq-item:last-child{ border-bottom:none; }
+  .faq-q{ padding:20px 20px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; font-size:15px; font-weight:700; color:var(--ink); gap:12px; }
+  .faq-q .plus{ color:var(--light); font-size:18px; transition:transform .3s ease; font-weight:400; flex-shrink:0; }
+  .faq-item.open .faq-q .plus{ transform:rotate(45deg); color:var(--crimson); }
+  .faq-a{ max-height:0; overflow:hidden; transition:max-height .35s ease; }
+  .faq-a p{ padding:0 20px 20px; color:var(--muted); font-size:14px; max-width:600px; }
+
+  .final{ text-align:center; padding:100px 24px; background:var(--bg-alt); }
+  .final h2{ font-size:clamp(26px,4.5vw,40px); max-width:700px; margin:16px auto 0; color:var(--ink); }
+  .final .sub{ color:var(--muted); max-width:520px; margin:18px auto 0; }
+
+  footer{ text-align:center; padding:36px 24px; color:var(--light); font-size:12px; border-top:1px solid var(--line); background:var(--cream); }
+  footer a{ text-decoration:underline; }
+
+  @media (max-width:820px){
+    .pain-grid, .testi-grid, .pricing-grid{ grid-template-columns:1fr; }
+    .plan.featured{ transform:none; }
+    .module{ grid-template-columns:44px 1fr; }
+    .author-grid{ grid-template-columns:1fr !important; text-align:center; }
+    .author-photo{ margin:0 auto; }
+    .proof-gallery{ grid-template-columns:repeat(2,1fr) !important; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
+
+  /* ---- CTA arrow ---- */
+  .cta-wrap{ position:relative; display:inline-block; margin-top:36px; }
+  .cta-wrap .cta-primary{ margin-top:0; }
+  .cta-arrow{ position:absolute; width:34px; height:44px; pointer-events:none; }
+  .cta-arrow.left{ left:-46px; top:-18px; transform:rotate(-8deg); }
+  .cta-arrow.right{ right:-46px; top:-18px; transform:scaleX(-1) rotate(-8deg); }
+  .cta-arrow svg{ width:100%; height:100%; animation:arrow-bounce 1.4s ease-in-out infinite; }
+  @keyframes arrow-bounce{ 0%,100%{ transform:translateY(0) rotate(0deg);} 50%{ transform:translateY(6px) rotate(4deg);} }
+
+  /* ---- sticky CTA bar ---- */
+  .sticky-bar{
+    position:fixed; left:0; right:0; bottom:0; z-index:60;
+    background:#fff; border-top:1px solid var(--line);
+    box-shadow:0 -8px 24px rgba(42,33,24,0.08);
+    padding:12px 16px; display:flex; align-items:center; justify-content:space-between; gap:14px;
+    transform:translateY(120%); transition:transform .35s ease;
+  }
+  .sticky-bar.show{ transform:translateY(0); }
+  .sticky-bar .sb-text{ font-size:13px; font-weight:700; color:var(--ink); line-height:1.3; }
+  .sticky-bar .sb-text span{ display:block; font-size:11px; font-weight:500; color:var(--muted); }
+  .sticky-bar .cta-primary{ margin:0; padding:12px 22px; font-size:13.5px; white-space:nowrap; flex-shrink:0; }
+
+  /* ---- pulsing featured plan ---- */
+  @keyframes pulse-gold{
+    0%,100%{ box-shadow:0 0 0 0 rgba(184,134,11,0.35), var(--shadow); }
+    50%{ box-shadow:0 0 0 10px rgba(184,134,11,0), var(--shadow); }
+  }
+  .plan.featured{ animation:pulse-gold 2.2s ease-in-out infinite; }
+
+  /* ---- pain tags ---- */
+  .pain-tags{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; max-width:820px; margin:32px auto 0; }
+  .pain-tag{ background:#fff; border:1px solid var(--line); border-radius:20px; padding:9px 16px; font-size:13px; font-weight:600; color:var(--ink); display:flex; align-items:center; gap:6px; }
+  .pain-tag::before{ content:'⚠'; color:var(--crimson); font-size:11px; }
+
+  /* ---- what-happens section ---- */
+  .happens-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:18px; max-width:1080px; margin:0 auto; }
+  .happens-card{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:24px 18px; text-align:center; }
+  .happens-card .num{ width:36px; height:36px; margin:0 auto 14px; border-radius:50%; background:var(--bg-alt); color:var(--gold); font-family:'Playfair Display',serif; font-style:italic; font-weight:700; display:flex; align-items:center; justify-content:center; font-size:15px; }
+  .happens-card p{ font-size:13.5px; color:var(--ink); font-weight:600; line-height:1.4; }
+  @media (max-width:820px){ .happens-grid{ grid-template-columns:1fr 1fr; } }
+
+  /* ---- author section ---- */
+  .author-grid{ display:grid; grid-template-columns:200px 1fr; gap:40px; align-items:center; max-width:880px; margin:0 auto; }
+  .author-photo{ width:180px; height:180px; border-radius:50%; overflow:hidden; border:3px solid #fff; box-shadow:var(--shadow); }
+  .author-photo img{ width:100%; height:100%; object-fit:cover; }
+  .author-text h3{ font-size:22px; margin-bottom:14px; color:var(--ink); }
+  .author-text p{ font-size:14.5px; color:var(--muted); margin-bottom:10px; }
+  .author-text p b{ color:var(--ink); }
+  .author-quote{ margin-top:18px; font-family:'Playfair Display',serif; font-style:italic; color:var(--crimson); font-size:16.5px; border-left:3px solid var(--gold); padding-left:16px; }
+  .author-stat{ margin-top:20px; display:inline-flex; align-items:center; gap:12px; background:var(--bg-alt); border:1px solid var(--line); border-radius:8px; padding:12px 18px; }
+  .author-stat .stat-num{ font-family:'Playfair Display',serif; font-size:26px; font-weight:700; color:var(--gold); }
+  .author-stat .stat-lbl{ font-size:12px; color:var(--muted); max-width:140px; line-height:1.3; }
+
+  /* (live visitor counter / scarcity-line removed — replaced by evergreen deadline copy) */
+
+  /* ---- testimonials groups / screenshots ---- */
+  .testi-group{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:18px; }
+  .testi-group[hidden]{ display:none; }
+  .testi.with-shot img{ width:100%; border-radius:4px; margin-bottom:14px; border:1px solid var(--line); }
+  .testi .badge-tag{ display:inline-block; background:var(--bg-alt); color:var(--crimson); font-size:11px; font-weight:700; letter-spacing:0.03em; padding:4px 10px; border-radius:12px; margin-bottom:10px; }
+  .show-more-wrap{ text-align:center; margin-top:26px; }
+  .show-more-btn{ display:inline-block; border:1.5px solid var(--line); background:#fff; color:var(--ink); padding:13px 30px; border-radius:24px; font-size:14px; font-weight:700; cursor:pointer; transition:all .2s ease; }
+  .show-more-btn:hover{ border-color:var(--crimson); color:var(--crimson); }
+  .show-more-btn[hidden]{ display:none; }
+
+  .proof-gallery{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; max-width:800px; margin:28px auto 0; }
+  .proof-gallery img{ width:100%; border-radius:4px; border:1px solid var(--line); }
+
+  /* ---- author credentials list + diploma ---- */
+  .author-creds{ list-style:none; margin:18px 0 4px; padding:0; }
+  .author-creds li{ position:relative; padding-left:22px; font-size:14px; color:var(--ink); margin-bottom:8px; line-height:1.4; }
+  .author-creds li::before{ content:'✓'; position:absolute; left:0; color:var(--gold); font-weight:700; }
+  .author-diploma{ margin-top:18px; display:inline-flex; }
+  .author-diploma a{ display:inline-block; border:1px solid var(--line); border-radius:8px; overflow:hidden; box-shadow:var(--shadow); transition:transform .2s ease; }
+  .author-diploma a:hover{ transform:translateY(-2px); }
+  .author-diploma img{ width:120px; height:auto; display:block; }
+  .author-diploma-cap{ font-size:11.5px; color:var(--muted); margin-top:6px; text-align:center; }
+
+  /* ---- case studies ---- */
+  .case-list{ display:flex; flex-direction:column; gap:18px; max-width:880px; margin:0 auto; }
+  .case-card{ background:#fff; border:1px solid var(--line); border-radius:10px; padding:26px 28px; box-shadow:var(--shadow); }
+  .case-card h3{ font-size:18px; color:var(--ink); margin-bottom:16px; }
+  .case-card h3 span{ color:var(--muted); font-weight:500; font-size:14px; }
+  .case-row{ display:grid; grid-template-columns:110px 1fr; gap:14px; padding:12px 0; border-top:1px solid var(--line); }
+  .case-row:first-of-type{ border-top:none; }
+  .case-label{ font-size:11px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; color:var(--gold); padding-top:2px; }
+  .case-row p{ font-size:14px; color:var(--muted); line-height:1.55; margin:0; }
+  @media (max-width:600px){ .case-row{ grid-template-columns:1fr; gap:4px; } }
+
+  /* ---- value anchor (crossed-out old price) ---- */
+  .price-old{ font-size:15px; color:var(--light); text-decoration:line-through; margin-bottom:2px; }
+
+  /* ---- dual/triple payment buttons ---- */
+  .plan-pay{ display:flex; flex-direction:column; }
+  .pay-secondary, .pay-tertiary{ display:none; flex-direction:column; align-items:center; justify-content:center; gap:2px; text-align:center; margin-top:10px; padding:12px 14px; border-radius:5px; letter-spacing:0.02em; border:1.5px solid var(--line); color:var(--ink); transition:all .2s ease; }
+  .pay-secondary:hover, .pay-tertiary:hover{ border-color:var(--crimson); color:var(--crimson); }
+
+  /* ---- live activity toast ---- */
+  .live-toast{
+    position:fixed; left:16px; bottom:96px; z-index:55; max-width:280px;
+    background:#fff; border:1px solid var(--line); border-radius:8px; padding:12px 16px;
+    box-shadow:var(--shadow); display:flex; align-items:center; gap:10px;
+    font-size:13px; font-weight:600; color:var(--ink);
+    transform:translateY(16px); opacity:0; transition:transform .4s ease, opacity .4s ease; pointer-events:none;
+  }
+  .live-toast.show{ transform:translateY(0); opacity:1; }
+  .live-toast .lt-dot{ width:8px; height:8px; border-radius:50%; background:#3fae5c; flex-shrink:0; }
+  @media (max-width:600px){ .live-toast{ left:12px; right:12px; max-width:none; bottom:88px; } }
+
+  /* ---- rating badge ---- */
+  .rating-badge{ display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--line); border-radius:20px; padding:8px 16px; font-size:13px; font-weight:700; color:var(--ink); margin-top:14px; }
+  .rating-badge .stars{ color:var(--gold); font-size:13px; letter-spacing:1px; }
+
+  /* ---- testimonial accordion (vertical) ---- */
+  .testi-list{ max-width:720px; margin:0 auto; background:#fff; border:1px solid var(--line); border-radius:6px; overflow:hidden; }
+  .testi-row{ border-bottom:1px solid var(--line); }
+  .testi-row:last-child{ border-bottom:none; }
+  .testi-row-head{ padding:18px 20px; cursor:pointer; display:flex; align-items:center; gap:12px; }
+  .testi-row-head .stars{ color:var(--gold); font-size:13px; letter-spacing:1px; flex-shrink:0; }
+  .testi-row-head .testi-who{ font-size:14px; font-weight:700; color:var(--ink); flex-grow:1; }
+  .testi-row-head .plus{ color:var(--light); font-size:18px; font-weight:400; transition:transform .3s ease; flex-shrink:0; }
+  .testi-row.open .testi-row-head .plus{ transform:rotate(45deg); color:var(--crimson); }
+  .testi-row-body{ max-height:0; overflow:hidden; transition:max-height .35s ease; }
+  .testi-row-body-inner{ padding:0 20px 22px; }
+  .testi-row-body p{ font-size:14.5px; color:var(--ink); font-style:italic; line-height:1.6; }
+  .testi-row-body .badge-tag{ display:inline-block; background:var(--bg-alt); color:var(--crimson); font-size:11px; font-weight:700; padding:4px 10px; border-radius:12px; margin-bottom:10px; }
+  .testi-row-body img{ width:100%; max-width:320px; border-radius:4px; border:1px solid var(--line); margin-top:12px; }
+
+  /* ---- mind-read / shame callout ---- */
+  .mindread{ max-width:720px; margin:36px auto 0; background:var(--bg-alt); border:1px solid var(--line); border-left:3px solid var(--crimson); border-radius:4px; padding:26px 28px; text-align:left; }
+  .mindread .mr-label{ font-family:'Manrope',sans-serif; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--crimson); font-weight:700; margin-bottom:10px; }
+  .mindread p{ font-size:14.5px; color:var(--ink); line-height:1.65; }
+
+  /* ---- exclusion / qualifier block ---- */
+  .exclude-block{ max-width:760px; margin:0 auto; background:#1c1712; border-radius:8px; padding:34px 30px; text-align:center; }
+  .exclude-block .eyebrow{ color:var(--gold); }
+  .exclude-block h2{ color:#f2ece1; font-size:clamp(22px,3.4vw,30px); margin-top:12px; }
+  .exclude-block p{ color:#c9beb0; font-size:15px; margin-top:16px; max-width:600px; margin-left:auto; margin-right:auto; }
+  .exclude-block p b{ color:#f2ece1; }
+
+  /* ---- spots-left badge on plan ---- */
+  .spots-left{ font-size:12px; font-weight:700; color:var(--crimson); background:rgba(192,57,43,0.08); border-radius:14px; padding:6px 12px; text-align:center; margin-bottom:14px; }
+
+  /* ---- forbidden-knowledge / secret block ---- */
+  .secret-block{ max-width:720px; margin:0 auto; text-align:center; border:1px solid var(--line); border-radius:8px; padding:36px 30px; background:var(--bg-card); box-shadow:var(--shadow); }
+  .secret-icon{ display:inline-flex; margin-bottom:14px; }
+  .secret-block h2{ font-size:clamp(21px,3vw,27px); margin:10px 0 14px; }
+  .secret-block p{ font-size:14.5px; color:var(--muted); line-height:1.7; }
+
+  /* (order-bump styles removed — checkboxes no longer used) */
+
+  /* ---- exit-intent popup ---- */
+  .exit-overlay{ position:fixed; inset:0; background:rgba(20,15,10,0.7); z-index:200; display:none; align-items:center; justify-content:center; padding:20px; }
+  .exit-overlay.show{ display:flex; }
+  .exit-modal{ background:var(--bg-card); max-width:440px; width:100%; border-radius:10px; padding:36px 30px; text-align:center; position:relative; box-shadow:0 30px 70px rgba(0,0,0,0.35); }
+  .exit-modal .exit-close{ position:absolute; top:14px; right:16px; font-size:20px; color:var(--muted); cursor:pointer; line-height:1; background:none; border:none; }
+  .exit-modal .eyebrow{ margin-bottom:12px; }
+  .exit-modal h3{ font-family:'Playfair Display',serif; font-size:24px; margin-bottom:14px; }
+  .exit-modal p{ font-size:14px; color:var(--muted); margin-bottom:22px; line-height:1.6; }
+  .exit-modal .cta-primary{ display:inline-block; }
+
+  /* ---- public offer modal ---- */
+  .offer-overlay{ position:fixed; inset:0; background:rgba(20,15,10,0.7); z-index:210; display:none; align-items:center; justify-content:center; padding:20px; }
+  .offer-overlay.show{ display:flex; }
+  .offer-modal{ background:var(--bg-card); max-width:640px; width:100%; max-height:85vh; border-radius:10px; position:relative; box-shadow:0 30px 70px rgba(0,0,0,0.35); display:flex; flex-direction:column; }
+  .offer-modal-head{ padding:26px 50px 18px 32px; border-bottom:1px solid var(--line); flex-shrink:0; }
+  .offer-modal-head h2{ font-family:'Playfair Display',serif; font-size:21px; color:var(--ink); }
+  .offer-close{ position:absolute; top:16px; right:18px; font-size:22px; color:var(--muted); cursor:pointer; line-height:1; background:none; border:none; }
+  .offer-modal-body{ padding:22px 32px 32px; overflow-y:auto; }
+  .offer-modal-body h3{ font-size:14.5px; color:var(--crimson); margin:20px 0 8px; }
+  .offer-modal-body h3:first-child{ margin-top:0; }
+  .offer-modal-body p{ font-size:13.5px; color:var(--muted); line-height:1.65; margin-bottom:10px; }
+  .offer-modal-body ol, .offer-modal-body ul{ margin:0 0 10px 18px; }
+  .offer-modal-body li{ font-size:13.5px; color:var(--muted); line-height:1.6; margin-bottom:6px; }
+  .offer-modal-body a{ color:var(--crimson); text-decoration:underline; }
+  .offer-modal-body .offer-date{ margin-top:16px; font-size:12px; color:var(--light); }
+  @media (max-width:600px){ .offer-modal{ max-height:90vh; } .offer-modal-head{ padding:22px 44px 16px 22px; } .offer-modal-body{ padding:18px 22px 26px; } }
+
+  /* ---- telegram floating widget ---- */
+  .tg-widget{ position:fixed; right:20px; bottom:20px; z-index:150; display:flex; align-items:center; }
+  .tg-widget-btn{ display:flex; align-items:center; gap:9px; background:linear-gradient(135deg,#2AABEE,#229ED9); color:#fff; padding:14px 18px; border-radius:30px; font-size:13.5px; font-weight:700; box-shadow:0 10px 26px rgba(34,158,217,0.4); animation:tgPulse 2.6s infinite; }
+  .tg-widget-btn svg{ width:19px; height:19px; flex-shrink:0; }
+  @keyframes tgPulse{ 0%,100%{ box-shadow:0 10px 26px rgba(34,158,217,0.4);} 50%{ box-shadow:0 10px 26px rgba(34,158,217,0.75);} }
+  @media (max-width:520px){ .tg-widget{ right:14px; bottom:84px; } .tg-widget-btn span{ display:none; } .tg-widget-btn{ padding:14px; } }
+</style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <a class="brand" href="#top" aria-label="На главную">ВОССТАНОВЛЕНИЕ <span>после ТРАВМАТИЧЕСКОЙ СВЯЗИ</span></a>
-      <a class="top-link" href="#pricing">Полная программа · <span data-price-tier="full">$19.99</span></a>
+
+<header>
+  <div class="wrap">
+    <div class="logo">back4heart<span>.</span></div>
+    <a href="https://t.me/back4heart" target="_blank" rel="noopener" class="nav-tg" id="navTg">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M21.5 3.5L2.5 11l6 2.2M21.5 3.5L15 20.5l-6.5-7.3M21.5 3.5L8.5 13.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span id="navTgText">Telegram</span>
+    </a>
+    <a href="#pricing" class="nav-cta" id="navCta">Получить доступ</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="seal">
+    <svg viewBox="0 0 100 100" fill="none">
+      <circle cx="50" cy="50" r="46" stroke="#b8860b" stroke-width="1"/>
+      <circle cx="50" cy="50" r="38" stroke="#b8860b" stroke-width="0.6" opacity="0.6"/>
+      <path d="M50 28 L58 46 L50 40 L42 46 Z" fill="#b8860b"/>
+      <rect x="46" y="46" width="8" height="20" fill="#b8860b" opacity="0.85"/>
+      <circle cx="50" cy="70" r="3" fill="#b8860b"/>
+    </svg>
+  </div>
+  <div class="eyebrow" id="heroEyebrow">Аудиоинтенсив · 7 дней · закрытый доступ</div>
+  <h1 id="heroH1">БЭушный ещё <em>пожалеет</em></h1>
+  <p class="sub" id="heroSub">7 дней и он осознает кого потерял.</p>
+  <div class="cta-wrap">
+    <span class="cta-arrow left"><svg viewBox="0 0 34 44" fill="none"><path d="M28 4C20 10 10 16 6 30" stroke="#c0392b" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M2 24L6 32L14 29" stroke="#c0392b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span>
+    <a href="#pricing" class="cta-primary" id="heroCta">Хочу интенсив</a>
+  </div>
+  <p class="cta-note" id="heroNote">Аудиоформат · 15–20 минут в день · доступ навсегда</p>
+  <div class="scroll-hint" id="scrollHint">Листай</div>
+</section>
+
+<section class="section" style="padding-top:64px;padding-bottom:40px;">
+  <div class="wrap">
+    <div class="secret-block">
+      <span class="secret-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="#b8860b" stroke-width="1.4"/><path d="M8 11V8a4 4 0 018 0v3" stroke="#b8860b" stroke-width="1.4"/><circle cx="12" cy="15.5" r="1.4" fill="#b8860b"/></svg>
+      </span>
+      <div class="eyebrow" id="secretEyebrow">Информация не для широкой публики</div>
+      <h2 id="secretH2">Это система, о которой молчат другие психологи</h2>
+      <p id="secretText">Психологи продают тебе годы работы над собой, потому что так работает их бизнес. Я - другое. Техники, которые я собирал - это то что работает. Только те методики, которые помогли сотням в похожих ситуациях. Работают быстро и не всегда «экологично» по отношени к бывшему.</p>
     </div>
-  </header>
-  <aside class="demo-ribbon" aria-label="Предупреждение о демонстрационной версии">
-    <div class="timer-line">Твоя скидка закончится через <span class="demo-timer" id="demoTimer">02:00:00</span></div>
-  </aside>
+  </div>
+</section>
 
-  <main id="top">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow">21-дневная программа · ВОССТАНОВЛЕНИЕ после ТРАВМАТИЧЕСКОЙ СВЯЗИ</span>
-          <h1>Ты понимаешь, что отношения закончились — но всё ещё ждёшь его сообщения?</h1>
-          <p class="hero-lead"><strong>«Что он имел в виду?» «Почему он так поступил?»</strong><br>Разбери, что известно, что остаётся догадкой и какой следующий шаг подходит именно тебе.</p>
-          <p class="hero-prompt"><span>Не нужно заставлять себя забыть.</span><span>Можно начать с того, чтобы вернуть себе ясность и выбор.</span></p>
-          <p class="hero-copy">Практики, рабочая тетрадь и аудио помогут замечать триггеры, отделять факты от надежды и заранее продумать, как реагировать на сообщение или молчание бывшего — без осуждения и публичных рассказов.</p>
-          <div class="hero-actions">
-            <a class="button" href="#pricing">Начать полную программу · <span data-price-tier="full">$19.99</span> <span class="arrow">→</span></a>
-            <a class="button secondary" href="#pricing">Сначала пройти 7 дней · <span data-price-tier="starter">$9.99</span></a>
-          </div>
-          <p class="hero-note">Самостоятельный темп · 7-дневный старт · полный маршрут на 21 день · вариант с личным разбором</p>
-        </div>
-        <aside class="hero-card" aria-label="Кратко о программе">
-          <span class="card-stamp">Рекомендуемый формат</span>
-          <h2>Полная программа на 21 день</h2>
-          <p>Весь маршрут: от импульса проверить или написать до собственных границ и следующего шага.</p>
-          <ul class="mini-list">
-            <li><span class="check">✓</span><span>Все три этапа программы и 21 ежедневная практика.</span></li>
-            <li><span class="check">✓</span><span>5 PDF-материалов, 6 аудио и рабочая тетрадь.</span></li>
-            <li><span class="check">✓</span><span>План на случай его сообщения, встречи или необходимого контакта.</span></li>
-          </ul>
-          <div class="hero-price"><strong data-price-tier="full">$19.99</strong><span>полный маршрут<br>первые 7 дней — <span data-price-tier="starter">$9.99</span></span></div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section white" id="recognition">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Знакомо?</span>
-          <h2>Отношения закончились. Ожидание — пока нет.</h2>
-          <p>Неважно, расстались вы недавно или прошло уже много времени. Важно, что его действия всё ещё занимают слишком много места в твоём дне.</p>
-        </div>
-        <div class="pain-grid">
-          <article class="pain-card"><span class="num">01</span><h3>Ищешь скрытый смысл</h3><p>Перечитываешь переписку, вспоминаешь разговоры и пытаешься понять, почему он написал — или почему замолчал.</p></article>
-          <article class="pain-card"><span class="num">02</span><h3>Настроение зависит от него</h3><p>Одно сообщение возвращает надежду. Долгое молчание — тревогу и отчаяние.</p></article>
-          <article class="pain-card"><span class="num">03</span><h3>Хочешь написать и боишься пожалеть</h3><p>Открываешь чат, набираешь сообщение, удаляешь его — и снова споришь с собой.</p></article>
-          <article class="pain-card"><span class="num">04</span><h3>Винишь и стыдишь себя</h3><p>Думаешь, что могла сказать иначе, была «слишком» или не заметила важные сигналы.</p></article>
-          <article class="pain-card"><span class="num">05</span><h3>Сравниваешь себя с другой</h3><p>Его новая партнёрша становится поводом искать, чего тебе якобы не хватило.</p></article>
-          <article class="pain-card"><span class="num">06</span><h3>Скучаешь по целому миру</h3><p>По ежедневным сообщениям, привычкам, общим друзьям и будущему, которое представляла вместе.</p></article>
-          <article class="pain-card"><span class="num">07</span><h3>Не знаешь, как реагировать</h3><p>Что ответить, если он снова появится? Как вести себя при встрече или общении из-за детей?</p></article>
-          <article class="pain-card"><span class="num">08</span><h3>Внешне держишься, внутри устала</h3><p>Трудно сосредоточиться на работе и быте, особенно после его сообщения, в тишине или по вечерам.</p></article>
-          <article class="pain-card"><span class="num">09</span><h3>Не хочешь снова всё пересказывать</h3><p>Не нужны общие советы «отпусти». Хочется личного пространства, ясной структуры и действий на конкретный момент.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="demo-proof" aria-label="Демонстрационный блок статистики и отзывов">
-      <div class="container">
-        <div class="demo-proof-head">
-          <span class="eyebrow">Немного статистики</span>
-          <h2>Уже прошли этот путь</h2>
-        </div>
-        <div class="demo-proof-grid">
-          <div class="demo-stat"><strong>70%</strong><span>почувствовали облегчение к третьему дню</span></div>
-          <div class="demo-stat"><strong>89%</strong><span>дошли до конца программы</span></div>
-          <div class="demo-stat"><strong>82%</strong><span>сообщили, что стали лучше спать к седьмому дню</span></div>
-          <div class="demo-stat"><strong>76%</strong><span>отметили, что вернули ощущение контроля</span></div>
-        </div>
-        <div class="demo-proof-head" style="margin-top:42px;margin-bottom:20px">
-          <h2 style="font-size:29px">Отзывы участниц</h2>
-          <p>Рейтинг 4,9/5 · 340+ отзывов · 700+ участниц — утверждения из прежнего intensiv.html</p>
-        </div>
-        <div class="demo-reviews">
-          <article class="demo-review"><div class="stars">★★★★★</div><blockquote>«Перестала прокручивать мысли о нём уже на третий день. Впервые за долгое время выспалась.»</blockquote><div class="author">Настя, 46</div></article>
-          <article class="demo-review"><div class="stars">★★★★★</div><blockquote>«Наконец поняла, почему он так себя вёл — и мне стало легче, будто камень с души.»</blockquote><div class="author">Оля, 41</div></article>
-          <article class="demo-review"><div class="stars">★★★★★</div><blockquote>«Перестала листать его страницу по вечерам. Просто отпустило — без борьбы с собой.»</blockquote><div class="author">Лена, 49</div></article>
-        </div>
-        <div class="demo-media-head">
-          <h2>Отзывы</h2>
-        </div>
-        <div class="demo-video-grid">
-          <figure class="demo-video"><video controls preload="none" playsinline src="https://raw.githubusercontent.com/Domias13/landing/main/src/video2.mp4" aria-label="Демонстрационный видеоотзыв"></video><figcaption>Елена, 45</figcaption></figure>
-        </div>
-        <details class="demo-gallery-disclosure">
-          <summary>Показать все скриншоты и ещё один видеоотзыв</summary>
-          <div class="demo-media-head">
-            <h2>Ещё отзывы</h2>
-          </div>
-          <div class="demo-video-grid">
-            <figure class="demo-video"><video controls preload="none" playsinline src="https://raw.githubusercontent.com/Domias13/landing/main/src/video3.mp4" aria-label="Демонстрационный видеоотзыв 2"></video><figcaption>Наталия</figcaption></figure>
-          </div>
-        <div class="demo-media-head">
-          <h2>Скриншоты отзывов</h2>
-        </div>
-        <div class="demo-gallery">
-          <figure><a href="https://i.ibb.co/S4q1LCTf/Screenshot-20260304-063607.png" target="_blank" rel="noopener"><img src="https://i.ibb.co/S4q1LCTf/Screenshot-20260304-063607.png" alt="Скриншот отзыва из старого лендинга 7days" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
-          <figure><a href="https://i.ibb.co/b5xSCPGY/Screenshot-20260307-080052.png" target="_blank" rel="noopener"><img src="https://i.ibb.co/b5xSCPGY/Screenshot-20260307-080052.png" alt="Скриншот отзыва из старого лендинга 7days" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
-          <figure><a href="https://i.ibb.co/4RXGBkDy/Screenshot-20260225-070317.png" target="_blank" rel="noopener"><img src="https://i.ibb.co/4RXGBkDy/Screenshot-20260225-070317.png" alt="Скриншот отзыва из старого лендинга 7days" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
-          <figure><a href="https://i.ibb.co/qYwk49gQ/Screenshot-20260304-063819.png" target="_blank" rel="noopener"><img src="https://i.ibb.co/qYwk49gQ/Screenshot-20260304-063819.png" alt="Скриншот отзыва из старого лендинга 7days" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
-          <figure><a href="https://i.ibb.co/twZX8kcs/Screenshot-20260304-063655.png" target="_blank" rel="noopener"><img src="https://i.ibb.co/twZX8kcs/Screenshot-20260304-063655.png" alt="Скриншот отзыва из старого лендинга 7days" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
-          <figure><a href="https://i.ibb.co/TqP94MxJ/Screenshot-20260304-063639.png" target="_blank" rel="noopener"><img src="https://i.ibb.co/TqP94MxJ/Screenshot-20260304-063639.png" alt="Скриншот отзыва из старого лендинга 7days" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
-          <figure><a href="https://i.ibb.co/nMBK4wNC/Screenshot-20260307-080355.png" target="_blank" rel="noopener"><img src="https://i.ibb.co/nMBK4wNC/Screenshot-20260307-080355.png" alt="Скриншот отзыва из старого лендинга 7days" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
-          <figure><a href="https://i.ibb.co/99Y8Rd3P/Screenshot-20260307-075732.png" target="_blank" rel="noopener"><img src="https://i.ibb.co/99Y8Rd3P/Screenshot-20260307-075732.png" alt="Скриншот отзыва из старого лендинга 7days" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
-          <figure><a href="https://i.ibb.co/GvZY9PMP/Screenshot-20260225-073516.png" target="_blank" rel="noopener"><img src="https://i.ibb.co/GvZY9PMP/Screenshot-20260225-073516.png" alt="Скриншот отзыва из старого лендинга 7days" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
-          <figure><a href="https://i.ibb.co/bj4RzcGw/Screenshot-20260225-084353.png" target="_blank" rel="noopener"><img src="https://i.ibb.co/bj4RzcGw/Screenshot-20260225-084353.png" alt="Скриншот отзыва из старого лендинга 7days" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
-          <figure><a href="https://back4heart.site/img/file_00000000277471f486595b6d16ccaf07.png" target="_blank" rel="noopener"><img src="https://back4heart.site/img/file_00000000277471f486595b6d16ccaf07.png" alt="Скриншот отзыва из старого лендинга intensiv" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
-          <figure><a href="https://back4heart.site/img/1784517303508~2.png" target="_blank" rel="noopener"><img src="https://back4heart.site/img/1784517303508~2.png" alt="Скриншот отзыва из старого лендинга intensiv" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
-          <figure><a href="https://back4heart.site/img/1784517396070~3.png" target="_blank" rel="noopener"><img src="https://back4heart.site/img/1784517396070~3.png" alt="Скриншот отзыва из старого лендинга intensiv" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
-          <figure><a href="https://back4heart.site/img/file_00000000be148246ab5b3d7722c13b46~2.png" target="_blank" rel="noopener"><img src="https://back4heart.site/img/file_00000000be148246ab5b3d7722c13b46~2.png" alt="Скриншот отзыва из старого лендинга intensiv" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
-          <figure><a href="https://back4heart.site/img/file_00000000e05482439a2e2342e97b5fb4.png" target="_blank" rel="noopener"><img src="https://back4heart.site/img/file_00000000e05482439a2e2342e97b5fb4.png" alt="Скриншот отзыва из старого лендинга intensiv" loading="lazy" decoding="async" referrerpolicy="no-referrer"></a></figure>
-        </div>
-
-        </details>
-      </div>
-    </section>
-
-    <section class="section deep" id="questions">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">В центре программы</span>
-          <h2>«Что он имел в виду?»<br>«Почему он так поступил?»</h2>
-          <p>Эти вопросы цепляют, потому что хочется вернуть ясность и понять, можно ли ещё на что-то надеяться.</p>
-        </div>
-        <div class="questions">
-          <article class="question-card"><blockquote>Что он имел в виду?</blockquote><p>Отделишь точные слова и поступки от своих трактовок. Затем решишь, какая информация тебе действительно нужна и что ты можешь сделать без нового поиска скрытых знаков.</p></article>
-          <article class="question-card"><blockquote>Почему он так поступил?</blockquote><p>Рассмотришь повторяющиеся поступки и их влияние на тебя. Его мотивы нельзя достоверно угадать по одному сообщению — зато можно определить свои границы и подготовить ответ.</p></article>
-        </div>
-        <div class="honesty"><strong>Важная честность:</strong> программа не умеет читать мысли бывшего и не обещает вернуть отношения. Она поможет тебе разложить ситуацию, заметить собственные реакции и выбрать следующий шаг без давления.</div>
-        <div class="sample">
-          <p class="sample-kicker">Фрагмент рабочей тетради</p>
-          <h3>Ситуация: он написал после долгой паузы</h3>
-          <div class="sample-steps">
-            <div class="sample-step"><b>1 · Что точно произошло?</b><p>Он прислал сообщение: «Привет, как ты?» после долгой паузы.</p></div>
-            <div class="sample-step"><b>2 · Что я додумываю?</b><p>«Наверное, скучает и хочет вернуться». Это возможная версия, но пока не факт.</p></div>
-            <div class="sample-step"><b>3 · Что важно мне?</b><p>Мне нужна ясность и спокойствие. Я могу не отвечать сразу и вернуться к решению позже.</p></div>
-          </div>
-          <p class="sample-takeaway"><strong>Смысл упражнения:</strong> вопрос «что он имел в виду?» не обязательно решать догадкой. Можно отделить известное от неизвестного и выбрать шаг, который бережёт твои границы.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="program">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Понятный маршрут</span>
-          <h2>21 день — три последовательных этапа</h2>
-          <p>Не нужно заставлять себя «забыть». Каждый этап даёт практику для ситуации, с которой ты сталкиваешься сейчас.</p>
-        </div>
-        <div class="phase-list">
-          <article class="phase"><span class="phase-label">Дни 1–7 · остановить автоматизм</span><h3>Когда снова тянет проверить или написать</h3><p>Сначала — инструменты на острые моменты и триггеры.</p><ul><li>заметить, что запускает волну</li><li>пауза перед сообщением или проверкой</li><li>короткие практики для возвращения внимания к настоящему</li></ul></article>
-          <article class="phase"><span class="phase-label">Дни 8–14 · разобраться в истории</span><h3>Отделить факты от надежд и самообвинения</h3><p>Исследовать, что произошло и что именно ты оплакиваешь.</p><ul><li>переписка, молчание и смешанные сигналы</li><li>вина, стыд и сравнение с другой</li><li>привычная жизнь и будущее, которое представляла</li></ul></article>
-          <article class="phase"><span class="phase-label">Дни 15–21 · выбрать свои границы</span><h3>Подготовить следующий шаг для себя</h3><p>Не угадывать его намерения, а заранее понять собственные ответы и опоры.</p><ul><li>план на его сообщение или случайную встречу</li><li>границы при необходимом контакте и общих детях</li><li>маленькие возвращения к своим делам и планам</li></ul></article>
-        </div>
-        <h3 class="outcome-heading">Что останется у тебя после прохождения</h3>
-        <div class="outcome-grid" aria-label="Практические материалы, которые останутся у тебя">
-          <article class="outcome-card"><span class="outcome-num">01</span><h3>Карта триггеров</h3><p>Отметишь ситуации, после которых тянет проверить страницу, перечитать переписку или написать, и соберёшь личный набор первых шагов.</p></article>
-          <article class="outcome-card"><span class="outcome-num">02</span><h3>План общения и границ</h3><p>Подготовишь варианты ответа на сообщение, паузу или случайную встречу — с учётом того, нужен ли контакт по общим делам или детям.</p></article>
-          <article class="outcome-card"><span class="outcome-num">03</span><h3>Опоры для трудных моментов</h3><p>Сохранишь упражнения, вопросы для тетради и короткие аудио-практики, чтобы возвращаться к ним в своём темпе.</p></article>
-        </div>
-        <p class="phase-note">Можно проходить программу в удобном темпе. 21 день — структура, а не срок, за который ты обязана перестать скучать или думать о нём.</p>
-      </div>
-    </section>
-
-    <section class="section white" id="materials">
-      <div class="container materials-layout">
-        <div class="materials-intro">
-          <span class="eyebrow">Не только аудио</span>
-          <h2>Материалы, к которым можно вернуться в нужный момент</h2>
-          <p>Полный тариф объединяет короткие практики, рабочую тетрадь и подсказки для сложных ситуаций — по образцу комплекта Payhip, но с русскоязычными сценариями твоей аудитории.</p>
-          <span class="file-count">5 PDF · 6 аудио · доступ в своём темпе</span>
-        </div>
-        <div class="material-list">
-          <article class="material"><span class="material-icon">✎</span><div><h3>Рабочая тетрадь на 21 день</h3><p>Ежедневные вопросы и короткие упражнения: что произошло, что я думаю и что мне сейчас поможет.</p></div></article>
-          <article class="material"><span class="material-icon">↗</span><div><h3>Гайд по личным границам</h3><p>Как решить, отвечать ли на сообщение, и заранее подготовить свои формулировки.</p></div></article>
-          <article class="material"><span class="material-icon">◷</span><div><h3>Трекер триггеров и контакта на 30 дней</h3><p>Отмечать ситуации, свои реакции и то, что помогло. Не использовать как оценку «успеха» или «срыва».</p></div></article>
-          <article class="material"><span class="material-icon">◎</span><div><h3>Карточки-подсказки и вопросы для рефлексии</h3><p>Короткие опоры на моменты, когда хочется перечитать чат, сравнивать себя или обвинять.</p></div></article>
-          <article class="material"><span class="material-icon">⌂</span><div><h3>Гайд для необходимого общения</h3><p>Если есть общие дети или дела и полностью прекратить контакт не получается.</p></div></article>
-          <article class="material"><span class="material-icon">♫</span><div><h3>6 коротких аудио-практик</h3><p>Перед тем как написать, когда мысли идут по кругу, в трудный вечер и когда хочется вернуть фокус к себе.</p></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="fit">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Подойдёт ли тебе?</span>
-          <h2>Тебе не обязательно быть готовой «отпустить»</h2>
-          <p>Можно начать с желания понять, что происходит с тобой и почему его поведение всё ещё так сильно влияет на твой день.</p>
-        </div>
-        <div class="fit-grid">
-          <article class="fit-card"><h3>Программа для тебя, если…</h3><ul><li>умом понимаешь, что отношения закончились или изменились, но всё ещё ждёшь</li><li>хочешь меньше зависеть от сообщений, сторис и случайных контактов</li><li>не хочешь рассказывать личное в группе или снова слышать общие советы</li><li>готова попробовать небольшие самостоятельные практики</li></ul></article>
-          <article class="fit-card no"><h3>Это не замена…</h3><ul><li>психотерапии или медицинской помощи при тяжёлом состоянии</li><li>юридической и финансовой консультации по разводу</li><li>плана безопасности, если есть угрозы или насилие</li><li>профессиональной поддержки, если тебе небезопасно оставаться одной</li></ul></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section white" id="about-author">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Автор программы</span>
-          <h2>Мужской взгляд и конкретные шаги</h2>
-          <p>Не чтобы угадывать мысли бывшего, а чтобы разбирать поведение спокойнее и возвращать фокус к себе.</p>
-        </div>
-        <div class="author-card">
-          <img src="https://back4heart.site/img/1784627058331~2.png" alt="Роман Вейл, автор программы" loading="lazy" decoding="async" referrerpolicy="no-referrer">
-          <div class="author-copy">
-            <h3>Роман Вейл</h3>
-            <p>Я мужчина и несколько лет изучаю поведенческую психологию и стратегии влияния. Прошёл более 12 программ у частных практиков.</p>
-            <p>За четыре года разобрал более 2 000 ситуаций женщин после расставания. В программе делюсь мужским взглядом на отношения и даю структурированные практики: как отделять факты от догадок, выдерживать импульс написать и выбирать свой следующий шаг.</p>
-            <div class="author-metrics">
-              <div class="author-metric"><strong>7 лет</strong><span>изучает поведенческую психологию</span></div>
-              <div class="author-metric"><strong>12+</strong><span>программ у частных практиков</span></div>
-              <div class="author-metric"><strong>2 000+</strong><span>ситуаций за 4 года</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section white" id="pricing">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Выбери объём поддержки</span>
-          <h2>Начни с короткого маршрута или пройди все 21 день</h2>
-          <p>Разовая оплата. Без подписки. Самостоятельные тарифы не требуют личного рассказа автору.</p>
-        </div>
-        <div class="pricing">
-          <article class="price-card">
-            <span class="tier">Быстрый старт</span><h3>Первые 7 дней</h3><p class="desc">Чтобы начать разбирать ожидание и самые частые триггеры.</p>
-            <div class="demo-old-price"><s>$19.99</s></div>
-            <div class="price" data-price-tier="starter">$9.99</div>
-            <ul><li>первый этап программы: 7 дней</li><li>мини-рабочая тетрадь</li><li>трекер триггеров и импульсов</li><li>практики на желание проверить или написать</li></ul>
-            <div class="payment-options" aria-label="Способы оплаты тарифа «Быстрый старт»">
-              <a class="payment-link" data-provider="wayforpay" href="https://secure.wayforpay.com/button/b602a44c5fd01" target="_blank" rel="noopener" hidden><span>Оплатить через WayForPay · <span data-price-tier="starter">$9.99</span></span></a><div class="method-badges" data-provider="wayforpay" hidden><span class="method-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 9h18M6 15h4"/></svg>Банковские карты</span></div>
-              <a class="payment-link stripe" data-provider="stripe" href="https://buy.stripe.com/6oUbJ30QifWh2xceBa3ZK0k" target="_blank" rel="noopener" hidden><span>Купить · <span data-price-tier="starter">$9.99</span></span></a><div class="method-badges" data-provider="stripe" hidden><span class="method-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 9h18M6 15h4"/></svg>Карта</span><span class="method-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.7 12.6c0-1.9 1.5-2.8 1.6-2.9-.9-1.2-2.2-1.4-2.7-1.4-1.2-.1-2.3.7-2.9.7-.6 0-1.5-.6-2.4-.6-1.2 0-2.4.7-3.1 1.8-1.3 2.2-.4 5.4 1 7.2.6.8 1.4 1.7 2.3 1.7s1.2-.6 2.3-.6c1 0 1.4.6 2.3.6s1.6-.8 2.2-1.7c.6-.9.9-1.9 1-2-.1 0-1.8-.7-1.8-2.8zM14.7 6.7c.5-.6.8-1.4.8-2.2-.7.1-1.6.5-2.1 1.1-.5.5-.8 1.3-.8 2.1.8.1 1.6-.4 2.1-1z"/></svg>Apple Pay</span><span class="method-badge"><span class="method-mark google">G</span>Google Pay</span></div>
-              <p class="tribute-hint" data-provider="tribute" hidden>Для оплаты СБП, МИР и др. используй ↓</p><a class="payment-link tribute" data-provider="tribute" href="https://web.tribute.tg/p/zK6" target="_blank" rel="noopener" hidden><span>Оплатить · <span data-price-tier="starter">$9.99</span></span></a><div class="method-badges" data-provider="tribute" hidden><span class="method-badge"><span class="method-mark sbp">↗</span>СБП</span><span class="method-badge"><span class="method-mark mir">МИР</span>МИР</span><span class="method-badge"><span class="method-mark tbank">Т</span>Тинькофф</span><span class="method-badge">…</span></div>
-            </div>
-          </article>
-          <article class="price-card featured">
-            <span class="popular">Рекомендуем</span><span class="tier">Полная программа</span><h3>Все 21 день</h3><p class="desc">Полный маршрут для самостоятельной работы — включает первые 7 дней и все дополнительные материалы.</p>
-            <div class="demo-old-price"><s data-demo-anchor="full">$39.98</s></div><div class="price" data-price-tier="full">$19.99</div>
-            <ul><li>все 3 этапа и 21 ежедневная практика</li><li>5 PDF-материалов, включая полную рабочую тетрадь</li><li>6 аудио-практик</li><li>гайд по границам и необходимому общению</li><li>30-дневный трекер триггеров и контакта</li></ul>
-            <div class="payment-options" aria-label="Способы оплаты полной программы">
-              <a class="payment-link" data-provider="wayforpay" href="https://secure.wayforpay.com/button/b87077117811d" target="_blank" rel="noopener" hidden><span>Оплатить через WayForPay · <span data-price-tier="full">$19.99</span></span></a><div class="method-badges" data-provider="wayforpay" hidden><span class="method-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 9h18M6 15h4"/></svg>Банковские карты</span></div>
-              <a class="payment-link stripe" data-provider="stripe" href="https://buy.stripe.com/fZu6oJ1UmcK50p4fFe3ZK0J" target="_blank" rel="noopener" hidden><span>Купить · <span data-price-tier="full">$19.99</span></span></a><div class="method-badges" data-provider="stripe" hidden><span class="method-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 9h18M6 15h4"/></svg>Карта</span><span class="method-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.7 12.6c0-1.9 1.5-2.8 1.6-2.9-.9-1.2-2.2-1.4-2.7-1.4-1.2-.1-2.3.7-2.9.7-.6 0-1.5-.6-2.4-.6-1.2 0-2.4.7-3.1 1.8-1.3 2.2-.4 5.4 1 7.2.6.8 1.4 1.7 2.3 1.7s1.2-.6 2.3-.6c1 0 1.4.6 2.3.6s1.6-.8 2.2-1.7c.6-.9.9-1.9 1-2-.1 0-1.8-.7-1.8-2.8zM14.7 6.7c.5-.6.8-1.4.8-2.2-.7.1-1.6.5-2.1 1.1-.5.5-.8 1.3-.8 2.1.8.1 1.6-.4 2.1-1z"/></svg>Apple Pay</span><span class="method-badge"><span class="method-mark google">G</span>Google Pay</span></div>
-              <p class="tribute-hint" data-provider="tribute" hidden>Для оплаты СБП, МИР и др. используй ↓</p><a class="payment-link tribute" data-provider="tribute" href="https://web.tribute.tg/p/zK9" target="_blank" rel="noopener" hidden><span>Оплатить · <span data-price-tier="full">$19.99</span></span></a><div class="method-badges" data-provider="tribute" hidden><span class="method-badge"><span class="method-mark sbp">↗</span>СБП</span><span class="method-badge"><span class="method-mark mir">МИР</span>МИР</span><span class="method-badge"><span class="method-mark tbank">Т</span>Тинькофф</span><span class="method-badge">…</span></div>
-            </div>
-          </article>
-          <article class="price-card">
-            <span class="tier">С личным разбором</span><h3>Программа + разбор</h3><p class="desc">Для тех, кому важно обсудить свою ситуацию и выбрать конкретный следующий шаг.</p>
-            <div class="demo-old-price"><s data-demo-anchor="full">$129.98</s></div>			
-            <div class="price" data-price-tier="personal">$59.99</div>
-            <ul><li>всё из тарифа «Все 21 день»</li><li>60-минутный созвон по одной ситуации</li><li>в течение 2–3 дней после оплаты договоримся об удобном времени</li><li>разбор и план ближайших шагов и границ</li></ul>
-            <div class="payment-options" aria-label="Способы оплаты тарифа с личным разбором">
-              <a class="payment-link" data-provider="wayforpay" href="https://secure.wayforpay.com/button/b790cb950a376" target="_blank" rel="noopener" hidden><span>Оплатить через WayForPay · <span data-price-tier="personal">$59.99</span></span></a><div class="method-badges" data-provider="wayforpay" hidden><span class="method-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 9h18M6 15h4"/></svg>Банковские карты</span></div>
-              <a class="payment-link stripe" data-provider="stripe" href="https://buy.stripe.com/4gMbJ3buWaBX4Fk2Ss3ZK0K" target="_blank" rel="noopener" hidden><span>Купить · <span data-price-tier="personal">$59.99</span></span></a><div class="method-badges" data-provider="stripe" hidden><span class="method-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M3 9h18M6 15h4"/></svg>Карта</span><span class="method-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.7 12.6c0-1.9 1.5-2.8 1.6-2.9-.9-1.2-2.2-1.4-2.7-1.4-1.2-.1-2.3.7-2.9.7-.6 0-1.5-.6-2.4-.6-1.2 0-2.4-.7-3.1 1.8-1.3 2.2-.4 5.4 1 7.2.6.8 1.4 1.7 2.3 1.7s1.2-.6 2.3-.6c1 0 1.4.6 2.3.6s1.6-.8 2.2-1.7c.6-.9.9-1.9 1-2-.1 0-1.8-.7-1.8-2.8zM14.7 6.7c.5-.6.8-1.4.8-2.2-.7-.1-1.6.5-2.1 1.1-.5.5-.8 1.3-.8 2.1.8.1 1.6-.4 2.1-1z"/></svg>Apple Pay</span><span class="method-badge"><span class="method-mark google">G</span>Google Pay</span></div>
-              <p class="tribute-hint" data-provider="tribute" hidden>Для оплаты СБП, МИР и др. используй ↓</p><a class="payment-link tribute" data-provider="tribute" href="https://web.tribute.tg/p/A64" target="_blank" rel="noopener" hidden><span>Оплатить · <span data-price-tier="personal">$59.99</span></span></a><div class="method-badges" data-provider="tribute" hidden><span class="method-badge"><span class="method-mark sbp">↗</span>СБП</span><span class="method-badge"><span class="method-mark mir">МИР</span>МИР</span><span class="method-badge"><span class="method-mark tbank">Т</span>Тинькофф</span><span class="method-badge">…</span></div>
-            </div>
-          </article>
-        </div>
-        <div class="trust-strip">
-          <article class="trust-card guarantee-card">
-            <span class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 20 6v5c0 5-3.4 8.5-8 10-4.6-1.5-8-5-8-10V6l8-3Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg></span>
-            <div><h3>Гарантия возврата — 7 дней</h3><p>Если программа не подойдёт, <a href="https://t.me/back4heart" target="_blank" rel="noopener">напиши в Telegram</a> в течение 7 дней после оплаты — оформим возврат через платёжный сервис.</p></div>
-          </article>
-          <article class="trust-card">
-            <span class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v3"/></svg></span>
-            <div><h3>Защищённая оплата</h3><p>Оплата производится по защищенному протоколу SSL. Данные клиента не передаются третьим сторонам.</p></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="faq">
-      <div class="container">
-        <div class="section-head"><span class="eyebrow">Без давления</span><h2>Частые вопросы</h2></div>
-        <div class="faq">
-          <details><summary>А если я всё ещё хочу, чтобы он вернулся?</summary><p>Тебе не нужно сначала принять окончательное решение. Программа не заставляет блокировать бывшего или отказываться от надежды. Она помогает увидеть факты, замечать свои реакции и понять, какой шаг сейчас подходит именно тебе.</p></details>
-          <details><summary>Что если я уже пробовала курсы и общие советы?</summary><p>Здесь фокус на конкретных моментах: сообщение после паузы, желание проверить страницу, сравнение с другой, стыд за прошлые сообщения и решение о границах. До покупки посмотри на список материалов и выбери формат, который тебе подходит.</p></details>
-          <details><summary>Семь дней — мало. Почему есть такой тариф?</summary><p>Семидневный тариф — это первый этап и доступный способ попробовать формат. Он не обещает, что за неделю всё пройдёт. Полный маршрут занимает 21 день и включает дополнительные этапы и материалы.</p></details>
-          <details><summary>Подойдёт ли программа, если расставание было давно?</summary><p>Да, если сейчас ты всё ещё живёшь в ожидании его сообщений или замечаешь, что его действия сильно влияют на твоё настроение. Важнее не дата расставания, а то, что происходит с тобой сейчас.</p></details>
-          <details><summary>А если у нас общие дети и контакт нужен?</summary><p>В полном тарифе предусмотрен отдельный материал о необходимом общении и границах. Программа не требует полного прекращения контакта и не заменяет юридические рекомендации по вопросам детей.</p></details>
-          <details><summary>Программа гарантирует, что мысли исчезнут через 21 день?</summary><p>Нет. Нельзя заранее обещать, что мысли и чувства исчезнут к конкретной дате или никогда не вернутся. Программа даёт практики и структуру, чтобы яснее понимать свои реакции и выбирать, что делать в сложный момент.</p></details>
-          <details><summary>Что означает «травматическая связь» в названии?</summary><p>Это название темы программы, а не диагноз. Оно не означает, что у каждой участницы есть травма или расстройство. Если термин тебе не подходит, ориентируйся на содержание и задачи курса.</p></details>
-        </div>
-      </div>
-    </section>
-
-    <section class="closing">
-      <div class="narrow">
-        <span class="eyebrow">Твой следующий шаг — за тобой</span>
-        <h2>Ты можешь искать ответы о нём — и постепенно возвращать вопросы о себе</h2>
-        <p>Начни с доступного семидневного маршрута или выбери полный формат с рабочей тетрадью и аудио. Не нужно быть готовой ко всему — достаточно выбрать один следующий шаг.</p>
-        <a class="button" href="#pricing">Посмотреть тарифы <span class="arrow">→</span></a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <p>Название программы описывает её тему и не является диагнозом. Материалы носят информационно-образовательный характер, не заменяют психотерапию, медицинскую помощь или юридическую консультацию. При угрозе безопасности или мыслях о самоповреждении обратись к местным экстренным службам или профильному специалисту.</p>
-      <p>Вопросы о тарифах: <a href="https://t.me/back4heart" target="_blank" rel="noopener">Telegram @back4heart</a></p>
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" id="painEyebrow">Узнаёшь себя?</div>
+      <h2 id="painH2">Сейчас ты даёшь ему то, чего он не заслужил</h2>
     </div>
-  </footer>
-  <div class="mobile-cta"><span class="mobile-price" data-price-tier="full">$19.99</span><a class="button" href="#pricing">Полная программа <span class="arrow">→</span></a></div>
-  <script>
-    // Демонстрационный таймер: перезапускается при каждой загрузке и не связан с реальной скидкой.
-    (function () {
-      var remaining = 2 * 60 * 60;
-      var output = document.getElementById('demoTimer');
-      function render() {
-        var h = Math.floor(remaining / 3600);
-        var m = Math.floor((remaining % 3600) / 60);
-        var s = remaining % 60;
-        output.textContent = [h, m, s].map(function (v) { return String(v).padStart(2, '0'); }).join(':');
-        if (remaining > 0) remaining -= 1;
+    <div class="pain-grid">
+      <div class="pain-card"><span class="mark" id="pain1Mark">Ночью или днем</span><p id="pain1Text">...</p></div>
+      <div class="pain-card"><span class="mark" id="pain2Mark">На автомате</span><p id="pain2Text">...</p></div>
+      <div class="pain-card"><span class="mark" id="pain3Mark">Внутри</span><p id="pain3Text">...</p></div>
+    </div>
+    <div class="pain-tags" id="painTags"></div>
+    <div class="mindread">
+      <div class="mr-label" id="mindreadLabel">Я точно знаю, что ты делаешь прямо сейчас</div>
+      <p id="mindreadText">...</p>
+    </div>
+  </div>
+</section>
+
+<section class="promise">
+  <blockquote id="promiseQuote">«...»</blockquote>
+  <cite>Roman Veil, back4heart</cite>
+</section>
+
+<section class="section section-alt modules">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" id="modulesEyebrow">Что внутри</div>
+      <h2 id="modulesH2">7 дней. 7 смещений баланса</h2>
+      <p id="modulesDesc">...</p>
+    </div>
+    <div class="module-list">
+      <div class="module"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div><div><h3><span>01</span><span id="mod1Title">Первый удар</span></h3><p id="mod1Desc">...</p></div></div>
+      <div class="module"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="10" width="16" height="10" rx="1"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></div><div><h3><span>02</span><span id="mod2Title">Стена</span></h3><p id="mod2Desc">...</p></div></div>
+      <div class="module"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="2.5"/></svg></div><div><h3><span>03</span><span id="mod3Title">Тень</span></h3><p id="mod3Desc">...</p></div></div>
+      <div class="module"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg></div><div><h3><span>04</span><span id="mod4Title">Демонстрация</span></h3><p id="mod4Desc">...</p></div></div>
+      <div class="module"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="5" y="4" width="14" height="18" rx="1"/><circle cx="12" cy="13" r="3"/></svg></div><div><h3><span>05</span><span id="mod5Title">Зеркало</span></h3><p id="mod5Desc">...</p></div></div>
+      <div class="module"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 4l16 16M20 4L4 20"/></svg></div><div><h3><span>06</span><span id="mod6Title">Разрыв шаблона</span></h3><p id="mod6Desc">...</p></div></div>
+      <div class="module"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 4h12l-1 7-5 3-5-3-1-7z"/><path d="M9 21h6M12 14v7"/></svg></div><div><h3><span>07</span><span id="mod7Title">Триумф</span></h3><p id="mod7Desc">...</p></div></div>
+      <div class="module"><div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2v9"/><path d="M18.4 6.6a9 9 0 11-12.8 0"/></svg></div><div><h3><span>Бонус</span><span id="mod8Title">Спокойствие</span></h3><p id="mod8Desc">...</p></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="seal-block" id="sealBlock">
+  <div class="seal-large" id="sealLarge">
+    <svg viewBox="0 0 200 200">
+      <g class="seal-half left">
+        <path d="M100 10 A90 90 0 0 0 100 190 Z" fill="none" stroke="#b8860b" stroke-width="1"/>
+        <path d="M100 30 A70 70 0 0 0 100 170 Z" fill="none" stroke="#b8860b" stroke-width="0.6" opacity="0.5"/>
+      </g>
+      <g class="seal-half right">
+        <path d="M100 10 A90 90 0 0 1 100 190 Z" fill="none" stroke="#b8860b" stroke-width="1"/>
+        <path d="M100 30 A70 70 0 0 1 100 170 Z" fill="none" stroke="#b8860b" stroke-width="0.6" opacity="0.5"/>
+      </g>
+      <path d="M100 60 L112 92 L100 84 L88 92 Z" fill="#b8860b"/>
+      <rect x="95" y="92" width="10" height="28" fill="#b8860b" opacity="0.85"/>
+    </svg>
+  </div>
+  <p class="caption" id="sealCaption">...</p>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" id="happensEyebrow">Что происходит, когда действуешь правильно</div>
+      <h2 id="happensH2">У него случается когнитивный диссонанс.</h2>
+    </div>
+    <div class="happens-grid">
+      <div class="happens-card"><div class="num">1</div><p id="happens1">Начинает думать о тебе</p></div>
+      <div class="happens-card"><div class="num">2</div><p id="happens2">Проверяет твои соцсети</p></div>
+      <div class="happens-card"><div class="num">3</div><p id="happens3">Начинает дарить подарки и цветы</p></div>
+      <div class="happens-card"><div class="num">4</div><p id="happens4">Сам ищет повод написать или встретиться</p></div>
+      <div class="happens-card"><div class="num">5</div><p id="happens5">А у тебя перестаёт болеть, и ты чувствуешь превосходство</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="authorH2">Тот, кто реально понимает мужскую психологию</h2>
+    </div>
+    <div class="author-grid">
+      <div class="author-photo"><img src="https://i.ibb.co/S73W4nYt/IMG-20250711-200928-458.webp" alt="Roman Veil" loading="lazy"></div>
+      <div class="author-text">
+        <p id="authorP1"><b>Меня зовут Роман.</b> 7 лет изучал поведенческую психологию и стратегии влияния — не в университете, а на практике: в продажах, переговорах и личных отношениях.</p>
+        <p id="authorP2">Прошёл более 12 программ по НЛП, когнитивно-поведенческим техникам и эриксоновскому гипнозу у частных практиков.</p>
+        <p id="authorP3">Начал помогать женщинам случайно — подруга попросила совет после развода. Потом её подруга. Потом ещё одна. За 4 года через меня прошло больше 2000 ситуаций — от «он ушёл вчера» до «мы не общаемся 2 года».</p>
+        <p id="authorP4">Я вижу паттерны, которые повторяются в 90% случаев. Я — тот, кто знает, как думают мужчины, потому что я один из них.</p>
+        <div class="author-quote" id="authorQuote">«Я знаю, что работает — потому что видел это тысячи раз.»</div>
+        <div class="author-stat"><div class="stat-num">2000+</div><div class="stat-lbl" id="authorStatLbl">разобранных женских ситуаций за 4 года</div></div>
+        <ul class="author-creds" id="authorCreds">
+          <li>7 лет практического изучения мужской психологии и поведенческих стратегий</li>
+          <li>12+ программ по НЛП, когнитивно-поведенческим техникам и стратегиям влияния</li>
+          <li>2000+ разобранных женских ситуаций за 4 года</li>
+          <li>Автор методики back4heart, основанной на реальных паттернах мужского поведения</li>
+        </ul>
+        <div class="author-diploma">
+          <div>
+            <a href="https://back4heart.site/img/51523045_500_q70.webp" target="_blank" rel="noopener">
+              <img src="https://back4heart.site/img/51523045_500_q70.webp" alt="Сертификаты и дипломы Романа" loading="lazy">
+            </a>
+            <div class="author-diploma-cap">Сертификаты пройденных программ</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" id="caseEyebrow">Реальные ситуации</div>
+      <h2 id="caseH2">Три истории — от «он ушёл» до «он вернулся»</h2>
+    </div>
+    <div class="case-list">
+      <div class="case-card">
+        <h3 id="case1Name">Марина <span>· 43 года</span></h3>
+        <div class="case-row"><div class="case-label" id="case1Label1">Было</div><p id="case1Text1">Муж ушёл к коллеге после 12 лет брака. Марина 2 месяца писала ему каждый день, извинялась, умоляла вернуться. Он читал и не отвечал. Она похудела на 8 кг, не спала, проверяла его страницу каждые 20 минут.</p></div>
+        <div class="case-row"><div class="case-label" id="case1Label2">Сделала</div><p id="case1Text2">Прошла интенсив. На 2-й день перестала писать. На 4-й день убрала его из закладок. На 6-й день выложила фото с подругами (по инструкции из урока «Демонстрация»).</p></div>
+        <div class="case-row"><div class="case-label" id="case1Label3">Стало</div><p id="case1Text3">На 9-й день он написал: «Как ты?». Она не ответила 2 дня (по стратегии из урока 6). Он написал ещё раз. Через месяц попросил о встрече. Марина встретилась — но уже с другой позиции. Сейчас они общаются, но на ЕЁ условиях.</p></div>
+      </div>
+      <div class="case-card">
+        <h3 id="case2Name">Алёна <span>· 37 лет</span></h3>
+        <div class="case-row"><div class="case-label" id="case2Label1">Было</div><p id="case2Text1">Парень бросил после 3 лет отношений. Сказал «я тебя не люблю». Через неделю выложил фото с другой. Алёна рыдала сутками, написала ему 40+ сообщений за одну ночь. Он заблокировал.</p></div>
+        <div class="case-row"><div class="case-label" id="case2Label2">Сделала</div><p id="case2Text2">Начала интенсив в состоянии «мне нечего терять». Урок 1 — перестала заходить на его страницу (техника «Стоп-кран»). Урок 3 — поняла, что новая девушка не угроза, а триггер для его сомнений. Урок 5 — полностью сменила подачу в соцсетях.</p></div>
+        <div class="case-row"><div class="case-label" id="case2Label3">Стало</div><p id="case2Text3">Через 3 недели он разблокировал её и написал с нового аккаунта. Алёна не стала возвращаться — но перестала страдать. Говорит: «Мне впервые за 3 месяца не больно. И мне плевать, напишет он или нет».</p></div>
+      </div>
+      <div class="case-card">
+        <h3 id="case3Name">Ирина <span>· 51 год</span></h3>
+        <div class="case-row"><div class="case-label" id="case3Label1">Было</div><p id="case3Text1">Муж ушёл после 22 лет брака. Двое взрослых детей. Ирина чувствовала, что жизнь закончилась. Стыдилась рассказать подругам. Думала: «В моём возрасте уже поздно что-то менять». Проверяла его онлайн по 50 раз в день.</p></div>
+        <div class="case-row"><div class="case-label" id="case3Label2">Сделала</div><p id="case3Text2">Прошла интенсив + взяла личный разбор. Главный инсайт: «Я 22 года была удобной — и именно поэтому он решил, что может уйти без последствий». Применила стратегию из уроков 4–6.</p></div>
+        <div class="case-row"><div class="case-label" id="case3Label3">Стало</div><p id="case3Text3">Муж начал звонить через 2 недели — сначала «по делу» (дети, документы), потом всё чаще без повода. Через 2 месяца предложил «попробовать снова». Ирина согласилась — но с условиями, которые раньше не посмела бы озвучить.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" id="testiEyebrow">Уже прошли это</div>
+      <h2 id="testiH2">Ей тоже казалось, что это конец</h2>
+      <div class="rating-badge"><span class="stars">★★★★★</span><span id="ratingText">4.9 из 5 · 340+ отзывов</span></div>
+    </div>
+    <div class="testi-list">
+      <div class="testi-row">
+        <div class="testi-row-head"><span class="stars">★★★★★</span><span class="testi-who" id="testi1Who">Анна, 29</span><span class="plus">+</span></div>
+        <div class="testi-row-body"><div class="testi-row-body-inner"><p id="testi1Text">...</p></div></div>
+      </div>
+      <div class="testi-row">
+        <div class="testi-row-head"><span class="stars">★★★★★</span><span class="testi-who" id="testi2Who">Виктория, 34</span><span class="plus">+</span></div>
+        <div class="testi-row-body"><div class="testi-row-body-inner"><p id="testi2Text">...</p></div></div>
+      </div>
+      <div class="testi-row">
+        <div class="testi-row-head"><span class="stars">★★★★★</span><span class="testi-who" id="testi3Who">Мария, 27</span><span class="plus">+</span></div>
+        <div class="testi-row-body"><div class="testi-row-body-inner"><p id="testi3Text">...</p></div></div>
+      </div>
+    </div>
+
+    <div class="testi-list" id="testiGroup2" hidden style="margin-top:14px">
+      <div class="testi-row">
+        <div class="testi-row-head"><span class="stars">★★★★★</span><span class="testi-who" id="testi4Who"></span><span class="plus">+</span></div>
+        <div class="testi-row-body"><div class="testi-row-body-inner"><p id="testi4Text">...</p></div></div>
+      </div>
+      <div class="testi-row">
+        <div class="testi-row-head"><span class="stars">★★★★★</span><span class="testi-who" id="testi5Who"></span><span class="plus">+</span></div>
+        <div class="testi-row-body"><div class="testi-row-body-inner"><p id="testi5Text">...</p></div></div>
+      </div>
+      <div class="testi-row">
+        <div class="testi-row-head"><span class="stars">★★★★★</span><span class="testi-who" id="testi6Who"></span><span class="plus">+</span></div>
+        <div class="testi-row-body"><div class="testi-row-body-inner"><p id="testi6Text">...</p></div></div>
+      </div>
+    </div>
+
+    <div class="testi-list" id="testiGroup3" hidden style="margin-top:14px">
+      <div class="testi-row">
+        <div class="testi-row-head"><span class="stars">★★★★★</span><span class="testi-who" id="testi7Who"></span><span class="plus">+</span></div>
+        <div class="testi-row-body"><div class="testi-row-body-inner">
+          <span class="badge-tag" id="testi7Badge">Он сам вышел на контакт</span>
+          <p id="testi7Text">...</p>
+          <img src="https://i.ibb.co/S4q1LCTf/Screenshot-20260304-063607.png" alt="Скриншот переписки" loading="lazy">
+        </div></div>
+      </div>
+      <div class="testi-row">
+        <div class="testi-row-head"><span class="stars">★★★★★</span><span class="testi-who" id="testi8Who"></span><span class="plus">+</span></div>
+        <div class="testi-row-body"><div class="testi-row-body-inner">
+          <span class="badge-tag" id="testi8Badge">Мы снова начали общаться</span>
+          <p id="testi8Text">...</p>
+          <img src="https://i.ibb.co/b5xSCPGY/Screenshot-20260307-080052.png" alt="Скриншот переписки" loading="lazy">
+        </div></div>
+      </div>
+      <div class="testi-row">
+        <div class="testi-row-head"><span class="stars">★★★★★</span><span class="testi-who" id="testi9Who"></span><span class="plus">+</span></div>
+        <div class="testi-row-body"><div class="testi-row-body-inner">
+          <span class="badge-tag" id="testi9Badge">Мы снова вместе</span>
+          <p id="testi9Text">...</p>
+          <img src="https://i.ibb.co/4RXGBkDy/Screenshot-20260225-070317.png" alt="Скриншот переписки" loading="lazy">
+        </div></div>
+      </div>
+    </div>
+
+    <div class="show-more-wrap">
+      <button class="show-more-btn" id="showMoreBtn" type="button" data-stage="0">Показать ещё отзывы</button>
+    </div>
+
+    <div class="proof-gallery" id="proofGallery" hidden>
+      <img src="https://i.ibb.co/qYwk49gQ/Screenshot-20260304-063819.png" alt="Скриншот переписки" loading="lazy">
+      <img src="https://i.ibb.co/twZX8kcs/Screenshot-20260304-063655.png" alt="Скриншот переписки" loading="lazy">
+      <img src="https://i.ibb.co/GvZY9PMP/Screenshot-20260225-073516.png" alt="Скриншот переписки" loading="lazy">
+      <img src="https://i.ibb.co/bj4RzcGw/Screenshot-20260225-084353.png" alt="Скриншот переписки" loading="lazy">
+    </div>
+
+    <p class="testi-disclaimer"></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="exclude-block">
+      <div class="eyebrow" id="excludeEyebrow">Честно, прежде чем продолжить</div>
+      <h2 id="excludeH2">Кому это НЕ подходит</h2>
+      <p id="excludeText">Если ты ищешь утешения, разговоров о том, что «время лечит» и прочее - закрывай вкладку. Этот интенсив для тех, кто готов вернуть себе себя, а не страдать годами.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" id="pricingEyebrow">Доступ</div>
+      <h2 id="pricingH2">Выбери, насколько глубоко ты готова зайти</h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="plan" data-tier="basic">
+        <div class="plan-name" id="planBasicName">Интенсив</div>
+        <div class="plan-desc" id="planBasicDesc">...</div>
+        <div class="price-old" id="priceBasicOld">$47</div>
+        <div class="price" id="priceBasic">$9.99</div>
+        <div class="price-note" id="planBasicNote">разовый платёж</div>
+        <ul>
+          <li id="planBasicLi1">...</li>
+          <li id="planBasicLi2">...</li>
+          <li id="planBasicLi3">...</li>
+        </ul>
+        <div class="plan-pay">
+          <a href="#" class="plan-btn" data-plan="basic" id="planBasicBtn">Взять интенсив</a>
+          <a href="#" class="pay-secondary" data-plan="basic" id="planBasicBtnAlt">Оплатить</a>
+          <a href="#" class="pay-tertiary" data-plan="basic" id="planBasicBtnAlt2">Оплатить</a>
+          <div class="pay-icons-mini" id="payIconsBasic" aria-label="Способы оплаты: карта, Apple Pay, Google Pay">
+            <span class="pay-icon" title="Карта"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><rect x="1" y="7" width="36" height="4" fill="#b8860b"/><rect x="5" y="16" width="10" height="2.4" rx="1.2" fill="#b8860b" opacity="0.7"/></svg></span>
+            <span class="pay-icon pay-icon-intl" title="Apple Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M13.2 9.3c-.5.6-1.3 1.1-2.1 1-.1-.8.3-1.7.7-2.2.5-.6 1.4-1.1 2.1-1.1.1.9-.2 1.7-.7 2.3zm.7 1.1c-1.2-.1-2.2.7-2.7.7-.6 0-1.4-.6-2.4-.6-1.2 0-2.4.7-3 1.9-1.3 2.2-.3 5.5.9 7.3.6.9 1.3 1.9 2.3 1.8.9 0 1.3-.6 2.4-.6s1.4.6 2.4.6c1 0 1.6-.9 2.3-1.8.7-1 1-2 1-2-.1 0-1.9-.7-1.9-2.8 0-1.7 1.4-2.6 1.5-2.6-.8-1.2-2.1-1.3-2.5-1.4-.1 0-.2 0-.3.1zm5.6-2v13.4h1.9v-4.6h2.9c2.6 0 4.5-1.8 4.5-4.4s-1.8-4.4-4.4-4.4h-4.9zm1.9 1.6h2.4c1.8 0 2.8 1 2.8 2.8s-1 2.8-2.9 2.8h-2.3V10z" fill="#b8860b"/></svg></span>
+            <span class="pay-icon pay-icon-intl" title="Google Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M17.6 12.1v2.5h3.5c-.2 1.1-1.3 3.2-3.5 3.2-2.1 0-3.8-1.7-3.8-3.9s1.7-3.9 3.8-3.9c1.2 0 2 .5 2.5.9l1.7-1.6c-1.1-1-2.5-1.6-4.2-1.6-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2c3.6 0 5.9-2.5 5.9-6.1 0-.4 0-.7-.1-1h-5.8z" fill="#b8860b"/><text x="24.5" y="15.4" font-family="Manrope, sans-serif" font-size="6.2" fill="#b8860b" font-weight="700">Pay</text></svg></span>
+            <span class="pay-icon pay-icon-ru" title="СБП" style="display:none"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><text x="19" y="15.6" font-family="Manrope, sans-serif" font-size="8" fill="#b8860b" font-weight="700" text-anchor="middle">СБП</text></svg></span>
+            <span class="pay-icon pay-icon-ru" title="Карта МИР" style="display:none"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><text x="19" y="15.6" font-family="Manrope, sans-serif" font-size="7.5" fill="#b8860b" font-weight="700" text-anchor="middle">МИР</text></svg></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="plan featured" data-tier="circle">
+        <div class="plan-name" id="planCircleName">Интенсив + практикум «Про женщину, которая влюбляет навсегда»</div>
+        <div class="plan-desc" id="planCircleDesc">...</div>
+        <div class="price-old" id="priceCircleOld">$89</div>
+        <div class="price" id="priceCircle">$14.99</div>
+        <div class="price-note" id="planCircleNote">разовый платёж</div>
+        <ul>
+          <li id="planCircleLi1">...</li>
+          <li id="planCircleLi2">...</li>
+          <li id="planCircleLi3">...</li>
+        </ul>
+        <div class="plan-pay">
+          <a href="#" class="plan-btn" data-plan="circle" id="planCircleBtn">Оплатить</a>
+          <a href="#" class="pay-secondary" data-plan="circle" id="planCircleBtnAlt">Оплатить</a>
+          <a href="#" class="pay-tertiary" data-plan="circle" id="planCircleBtnAlt2">Оплатить</a>
+          <div class="pay-icons-mini" id="payIconsCircle" aria-label="Способы оплаты: карта, Apple Pay, Google Pay">
+            <span class="pay-icon" title="Карта"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><rect x="1" y="7" width="36" height="4" fill="#b8860b"/><rect x="5" y="16" width="10" height="2.4" rx="1.2" fill="#b8860b" opacity="0.7"/></svg></span>
+            <span class="pay-icon pay-icon-intl" title="Apple Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M13.2 9.3c-.5.6-1.3 1.1-2.1 1-.1-.8.3-1.7.7-2.2.5-.6 1.4-1.1 2.1-1.1.1.9-.2 1.7-.7 2.3zm.7 1.1c-1.2-.1-2.2.7-2.7.7-.6 0-1.4-.6-2.4-.6-1.2 0-2.4.7-3 1.9-1.3 2.2-.3 5.5.9 7.3.6.9 1.3 1.9 2.3 1.8.9 0 1.3-.6 2.4-.6s1.4.6 2.4.6c1 0 1.6-.9 2.3-1.8.7-1 1-2 1-2-.1 0-1.9-.7-1.9-2.8 0-1.7 1.4-2.6 1.5-2.6-.8-1.2-2.1-1.3-2.5-1.4-.1 0-.2 0-.3.1zm5.6-2v13.4h1.9v-4.6h2.9c2.6 0 4.5-1.8 4.5-4.4s-1.8-4.4-4.4-4.4h-4.9zm1.9 1.6h2.4c1.8 0 2.8 1 2.8 2.8s-1 2.8-2.9 2.8h-2.3V10z" fill="#b8860b"/></svg></span>
+            <span class="pay-icon pay-icon-intl" title="Google Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M17.6 12.1v2.5h3.5c-.2 1.1-1.3 3.2-3.5 3.2-2.1 0-3.8-1.7-3.8-3.9s1.7-3.9 3.8-3.9c1.2 0 2 .5 2.5.9l1.7-1.6c-1.1-1-2.5-1.6-4.2-1.6-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2c3.6 0 5.9-2.5 5.9-6.1 0-.4 0-.7-.1-1h-5.8z" fill="#b8860b"/><text x="24.5" y="15.4" font-family="Manrope, sans-serif" font-size="6.2" fill="#b8860b" font-weight="700">Pay</text></svg></span>
+            <span class="pay-icon pay-icon-ru" title="СБП" style="display:none"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><text x="19" y="15.6" font-family="Manrope, sans-serif" font-size="8" fill="#b8860b" font-weight="700" text-anchor="middle">СБП</text></svg></span>
+            <span class="pay-icon pay-icon-ru" title="Карта МИР" style="display:none"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><text x="19" y="15.6" font-family="Manrope, sans-serif" font-size="7.5" fill="#b8860b" font-weight="700" text-anchor="middle">МИР</text></svg></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="plan" data-tier="personal">
+        <div class="plan-name" id="planPersonalName">Интенсив + Личный разбор</div>
+        <div class="plan-desc" id="planPersonalDesc">...</div>
+        <div class="price-old" id="pricePersonalOld">$149</div>
+        <div class="price" id="pricePersonal">$49.99</div>
+        <div class="price-note" id="planPersonalNote">разовый платёж</div>
+        <ul>
+          <li id="planPersonalLi1">...</li>
+          <li id="planPersonalLi2">...</li>
+          <li id="planPersonalLi3">...</li>
+        </ul>
+        <div class="spots-left" id="spotsLeft">Беру только 10 человек в месяц — каждый кейс разбираю лично</div>
+        <div class="plan-pay">
+          <a href="#" class="plan-btn" data-plan="personal" id="planPersonalBtn">Получить разбор</a>
+          <a href="#" class="pay-secondary" data-plan="personal" id="planPersonalBtnAlt">Оплатить</a>
+          <a href="#" class="pay-tertiary" data-plan="personal" id="planPersonalBtnAlt2">Оплатить</a>
+          <div class="pay-icons-mini" id="payIconsPersonal" aria-label="Способы оплаты: карта, Apple Pay, Google Pay">
+            <span class="pay-icon" title="Карта"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><rect x="1" y="7" width="36" height="4" fill="#b8860b"/><rect x="5" y="16" width="10" height="2.4" rx="1.2" fill="#b8860b" opacity="0.7"/></svg></span>
+            <span class="pay-icon pay-icon-intl" title="Apple Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M13.2 9.3c-.5.6-1.3 1.1-2.1 1-.1-.8.3-1.7.7-2.2.5-.6 1.4-1.1 2.1-1.1.1.9-.2 1.7-.7 2.3zm.7 1.1c-1.2-.1-2.2.7-2.7.7-.6 0-1.4-.6-2.4-.6-1.2 0-2.4.7-3 1.9-1.3 2.2-.3 5.5.9 7.3.6.9 1.3 1.9 2.3 1.8.9 0 1.3-.6 2.4-.6s1.4.6 2.4.6c1 0 1.6-.9 2.3-1.8.7-1 1-2 1-2-.1 0-1.9-.7-1.9-2.8 0-1.7 1.4-2.6 1.5-2.6-.8-1.2-2.1-1.3-2.5-1.4-.1 0-.2 0-.3.1zm5.6-2v13.4h1.9v-4.6h2.9c2.6 0 4.5-1.8 4.5-4.4s-1.8-4.4-4.4-4.4h-4.9zm1.9 1.6h2.4c1.8 0 2.8 1 2.8 2.8s-1 2.8-2.9 2.8h-2.3V10z" fill="#b8860b"/></svg></span>
+            <span class="pay-icon pay-icon-intl" title="Google Pay"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><path d="M17.6 12.1v2.5h3.5c-.2 1.1-1.3 3.2-3.5 3.2-2.1 0-3.8-1.7-3.8-3.9s1.7-3.9 3.8-3.9c1.2 0 2 .5 2.5.9l1.7-1.6c-1.1-1-2.5-1.6-4.2-1.6-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2c3.6 0 5.9-2.5 5.9-6.1 0-.4 0-.7-.1-1h-5.8z" fill="#b8860b"/><text x="24.5" y="15.4" font-family="Manrope, sans-serif" font-size="6.2" fill="#b8860b" font-weight="700">Pay</text></svg></span>
+            <span class="pay-icon pay-icon-ru" title="СБП" style="display:none"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><text x="19" y="15.6" font-family="Manrope, sans-serif" font-size="8" fill="#b8860b" font-weight="700" text-anchor="middle">СБП</text></svg></span>
+            <span class="pay-icon pay-icon-ru" title="Карта МИР" style="display:none"><svg viewBox="0 0 38 24" fill="none"><rect x="1" y="1" width="36" height="22" rx="3" stroke="#b8860b" stroke-width="1.3"/><text x="19" y="15.6" font-family="Manrope, sans-serif" font-size="7.5" fill="#b8860b" font-weight="700" text-anchor="middle">МИР</text></svg></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="trust-strip">
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.5"/></svg>
+        <div><b id="trustGuaranteeTitle">Гарантия возврата 7 дней</b><span id="trustGuaranteeText">Не подошло — вернём деньги в течение 7 дней, без лишних вопросов</span></div>
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none"><rect x="5" y="10.5" width="14" height="10" rx="1.8" stroke="currentColor" stroke-width="1.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div><b id="trustSecurityTitle">Безопасная оплата</b><span id="trustSecurityText">SSL-шифрование 256 бит. Данные карты не хранятся на сайте</span></div>
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" viewBox="0 0 24 24" fill="none"><path d="M6 3.5h9l3 3v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-16a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8.5 11h7M8.5 14.5h7M8.5 18h4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <div><b id="trustOfferTitle">Прозрачные условия</b><span id="trustOfferText">Все условия покупки — в <a href="#" id="offerLink" target="_blank" rel="noopener">публичной оферте</a></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="urgency">
+  <div class="eyebrow" id="urgencyEyebrow">Ограниченный доступ</div>
+  <h3 id="urgencyH3">Набор закрывается в воскресенье</h3>
+  <p class="urgency-sub" id="urgencySub">Новый поток стартует каждую неделю. Успей начать до закрытия текущего набора.</p>
+  <a href="#pricing" class="cta-primary" id="urgencyCta">Успеть попасть в поток</a>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" id="faqEyebrow">Вопросы</div>
+      <h2 id="faqH2">Прежде чем начать</h2>
+      <p id="faqContactNote"><span id="faqContactText">Не нашла ответ? Пиши в Telegram:</span> <a href="https://t.me/back4heart" target="_blank" rel="noopener">back4heart</a></p>
+    </div>
+    <div class="faq" id="faqList">
+      <div class="faq-item"><div class="faq-q"><span id="faqQ1"></span><span class="plus">+</span></div><div class="faq-a"><p id="faqA1"></p></div></div>
+      <div class="faq-item"><div class="faq-q"><span id="faqQ2"></span><span class="plus">+</span></div><div class="faq-a"><p id="faqA2"></p></div></div>
+      <div class="faq-item"><div class="faq-q"><span id="faqQ3"></span><span class="plus">+</span></div><div class="faq-a"><p id="faqA3"></p></div></div>
+      <div class="faq-item"><div class="faq-q"><span id="faqQ4"></span><span class="plus">+</span></div><div class="faq-a"><p id="faqA4"></p></div></div>
+      <div class="faq-item"><div class="faq-q"><span id="faqQ5"></span><span class="plus">+</span></div><div class="faq-a"><p id="faqA5"></p></div></div>
+      <div class="faq-item"><div class="faq-q"><span id="faqQ6"></span><span class="plus">+</span></div><div class="faq-a"><p id="faqA6"></p></div></div>
+      <div class="faq-item"><div class="faq-q"><span id="faqQ7"></span><span class="plus">+</span></div><div class="faq-a"><p id="faqA7"></p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="tg-contact">
+  <p id="tgContactText">Остались вопросы? Пиши в Telegram.</p>
+  <a href="https://t.me/back4heart" target="_blank" rel="noopener" class="tg-btn">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M21.5 3.5L2.5 11l6 2.2M21.5 3.5L15 20.5l-6.5-7.3M21.5 3.5L8.5 13.2" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span id="tgBtnText">Написать в Telegram</span>
+  </a>
+</section>
+
+<section class="final">
+  <div class="eyebrow" id="finalEyebrow">Решение за тобой</div>
+  <h2 id="finalH2">Представь его лицо, когда он поймёт, кого потерял</h2>
+  <p class="sub" id="finalSub">Через 7 дней это будет не мысль. Это будет факт.</p>
+  <div class="cta-wrap" style="margin-top:34px;">
+    <span class="cta-arrow right"><svg viewBox="0 0 34 44" fill="none"><path d="M28 4C20 10 10 16 6 30" stroke="#c0392b" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M2 24L6 32L14 29" stroke="#c0392b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span>
+    <a href="#pricing" class="cta-primary" id="finalCta">Начать интенсив</a>
+  </div>
+</section>
+
+<div class="live-toast" id="liveToast" aria-hidden="true">
+  <span class="lt-dot"></span>
+  <span id="liveToastText"></span>
+</div>
+
+<div class="sticky-bar" id="stickyBar">
+  <div class="sb-text"><span id="stickyLabel">Начни сегодня</span><span id="stickySub">7 дней · доступ навсегда</span></div>
+  <a href="#pricing" class="cta-primary" id="stickyCta">Получить доступ</a>
+</div>
+
+<footer>
+  <div id="footerLine">© 2026 back4heart. Все права защищены.</div>
+  <div style="margin-top:8px;"><span id="footerContact">Вопросы? Пиши в Telegram:</span> <a href="https://t.me/back4heart" target="_blank" rel="noopener">back4heart</a></div>
+  <div style="margin-top:8px;"><a href="#" id="footerOffer">Публичная оферта</a> · <a href="#" id="footerTerms">Условия использования</a> · <a href="#" id="footerPrivacy">Политика конфиденциальности</a></div>
+</footer>
+
+<div class="tg-widget" id="tgWidget">
+  <a href="https://t.me/back4heart" target="_blank" rel="noopener" class="tg-widget-btn" id="tgWidgetBtn">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M21.5 3.5L2.5 11l6 2.2M21.5 3.5L15 20.5l-6.5-7.3M21.5 3.5L8.5 13.2" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span id="tgWidgetText">Спросить в Telegram</span>
+  </a>
+</div>
+
+<div class="exit-overlay" id="exitOverlay">
+  <div class="exit-modal">
+    <button class="exit-close" id="exitClose" aria-label="Закрыть">×</button>
+    <div class="eyebrow" id="exitEyebrow">Подожди</div>
+    <h3 id="exitH3">Не готова на интенсив целиком?</h3>
+    <p id="exitText">Держи 1-й день бесплатно - попробуй технику, которая уже за сутки снимает тягу мониторить его страницу и избавит от навязчивых мыслей.</p>
+    <a href="https://t.me/back4heartquizbot" target="_blank" rel="noopener" class="cta-primary" id="exitCta">Получить 1-й день бесплатно</a>
+  </div>
+</div>
+
+<div class="offer-overlay" id="offerOverlay">
+  <div class="offer-modal" role="dialog" aria-modal="true" aria-labelledby="offerModalTitle">
+    <div class="offer-modal-head">
+      <h2 id="offerModalTitle">Публичная оферта</h2>
+      <button class="offer-close" id="offerClose" aria-label="Закрыть">×</button>
+    </div>
+    <div class="offer-modal-body" id="offerModalBody"></div>
+  </div>
+</div>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QCMC7J0KG1"></script>
+<script>
+/* ==================== CONTENT ==================== */
+const CONTENT = {
+  intl: {
+    lang:'ru', htmlTitle:'БЭУшный ещё пожалеет - аудиоинтенсив 7 дней | back4heart',
+    metaDesc:'Как перестать мониторить его, избавиться от стыда за прошлые попытки вернуть его и сделать так, чтобы жалел он - за 7 дней. Первый эффект - в первые 24–48 часов.',
+    navCta:'Получить доступ',
+    heroEyebrow:'Закрытая методика · 7 дней · доступ навсегда',
+    heroH1:'БЭушный ещё <em>пожалеет</em>',
+    heroSub:'То, что не расскажет ни один психолог - потому что это действительно работает, а не «отпусти и живи дальше». Первые сдвиги - уже в ближайшие 24–48 часов. Через 7 дней жалеть будет он.',
+    heroCta:'Хочу, чтобы он пожалел',
+    heroNote:'Аудиоформат · 15–20 минут в день · доступ навсегда',
+    scrollHint:'Листай',
+    secretEyebrow:'Информация не для широкой публики',
+    secretH2:'Это методика, о которой молчат многие психологи',
+    secretText:'Психологи продают тебе годы работы над собой, потому что так работает их бизнес. Я - другое. Техники, которые я собирал - это то что реально работает. Только те методики, которые помогли сотням в похожих ситуациях. Работают быстро и не всегда «экологично» по отношении к бывшему.',
+    tgWidgetText:'Спросить в Telegram',
+    exitEyebrow:'Подожди', exitH3:'Не готова на интенсив целиком?',
+    exitText:'Держи 1-й день бесплатно - попробуй технику, которая уже за сутки снимает тягу мониторить его страницу и избавит от навязчивых мыслей.',
+    exitCta:'Получить 1-й день бесплатно',
+    painEyebrow:'Узнаёшь себя?', painH2:'Ты теряешь последнее достоинство, а он даже не смотрит в твою сторону',
+    pain1Mark:'По триста раз в день', pain1Text:'заходишь в его профиль. Иногда с фейка, чтобы не спалиться. Ищешь там доказательство, что ему плохо так же, как тебе. Его там нет.',
+    pain2Mark:'Стыдно вспомнить', pain2Text:'сколько раз писала первой, извинялась за то, в чём не виновата, умоляла ответить. Он до сих пор этим пользуется.',
+    pain3Mark:'А если у него уже кто-то есть', pain3Text:'внутри всё обрывается. Кажется, что ты опоздала и проиграла. На деле это почти ничего не меняет - если знаешь, что делать.',
+    promiseQuote:'«Давай вылечим твоё разбитое сердце.<br>А заодно сделаем, чтобы разбитым было не только твоё. И на это нужно 7 дней, а не годы.»',
+    modulesEyebrow:'Что внутри', modulesH2:'7 дней. От потерянного достоинства - до "Прости! Прости! Прости!"',
+    modulesDesc:'Каждый день новый урок на 15–20 минут. Наушники, дорога на работу или обед - где угодно. Первая техника снимает тягу мониторить его профиль уже в первые сутки. Дальше - что делать, если у него уже кто-то есть, как закрыть стыд за прошлые попытки вернуть его, и как сделать так, чтобы жалел он, а не ты. Только то, что реально работает.',
+    mod1Title:'Стоп-боль', mod1Desc:'Техники, которые снимают боль, техники "выключения навязчивых мыслей", убирают желание проверять его онлайн. Работает уже с первого дня.',
+    mod2Title:'Потеряное достоинство', mod2Desc:'Разбираем стыд за то, что писала первой, извинялась и умоляла. Закрываем это - раз и навсегда.',
+    mod3Title:'Если он уже с другой', mod3Desc:'Что делать, если у него кто-то появился. Почему это не поражение - и как обернуть это в свою пользу.',
+    mod4Title:'Демонстрация', mod4Desc:'Что выложить в соцсети, как подать себя и что сделать, чтобы он увидел тебя заново — и не смог пройти мимо. Конкретные шаги, не абстрактное “стань лучшей версией себя”',
+    mod5Title:'Зеркало', mod5Desc:'Переворачиваем расклад: брошенным на этом фоне почувствует себя он, а не ты.',
+    mod6Title:'Разрыв шаблона', mod6Desc:'Что делать, когда он напишет. Как вести себя, когда он объявится. Ты больше не та «удобная» девочка, которая будет ждать его как собачка.',
+    mod7Title:'Жизнь после', mod7Desc:'Итоги. Как остаться в этой позиции надолго. Теперь ты хозяйка своей жизни. Когда он приползёт, ты будешь смотреть на это совсем другими глазами.',
+    mod8Title:'Избавление от боли', mod8Desc:'Бонусный урок с упражнениями и техниками, которые убирают навязчивые мысли о нём. Что делать в моменте, когда накрывает - конкретный алгоритм, а не «просто отвлекись».',
+    sealCaption:'Дальше - то, о чём обычно молчат. Для тех, кто уже готов этим пользоваться.',
+    testiEyebrow:'Уже прошли это', testiH2:'Ей тоже казалось, что она всё испортила', ratingText:'4.9 из 5 · 340+ отзывов',
+    testi1Text:'«Перестала прокручивать мысли о нем на третий день. На пятый - он сам написал "как дела?".»', testi1Who:'Настя, 46',
+    testi2Text:'«Не отвечала на его "прости" три дня. Он написал ещё два раза. Впервые в жизни ждала не я его, а он меня.»', testi2Who:'Оля, 41',
+    testi3Text:'«Реально страшно было не думать о нем, думала что забудет. Этот гад завёл отношения через месяц после того как ушел. Думала - всё. Но когда он написал в третий раз - поняла, что расклад поменялся не в его пользу.»', testi3Who:'Кристина, 54',
+    pricingEyebrow:'Закрытый доступ', pricingH2:'Выбери, насколько глубоко ты готова зайти',
+    planBasicName:'Интенсив', planBasicDesc:'7 аудиоуроков по 15–20 минут + 3 авторсие техники Первая техника убирает тягу проверять его страницу уже в первые сутки. К 7-му дню ты будешь в позиции, из которой он не сможет тебя игнорировать.', planBasicNote:'разовый платёж',
+    planBasicLi1:'7 аудиоуроков, 15–20 минут в день', planBasicLi2:'Доступ навсегда, слушай когда удобно', planBasicLi3:'Слушай хоть с телефона, хоть с ноутбука', planBasicBtn:'Оплатить',
+    planCircleBadge:'Самый популярный', planCircleName:'Интенсив + практикум «Про женщину, которая влюбляет навсегда»', planCircleDesc:'Курс плюс практикум о том, как стать той, в кого влюбляются раз и навсегда.', planCircleNote:'разовый платёж',
+    planCircleLi1:'Всё из тарифа «Интенсив»', planCircleLi2:'Практикум «Про женщину, которая влюбляет навсегда»', planCircleLi3:'Рабочие техники, которые делают тебя тем человеком, которого не отпускают', planCircleBtn:'Оплатить',
+    planPersonalName:'Интенсив + Личный разбор', planPersonalDesc:'Курс плюс разбор именно твоей ситуации.', planPersonalNote:'разовый платёж',
+    planPersonalLi1:'Всё из тарифа «Интенсив»', planPersonalLi2:'Личный разбор твоей ситуации', planPersonalLi3:'Конкретный план действий для тебя',  planPersonalBtn:'Оплатить',
+    urgencyEyebrow:'Ограниченный доступ', urgencyH3:'Набор закрывается в воскресенье', urgencyCta:'Успеть попасть в поток',
+    urgencySub:'Новый поток стартует каждую неделю. Успей начать до закрытия текущего набора.',
+    faqEyebrow:'Вопросы', faqH2:'Прежде чем начать',
+    faqQ1:'Сколько времени это займёт?', faqA1:'15–20 минут в день, семь дней подряд. Первый эффект - уже в первые сутки: тяга проверять его страницу заметно слабеет. Можно слушать по дороге на работу, во время готовки, перед сном.',
+    faqQ2:'Мы расстались давно, мне подойдёт?', faqA2:'Да, подойдёт. Тут не важно, сколько прошло времени - важно, в какой точке ты находишься сейчас, по отношению к себе и к нему.',
+    faqQ3:'А если он уже встречается с другой?', faqA3:'Почти ничего не меняет. В 95% случаев бывший всё равно выходит на связь в течение первого месяца - конкуренция часто это только ускоряет.',
+    faqQ4:'Доступ будет навсегда?', faqA4:'Да. Уроки остаются с тобой навсегда, переслушивай, когда захочешь.',
+    faqQ5:'Это анонимно?', faqA5:'Да, на сто процентов. Всё приходит на почту, никаких публичных отметок и подтверждений.',
+    faqQ6:'Не получается оплатить, что делать?', faqA6:'Такое иногда случается из-за банка или региона. Просто напиши мне в Telegram - разберёмся вместе и подберём удобный способ оплаты, без потери времени.',
+    faqQ7:'Почему так дёшево?', faqA7:'После развода женщина часто оказывается в непростом материальном положении - и это последнее, из-за чего я хочу, чтобы кто-то остался без поддержки. Поэтому я сознательно держу цену минимальной: важнее, чтобы как можно больше женщин получили эти знания и смогли пройти через расставание с меньшей болью, чем заработать на этом по максимуму.',
+    finalEyebrow:'Решение за тобой', finalH2:'Представь его лицо, когда он поймёт, кого потерял', finalSub:'Первые изменения - уже через 24–48 часов. Через неделю это будет не мысль, а факт.', finalCta:'Хочу, чтобы он пожалел',
+    footerLine:'© 2026 back4heart. Все права защищены.', footerTerms:'Условия использования', footerPrivacy:'Политика конфиденциальности', footerOffer:'Публичная оферта',
+    footerContact:'Вопросы? Пиши в Telegram:', payNote:'Оплатить можно картой, Apple Pay и Google Pay', faqContactText:'Не нашла ответ? Пиши в Telegram:',
+    trustGuaranteeTitle:'Гарантия возврата 7 дней', trustGuaranteeText:'Не подошло — вернём деньги в течение 7 дней, без лишних вопросов',
+    trustSecurityTitle:'Безопасная оплата', trustSecurityText:'SSL-шифрование 256 бит. Данные карты не хранятся на сайте',
+    trustOfferTitle:'Прозрачные условия', trustOfferText:'Все условия покупки — в <a href="#" id="offerLink" target="_blank" rel="noopener">публичной оферте</a>',
+    offerModalTitle:'Публичная оферта',
+    offerModalBody: `
+      <h3>1. Общие положения</h3>
+      <p>Настоящий документ является публичной офертой Романа Вейл, автора и владельца проекта back4heart (далее — «Продавец»), и содержит существенные условия договора на приобретение цифровых информационных продуктов, размещённых на сайте back4heart.site (далее — «Сайт»).</p>
+      <p>Оплата заказа на Сайте означает полное и безоговорочное принятие условий настоящей оферты (акцепт).</p>
+      <h3>2. Предмет договора</h3>
+      <p>Продавец предоставляет Покупателю доступ к выбранному и оплаченному цифровому продукту (аудиоурокам, PDF-материалам, записям вебинаров, персональному разбору ситуации), а Покупатель оплачивает его стоимость в порядке, установленном настоящей офертой.</p>
+      <h3>3. Порядок заказа и оплаты</h3>
+      <ol>
+        <li>Заказ оформляется на Сайте: Покупатель выбирает продукт и нажимает кнопку оплаты.</li>
+        <li>Оплата производится банковской картой, через Apple Pay или Google Pay с использованием платёжных систем Stripe, PayPal или WayForPay — в зависимости от региона Покупателя.</li>
+        <li>Доступ к материалам предоставляется автоматически на email, указанный при оплате, и/или высылается в Telegram в течение 24 часов после подтверждения оплаты.</li>
+      </ol>
+      <h3>4. Гарантия возврата средств</h3>
+      <p>Покупатель вправе отказаться от продукта и запросить полный возврат уплаченных денежных средств в течение 7 (семи) календарных дней с момента оплаты, если материалы не подошли по любой причине.</p>
+      <p>Для возврата средств нужно написать в Telegram: <a href="https://t.me/back4heart" target="_blank" rel="noopener">t.me/back4heart</a>, указав дату и способ оплаты. Возврат производится тем же способом, которым была произведена оплата, в течение 5–10 рабочих дней.</p>
+      <h3>5. Права на материалы</h3>
+      <p>Все материалы (аудио, тексты, PDF) являются объектом интеллектуальной собственности Продавца и предоставляются Покупателю исключительно для личного использования. Копирование, распространение, публикация и передача материалов третьим лицам без письменного согласия Продавца запрещены.</p>
+      <h3>6. Ограничение ответственности</h3>
+      <p>Материалы Сайта носят информационный и образовательный характер и не являются медицинской, психиатрической или психотерапевтической помощью. Продавец не является практикующим психологом или врачом. Результаты применения методик индивидуальны — Продавец не гарантирует конкретного результата, включая возобновление отношений.</p>
+      <p>При наличии признаков депрессии, суицидальных мыслей или иных серьёзных состояний психического здоровья необходимо обратиться за очной помощью к квалифицированному специалисту.</p>
+      <h3>7. Обработка персональных данных</h3>
+      <p>Оплачивая заказ, Покупатель даёт согласие на обработку своих персональных данных (имя, email, Telegram) в объёме, необходимом для исполнения заказа и связи с Покупателем. Данные не передаются третьим лицам, за исключением платёжных систем, обрабатывающих оплату.</p>
+      <h3>8. Безопасность платежей</h3>
+      <p>Оплата на Сайте производится через сертифицированных платёжных провайдеров (Stripe, PayPal, WayForPay), которые соответствуют стандарту безопасности PCI DSS. Соединение защищено SSL-шифрованием с длиной ключа 256 бит. Сайт back4heart.site не получает и не хранит данные банковских карт Покупателя — все платёжные данные вводятся непосредственно на защищённой странице платёжного провайдера.</p>
+      <h3>9. Прочие условия</h3>
+      <p>Продавец вправе вносить изменения в настоящую оферту в одностороннем порядке. Актуальная редакция всегда доступна на Сайте. Вопросы, не урегулированные офертой, решаются путём переговоров через Telegram.</p>
+      <h3>10. Контакты</h3>
+      <p>Продавец: Роман Вейл, проект back4heart<br>Сайт: back4heart.site<br>Telegram: <a href="https://t.me/back4heart" target="_blank" rel="noopener">t.me/back4heart</a></p>
+      <!-- ROMAN: впиши сюда официальные реквизиты (ФИО/ИП/самозанятый, ИНН, юр. адрес) — без них оферта не имеет полной юридической силы. Перед публикацией рекомендуем показать документ юристу. -->
+      <p class="offer-date">Дата последнего обновления: 9 июля 2026 г.</p>
+    `,
+    tgContactText:'Остались вопросы? Пиши в Telegram.', tgBtnText:'Написать в Telegram',
+    painTags:['Заходишь к нему на страницу по десятому разу за день?','Стыдно за сообщения, которые писала после расставания?','У него уже кто-то есть?','Ждёшь уведомление, которое не приходит?','Хочешь, чтобы он наконец пожалел?'],
+    mindreadLabel:'Я точно знаю, что ты делаешь прямо сейчас',
+    mindreadText:'Проверяешь, когда он последний раз был в сети, по триста раз в сутки. Заходишь к нему в профиль с фейка, чтобы не спалиться. Мысленно споришь с ним, договариваешь то, что не успела сказать вслух. А потом стыдно, что снова сорвалась. Через это проходят все - и после интенсива все из этого выходят.',
+    spotsLeft:'Беру только 20 человек в месяц — каждый кейс разбираю лично',
+    excludeEyebrow:'Если честно', excludeH2:'Кому это НЕ подходит',
+    excludeText:'Ищешь утешение, разговоры про то, что время лечит, и подтверждение, что само пройдет? Закрывай вкладку, это не сюда. Здесь - для тех, кто хочет избавиться от стыда за прошлые сообщения и унижения, вернуть себе лицо и сделать так, чтобы  жалел он. Без писанины по 40 минут в день и работы с психотерапевтом на полгода вперёд.',
+    happensEyebrow:'Что происходит, когда действуешь правильно', happensH2:'У него случается когнитивный диссонанс.',
+    caseEyebrow:'Реальные ситуации', caseH2:'Три истории — от «он ушёл» до «он вернулся»',
+    case1Name:'Марина <span>· 43 года</span>',
+    case1Label1:'Было', case1Text1:'Муж ушёл к коллеге после 12 лет брака. Марина 2 месяца писала ему каждый день, извинялась, умоляла вернуться. Он читал и не отвечал. Она похудела на 8 кг, не спала, проверяла его страницу каждые 20 минут.',
+    case1Label2:'Сделала', case1Text2:'Прошла интенсив. На 2-й день перестала писать. На 4-й день убрала его из закладок. На 6-й день выложила фото с подругами (по инструкции из урока «Демонстрация»).',
+    case1Label3:'Стало', case1Text3:'На 9-й день он написал: «Как ты?». Она не ответила 2 дня (по стратегии из урока 6). Он написал ещё раз. Через месяц попросил о встрече. Марина встретилась — но уже с другой позиции. Сейчас они общаются, но на ЕЁ условиях.',
+    case2Name:'Алёна <span>· 37 лет</span>',
+    case2Label1:'Было', case2Text1:'Парень бросил после 3 лет отношений. Сказал «я тебя не люблю». Через неделю выложил фото с другой. Алёна рыдала сутками, написала ему 40+ сообщений за одну ночь. Он заблокировал.',
+    case2Label2:'Сделала', case2Text2:'Начала интенсив в состоянии «мне нечего терять». Урок 1 — перестала заходить на его страницу (техника «Стоп-кран»). Урок 3 — поняла, что новая девушка не угроза, а триггер для его сомнений. Урок 5 — полностью сменила подачу в соцсетях.',
+    case2Label3:'Стало', case2Text3:'Через 3 недели он разблокировал её и написал с нового аккаунта. Алёна не стала возвращаться — но перестала страдать. Говорит: «Мне впервые за 3 месяца не больно. И мне плевать, напишет он или нет».',
+    case3Name:'Ирина <span>· 51 год</span>',
+    case3Label1:'Было', case3Text1:'Муж ушёл после 22 лет брака. Двое взрослых детей. Ирина чувствовала, что жизнь закончилась. Стыдилась рассказать подругам. Думала: «В моём возрасте уже поздно что-то менять». Проверяла его онлайн по 50 раз в день.',
+    case3Label2:'Сделала', case3Text2:'Прошла интенсив + взяла личный разбор. Главный инсайт: «Я 22 года была удобной — и именно поэтому он решил, что может уйти без последствий». Применила стратегию из уроков 4–6.',
+    case3Label3:'Стало', case3Text3:'Муж начал звонить через 2 недели — сначала «по делу» (дети, документы), потом всё чаще без повода. Через 2 месяца предложил «попробовать снова». Ирина согласилась — но с условиями, которые раньше не посмела бы озвучить.',
+    happens1:'Начинает думать о тебе', happens2:'Проверяет твои соцсети', happens3:'Начинает жалеть о том, что упустил', happens4:'Сам ищет повод написать или встретиться', happens5:'А у тебя перестаёт болеть, и ты чувствуешь превосходство',
+    authorH2:'Человек, который реально понимает, как думают мужчины',
+    authorP1:'<b>Меня зовут Роман.</b> 7 лет изучал поведенческую психологию и стратегии влияния — не в университете, а на практике: в продажах, переговорах и личных отношениях.',
+    authorP2:'Прошёл более 12 программ по НЛП, когнитивно-поведенческим техникам и эриксоновскому гипнозу у частных практиков.',
+    authorP3:'Начал помогать женщинам случайно — подруга попросила совет после развода. Потом её подруга. Потом ещё одна. За 4 года через меня прошло больше 2000 ситуаций.',
+    authorP4:'Я вижу паттерны, которые повторяются в 90% случаев. Я — тот, кто знает, как думают мужчины, потому что я один из них.',
+    authorQuote:'«Я знаю, что работает — потому что видел это тысячи раз.»',
+    authorStatLbl:'разобранных женских ситуаций за 4 года',
+    testi4Text:'«Убрала все его фото из архива и перестала ставить лайки. Через неделю он лайкнул мой старый пост 2022 года. Даже не знаю, зачем он туда долистал.»', testi4Who:'Лена, 49',
+    testi5Text:'«Раньше я первая писала "доброе утро". Теперь первым пишет он - и мне уже не так срочно отвечать.»', testi5Who:'Юля, 43',
+    testi6Text:'«После прохождения интенсива, на шестой он спросил у общих знакомых, всё ли у меня хорошо. Методика работает»', testi6Who:'Диана, 38',
+    testi7Badge:'Он сам вышел на контакт', testi7Text:'«Через 4 дня написал "привет, как ты?".»', testi7Who:'Марина, 40',
+    testi8Badge:'3 месяца бегала, ждала, умоляла. ', testi8Text:'«А теперь пишет он первым, почти каждое утро цветы.»', testi8Who:'Света, 47',
+    testi9Badge:'Мы снова вместе', testi9Text:'«Через месяц он сам предложил встретиться. Он что-то чувствует.»', testi9Who:'Аня, 51',
+    showMoreBtn1:'Показать ещё отзывы', showMoreBtn2:'Показать ещё отзывы', showMoreBtnDone:'Все отзывы показаны',
+    stickyLabel:'Начни сегодня', stickySub:'7 дней · доступ навсегда', stickyCta:'Получить доступ'
+  },
+  ua: {
+    lang:'uk', htmlTitle:'БЕУшний ще пошкодує - аудіоінтенсив 7 днів | back4heart',
+    metaDesc:'7 днів, щоб він усвідомив, кого втратив. Аудіоінтенсив для тих, хто обирає тріумф, а не смирення.',
+    navCta:'Отримати доступ',
+    heroEyebrow:'Аудіоінтенсив · 7 днів · закритий доступ',
+    heroH1:'Б/У ще <em>пошкодує</em>',
+    heroSub:'За 7 днів він зрозуміє, кого втратив. Це не про «відпусти й живи далі» - тут інше. У нього залишиться питання, що взагалі пішло не так.',
+    heroCta:'Хочу свої 7 днів',
+    heroNote:'Аудіоформат · 15–20 хвилин на день · доступ назавжди',
+    scrollHint:'Гортай',
+    secretEyebrow:'Інформація не для широкого загалу',
+    secretH2:'Це система, про яку мовчать психологи',
+    secretText:'Психологи продають тобі роки роботи над собою, тому що так працює їхній бізнес. Я - інше. Техніки, які я збирав, - це те, що справді працює. Лише ті методики, які допомогли сотням людей у схожих ситуаціях. Працюють швидко й не завжди «екологічно» щодо колишнього.',
+    tgWidgetText:'Запитати в Telegram',
+    exitEyebrow:'Зачекай', exitH3:'Не готова на інтенсив цілком?',
+    exitText:'Тримай 1-й день безкоштовно - спробуй техніку, яка вже за добу прибирає бажання стежити за його сторінкою та позбавляє нав’язливих думок.',
+    exitCta:'Отримати 1-й день безкоштовно',
+    painEyebrow:'Впізнаєш себе?', painH2:'Ти віддаєш йому те, чого він давно не заслуговує',
+    pain1Mark:'По триста разів на день', pain1Text:'заходиш у його профіль. Іноді з фейкового акаунта, щоб не спалитися. Шукаєш там доказ, що йому так само погано, як і тобі. Його там немає.',
+    pain2Mark:'Соромно згадати', pain2Text:'скільки разів писала першою, вибачалася за те, в чому не була винна, благала відповісти. Він досі цим користується.',
+    pain3Mark:'А якщо в нього вже хтось є', pain3Text:'всередині все обривається. Здається, що це все і ти програла. Насправді це майже нічого не змінює - якщо знаєш, що робити.',
+    promiseQuote:'«Давай вилікуємо твоє розбите серце.<br>А заразом зробимо так, щоб розбитим було не лише твоє. І для цього потрібно 7 днів, а не роки.»',
+    modulesEyebrow:'Що всередині', modulesH2:'7 днів. 7 зміщень балансу',
+    modulesDesc:'Щодня новий урок, хвилин на 15-20. Навушники, дорога на роботу чи обід - де завгодно. Без зошитів і домашки, тільки те, що реально працює. І так, думки про нього по колу та ця емоційна залежність зникнуть. У цей інтенсив включено 3 авторські техніки боротьби з нав’язливими думками та цифровою залежністю. Ти перестанеш стежити за ним.',
+    mod1Title:'Перший удар', mod1Desc:'Розбираємо, кого ти з нього виліпила у своїй голові. Спойлер: цей образ пора зносити першим.',
+    mod2Title:'Стоп-біль', mod2Desc:'Техніки, які знімають біль, Техніки "вимкнення нав\u2019язливих думок", прибирають бажання перевіряти його онлайн. Працює вже з першого дня.',
+    mod3Title:'Тінь', mod3Desc:'Як бути непомітною - і саме тому застрягти в нього в голові намертво.',
+    mod4Title:'Демонстрація', mod4Desc:'Та версія тебе, яку він не бачив ніколи.',
+    mod5Title:'Дзеркало', mod5Desc:'Перевертаємо з голови на ноги: покинутим на цьому фоні відчує себе він, а не ти.',
+    mod6Title:'Розрив шаблону', mod6Desc:'Що робити, коли він напише. Як поводитися, коли він вирішить знову з’явитися. Ми дамо зрозуміти, що ти більше не та «зручна» дівчинка, яка чекатиме на нього, як собачка.',
+    mod7Title:'Життя після', mod7Desc:'Підсумки. Як залишитися в цій позиції надовго. Тепер ти господиня свого життя. Коли він приповзе, ти дивитимешся на це зовсім іншими очима.',
+    mod8Title:'Позбавлення від болю', mod8Desc:'Бонусний урок із вправами й техніками, які прибирають нав’язливі думки про нього. Що робити в моменті, коли накриває, - конкретні вправи та техніки, а не «просто відволікись».',
+    sealCaption:'Далі - те, про що зазвичай мовчать. Для тих, хто вже готовий цим користуватися.',
+    testiEyebrow:'Вже пройшли це', testiH2:'Їй теж здавалося, що вона все зіпсувала', ratingText:'4.9 з 5 · 340+ відгуків',
+    testi1Text:'«Перестала прокручувати думки про нього на третій день. На п\u2019ятий - він сам написав "як справи?".»', testi1Who:'Настя, 46',
+    testi2Text:'«Не відповідала на його "вибач" три дні. Він написав ще двічі. Вперше в житті чекала не я його, а він мене.»', testi2Who:'Оля, 51',
+    testi3Text:'«Мені було страшно перестати думати про нього - здавалося, що тоді він мене забуде. Цей гад завів нові стосунки вже через місяць після того, як пішов. Я думала - усе скінчено. Але коли він написав утретє, зрозуміла, що ситуація змінилася вже не на його користь.»', testi3Who:'Крістіна, 54',
+    pricingEyebrow:'Доступ', pricingH2:'Обери, наскільки глибоко ти готова зайти',
+    planBasicName:'Інтенсив', planBasicDesc:'7 аудіоуроків по 15–20 хвилин + 3 авторські техніки. Перша техніка прибирає бажання перевіряти його сторінку вже в першу добу. До 7-го дня ти будеш у позиції, з якої він не зможе тебе ігнорувати.', planBasicNote:'одноразовий платіж',
+    planBasicLi1:'7 аудіоуроків, 15–20 хвилин на день', planBasicLi2:'Доступ назавжди, слухай у своєму темпі', planBasicLi3:'Слухай хоч з телефону, хоч з ноутбука', planBasicBtn:'Взяти інтенсив',
+    planCircleBadge:'Найпопулярніший', planCircleName:'Інтенсив + практикум «Про жінку, яка закохує назавжди»', planCircleDesc:'Курс плюс практикум про те, як стати тією, в кого закохуються раз і назавжди - без ігор і гонитви.', planCircleNote:'одноразовий платіж',
+    planCircleLi1:'Все з тарифу «Інтенсив»', planCircleLi2:'Практикум «Про жінку, яка закохує назавжди»', planCircleLi3:'Робочі техніки, які роблять тебе тією людиною, яку не відпускають', planCircleBtn:'Оплатити',
+    planPersonalName:'Інтенсив + Особистий розбір', planPersonalDesc:'Курс плюс розбір саме твоєї ситуації.', planPersonalNote:'одноразовий платіж',
+    planPersonalLi1:'Все з тарифу «Інтенсив»', planPersonalLi2:'Конкретний розбір твоєї ситуації', planPersonalLi3:'Конкретні кроки для тебе', planPersonalBtn:'Отримати розбір',
+    urgencyEyebrow:'Обмежений доступ', urgencyH3:'Набір закривається в неділю', urgencyCta:'Встигнути потрапити в потік',
+    urgencySub:'Новий потік стартує щотижня. Встигни почати до закриття поточного набору.',
+    faqEyebrow:'Питання', faqH2:'Перш ніж почати',
+    faqQ1:'Скільки часу це займе?', faqA1:'15-20 хвилин на день, сім днів поспіль. Можна слухати по дорозі на роботу, під час готування, перед сном - життя на паузу ставити не доведеться.',
+    faqQ2:'Ми розлучилися давно, мені підійде?', faqA2:'Так, підійде. Тут не важливо, скільки минуло часу - важливо, в якій точці ти перебуваєш зараз, стосовно себе і стосовно нього.',
+    faqQ3:'А якщо він не напише?', faqA3:'У 95 % випадків колишній виходить на зв’язок у перший місяць.',
+    faqQ4:'Доступ буде назавжди?', faqA4:'Так. Уроки залишаються з тобою назавжди, переслуховуй, коли захочеш.',
+    faqQ5:'Це анонімно?', faqA5:'Так, на всі сто. Все приходить на пошту, жодних публічних відміток і підтверджень.',
+    faqQ6:'Не виходить оплатити, що робити?', faqA6:'Таке іноді трапляється через банк або регіон. Просто напиши мені в Telegram - розберемося разом і підберемо зручний спосіб оплати, без втрати часу.',
+    faqQ7:'Чому так дешево?', faqA7:'Після розлучення жінка часто опиняється у складному матеріальному становищі - і це останнє, через що я хочу, щоб хтось залишився без підтримки. Тому я свідомо тримаю ціну мінімальною: важливіше, щоб якомога більше жінок отримали ці знання і змогли пройти крізь розставання з меншим болем, ніж заробити на цьому по максимуму.',
+    finalEyebrow:'Рішення за тобою', finalH2:'Уяви його обличчя, коли він зрозуміє, кого втратив', finalSub:'Через тиждень це буде вже не думка, а факт.', finalCta:'Почати свої 7 днів',
+    footerLine:'© 2026 back4heart. Усі права захищені.', footerTerms:'Умови використання', footerPrivacy:'Політика конфіденційності', footerOffer:'Публічна оферта',
+    footerContact:'Питання? Пиши в Telegram:', payNote:'Оплатити можна карткою, Apple Pay та Google Pay', faqContactText:'Не знайшла відповідь? Пиши в Telegram:',
+    trustGuaranteeTitle:'Гарантія повернення 7 днів', trustGuaranteeText:'Не підійшло — повернемо гроші протягом 7 днів, без зайвих запитань',
+    trustSecurityTitle:'Безпечна оплата', trustSecurityText:'SSL-шифрування 256 біт. Дані картки не зберігаються на сайті',
+    trustOfferTitle:'Прозорі умови', trustOfferText:'Усі умови покупки — у <a href="#" id="offerLink" target="_blank" rel="noopener">публічній оферті</a>',
+    offerModalTitle:'Публічна оферта',
+    offerModalBody: `
+      <h3>1. Загальні положення</h3>
+      <p>Цей документ є публічною офертою Романа Вейл, автора та власника проєкту back4heart (далі — «Продавець»), і містить істотні умови договору на придбання цифрових інформаційних продуктів, розміщених на сайті back4heart.site (далі — «Сайт»).</p>
+      <p>Оплата замовлення на Сайті означає повне і беззастережне прийняття умов цієї оферти (акцепт).</p>
+      <h3>2. Предмет договору</h3>
+      <p>Продавець надає Покупцю доступ до обраного й оплаченого цифрового продукту (аудіоуроків, PDF-матеріалів, записів вебінарів, особистого розбору ситуації), а Покупець оплачує його вартість у порядку, встановленому цією офертою.</p>
+      <h3>3. Порядок замовлення та оплати</h3>
+      <ol>
+        <li>Замовлення оформлюється на Сайті: Покупець обирає продукт і натискає кнопку оплати.</li>
+        <li>Оплата здійснюється банківською карткою, через Apple Pay або Google Pay з використанням платіжних систем Stripe, PayPal або WayForPay — залежно від регіону Покупця.</li>
+        <li>Доступ до матеріалів надається автоматично на email, вказаний під час оплати, та/або надсилається в Telegram протягом 24 годин після підтвердження оплати.</li>
+      </ol>
+      <h3>4. Гарантія повернення коштів</h3>
+      <p>Покупець має право відмовитися від продукту та запросити повне повернення сплачених коштів протягом 7 (семи) календарних днів з моменту оплати, якщо матеріали не підійшли з будь-якої причини.</p>
+      <p>Для повернення коштів потрібно написати в Telegram: <a href="https://t.me/back4heart" target="_blank" rel="noopener">t.me/back4heart</a>, вказавши дату та спосіб оплати. Повернення здійснюється тим самим способом, яким було проведено оплату, протягом 5–10 робочих днів.</p>
+      <h3>5. Права на матеріали</h3>
+      <p>Усі матеріали (аудіо, тексти, PDF) є об'єктом інтелектуальної власності Продавця і надаються Покупцю виключно для особистого використання. Копіювання, поширення, публікація та передача матеріалів третім особам без письмової згоди Продавця заборонені.</p>
+      <h3>6. Обмеження відповідальності</h3>
+      <p>Матеріали Сайту мають інформаційний та освітній характер і не є медичною, психіатричною чи психотерапевтичною допомогою. Продавець не є практикуючим психологом чи лікарем. Результати застосування методик індивідуальні — Продавець не гарантує конкретного результату, включно з відновленням стосунків.</p>
+      <p>За наявності ознак депресії, суїцидальних думок або інших серйозних станів психічного здоров'я необхідно звернутися по очну допомогу до кваліфікованого фахівця.</p>
+      <h3>7. Обробка персональних даних</h3>
+      <p>Оплачуючи замовлення, Покупець надає згоду на обробку своїх персональних даних (ім'я, email, Telegram) в обсязі, необхідному для виконання замовлення та зв'язку з Покупцем. Дані не передаються третім особам, за винятком платіжних систем, що обробляють оплату.</p>
+      <h3>8. Безпека платежів</h3>
+      <p>Оплата на Сайті здійснюється через сертифіковані платіжні системи (Stripe, PayPal, WayForPay), які відповідають стандарту безпеки PCI DSS. З'єднання захищене SSL-шифруванням з довжиною ключа 256 біт. Сайт back4heart.site не отримує і не зберігає дані банківських карток Покупця — усі платіжні дані вводяться безпосередньо на захищеній сторінці платіжного провайдера.</p>
+      <h3>9. Інші умови</h3>
+      <p>Продавець має право вносити зміни до цієї оферти в односторонньому порядку. Актуальна редакція завжди доступна на Сайті. Питання, не врегульовані офертою, вирішуються шляхом переговорів через Telegram.</p>
+      <h3>10. Контакти</h3>
+      <p>Продавець: Роман Вейл, проєкт back4heart<br>Сайт: back4heart.site<br>Telegram: <a href="https://t.me/back4heart" target="_blank" rel="noopener">t.me/back4heart</a></p>
+      <!-- ROMAN: впиши сюди офіційні реквізити (ПІБ/ФОП, ІПН, юр. адреса) — без них оферта не має повної юридичної сили. Перед публікацією рекомендуємо показати документ юристу. -->
+      <p class="offer-date">Дата останнього оновлення: 9 липня 2026 р.</p>
+    `,
+    tgContactText:'Залишились питання? Пиши в Telegram - відповідаю особисто.', tgBtnText:'Написати в Telegram',
+    painTags:['Він ігнорує повідомлення?','Заблокував у соцмережах?','Сказав, що почуття охололи?','Він вже звикає жити без тебе','Що не день ви стаєте для нього дальші'],
+    mindreadLabel:'Я точно знаю, що ти робиш просто зараз',
+    mindreadText:'Перевіряєш, коли він востаннє був у мережі, по триста разів на добу. Передивляєшся сторіз, хоча там нема на що дивитися. Заходиш до нього в профіль із фейка, щоб не спалитися. Чекаєш сповіщення, яке не приходить уже котрий тиждень. Через це проходять майже всі.',
+    spotsLeft:'Беру лише 20 людей на місяць - кожен кейс розбираю особисто',
+    excludeEyebrow:'Чесно кажучи', excludeH2:'Кому це НЕ підходить',
+    excludeText:'Шукаєш втіху, розмови про те, що час лікує, і підтвердження, що все минеться само собою? Закривай цю вкладку - тобі не сюди. Тут - для тих, хто хоче позбутися сорому за минулі повідомлення й приниження, повернути собі гідність і зробити так, щоб шкодував він. Без написування по 40 хвилин на день і без пів року психотерапії.',
+    happensEyebrow:'Що відбувається, коли діяти правильно', happensH2:'У нього виникає когнітивний дисонанс.',
+    caseEyebrow:'Реальні ситуації', caseH2:'Три історії — від «він пішов» до «він повернувся»',
+    case1Name:'Марина <span>· 43 роки</span>',
+    case1Label1:'Було', case1Text1:'Чоловік пішов до колеги після 12 років шлюбу. Марина 2 місяці писала йому щодня, вибачалася, благала повернутися. Він читав і не відповідав. Вона схудла на 8 кг, не спала, перевіряла його сторінку кожні 20 хвилин.',
+    case1Label2:'Зробила', case1Text2:'Пройшла інтенсив. На 2-й день перестала писати. На 4-й день прибрала його із закладок. На 6-й день виклала фото з подругами (за інструкцією з уроку «Демонстрація»).',
+    case1Label3:'Стало', case1Text3:'На 9-й день він написав: «Як ти?». Вона не відповіла 2 дні (за стратегією з уроку 6). Він написав ще раз. Через місяць попросив про зустріч. Марина зустрілася — але вже з іншої позиції. Зараз вони спілкуються, але на ЇЇ умовах.',
+    case2Name:'Альона <span>· 37 років</span>',
+    case2Label1:'Було', case2Text1:'Хлопець кинув після 3 років стосунків. Сказав «я тебе не кохаю». Через тиждень виклав фото з іншою. Альона ридала добами, написала йому 40+ повідомлень за одну ніч. Він заблокував.',
+    case2Label2:'Зробила', case2Text2:'Почала інтенсив у стані «мені нічого втрачати». Урок 1 — перестала заходити на його сторінку (техніка «Стоп-кран»). Урок 3 — зрозуміла, що нова дівчина не загроза, а тригер для його сумнівів. Урок 5 — повністю змінила подачу в соцмережах.',
+    case2Label3:'Стало', case2Text3:'Через 3 тижні він розблокував її і написав з нового акаунта. Альона не стала повертатися — але перестала страждати. Каже: «Мені вперше за 3 місяці не боляче. І мені байдуже, напише він чи ні».',
+    case3Name:'Ірина <span>· 51 рік</span>',
+    case3Label1:'Було', case3Text1:'Чоловік пішов після 22 років шлюбу. Двоє дорослих дітей. Ірина відчувала, що життя закінчилося. Соромилася розповісти подругам. Думала: «У моєму віці вже пізно щось змінювати». Перевіряла його онлайн по 50 разів на день.',
+    case3Label2:'Зробила', case3Text2:'Пройшла інтенсив + взяла особистий розбір. Головний інсайт: «Я 22 роки була зручною — і саме тому він вирішив, що може піти без наслідків». Застосувала стратегію з уроків 4–6.',
+    case3Label3:'Стало', case3Text3:'Чоловік почав дзвонити через 2 тижні — спочатку «у справах» (діти, документи), потім дедалі частіше без приводу. Через 2 місяці запропонував «спробувати знову». Ірина погодилася — але з умовами, які раніше не наважилася б озвучити.',
+    happens1:'Починає думати про тебе', happens2:'Перевіряє твої соцмережі', happens3:'Починає присилати подарунки та квіти', happens4:'Сам шукає привід написати або зустрітись', happens5:'А в тебе перестає боліти, і ти відчуваєш перевагу',
+    authorH2:'Людина, яка реально розуміє, як думають чоловіки',
+    authorP1:'<b>Мене звати Роман.</b> Я допоміг більше 2000 жінок - і майже всі стали щасливішими.',
+    authorP2:'Тільки робочі методики. Тільки те, що перевірено на реальних ситуаціях.',
+    authorP3:'Бачив десятки пар, які розходились і потім знову сходилися. Знаю, що тут реально працює, а що ні.',
+    authorP4:'Щодня розбираю нові випадки і бачу закономірності, які не видно збоку.',
+    authorQuote:'«Я бачив це тисячі разів, тому знаю, як допомогти. Ти далеко не одна.»',
+    authorStatLbl:'жінок, що повернули стосунки',
+    testi4Text:'«Прибрала всі його фото з історії і перестала ставити лайки. Через тиждень він лайкнув мій старий пост 2022 року. Навіть не знаю, навіщо він туди долистав.»', testi4Who:'Олена, 49',
+    testi5Text:'«Раніше я першою писала "доброго ранку". Тепер першим пише він - і мені вже не так кортить відповідати одразу.»', testi5Who:'Юля, 43',
+    testi6Text:'«Після проходження інтенсиву на шостий день він запитав у наших спільних знайомих, чи все в мене добре. Методика працює.»', testi6Who:'Діана, 48',
+    testi7Badge:'Він сам вийшов на контакт', testi7Text:'«Через 4 дні написав "привіт, як ти?".»', testi7Who:'Марина, 40',
+    testi8Badge:'3 місяці бігала, чекала, благала.', testi8Text:'«А тепер першим пише він, майже щоранку. Квіти.»', testi8Who:'Світлана, 47',
+    testi9Badge:'Ми знову разом', testi9Text:'«Через місяць він сам запропонував зустрітися. Він щось відчуває.»', testi9Who:'Аня, 51',
+    showMoreBtn1:'Показати ще відгуки', showMoreBtn2:'Показати ще відгуки', showMoreBtnDone:'Усі відгуки показано',
+    stickyLabel:'Почни сьогодні', stickySub:'7 днів · доступ назавжди', stickyCta:'Отримати доступ'
+  }
+};
+
+/* ==================== PRICING ==================== */
+const PRICING = {
+  intl: {
+    basic:{ fmt:()=>`<sup>$</sup>9.99`, oldFmt:()=>`$47` },
+    circle:{ fmt:()=>`<sup>$</sup>14.99`, oldFmt:()=>`$89` },
+    personal:{ fmt:()=>`<sup>$</sup>49.99`, oldFmt:()=>`$149` }
+  },
+  ua: {
+    basic:{ fmt:()=>`399<span class="cur">грн</span>`, oldFmt:()=>`1490 грн` },
+    circle:{ fmt:()=>`664<span class="cur">грн</span>`, oldFmt:()=>`2490 грн` },
+    personal:{ fmt:()=>`1999<span class="cur">грн</span>`, oldFmt:()=>`5990 грн` }
+  },
+  ru: {
+    basic:{ fmt:()=>`1169<span class="cur">₽</span>`, oldFmt:()=>`3490 ₽` },
+    circle:{ fmt:()=>`2104<span class="cur">₽</span>`, oldFmt:()=>`6490 ₽` },
+    personal:{ fmt:()=>`7795<span class="cur">₽</span>`, oldFmt:()=>`19990 ₽` }
+  }
+};
+
+/* ==================== COMBO PRICES ====================
+   basic    -> Интенсив
+   circle   -> Интенсив + разбор «Почему он ушёл» (самый популярный)
+   personal -> Интенсив + личный разбор */
+const COMBO_PRICES = {
+  intl: { basic: 9.99, circle: 14.99, personal: 49.99 },
+  ua:   { basic: 399,  circle: 664,   personal: 1999 }
+};
+
+/* ==================== PAYMENT LINKS ====================
+   Ukraine (by IP)   -> WayForPay only
+   Russia (by IP)    -> Tribute only (single button)
+   Kazakhstan (by IP)-> Stripe + PayPal (two buttons)
+   Everyone else     -> PayPal only */
+const LINKS = {
+  ua: {
+    basic:    'https://secure.wayforpay.com/button/bd79c278fab86',
+    circle:   'https://secure.wayforpay.com/button/b94dd4cd56518',
+    personal: 'https://secure.wayforpay.com/button/baaf391f3c4bf'
+  },
+  tribute: {
+    basic:    'https://web.tribute.tg/p/zK6',
+    circle:   'https://web.tribute.tg/p/zK9',
+    personal: 'https://web.tribute.tg/p/zKa'
+  },
+  intl: {
+    stripe: {
+      basic:    'https://buy.stripe.com/6oUbJ30QifWh2xceBa3ZK0k',
+      circle:   'https://buy.stripe.com/8x2bJ3aqSh0lfjY78I3ZK0j',
+      personal: 'https://buy.stripe.com/3cI6oJ8iK8tP8VA50A3ZK0l'
+    },
+    paypal: {
+      basic:    'https://www.paypal.com/ncp/payment/TX4CSD6R5C2JQ',
+      circle:   'https://www.paypal.com/ncp/payment/L9MBPZRCTGFBG',
+      personal: 'https://www.paypal.com/ncp/payment/MZCJ6M5TM7X7W'
+    }
+  }
+};
+
+/* Determine which payment providers to use for the current visitor */
+function getPaymentMode(region){
+  if(region === 'ua') return 'wayforpay';
+  if(isRussia) return 'tribute_only';
+  if(isKazakhstan) return 'stripe_paypal';
+  return 'paypal';
+}
+
+/* Base numeric prices (kept for reference / legacy calls) */
+const PLAN_BASE = {
+  intl: { basic: 9.99, circle: 14.99, personal: 49.99 },
+  ua:   { basic: 399,  circle: 664,   personal: 1999 }
+};
+
+/* Determine combo key for a given .plan element (basic / circle / personal) */
+function getComboKey(planEl){
+  return planEl.getAttribute('data-tier');
+}
+
+/* Update a plan's payment button(s) href to match the current region + combo + provider mode */
+function updatePlanButtonHref(planEl, region){
+  const btn = planEl.querySelector('.plan-btn');
+  const secondary = planEl.querySelector('.pay-secondary');
+  const tertiary = planEl.querySelector('.pay-tertiary');
+  const combo = getComboKey(planEl);
+  const mode = getPaymentMode(region);
+
+  if(mode === 'wayforpay'){
+    if(btn){ btn.setAttribute('href', LINKS.ua[combo] || '#'); btn.setAttribute('data-combo', combo); }
+    if(secondary) secondary.style.display = 'none';
+    if(tertiary) tertiary.style.display = 'none';
+  } else if(mode === 'tribute_only'){
+    if(btn){ btn.setAttribute('href', LINKS.tribute[combo] || '#'); btn.setAttribute('data-combo', combo); }
+    if(secondary) secondary.style.display = 'none';
+    if(tertiary) tertiary.style.display = 'none';
+  } else if(mode === 'stripe_paypal'){
+    if(btn){ btn.setAttribute('href', LINKS.intl.stripe[combo] || '#'); btn.setAttribute('data-combo', combo); }
+    if(secondary){
+      const ppHref = LINKS.intl.paypal[combo];
+      if(ppHref){
+        secondary.style.display = 'flex';
+        secondary.setAttribute('href', ppHref);
+        secondary.setAttribute('data-combo', combo);
+      } else {
+        secondary.style.display = 'none';
       }
-      render();
-      window.setInterval(render, 1000);
-    })();
+    }
+    if(tertiary) tertiary.style.display = 'none';
+  } else { // paypal only
+    if(btn){ btn.setAttribute('href', LINKS.intl.paypal[combo] || '#'); btn.setAttribute('data-combo', combo); }
+    if(secondary) secondary.style.display = 'none';
+    if(tertiary) tertiary.style.display = 'none';
+  }
+}
+function updateAllPlanButtonHrefs(region){
+  document.querySelectorAll('.plan').forEach(planEl => updatePlanButtonHref(planEl, region));
+}
+function formatMoney(region, amount){
+  if(region === 'intl') return '$' + (Math.round(amount*100)/100).toFixed(2).replace(/\.00$/, '');
+  return Math.round(amount) + ' грн';
+}
 
-    // Country is detected from IP using up to three providers in sequence.
-    (function () {
-      var prices = {
-        starter: { usd: 9.99, rub: 1169, uah: 399 },
-        full: { usd: 19.99, rub: 2104, uah: 799 },
-        personal: { usd: 59.99, rub: 3500, uah: 1999 }
-      };
-      var usdToKzt = 448.98;
-      var usdToByn = 2.9976;
+/* ==================== RENDER ==================== */
+function setText(id, val){ const el = document.getElementById(id); if(el) el.textContent = val; }
+function setHTML(id, val){ const el = document.getElementById(id); if(el) el.innerHTML = val; }
 
-      function roundedAmount(tier, country) {
-        var plan = prices[tier];
-        if (country === 'UA') return plan.uah;
-        if (country === 'RU') return plan.rub;
-        if (country === 'KZ') return Math.round(plan.usd * usdToKzt / 10) * 10;
-        if (country === 'BY') return Math.round(plan.usd * usdToByn * 100) / 100;
-        return plan.usd;
-      }
+function render(region){
+  const c = CONTENT[region];
+  document.getElementById('htmlRoot').setAttribute('lang', c.lang);
+  document.getElementById('pageTitle').textContent = c.htmlTitle;
+  document.getElementById('pageDesc').setAttribute('content', c.metaDesc);
 
-      function formatAmount(amount, country) {
-        if (country === 'UA') return new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 }).format(amount) + ' ₴';
-        if (country === 'RU') return new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 }).format(amount) + ' ₽';
-        if (country === 'KZ') return new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 0 }).format(amount) + ' ₸';
-        if (country === 'BY') return new Intl.NumberFormat('ru-RU', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(amount) + ' BYN';
-        return '$' + Number(amount).toFixed(2);
-      }
+  setText('navCta', c.navCta);
+  setText('heroEyebrow', c.heroEyebrow);
+  setHTML('heroH1', c.heroH1);
+  setHTML('heroSub', c.heroSub);
+  setText('heroCta', c.heroCta);
+  setText('heroNote', c.heroNote);
+  setText('scrollHint', c.scrollHint);
 
-      function render(country) {
-        var code = ['UA', 'RU', 'KZ', 'BY'].indexOf(country) >= 0 ? country : 'OTHER';
-        document.querySelectorAll('[data-price-tier]').forEach(function (node) {
-          var tier = node.getAttribute('data-price-tier');
-          if (prices[tier]) node.textContent = formatAmount(roundedAmount(tier, code), code);
-        });
-        var demoAnchor = document.querySelector('[data-demo-anchor="full"]');
-        if (demoAnchor) demoAnchor.textContent = formatAmount(roundedAmount('full', code) * 2, code);
-        document.querySelectorAll('[data-provider]').forEach(function (link) {
-          if (code === 'UA') link.hidden = link.dataset.provider !== 'wayforpay';
-          else if (code === 'RU') link.hidden = link.dataset.provider !== 'tribute';
-          else link.hidden = link.dataset.provider === 'wayforpay';
-        });
-      }
+  setText('secretEyebrow', c.secretEyebrow); setText('secretH2', c.secretH2); setText('secretText', c.secretText);
+  setText('tgWidgetText', c.tgWidgetText);
+  setText('exitEyebrow', c.exitEyebrow); setText('exitH3', c.exitH3); setText('exitText', c.exitText); setText('exitCta', c.exitCta);
+  setText('painEyebrow', c.painEyebrow); setText('painH2', c.painH2);
+  setText('pain1Mark', c.pain1Mark); setText('pain1Text', c.pain1Text);
+  setText('pain2Mark', c.pain2Mark); setText('pain2Text', c.pain2Text);
+  setText('pain3Mark', c.pain3Mark); setText('pain3Text', c.pain3Text);
 
-      async function fetchCountry(url, field) {
-        var controller = new AbortController();
-        var timeout = window.setTimeout(function () { controller.abort(); }, 2500);
-        try {
-          var response = await fetch(url, { signal: controller.signal, cache: 'no-store' });
-          if (!response.ok) throw new Error('Geo lookup failed');
-          var result = await response.json();
-          if (result.success === false) throw new Error('Geo lookup failed');
-          var code = result[field];
-          if (typeof code !== 'string' || code.length !== 2) throw new Error('Country code unavailable');
-          return code.toUpperCase();
-        } finally {
-          window.clearTimeout(timeout);
-        }
-      }
+  setHTML('promiseQuote', c.promiseQuote);
 
-      async function detectCountry() {
-        var code = null;
-        try {
-          code = await fetchCountry('https://ipapi.co/json/', 'country_code');
-        } catch (firstError) {
-          try { code = await fetchCountry('https://ipwho.is/', 'country_code'); }
-          catch (secondError) {
-            try { code = await fetchCountry('https://free.freeipapi.com/api/v1/json', 'countryCode'); }
-            catch (thirdError) { code = null; }
-          }
-        }
-        if (code) {
-          render(code);
-        } else {
-          render('OTHER');
-        }
-      }
+  setText('modulesEyebrow', c.modulesEyebrow); setText('modulesH2', c.modulesH2); setText('modulesDesc', c.modulesDesc);
+  for(let i=1;i<=8;i++){ setText('mod'+i+'Title', c['mod'+i+'Title']); setText('mod'+i+'Desc', c['mod'+i+'Desc']); }
 
-      detectCountry();
-    })();
-  </script>
+  setText('sealCaption', c.sealCaption);
 
-  
+  setText('testiEyebrow', c.testiEyebrow); setText('testiH2', c.testiH2); setText('ratingText', c.ratingText);
+  setText('testi1Text', c.testi1Text); setText('testi1Who', c.testi1Who);
+  setText('testi2Text', c.testi2Text); setText('testi2Who', c.testi2Who);
+  setText('testi3Text', c.testi3Text); setText('testi3Who', c.testi3Who);
+
+  setText('pricingEyebrow', c.pricingEyebrow); setText('pricingH2', c.pricingH2);
+
+  setText('planBasicName', c.planBasicName); setText('planBasicDesc', c.planBasicDesc); setText('planBasicNote', c.planBasicNote);
+  setText('planBasicLi1', c.planBasicLi1); setText('planBasicLi2', c.planBasicLi2); setText('planBasicLi3', c.planBasicLi3); setText('planBasicBtn', c.planBasicBtn);
+
+  const __featuredPlan = document.querySelector('.plan.featured'); if(__featuredPlan) __featuredPlan.setAttribute('data-badge', c.planCircleBadge);
+  setText('planCircleName', c.planCircleName); setText('planCircleDesc', c.planCircleDesc); setText('planCircleNote', c.planCircleNote);
+  setText('planCircleLi1', c.planCircleLi1); setText('planCircleLi2', c.planCircleLi2); setText('planCircleLi3', c.planCircleLi3); setText('planCircleBtn', c.planCircleBtn);
+
+  setText('planPersonalName', c.planPersonalName); setText('planPersonalDesc', c.planPersonalDesc); setText('planPersonalNote', c.planPersonalNote);
+  setText('planPersonalLi1', c.planPersonalLi1); setText('planPersonalLi2', c.planPersonalLi2); setText('planPersonalLi3', c.planPersonalLi3); setText('planPersonalBtn', c.planPersonalBtn);
+
+  setText('urgencyEyebrow', c.urgencyEyebrow); setText('urgencyH3', c.urgencyH3); setText('urgencyCta', c.urgencyCta);
+  setText('urgencySub', c.urgencySub);
+
+  setText('faqEyebrow', c.faqEyebrow); setText('faqH2', c.faqH2);
+  for(let i=1;i<=7;i++){ setText('faqQ'+i, c['faqQ'+i]); setText('faqA'+i, c['faqA'+i]); }
+
+  setText('finalEyebrow', c.finalEyebrow); setText('finalH2', c.finalH2); setText('finalSub', c.finalSub); setText('finalCta', c.finalCta);
+  setText('footerLine', c.footerLine); setText('footerTerms', c.footerTerms); setText('footerPrivacy', c.footerPrivacy); setText('footerOffer', c.footerOffer);
+  setText('footerContact', c.footerContact); setText('faqContactText', c.faqContactText);
+  setText('tgContactText', c.tgContactText); setText('tgBtnText', c.tgBtnText);
+  setText('trustGuaranteeTitle', c.trustGuaranteeTitle); setText('trustGuaranteeText', c.trustGuaranteeText);
+  setText('trustSecurityTitle', c.trustSecurityTitle); setText('trustSecurityText', c.trustSecurityText);
+  setText('trustOfferTitle', c.trustOfferTitle); setHTML('trustOfferText', c.trustOfferText);
+  setText('offerModalTitle', c.offerModalTitle); setHTML('offerModalBody', c.offerModalBody);
+
+  // pain tags
+  const painTagsEl = document.getElementById('painTags');
+  painTagsEl.innerHTML = c.painTags.map(t => `<span class="pain-tag">${t}</span>`).join('');
+  setText('mindreadLabel', c.mindreadLabel); setText('mindreadText', c.mindreadText);
+
+  // exclusion / qualifier block
+  setText('excludeEyebrow', c.excludeEyebrow); setText('excludeH2', c.excludeH2); setText('excludeText', c.excludeText);
+
+  // scarcity (personal plan only — honest monthly quota, not a fake counter)
+  setText('spotsLeft', c.spotsLeft);
+
+  // what-happens block
+  setText('happensEyebrow', c.happensEyebrow); setText('happensH2', c.happensH2);
+  setText('caseEyebrow', c.caseEyebrow); setText('caseH2', c.caseH2);
+  setHTML('case1Name', c.case1Name); setHTML('case2Name', c.case2Name); setHTML('case3Name', c.case3Name);
+  for(let i=1;i<=3;i++){
+    for(let j=1;j<=3;j++){
+      setText('case'+i+'Label'+j, c['case'+i+'Label'+j]);
+      setText('case'+i+'Text'+j, c['case'+i+'Text'+j]);
+    }
+  }
+  setText('happens1', c.happens1); setText('happens2', c.happens2); setText('happens3', c.happens3); setText('happens4', c.happens4); setText('happens5', c.happens5);
+
+  // author block
+  setText('authorH2', c.authorH2);
+  setHTML('authorP1', c.authorP1); setText('authorP2', c.authorP2); setText('authorP3', c.authorP3); setText('authorP4', c.authorP4);
+  setText('authorQuote', c.authorQuote); setText('authorStatLbl', c.authorStatLbl);
+
+  // extra testimonials (groups 2 & 3)
+  for(let i=4;i<=6;i++){ setText('testi'+i+'Text', c['testi'+i+'Text']); setText('testi'+i+'Who', c['testi'+i+'Who']); }
+  for(let i=7;i<=9;i++){ setText('testi'+i+'Badge', c['testi'+i+'Badge']); setText('testi'+i+'Text', c['testi'+i+'Text']); setText('testi'+i+'Who', c['testi'+i+'Who']); }
+
+  // sticky bar
+  setText('stickyLabel', c.stickyLabel); setText('stickySub', c.stickySub); setText('stickyCta', c.stickyCta);
+  window.__showMoreLabels = { s1: c.showMoreBtn1, s2: c.showMoreBtn2, done: c.showMoreBtnDone };
+  updateShowMoreLabel();
+
+  // prices
+  const pricing = isRussia ? PRICING.ru : PRICING[region];
+  setHTML('priceBasic', pricing.basic.fmt());
+  setHTML('priceCircle', pricing.circle.fmt());
+  setHTML('pricePersonal', pricing.personal.fmt());
+  setHTML('priceBasicOld', pricing.basic.oldFmt());
+  setHTML('priceCircleOld', pricing.circle.oldFmt());
+  setHTML('pricePersonalOld', pricing.personal.oldFmt());
+
+  // payment button labels: WayForPay (Ukraine) / Tribute only (Russia) / Stripe+PayPal (Kazakhstan) / PayPal only (everyone else). Href is combo-aware.
+  const paymentMode = getPaymentMode(region);
+  document.querySelectorAll('.plan-btn').forEach(btn => {
+    btn.setAttribute('target', '_blank');
+    btn.setAttribute('rel', 'noopener');
+    if(paymentMode === 'wayforpay'){
+      btn.innerHTML = '<span class="pay-main">Сплатити</span>';
+    } else if(paymentMode === 'tribute_only'){
+      btn.innerHTML = '<span class="pay-main">Оплатить</span>';
+    } else if(paymentMode === 'stripe_paypal'){
+      btn.innerHTML = '<span class="pay-main">Оплатить</span><span class="pay-sub">Stripe</span>';
+    } else {
+      btn.innerHTML = '<span class="pay-main">Оплатить</span>';
+    }
+  });
+  document.querySelectorAll('.pay-secondary').forEach(a => {
+    a.setAttribute('target', '_blank');
+    a.setAttribute('rel', 'noopener');
+    if(paymentMode === 'stripe_paypal'){
+      a.innerHTML = '<span class="pay-main">Оплатить</span><span class="pay-sub">PayPal</span>';
+    } else {
+      a.style.display = 'none';
+    }
+  });
+  document.querySelectorAll('.pay-tertiary').forEach(a => {
+    a.setAttribute('target', '_blank');
+    a.setAttribute('rel', 'noopener');
+    a.style.display = 'none';
+  });
+  updateAllPlanButtonHrefs(region);
+  const showPayIcons = (region === 'intl');
+  document.querySelectorAll('.pay-icons-mini').forEach(el => {
+    el.style.display = showPayIcons ? 'flex' : 'none';
+    el.setAttribute('aria-label', isRussia ? 'Способы оплаты: карта, СБП, МИР' : 'Способы оплаты: карта, Apple Pay, Google Pay');
+  });
+  document.querySelectorAll('.pay-icon-intl').forEach(el => {
+    el.style.display = (showPayIcons && !isRussia) ? 'flex' : 'none';
+  });
+  document.querySelectorAll('.pay-icon-ru').forEach(el => {
+    el.style.display = (showPayIcons && isRussia) ? 'flex' : 'none';
+  });
+}
+
+/* (order bumps removed — pricing engine now just needs updateAllPlanButtonHrefs per region) */
+
+/* ==================== GA4 stub ==================== */
+window.dataLayer = window.dataLayer || [];
+function gtag(){ dataLayer.push(arguments); }
+gtag('js', new Date());
+// GA4 measurement ID
+gtag('config', 'G-QCMC7J0KG1');
+function track(event, params){ try{ gtag('event', event, params || {}); }catch(e){} }
+
+/* (live visitor counter removed — was simulated/fake social proof) */
+
+/* ==================== progressive testimonials reveal ==================== */
+function updateShowMoreLabel(){
+  const btn = document.getElementById('showMoreBtn');
+  if(!btn || !window.__showMoreLabels) return;
+  const stage = parseInt(btn.getAttribute('data-stage'), 10) || 0;
+  const labels = window.__showMoreLabels;
+  btn.textContent = stage === 0 ? labels.s1 : (stage === 1 ? labels.s2 : labels.done);
+}
+document.getElementById('showMoreBtn').addEventListener('click', function(){
+  const stage = parseInt(this.getAttribute('data-stage'), 10) || 0;
+  if(stage === 0){
+    document.getElementById('testiGroup2').hidden = false;
+    this.setAttribute('data-stage', '1');
+  } else if(stage === 1){
+    document.getElementById('testiGroup3').hidden = false;
+    document.getElementById('proofGallery').hidden = false;
+    this.setAttribute('data-stage', '2');
+    this.setAttribute('hidden', 'true');
+  }
+  updateShowMoreLabel();
+  track('show_more_testimonials', { stage: stage + 1 });
+});
+
+/* ==================== sticky CTA bar ==================== */
+const stickyBar = document.getElementById('stickyBar');
+const heroEl = document.querySelector('.hero');
+const stickyObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { stickyBar.classList.toggle('show', !e.isIntersecting); });
+}, { threshold: 0 });
+stickyObserver.observe(heroEl);
+
+/* ==================== live activity toast ==================== */
+// Simulated activity notifications for social proof - not tied to a real order feed
+const LIVE_TOAST_DATA = {
+  intl: {
+    names: ['Анна','Марина','Оля','Настя','Кристина','Юля','Диана','Света','Лена','Аня'],
+    cities: ['Киева','Варшавы','Катовиц','Гамбурга','Днепра','Щецина','Винницы','Астаны','Черкасс','Харькова','Кракова'],
+    actions: ['оформила Интенсив','взяла Интенсив+Практикум «Про женщину, которая влюбляет навсегда»','получила Личный разбор','оформила доступ к курсу'],
+    tpl: (n,c,a) => `${n} из ${c} только что ${a}`
+  },
+  ua: {
+    names: ['Анна','Марина','Оля','Настя','Крістіна','Юля','Діана','Світлана','Олена','Аня'],
+    cities: ['Києва','Львова','Одеси','Харкова','Дніпра','Вінниці','Запоріжжя'],
+    actions: ['оформила Інтенсив','взяла Інтенсив+Практикум «Про жінку, яка закохує назавжди»','отримала Особистий розбір','оформила доступ до курсу'],
+    tpl: (n,c,a) => `${n} з ${c} щойно ${a}`
+  }
+};
+let lastToastMsg = '';
+function showLiveToast(){
+  const data = LIVE_TOAST_DATA[region] || LIVE_TOAST_DATA.intl;
+  let msg;
+  do {
+    const n = data.names[Math.floor(Math.random()*data.names.length)];
+    const c = data.cities[Math.floor(Math.random()*data.cities.length)];
+    const a = data.actions[Math.floor(Math.random()*data.actions.length)];
+    msg = data.tpl(n,c,a);
+  } while(msg === lastToastMsg);
+  lastToastMsg = msg;
+  const toast = document.getElementById('liveToast');
+  document.getElementById('liveToastText').textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => { toast.classList.remove('show'); }, 5000);
+  scheduleNextToast();
+}
+function scheduleNextToast(){
+  const delay = 9000 + Math.random() * 7000;
+  setTimeout(showLiveToast, delay);
+}
+setTimeout(showLiveToast, 6000);
+
+/* ==================== GEO + LANGUAGE DETECTION ==================== */
+const deviceIsUkrainian = (() => {
+  const langs = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || ''];
+  return langs.some(l => l && l.toLowerCase().startsWith('uk'));
+})();
+
+let region = deviceIsUkrainian ? 'ua' : 'intl';
+let isRussia = false;
+let isKazakhstan = false;
+render(region);
+document.body.classList.add('ready');
+
+function applyGeo(countryCode){
+  const countryIsUA = countryCode === 'UA';
+  isRussia = countryCode === 'RU';
+  isKazakhstan = countryCode === 'KZ';
+  region = (countryIsUA || deviceIsUkrainian) ? 'ua' : 'intl';
+  render(region);
+  track('geo_detected', { region, country: countryCode, deviceIsUkrainian, isRussia, isKazakhstan });
+  bindTracking();
+}
+
+fetch('https://ipapi.co/json/')
+  .then(r => r.json())
+  .then(data => {
+    if(!data || data.error || !data.country_code) throw new Error('primary geo lookup unavailable');
+    applyGeo(data.country_code);
+  })
+  .catch(() => {
+    // fallback geo lookup if the primary provider is rate-limited or unreachable
+    fetch('https://ipwho.is/')
+      .then(r => r.json())
+      .then(data => {
+        if(!data || data.success === false || !data.country_code) throw new Error('fallback geo lookup unavailable');
+        applyGeo(data.country_code);
+      })
+      .catch(() => { bindTracking(); });
+  });
+
+function bindTracking(){
+  document.querySelectorAll('.plan-btn').forEach(btn => {
+    btn.addEventListener('click', () => track('begin_checkout', { plan: btn.getAttribute('data-plan'), region }));
+  });
+  document.querySelectorAll('.cta-primary').forEach(el => {
+    el.addEventListener('click', () => track('cta_click', { label: el.textContent.trim(), region }));
+  });
+}
+
+/* ==================== EXIT-INTENT POPUP ==================== */
+(function(){
+  const overlay = document.getElementById('exitOverlay');
+  const closeBtn = document.getElementById('exitClose');
+  const ctaLink = document.getElementById('exitCta');
+  if(!overlay) return;
+  let shown = false;
+  function shouldShow(){
+    if(shown) return false;
+    try{ if(sessionStorage.getItem('b4h_exit_shown')) return false; }catch(e){}
+    return true;
+  }
+  function showPopup(){
+    if(!shouldShow()) return;
+    shown = true;
+    try{ sessionStorage.setItem('b4h_exit_shown', '1'); }catch(e){}
+    overlay.classList.add('show');
+    track('exit_intent_shown', { region });
+  }
+  function hidePopup(){
+    overlay.classList.remove('show');
+  }
+  document.addEventListener('mouseout', function(e){
+    if(!e.relatedTarget && !e.toElement && e.clientY < 40){
+      showPopup();
+    }
+  });
+  closeBtn && closeBtn.addEventListener('click', hidePopup);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) hidePopup(); });
+  ctaLink && ctaLink.addEventListener('click', function(){ track('exit_intent_cta_click', { region }); hidePopup(); });
+  // mobile fallback: trigger once user scrolls back up fast near top after scrolling down, or on back button
+  let lastScroll = window.scrollY;
+  window.addEventListener('scroll', function(){
+    const cur = window.scrollY;
+    if(cur < 80 && lastScroll - cur > 60){ showPopup(); }
+    lastScroll = cur;
+  }, { passive:true });
+})();
+
+/* ==================== PUBLIC OFFER MODAL ==================== */
+(function(){
+  const overlay = document.getElementById('offerOverlay');
+  const closeBtn = document.getElementById('offerClose');
+  if(!overlay) return;
+  function showOffer(e){
+    if(e) e.preventDefault();
+    overlay.classList.add('show');
+    track('offer_modal_open', { region });
+  }
+  function hideOffer(){
+    overlay.classList.remove('show');
+  }
+  // offerLink lives inside dynamically re-rendered i18n content, so use delegation
+  document.addEventListener('click', function(e){
+    const trigger = e.target.closest('#offerLink, #footerOffer');
+    if(trigger) showOffer(e);
+  });
+  closeBtn && closeBtn.addEventListener('click', hideOffer);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) hideOffer(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') hideOffer(); });
+})();
+
+/* ==================== testimonial accordion ==================== */
+document.querySelectorAll('.testi-row-head').forEach(head => {
+  head.addEventListener('click', () => {
+    const row = head.closest('.testi-row');
+    const body = row.querySelector('.testi-row-body');
+    const isOpen = row.classList.contains('open');
+    if(isOpen){
+      row.classList.remove('open');
+      body.style.maxHeight = null;
+    } else {
+      row.classList.add('open');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+  });
+});
+
+/* ==================== FAQ accordion ==================== */
+document.querySelectorAll('.faq-item').forEach(item => {
+  const q = item.querySelector('.faq-q');
+  const a = item.querySelector('.faq-a');
+  q.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(o => {
+      o.classList.remove('open');
+      o.querySelector('.faq-a').style.maxHeight = null;
+    });
+    if(!isOpen){ item.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
+  });
+});
+
+/* ==================== seal split on scroll ==================== */
+const sealLarge = document.getElementById('sealLarge');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ sealLarge.classList.add('split'); } });
+}, { threshold:0.5 });
+io.observe(document.getElementById('sealBlock'));
+
+// (fake reset-on-visit countdown timer removed — deadline is now the evergreen 'closes Sunday' copy)
+</script>
 
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
@@ -686,15 +1669,12 @@
         m[i].l=1*new Date();
         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=90131660', 'ym');
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
 
-    ym(90131660, 'init', {ssr:true, webvisor:true, clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    ym(90131660, 'init', {webvisor:true, clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/90131660" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
-
-
-
 
 
 
