@@ -102,6 +102,8 @@
   .hero h1 em{ font-style:italic; color:var(--crimson); }
   .hero .sub{ margin-top:24px; font-size:clamp(15px,2.1vw,18px); color:var(--muted); max-width:540px; font-weight:400; }
   .hero .sub b{ color:var(--ink); font-weight:700; }
+  .hero--conversion{ background:radial-gradient(circle at 50% 34%, #fff 0, var(--cream) 42%, #eaded1 100%); }
+  .hero--conversion .cta-primary{ min-width:min(100%, 320px); }
   .cta-primary{
     margin-top:36px; display:inline-block;
     background:var(--crimson);
@@ -133,6 +135,7 @@
   .pain-card{ background:#fff; border:1px solid var(--line); border-left:3px solid var(--crimson); border-radius:4px; padding:22px 20px; }
   .pain-card p{ color:var(--muted); font-size:14.5px; }
   .pain-card .mark{ font-family:'Playfair Display',serif; font-style:italic; color:var(--crimson); font-size:18px; display:block; margin-bottom:10px; }
+  .pain-grid--conversion .pain-card{ box-shadow:0 10px 24px rgba(42,33,24,.05); }
 
   .promise{
     text-align:center; padding:100px 24px; position:relative;
@@ -171,6 +174,7 @@
   .testi-disclaimer{ text-align:center; font-size:12px; color:var(--light); margin-top:20px; }
 
   .pricing-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch; max-width:1080px; margin:0 auto; }
+  .pricing-grid--conversion{ margin-top:58px; }
   .plan{ background:#fff; border:1px solid var(--line); border-radius:8px; padding:34px 26px; display:flex; flex-direction:column; position:relative; }
   .plan.featured{ border-color:var(--gold); transform:translateY(-8px); box-shadow:var(--shadow); background:linear-gradient(180deg, rgba(192,57,43,0.05), #fff 45%); }
   .plan.featured::before{
@@ -199,6 +203,9 @@
   .pay-icon svg{ width:70%; height:70%; }
   .pay-icons-mini{ display:none; justify-content:center; gap:8px; margin-top:12px; }
   .pay-icons-mini .pay-icon{ width:36px; height:24px; }
+  .pay-icons-primary{ display:none; justify-content:center; gap:8px; margin:10px 0 2px; }
+  .pay-icons-primary .pay-icon{ width:42px; height:25px; font-family:'Manrope',sans-serif; font-size:7px; font-weight:800; letter-spacing:-.02em; color:var(--gold); }
+  .pay-icons-primary .pay-icon.mastercard{ font-size:6px; }
 
   .urgency{ text-align:center; background:rgba(192,57,43,0.06); padding:44px 24px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
   .urgency .eyebrow{ color:var(--crimson); }
@@ -236,6 +243,13 @@
     .author-grid{ grid-template-columns:1fr !important; text-align:center; }
     .author-photo{ margin:0 auto; }
     .proof-gallery{ grid-template-columns:repeat(2,1fr) !important; }
+  }
+  @media (max-width:600px){
+    .hero--conversion{ min-height:auto; padding-top:120px; padding-bottom:82px; }
+    .hero--conversion h1{ font-size:clamp(34px,10vw,46px); }
+    .hero--conversion .cta-primary{ width:100%; }
+    .pain-grid--conversion .pain-card{ padding:20px 18px; }
+    .pricing-grid--conversion{ margin-top:42px; }
   }
   @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } }
 
@@ -433,7 +447,7 @@
   </div>
 </header>
 
-<section class="hero">
+<section class="hero hero--conversion">
   <div class="seal">
     <svg viewBox="0 0 100 100" fill="none">
       <circle cx="50" cy="50" r="46" stroke="#b8860b" stroke-width="1"/>
@@ -473,7 +487,7 @@
       <div class="eyebrow" id="painEyebrow">Узнаёшь себя?</div>
       <h2 id="painH2">Сейчас ты даёшь ему то, чего он не заслужил</h2>
     </div>
-    <div class="pain-grid">
+    <div class="pain-grid pain-grid--conversion">
       <div class="pain-card"><span class="mark" id="pain1Mark">Ночью или днем</span><p id="pain1Text">...</p></div>
       <div class="pain-card"><span class="mark" id="pain2Mark">На автомате</span><p id="pain2Text">...</p></div>
       <div class="pain-card"><span class="mark" id="pain3Mark">Внутри</span><p id="pain3Text">...</p></div>
@@ -694,7 +708,7 @@
       <div class="eyebrow" id="pricingEyebrow">Доступ</div>
       <h2 id="pricingH2">Выбери, насколько глубоко ты готова зайти</h2>
     </div>
-    <div class="pricing-grid">
+    <div class="pricing-grid pricing-grid--conversion">
       <div class="plan" data-tier="basic">
         <div class="plan-name" id="planBasicName">Интенсив</div>
         <div class="plan-desc" id="planBasicDesc">...</div>
@@ -708,6 +722,9 @@
         </ul>
         <div class="plan-pay">
           <a href="#" class="plan-btn" data-plan="basic" id="planBasicBtn">Взять интенсив</a>
+          <div class="pay-icons-primary" aria-label="Способы оплаты: Visa, MasterCard, Apple Pay, Google Pay">
+            <span class="pay-icon" title="Visa">VISA</span><span class="pay-icon mastercard" title="MasterCard">MasterCard</span><span class="pay-icon" title="Apple Pay">Apple Pay</span><span class="pay-icon" title="Google Pay">G Pay</span>
+          </div>
           <a href="#" class="pay-secondary" data-plan="basic" id="planBasicBtnAlt">Оплатить</a>
           <a href="#" class="pay-tertiary" data-plan="basic" id="planBasicBtnAlt2">Оплатить</a>
           <div class="pay-icons-mini" id="payIconsBasic" aria-label="Способы оплаты: карта, Apple Pay, Google Pay">
@@ -733,6 +750,9 @@
         </ul>
         <div class="plan-pay">
           <a href="#" class="plan-btn" data-plan="circle" id="planCircleBtn">Оплатить</a>
+          <div class="pay-icons-primary" aria-label="Способы оплаты: Visa, MasterCard, Apple Pay, Google Pay">
+            <span class="pay-icon" title="Visa">VISA</span><span class="pay-icon mastercard" title="MasterCard">MasterCard</span><span class="pay-icon" title="Apple Pay">Apple Pay</span><span class="pay-icon" title="Google Pay">G Pay</span>
+          </div>
           <a href="#" class="pay-secondary" data-plan="circle" id="planCircleBtnAlt">Оплатить</a>
           <a href="#" class="pay-tertiary" data-plan="circle" id="planCircleBtnAlt2">Оплатить</a>
           <div class="pay-icons-mini" id="payIconsCircle" aria-label="Способы оплаты: карта, Apple Pay, Google Pay">
@@ -759,6 +779,9 @@
         <div class="spots-left" id="spotsLeft">Беру только 10 человек в месяц — каждый кейс разбираю лично</div>
         <div class="plan-pay">
           <a href="#" class="plan-btn" data-plan="personal" id="planPersonalBtn">Получить разбор</a>
+          <div class="pay-icons-primary" aria-label="Способы оплаты: Visa, MasterCard, Apple Pay, Google Pay">
+            <span class="pay-icon" title="Visa">VISA</span><span class="pay-icon mastercard" title="MasterCard">MasterCard</span><span class="pay-icon" title="Apple Pay">Apple Pay</span><span class="pay-icon" title="Google Pay">G Pay</span>
+          </div>
           <a href="#" class="pay-secondary" data-plan="personal" id="planPersonalBtnAlt">Оплатить</a>
           <a href="#" class="pay-tertiary" data-plan="personal" id="planPersonalBtnAlt2">Оплатить</a>
           <div class="pay-icons-mini" id="payIconsPersonal" aria-label="Способы оплаты: карта, Apple Pay, Google Pay">
@@ -883,50 +906,50 @@
 const CONTENT = {
   intl: {
     lang:'ru', htmlTitle:'БЭУшный ещё пожалеет - аудиоинтенсив 7 дней | back4heart',
-    metaDesc:'Как перестать мониторить его, избавиться от стыда за прошлые попытки вернуть его и сделать так, чтобы жалел он - за 7 дней. Первый эффект - в первые 24–48 часов.',
-    navCta:'Получить доступ',
-    heroEyebrow:'Закрытая методика · 7 дней · доступ навсегда',
+    metaDesc:'7-дневный аудиоинтенсив для тех, кому больно после расставания: перестать следить за ним, вернуть себе силу и стать той, кого невозможно забыть.',
+    navCta:'Начать 7 дней',
+    heroEyebrow:'Для тех, кого бросили · 7 дней · доступ навсегда',
     heroH1:'БЭушный ещё <em>пожалеет</em>',
-    heroSub:'То, что не расскажет ни один психолог - потому что это действительно работает, а не «отпусти и живи дальше». Первые сдвиги - уже в ближайшие 24–48 часов. Через 7 дней жалеть будет он.',
-    heroCta:'Хочу, чтобы он пожалел',
-    heroNote:'Аудиоформат · 15–20 минут в день · доступ навсегда',
+    heroSub:'Тебе не нужно унижаться, доказывать и ждать его сообщения. За 7 дней ты выйдешь из боли в позицию, из которой он наконец поймёт, кого потерял.',
+    heroCta:'Справиться с болью расставания',
+    heroNote:'Аудиоформат · 15–20 минут в день · доступ навсегда · анонимно',
     scrollHint:'Листай',
-    secretEyebrow:'Информация не для широкой публики',
-    secretH2:'Это методика, о которой молчат многие психологи',
-    secretText:'Психологи продают тебе годы работы над собой, потому что так работает их бизнес. Я - другое. Техники, которые я собирал - это то что реально работает. Только те методики, которые помогли сотням в похожих ситуациях. Работают быстро и не всегда «экологично» по отношении к бывшему.',
+    secretEyebrow:'Пора перестать быть удобной',
+    secretH2:'Не возвращай его. Верни себе ту, кого он потерял.',
+    secretText:'Этот интенсив не про бесконечные разговоры о прошлом. Он даёт тебе маршрут на каждый из 7 дней: остановить боль, перестать следить, собрать достоинство и показать новую версию себя без просьб и оправданий.',
     tgWidgetText:'Спросить в Telegram',
-    exitEyebrow:'Подожди', exitH3:'Не готова на интенсив целиком?',
-    exitText:'Держи 1-й день бесплатно.',
-    exitCta:'Получить 1-й день бесплатно',
-    painEyebrow:'Узнаёшь себя?', painH2:'Ты теряешь последнее достоинство, а он даже не смотрит в твою сторону',
-    pain1Mark:'По триста раз в день', pain1Text:'заходишь в его профиль. Иногда с фейка, чтобы не спалиться. Ищешь там доказательство, что ему плохо так же, как тебе. Его там нет.',
-    pain2Mark:'Стыдно вспомнить', pain2Text:'сколько раз писала первой, извинялась за то, в чём не виновата, умоляла ответить. Он до сих пор этим пользуется.',
-    pain3Mark:'А если у него уже кто-то есть', pain3Text:'внутри всё обрывается. Кажется, что ты опоздала и проиграла. На деле это почти ничего не меняет - если знаешь, что делать.',
-    promiseQuote:'«Давай вылечим твоё разбитое сердце.<br>А заодно сделаем, чтобы разбитым было не только твоё. И на это нужно 7 дней, а не годы.»',
-    modulesEyebrow:'Что внутри', modulesH2:'7 дней. От потерянного достоинства - до "Прости! Прости! Прости!"',
-    modulesDesc:'Каждый день новый урок на 15–20 минут. Наушники, дорога на работу или обед - где угодно. Первая техника снимает тягу мониторить его профиль уже в первые сутки. Дальше - что делать, если у него уже кто-то есть, как закрыть стыд за прошлые попытки вернуть его, и как сделать так, чтобы жалел он, а не ты. Только то, что реально работает.',
-    mod1Title:'Стоп-боль', mod1Desc:'Техники, которые снимают боль, техники "выключения навязчивых мыслей", убирают желание проверять его онлайн. Работает уже с первого дня.',
-    mod2Title:'Потеряное достоинство', mod2Desc:'Разбираем стыд за то, что писала первой, извинялась и умоляла. Закрываем это - раз и навсегда.',
-    mod3Title:'Если он уже с другой', mod3Desc:'Что делать, если у него кто-то появился. Почему это не поражение - и как обернуть это в свою пользу.',
-    mod4Title:'Демонстрация', mod4Desc:'Что выложить в соцсети, как подать себя и что сделать, чтобы он увидел тебя заново — и не смог пройти мимо. Конкретные шаги, не абстрактное “стань лучшей версией себя”',
-    mod5Title:'Зеркало', mod5Desc:'Переворачиваем расклад: брошенным на этом фоне почувствует себя он, а не ты.',
-    mod6Title:'Разрыв шаблона', mod6Desc:'Что делать, когда он напишет. Как вести себя, когда он объявится. Ты больше не та «удобная» девочка, которая будет ждать его как собачка.',
-    mod7Title:'Жизнь после', mod7Desc:'Итоги. Как остаться в этой позиции надолго. Теперь ты хозяйка своей жизни. Когда он приползёт, ты будешь смотреть на это совсем другими глазами.',
-    mod8Title:'Избавление от боли', mod8Desc:'Бонусный урок с упражнениями и техниками, которые убирают навязчивые мысли о нём. Что делать в моменте, когда накрывает - конкретный алгоритм, а не «просто отвлекись».',
+    exitEyebrow:'Не закрывай страницу', exitH3:'Не уверена, что готова сразу?',
+    exitText:'Начни с первого дня — почувствуешь, почему тысячи женщин перестали бегать за бывшим.',
+    exitCta:'Получить первый день',
+    painEyebrow:'Если больно — ты здесь не случайно', painH2:'Ты ещё живёшь этим расставанием. А он уже делает вид, что ничего не было.',
+    pain1Mark:'Лента стала ловушкой', pain1Text:'ты следишь за ним в соцсетях: сториз, подписки, последний онлайн. И каждый раз находишь новую причину, почему тебе больно.',
+    pain2Mark:'Хочется всё объяснить', pain2Text:'ты пишешь длинные сообщения, пытаешься достучаться, вспоминаешь хорошее. А потом перечитываешь отправленное и ненавидишь себя за слабость.',
+    pain3Mark:'Она кажется лучше тебя', pain3Text:'ты сравниваешь себя с другой и думаешь, что проиграла. Но ты не проиграла — ты просто слишком долго играла по его правилам.',
+    promiseQuote:'«Сначала ты перестанешь рассыпаться от его молчания.<br>Потом он увидит женщину, которую так легко потерять уже не получится.»',
+    modulesEyebrow:'Твой план на 7 дней', modulesH2:'От “почему он так со мной?” — к “пусть теперь думает он”.',
+    modulesDesc:'Каждый день — один короткий аудиоурок и одно точное действие. Слушай в наушниках по дороге, на кухне или перед сном: не нужно ставить жизнь на паузу, чтобы перестать быть заложницей его молчания.',
+    mod1Title:'Стоп-кран для боли', mod1Desc:'Снимаем импульс проверять его онлайн и писать первой. Чтобы день снова принадлежал тебе, а не его сториз.',
+    mod2Title:'Достоинство обратно', mod2Desc:'Закрываем стыд за сообщения, слёзы и попытки вернуть. Ты больше не объясняешься там, где тебя не услышали.',
+    mod3Title:'Если появилась другая', mod3Desc:'Выход из сравнения и паники: как перестать видеть в ней доказательство, что с тобой “что-то не так”.',
+    mod4Title:'Новая подача', mod4Desc:'Собираем образ женщины, которую он видит заново: без показухи, но с той дистанцией, от которой он начинает думать.',
+    mod5Title:'Смена ролей', mod5Desc:'Ты перестаёшь ждать его реакции. И именно тогда он впервые чувствует, что привычный доступ к тебе закрыт.',
+    mod6Title:'Когда он объявится', mod6Desc:'Готовые сценарии ответа без суеты. Ты не возвращаешься в старую роль — он встречается с новой тобой.',
+    mod7Title:'Пусть жалеет он', mod7Desc:'Закрепляем позицию, в которой ты выбираешь, а не выпрашиваешь. Он понимает, кого потерял, когда видит, что ты больше не доступна по щелчку.',
+    mod8Title:'Экстренная помощь', mod8Desc:'Бонус: алгоритм на моменты, когда накрывает. Вместо “просто отвлекись” — шаги, которые возвращают тебя в себя.',
     sealCaption:'Дальше - то, о чём обычно молчат. Для тех, кто уже готов этим пользоваться.',
-    testiEyebrow:'Уже прошли это', testiH2:'Ей тоже казалось, что она всё испортила', ratingText:'4.9 из 5 · 340+ отзывов',
+    testiEyebrow:'Они тоже начинали с боли', testiH2:'Сначала ей было невыносимо. Потом бывший начал замечать перемены.', ratingText:'4.9 из 5 · 340+ историй',
     testi1Text:'«Перестала прокручивать мысли о нем на третий день. На пятый - он сам написал "как дела?".»', testi1Who:'Настя, 46',
     testi2Text:'«Не отвечала на его "прости" три дня. Он написал ещё два раза. Впервые в жизни ждала не я его, а он меня.»', testi2Who:'Оля, 41',
     testi3Text:'«Реально страшно было не думать о нем, думала что забудет. Этот гад завёл отношения через месяц после того как ушел. Думала - всё. Но когда он написал в третий раз - поняла, что расклад поменялся не в его пользу.»', testi3Who:'Кристина, 54',
-    pricingEyebrow:'Закрытый доступ', pricingH2:'Выбери, насколько глубоко ты готова зайти',
+    pricingEyebrow:'Выбери свою точку разворота', pricingH2:'Не жди, пока он окончательно привыкнет жить без тебя',
     planBasicName:'Интенсив', planBasicDesc:'7 аудиоуроков по 15–20 минут + 3 авторсие техники Первая техника убирает тягу проверять его страницу уже в первые сутки. К 7-му дню ты будешь в позиции, из которой он не сможет тебя игнорировать.', planBasicNote:'разовый платёж',
     planBasicLi1:'7 аудиоуроков, 15–20 минут в день', planBasicLi2:'Доступ навсегда, слушай когда удобно', planBasicLi3:'Слушай хоть с телефона, хоть с ноутбука', planBasicBtn:'Оплатить',
     planCircleBadge:'Самый популярный', planCircleName:'Интенсив + практикум «Про женщину, которая влюбляет навсегда»', planCircleDesc:'Курс плюс практикум о том, как стать той, в кого влюбляются раз и навсегда.', planCircleNote:'разовый платёж',
     planCircleLi1:'Всё из тарифа «Интенсив»', planCircleLi2:'Практикум «Про женщину, которая влюбляет навсегда»', planCircleLi3:'Рабочие техники, которые делают тебя тем человеком, которого не отпускают', planCircleBtn:'Оплатить',
     planPersonalName:'Интенсив + Личный разбор', planPersonalDesc:'Курс плюс разбор именно твоей ситуации.', planPersonalNote:'разовый платёж',
     planPersonalLi1:'Всё из тарифа «Интенсив»', planPersonalLi2:'Личный разбор твоей ситуации', planPersonalLi3:'Конкретный план действий для тебя',  planPersonalBtn:'Оплатить',
-    urgencyEyebrow:'Ограниченный доступ', urgencyH3:'Набор закрывается в воскресенье', urgencyCta:'Успеть попасть в поток',
-    urgencySub:'Новый поток стартует каждую неделю. Успей начать до закрытия текущего набора.',
+    urgencyEyebrow:'Этот поток закрывается', urgencyH3:'До закрытия набора осталось совсем немного', urgencyCta:'Начать до закрытия',
+    urgencySub:'Следующий поток — позже. Если хочешь перестать проживать один и тот же вечер снова и снова, начинай сейчас.',
     faqEyebrow:'Вопросы', faqH2:'Прежде чем начать',
     faqQ1:'Сколько времени это займёт?', faqA1:'15–20 минут в день, семь дней подряд. Первый эффект - уже в первые сутки: тяга проверять его страницу заметно слабеет. Можно слушать по дороге на работу, во время готовки, перед сном.',
     faqQ2:'Мы расстались давно, мне подойдёт?', faqA2:'Да, подойдёт. Тут не важно, сколько прошло времени - важно, в какой точке ты находишься сейчас, по отношению к себе и к нему.',
@@ -935,7 +958,7 @@ const CONTENT = {
     faqQ5:'Это анонимно?', faqA5:'Да, на сто процентов. Всё приходит на почту, никаких публичных отметок и подтверждений.',
     faqQ6:'Не получается оплатить, что делать?', faqA6:'Такое иногда случается из-за банка или региона. Просто напиши мне в Telegram - разберёмся вместе и подберём удобный способ оплаты, без потери времени.',
     faqQ7:'Почему так дёшево?', faqA7:'После развода женщина часто оказывается в непростом материальном положении - и это последнее, из-за чего я хочу, чтобы кто-то остался без поддержки. Поэтому я сознательно держу цену минимальной: важнее, чтобы как можно больше женщин получили эти знания и смогли пройти через расставание с меньшей болью, чем заработать на этом по максимуму.',
-    finalEyebrow:'Решение за тобой', finalH2:'Представь его лицо, когда он поймёт, кого потерял', finalSub:'Первые изменения - уже через 24–48 часов. Через неделю это будет не мысль, а факт.', finalCta:'Хочу, чтобы он пожалел',
+    finalEyebrow:'Твоя очередь выбирать', finalH2:'Однажды он поймёт, кого потерял. Главное — чтобы к тому моменту ты уже выбрала себя.', finalSub:'Семь дней, чтобы перестать ждать его сообщения и стать женщиной, о которой жалеют.', finalCta:'Справиться с болью расставания',
     footerLine:'© 2026 back4heart. Все права защищены.', footerTerms:'Условия использования', footerPrivacy:'Политика конфиденциальности', footerOffer:'Публичная оферта',
     footerContact:'Вопросы? Пиши в Telegram:', payNote:'Оплатить можно картой, Apple Pay и Google Pay', faqContactText:'Не нашла ответ? Пиши в Telegram:',
     trustGuaranteeTitle:'Гарантия возврата 7 дней', trustGuaranteeText:'Не подошло — вернём деньги в течение 7 дней, без лишних вопросов',
@@ -1013,26 +1036,26 @@ const CONTENT = {
   },
   ua: {
     lang:'uk', htmlTitle:'БЕУшний ще пошкодує - аудіоінтенсив 7 днів | back4heart',
-    metaDesc:'7 днів, щоб він усвідомив, кого втратив. Аудіоінтенсив для тих, хто обирає тріумф, а не смирення.',
-    navCta:'Отримати доступ',
-    heroEyebrow:'Аудіоінтенсив · 7 днів · закритий доступ',
+    metaDesc:'7-денний аудіоінтенсив після розставання: перестати стежити за ним, повернути собі силу й стати тією, кого неможливо забути.',
+    navCta:'Почати 7 днів',
+    heroEyebrow:'Для тих, кого покинули · 7 днів · доступ назавжди',
     heroH1:'Б/У ще <em>пошкодує</em>',
-    heroSub:'За 7 днів він зрозуміє, кого втратив. Це не про «відпусти й живи далі» - тут інше. У нього залишиться питання, що взагалі пішло не так.',
-    heroCta:'Хочу свої 7 днів',
+    heroSub:'Тобі не потрібно принижуватися, доводити й чекати його повідомлення. За 7 днів ти вийдеш із болю в позицію, з якої він нарешті зрозуміє, кого втратив.',
+    heroCta:'Впоратися з болем розставання',
     heroNote:'Аудіоформат · 15–20 хвилин на день · доступ назавжди',
     scrollHint:'Гортай',
-    secretEyebrow:'Інформація не для широкого загалу',
-    secretH2:'Це система, про яку мовчать психологи',
-    secretText:'Психологи продають тобі роки роботи над собою, тому що так працює їхній бізнес. Я - інше. Техніки, які я збирав, - це те, що справді працює. Лише ті методики, які допомогли сотням людей у схожих ситуаціях. Працюють швидко й не завжди «екологічно» щодо колишнього.',
+    secretEyebrow:'Досить бути зручною',
+    secretH2:'Не повертай його. Поверни собі ту, кого він втратив.',
+    secretText:'Це не нескінченні розмови про минуле. Тут є маршрут на 7 днів: зупинити біль, перестати стежити, зібрати гідність і показати нову себе без прохань та виправдань.',
     tgWidgetText:'Запитати в Telegram',
     exitEyebrow:'Зачекай', exitH3:'Не готова на інтенсив цілком?',
     exitText:'Тримай 1-й день безкоштовно - спробуй техніку, яка вже за добу прибирає бажання стежити за його сторінкою та позбавляє нав’язливих думок.',
     exitCta:'Отримати 1-й день безкоштовно',
-    painEyebrow:'Впізнаєш себе?', painH2:'Ти віддаєш йому те, чого він давно не заслуговує',
-    pain1Mark:'По триста разів на день', pain1Text:'заходиш у його профіль. Іноді з фейкового акаунта, щоб не спалитися. Шукаєш там доказ, що йому так само погано, як і тобі. Його там немає.',
-    pain2Mark:'Соромно згадати', pain2Text:'скільки разів писала першою, вибачалася за те, в чому не була винна, благала відповісти. Він досі цим користується.',
-    pain3Mark:'А якщо в нього вже хтось є', pain3Text:'всередині все обривається. Здається, що це все і ти програла. Насправді це майже нічого не змінює - якщо знаєш, що робити.',
-    promiseQuote:'«Давай вилікуємо твоє розбите серце.<br>А заразом зробимо так, щоб розбитим було не лише твоє. І для цього потрібно 7 днів, а не роки.»',
+    painEyebrow:'Якщо боляче — ти тут не випадково', painH2:'Ти ще живеш цим розставанням. А він уже робить вигляд, що нічого не було.',
+    pain1Mark:'Стрічка стала пасткою', pain1Text:'ти стежиш за ним у соцмережах: сторіз, підписки, останній онлайн. І щоразу знаходиш нову причину, чому тобі боляче.',
+    pain2Mark:'Хочеться все пояснити', pain2Text:'ти пишеш довгі повідомлення, намагаєшся достукатися, згадуєш хороше. А потім перечитуєш відправлене й соромишся своєї слабкості.',
+    pain3Mark:'Вона здається кращою', pain3Text:'ти порівнюєш себе з іншою й думаєш, що програла. Але ти не програла — ти просто надто довго грала за його правилами.',
+    promiseQuote:'«Спочатку ти перестанеш розсипатися від його мовчання.<br>Потім він побачить жінку, яку так легко втратити вже не вийде.»',
     modulesEyebrow:'Що всередині', modulesH2:'7 днів. 7 зміщень балансу',
     modulesDesc:'Щодня новий урок, хвилин на 15-20. Навушники, дорога на роботу чи обід - де завгодно. Без зошитів і домашки, тільки те, що реально працює. І так, думки про нього по колу та ця емоційна залежність зникнуть. У цей інтенсив включено 3 авторські техніки боротьби з нав’язливими думками та цифровою залежністю. Ти перестанеш стежити за ним.',
     mod1Title:'Перший удар', mod1Desc:'Розбираємо, кого ти з нього виліпила у своїй голові. Спойлер: цей образ пора зносити першим.',
@@ -1380,6 +1403,9 @@ function render(region){
   });
   updateAllPlanButtonHrefs(region);
   const showPayIcons = (region !== 'ua');
+  document.querySelectorAll('.pay-icons-primary').forEach(el => {
+    el.style.display = showPayIcons ? 'flex' : 'none';
+  });
   document.querySelectorAll('.pay-icons-mini').forEach(el => {
     el.style.display = showPayIcons ? 'flex' : 'none';
     el.setAttribute('aria-label', 'Способы оплаты из РФ: СБП, МИР');
