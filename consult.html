@@ -5,11 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Короткая анкета перед личным разбором ситуации с Романом Вельд. Два формата и цены указаны заранее.">
 <title>Личный разбор ситуации — Роман Вельд</title>
-<script>
-(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){m[i].a=m[i].a||[];m[i].a.push(arguments)};m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1;k.src=r;a.parentNode.insertBefore(k,a)})(window,document,'script','https://mc.yandex.ru/metrika/tag.js','ym');
-ym(90131660,'init',{webvisor:true,clickmap:true,referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/90131660" style="position:absolute;left:-9999px" alt=""></div></noscript>
+
 <style>
 :root{--bg:#141210;--bg2:#1b1916;--card:#221f1b;--gold:#e2b76a;--gold2:#caa05a;--text:#ece7df;--muted:#ada596;--line:#3a342c}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -199,14 +195,35 @@ document.getElementById('showPrice').addEventListener('click',function(){var p=d
   var form=document.getElementById('consultForm');
   var status=document.getElementById('submitStatus');
   var submitButton=document.getElementById('paySubmit');
-  form.addEventListener('submit',function(){
+  form.addEventListener('submit',function(event){
+    event.preventDefault();
     document.getElementById('formPageUrl').value=window.location.href.split('#')[0];
     submitButton.disabled=true;
-    submitButton.textContent='Отправляем и переходим к оплате…';
+    submitButton.textContent='Переходим к оплате…';
     status.hidden=false;
-    status.textContent='Отправляем анкету и открываем страницу оплаты…';
+    status.textContent='Анкета отправляется в фоне. Сейчас откроется страница оплаты.';
     track('submit_consult_questionnaire');
     track('click_consult_payment');
+
+    var queued=false;
+    var endpoint=form.action;
+    var payload=new FormData(form);
+    try {
+      if (navigator.sendBeacon) queued=navigator.sendBeacon(endpoint,payload);
+    } catch (error) {}
+    if (!queued) {
+      try {
+        fetch(endpoint,{method:'POST',body:payload,mode:'no-cors',keepalive:true}).catch(function(){});
+        queued=true;
+      } catch (error) {}
+    }
+    if (queued) {
+      window.location.assign('https://secure.wayforpay.com/button/bc96b4730a0ef');
+    } else {
+      submitButton.disabled=false;
+      submitButton.textContent='Оплатить разбор';
+      status.textContent='Не удалось начать отправку анкеты. Проверь подключение к интернету и попробуй ещё раз.';
+    }
   });
 })();
 </script>
