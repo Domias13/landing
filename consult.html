@@ -164,7 +164,10 @@ footer a{color:#a99f8f}
     <p class="kicker">Короткая анкета</p>
     <h2>Расскажи, с чем нужна помощь</h2>
     <p>Достаточно пары предложений. Нажми кнопку оплаты: анкета сначала отправится Роману на почту, затем откроется страница оплаты.</p>
-    <form id="consultForm">
+    <form id="consultForm" action="https://formsubmit.co/seoxabiz@gmail.com" method="POST" accept-charset="UTF-8">
+      <input type="hidden" name="_subject" value="Анкета на письменный разбор — €35">
+      <input type="hidden" name="_next" value="https://secure.wayforpay.com/button/bc96b4730a0ef">
+      <input type="hidden" name="_url" id="formPageUrl" value="">
       <div class="form-grid">
         <div class="field"><label for="requestName">Как к тебе обращаться</label><input id="requestName" name="name" autocomplete="name" maxlength="40" required placeholder="Имя"></div>
         <div class="field"><label for="requestTelegram">Твой Telegram</label><input id="requestTelegram" name="telegram" type="text" maxlength="60" required placeholder="@username или ссылка t.me/username" autocomplete="off"></div>
@@ -196,29 +199,14 @@ document.getElementById('showPrice').addEventListener('click',function(){var p=d
   var form=document.getElementById('consultForm');
   var status=document.getElementById('submitStatus');
   var submitButton=document.getElementById('paySubmit');
-  var FORM_URL='https://formsubmit.co/ajax/seoxabiz@gmail.com';
-  var PAYMENT_URL='https://secure.wayforpay.com/button/bc96b4730a0ef';
-  form.addEventListener('submit',function(event){
-    event.preventDefault();
-    if(!form.reportValidity())return;
-    var data=new FormData(form);
-    var payload={
-      name:data.get('name'),
-      telegram:data.get('telegram'),
-      topic:data.get('topic'),
-      situation:data.get('situation'),
-      goal:data.get('goal'),
-      _honey:data.get('_honey')||'',
-      _subject:'Анкета на письменный разбор — €35'
-    };
+  form.addEventListener('submit',function(){
+    document.getElementById('formPageUrl').value=window.location.href.split('#')[0];
     submitButton.disabled=true;
-    submitButton.textContent='Отправляем анкету…';
+    submitButton.textContent='Отправляем и переходим к оплате…';
     status.hidden=false;
-    status.textContent='Отправляем анкету на почту…';
-    fetch(FORM_URL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
-      .then(function(response){return response.json().catch(function(){return {};}).then(function(result){if(!response.ok||result.success===false||result.success==='false')throw new Error(result.message||'Email delivery failed');});})
-      .then(function(){track('submit_consult_questionnaire');track('click_consult_payment');window.location.assign(PAYMENT_URL);})
-      .catch(function(){status.textContent='Не удалось отправить анкету на почту. Оплата не открыта. Попробуй ещё раз позже.';submitButton.disabled=false;submitButton.textContent='Оплатить разбор';});
+    status.textContent='Отправляем анкету и открываем страницу оплаты…';
+    track('submit_consult_questionnaire');
+    track('click_consult_payment');
   });
 })();
 </script>
